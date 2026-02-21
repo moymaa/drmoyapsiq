@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>Psiquiatra en CDMX ★ 5.0 | Dr. Moya Sánchez · Del Valle y En Línea | Eutimya</title>
+<title>Psiquiatra en CDMX | Dr. Moya Sánchez · Del Valle y En Línea | Eutimya</title>
 <meta name="description" content="Psiquiatra en CDMX ★ 5.0 · +100 reseñas Google · UNAM Mención Honorífica · Certificado CMP. Ansiedad, depresión, TDAH adultos, insomnio, trastorno bipolar. Consulta presencial Col. Del Valle o en línea desde $1,400 MXN. English consultations available. Agenda hoy."/>
 <meta name="keywords" content="psiquiatra CDMX, psiquiatra Ciudad de México, psiquiatra Del Valle, psiquiatra en línea México, psiquiatra UNAM certificado, TDAH adultos CDMX, ansiedad psiquiatra CDMX, depresión tratamiento CDMX, psiquiatría de enlace CDMX, Dr Moya psiquiatra, drmoyapsiq, Eutimya salud mental, psiquiatra Benito Juárez CDMX, psiquiatra particular CDMX, consulta psiquiátrica en línea, psiquiatra Narvarte, psiquiatra Roma Norte, psiquiatra Condesa, psiquiatra Nápoles"/>
 <meta name="author" content="Dr. Deldhy Nicolás Moya Sánchez"/>
@@ -11,11 +11,11 @@
 <link rel="canonical" href="https://psiquiatra-cdmx.eutimya.org/"/>
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://psiquiatra-cdmx.eutimya.org/"/>
-<meta property="og:title" content="Psiquiatra en CDMX ★ 5.0 | Dr. Moya Sánchez · Eutimya"/>
+<meta property="og:title" content="Psiquiatra en CDMX | Dr. Moya Sánchez · Eutimya"/>
 <meta property="og:description" content="Psiquiatra certificado CDMX. Mención honorífica UNAM. +100 reseñas Google. Consulta presencial Del Valle o en línea desde $1,400 MXN. Agenda hoy."/>
 <meta property="og:image" content="https://lh3.googleusercontent.com/pw/AP1GczMhQ6m9BOG6lddqce7vog3-dLP4_oifP2GShaWc1kbQsxyFwuxyweYIykWCzKl49n2yeeyuUfcq0CgMb0GxyAwyIYHLhg2T0wvQRXcQSMnMNY23HN21WoiiRFHgzEcq9zp-rdpo9dmaZmmy7XMgizvYOA=w1024-h1024-s-no-gm"/>
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content="Psiquiatra en CDMX ★ 5.0 | Dr. Moya Sánchez | Eutimya"/>
+<meta name="twitter:title" content="Psiquiatra en CDMX | Dr. Moya Sánchez | Eutimya"/>
 <meta name="twitter:description" content="Psiquiatra certificado UNAM · Ansiedad, depresión, TDAH, insomnio · Del Valle CDMX y en línea"/>
 <meta name="twitter:image" content="https://lh3.googleusercontent.com/pw/AP1GczMhQ6m9BOG6lddqce7vog3-dLP4_oifP2GShaWc1kbQsxyFwuxyweYIykWCzKl49n2yeeyuUfcq0CgMb0GxyAwyIYHLhg2T0wvQRXcQSMnMNY23HN21WoiiRFHgzEcq9zp-rdpo9dmaZmmy7XMgizvYOA=w1024-h1024-s-no-gm"/>
 <link rel="icon" type="image/png" href="https://github.com/moymaa/drmoyapsiq/blob/main/logos%20acceso%20directos%20mac%20iconos.png?raw=true"/>
@@ -801,6 +801,9 @@ a{color:inherit;text-decoration:none}
   .cuando-grid{grid-template-columns:1fr}
 }
 
+/* ═══ MOBILE HERO OVERLAY ═══ */
+.hero-mobile-overlay{display:none}
+
 /* ═══ RESPONSIVE ═══ */
 @media(max-width:1024px){
   .services-grid{grid-template-columns:1fr 1fr}
@@ -810,10 +813,142 @@ a{color:inherit;text-decoration:none}
   .footer-inner{grid-template-columns:1fr 1fr}
 }
 @media(max-width:768px){
-  .hero{grid-template-columns:1fr}
-  .hero-left{padding:3rem 1.5rem 2.5rem;order:2;max-width:100%}
-  .hero-left::after{display:none}
-  .hero-right{height:100vw;min-height:380px;max-height:520px;order:1}
+  /* Hero: single column, full-height image with text overlay */
+  .hero{
+    display:block;
+    padding-top:68px;
+  }
+  .hero-left{display:none}
+  .hero-right{
+    position:relative;
+    height:calc(100svh - 68px);
+    min-height:500px;
+    max-height:none;
+    overflow:hidden;
+  }
+  .hero-right img{
+    width:100%;height:100%;
+    object-fit:cover;
+    object-position:center 20%;
+    transform:scale(1.06);
+  }
+  /* dramatic gradient: dark navy from bottom 65% up */
+  .hero-right::before{
+    content:'';
+    position:absolute;inset:0;
+    background:linear-gradient(
+      to top,
+      rgba(13,27,42,1) 0%,
+      rgba(13,27,42,.88) 28%,
+      rgba(13,27,42,.4) 55%,
+      transparent 80%
+    );
+    z-index:1;
+  }
+  /* hide original badge */
+  .hero-right-overlay{display:none}
+
+  /* Mobile text overlay */
+  .hero-mobile-overlay{
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+    position:absolute;
+    inset:0;
+    z-index:2;
+    padding:0 1.6rem 2.2rem;
+  }
+
+  /* Eyebrow */
+  .hmo-eyebrow{
+    display:flex;align-items:center;gap:.5rem;
+    font-size:.68rem;font-weight:700;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--gold);
+    margin-bottom:.85rem;
+    opacity:0;
+    animation:hmoUp .6s ease .15s forwards;
+  }
+  .hmo-eyebrow::before{
+    content:'';display:block;width:22px;height:1px;background:var(--gold);flex-shrink:0;
+  }
+
+  /* Name block */
+  .hmo-name{
+    line-height:1.0;
+    margin-bottom:.9rem;
+    opacity:0;
+    animation:hmoUp .65s ease .3s forwards;
+  }
+  .hmo-name-main{
+    display:block;
+    font-family:var(--serif);
+    font-size:clamp(2.4rem,9.5vw,3.4rem);
+    font-weight:700;
+    color:#fff;
+    letter-spacing:-.01em;
+  }
+  .hmo-name-sub{
+    display:block;
+    font-family:var(--serif);
+    font-size:clamp(1.9rem,7.5vw,2.7rem);
+    font-weight:400;
+    font-style:italic;
+    color:var(--gold);
+    letter-spacing:.01em;
+  }
+
+  /* Role */
+  .hmo-role{
+    font-size:.78rem;
+    color:rgba(255,255,255,.72);
+    line-height:1.6;
+    margin-bottom:1rem;
+    opacity:0;
+    animation:hmoUp .6s ease .48s forwards;
+  }
+
+  /* Stars */
+  .hmo-stars{
+    display:flex;align-items:center;gap:.6rem;
+    opacity:0;
+    animation:hmoUp .6s ease .62s forwards;
+    margin-bottom:1.4rem;
+  }
+  .hmo-stars-ico{color:#f59e0b;font-size:1rem;letter-spacing:.06em}
+  .hmo-stars-txt{font-size:.75rem;color:rgba(255,255,255,.65);font-weight:400}
+
+  /* CTA row */
+  .hmo-cta{
+    display:flex;gap:.7rem;
+    opacity:0;
+    animation:hmoUp .6s ease .75s forwards;
+  }
+  .hmo-btn-main{
+    flex:1;display:flex;align-items:center;justify-content:center;gap:.45rem;
+    background:var(--gold);color:#fff;
+    padding:.75rem 1.2rem;border-radius:8px;
+    font-size:.82rem;font-weight:700;
+    box-shadow:0 4px 20px rgba(184,137,58,.35);
+    transition:filter .2s;
+  }
+  .hmo-btn-main:hover{filter:brightness(1.1)}
+  .hmo-btn-wa{
+    display:flex;align-items:center;justify-content:center;gap:.45rem;
+    border:1.5px solid rgba(255,255,255,.25);color:#fff;
+    padding:.75rem 1.1rem;border-radius:8px;
+    font-size:.82rem;font-weight:600;
+    backdrop-filter:blur(6px);
+    background:rgba(255,255,255,.08);
+    transition:background .2s;
+  }
+  .hmo-btn-wa:hover{background:rgba(255,255,255,.15)}
+
+  @keyframes hmoUp{
+    from{opacity:0;transform:translateY(18px)}
+    to{opacity:1;transform:translateY(0)}
+  }
+
+  /* rest of mobile layout */
   .about-grid{grid-template-columns:1fr}
   .services-grid{grid-template-columns:1fr}
   .cond-grid{grid-template-columns:1fr 1fr}
@@ -922,6 +1057,31 @@ a{color:inherit;text-decoration:none}
     <img src="https://github.com/moymaa/drmoyapsiq/blob/main/unnamed_Original.jpg?raw=true"
          alt="Dr. Deldhy Nicolás Moya Sánchez — Psiquiatra CDMX frente a la Biblioteca Central UNAM"
          loading="eager"/>
+
+    <!-- Mobile-only cinematic text overlay -->
+    <div class="hero-mobile-overlay">
+      <p class="hmo-eyebrow">Psiquiatra Certificado · CDMX</p>
+      <h1 class="hmo-name">
+        <span class="hmo-name-main">Dr. Moya Sánchez</span>
+        <span class="hmo-name-sub">Deldhy Nicolás</span>
+      </h1>
+      <p class="hmo-role">Especialista en Psiquiatría · UNAM · Mención Honorífica · Alta Especialidad en Psiquiatría de Enlace · Certificado CMP · Actualización médica constante</p>
+      <div class="hmo-stars">
+        <span class="hmo-stars-ico">★★★★★</span>
+        <span class="hmo-stars-txt">5.0 Google · +100 reseñas verificadas</span>
+      </div>
+      <div class="hmo-cta">
+        <a href="https://eutimya.org/cita" class="hmo-btn-main">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Agendar Cita
+        </a>
+        <a href="https://wa.me/526731205121" class="hmo-btn-wa" target="_blank" rel="noopener">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          WhatsApp
+        </a>
+      </div>
+    </div>
+
     <div class="hero-right-overlay">
       <span class="hero-right-badge">Consulta presencial · Del Valle, CDMX · En línea</span>
     </div>
