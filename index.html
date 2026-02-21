@@ -817,8 +817,15 @@ a{color:inherit;text-decoration:none}
   .hero{
     display:block;
     padding-top:68px;
+    min-height:0;
   }
-  .hero-left{display:none}
+  .hero-left{
+    display:none !important;
+    height:0 !important;
+    padding:0 !important;
+    margin:0 !important;
+    overflow:hidden !important;
+  }
   .hero-right{
     position:relative;
     height:calc(100svh - 68px);
@@ -829,7 +836,7 @@ a{color:inherit;text-decoration:none}
   .hero-right img{
     width:100%;height:100%;
     object-fit:cover;
-    object-position:center 20%;
+    object-position:center 5%;
     transform:scale(1.06);
   }
   /* dramatic gradient: dark navy from bottom 65% up */
@@ -863,13 +870,13 @@ a{color:inherit;text-decoration:none}
   .hmo-eyebrow{
     display:flex;align-items:center;gap:.5rem;
     font-size:.68rem;font-weight:700;letter-spacing:.14em;
-    text-transform:uppercase;color:var(--gold);
+    text-transform:uppercase;color:#fff;
     margin-bottom:.85rem;
     opacity:0;
     animation:hmoUp .6s ease .15s forwards;
   }
   .hmo-eyebrow::before{
-    content:'';display:block;width:22px;height:1px;background:var(--gold);flex-shrink:0;
+    content:'';display:block;width:22px;height:1px;background:#fff;flex-shrink:0;
   }
 
   /* Name block */
