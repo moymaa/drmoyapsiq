@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Agendar Consulta | Dr. Moya Sánchez · Psiquiatra CDMX</title>
+<meta name="description" content="Agenda tu consulta psiquiátrica con el Dr. Moya Sánchez. Presencial en Del Valle CDMX o en línea. Proceso en 3 pasos: pago, horario y expediente."/>
+<meta name="robots" content="index,follow"/>
+<link rel="canonical" href="https://psiquiatra-cdmx.eutimya.org/cita"/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://psiquiatra-cdmx.eutimya.org/cita"/>
+<meta property="og:title" content="Agendar Consulta | Dr. Moya Sánchez · Psiquiatra CDMX"/>
+<meta property="og:description" content="Agenda tu consulta psiquiátrica con el Dr. Moya Sánchez. Proceso en 3 pasos sencillos."/>
+<meta property="og:image" content="https://lh3.googleusercontent.com/pw/AP1GczMhQ6m9BOG6lddqce7vog3-dLP4_oifP2GShaWc1kbQsxyFwuxyweYIykWCzKl49n2yeeyuUfcq0CgMb0GxyAwyIYHLhg2T0wvQRXcQSMnMNY23HN21WoiiRFHgzEcq9zp-rdpo9dmaZmmy7XMgizvYOA=w1024-h1024-s-no-gm"/>
+<link rel="icon" type="image/png" href="https://github.com/moymaa/drmoyapsiq/blob/main/logos%20acceso%20directos%20mac%20iconos.png?raw=true"/>
+<link rel="apple-touch-icon" href="https://github.com/moymaa/drmoyapsiq/blob/main/logos%20acceso%20directos%20mac%20iconos.png?raw=true"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+/* === TOKENS (idénticos al index) === */
+:root{
+  --ink:#0d1b2a;
+  --ink-mid:#334155;
+  --ink-light:#64748b;
+  --gold:#b8893a;
+  --gold-pale:#f5ecd7;
+  --white:#ffffff;
+  --canvas:#fafaf8;
+  --rule:#e8e6e1;
+  --serif:'Playfair Display',Georgia,serif;
+  --sans:'DM Sans','Helvetica Neue',sans-serif;
+  --r:10px;
+  --shadow:0 2px 12px rgba(13,27,42,.07);
+  --shadow-lg:0 8px 40px rgba(13,27,42,.12);
+  --blue:#1a73e8;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{font-family:var(--sans);color:var(--ink);background:var(--white);-webkit-font-smoothing:antialiased;line-height:1.6;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+
+/* === NAV (idéntico al index) === */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(255,255,255,.97);
+  border-bottom:1px solid var(--rule);
+  backdrop-filter:blur(10px);
+}
+.nav-inner{
+  max-width:1200px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:.9rem 2rem;gap:1.5rem;
+}
+.nav-logo img{height:34px;width:auto}
+.nav-links{
+  display:flex;gap:2.2rem;list-style:none;
+  flex:1;justify-content:center;
+}
+.nav-links a{
+  font-size:.8rem;font-weight:500;letter-spacing:.07em;
+  text-transform:uppercase;color:var(--ink-mid);transition:color .2s;
+}
+.nav-links a:hover{color:var(--ink)}
+.nav-btn{
+  display:inline-flex;align-items:center;gap:.45rem;
+  background:var(--ink);color:var(--white);
+  padding:.55rem 1.4rem;border-radius:6px;
+  font-size:.78rem;font-weight:600;letter-spacing:.06em;
+  text-transform:uppercase;white-space:nowrap;
+  transition:background .2s;
+}
+.nav-btn:hover{background:#1e3a5f}
+.hamburger{display:none;background:none;border:none;cursor:pointer;padding:.4rem;flex-direction:column;gap:5px}
+.hamburger span{display:block;width:22px;height:2px;background:var(--ink);border-radius:2px;transition:.25s}
+.mobile-nav{
+  display:none;position:fixed;top:68px;left:0;right:0;
+  background:#fff;border-bottom:1px solid var(--rule);
+  padding:1.2rem 2rem;z-index:99;box-shadow:var(--shadow-lg);
+}
+.mobile-nav.open{display:block}
+.mobile-nav ul{list-style:none}
+.mobile-nav li{padding:.65rem 0;border-bottom:1px solid var(--rule)}
+.mobile-nav a{font-size:.95rem;font-weight:500;color:var(--ink)}
+
+/* === PAGE HERO === */
+.page-hero{
+  background:var(--ink);
+  padding:8rem 2rem 4.5rem;
+  position:relative;overflow:hidden;
+  margin-top:68px;
+}
+.page-hero::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 70% 90% at center,rgba(184,137,58,.10) 0%,transparent 70%);
+}
+.page-hero-inner{position:relative;max-width:760px;margin:0 auto;}
+.page-eyebrow{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:1rem;
+}
+.page-eyebrow::before{content:'';width:22px;height:1px;background:var(--gold)}
+.page-hero h1{
+  font-family:var(--serif);
+  font-size:clamp(2rem,4vw,3rem);
+  font-weight:700;color:#fff;line-height:1.15;
+  margin-bottom:.85rem;
+}
+.page-hero-sub{
+  font-size:.97rem;color:rgba(255,255,255,.65);
+  line-height:1.7;max-width:540px;margin-bottom:2rem;
+}
+.page-hero-back{
+  display:inline-flex;align-items:center;gap:.5rem;
+  border:1px solid rgba(255,255,255,.22);
+  background:rgba(255,255,255,.08);
+  color:rgba(255,255,255,.82);
+  padding:.55rem 1.2rem;border-radius:6px;
+  font-size:.8rem;font-weight:600;letter-spacing:.05em;
+  text-transform:uppercase;backdrop-filter:blur(8px);
+  transition:background .15s,border-color .15s;
+}
+.page-hero-back:hover{background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.4);color:#fff}
+
+/* tip bar */
+.tip-bar{background:var(--canvas);border-bottom:1px solid var(--rule);}
+.tip-bar-inner{
+  max-width:760px;margin:0 auto;padding:.9rem 2rem;
+  display:flex;align-items:flex-start;gap:.75rem;
+}
+.tip-bar-icon{font-size:1.1rem;line-height:1;flex-shrink:0;margin-top:.1rem}
+.tip-bar-text{font-size:.87rem;line-height:1.6;color:var(--ink-mid);}
+.tip-bar-text strong{color:var(--ink);font-weight:600}
+
+/* === CONTENT === */
+.content{max-width:760px;margin:0 auto;padding:3rem 2rem 6rem;}
+
+/* === FLOW === */
+.flow-wrap{display:flex;align-items:center;margin-bottom:2.5rem;}
+.flow-step{
+  flex:1 1 0;display:flex;flex-direction:column;align-items:center;gap:5px;
+  position:relative;cursor:pointer;background:none;border:none;
+  padding:4px 0;font-family:var(--sans);-webkit-tap-highlight-color:transparent;
+}
+.flow-step:not(:last-child)::after{
+  content:"";position:absolute;top:17px;
+  left:calc(50% + 18px);right:calc(-50% + 18px);
+  height:1px;background:var(--rule);z-index:0;
+}
+.flow-num{
+  width:34px;height:34px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:.8rem;font-weight:700;
+  border:1.5px solid var(--rule);background:#fff;color:var(--ink-light);
+  position:relative;z-index:1;
+  transition:all .18s cubic-bezier(.2,.8,.2,1);
+}
+.flow-step:hover .flow-num{border-color:var(--ink);color:var(--ink);transform:scale(1.1)}
+.flow-step.active .flow-num{background:var(--ink);color:#fff;border-color:var(--ink)}
+.flow-step.done .flow-num{background:#16a34a;color:#fff;border-color:#16a34a;}
+.flow-step.done .flow-num::after{content:"checkmark"}
+.flow-step.done .flow-num{font-size:0}
+.flow-step.done .flow-num::after{content:"✓";font-size:.8rem}
+.flow-label{font-size:.72rem;font-weight:600;color:var(--ink-light);text-align:center;letter-spacing:.04em;text-transform:uppercase;transition:color .15s}
+.flow-step.active .flow-label,.flow-step:hover .flow-label{color:var(--ink)}
+
+/* === STEP CARDS === */
+.step-card{
+  border:1px solid var(--rule);border-radius:var(--r);
+  overflow:hidden;margin-bottom:.85rem;background:#fff;
+  transition:box-shadow .2s;
+}
+.step-card.is-active{box-shadow:var(--shadow-lg);}
+.step-header{
+  padding:1.1rem 1.3rem;display:flex;align-items:center;gap:.9rem;
+  cursor:pointer;user-select:none;-webkit-tap-highlight-color:transparent;
+  transition:background .15s;
+}
+.step-header:hover{background:var(--canvas)}
+.step-num-badge{
+  width:38px;height:38px;border-radius:50%;flex:0 0 auto;
+  display:flex;align-items:center;justify-content:center;
+  font-size:.85rem;font-weight:700;
+  background:var(--canvas);color:var(--ink-light);
+  border:1px solid var(--rule);transition:all .18s;
+}
+.step-card.is-active .step-num-badge{background:var(--ink);color:#fff;border-color:var(--ink)}
+.step-meta{flex:1 1 auto;min-width:0}
+.step-title{font-size:.97rem;font-weight:600;color:var(--ink);line-height:1.3}
+.step-hint{font-size:.78rem;color:var(--ink-light);margin-top:2px}
+.step-toggle{
+  width:28px;height:28px;border-radius:50%;
+  border:1px solid var(--rule);background:#fff;
+  display:flex;align-items:center;justify-content:center;
+  color:var(--ink-light);font-size:.75rem;flex:0 0 auto;
+  transition:transform .22s cubic-bezier(.2,.8,.2,1),background .15s;
+}
+.step-card.is-open .step-toggle{transform:rotate(180deg);background:var(--canvas)}
+.step-body{overflow:hidden;height:0;border-top:1px solid var(--rule);transition:height .28s cubic-bezier(.2,.8,.2,1);}
+.step-inner{padding:1.3rem 1.5rem 1.6rem}
+
+/* === FEE TABLE === */
+.fee-block{
+  margin-bottom:1rem;padding:1rem 1.1rem;
+  background:var(--canvas);border:1px solid var(--rule);border-radius:8px;
+}
+.fee-label{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--ink-light);margin-bottom:.75rem;}
+.fee-item{display:flex;align-items:center;justify-content:space-between;padding:.55rem 0;border-bottom:1px solid var(--rule);}
+.fee-item:last-child{border-bottom:none;padding-bottom:0}
+.fee-item:first-of-type{padding-top:0}
+.fee-name{font-size:.88rem;font-weight:600;color:var(--ink)}
+.fee-sub{font-size:.73rem;color:var(--ink-light);margin-top:2px}
+.fee-price{font-family:var(--serif);font-size:1.4rem;font-weight:700;color:var(--ink);line-height:1;}
+.fee-curr{font-size:.7rem;color:var(--ink-light);text-align:right;margin-top:2px}
+
+/* === TRANSFER === */
+.transfer-acc{border:1.5px solid rgba(26,115,232,.3);border-radius:8px;overflow:hidden;margin-bottom:.85rem;background:rgba(26,115,232,.03);}
+.transfer-sum{
+  list-style:none;cursor:pointer;padding:.85rem 1rem;
+  display:flex;align-items:center;justify-content:space-between;gap:.5rem;
+  font-weight:600;font-size:.87rem;background:transparent;color:#1a56b0;
+}
+.transfer-sum::-webkit-details-marker{display:none}
+.t-chev{transition:transform .2s;flex:0 0 auto;opacity:.6;font-size:.7rem}
+details.transfer-acc[open] .t-chev{transform:rotate(180deg)}
+.transfer-body{padding:0 1rem .9rem}
+.transfer-bank{font-size:.97rem;font-weight:700;color:var(--ink);margin-bottom:.7rem}
+.transfer-row{margin-bottom:.5rem}
+.transfer-lbl{font-size:.68rem;font-weight:700;color:var(--ink-light);text-transform:uppercase;letter-spacing:.08em;margin-bottom:2px}
+.transfer-val{font-family:ui-monospace,monospace;font-size:.95rem;font-weight:700;letter-spacing:.03em}
+.transfer-val.big{font-size:1.15rem}
+.copy-btn{
+  display:flex;align-items:center;justify-content:center;gap:.4rem;
+  width:100%;padding:.65rem .9rem;border-radius:7px;
+  border:none;background:var(--blue);color:#fff;
+  font-weight:600;font-size:.82rem;cursor:pointer;margin-top:.7rem;
+  font-family:var(--sans);transition:box-shadow .12s,transform .08s;
+}
+.copy-btn:hover{box-shadow:0 4px 14px rgba(26,115,232,.3);transform:translateY(-1px)}
+.copy-msg{margin-top:.35rem;font-size:.75rem;color:#16a34a;font-weight:600;min-height:14px;text-align:center}
+
+/* === PAY GRID === */
+.pay-label{font-size:.68rem;font-weight:700;color:var(--ink-light);text-transform:uppercase;letter-spacing:.08em;margin:.9rem 0 .5rem;}
+.pay-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.45rem;margin-bottom:.35rem}
+.pay-pill{
+  display:flex;align-items:center;justify-content:center;
+  padding:.65rem .4rem;border-radius:7px;
+  border:1px solid var(--rule);background:#fff;
+  font-weight:600;font-size:.8rem;cursor:pointer;
+  transition:box-shadow .12s,border-color .12s;
+  text-decoration:none;color:var(--ink);text-align:center;line-height:1.25;
+}
+.pay-pill:hover{box-shadow:var(--shadow);border-color:#aaa}
+
+/* === NOTICES === */
+.policy-note{border:1px solid rgba(245,158,11,.28);border-radius:8px;padding:.75rem .9rem;background:rgba(245,158,11,.06);font-size:.8rem;line-height:1.55;color:var(--ink-mid);margin-top:.6rem;}
+.policy-note strong{font-weight:700;color:var(--ink)}
+.notice{background:rgba(13,27,42,.04);border:1px solid rgba(13,27,42,.10);border-radius:8px;padding:.85rem 1rem;font-size:.83rem;line-height:1.6;color:var(--ink);font-weight:500;margin-bottom:.85rem;}
+.notice strong{font-weight:700}
+
+/* === BUTTONS === */
+.btn-stack{display:flex;flex-direction:column;gap:.55rem;margin-top:.9rem}
+.btn{
+  display:flex;align-items:center;justify-content:center;gap:.5rem;
+  width:100%;padding:.85rem .9rem;border-radius:8px;
+  font-weight:600;font-size:.88rem;cursor:pointer;
+  transition:box-shadow .15s,transform .08s;
+  text-decoration:none;font-family:var(--sans);border:1px solid transparent;
+}
+.btn:hover{box-shadow:var(--shadow-lg);transform:translateY(-1px)}
+.btn:active{transform:translateY(0)}
+.btn-dark{background:var(--ink);color:#fff;border-color:var(--ink)}
+.btn-dark:hover{background:#1e3a5f}
+.btn-gold{background:var(--gold);color:#fff;border-color:var(--gold);box-shadow:0 4px 16px rgba(184,137,58,.25)}
+.btn-gold:hover{filter:brightness(1.08)}
+.btn-wa{background:#25D366;color:#fff;border-color:#25D366}
+.btn-ghost{background:#fff;color:var(--ink);border-color:var(--rule)}
+
+/* === CALENDAR MODE CARDS === */
+.mode-cards{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-bottom:1rem}
+.mode-card{
+  border-radius:8px;padding:1.2rem 1rem 1rem;
+  background:var(--ink);color:#fff;
+  display:flex;flex-direction:column;
+  cursor:pointer;text-decoration:none;overflow:hidden;
+  box-shadow:0 4px 18px rgba(13,27,42,.18);
+  transition:box-shadow .18s,transform .15s;
+  -webkit-tap-highlight-color:transparent;border:none;font-family:var(--sans);
+}
+.mode-card:hover{box-shadow:0 8px 30px rgba(13,27,42,.28);transform:translateY(-2px)}
+.mode-card:active{transform:translateY(0)}
+.mode-tag{
+  display:inline-flex;align-items:center;gap:3px;
+  padding:2px 8px;border-radius:999px;
+  border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.1);
+  font-size:.67rem;font-weight:700;color:rgba(255,255,255,.85);
+  letter-spacing:.06em;text-transform:uppercase;margin-bottom:.7rem;width:fit-content;
+}
+.mode-card-title{font-family:var(--serif);font-size:1.15rem;font-weight:700;color:#fff;margin-bottom:.2rem;line-height:1.1;}
+.mode-price{font-family:var(--serif);font-size:1.55rem;font-weight:700;color:var(--gold);line-height:1;margin-bottom:1px}
+.mode-price-sub{font-size:.67rem;font-weight:500;color:rgba(255,255,255,.55);margin-bottom:.6rem}
+.mode-detail{font-size:.75rem;color:rgba(255,255,255,.7);line-height:1.5;margin-bottom:.55rem}
+.mode-tap{font-size:.65rem;font-weight:700;color:rgba(255,255,255,.4);letter-spacing:.05em;text-transform:uppercase;margin-top:auto}
+
+.location-box{
+  border:1px solid var(--rule);border-radius:8px;
+  padding:.9rem;background:var(--canvas);
+  font-size:.82rem;line-height:1.65;margin-bottom:.75rem;color:var(--ink-mid);
+}
+.location-box strong{font-weight:600;color:var(--ink)}
+.location-box a{color:var(--blue);font-weight:600}
+
+/* === ACCORDIONS === */
+.acc{border:1px solid var(--rule);border-radius:8px;overflow:hidden;margin-top:.55rem;background:#fff}
+.acc-sum{
+  list-style:none;cursor:pointer;padding:.8rem .95rem;
+  display:flex;align-items:center;justify-content:space-between;gap:.5rem;
+  font-weight:600;font-size:.85rem;color:var(--ink);background:#fff;transition:background .15s;
+}
+.acc-sum:hover{background:var(--canvas)}
+.acc-sum::-webkit-details-marker{display:none}
+.acc-chev{transition:transform .18s;flex:0 0 auto;opacity:.45;font-size:.7rem}
+details.acc[open] .acc-chev{transform:rotate(180deg)}
+.acc-body{padding:.65rem .95rem .85rem;font-size:.83rem;line-height:1.7;color:var(--ink-mid)}
+.acc-body p{margin-bottom:.6rem}
+.acc-body p:last-child{margin-bottom:0}
+.acc-body strong{color:var(--ink);font-weight:600}
+
+.exp-pills{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.7rem}
+.exp-pill{
+  padding:.55rem 1rem;border-radius:999px;
+  border:1px solid var(--rule);background:#fff;
+  font-weight:600;font-size:.8rem;
+  text-decoration:none;color:var(--ink);
+  transition:box-shadow .12s,border-color .15s;
+}
+.exp-pill:hover{box-shadow:var(--shadow);border-color:var(--ink-light)}
+
+.legal-note{
+  margin-top:1.8rem;padding:.75rem 1rem;
+  border:1px solid var(--rule);border-radius:8px;
+  background:var(--canvas);font-size:.73rem;line-height:1.6;color:var(--ink-light);text-align:center;
+}
+.legal-note a{color:var(--ink-mid);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+
+/* === FOOTER (idéntico al index) === */
+.footer{background:var(--ink);padding:3.5rem 2rem 2rem}
+.footer-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:3rem;margin-bottom:2.5rem;}
+.footer-brand img{margin-bottom:1rem}
+.footer-brand p{font-size:.8rem;color:rgba(255,255,255,.5);line-height:1.7;max-width:280px}
+.footer-col h4{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#fff;margin-bottom:.9rem;}
+.footer-col ul{list-style:none}
+.footer-col li{margin-bottom:.4rem}
+.footer-col a{font-size:.8rem;color:rgba(255,255,255,.5);transition:color .2s}
+.footer-col a:hover{color:var(--gold)}
+.footer-bottom{
+  max-width:1200px;margin:0 auto;border-top:1px solid rgba(255,255,255,.08);
+  padding-top:1.5rem;display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:.5rem;font-size:.72rem;color:rgba(255,255,255,.35);
+}
+.footer-ceds{display:flex;flex-wrap:wrap;gap:.8rem}
+
+/* === WA FLOAT (idéntico al index) === */
+.wa-float{
+  position:fixed;bottom:24px;right:20px;z-index:999;
+  display:inline-flex;align-items:center;gap:8px;
+  background:#25D366;color:#fff;
+  padding:12px 18px;border-radius:999px;
+  font-family:var(--sans);font-weight:800;font-size:14px;
+  box-shadow:0 6px 28px rgba(37,211,102,.4);
+  text-decoration:none;transition:transform .15s,box-shadow .2s;
+}
+.wa-float:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(37,211,102,.5)}
+.wa-float svg{width:20px;height:20px;fill:#fff;flex:0 0 auto}
+
+/* === TZ MODAL === */
+.tz-modal{position:fixed;top:0;left:0;right:0;bottom:0;width:100%;height:100%;z-index:99999;display:none;align-items:center;justify-content:center;padding:20px;}
+.tz-modal.is-open{display:flex}
+.tz-backdrop{position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(13,27,42,.6);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);opacity:0;transition:opacity .22s;}
+.tz-modal.is-open .tz-backdrop{opacity:1}
+.tz-panel{position:relative;z-index:2;width:100%;max-width:360px;background:#fff;border-radius:14px;border:1px solid var(--rule);box-shadow:0 24px 60px rgba(13,27,42,.30);transform:scale(.92);opacity:0;overflow:hidden;transition:transform .24s cubic-bezier(.2,.8,.2,1),opacity .20s;}
+.tz-modal.is-open .tz-panel{transform:scale(1);opacity:1}
+.tz-close{position:absolute;top:12px;right:12px;width:28px;height:28px;border-radius:50%;border:1px solid var(--rule);background:var(--canvas);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:.9rem;color:var(--ink-light);transition:background .12s;z-index:10;}
+.tz-close:hover{background:var(--rule)}
+.tz-body{padding:1.4rem 1.3rem 1.3rem}
+.tz-title{font-family:var(--serif);font-size:1.1rem;font-weight:700;color:var(--ink);margin-bottom:.45rem;padding-right:28px}
+.tz-sub{font-size:.82rem;color:var(--ink-mid);line-height:1.6;margin-bottom:.9rem}
+.tz-img-wrap{border:1px solid var(--rule);border-radius:8px;overflow:hidden;margin-bottom:1rem;background:var(--canvas)}
+.tz-img-wrap img{width:100%;display:block;max-height:120px;object-fit:cover;object-position:top}
+.tz-img-cap{padding:6px 10px;font-size:.72rem;color:var(--ink-light);background:var(--canvas);border-top:1px solid var(--rule);line-height:1.4}
+.tz-ok{width:100%;padding:.85rem;border-radius:8px;border:none;background:var(--ink);color:#fff;font-weight:600;font-size:.88rem;cursor:pointer;font-family:var(--sans);transition:background .2s,transform .08s;}
+.tz-ok:hover{background:#1e3a5f;transform:translateY(-1px)}
+
+/* === ANIMATIONS === */
+@keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
+.page-hero-inner > *{opacity:0;transform:translateY(20px);animation:fadeUp .6s ease forwards;}
+.page-hero-inner > *:nth-child(1){animation-delay:.08s}
+.page-hero-inner > *:nth-child(2){animation-delay:.18s}
+.page-hero-inner > *:nth-child(3){animation-delay:.28s}
+.page-hero-inner > *:nth-child(4){animation-delay:.38s}
+
+/* === RESPONSIVE === */
+@media(max-width:768px){
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .nav-btn{padding:.45rem .8rem;font-size:.72rem}
+  .footer-inner{grid-template-columns:1fr}
+  .mode-cards{grid-template-columns:1fr}
+  .pay-grid{grid-template-columns:1fr 1fr}
+  .page-hero{padding:6.5rem 1.2rem 3rem}
+  .content{padding:2rem 1.2rem 5rem}
+  .step-inner{padding:1rem 1.1rem 1.2rem}
+  .tip-bar-inner{padding:.8rem 1.2rem}
+}
+@media(max-width:480px){
+  .footer-bottom{flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="https://psiquiatra-cdmx.eutimya.org/" class="nav-logo" aria-label="Dr. Moya — Inicio">
+      <img src="https://github.com/moymaa/drmoyapsiq/blob/main/unnamed.png?raw=true" alt="Eutimya" height="34" loading="eager"/>
+    </a>
+    <ul class="nav-links">
+      <li><a href="https://psiquiatra-cdmx.eutimya.org/#cuando">¿Cuándo?</a></li>
+      <li><a href="https://psiquiatra-cdmx.eutimya.org/#acerca">Acerca</a></li>
+      <li><a href="https://psiquiatra-cdmx.eutimya.org/#servicios">Servicios</a></li>
+      <li><a href="https://psiquiatra-cdmx.eutimya.org/#publicaciones">Investigación</a></li>
+      <li><a href="https://psiquiatra-cdmx.eutimya.org/#contacto">Contacto</a></li>
+    </ul>
+    <a href="https://psiquiatra-cdmx.eutimya.org/" class="nav-btn">← Saber más</a>
+    <button class="hamburger" type="button" id="hbg" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mobile-nav" id="mnav">
+  <ul>
+    <li><a href="https://psiquiatra-cdmx.eutimya.org/#cuando">¿Cuándo consultar?</a></li>
+    <li><a href="https://psiquiatra-cdmx.eutimya.org/#acerca">Acerca del Dr. Moya</a></li>
+    <li><a href="https://psiquiatra-cdmx.eutimya.org/#servicios">Servicios</a></li>
+    <li><a href="https://psiquiatra-cdmx.eutimya.org/#publicaciones">Investigación</a></li>
+    <li><a href="https://psiquiatra-cdmx.eutimya.org/#contacto">Contacto</a></li>
+    <li style="border:none;padding-top:.9rem"><a href="https://psiquiatra-cdmx.eutimya.org/" style="font-weight:700;color:#0d1b2a">← Saber más del Dr. Moya</a></li>
+  </ul>
+</div>
+
+<!-- WA FLOAT -->
+<a href="https://wa.me/526731205121?text=Hola%20Doctor%2C%20tengo%20dudas%20para%20agendar%20mi%20consulta." class="wa-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+  WhatsApp
+</a>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <span class="page-eyebrow">Agenda tu consulta</span>
+    <h1>Dr. Deldhy Nicolás<br/>Moya Sánchez</h1>
+    <p class="page-hero-sub">Proceso sencillo en 3 pasos: confirma tu pago, elige tu horario y completa tu expediente. Sesión de 50 minutos, presencial o en línea.</p>
+    <a href="https://psiquiatra-cdmx.eutimya.org/" class="page-hero-back">← Saber más sobre el Dr. Moya</a>
+  </div>
+</section>
+
+<!-- TIP BAR -->
+<div class="tip-bar">
+  <div class="tip-bar-inner">
+    <span class="tip-bar-icon">💡</span>
+    <div class="tip-bar-text"><strong>¿Primera vez?</strong> Puedes revisar fechas disponibles antes de pagar. Una vez que elijas, tienes <strong>24 horas</strong> para enviar tu comprobante y confirmar.</div>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+
+  <!-- FLOW -->
+  <div class="flow-wrap">
+    <button class="flow-step active" id="fstep1" onclick="goToStep(1)" type="button">
+      <div class="flow-num">1</div>
+      <div class="flow-label">Pago</div>
+    </button>
+    <button class="flow-step" id="fstep2" onclick="goToStep(2)" type="button">
+      <div class="flow-num">2</div>
+      <div class="flow-label">Horario</div>
+    </button>
+    <button class="flow-step" id="fstep3" onclick="goToStep(3)" type="button">
+      <div class="flow-num">3</div>
+      <div class="flow-label">Expediente</div>
+    </button>
+  </div>
+
+  <!-- PASO 1 -->
+  <div class="step-card" id="card1">
+    <div class="step-header" onclick="toggleCard(1)">
+      <div class="step-num-badge">1</div>
+      <div class="step-meta">
+        <div class="step-title">💳 Pago de honorarios</div>
+        <div class="step-hint">Elige tu forma de pago y envía comprobante</div>
+      </div>
+      <div class="step-toggle">▾</div>
+    </div>
+    <div class="step-body" id="body1">
+      <div class="step-inner">
+        <div class="fee-block">
+          <div class="fee-label">Honorarios · sesión de 50 min</div>
+          <div class="fee-item">
+            <div><div class="fee-name">💻 Online</div><div class="fee-sub">Google Meet · desde cualquier lugar</div></div>
+            <div style="text-align:right"><div class="fee-price">$1,400</div><div class="fee-curr">MXN</div></div>
+          </div>
+          <div class="fee-item">
+            <div><div class="fee-name">📍 Presencial</div><div class="fee-sub">Moras 619, Del Valle, CDMX</div></div>
+            <div style="text-align:right"><div class="fee-price">$1,600</div><div class="fee-curr">MXN</div></div>
+          </div>
+        </div>
+
+        <details class="transfer-acc">
+          <summary class="transfer-sum">🏦 Pagar por transferencia — Banamex<span class="t-chev">▾</span></summary>
+          <div class="transfer-body">
+            <div class="transfer-bank">Banamex</div>
+            <div class="transfer-row"><div class="transfer-lbl">CLABE</div><div class="transfer-val big">002740701139090629</div></div>
+            <button class="copy-btn" onclick="copyClabe()" type="button">📋 Copiar CLABE</button>
+            <div class="copy-msg" id="copy-msg" aria-live="polite"></div>
+            <div style="margin-top:.75rem;display:flex;flex-direction:column;gap:.3rem;font-size:.82rem">
+              <div><span style="color:var(--ink-light);font-size:.73rem">Cuenta:</span> <span style="font-family:monospace;font-weight:700">3909062</span></div>
+              <div><span style="color:var(--ink-light);font-size:.73rem">Sucursal:</span> <span style="font-family:monospace;font-weight:700">7011</span></div>
+              <div><span style="color:var(--ink-light);font-size:.73rem">Nombre:</span> Nicolás Moya Sánchez</div>
+            </div>
+            <div class="policy-note" style="margin-top:.75rem">⚠️ En concepto escribe <strong>solo el nombre del paciente</strong>.</div>
+          </div>
+        </details>
+
+        <div class="pay-label">Otras opciones de pago</div>
+        <div class="pay-grid">
+          <a class="pay-pill" href="https://link.mercadopago.com.mx/deldhym" target="_blank" rel="noopener">Efectivo</a>
+          <a class="pay-pill" href="https://buy.stripe.com/aEU6qDbpt3G9aS4bII" target="_blank" rel="noopener">Débito / Crédito</a>
+          <a class="pay-pill" href="https://www.paypal.com/paypalme/drmoyapsiq" target="_blank" rel="noopener">PayPal</a>
+          <a class="pay-pill" href="https://link.mercadopago.com.mx/deldhym" target="_blank" rel="noopener">MercadoPago</a>
+          <a class="pay-pill" href="https://www.eutimya.org/pagos/codi" target="_blank" rel="noopener">CoDi</a>
+          <a class="pay-pill" href="https://buy.stripe.com/aEU6qDbpt3G9aS4bII" target="_blank" rel="noopener">Internacional</a>
+        </div>
+
+        <div class="btn-stack">
+          <a class="btn btn-wa" href="https://wa.me/526731205121?text=Hola%20Doctor.%20Ya%20realic%C3%A9%20el%20pago%20y%20adjunto%20mi%20comprobante%20para%20confirmaci%C3%B3n%20de%20cita." target="_blank" rel="noopener">📲 WhatsApp — Enviar comprobante</a>
+          <button class="btn btn-dark" type="button" onclick="goToStep(2)">Ya envié el comprobante → Ver horarios</button>
+          <a class="btn btn-ghost" href="https://www.eutimya.org/factura" target="_blank" rel="noopener">🧾 Necesito factura</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PASO 2 -->
+  <div class="step-card" id="card2">
+    <div class="step-header" onclick="toggleCard(2)">
+      <div class="step-num-badge">2</div>
+      <div class="step-meta">
+        <div class="step-title">🗓️ Elegir fecha y hora</div>
+        <div class="step-hint">Presencial (CDMX) o en línea</div>
+      </div>
+      <div class="step-toggle">▾</div>
+    </div>
+    <div class="step-body" id="body2">
+      <div class="step-inner">
+        <div class="notice">🚨 <strong>Atención:</strong> Envía tu comprobante de pago por WhatsApp <strong>al menos 24 horas antes</strong> para asegurar tu horario. Sin comprobante, el lugar puede ser ocupado por otro paciente.</div>
+
+        <div class="mode-cards">
+          <div class="mode-card" onclick="openTzModal('https://calendar.app.google/YTgW98iGSFEUMa4W7')">
+            <div class="mode-tag">💻 En línea</div>
+            <div class="mode-card-title">Online</div>
+            <div class="mode-price">$1,400</div>
+            <div class="mode-price-sub">MXN · sesión 50 min</div>
+            <div class="mode-detail">Google Meet<br>Desde cualquier lugar</div>
+            <div class="mode-tap">Toca para agendar →</div>
+          </div>
+          <div class="mode-card" onclick="openTzModal('https://calendar.app.google/hVPCfAaEvMhS1VFj7')">
+            <div class="mode-tag">📍 CDMX</div>
+            <div class="mode-card-title">Presencial</div>
+            <div class="mode-price">$1,600</div>
+            <div class="mode-price-sub">MXN · sesión 50 min</div>
+            <div class="mode-detail">Moras 619, Del Valle<br>Benito Juárez, CDMX</div>
+            <div class="mode-tap">Toca para agendar →</div>
+          </div>
+        </div>
+
+        <div class="location-box">
+          📌 <strong>Consultorio:</strong> Calle Moras 619, Col. Del Valle Sur, Alcaldía Benito Juárez, CDMX, C.P. 03104 · <a href="https://maps.app.goo.gl/GXHkFxXcKrnqAdSg6" target="_blank" rel="noopener">Ver en mapa</a><br><br>
+          🎥 <strong>Online:</strong> Google Meet &nbsp;·&nbsp;<a href="https://apps.apple.com/us/app/google-meet/id1096918571" target="_blank" rel="noopener">iPhone</a> &nbsp;|&nbsp;<a href="https://play.google.com/store/apps/details?id=com.google.android.apps.tachyon" target="_blank" rel="noopener">Android</a> &nbsp;|&nbsp;<a href="https://meet.google.com/" target="_blank" rel="noopener">PC</a>
+        </div>
+
+        <details class="acc"><summary class="acc-sum">¿Tu cita coincide con trabajo o escuela?<span class="acc-chev">▾</span></summary><div class="acc-body"><p>No hay problema. Se puede extender una <strong>constancia de cita o justificante</strong> sin costo adicional.</p></div></details>
+        <details class="acc"><summary class="acc-sum">¿No encuentras horario adecuado?<span class="acc-chev">▾</span></summary><div class="acc-body"><p>Elige el horario más cercano disponible para apartar tu lugar. Avísanos por WhatsApp para la <strong>lista prioritaria</strong> en caso de cancelaciones.</p><p>Para quedar en la lista debes completar los 3 pasos del proceso.</p></div></details>
+        <details class="acc"><summary class="acc-sum">Cancelaciones y tolerancia<span class="acc-chev">▾</span></summary><div class="acc-body"><p>Notifica con al menos <strong>24 horas</strong> de anticipación. De lo contrario, se reinicia el proceso de agenda y pago.</p><p>Hay <strong>15 minutos de tolerancia</strong> el día de la sesión. Los datos de acceso se envían al confirmar.</p><p>⚠️ La cita se confirma al completar: <strong>pago + agenda + expediente</strong>.</p></div></details>
+
+        <div class="btn-stack" style="margin-top:1rem"><button class="btn btn-dark" type="button" onclick="goToStep(3)">Ya elegí horario → Llenar expediente</button></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PASO 3 -->
+  <div class="step-card" id="card3">
+    <div class="step-header" onclick="toggleCard(3)">
+      <div class="step-num-badge">3</div>
+      <div class="step-meta">
+        <div class="step-title">📄 Registro de expediente</div>
+        <div class="step-hint">Último paso — evaluación inicial personalizada</div>
+      </div>
+      <div class="step-toggle">▾</div>
+    </div>
+    <div class="step-body" id="body3">
+      <div class="step-inner">
+        <p style="font-size:.87rem;line-height:1.7;color:var(--ink-mid);margin-bottom:1rem">Completa el formulario de expediente de primera vez. Incluye escalas de tamizaje para una evaluación inicial más completa y personalizada.</p>
+        <a class="btn btn-gold" href="https://forms.gle/vJ7AJWinzis77tU3A" target="_blank" rel="noopener">📋 Llenar expediente de primera vez</a>
+        <div style="margin-top:1rem;font-size:.73rem;font-weight:700;color:var(--ink-light);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.45rem">Protocolos especializados (si aplica)</div>
+        <div class="exp-pills">
+          <a class="exp-pill" href="https://www.eutimya.org/tdah" target="_blank" rel="noopener">TDAH en adultos</a>
+          <a class="exp-pill" href="https://www.eutimya.org/esb" target="_blank" rel="noopener">Protocolo Cirugía Bariátrica</a>
+        </div>
+        <div class="policy-note" style="margin-top:1rem">✅ <strong>¡Listo!</strong> Al completar pago + agenda + expediente, tu cita queda <strong>confirmada</strong>. Recibirás los datos por correo o WhatsApp.</div>
+        <div class="btn-stack" style="margin-top:1rem">
+          <a class="btn btn-wa" href="https://wa.me/526731205121?text=Hola%20Doctor.%20Ya%20complet%C3%A9%20los%203%20pasos%20del%20proceso%20de%20agendado." target="_blank" rel="noopener">📲 WhatsApp — Confirmar los 3 pasos</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="legal-note">Al agendar aceptas el <a href="https://www.eutimya.org/aviso-de-privacidad-y-consentimiento-informado" target="_blank" rel="noopener">aviso de privacidad y consentimiento informado</a>.</div>
+
+</div><!-- /content -->
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="https://github.com/moymaa/drmoyapsiq/blob/main/unnamed.png?raw=true" alt="Eutimya" height="30" style="filter:brightness(0) invert(1);opacity:.85"/>
+      <p>Psiquiatría de alto nivel. Presencial en Del Valle, CDMX, o en línea desde cualquier lugar.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Servicios</h4>
+      <ul>
+        <li><a href="https://psiquiatra-cdmx.eutimya.org/#servicios">Consulta psiquiátrica</a></li>
+        <li><a href="https://psiquiatra-cdmx.eutimya.org/#servicios">Psiquiatría de enlace</a></li>
+        <li><a href="https://psiquiatra-cdmx.eutimya.org/#servicios">Neuromodulación TMS</a></li>
+        <li><a href="https://psiquiatra-cdmx.eutimya.org/#servicios">Terapia TCC</a></li>
+        <li><a href="https://psiquiatra-cdmx.eutimya.org/#servicios">Consulta en línea</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Información</h4>
+      <ul>
+        <li><a href="https://psiquiatra-cdmx.eutimya.org/#acerca">Acerca del doctor</a></li>
+        <li><a href="https://psiquiatra-cdmx.eutimya.org/#padecimientos">Padecimientos</a></li>
+        <li><a href="https://psiquiatra-cdmx.eutimya.org/#publicaciones">Publicaciones</a></li>
+        <li><a href="https://psiquiatra-cdmx.eutimya.org/#faq">Preguntas frecuentes</a></li>
+        <li><a href="https://psiquiatra-cdmx.eutimya.org/cita">Agendar cita</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025–2026 Dr. Deldhy Nicolás Moya Sánchez · Eutimya · Psiquiatra CDMX</span>
+    <div class="footer-ceds">
+      <span>CP LIC 12152669</span><span>CE PSIQ 14788885</span>
+      <span>Consejo CMP 24803862</span><span>CP MTRA 14670759</span>
+      <span>COFEPRIS 2609142002A00043</span>
+    </div>
+  </div>
+</footer>
+
+<!-- TZ MODAL -->
+<div class="tz-modal" id="tzModal" aria-hidden="true">
+  <div class="tz-backdrop" onclick="closeTzModal(false)"></div>
+  <div class="tz-panel" role="dialog" aria-modal="true">
+    <button class="tz-close" onclick="closeTzModal(false)" aria-label="Cerrar">✕</button>
+    <div class="tz-body">
+      <div class="tz-title">🌎 Revisa tu zona horaria</div>
+      <div class="tz-sub">La agenda usa la zona horaria de tu dispositivo. Verifica que diga <strong>Ciudad de México (GMT-06:00)</strong>.</div>
+      <div class="tz-img-wrap">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczM1q1zjJLsEOFVHGyK0gFn8glkYvfj2BLaMOqdlS_HddJK12xwT-DhEPRDGZBwsZkgPBvxz_O6Wn_3A2Sg8efyHrsb1Y0lH7tbZ1F1w9_mXGVfBEdGUutVBKkothjzwOZOAvYhWsqIX2gfOizH1wKCCPA=w1320-h804-s-no-gm?authuser=0" alt="Zona horaria" loading="lazy"/>
+        <div class="tz-img-cap">Debe decir: <strong>(GMT-06:00) Hora estándar central — Ciudad de México</strong></div>
+      </div>
+      <button class="tz-ok" type="button" onclick="closeTzModal(true)">Entendido, ver fechas disponibles →</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ACCORDION */
+function getPanel(n){return document.getElementById('body'+n)}
+function getCard(n){return document.getElementById('card'+n)}
+function openCard(n,skipScroll){
+  var card=getCard(n),panel=getPanel(n);
+  if(!card||!panel)return;
+  panel.style.display='block';
+  var h=panel.scrollHeight;
+  panel.style.height='0px';
+  requestAnimationFrame(function(){
+    panel.style.height=h+'px';
+    card.classList.add('is-open','is-active');
+    panel.addEventListener('transitionend',function t(e){
+      if(e.propertyName!=='height')return;
+      panel.style.height='auto';
+      panel.removeEventListener('transitionend',t);
+      if(!skipScroll){
+        var top=card.getBoundingClientRect().top+window.pageYOffset-80;
+        window.scrollTo({top:top,behavior:'smooth'});
+      }
+    });
+  });
+}
+function closeCard(n){
+  var card=getCard(n),panel=getPanel(n);
+  if(!card||!panel)return;
+  panel.style.height=panel.scrollHeight+'px';
+  requestAnimationFrame(function(){
+    panel.style.height='0px';
+    card.classList.remove('is-open','is-active');
+  });
+}
+function toggleCard(n){var card=getCard(n);if(!card)return;if(card.classList.contains('is-open'))closeCard(n);else openCard(n);}
+function updateFlow(n){
+  [1,2,3].forEach(function(i){
+    var fs=document.getElementById('fstep'+i);
+    if(!fs)return;
+    fs.classList.remove('active','done');
+    if(i<n)fs.classList.add('done');
+    else if(i===n)fs.classList.add('active');
+  });
+}
+function goToStep(n){
+  [1,2,3].forEach(function(i){if(i!==n)closeCard(i);});
+  updateFlow(n);openCard(n,false);
+}
+(function(){[1,2,3].forEach(function(n){var p=getPanel(n);if(p)p.style.height='0px';});})();
+
+/* NAV */
+document.getElementById('hbg').addEventListener('click',function(){document.getElementById('mnav').classList.toggle('open');});
+document.querySelectorAll('#mnav a').forEach(function(a){a.addEventListener('click',function(){document.getElementById('mnav').classList.remove('open');});});
+
+/* TZ MODAL */
+var _tzUrl='';
+function openTzModal(url){
+  _tzUrl=url;var m=document.getElementById('tzModal');
+  if(!m)return;
+  m.setAttribute('aria-hidden','false');m.style.display='flex';
+  document.body.style.overflow='hidden';
+  requestAnimationFrame(function(){
+    var bd=m.querySelector('.tz-backdrop'),pn=m.querySelector('.tz-panel');
+    if(bd)bd.style.opacity='1';
+    if(pn){pn.style.transform='scale(1)';pn.style.opacity='1';}
+  });
+}
+function closeTzModal(go){
+  var m=document.getElementById('tzModal');if(!m)return;
+  var bd=m.querySelector('.tz-backdrop'),pn=m.querySelector('.tz-panel');
+  if(bd)bd.style.opacity='0';
+  if(pn){pn.style.transform='scale(.92)';pn.style.opacity='0';}
+  setTimeout(function(){
+    m.style.display='none';m.setAttribute('aria-hidden','true');
+    document.body.style.overflow='';
+    if(go&&_tzUrl)window.open(_tzUrl,'_blank','noopener');
+  },260);
+}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeTzModal(false);});
+
+/* COPY CLABE */
+function copyClabe(){
+  var text='002740701139090629',msg=document.getElementById('copy-msg');
+  function done(ok){if(!msg)return;msg.textContent=ok?'✓ CLABE copiada':'Cópiala manualmente.';if(ok)setTimeout(function(){msg.textContent='';},3500);}
+  function fallback(){try{var ta=document.createElement('textarea');ta.value=text;ta.style.cssText='position:fixed;top:-9999px;opacity:0;';document.body.appendChild(ta);ta.focus();ta.select();ta.setSelectionRange(0,ta.value.length);var ok=document.execCommand('copy');document.body.removeChild(ta);done(ok);}catch(e){done(false);}}
+  if(navigator.clipboard&&typeof navigator.clipboard.writeText==='function'){navigator.clipboard.writeText(text).then(function(){done(true);}).catch(fallback);return;}
+  fallback();
+}
+</script>
+</body>
+</html>
