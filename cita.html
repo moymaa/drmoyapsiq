@@ -393,6 +393,55 @@ details.acc[open] .acc-chev{transform:rotate(180deg)}
 .tz-ok{width:100%;padding:.85rem;border-radius:8px;border:none;background:var(--ink);color:#fff;font-weight:600;font-size:.88rem;cursor:pointer;font-family:var(--sans);transition:background .2s,transform .08s;}
 .tz-ok:hover{background:#1e3a5f;transform:translateY(-1px)}
 
+/* === BIO MINI CARD === */
+.bio-mini{
+  border:1px solid var(--rule);border-radius:var(--r);
+  background:#fff;overflow:hidden;
+  margin-top:2.2rem;
+  display:flex;align-items:stretch;
+  box-shadow:var(--shadow);
+}
+.bio-mini-photo{
+  width:110px;flex-shrink:0;
+  object-fit:cover;object-position:center top;
+  display:block;
+}
+.bio-mini-body{
+  padding:1.1rem 1.2rem;flex:1;
+  display:flex;flex-direction:column;justify-content:center;
+  gap:.3rem;
+}
+.bio-mini-eyebrow{
+  font-size:.67rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--gold);display:flex;align-items:center;gap:.4rem;
+}
+.bio-mini-eyebrow::before{content:'';width:14px;height:1px;background:var(--gold)}
+.bio-mini-name{
+  font-family:var(--serif);font-size:1.05rem;font-weight:700;
+  color:var(--ink);line-height:1.15;
+}
+.bio-mini-name em{font-style:italic;color:var(--gold);font-weight:400}
+.bio-mini-role{font-size:.75rem;color:var(--ink-light);line-height:1.5;margin-top:.1rem}
+.bio-mini-stars{
+  font-size:.78rem;color:var(--ink-mid);margin-top:.4rem;
+  display:flex;align-items:center;gap:.4rem;
+}
+.bio-mini-stars span{color:#f59e0b;letter-spacing:.05em;font-size:.85rem}
+.bio-mini-link{
+  display:inline-flex;align-items:center;gap:.35rem;
+  margin-top:.65rem;
+  font-size:.75rem;font-weight:600;color:var(--gold);
+  border:1px solid rgba(184,137,58,.3);
+  border-radius:6px;padding:.3rem .75rem;width:fit-content;
+  transition:background .15s,border-color .15s;
+}
+.bio-mini-link:hover{background:var(--gold-pale);border-color:rgba(184,137,58,.5)}
+@media(max-width:480px){
+  .bio-mini-photo{width:80px}
+  .bio-mini-body{padding:.85rem .95rem}
+  .bio-mini-name{font-size:.95rem}
+}
+
 /* === ANIMATIONS === */
 @keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
 .page-hero-inner > *{opacity:0;transform:translateY(20px);animation:fadeUp .6s ease forwards;}
@@ -452,7 +501,7 @@ details.acc[open] .acc-chev{transform:rotate(180deg)}
 </div>
 
 <!-- WA FLOAT -->
-<a href="https://wa.me/526731205121?text=Hola%20Doctor%2C%20tengo%20dudas%20para%20agendar%20mi%20consulta." class="wa-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+<a href="https://wa.me/526731205121?text=Hola%20Doctor%2C%20tengo%20dudas%20para%20agendar%20mi%20consulta." class="wa-float" aria-label="WhatsApp">
   <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
   WhatsApp
 </a>
@@ -536,18 +585,18 @@ details.acc[open] .acc-chev{transform:rotate(180deg)}
 
         <div class="pay-label">Otras opciones de pago</div>
         <div class="pay-grid">
-          <a class="pay-pill" href="https://link.mercadopago.com.mx/deldhym" target="_blank" rel="noopener">Efectivo</a>
-          <a class="pay-pill" href="https://buy.stripe.com/aEU6qDbpt3G9aS4bII" target="_blank" rel="noopener">Débito / Crédito</a>
-          <a class="pay-pill" href="https://www.paypal.com/paypalme/drmoyapsiq" target="_blank" rel="noopener">PayPal</a>
-          <a class="pay-pill" href="https://link.mercadopago.com.mx/deldhym" target="_blank" rel="noopener">MercadoPago</a>
-          <a class="pay-pill" href="https://www.eutimya.org/pagos/codi" target="_blank" rel="noopener">CoDi</a>
-          <a class="pay-pill" href="https://buy.stripe.com/aEU6qDbpt3G9aS4bII" target="_blank" rel="noopener">Internacional</a>
+          <a class="pay-pill" href="https://link.mercadopago.com.mx/deldhym">Efectivo</a>
+          <a class="pay-pill" href="https://buy.stripe.com/aEU6qDbpt3G9aS4bII">Débito / Crédito</a>
+          <a class="pay-pill" href="https://www.paypal.com/paypalme/drmoyapsiq">PayPal</a>
+          <a class="pay-pill" href="https://link.mercadopago.com.mx/deldhym">MercadoPago</a>
+          <a class="pay-pill" href="https://www.eutimya.org/pagos/codi">CoDi</a>
+          <a class="pay-pill" href="https://buy.stripe.com/aEU6qDbpt3G9aS4bII">Internacional</a>
         </div>
 
         <div class="btn-stack">
-          <a class="btn btn-wa" href="https://wa.me/526731205121?text=Hola%20Doctor.%20Ya%20realic%C3%A9%20el%20pago%20y%20adjunto%20mi%20comprobante%20para%20confirmaci%C3%B3n%20de%20cita." target="_blank" rel="noopener">📲 WhatsApp — Enviar comprobante</a>
+          <a class="btn btn-wa" href="https://wa.me/526731205121?text=Hola%20Doctor.%20Ya%20realic%C3%A9%20el%20pago%20y%20adjunto%20mi%20comprobante%20para%20confirmaci%C3%B3n%20de%20cita.">📲 WhatsApp — Enviar comprobante</a>
           <button class="btn btn-dark" type="button" onclick="goToStep(2)">Ya envié el comprobante → Ver horarios</button>
-          <a class="btn btn-ghost" href="https://www.eutimya.org/factura" target="_blank" rel="noopener">🧾 Necesito factura</a>
+          <a class="btn btn-ghost" href="https://www.eutimya.org/factura">🧾 Necesito factura</a>
         </div>
       </div>
     </div>
@@ -587,8 +636,8 @@ details.acc[open] .acc-chev{transform:rotate(180deg)}
         </div>
 
         <div class="location-box">
-          📌 <strong>Consultorio:</strong> Calle Moras 619, Col. Del Valle Sur, Alcaldía Benito Juárez, CDMX, C.P. 03104 · <a href="https://maps.app.goo.gl/GXHkFxXcKrnqAdSg6" target="_blank" rel="noopener">Ver en mapa</a><br><br>
-          🎥 <strong>Online:</strong> Google Meet &nbsp;·&nbsp;<a href="https://apps.apple.com/us/app/google-meet/id1096918571" target="_blank" rel="noopener">iPhone</a> &nbsp;|&nbsp;<a href="https://play.google.com/store/apps/details?id=com.google.android.apps.tachyon" target="_blank" rel="noopener">Android</a> &nbsp;|&nbsp;<a href="https://meet.google.com/" target="_blank" rel="noopener">PC</a>
+          📌 <strong>Consultorio:</strong> Calle Moras 619, Col. Del Valle Sur, Alcaldía Benito Juárez, CDMX, C.P. 03104 · <a href="https://maps.app.goo.gl/GXHkFxXcKrnqAdSg6">Ver en mapa</a><br><br>
+          🎥 <strong>Online:</strong> Google Meet &nbsp;·&nbsp;<a href="https://apps.apple.com/us/app/google-meet/id1096918571">iPhone</a> &nbsp;|&nbsp;<a href="https://play.google.com/store/apps/details?id=com.google.android.apps.tachyon">Android</a> &nbsp;|&nbsp;<a href="https://meet.google.com/">PC</a>
         </div>
 
         <details class="acc"><summary class="acc-sum">¿Tu cita coincide con trabajo o escuela?<span class="acc-chev">▾</span></summary><div class="acc-body"><p>No hay problema. Se puede extender una <strong>constancia de cita o justificante</strong> sin costo adicional.</p></div></details>
@@ -613,21 +662,35 @@ details.acc[open] .acc-chev{transform:rotate(180deg)}
     <div class="step-body" id="body3">
       <div class="step-inner">
         <p style="font-size:.87rem;line-height:1.7;color:var(--ink-mid);margin-bottom:1rem">Completa el formulario de expediente de primera vez. Incluye escalas de tamizaje para una evaluación inicial más completa y personalizada.</p>
-        <a class="btn btn-gold" href="https://forms.gle/vJ7AJWinzis77tU3A" target="_blank" rel="noopener">📋 Llenar expediente de primera vez</a>
+        <a class="btn btn-gold" href="https://forms.gle/vJ7AJWinzis77tU3A">📋 Llenar expediente de primera vez</a>
         <div style="margin-top:1rem;font-size:.73rem;font-weight:700;color:var(--ink-light);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.45rem">Protocolos especializados (si aplica)</div>
         <div class="exp-pills">
-          <a class="exp-pill" href="https://www.eutimya.org/tdah" target="_blank" rel="noopener">TDAH en adultos</a>
-          <a class="exp-pill" href="https://www.eutimya.org/esb" target="_blank" rel="noopener">Protocolo Cirugía Bariátrica</a>
+          <a class="exp-pill" href="https://www.eutimya.org/tdah">TDAH en adultos</a>
+          <a class="exp-pill" href="https://www.eutimya.org/esb">Protocolo Cirugía Bariátrica</a>
         </div>
         <div class="policy-note" style="margin-top:1rem">✅ <strong>¡Listo!</strong> Al completar pago + agenda + expediente, tu cita queda <strong>confirmada</strong>. Recibirás los datos por correo o WhatsApp.</div>
         <div class="btn-stack" style="margin-top:1rem">
-          <a class="btn btn-wa" href="https://wa.me/526731205121?text=Hola%20Doctor.%20Ya%20complet%C3%A9%20los%203%20pasos%20del%20proceso%20de%20agendado." target="_blank" rel="noopener">📲 WhatsApp — Confirmar los 3 pasos</a>
+          <a class="btn btn-wa" href="https://wa.me/526731205121?text=Hola%20Doctor.%20Ya%20complet%C3%A9%20los%203%20pasos%20del%20proceso%20de%20agendado.">📲 WhatsApp — Confirmar los 3 pasos</a>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="legal-note">Al agendar aceptas el <a href="https://www.eutimya.org/aviso-de-privacidad-y-consentimiento-informado" target="_blank" rel="noopener">aviso de privacidad y consentimiento informado</a>.</div>
+  <!-- BIO MINI -->
+  <div class="bio-mini">
+    <img class="bio-mini-photo"
+      src="https://lh3.googleusercontent.com/pw/AP1GczMhQ6m9BOG6lddqce7vog3-dLP4_oifP2GShaWc1kbQsxyFwuxyweYIykWCzKl49n2yeeyuUfcq0CgMb0GxyAwyIYHLhg2T0wvQRXcQSMnMNY23HN21WoiiRFHgzEcq9zp-rdpo9dmaZmmy7XMgizvYOA=w1024-h1024-s-no-gm"
+      alt="Dr. Moya Sánchez" loading="lazy"/>
+    <div class="bio-mini-body">
+      <div class="bio-mini-eyebrow">Psiquiatra Certificado · CDMX</div>
+      <div class="bio-mini-name">Dr. Moya Sánchez<br><em>Deldhy Nicolás</em></div>
+      <div class="bio-mini-role">Especialista en Psiquiatría · UNAM Mención Honorífica · Alta Especialidad en Psiquiatría de Enlace · Certificado CMP · CE 14788885</div>
+      <div class="bio-mini-stars"><span>★★★★★</span> 5.0 Google · +100 reseñas</div>
+      <a class="bio-mini-link" href="https://psiquiatra-cdmx.eutimya.org/">Ver perfil completo →</a>
+    </div>
+  </div>
+
+  <div class="legal-note">Al agendar aceptas el <a href="https://www.eutimya.org/aviso-de-privacidad-y-consentimiento-informado">aviso de privacidad y consentimiento informado</a>.</div>
 
 </div><!-- /content -->
 
@@ -760,7 +823,7 @@ function closeTzModal(go){
   setTimeout(function(){
     m.style.display='none';m.setAttribute('aria-hidden','true');
     document.body.style.overflow='';
-    if(go&&_tzUrl)window.open(_tzUrl,'_blank','noopener');
+    if(go&&_tzUrl)window.location.href=_tzUrl;
   },260);
 }
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeTzModal(false);});
