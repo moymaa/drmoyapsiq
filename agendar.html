@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Agendar / Reagendar | Dr. Moya Sánchez · Psiquiatra CDMX</title>
+<meta name="description" content="Elige tu horario de consulta con el Dr. Moya Sánchez. Presencial en Del Valle CDMX o en línea. Solo para pacientes con pago confirmado."/>
+<meta name="robots" content="noindex,nofollow"/>
+<link rel="icon" type="image/png" href="https://raw.githubusercontent.com/moymaa/drmoyapsiq/main/logos%20acceso%20directos%20mac%20iconos.png"/>
+<link rel="apple-touch-icon" href="https://raw.githubusercontent.com/moymaa/drmoyapsiq/main/logos%20acceso%20directos%20mac%20iconos.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+/* === TOKENS === */
+:root{
+  --ink:#0d1b2a;
+  --ink-mid:#334155;
+  --ink-light:#64748b;
+  --gold:#b8893a;
+  --gold-pale:#f5ecd7;
+  --white:#ffffff;
+  --canvas:#fafaf8;
+  --rule:#e8e6e1;
+  --serif:'Playfair Display',Georgia,serif;
+  --sans:'DM Sans','Helvetica Neue',sans-serif;
+  --r:10px;
+  --shadow:0 2px 12px rgba(13,27,42,.07);
+  --shadow-lg:0 8px 40px rgba(13,27,42,.12);
+  --blue:#1a73e8;
+  --green:#25D366;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{font-family:var(--sans);color:var(--ink);background:var(--white);-webkit-font-smoothing:antialiased;line-height:1.6;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+
+/* === NAV === */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,.97);border-bottom:1px solid var(--rule);backdrop-filter:blur(10px);}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:.9rem 2rem;gap:1.5rem;}
+.nav-logo img{height:34px;width:auto}
+.nav-links{display:flex;gap:2.2rem;list-style:none;flex:1;justify-content:center;}
+.nav-links a{font-size:.8rem;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-mid);transition:color .2s;}
+.nav-links a:hover{color:var(--ink)}
+.nav-btn{display:inline-flex;align-items:center;gap:.45rem;background:var(--ink);color:var(--white);padding:.55rem 1.4rem;border-radius:6px;font-size:.78rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;transition:background .2s;}
+.nav-btn:hover{background:#1e3a5f}
+.hamburger{display:none;background:none;border:none;cursor:pointer;padding:.4rem;flex-direction:column;gap:5px}
+.hamburger span{display:block;width:22px;height:2px;background:var(--ink);border-radius:2px;transition:.25s}
+.mobile-nav{display:none;position:fixed;top:68px;left:0;right:0;background:#fff;border-bottom:1px solid var(--rule);padding:1.2rem 2rem;z-index:99;box-shadow:var(--shadow-lg);}
+.mobile-nav.open{display:block}
+.mobile-nav ul{list-style:none}
+.mobile-nav li{padding:.65rem 0;border-bottom:1px solid var(--rule)}
+.mobile-nav a{font-size:.95rem;font-weight:500;color:var(--ink)}
+
+/* === PAGE HERO === */
+.page-hero{background:var(--ink);padding:8rem 2rem 4.5rem;position:relative;overflow:hidden;margin-top:68px;}
+.page-hero-bg{
+  position:absolute;inset:0;z-index:0;
+  background-image:url('https://lh3.googleusercontent.com/pw/AP1GczPNgnvBpzowQ25xIa99TnbwJNAcEhrCA9a60tPm-2AUX1qcVgwEK_6g50AhwDsOn0-uizVX44yMeIwCvnmz6efO0hFyYS979qL-jAzrplvrMUyxu1Ds4vbDNNFWzZZfs6fNJBxEkorGBUtm5pEsfVrZ_Q=w1324-h745-s-no-gm');
+  background-size:cover;background-position:center 50%;
+  filter:brightness(.5) saturate(.6) blur(2px);
+  transform:scale(1.04);
+}
+.page-hero::before{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(to right,rgba(13,27,42,.96) 0%,rgba(13,27,42,.88) 55%,rgba(13,27,42,.72) 100%);}
+.page-hero-inner{position:relative;max-width:760px;margin:0 auto;z-index:2;}
+.page-eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;}
+.page-eyebrow::before{content:'';width:22px;height:1px;background:var(--gold)}
+.page-hero h1{font-family:var(--serif);font-size:clamp(2rem,4vw,3rem);font-weight:700;color:#fff;line-height:1.15;margin-bottom:.85rem;}
+.page-hero-sub{font-size:.97rem;color:#fff;line-height:1.7;max-width:540px;margin-bottom:2rem;}
+.page-hero-back{display:inline-flex;align-items:center;gap:.5rem;border:1px solid rgba(255,255,255,.6);background:rgba(255,255,255,.18);color:#fff;padding:.55rem 1.2rem;border-radius:6px;font-size:.8rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;backdrop-filter:blur(8px);transition:background .15s,border-color .15s;}
+.page-hero-back:hover{background:rgba(255,255,255,.28);border-color:#fff}
+
+/* === TIP BAR === */
+.tip-bar{background:var(--canvas);border-bottom:1px solid var(--rule);}
+.tip-bar-inner{max-width:760px;margin:0 auto;padding:.9rem 2rem;display:flex;align-items:flex-start;gap:.75rem;}
+.tip-bar-icon{font-size:1.1rem;line-height:1;flex-shrink:0;margin-top:.1rem}
+.tip-bar-text{font-size:.87rem;line-height:1.6;color:var(--ink-mid);}
+.tip-bar-text strong{color:var(--ink);font-weight:600}
+
+/* === CONTENT === */
+.content{max-width:760px;margin:0 auto;padding:3rem 2rem 6rem;}
+.sec-label{font-size:.68rem;font-weight:700;color:var(--ink-light);text-transform:uppercase;letter-spacing:.1em;margin:.9rem 0 .55rem;}
+
+/* === CALENDAR CARDS === */
+.cal-cards{display:grid;grid-template-columns:1fr 1fr;gap:.85rem;margin-bottom:1.2rem;}
+.cal-card{
+  display:flex;flex-direction:column;
+  background:var(--ink);color:#fff;
+  border-radius:var(--r);padding:1.4rem 1.3rem 1.2rem;
+  text-decoration:none;
+  box-shadow:0 4px 18px rgba(13,27,42,.22);
+  transition:box-shadow .18s,transform .15s;
+  -webkit-tap-highlight-color:transparent;
+}
+.cal-card:hover{box-shadow:0 8px 32px rgba(13,27,42,.32);transform:translateY(-2px);}
+.cal-card:active{transform:translateY(0)}
+.cal-tag{display:inline-flex;align-items:center;gap:4px;padding:.25rem .65rem;border-radius:999px;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.12);font-size:.65rem;font-weight:700;color:rgba(255,255,255,.9);letter-spacing:.06em;text-transform:uppercase;margin-bottom:.85rem;width:fit-content;}
+.cal-title{font-family:var(--serif);font-size:1.25rem;font-weight:700;color:#fff;line-height:1.1;margin-bottom:.3rem;}
+.cal-detail{font-size:.75rem;color:rgba(255,255,255,.72);line-height:1.55;margin-bottom:.5rem;}
+.cal-price{font-size:.72rem;color:rgba(255,255,255,.45);margin-bottom:.9rem;}
+.cal-cta{font-size:.68rem;font-weight:700;color:rgba(255,255,255,.5);letter-spacing:.06em;text-transform:uppercase;margin-top:auto;}
+
+/* === NOTICE GRID === */
+.notice-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.6rem;margin-bottom:1.2rem;}
+.notice-item{background:var(--canvas);border:1px solid var(--rule);border-radius:8px;padding:.9rem .85rem;display:flex;flex-direction:column;gap:.3rem;}
+.notice-icon{font-size:1.1rem;line-height:1;}
+.notice-title{font-size:.78rem;font-weight:700;color:var(--ink);line-height:1.2;}
+.notice-sub{font-size:.72rem;color:var(--ink-light);line-height:1.45;}
+
+/* === AVISO IMPORTANTE === */
+.aviso{background:rgba(245,158,11,.06);border:1px solid rgba(245,158,11,.3);border-radius:8px;padding:.9rem 1rem;font-size:.85rem;line-height:1.65;color:var(--ink-mid);margin-bottom:1.2rem;}
+.aviso strong{color:var(--ink);font-weight:600}
+
+/* === CANCELACIONES === */
+.cancel-box{background:var(--canvas);border:1px solid var(--rule);border-radius:var(--r);overflow:hidden;margin-bottom:1.2rem;}
+.cancel-header{padding:.85rem 1.1rem;display:flex;align-items:center;gap:.7rem;border-bottom:1px solid var(--rule);}
+.cancel-icon{font-size:1.15rem;flex-shrink:0}
+.cancel-title{font-size:.92rem;font-weight:700;color:var(--ink)}
+.cancel-subtitle{font-size:.75rem;color:var(--ink-light);margin-top:.1rem}
+.cancel-body{padding:.9rem 1.1rem;display:flex;flex-direction:column;gap:.65rem;}
+.cancel-option{display:flex;align-items:flex-start;gap:.75rem;}
+.cancel-num{width:24px;height:24px;border-radius:50%;background:var(--ink);color:#fff;font-size:.72rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.05rem;}
+.cancel-text{font-size:.83rem;line-height:1.6;color:var(--ink-mid);}
+.cancel-text strong{color:var(--ink);font-weight:600}
+.cancel-text a{color:var(--blue);font-weight:600;text-decoration:underline;text-underline-offset:3px;}
+
+/* === LOCATION === */
+.location-box{border:1px solid var(--rule);border-radius:8px;padding:.9rem 1rem;background:var(--canvas);font-size:.83rem;line-height:1.65;margin-bottom:1rem;color:var(--ink-mid);}
+.location-box strong{color:var(--ink);font-weight:600}
+.location-box a{color:var(--blue);font-weight:600}
+
+/* === BOTONES === */
+.btn{display:flex;align-items:center;justify-content:center;gap:.5rem;width:100%;padding:1rem 1.2rem;border-radius:8px;border:1px solid rgba(13,27,42,.12);font-weight:700;font-size:.88rem;cursor:pointer;transition:box-shadow .15s,transform .08s;text-decoration:none;font-family:var(--sans);color:var(--ink);}
+.btn:hover{box-shadow:var(--shadow-lg);transform:translateY(-1px)}
+.btn:active{transform:translateY(0)}
+.btn-dark{background:var(--ink);color:#fff;border-color:var(--ink);}
+.btn-wa{background:var(--green);color:#fff;border-color:var(--green);}
+.btn-ghost{background:#fff;color:var(--ink);border:1px solid var(--rule);}
+.btn-stack{display:flex;flex-direction:column;gap:.65rem;}
+
+/* === CHIPS === */
+.chips{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.2rem;}
+.chip{display:inline-flex;align-items:center;padding:.45rem .9rem;border-radius:999px;background:var(--canvas);border:1px solid var(--rule);font-size:.78rem;font-weight:600;color:var(--ink-mid);text-decoration:none;transition:background .12s,box-shadow .12s;}
+.chip:hover{background:#fff;box-shadow:var(--shadow)}
+
+/* === BIO MINI === */
+.bio-mini{border:1px solid var(--rule);border-radius:var(--r);background:#fff;overflow:hidden;margin-top:2.2rem;display:flex;align-items:stretch;box-shadow:var(--shadow);}
+.bio-mini-photo{width:110px;flex-shrink:0;object-fit:cover;object-position:center top;display:block;}
+.bio-mini-body{padding:1.1rem 1.2rem;flex:1;display:flex;flex-direction:column;justify-content:center;gap:.3rem;}
+.bio-mini-eyebrow{font-size:.67rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:.4rem;}
+.bio-mini-eyebrow::before{content:'';width:14px;height:1px;background:var(--gold)}
+.bio-mini-name{font-family:var(--serif);font-size:1.05rem;font-weight:700;color:var(--ink);line-height:1.15;}
+.bio-mini-name em{font-style:italic;color:var(--gold);font-weight:400}
+.bio-mini-role{font-size:.75rem;color:var(--ink-light);line-height:1.5;margin-top:.1rem}
+.bio-mini-link{display:inline-flex;align-items:center;gap:.35rem;margin-top:.65rem;font-size:.75rem;font-weight:600;color:var(--gold);border:1px solid rgba(184,137,58,.3);border-radius:6px;padding:.3rem .75rem;width:fit-content;transition:background .15s,border-color .15s;}
+.bio-mini-link:hover{background:var(--gold-pale);border-color:rgba(184,137,58,.5)}
+
+/* === LEGAL === */
+.legal-note{margin-top:1.8rem;padding:.75rem 1rem;border:1px solid var(--rule);border-radius:8px;background:var(--canvas);font-size:.73rem;line-height:1.6;color:var(--ink-light);text-align:center;}
+.legal-note a{color:var(--ink-mid);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+
+/* === FOOTER === */
+.footer{background:var(--ink);padding:3.5rem 2rem 2rem}
+.footer-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:3rem;margin-bottom:2.5rem;}
+.footer-brand p{font-size:.8rem;color:rgba(255,255,255,.5);line-height:1.7;max-width:280px;margin-top:.5rem}
+.footer-col h4{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#fff;margin-bottom:.9rem;}
+.footer-col ul{list-style:none}
+.footer-col li{margin-bottom:.4rem}
+.footer-col a{font-size:.8rem;color:rgba(255,255,255,.5);transition:color .2s}
+.footer-col a:hover{color:var(--gold)}
+.footer-bottom{max-width:1200px;margin:0 auto;border-top:1px solid rgba(255,255,255,.08);padding-top:1.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem;font-size:.72rem;color:rgba(255,255,255,.35);}
+.footer-ceds{display:flex;flex-wrap:wrap;gap:.8rem}
+
+/* === WA FLOAT === */
+.wa-float{position:fixed;bottom:24px;right:20px;z-index:999;display:inline-flex;align-items:center;gap:8px;background:var(--green);color:#fff;padding:12px 18px;border-radius:999px;font-family:var(--sans);font-weight:800;font-size:14px;box-shadow:0 6px 28px rgba(37,211,102,.4);text-decoration:none;transition:transform .15s,box-shadow .2s;}
+.wa-float:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(37,211,102,.5)}
+.wa-float svg{width:20px;height:20px;fill:#fff;flex:0 0 auto}
+
+/* === ANIMATIONS === */
+@keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
+.page-hero-inner > *{opacity:0;transform:translateY(20px);animation:fadeUp .6s ease forwards;}
+.page-hero-inner > *:nth-child(1){animation-delay:.08s}
+.page-hero-inner > *:nth-child(2){animation-delay:.18s}
+.page-hero-inner > *:nth-child(3){animation-delay:.28s}
+.page-hero-inner > *:nth-child(4){animation-delay:.38s}
+
+/* === RESPONSIVE === */
+@media(max-width:768px){
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .nav-btn{padding:.45rem .8rem;font-size:.72rem}
+  .footer-inner{grid-template-columns:1fr}
+  .page-hero{padding:6.5rem 1.2rem 3rem}
+  .content{padding:2rem 1.2rem 5rem}
+  .tip-bar-inner{padding:.8rem 1.2rem}
+  .notice-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:480px){
+  .cal-cards{grid-template-columns:1fr}
+  .notice-grid{grid-template-columns:1fr 1fr}
+  .footer-bottom{flex-direction:column;align-items:flex-start}
+  .bio-mini-photo{width:80px}
+  .bio-mini-body{padding:.85rem .95rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="https://psiquiatra-cdmx.eutimya.org/" class="nav-logo" aria-label="Dr. Moya — Inicio">
+      <img src="https://raw.githubusercontent.com/moymaa/drmoyapsiq/main/unnamed.png" alt="Eutimya" height="34" loading="eager"/>
+    </a>
+    <ul class="nav-links">
+      <li><a href="https://psiquiatra-cdmx.eutimya.org/#cuando">¿Cuándo?</a></li>
+      <li><a href="https://psiquiatra-cdmx.eutimya.org/#acerca">Acerca</a></li>
+      <li><a href="https://psiquiatra-cdmx.eutimya.org/#servicios">Servicios</a></li>
+      <li><a href="https://psiquiatra-cdmx.eutimya.org/#publicaciones">Investigación</a></li>
+      <li><a href="https://psiquiatra-cdmx.eutimya.org/#contacto">Contacto</a></li>
+    </ul>
+    <a href="https://psiquiatra-cdmx.eutimya.org/" class="nav-btn">← Saber más</a>
+    <button class="hamburger" type="button" id="hbg" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mobile-nav" id="mnav">
+  <ul>
+    <li><a href="https://psiquiatra-cdmx.eutimya.org/#cuando">¿Cuándo consultar?</a></li>
+    <li><a href="https://psiquiatra-cdmx.eutimya.org/#acerca">Acerca del Dr. Moya</a></li>
+    <li><a href="https://psiquiatra-cdmx.eutimya.org/#servicios">Servicios</a></li>
+    <li><a href="https://psiquiatra-cdmx.eutimya.org/#publicaciones">Investigación</a></li>
+    <li><a href="https://psiquiatra-cdmx.eutimya.org/#contacto">Contacto</a></li>
+    <li style="border:none;padding-top:.9rem"><a href="https://psiquiatra-cdmx.eutimya.org/" style="font-weight:700;color:#0d1b2a">← Saber más del Dr. Moya</a></li>
+  </ul>
+</div>
+
+<!-- WA FLOAT -->
+<a href="https://wa.me/526731205121?text=Hola%20Doctor%2C%20quiero%20reagendar%20mi%20cita." class="wa-float" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+  ¿Dudas?
+</a>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-inner">
+    <span class="page-eyebrow">🗓️ Agendar / Reagendar</span>
+    <h1>Elige tu horario</h1>
+    <p class="page-hero-sub">Selecciona el calendario según tu modalidad. Verifica que la zona horaria diga <strong>Ciudad de México (GMT-06:00)</strong> antes de confirmar.</p>
+    <a href="https://psiquiatra-cdmx.eutimya.org/" class="page-hero-back">← Inicio</a>
+  </div>
+</section>
+
+<!-- TIP BAR -->
+<div class="tip-bar">
+  <div class="tip-bar-inner">
+    <span class="tip-bar-icon">✅</span>
+    <div class="tip-bar-text"><strong>Recuerda realizar tu pago con al menos 24 horas de anticipación</strong> para confirmar tu cita. Sin comprobante enviado por WhatsApp, el horario puede ser tomado por otro paciente.</div>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+
+  <!-- CALENDARIOS -->
+  <div class="sec-label">Selecciona tu modalidad</div>
+  <div class="cal-cards">
+    <a class="cal-card" href="https://calendar.app.google/hVPCfAaEvMhS1VFj7" target="_blank" rel="noopener">
+      <span class="cal-tag">📍 CDMX</span>
+      <div class="cal-title">Presencial</div>
+      <div class="cal-detail">Calle Moras 619<br/>Del Valle Sur, Benito Juárez</div>
+      <div class="cal-price">$1,600 MXN · 50 min</div>
+      <div class="cal-cta">Toca para elegir horario →</div>
+    </a>
+    <a class="cal-card" href="https://calendar.app.google/YTgW98iGSFEUMa4W7" target="_blank" rel="noopener">
+      <span class="cal-tag">💻 En línea</span>
+      <div class="cal-title">Online</div>
+      <div class="cal-detail">Google Meet<br/>Desde cualquier lugar</div>
+      <div class="cal-price">$1,400 MXN · 50 min</div>
+      <div class="cal-cta">Toca para elegir horario →</div>
+    </a>
+  </div>
+
+  <!-- AVISOS -->
+  <div class="notice-grid">
+    <div class="notice-item">
+      <div class="notice-icon">⚠️</div>
+      <div class="notice-title">Elige el correcto</div>
+      <div class="notice-sub">Presencial y online son calendarios distintos</div>
+    </div>
+    <div class="notice-item">
+      <div class="notice-icon">🌎</div>
+      <div class="notice-title">Zona horaria</div>
+      <div class="notice-sub">Verifica Ciudad de México GMT-06:00</div>
+    </div>
+    <div class="notice-item">
+      <div class="notice-icon">🧾</div>
+      <div class="notice-title">Comprobante</div>
+      <div class="notice-sub">Envíalo por WhatsApp 24 h antes</div>
+    </div>
+  </div>
+
+  <!-- AVISO COMPROBANTE -->
+  <div class="aviso">
+    🚨 <strong>Importante:</strong> Envía tu comprobante de pago por WhatsApp <strong>al menos 24 horas antes</strong> de tu cita. Sin comprobante, el horario puede ser tomado por otro paciente.
+  </div>
+
+  <!-- CANCELACIONES -->
+  <div class="sec-label">¿Necesitas cancelar?</div>
+  <div class="cancel-box">
+    <div class="cancel-header">
+      <div class="cancel-icon">❌</div>
+      <div>
+        <div class="cancel-title">Cancelaciones y cambios de horario</div>
+        <div class="cancel-subtitle">Avisa con la mayor anticipación posible</div>
+      </div>
+    </div>
+    <div class="cancel-body">
+      <div class="cancel-option">
+        <div class="cancel-num">1</div>
+        <div class="cancel-text">
+          <strong>Avisa por WhatsApp</strong> — la opción más rápida. Escríbeme directamente y coordino el cambio.
+          <br/>
+          <a href="https://wa.me/526731205121?text=Hola%20Doctor%2C%20necesito%20cancelar%20%2F%20cambiar%20mi%20cita." style="display:inline-flex;align-items:center;gap:.3rem;margin-top:.5rem;background:var(--green);color:#fff;padding:.35rem .85rem;border-radius:6px;font-size:.78rem;font-weight:700;text-decoration:none;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            Cancelar por WhatsApp
+          </a>
+        </div>
+      </div>
+      <div class="cancel-option">
+        <div class="cancel-num">2</div>
+        <div class="cancel-text">
+          <strong>Cancela desde tu cuenta Google</strong> — si tienes Google Calendar, puedes cancelar directamente desde el evento agendado.
+          <br/>
+          <a href="https://calendar.google.com/calendar/u/0/r/search?q=deldhym%40gmail.com" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:.3rem;margin-top:.5rem;background:#fff;color:var(--blue);border:1px solid rgba(26,115,232,.3);padding:.35rem .85rem;border-radius:6px;font-size:.78rem;font-weight:700;text-decoration:none;">
+            📅 Abrir evento en Google Calendar
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- UBICACIÓN -->
+  <div class="location-box">
+    <div style="margin-bottom:.6rem"><strong>📌 Consultorio presencial</strong></div>
+    Calle Moras 619, Col. Del Valle Sur, Alcaldía Benito Juárez, CDMX, C.P. 03104
+    &nbsp;·&nbsp;<a href="https://maps.app.goo.gl/GXHkFxXcKrnqAdSg6" target="_blank" rel="noopener">Ver en mapa →</a>
+    <div style="margin-top:.75rem"><strong>🎥 Online · Google Meet</strong></div>
+    <div style="margin-top:.3rem;font-size:.78rem;">
+      Descarga la app:
+      <a href="https://apps.apple.com/us/app/google-meet/id1096918571" target="_blank" rel="noopener">iPhone</a> ·
+      <a href="https://play.google.com/store/apps/details?id=com.google.android.apps.tachyon" target="_blank" rel="noopener">Android</a> ·
+      <a href="https://meet.google.com/" target="_blank" rel="noopener">PC</a>
+    </div>
+  </div>
+
+  <!-- BOTONES -->
+  <div class="btn-stack">
+    <a class="btn btn-wa" href="https://wa.me/526731205121?text=Hola%20Doctor%2C%20quiero%20reagendar%20mi%20cita.">
+      📲 Reagendar por WhatsApp
+    </a>
+    <a class="btn btn-ghost" href="https://psiquiatra-cdmx.eutimya.org/pagos">
+      💳 Ver formas de pago
+    </a>
+  </div>
+
+  <!-- CHIPS -->
+  <div class="chips">
+    <a class="chip" href="https://psiquiatra-cdmx.eutimya.org/">🏠 Inicio</a>
+    <a class="chip" href="https://psiquiatra-cdmx.eutimya.org/cita">📅 Proceso de cita</a>
+    <a class="chip" href="https://psiquiatra-cdmx.eutimya.org/pagos">💳 Pagos</a>
+    <a class="chip" href="https://www.eutimya.org/exp">📋 Expediente</a>
+  </div>
+
+  <!-- BIO MINI -->
+  <div class="bio-mini">
+    <img class="bio-mini-photo"
+      src="https://lh3.googleusercontent.com/pw/AP1GczMhQ6m9BOG6lddqce7vog3-dLP4_oifP2GShaWc1kbQsxyFwuxyweYIykWCzKl49n2yeeyuUfcq0CgMb0GxyAwyIYHLhg2T0wvQRXcQSMnMNY23HN21WoiiRFHgzEcq9zp-rdpo9dmaZmmy7XMgizvYOA=w1024-h1024-s-no-gm"
+      alt="Dr. Moya Sánchez" loading="lazy"/>
+    <div class="bio-mini-body">
+      <div class="bio-mini-eyebrow">Psiquiatra Certificado · CDMX</div>
+      <div class="bio-mini-name">Dr. Moya Sánchez<br><em>Deldhy Nicolás</em></div>
+      <div class="bio-mini-role">Especialista en Psiquiatría · UNAM Mención Honorífica · Alta Especialidad Psiquiatría de Enlace · Certificado CMP</div>
+      <a class="bio-mini-link" href="https://psiquiatra-cdmx.eutimya.org/">Ver perfil completo →</a>
+    </div>
+  </div>
+
+  <div class="legal-note">Al agendar aceptas el <a href="https://www.eutimya.org/aviso-de-privacidad-y-consentimiento-informado">aviso de privacidad y consentimiento informado</a>.</div>
+
+</div><!-- /content -->
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div style="margin-bottom:1rem;font-family:var(--serif);font-size:1.25rem;font-weight:700;color:#fff;letter-spacing:.02em;">Eutimya</div>
+      <p>Psiquiatría de alto nivel. Presencial en Del Valle, CDMX, o en línea desde cualquier lugar.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Enlaces</h4>
+      <ul>
+        <li><a href="https://eutimya.org/">Inicio</a></li>
+        <li><a href="https://www.eutimya.org/agendar">Agendar</a></li>
+        <li><a href="https://www.eutimya.org/profesionales">Profesionales</a></li>
+        <li><a href="https://www.eutimya.org/blog">Blog</a></li>
+        <li><a href="https://www.eutimya.org/nosotros">Nosotros</a></li>
+        <li><a href="https://www.eutimya.org/factura">Facturación</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Pacientes</h4>
+      <ul>
+        <li><a href="https://www.eutimya.org/exp">Expediente</a></li>
+        <li><a href="https://psiquiatra-cdmx.eutimya.org/pagos">Formas de pago</a></li>
+        <li><a href="https://psiquiatra-cdmx.eutimya.org/cita">Nueva cita</a></li>
+        <li><a href="https://psiquiatra-cdmx.eutimya.org/agendar">Reagendar</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025–2026 Dr. Deldhy Nicolás Moya Sánchez · Eutimya · Psiquiatra CDMX</span>
+    <div class="footer-ceds">
+      <span>CP LIC 12152669</span><span>CE PSIQ 14788885</span>
+      <span>Consejo CMP 24803862</span><span>COFEPRIS 2609142002A00043</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.getElementById('hbg').addEventListener('click',()=>{
+  document.getElementById('mnav').classList.toggle('open');
+});
+document.querySelectorAll('#mnav a').forEach(a=>
+  a.addEventListener('click',()=>document.getElementById('mnav').classList.remove('open'))
+);
+</script>
+</body>
+</html>
