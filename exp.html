@@ -790,7 +790,7 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; }
       <a class="soc" href="https://tiktok.com/@eutimya.mental" target="_blank" rel="noopener" aria-label="TikTok">
         <svg viewBox="0 0 24 24"><path d="M14 3v10.1a4.1 4.1 0 1 1-3-3.95"/><path d="M14 3c1.2 2.2 3 3.8 6 4v3c-2.4-.1-4.3-1-6-2.5"/></svg>
       </a>
-      <a class="soc" href="mailto:eutimya.mental@gmail.com" aria-label="Email">
+      <a class="soc" href="/cdn-cgi/l/email-protection#afcadadbc6c2d6ce81c2cac1dbcec3efc8c2cec6c381ccc0c2" aria-label="Email">
         <svg viewBox="0 0 24 24"><path d="M4 6h16v12H4z"/><path d="M4 7l8 6 8-6"/></svg>
       </a>
       <a class="soc" href="https://instagram.com/eutimya.mental" target="_blank" rel="noopener" aria-label="Instagram">
@@ -803,12 +803,12 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; }
     <div class="footer-legal">
       © Eutimya 2025–2026 &nbsp;·&nbsp;
       Al usar este sitio, usted acepta el <a href="https://www.eutimya.org/aviso-de-privacidad-y-consentimiento-informado" target="_blank" rel="noopener">Aviso de Privacidad y el Consentimiento Informado.</a>
-      ARCO/revocación: <a href="mailto:contacto@eutimya.org">contacto@eutimya.org</a>
+      ARCO/revocación: <a href="/cdn-cgi/l/email-protection#8ae9e5e4feebe9fee5caeffffee3e7f3eba4e5f8ed"><span class="__cf_email__" data-cfemail="45262a2b312426312a052030312c283c246b2a3722">[email&#160;protected]</span></a>
     </div>
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 /* ═══════════════════════════════
    ESCALAS DATA
    NOTA: ASRS y DIVA — src corregidos (estaban invertidos)
@@ -821,13 +821,13 @@ var ESCALAS_DATA = {
     title: 'Adult ADHD Self-Report Scale (ASRS v1.1)',
     sub:   'Escala de autoreporte · OMS · 18 ítems',
     pills: ['~5 min','18 ítems'],
-    src:   'https://docs.google.com/forms/d/e/1FAIpQLSeupeXJte8uaDkoOa7l_dcA9KnXVge-GKDjHRbfUQZKujNeyw/viewform?embedded=true'
+    src:   'https://docs.google.com/forms/d/e/1FAIpQLSftISSsoVr3XPM9TdB6CxNDJImzeps1Zm1hksZ7LJi7wzd0yA/viewform?embedded=true'
   },
   diva: {
     title: 'Entrevista Diagnóstica para el TDAH en adultos (DIVA 2.0)',
     sub:   'Entrevista estructurada completa · Historia escolar y laboral',
     pills: ['~10 min','DIVA 2.0'],
-    src:   'https://docs.google.com/forms/d/e/1FAIpQLSftISSsoVr3XPM9TdB6CxNDJImzeps1Zm1hksZ7LJi7wzd0yA/viewform?embedded=true'
+    src:   'https://docs.google.com/forms/d/e/1FAIpQLSeupeXJte8uaDkoOa7l_dcA9KnXVge-GKDjHRbfUQZKujNeyw/viewform?embedded=true'
   },
   /* ── TCA ── */
   tca: {
@@ -1048,26 +1048,14 @@ function route() {
     return;
   }
 
-  /* ?es — selector de escalas */
+  /* ?es — escalas de seguimiento directo */
   if (has('es')) {
+    selected.seguimiento = true;
+    document.getElementById('tog-seguimiento').classList.add('on');
+    document.getElementById('btnConfirmar').disabled = false;
     showDirect('s-escalas');
+    setTimeout(confirmarEscalas, 80);
     return;
   }
 
-  /* Sin parámetros → pantalla de selección */
-}
-
-function showBanner(cls, html) {
-  var b = document.getElementById('ctxBanner');
-  b.className = 'ctx-banner show ' + cls;
-  b.innerHTML = html;
-}
-
-document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') closeDrawer();
-});
-
-route();
-</script>
-</body>
-</html>
+  /* Sin parámetros → pantalla de selec
