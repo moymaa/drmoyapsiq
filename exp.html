@@ -128,27 +128,36 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; }
 
 /* ─────────────────── FORM SCREEN ─────────────────── */
 .form-hero {
-  background:var(--navy); padding:72px 20px 32px;
+  background:var(--navy);
+  padding:72px 20px 36px;
   position:relative; overflow:hidden;
 }
 .form-hero::before {
   content:''; position:absolute; inset:0;
-  background:radial-gradient(ellipse 60% 50% at 15% 30%, rgba(192,115,122,.13) 0%, transparent 55%);
+  background:
+    radial-gradient(ellipse 70% 60% at 0% 50%, rgba(192,115,122,.18) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 40% at 100% 20%, rgba(201,169,110,.09) 0%, transparent 55%),
+    radial-gradient(ellipse 40% 50% at 60% 90%, rgba(192,115,122,.07) 0%, transparent 50%);
 }
 .form-hero-inner { max-width:520px; margin:0 auto; position:relative; z-index:1; }
 .form-hero-tag {
-  display:inline-flex; align-items:center; gap:6px;
-  background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.12);
-  border-radius:999px; padding:4px 12px;
-  font-size:10px; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
-  color:rgba(255,255,255,.5); margin-bottom:14px;
+  display:inline-flex; align-items:center; gap:7px;
+  background:var(--rose-bg); border:1px solid var(--rose-bd);
+  border-radius:999px; padding:5px 14px;
+  font-size:11px; font-weight:700; letter-spacing:.12em; text-transform:uppercase;
+  color:var(--rose-lt); margin-bottom:18px;
 }
+.form-hero-tag::before { content:''; width:5px; height:5px; border-radius:50%; background:var(--rose); flex-shrink:0; }
 .form-hero-title {
   font-family:'Playfair Display',serif;
-  font-size:clamp(20px,4vw,28px); font-weight:700;
-  color:var(--white); line-height:1.2; margin-bottom:6px;
+  font-size:clamp(22px,4.5vw,32px); font-weight:700;
+  color:var(--white); line-height:1.15; margin-bottom:10px;
+  letter-spacing:-.01em;
 }
-.form-hero-sub { font-size:13px; font-weight:300; color:rgba(255,255,255,.55); line-height:1.65; }
+.form-hero-sub {
+  font-size:13px; font-weight:300; color:rgba(255,255,255,.5);
+  line-height:1.7; max-width:420px;
+}
 
 .form-body { max-width:520px; margin:0 auto; padding:24px 20px 48px; }
 
@@ -496,12 +505,11 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; }
           <span class="fcard-pill">~15–20 min</span>
         </div>
         <div class="fcard-actions">
+          <p style="font-size:12px;font-weight:300;color:var(--muted);line-height:1.55;margin-bottom:10px;">Al finalizar verás el mensaje de confirmación: <strong style="color:var(--text);">✅ Gracias por tu respuesta. Este es el último paso.</strong></p>
           <button class="btn-fill" onclick="openDrawer('pv','Expediente de primera vez','https://docs.google.com/forms/d/e/1FAIpQLSeU7vGbVJSEUdM2av0zKSbLUAHuP-F1KSSKyR0CYzvz0xHybw/viewform?embedded=true')">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
             Llenar formulario
           </button>
-          <button class="btn-check" id="bc-pv" onclick="markDone('pv',['pv'],'done-pv')">✓ Ya lo completé</button>
-          <button class="btn-undo" id="bu-pv" hidden onclick="undoDone('pv','1','done-pv')">Desmarcar</button>
         </div>
       </div>
     </div>
@@ -545,12 +553,11 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; }
           <span class="fcard-pill">~12–15 min</span>
         </div>
         <div class="fcard-actions">
+          <p style="font-size:12px;font-weight:300;color:var(--muted);line-height:1.55;margin-bottom:10px;">Al finalizar verás el mensaje de confirmación: <strong style="color:var(--text);">✅ Gracias por tu respuesta. Este es el último paso.</strong></p>
           <button class="btn-fill" onclick="openDrawer('bari','Protocolo de cirugía bariátrica','https://docs.google.com/forms/d/e/1FAIpQLSdx-zY35ZlAmlzIvIqBoVpGa4EoiYXl4TtLN1nA36xkURwWVg/viewform?embedded=true')">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
             Llenar formulario
           </button>
-          <button class="btn-check" id="bc-bari" onclick="markDone('bari',['bari'],'done-bari')">✓ Ya lo completé</button>
-          <button class="btn-undo" id="bu-bari" hidden onclick="undoDone('bari','1','done-bari')">Desmarcar</button>
         </div>
       </div>
     </div>
@@ -593,12 +600,11 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; }
           <span class="fcard-pill">PHQ-9</span><span class="fcard-pill">GAD-7</span><span class="fcard-pill">~15 min</span>
         </div>
         <div class="fcard-actions">
+          <p style="font-size:12px;font-weight:300;color:var(--muted);line-height:1.55;margin-bottom:10px;">Al finalizar verás el mensaje de confirmación: <strong style="color:var(--text);">✅ Gracias por tu respuesta. Este es el último paso.</strong></p>
           <button class="btn-fill" onclick="openDrawer('cb1','Expediente de primera vez','https://docs.google.com/forms/d/e/1FAIpQLSeU7vGbVJSEUdM2av0zKSbLUAHuP-F1KSSKyR0CYzvz0xHybw/viewform?embedded=true')">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
             Llenar formulario
           </button>
-          <button class="btn-check" id="bc-cb1" onclick="markDone('cb1',['cb1','cb2'],'done-combo-bari')">✓ Ya lo completé</button>
-          <button class="btn-undo" id="bu-cb1" hidden onclick="undoDone('cb1','1','done-combo-bari')">Desmarcar</button>
         </div>
       </div>
       <!-- Card 2 -->
@@ -614,12 +620,11 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; }
           <span class="fcard-pill">EAT-26</span><span class="fcard-pill">BES</span><span class="fcard-pill">~12 min</span>
         </div>
         <div class="fcard-actions">
+          <p style="font-size:12px;font-weight:300;color:var(--muted);line-height:1.55;margin-bottom:10px;">Al finalizar verás el mensaje de confirmación: <strong style="color:var(--text);">✅ Gracias por tu respuesta. Este es el último paso.</strong></p>
           <button class="btn-fill" onclick="openDrawer('cb2','Protocolo de cirugía bariátrica','https://docs.google.com/forms/d/e/1FAIpQLSdx-zY35ZlAmlzIvIqBoVpGa4EoiYXl4TtLN1nA36xkURwWVg/viewform?embedded=true')">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
             Llenar formulario
           </button>
-          <button class="btn-check" id="bc-cb2" onclick="markDone('cb2',['cb1','cb2'],'done-combo-bari')">✓ Ya lo completé</button>
-          <button class="btn-undo" id="bu-cb2" hidden onclick="undoDone('cb2','2','done-combo-bari')">Desmarcar</button>
         </div>
       </div>
     </div>
@@ -707,10 +712,7 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; }
     <div class="dw-loader" id="dwLoader"><div class="spinner"></div><p>Cargando formulario…</p></div>
     <iframe id="formIframe" src="about:blank" title="Formulario" onload="iframeLoaded()"></iframe>
   </div>
-  <div class="dw-foot">
-    <button class="btn-dw-done" onclick="doneFromDrawer()">✓ Ya lo completé</button>
-    <button class="btn-dw-close" onclick="closeDrawer()">Volver</button>
-  </div>
+
 </div>
 
 <!-- FOOTER -->
@@ -892,11 +894,11 @@ function confirmarEscalas() {
         '</div>'+
         '<div class="fcard-pills">'+pills+'</div>'+
         '<div class="fcard-actions">'+
+          '<p style="font-size:12px;font-weight:300;color:var(--muted);line-height:1.55;margin-bottom:10px;">Al finalizar verás el mensaje de confirmación: <strong style=\"color:var(--text)\">✅ Gracias por tu respuesta. Este es el último paso.</strong></p>'+
           '<button class="btn-fill" onclick="openDrawer(\''+id+'\',\''+safeTitle+'\',\''+safeSrc+'\')">'+
             '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>'+
             ' Llenar escala'+
           '</button>'+
-          '<button class="btn-check" id="bc-'+id+'" onclick="markDone(\''+id+'\','+JSON.stringify(chosen)+',\'done-escalas\')">✓ Ya la completé</button>'+
           '<button class="btn-undo" id="bu-'+id+'" hidden onclick="undoDone(\''+id+'\','+(idx+1)+',\'done-escalas\')">Desmarcar</button>'+
         '</div>'+
       '</div>';
