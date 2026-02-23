@@ -28,6 +28,9 @@
   --amber-bg:#fef3c7;
   --amber-bd:rgba(234,179,8,.25);
   --amber-tx:#92400e;
+  --indigo-bg:rgba(99,102,241,.07);
+  --indigo-bd:rgba(99,102,241,.2);
+  --indigo:  #6366f1;
 }
 *,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
 html { -webkit-text-size-adjust:100%; }
@@ -249,6 +252,15 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; }
 .select-note p { font-size:13px; color:var(--amber-tx); line-height:1.6; }
 .select-note strong { font-weight:600; }
 
+/* Section label inside toggle list */
+.toggle-section-label {
+  font-size:10px; font-weight:800; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--muted); padding:6px 4px 4px;
+  margin-top:6px;
+  display:flex; align-items:center; gap:8px;
+}
+.toggle-section-label::after { content:''; flex:1; height:1px; background:var(--border); }
+
 .toggle-list { display:flex; flex-direction:column; gap:8px; margin-bottom:20px; }
 .escala-toggle {
   display:flex; align-items:flex-start; gap:12px;
@@ -259,6 +271,13 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; }
 }
 .escala-toggle:hover { border-color:var(--rose-bd); background:var(--rose-bg); }
 .escala-toggle.on { border-color:var(--rose); background:var(--rose-bg); }
+
+/* Seguimiento toggle variant */
+.escala-toggle.seg { border-color:rgba(99,102,241,.18); }
+.escala-toggle.seg:hover { border-color:var(--indigo); background:var(--indigo-bg); }
+.escala-toggle.seg.on { border-color:var(--indigo); background:var(--indigo-bg); }
+.escala-toggle.seg.on .et-box { background:var(--indigo); border-color:var(--indigo); }
+
 .et-box {
   width:20px; height:20px; border-radius:5px;
   border:2px solid var(--border); background:var(--white);
@@ -475,6 +494,7 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; }
 
 <!-- ═══════════════════════════════════════
   SCREEN — PRIMERA VEZ
+  Ruta directa: ?1
 ═══════════════════════════════════════ -->
 <div class="screen" id="s-primera">
   <div class="form-hero">
@@ -505,7 +525,7 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; }
           <span class="fcard-pill">~15–20 min</span>
         </div>
         <div class="fcard-actions">
-          <p style="font-size:12px;font-weight:300;color:var(--muted);line-height:1.55;margin-bottom:10px;">Al finalizar verás el mensaje de confirmación: <strong style="color:var(--text);">✅ Gracias por tu respuesta. Este es el último paso.</strong></p>
+          <p style="font-size:12px;font-weight:300;color:var(--muted);line-height:1.55;margin-bottom:10px;">Al terminar recibirás una <strong style="color:var(--text);">copia de tus respuestas al correo</strong> que proporcionaste. Eso confirma que lo recibimos.</p>
           <button class="btn-fill" onclick="openDrawer('pv','Expediente de primera vez','https://docs.google.com/forms/d/e/1FAIpQLSeU7vGbVJSEUdM2av0zKSbLUAHuP-F1KSSKyR0CYzvz0xHybw/viewform?embedded=true')">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
             Llenar formulario
@@ -523,7 +543,8 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; }
 </div>
 
 <!-- ═══════════════════════════════════════
-  SCREEN — BARIÁTRICA (protocolo standalone)
+  SCREEN — BARIÁTRICA (solo)
+  Ruta directa: ?tca
 ═══════════════════════════════════════ -->
 <div class="screen" id="s-bariatrica">
   <div class="form-hero">
@@ -553,7 +574,7 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; }
           <span class="fcard-pill">~12–15 min</span>
         </div>
         <div class="fcard-actions">
-          <p style="font-size:12px;font-weight:300;color:var(--muted);line-height:1.55;margin-bottom:10px;">Al finalizar verás el mensaje de confirmación: <strong style="color:var(--text);">✅ Gracias por tu respuesta. Este es el último paso.</strong></p>
+          <p style="font-size:12px;font-weight:300;color:var(--muted);line-height:1.55;margin-bottom:10px;">Al terminar recibirás una <strong style="color:var(--text);">copia de tus respuestas al correo</strong> que proporcionaste. Eso confirma que lo recibimos.</p>
           <button class="btn-fill" onclick="openDrawer('bari','Protocolo de cirugía bariátrica','https://docs.google.com/forms/d/e/1FAIpQLSdx-zY35ZlAmlzIvIqBoVpGa4EoiYXl4TtLN1nA36xkURwWVg/viewform?embedded=true')">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
             Llenar formulario
@@ -572,6 +593,7 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; }
 
 <!-- ═══════════════════════════════════════
   SCREEN — PRIMERA VEZ + BARIÁTRICA (combo)
+  Ruta directa: ?esb
 ═══════════════════════════════════════ -->
 <div class="screen" id="s-combo-bari">
   <div class="form-hero">
@@ -600,7 +622,7 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; }
           <span class="fcard-pill">PHQ-9</span><span class="fcard-pill">GAD-7</span><span class="fcard-pill">~15 min</span>
         </div>
         <div class="fcard-actions">
-          <p style="font-size:12px;font-weight:300;color:var(--muted);line-height:1.55;margin-bottom:10px;">Al finalizar verás el mensaje de confirmación: <strong style="color:var(--text);">✅ Gracias por tu respuesta. Este es el último paso.</strong></p>
+          <p style="font-size:12px;font-weight:300;color:var(--muted);line-height:1.55;margin-bottom:10px;">Al terminar recibirás una <strong style="color:var(--text);">copia de tus respuestas al correo</strong> que proporcionaste. Eso confirma que lo recibimos.</p>
           <button class="btn-fill" onclick="openDrawer('cb1','Expediente de primera vez','https://docs.google.com/forms/d/e/1FAIpQLSeU7vGbVJSEUdM2av0zKSbLUAHuP-F1KSSKyR0CYzvz0xHybw/viewform?embedded=true')">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
             Llenar formulario
@@ -620,7 +642,7 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; }
           <span class="fcard-pill">EAT-26</span><span class="fcard-pill">BES</span><span class="fcard-pill">~12 min</span>
         </div>
         <div class="fcard-actions">
-          <p style="font-size:12px;font-weight:300;color:var(--muted);line-height:1.55;margin-bottom:10px;">Al finalizar verás el mensaje de confirmación: <strong style="color:var(--text);">✅ Gracias por tu respuesta. Este es el último paso.</strong></p>
+          <p style="font-size:12px;font-weight:300;color:var(--muted);line-height:1.55;margin-bottom:10px;">Al terminar recibirás una <strong style="color:var(--text);">copia de tus respuestas al correo</strong> que proporcionaste. Eso confirma que lo recibimos.</p>
           <button class="btn-fill" onclick="openDrawer('cb2','Protocolo de cirugía bariátrica','https://docs.google.com/forms/d/e/1FAIpQLSdx-zY35ZlAmlzIvIqBoVpGa4EoiYXl4TtLN1nA36xkURwWVg/viewform?embedded=true')">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
             Llenar formulario
@@ -639,6 +661,8 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; }
 
 <!-- ═══════════════════════════════════════
   SCREEN — ESCALAS (selector + forms dinámicos)
+  Ruta directa: ?es   (selector abierto)
+               ?tdah  (ASRS + DIVA auto-confirmados)
 ═══════════════════════════════════════ -->
 <div class="screen" id="s-escalas">
   <div class="form-hero">
@@ -656,7 +680,12 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; }
         <span class="ni">📌</span>
         <p><strong>Tu médico te indicó cuáles completar.</strong> Marca todas las que correspondan y presiona continuar.</p>
       </div>
+
       <div class="toggle-list">
+
+        <!-- ── Diagnóstico / Primera vez ── -->
+        <p class="toggle-section-label">Escalas de diagnóstico</p>
+
         <button class="escala-toggle" id="tog-asrs" onclick="toggleEscala('asrs')">
           <div class="et-box">✓</div>
           <div class="et-body">
@@ -664,6 +693,7 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; }
             <p class="et-sub">Escala de autoreporte de síntomas · OMS · 18 ítems · ~5 min</p>
           </div>
         </button>
+
         <button class="escala-toggle" id="tog-diva" onclick="toggleEscala('diva')">
           <div class="et-box">✓</div>
           <div class="et-body">
@@ -671,6 +701,7 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; }
             <p class="et-sub">Entrevista estructurada completa · Historia escolar y laboral · ~10 min</p>
           </div>
         </button>
+
         <button class="escala-toggle" id="tog-tca" onclick="toggleEscala('tca')">
           <div class="et-box">✓</div>
           <div class="et-body">
@@ -678,11 +709,24 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; }
             <p class="et-sub">Evaluación de hábitos, imagen corporal y conductas de riesgo · ~8 min</p>
           </div>
         </button>
-      </div>
+
+        <!-- ── Seguimiento ── -->
+        <p class="toggle-section-label">Seguimiento</p>
+
+        <button class="escala-toggle seg" id="tog-seguimiento" onclick="toggleEscala('seguimiento')">
+          <div class="et-box">✓</div>
+          <div class="et-body">
+            <p class="et-title">Escalas de seguimiento</p>
+            <p class="et-sub">PHQ-9 · GAD-7 · ISI · YMRS — todo en un solo formulario · ~8–10 min</p>
+          </div>
+        </button>
+
+      </div><!-- /toggle-list -->
+
       <button class="btn-confirmar" id="btnConfirmar" onclick="confirmarEscalas()" disabled>
         Continuar con las escalas seleccionadas →
       </button>
-    </div>
+    </div><!-- /escalas-selector -->
 
     <!-- Paso B: cards generadas -->
     <div id="escalas-forms" style="display:none;">
@@ -712,7 +756,6 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; }
     <div class="dw-loader" id="dwLoader"><div class="spinner"></div><p>Cargando formulario…</p></div>
     <iframe id="formIframe" src="about:blank" title="Formulario" onload="iframeLoaded()"></iframe>
   </div>
-
 </div>
 
 <!-- FOOTER -->
@@ -768,8 +811,12 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; }
 <script>
 /* ═══════════════════════════════
    ESCALAS DATA
+   NOTA: ASRS y DIVA — src corregidos (estaban invertidos)
+   NOTA: seguimiento — reemplaza cada URL_SEGUIMIENTO_* con
+         el enlace embebido de tu Google Form correspondiente
 ═══════════════════════════════ */
 var ESCALAS_DATA = {
+  /* ── TDAH ── */
   asrs: {
     title: 'Adult ADHD Self-Report Scale (ASRS v1.1)',
     sub:   'Escala de autoreporte · OMS · 18 ítems',
@@ -782,10 +829,18 @@ var ESCALAS_DATA = {
     pills: ['~10 min','DIVA 2.0'],
     src:   'https://docs.google.com/forms/d/e/1FAIpQLSftISSsoVr3XPM9TdB6CxNDJImzeps1Zm1hksZ7LJi7wzd0yA/viewform?embedded=true'
   },
+  /* ── TCA ── */
   tca: {
     title: 'Trastornos de la conducta alimentaria',
     sub:   'Evaluación de hábitos, imagen corporal y conductas de riesgo',
     pills: ['~8 min','EAT-26'],
+    src:   'https://docs.google.com/forms/d/e/1FAIpQLSeLQOdnYlkQ1yxrUyVcLl4p_RA9Z_yxYI8ZJhCw22lgIX7i2A/viewform?embedded=true'
+  },
+  /* ── SEGUIMIENTO ── formulario único */
+  seguimiento: {
+    title: 'Escalas de seguimiento',
+    sub:   'PHQ-9 · GAD-7 · ISI · YMRS — en un solo formulario',
+    pills: ['~8–10 min','PHQ-9','GAD-7','ISI','YMRS'],
     src:   'https://docs.google.com/forms/d/e/1FAIpQLSeLQOdnYlkQ1yxrUyVcLl4p_RA9Z_yxYI8ZJhCw22lgIX7i2A/viewform?embedded=true'
   }
 };
@@ -827,14 +882,11 @@ function showDirect(id) {
 function markDone(cardId, allIds, bannerId) {
   var card = document.getElementById('fc-' + cardId);
   var num  = document.getElementById('fn-' + cardId);
-  var chk  = document.getElementById('bc-' + cardId);
   var und  = document.getElementById('bu-' + cardId);
   if (card) card.classList.add('done');
   if (num)  num.textContent = '✓';
-  if (chk)  chk.textContent = '✓ Completado';
   if (und)  und.removeAttribute('hidden');
 
-  // Check if all in group are done
   var allDone = allIds.every(function(id) {
     var c = document.getElementById('fc-' + id);
     return c && c.classList.contains('done');
@@ -851,11 +903,9 @@ function markDone(cardId, allIds, bannerId) {
 function undoDone(cardId, numLabel, bannerId) {
   var card = document.getElementById('fc-' + cardId);
   var num  = document.getElementById('fn-' + cardId);
-  var chk  = document.getElementById('bc-' + cardId);
   var und  = document.getElementById('bu-' + cardId);
   if (card) card.classList.remove('done');
   if (num)  num.textContent = numLabel;
-  if (chk)  chk.textContent = '✓ Ya lo completé';
   if (und)  und.setAttribute('hidden','');
   var banner = document.getElementById(bannerId);
   if (banner) banner.classList.remove('show');
@@ -864,25 +914,26 @@ function undoDone(cardId, numLabel, bannerId) {
 /* ═══════════════════════════════
    ESCALAS SELECTOR
 ═══════════════════════════════ */
-var selected = { asrs:false, diva:false, tca:false };
+var ALL_KEYS = ['asrs','diva','tca','seguimiento'];
+var selected = {};
+ALL_KEYS.forEach(function(k) { selected[k] = false; });
 
 function toggleEscala(id) {
   selected[id] = !selected[id];
   var tog = document.getElementById('tog-' + id);
   if (selected[id]) tog.classList.add('on');
   else tog.classList.remove('on');
-  var any = selected.asrs || selected.diva || selected.tca;
+  var any = ALL_KEYS.some(function(k) { return selected[k]; });
   document.getElementById('btnConfirmar').disabled = !any;
 }
 
 function confirmarEscalas() {
-  var chosen = ['asrs','diva','tca'].filter(function(k) { return selected[k]; });
+  var chosen = ALL_KEYS.filter(function(k) { return selected[k]; });
   var html = '';
   chosen.forEach(function(id, idx) {
     var f = ESCALAS_DATA[id];
     var pills = f.pills.map(function(p) { return '<span class="fcard-pill">'+p+'</span>'; }).join('');
     var safeTitle = f.title.replace(/'/g, '&apos;');
-    var safeSrc   = f.src;
     html +=
       '<div class="fcard" id="fc-'+id+'">'+
         '<div class="fcard-head">'+
@@ -894,8 +945,8 @@ function confirmarEscalas() {
         '</div>'+
         '<div class="fcard-pills">'+pills+'</div>'+
         '<div class="fcard-actions">'+
-          '<p style="font-size:12px;font-weight:300;color:var(--muted);line-height:1.55;margin-bottom:10px;">Al finalizar verás el mensaje de confirmación: <strong style=\"color:var(--text)\">✅ Gracias por tu respuesta. Este es el último paso.</strong></p>'+
-          '<button class="btn-fill" onclick="openDrawer(\''+id+'\',\''+safeTitle+'\',\''+safeSrc+'\')">'+
+          '<p style="font-size:12px;font-weight:300;color:var(--muted);line-height:1.55;margin-bottom:10px;">Al terminar recibirás una <strong style=\"color:var(--text)\">copia de tus respuestas al correo</strong> que proporcionaste. Eso confirma que lo recibimos.</p>'+
+          '<button class="btn-fill" onclick="openDrawer(\''+id+'\',\''+safeTitle+'\',\''+f.src+'\')">'+
             '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>'+
             ' Llenar escala'+
           '</button>'+
@@ -912,8 +963,6 @@ function confirmarEscalas() {
    DRAWER
 ═══════════════════════════════ */
 var activeFormId = null;
-var activeFormGroup = null;
-var activeFormBanner = null;
 
 function openDrawer(formId, title, src) {
   activeFormId = formId;
@@ -941,52 +990,49 @@ function iframeLoaded() {
 function doneFromDrawer() {
   closeDrawer();
   if (!activeFormId) return;
-  // Determine group & banner from active screen
   var activeScreen = document.querySelector('.screen.active');
   if (!activeScreen) return;
   var sid = activeScreen.id;
 
-  if (sid === 's-primera')     markDone(activeFormId, ['pv'], 'done-pv');
-  else if (sid === 's-bariatrica') markDone(activeFormId, ['bari'], 'done-bari');
+  if      (sid === 's-primera')     markDone(activeFormId, ['pv'], 'done-pv');
+  else if (sid === 's-bariatrica')  markDone(activeFormId, ['bari'], 'done-bari');
   else if (sid === 's-combo-bari') {
-    var group = ['cb1','cb2'];
-    markDone(activeFormId, group, 'done-combo-bari');
+    markDone(activeFormId, ['cb1','cb2'], 'done-combo-bari');
   }
   else if (sid === 's-escalas') {
-    var chosen = ['asrs','diva','tca'].filter(function(k) { return selected[k]; });
+    var chosen = ALL_KEYS.filter(function(k) { return selected[k]; });
     markDone(activeFormId, chosen, 'done-escalas');
   }
 }
 
 /* ═══════════════════════════════
-   URL ROUTING
-   ?paso=3         → primera vez, banner "Paso 3"
-   ?recordatorio=1 → primera vez, banner ámbar
-   ?tipo=bariatrica→ primera vez + bariátrica (combo)
-   ?tipo=tdah      → ASRS + DIVA
-   ?tipo=tca       → solo bariátrica
+   URL ROUTING — tabla de parámetros
+   ──────────────────────────────
+   ?1     → solo primera vez
+   ?esb   → expediente + bariátrica (combo)
+   ?tdah  → ASRS + DIVA auto-confirmados
+   ?tca   → solo protocolo bariátrica
+   ?es    → selector de escalas (abierto)
+   (sin parámetros) → pantalla de selección
 ═══════════════════════════════ */
 function route() {
-  var p = new URLSearchParams(window.location.search);
-  var paso = p.get('paso');
-  var rec  = p.get('recordatorio');
-  var tipo = p.get('tipo');
+  var p   = new URLSearchParams(window.location.search);
+  var has = function(k) { return p.has(k); };
 
-  if (paso === '3') {
-    showBanner('navy', '<span class="ctx-num">3</span> Último paso para confirmar tu cita');
+  /* ?1 — solo primera vez */
+  if (has('1')) {
     showDirect('s-primera');
     return;
   }
-  if (rec === '1') {
-    showBanner('amber', '⏰ Tu expediente está pendiente — recibimos un recordatorio');
-    showDirect('s-primera');
-    return;
-  }
-  if (tipo === 'bariatrica') {
+
+  /* ?esb — expediente + bariátrica */
+  if (has('esb')) {
     showDirect('s-combo-bari');
     return;
   }
-  if (tipo === 'tdah') {
+
+  /* ?tdah — ASRS + DIVA auto-confirmados */
+  if (has('tdah')) {
     selected.asrs = true; selected.diva = true;
     document.getElementById('tog-asrs').classList.add('on');
     document.getElementById('tog-diva').classList.add('on');
@@ -995,11 +1041,20 @@ function route() {
     setTimeout(confirmarEscalas, 80);
     return;
   }
-  if (tipo === 'tca') {
+
+  /* ?tca — solo protocolo bariátrica */
+  if (has('tca')) {
     showDirect('s-bariatrica');
     return;
   }
-  // Sin parámetros → selector
+
+  /* ?es — selector de escalas */
+  if (has('es')) {
+    showDirect('s-escalas');
+    return;
+  }
+
+  /* Sin parámetros → pantalla de selección */
 }
 
 function showBanner(cls, html) {
