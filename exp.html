@@ -56,7 +56,7 @@ button{font-family:'DM Sans',sans-serif;cursor:pointer;border:none;background:no
 .btn-back svg{width:15px;height:15px;}
 
 /* ── SCREENS ── */
-.screen{display:none;min-height:calc(100vh - 56px);padding-top:56px;}
+.screen{display:none;padding-top:56px;}
 .screen.active{display:flex;flex-direction:column;}
 
 /* ── CENTER LAYOUT ── */
@@ -379,14 +379,12 @@ button{font-family:'DM Sans',sans-serif;cursor:pointer;border:none;background:no
   padding:48px 20px 32px;margin-top:auto;
 }
 .footer-inner{max-width:520px;margin:0 auto;}
-.footer-top{display:flex;gap:36px;margin-bottom:28px;align-items:flex-start;}
+.footer-top{display:flex;flex-direction:column;gap:24px;margin-bottom:28px;}
 .footer-logo-wrap{
-  width:48px;height:48px;flex-shrink:0;
-  border:1.5px solid var(--border);border-radius:50%;
-  display:flex;align-items:center;justify-content:center;overflow:hidden;
+  width:52px;height:52px;flex-shrink:0;
 }
-.footer-logo-wrap img{width:36px;height:36px;object-fit:contain;}
-.footer-cols{display:flex;gap:40px;flex:1;flex-wrap:wrap;}
+.footer-logo-wrap img{width:52px;height:52px;object-fit:contain;}
+.footer-cols{display:flex;gap:40px;flex-wrap:wrap;}
 .footer-col h4{
   font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
   color:var(--text);margin-bottom:12px;
@@ -494,56 +492,6 @@ button{font-family:'DM Sans',sans-serif;cursor:pointer;border:none;background:no
         </button>
       </div>
     </div>
-  <footer class="site-footer">
-    <div class="footer-inner">
-      <div class="footer-top">
-        <div class="footer-logo-wrap">
-          <img src="https://raw.githubusercontent.com/moymaa/drmoyapsiq/main/unnamed.png" alt="Eutimya"/>
-        </div>
-        <div class="footer-cols">
-          <div class="footer-col">
-            <h4>Enlaces</h4>
-            <div class="footer-links">
-              <a href="https://eutimya.org/">Inicio</a>
-              <a href="https://www.eutimya.org/agendar">Agendar</a>
-              <a href="https://www.eutimya.org/profesionales">Profesionales</a>
-              <a href="https://www.eutimya.org/blog">Blog</a>
-              <a href="https://www.eutimya.org/nosotros">Nosotros</a>
-              <a href="https://www.eutimya.org/validar">Validar</a>
-              <a href="https://www.eutimya.org/factura">Facturación</a>
-            </div>
-          </div>
-          <div class="footer-col">
-            <h4>Recursos para pacientes</h4>
-            <div class="footer-links">
-              <a href="https://www.eutimya.org/exp">Registro de expediente</a>
-              <a href="https://www.eutimya.org/pagos">Formas de pago</a>
-              <a href="https://www.eutimya.org/agendar">Horarios / Reagendar</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="footer-social">
-        <a class="soc" href="https://tiktok.com/@eutimya.mental" target="_blank" rel="noopener" aria-label="TikTok">
-          <svg viewBox="0 0 24 24"><path d="M14 3v10.1a4.1 4.1 0 1 1-3-3.95"/><path d="M14 3c1.2 2.2 3 3.8 6 4v3c-2.4-.1-4.3-1-6-2.5"/></svg>
-        </a>
-        <a class="soc" href="mailto:eutimya.mental@gmail.com" aria-label="Email">
-          <svg viewBox="0 0 24 24"><path d="M4 6h16v12H4z"/><path d="M4 7l8 6 8-6"/></svg>
-        </a>
-        <a class="soc" href="https://instagram.com/eutimya.mental" target="_blank" rel="noopener" aria-label="Instagram">
-          <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-        </a>
-        <a class="soc" href="https://facebook.com/eutimya.mental" target="_blank" rel="noopener" aria-label="Facebook">
-          <svg viewBox="0 0 24 24"><path d="M14 8h3V5h-3c-2.2 0-4 1.8-4 4v3H7v3h3v6h3v-6h3l1-3h-4V9c0-.6.4-1 1-1z"/></svg>
-        </a>
-      </div>
-      <div class="footer-legal">
-        © Eutimya 2025–2026 &nbsp;·&nbsp;
-        Al usar este sitio, usted acepta el <a href="https://www.eutimya.org/aviso-de-privacidad-y-consentimiento-informado" target="_blank" rel="noopener">Aviso de Privacidad y el Consentimiento Informado.</a>
-        ARCO/revocación: <a href="mailto:contacto@eutimya.org">contacto@eutimya.org</a>
-      </div>
-    </div>
-  </footer>
 </div>
 
 <!-- ════════════════════════════
@@ -590,56 +538,6 @@ button{font-family:'DM Sans',sans-serif;cursor:pointer;border:none;background:no
         <a href="https://wa.me/526731205121" class="done-wa" target="_blank" rel="noopener">💬 WhatsApp</a>
       </div>
     </div>
-  <footer class="site-footer">
-    <div class="footer-inner">
-      <div class="footer-top">
-        <div class="footer-logo-wrap">
-          <img src="https://raw.githubusercontent.com/moymaa/drmoyapsiq/main/unnamed.png" alt="Eutimya"/>
-        </div>
-        <div class="footer-cols">
-          <div class="footer-col">
-            <h4>Enlaces</h4>
-            <div class="footer-links">
-              <a href="https://eutimya.org/">Inicio</a>
-              <a href="https://www.eutimya.org/agendar">Agendar</a>
-              <a href="https://www.eutimya.org/profesionales">Profesionales</a>
-              <a href="https://www.eutimya.org/blog">Blog</a>
-              <a href="https://www.eutimya.org/nosotros">Nosotros</a>
-              <a href="https://www.eutimya.org/validar">Validar</a>
-              <a href="https://www.eutimya.org/factura">Facturación</a>
-            </div>
-          </div>
-          <div class="footer-col">
-            <h4>Recursos para pacientes</h4>
-            <div class="footer-links">
-              <a href="https://www.eutimya.org/exp">Registro de expediente</a>
-              <a href="https://www.eutimya.org/pagos">Formas de pago</a>
-              <a href="https://www.eutimya.org/agendar">Horarios / Reagendar</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="footer-social">
-        <a class="soc" href="https://tiktok.com/@eutimya.mental" target="_blank" rel="noopener" aria-label="TikTok">
-          <svg viewBox="0 0 24 24"><path d="M14 3v10.1a4.1 4.1 0 1 1-3-3.95"/><path d="M14 3c1.2 2.2 3 3.8 6 4v3c-2.4-.1-4.3-1-6-2.5"/></svg>
-        </a>
-        <a class="soc" href="mailto:eutimya.mental@gmail.com" aria-label="Email">
-          <svg viewBox="0 0 24 24"><path d="M4 6h16v12H4z"/><path d="M4 7l8 6 8-6"/></svg>
-        </a>
-        <a class="soc" href="https://instagram.com/eutimya.mental" target="_blank" rel="noopener" aria-label="Instagram">
-          <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-        </a>
-        <a class="soc" href="https://facebook.com/eutimya.mental" target="_blank" rel="noopener" aria-label="Facebook">
-          <svg viewBox="0 0 24 24"><path d="M14 8h3V5h-3c-2.2 0-4 1.8-4 4v3H7v3h3v6h3v-6h3l1-3h-4V9c0-.6.4-1 1-1z"/></svg>
-        </a>
-      </div>
-      <div class="footer-legal">
-        © Eutimya 2025–2026 &nbsp;·&nbsp;
-        Al usar este sitio, usted acepta el <a href="https://www.eutimya.org/aviso-de-privacidad-y-consentimiento-informado" target="_blank" rel="noopener">Aviso de Privacidad y el Consentimiento Informado.</a>
-        ARCO/revocación: <a href="mailto:contacto@eutimya.org">contacto@eutimya.org</a>
-      </div>
-    </div>
-  </footer>
   </div>
 </div>
 
@@ -686,56 +584,6 @@ button{font-family:'DM Sans',sans-serif;cursor:pointer;border:none;background:no
         <a href="https://wa.me/526731205121" class="done-wa" target="_blank" rel="noopener">💬 WhatsApp</a>
       </div>
     </div>
-  <footer class="site-footer">
-    <div class="footer-inner">
-      <div class="footer-top">
-        <div class="footer-logo-wrap">
-          <img src="https://raw.githubusercontent.com/moymaa/drmoyapsiq/main/unnamed.png" alt="Eutimya"/>
-        </div>
-        <div class="footer-cols">
-          <div class="footer-col">
-            <h4>Enlaces</h4>
-            <div class="footer-links">
-              <a href="https://eutimya.org/">Inicio</a>
-              <a href="https://www.eutimya.org/agendar">Agendar</a>
-              <a href="https://www.eutimya.org/profesionales">Profesionales</a>
-              <a href="https://www.eutimya.org/blog">Blog</a>
-              <a href="https://www.eutimya.org/nosotros">Nosotros</a>
-              <a href="https://www.eutimya.org/validar">Validar</a>
-              <a href="https://www.eutimya.org/factura">Facturación</a>
-            </div>
-          </div>
-          <div class="footer-col">
-            <h4>Recursos para pacientes</h4>
-            <div class="footer-links">
-              <a href="https://www.eutimya.org/exp">Registro de expediente</a>
-              <a href="https://www.eutimya.org/pagos">Formas de pago</a>
-              <a href="https://www.eutimya.org/agendar">Horarios / Reagendar</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="footer-social">
-        <a class="soc" href="https://tiktok.com/@eutimya.mental" target="_blank" rel="noopener" aria-label="TikTok">
-          <svg viewBox="0 0 24 24"><path d="M14 3v10.1a4.1 4.1 0 1 1-3-3.95"/><path d="M14 3c1.2 2.2 3 3.8 6 4v3c-2.4-.1-4.3-1-6-2.5"/></svg>
-        </a>
-        <a class="soc" href="mailto:eutimya.mental@gmail.com" aria-label="Email">
-          <svg viewBox="0 0 24 24"><path d="M4 6h16v12H4z"/><path d="M4 7l8 6 8-6"/></svg>
-        </a>
-        <a class="soc" href="https://instagram.com/eutimya.mental" target="_blank" rel="noopener" aria-label="Instagram">
-          <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-        </a>
-        <a class="soc" href="https://facebook.com/eutimya.mental" target="_blank" rel="noopener" aria-label="Facebook">
-          <svg viewBox="0 0 24 24"><path d="M14 8h3V5h-3c-2.2 0-4 1.8-4 4v3H7v3h3v6h3v-6h3l1-3h-4V9c0-.6.4-1 1-1z"/></svg>
-        </a>
-      </div>
-      <div class="footer-legal">
-        © Eutimya 2025–2026 &nbsp;·&nbsp;
-        Al usar este sitio, usted acepta el <a href="https://www.eutimya.org/aviso-de-privacidad-y-consentimiento-informado" target="_blank" rel="noopener">Aviso de Privacidad y el Consentimiento Informado.</a>
-        ARCO/revocación: <a href="mailto:contacto@eutimya.org">contacto@eutimya.org</a>
-      </div>
-    </div>
-  </footer>
   </div>
 </div>
 
@@ -801,56 +649,6 @@ button{font-family:'DM Sans',sans-serif;cursor:pointer;border:none;background:no
       </div>
 
     </div>
-  <footer class="site-footer">
-    <div class="footer-inner">
-      <div class="footer-top">
-        <div class="footer-logo-wrap">
-          <img src="https://raw.githubusercontent.com/moymaa/drmoyapsiq/main/unnamed.png" alt="Eutimya"/>
-        </div>
-        <div class="footer-cols">
-          <div class="footer-col">
-            <h4>Enlaces</h4>
-            <div class="footer-links">
-              <a href="https://eutimya.org/">Inicio</a>
-              <a href="https://www.eutimya.org/agendar">Agendar</a>
-              <a href="https://www.eutimya.org/profesionales">Profesionales</a>
-              <a href="https://www.eutimya.org/blog">Blog</a>
-              <a href="https://www.eutimya.org/nosotros">Nosotros</a>
-              <a href="https://www.eutimya.org/validar">Validar</a>
-              <a href="https://www.eutimya.org/factura">Facturación</a>
-            </div>
-          </div>
-          <div class="footer-col">
-            <h4>Recursos para pacientes</h4>
-            <div class="footer-links">
-              <a href="https://www.eutimya.org/exp">Registro de expediente</a>
-              <a href="https://www.eutimya.org/pagos">Formas de pago</a>
-              <a href="https://www.eutimya.org/agendar">Horarios / Reagendar</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="footer-social">
-        <a class="soc" href="https://tiktok.com/@eutimya.mental" target="_blank" rel="noopener" aria-label="TikTok">
-          <svg viewBox="0 0 24 24"><path d="M14 3v10.1a4.1 4.1 0 1 1-3-3.95"/><path d="M14 3c1.2 2.2 3 3.8 6 4v3c-2.4-.1-4.3-1-6-2.5"/></svg>
-        </a>
-        <a class="soc" href="mailto:eutimya.mental@gmail.com" aria-label="Email">
-          <svg viewBox="0 0 24 24"><path d="M4 6h16v12H4z"/><path d="M4 7l8 6 8-6"/></svg>
-        </a>
-        <a class="soc" href="https://instagram.com/eutimya.mental" target="_blank" rel="noopener" aria-label="Instagram">
-          <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-        </a>
-        <a class="soc" href="https://facebook.com/eutimya.mental" target="_blank" rel="noopener" aria-label="Facebook">
-          <svg viewBox="0 0 24 24"><path d="M14 8h3V5h-3c-2.2 0-4 1.8-4 4v3H7v3h3v6h3v-6h3l1-3h-4V9c0-.6.4-1 1-1z"/></svg>
-        </a>
-      </div>
-      <div class="footer-legal">
-        © Eutimya 2025–2026 &nbsp;·&nbsp;
-        Al usar este sitio, usted acepta el <a href="https://www.eutimya.org/aviso-de-privacidad-y-consentimiento-informado" target="_blank" rel="noopener">Aviso de Privacidad y el Consentimiento Informado.</a>
-        ARCO/revocación: <a href="mailto:contacto@eutimya.org">contacto@eutimya.org</a>
-      </div>
-    </div>
-  </footer>
   </div>
 </div>
 
@@ -1235,6 +1033,59 @@ document.addEventListener('keydown', function(e){
 });
 </script>
 
+
+
+<!-- ── FOOTER ── -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-logo-wrap">
+        <img src="https://github.com/moymaa/drmoyapsiq/blob/main/unnamed(30).png?raw=true" alt="Eutimya"/>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4>Enlaces</h4>
+          <div class="footer-links">
+            <a href="https://eutimya.org/">Inicio</a>
+            <a href="https://www.eutimya.org/agendar">Agendar</a>
+            <a href="https://www.eutimya.org/profesionales">Profesionales</a>
+            <a href="https://www.eutimya.org/blog">Blog</a>
+            <a href="https://www.eutimya.org/nosotros">Nosotros</a>
+            <a href="https://www.eutimya.org/validar">Validar</a>
+            <a href="https://www.eutimya.org/factura">Facturación</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Recursos para pacientes</h4>
+          <div class="footer-links">
+            <a href="https://www.eutimya.org/exp">Registro de expediente</a>
+            <a href="https://www.eutimya.org/pagos">Formas de pago</a>
+            <a href="https://www.eutimya.org/agendar">Horarios / Reagendar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-social">
+      <a class="soc" href="https://tiktok.com/@eutimya.mental" target="_blank" rel="noopener" aria-label="TikTok">
+        <svg viewBox="0 0 24 24"><path d="M14 3v10.1a4.1 4.1 0 1 1-3-3.95"/><path d="M14 3c1.2 2.2 3 3.8 6 4v3c-2.4-.1-4.3-1-6-2.5"/></svg>
+      </a>
+      <a class="soc" href="mailto:eutimya.mental@gmail.com" aria-label="Email">
+        <svg viewBox="0 0 24 24"><path d="M4 6h16v12H4z"/><path d="M4 7l8 6 8-6"/></svg>
+      </a>
+      <a class="soc" href="https://instagram.com/eutimya.mental" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      </a>
+      <a class="soc" href="https://facebook.com/eutimya.mental" target="_blank" rel="noopener" aria-label="Facebook">
+        <svg viewBox="0 0 24 24"><path d="M14 8h3V5h-3c-2.2 0-4 1.8-4 4v3H7v3h3v6h3v-6h3l1-3h-4V9c0-.6.4-1 1-1z"/></svg>
+      </a>
+    </div>
+    <div class="footer-legal">
+      © Eutimya 2025–2026 &nbsp;·&nbsp;
+      Al usar este sitio, usted acepta el <a href="https://www.eutimya.org/aviso-de-privacidad-y-consentimiento-informado" target="_blank" rel="noopener">Aviso de Privacidad y el Consentimiento Informado.</a>
+      ARCO/revocación: <a href="mailto:contacto@eutimya.org">contacto@eutimya.org</a>
+    </div>
+  </div>
+</footer>
 
 </body>
 </html>
