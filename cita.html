@@ -458,6 +458,25 @@ details.acc[open] .acc-chev{transform:rotate(180deg)}
 .page-hero-inner > *:nth-child(4){animation-delay:.36s}
 .page-hero-inner > *:nth-child(5){animation-delay:.44s}
 
+/* === DRAWER (expediente embebido) === */
+.exp-overlay{position:fixed;inset:0;z-index:500;background:rgba(8,14,22,.72);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s;}
+.exp-overlay.open{opacity:1;visibility:visible;}
+.exp-drawer{position:fixed;top:0;right:0;bottom:0;z-index:501;width:min(680px,100vw);background:#fff;display:flex;flex-direction:column;transform:translateX(102%);transition:transform .38s cubic-bezier(.22,.9,.3,1);box-shadow:-16px 0 48px rgba(0,0,0,.18);}
+.exp-drawer.open{transform:translateX(0);}
+.exp-dw-head{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;background:var(--ink);border-bottom:1px solid rgba(255,255,255,.06);flex-shrink:0;}
+.exp-dw-info{display:flex;flex-direction:column;gap:2px;}
+.exp-dw-label{font-size:.65rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);}
+.exp-dw-title{font-family:var(--serif);font-size:1rem;font-weight:600;color:#fff;}
+.exp-dw-close{width:34px;height:34px;border-radius:50%;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.07);color:rgba(255,255,255,.7);font-size:1.25rem;line-height:1;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .15s;flex-shrink:0;}
+.exp-dw-close:hover{background:rgba(255,255,255,.15);}
+.exp-dw-body{flex:1;overflow:hidden;position:relative;}
+.exp-dw-body iframe{width:100%;height:100%;border:none;display:block;}
+.exp-dw-loader{position:absolute;inset:0;z-index:2;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;transition:opacity .35s;}
+.exp-dw-loader.hidden{opacity:0;pointer-events:none;}
+.exp-spinner{width:32px;height:32px;border:3px solid rgba(184,137,58,.15);border-top-color:var(--gold);border-radius:50%;animation:expSpin .8s linear infinite;}
+@keyframes expSpin{to{transform:rotate(360deg);}}
+.exp-dw-loader p{font-size:.82rem;color:var(--ink-light);}
+
 /* === RESPONSIVE === */
 @media(max-width:768px){
   .nav-links{display:none}
@@ -670,8 +689,9 @@ details.acc[open] .acc-chev{transform:rotate(180deg)}
     </div>
     <div class="step-body" id="body3">
       <div class="step-inner">
-        <p style="font-size:.87rem;line-height:1.7;color:var(--ink-mid);margin-bottom:1rem">Completa el formulario de expediente de primera vez. Incluye escalas de tamizaje para una evaluación inicial más completa y personalizada.</p>
-        <a class="btn btn-gold" href="https://psiquiatra-cdmx.eutimya.org/exp?1">📋 Llenar expediente de primera vez</a>
+        <p style="font-size:.87rem;line-height:1.7;color:var(--ink-mid);margin-bottom:.75rem">Completa el formulario de expediente de primera vez. Incluye escalas de tamizaje para una evaluación inicial más completa y personalizada.</p>
+        <div class="policy-note" style="margin-bottom:1rem">📧 Al enviar el formulario, <strong>Google te mandará automáticamente una copia a tu correo</strong> — eso confirma que lo recibimos correctamente.</div>
+        <button class="btn btn-gold" type="button" onclick="openExpDrawer()">📋 Llenar expediente de primera vez</button>
         <div style="margin-top:1rem;font-size:.73rem;font-weight:700;color:var(--ink-light);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.45rem">Protocolos especializados (si aplica)</div>
         <div class="exp-pills">
           <a class="exp-pill" href="https://www.eutimya.org/tdah">TDAH en adultos</a>
@@ -758,6 +778,25 @@ details.acc[open] .acc-chev{transform:rotate(180deg)}
   </div>
 </div>
 
+<!-- OVERLAY + DRAWER EXPEDIENTE -->
+<div class="exp-overlay" id="expOverlay" onclick="closeExpDrawer()"></div>
+<div class="exp-drawer" id="expDrawer" role="dialog" aria-modal="true" aria-label="Expediente de primera vez">
+  <div class="exp-dw-head">
+    <div class="exp-dw-info">
+      <span class="exp-dw-label">Eutimya · Expediente</span>
+      <span class="exp-dw-title">Registro de primera vez</span>
+    </div>
+    <button class="exp-dw-close" onclick="closeExpDrawer()" aria-label="Cerrar">×</button>
+  </div>
+  <div class="exp-dw-body">
+    <div class="exp-dw-loader" id="expLoader">
+      <div class="exp-spinner"></div>
+      <p>Cargando formulario…</p>
+    </div>
+    <iframe id="expIframe" src="about:blank" title="Expediente de primera vez" onload="expIframeLoaded()"></iframe>
+  </div>
+</div>
+
 <script>
 /* ACCORDION */
 function getPanel(n){return document.getElementById('body'+n)}
@@ -806,6 +845,27 @@ function goToStep(n){
   updateFlow(n);openCard(n,false);
 }
 (function(){[1,2,3].forEach(function(n){var p=getPanel(n);if(p)p.style.height='0px';});})();
+
+/* DRAWER EXPEDIENTE */
+function openExpDrawer(){
+  document.getElementById('expLoader').classList.remove('hidden');
+  document.getElementById('expIframe').src='https://docs.google.com/forms/d/e/1FAIpQLSeU7vGbVJSEUdM2av0zKSbLUAHuP-F1KSSKyR0CYzvz0xHybw/viewform?embedded=true';
+  document.getElementById('expDrawer').classList.add('open');
+  document.getElementById('expOverlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeExpDrawer(){
+  document.getElementById('expDrawer').classList.remove('open');
+  document.getElementById('expOverlay').classList.remove('open');
+  document.body.style.overflow='';
+}
+function expIframeLoaded(){
+  var f=document.getElementById('expIframe');
+  if(f.src!=='about:blank') document.getElementById('expLoader').classList.add('hidden');
+}
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape') closeExpDrawer();
+});
 
 /* NAV */
 document.getElementById('hbg').addEventListener('click',function(){document.getElementById('mnav').classList.toggle('open');});
