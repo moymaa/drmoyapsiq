@@ -297,6 +297,7 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; }
           <span class="fcard-pill">PHQ-9</span><span class="fcard-pill">GAD-7</span><span class="fcard-pill">ISI</span><span class="fcard-pill">~15–20 min</span>
         </div>
         <div class="fcard-actions">
+          <p style="font-size:11.5px;color:var(--muted);line-height:1.5;margin-bottom:10px;width:100%">📧 Al enviar, Google te manda una copia a tu correo — eso confirma que lo recibimos.</p>
           <button class="btn-fill" onclick="openPreModal('pv','Expediente de primera vez','https://docs.google.com/forms/d/e/1FAIpQLSeU7vGbVJSEUdM2av0zKSbLUAHuP-F1KSSKyR0CYzvz0xHybw/viewform?embedded=true')">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
             Llenar formulario
@@ -341,6 +342,7 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; }
           <span class="fcard-pill">EAT-26</span><span class="fcard-pill">BES</span><span class="fcard-pill">~12–15 min</span>
         </div>
         <div class="fcard-actions">
+          <p style="font-size:11.5px;color:var(--muted);line-height:1.5;margin-bottom:10px;width:100%">📧 Al enviar, Google te manda una copia a tu correo — eso confirma que lo recibimos.</p>
           <button class="btn-fill" onclick="openPreModal('bari','Protocolo de cirugía bariátrica','https://docs.google.com/forms/d/e/1FAIpQLSdx-zY35ZlAmlzIvIqBoVpGa4EoiYXl4TtLN1nA36xkURwWVg/viewform?embedded=true')">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
             Llenar formulario
@@ -385,6 +387,7 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; }
           <span class="fcard-pill">PHQ-9</span><span class="fcard-pill">GAD-7</span><span class="fcard-pill">~15 min</span>
         </div>
         <div class="fcard-actions">
+          <p style="font-size:11.5px;color:var(--muted);line-height:1.5;margin-bottom:10px;width:100%">📧 Al enviar, Google te manda una copia a tu correo — eso confirma que lo recibimos.</p>
           <button class="btn-fill" onclick="openPreModal('cb1','Expediente de primera vez','https://docs.google.com/forms/d/e/1FAIpQLSeU7vGbVJSEUdM2av0zKSbLUAHuP-F1KSSKyR0CYzvz0xHybw/viewform?embedded=true')">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
             Llenar formulario
@@ -404,6 +407,7 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; }
           <span class="fcard-pill">EAT-26</span><span class="fcard-pill">BES</span><span class="fcard-pill">~12 min</span>
         </div>
         <div class="fcard-actions">
+          <p style="font-size:11.5px;color:var(--muted);line-height:1.5;margin-bottom:10px;width:100%">📧 Al enviar, Google te manda una copia a tu correo — eso confirma que lo recibimos.</p>
           <button class="btn-fill" onclick="openPreModal('cb2','Protocolo de cirugía bariátrica','https://docs.google.com/forms/d/e/1FAIpQLSdx-zY35ZlAmlzIvIqBoVpGa4EoiYXl4TtLN1nA36xkURwWVg/viewform?embedded=true')">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
             Llenar formulario
@@ -486,48 +490,6 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; }
   </div>
 </div>
 
-<!-- MODAL 1: Aviso antes de abrir -->
-<div class="modal-overlay" id="preModal">
-  <div class="modal-box">
-    <div class="modal-icon">✉️</div>
-    <h2 class="modal-title">Antes de comenzar</h2>
-    <div class="modal-steps">
-      <div class="mstep">
-        <div class="mstep-num">1</div>
-        <p class="mstep-text">Llena el formulario completo y presiona <strong>Enviar</strong> al final.</p>
-      </div>
-      <div class="mstep">
-        <div class="mstep-num">2</div>
-        <p class="mstep-text">Google enviará automáticamente una <strong>copia de tus respuestas al correo</strong> que registres.</p>
-      </div>
-      <div class="mstep">
-        <div class="mstep-num">3</div>
-        <p class="mstep-text">Al recibir ese correo, <strong>significa que lo recibimos</strong>. Regresa aquí para confirmarlo y listo.</p>
-      </div>
-    </div>
-    <div class="modal-actions">
-      <button class="btn-modal-go" onclick="launchDrawerFromModal()">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-        Abrir formulario
-      </button>
-      <button class="btn-modal-cancel" onclick="closePreModal()">Cancelar</button>
-    </div>
-  </div>
-</div>
-
-<!-- MODAL 2: Confirmación de correo recibido -->
-<div class="modal-overlay" id="confirmModal">
-  <div class="modal-box">
-    <div class="modal-icon">📬</div>
-    <h2 class="modal-title-sm">¿Ya recibiste el correo de confirmación?</h2>
-    <p class="modal-body">Google envía una copia de tus respuestas al correo que registraste al inicio del formulario. <strong>Si ya lo recibiste, significa que lo recibimos correctamente.</strong></p>
-    <div class="modal-col-actions">
-      <button class="btn-confirm-yes" onclick="confirmDone()">✓ &nbsp;Sí, ya recibí el correo</button>
-      <button class="btn-confirm-no" onclick="closeConfirmModal()">Todavía no — lo reviso después</button>
-    </div>
-  </div>
-</div>
-
 <!-- FOOTER -->
 <footer class="site-footer">
   <div class="footer-inner">
@@ -560,7 +522,7 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; }
       <a class="soc" href="https://tiktok.com/@eutimya.mental" target="_blank" rel="noopener" aria-label="TikTok">
         <svg viewBox="0 0 24 24"><path d="M14 3v10.1a4.1 4.1 0 1 1-3-3.95"/><path d="M14 3c1.2 2.2 3 3.8 6 4v3c-2.4-.1-4.3-1-6-2.5"/></svg>
       </a>
-      <a class="soc" href="mailto:contacto@eutimya.org" aria-label="Email">
+      <a class="soc" href="/cdn-cgi/l/email-protection#94f7fbfae0f5f7e0fbd4f1e1e0fdf9edf5bafbe6f3" aria-label="Email">
         <svg viewBox="0 0 24 24"><path d="M4 6h16v12H4z"/><path d="M4 7l8 6 8-6"/></svg>
       </a>
       <a class="soc" href="https://instagram.com/eutimya.mental" target="_blank" rel="noopener" aria-label="Instagram">
@@ -577,7 +539,7 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; }
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 /* ═══ DATA ═══ */
 var ESCALAS_DATA = {
   asrs:        { title:'Adult ADHD Self-Report Scale (ASRS v1.1)',                   sub:'Escala de autoreporte · OMS · 18 ítems',                             pills:['~5 min','18 ítems'],                    src:'https://docs.google.com/forms/d/e/1FAIpQLSftISSsoVr3XPM9TdB6CxNDJImzeps1Zm1hksZ7LJi7wzd0yA/viewform?embedded=true' },
@@ -663,19 +625,9 @@ function confirmarEscalas() {
 /* ═══ PRE-OPEN MODAL ═══ */
 var pendingFormId=null, pendingTitle=null, pendingSrc=null;
 function openPreModal(formId, title, src) {
-  pendingFormId=formId; pendingTitle=title; pendingSrc=src;
-  document.getElementById('preModal').classList.add('open');
-  document.body.style.overflow='hidden';
+  openDrawer(formId, title, src);
 }
-function closePreModal() {
-  document.getElementById('preModal').classList.remove('open');
-  document.body.style.overflow='';
-  pendingFormId=pendingTitle=pendingSrc=null;
-}
-function launchDrawerFromModal() {
-  document.getElementById('preModal').classList.remove('open');
-  openDrawer(pendingFormId, pendingTitle, pendingSrc);
-}
+function closePreModal() {}
 
 /* ═══ DRAWER ═══ */
 var activeFormId=null;
@@ -692,12 +644,7 @@ function closeDrawer() {
   document.getElementById('drawer').classList.remove('open');
   document.getElementById('overlay').classList.remove('open');
   document.body.style.overflow='';
-  if (activeFormId) {
-    setTimeout(function(){
-      document.getElementById('confirmModal').classList.add('open');
-      document.body.style.overflow='hidden';
-    }, 300);
-  }
+  activeFormId=null;
 }
 function iframeLoaded() {
   var f=document.getElementById('formIframe');
@@ -705,10 +652,7 @@ function iframeLoaded() {
 }
 
 /* ═══ CONFIRM MODAL ═══ */
-function closeConfirmModal() {
-  document.getElementById('confirmModal').classList.remove('open');
-  document.body.style.overflow='';
-}
+function closeConfirmModal() {}
 function confirmDone() {
   closeConfirmModal();
   if (!activeFormId) return;
@@ -747,10 +691,8 @@ function route() {
     setTimeout(confirmarEscalas,80);
     return;
   }
-  /* sin parámetros → s0 ya activo */
 }
-
-document.addEventListener('DOMContentLoaded', function(){ route(); });
+route();
 </script>
 </body>
 </html>
