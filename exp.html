@@ -5,466 +5,437 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>Expediente Clínico · Eutimya</title>
 <meta name="robots" content="noindex,nofollow"/>
-<link rel="icon" type="image/png" href="https://github.com/moymaa/drmoyapsiq/blob/main/logos%20acceso%20directos%20mac%20iconos.png?raw=true"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <style>
+/* ─────────────────── TOKENS ─────────────────── */
 :root {
-  --navy:     #0d1b2a;
-  --navy2:    #112240;
-  --rose:     #c0737a;
-  --rose-lt:  #d4949a;
-  --rose-bg:  rgba(192,115,122,.07);
-  --rose-bd:  rgba(192,115,122,.22);
-  --white:    #ffffff;
-  --cream:    #f5f3ef;
-  --text:     #111827;
-  --muted:    #6b7280;
-  --border:   rgba(0,0,0,.09);
-  --shadow:   0 2px 16px rgba(0,0,0,.06);
-  --green:    #16a34a;
-  --green-bg: rgba(22,163,74,.07);
-  --green-bd: rgba(22,163,74,.2);
+  --navy:    #0d1b2a;
+  --navy2:   #112240;
+  --rose:    #c0737a;
+  --rose-lt: #d4949a;
+  --rose-bg: rgba(192,115,122,.08);
+  --rose-bd: rgba(192,115,122,.22);
+  --white:   #ffffff;
+  --cream:   #f5f3ef;
+  --text:    #111827;
+  --muted:   #6b7280;
+  --border:  rgba(0,0,0,.09);
+  --green:   #16a34a;
+  --green-bg:rgba(22,163,74,.07);
+  --green-bd:rgba(22,163,74,.2);
+  --amber-bg:#fef3c7;
+  --amber-bd:rgba(234,179,8,.25);
+  --amber-tx:#92400e;
 }
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-html{-webkit-text-size-adjust:100%;}
-body{font-family:'DM Sans',system-ui,sans-serif;background:var(--white);color:var(--text);min-height:100vh;overflow-x:hidden;}
-a{color:inherit;text-decoration:none;}
-button{font-family:'DM Sans',sans-serif;cursor:pointer;border:none;background:none;}
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+html { -webkit-text-size-adjust:100%; }
+body {
+  font-family:'DM Sans',system-ui,sans-serif;
+  background:var(--white); color:var(--text);
+  min-height:100vh; overflow-x:hidden;
+}
+a { color:inherit; text-decoration:none; }
+button { font-family:inherit; cursor:pointer; border:none; background:none; }
 
-/* ── TOPBAR ── */
+/* ─────────────────── TOPBAR ─────────────────── */
 .topbar {
-  position:fixed;top:0;left:0;right:0;z-index:300;
-  height:56px;display:flex;align-items:center;justify-content:space-between;
+  position:fixed; top:0; left:0; right:0; z-index:200;
+  height:56px; display:flex; align-items:center; justify-content:space-between;
   padding:0 20px;
   background:rgba(255,255,255,.96);
-  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
   border-bottom:1px solid var(--border);
 }
-.topbar-logo{display:flex;align-items:center;gap:10px;}
-.topbar-logo img{height:26px;}
-.topbar-logo-label{font-size:12px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
-
+.topbar-logo { display:flex; align-items:center; gap:10px; text-decoration:none; }
+.topbar-logo img { height:26px; }
+.topbar-logo-label { font-size:12px; font-weight:500; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); }
 .btn-back {
-  display:none;align-items:center;gap:5px;
-  font-size:13px;font-weight:500;color:var(--muted);
-  transition:color .15s;
+  display:none; align-items:center; gap:5px;
+  font-size:13px; font-weight:500; color:var(--muted);
+  transition:color .15s; padding:6px 0;
 }
-.btn-back.show{display:flex;}
-.btn-back:hover{color:var(--text);}
-.btn-back svg{width:15px;height:15px;}
+.btn-back.show { display:flex; }
+.btn-back:hover { color:var(--text); }
+.btn-back svg { width:16px; height:16px; }
 
-/* ── SCREENS ── */
-.screen{display:none;padding-top:56px;}
-.screen.active{display:flex;flex-direction:column;}
+/* ─────────────────── CONTEXT BANNER ─────────────────── */
+.ctx-banner {
+  display:none; position:sticky; top:56px; z-index:100;
+  align-items:center; gap:10px;
+  padding:10px 20px; font-size:13px; font-weight:600;
+}
+.ctx-banner.show { display:flex; }
+.ctx-banner.navy { background:var(--navy); color:rgba(255,255,255,.85); }
+.ctx-banner.amber { background:var(--amber-bg); color:var(--amber-tx); border-bottom:1px solid var(--amber-bd); }
+.ctx-num {
+  width:22px; height:22px; border-radius:50%;
+  background:var(--rose); color:#fff;
+  display:flex; align-items:center; justify-content:center;
+  font-family:'Playfair Display',serif; font-size:12px; font-weight:700;
+  flex-shrink:0;
+}
 
-/* ── CENTER LAYOUT ── */
-.center{
-  flex:1;display:flex;align-items:center;justify-content:center;
+/* ─────────────────── SCREEN SYSTEM ─────────────────── */
+.screen { display:none; padding-top:56px; }
+.screen.active { display:block; }
+
+/* ─────────────────── SCREEN 0: SELECTOR ─────────────────── */
+.selector-wrap {
+  min-height:calc(100vh - 56px);
+  display:flex; align-items:center; justify-content:center;
   padding:40px 20px 60px;
 }
-.box{width:100%;max-width:520px;}
-
-/* ── TYPOGRAPHY ── */
+.selector-box { width:100%; max-width:520px; }
 .eyebrow {
-  font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--rose);margin-bottom:14px;
-  display:flex;align-items:center;gap:8px;
+  font-size:11px; font-weight:700; letter-spacing:.18em; text-transform:uppercase;
+  color:var(--rose); margin-bottom:14px;
+  display:flex; align-items:center; gap:8px;
 }
-.eyebrow::before{content:'';width:16px;height:1px;background:var(--rose);}
+.eyebrow::before { content:''; width:16px; height:1px; background:var(--rose); }
 .page-title {
   font-family:'Playfair Display',serif;
-  font-size:clamp(24px,5vw,34px);font-weight:700;
-  color:var(--navy);line-height:1.15;margin-bottom:10px;
+  font-size:clamp(24px,5vw,34px); font-weight:700;
+  color:var(--navy); line-height:1.15; margin-bottom:10px;
 }
-.page-desc{font-size:14px;font-weight:300;color:var(--muted);line-height:1.75;margin-bottom:28px;}
+.page-desc { font-size:14px; font-weight:300; color:var(--muted); line-height:1.75; margin-bottom:28px; }
 
-/* ── MAIN CHOICE CARDS ── */
-.choices{display:flex;flex-direction:column;gap:10px;}
-.choice {
-  display:flex;align-items:center;gap:14px;
+.choices { display:flex; flex-direction:column; gap:10px; }
+.choice-btn {
+  display:flex; align-items:center; gap:14px;
   padding:18px 20px;
-  background:var(--white);border:1.5px solid var(--border);
-  border-radius:14px;cursor:pointer;text-align:left;width:100%;
-  transition:border-color .18s,box-shadow .18s,transform .12s;
+  background:var(--white); border:1.5px solid var(--border);
+  border-radius:14px; cursor:pointer; text-align:left; width:100%;
+  transition:border-color .18s, box-shadow .18s, transform .12s;
 }
-.choice:hover{
+.choice-btn:hover {
   border-color:var(--rose);
   box-shadow:0 4px 20px rgba(192,115,122,.1);
   transform:translateY(-1px);
 }
-.choice-icon{
-  width:44px;height:44px;border-radius:12px;
+.choice-icon {
+  width:44px; height:44px; border-radius:12px;
   background:var(--rose-bg);
-  display:flex;align-items:center;justify-content:center;
-  font-size:20px;flex-shrink:0;
+  display:flex; align-items:center; justify-content:center;
+  font-size:20px; flex-shrink:0;
 }
-.choice-text{flex:1;}
-.choice-title{font-size:15px;font-weight:600;color:var(--text);margin-bottom:2px;}
-.choice-sub{font-size:12px;font-weight:300;color:var(--muted);line-height:1.5;}
-.choice-arrow{color:var(--rose);font-size:22px;flex-shrink:0;line-height:1;transition:transform .18s;}
-.choice:hover .choice-arrow{transform:translateX(3px);}
+.choice-text { flex:1; }
+.choice-title { font-size:15px; font-weight:600; color:var(--text); margin-bottom:2px; }
+.choice-sub { font-size:12px; font-weight:300; color:var(--muted); line-height:1.5; }
+.choice-arrow { color:var(--rose); font-size:22px; flex-shrink:0; transition:transform .18s; }
+.choice-btn:hover .choice-arrow { transform:translateX(3px); }
 
-/* ── SINGLE FORM SCREEN (primera vez / bariátrica) ── */
-.form-screen-inner{
-  flex:1;display:flex;flex-direction:column;
+/* ─────────────────── FORM SCREEN ─────────────────── */
+.form-hero {
+  background:var(--navy); padding:72px 20px 32px;
+  position:relative; overflow:hidden;
 }
-.form-hero{
-  background:var(--navy);padding:56px 20px 32px;
-  position:relative;overflow:hidden;flex-shrink:0;
-}
-.form-hero::before{
-  content:'';position:absolute;inset:0;
+.form-hero::before {
+  content:''; position:absolute; inset:0;
   background:radial-gradient(ellipse 60% 50% at 15% 30%, rgba(192,115,122,.13) 0%, transparent 55%);
 }
-.form-hero-inner{max-width:520px;margin:0 auto;position:relative;z-index:1;}
-.form-hero-tag{
-  display:inline-flex;align-items:center;gap:6px;
-  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);
-  border-radius:999px;padding:4px 12px;
-  font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
-  color:rgba(255,255,255,.5);margin-bottom:14px;
+.form-hero-inner { max-width:520px; margin:0 auto; position:relative; z-index:1; }
+.form-hero-tag {
+  display:inline-flex; align-items:center; gap:6px;
+  background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.12);
+  border-radius:999px; padding:4px 12px;
+  font-size:10px; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
+  color:rgba(255,255,255,.5); margin-bottom:14px;
 }
-.form-hero-title{
+.form-hero-title {
   font-family:'Playfair Display',serif;
-  font-size:clamp(20px,4vw,28px);font-weight:700;
-  color:var(--white);line-height:1.2;margin-bottom:6px;
+  font-size:clamp(20px,4vw,28px); font-weight:700;
+  color:var(--white); line-height:1.2; margin-bottom:6px;
 }
-.form-hero-sub{font-size:13px;font-weight:300;color:rgba(255,255,255,.55);line-height:1.65;}
+.form-hero-sub { font-size:13px; font-weight:300; color:rgba(255,255,255,.55); line-height:1.65; }
 
-.form-body{max-width:520px;margin:0 auto;padding:24px 20px 60px;width:100%;}
+.form-body { max-width:520px; margin:0 auto; padding:24px 20px 48px; }
 
-.time-row{
-  display:flex;align-items:center;gap:10px;
-  background:var(--cream);border:1px solid var(--border);
-  border-radius:10px;padding:12px 16px;margin-bottom:20px;
+.time-row {
+  display:flex; align-items:center; gap:10px;
+  background:var(--cream); border:1px solid var(--border);
+  border-radius:10px; padding:12px 16px; margin-bottom:20px;
 }
-.time-row span{font-size:18px;flex-shrink:0;}
-.time-row p{font-size:13px;color:var(--muted);line-height:1.5;}
-.time-row strong{color:var(--text);font-weight:600;}
+.time-row .ti { font-size:18px; flex-shrink:0; }
+.time-row p { font-size:13px; color:var(--muted); line-height:1.5; }
+.time-row strong { color:var(--text); font-weight:600; }
 
-/* Single card */
-.solo-card{
-  background:var(--white);border:1.5px solid var(--border);
-  border-radius:14px;overflow:hidden;
-  box-shadow:var(--shadow);
+/* ─────────────────── FORM CARDS ─────────────────── */
+.cards-stack { display:flex; flex-direction:column; gap:10px; }
+
+.fcard {
+  background:var(--white); border:1.5px solid var(--border);
+  border-radius:14px; overflow:hidden;
   transition:border-color .2s;
 }
-.solo-card.done-state{border-color:var(--green-bd);}
+.fcard.done { border-color:var(--green-bd); }
 
-.sc-body{padding:20px;}
-.sc-title{font-size:16px;font-weight:600;color:var(--text);margin-bottom:4px;}
-.sc-sub{font-size:13px;font-weight:300;color:var(--muted);line-height:1.55;margin-bottom:14px;}
-.sc-pills{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:16px;}
-.sc-pill{
-  font-size:11px;font-weight:500;color:var(--rose);
-  background:var(--rose-bg);border:1px solid var(--rose-bd);
-  padding:2px 9px;border-radius:999px;
-}
-.solo-card.done-state .sc-pill{color:var(--green);background:var(--green-bg);border-color:var(--green-bd);}
-
-.sc-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
-.btn-open{
-  display:inline-flex;align-items:center;gap:7px;
-  background:var(--navy);color:var(--white);
-  padding:10px 20px;border-radius:8px;
-  font-size:13px;font-weight:600;transition:background .15s,transform .12s;
-}
-.btn-open:hover{background:var(--navy2);transform:translateY(-1px);}
-.solo-card.done-state .btn-open{background:var(--muted);}
-.btn-check{
-  display:inline-flex;align-items:center;gap:6px;
-  border:1.5px solid var(--border);background:var(--white);
-  color:var(--muted);padding:9px 14px;border-radius:8px;
-  font-size:12px;font-weight:500;transition:all .15s;
-}
-.btn-check:hover{border-color:var(--green);color:var(--green);background:var(--green-bg);}
-.solo-card.done-state .btn-check{
-  background:var(--green-bg);border-color:var(--green-bd);color:var(--green);
-  font-weight:600;pointer-events:none;
-}
-.btn-undo{
-  margin-left:auto;font-size:11px;color:var(--muted);
-  text-decoration:underline;text-underline-offset:3px;
-  transition:color .15s;
-}
-.btn-undo:hover{color:var(--text);}
-.btn-undo.hidden{display:none;}
-
-/* ── ESCALAS SCREEN (multi-select then show forms) ── */
-.escalas-select-wrap{}
-.select-note{
-  display:flex;align-items:flex-start;gap:10px;
-  background:#fffbeb;border:1px solid rgba(234,179,8,.22);
-  border-radius:10px;padding:12px 15px;margin-bottom:20px;
-}
-.select-note span{font-size:17px;flex-shrink:0;}
-.select-note p{font-size:13px;color:#92400e;line-height:1.6;}
-.select-note strong{font-weight:600;}
-
-.escala-toggles{display:flex;flex-direction:column;gap:8px;margin-bottom:20px;}
-.escala-toggle{
-  display:flex;align-items:flex-start;gap:12px;
-  padding:16px;border-radius:12px;
-  border:1.5px solid var(--border);background:var(--white);
-  cursor:pointer;text-align:left;width:100%;
-  transition:border-color .15s,background .15s;
-}
-.escala-toggle:hover{border-color:var(--rose-bd);background:var(--rose-bg);}
-.escala-toggle.selected{border-color:var(--rose);background:var(--rose-bg);}
-.et-check{
-  width:20px;height:20px;border-radius:5px;
-  border:2px solid var(--border);background:var(--white);
-  display:flex;align-items:center;justify-content:center;
-  flex-shrink:0;margin-top:1px;transition:all .15s;
-}
-.escala-toggle.selected .et-check{
-  background:var(--rose);border-color:var(--rose);color:#fff;
-}
-.et-check-mark{display:none;font-size:12px;color:#fff;}
-.escala-toggle.selected .et-check-mark{display:block;}
-.et-text{flex:1;}
-.et-title{font-size:14px;font-weight:600;color:var(--text);margin-bottom:2px;}
-.et-sub{font-size:12px;font-weight:300;color:var(--muted);line-height:1.5;}
-
-.btn-confirm{
-  display:flex;align-items:center;justify-content:center;gap:8px;
-  width:100%;padding:14px;border-radius:10px;
-  background:var(--navy);color:var(--white);
-  font-size:14px;font-weight:600;
-  transition:background .15s,opacity .15s;
-}
-.btn-confirm:hover{background:var(--navy2);}
-.btn-confirm:disabled{opacity:.4;cursor:not-allowed;}
-
-/* multi-form cards */
-.multi-cards{display:flex;flex-direction:column;gap:10px;}
-.m-card{
-  background:var(--white);border:1.5px solid var(--border);
-  border-radius:14px;overflow:hidden;transition:border-color .2s;
-}
-.m-card.done-state{border-color:var(--green-bd);}
-.mc-head{display:flex;align-items:center;gap:12px;padding:16px 18px;}
-.mc-num{
-  width:32px;height:32px;border-radius:50%;
+.fcard-head { display:flex; align-items:center; gap:12px; padding:16px 18px; }
+.fcard-num {
+  width:34px; height:34px; border-radius:50%;
   border:2px solid var(--rose);
-  display:flex;align-items:center;justify-content:center;
-  font-family:'Playfair Display',serif;font-size:13px;font-weight:700;color:var(--rose);
-  flex-shrink:0;transition:all .2s;
+  display:flex; align-items:center; justify-content:center;
+  font-family:'Playfair Display',serif; font-size:13px; font-weight:700; color:var(--rose);
+  flex-shrink:0; transition:all .2s;
 }
-.m-card.done-state .mc-num{
-  background:var(--green);border-color:var(--green);
-  color:#fff;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:400;
+.fcard.done .fcard-num {
+  background:var(--green); border-color:var(--green);
+  color:#fff; font-family:'DM Sans',sans-serif; font-size:16px; font-weight:400;
 }
-.mc-info{flex:1;}
-.mc-title{font-size:14px;font-weight:600;color:var(--text);margin-bottom:2px;}
-.mc-sub{font-size:12px;font-weight:300;color:var(--muted);}
-.mc-pills{display:flex;flex-wrap:wrap;gap:5px;padding:0 18px 14px 62px;}
-.mc-pill{
-  font-size:11px;font-weight:500;color:var(--rose);
-  background:var(--rose-bg);border:1px solid var(--rose-bd);
-  padding:2px 8px;border-radius:999px;
+.fcard-info { flex:1; }
+.fcard-title { font-size:14px; font-weight:600; color:var(--text); margin-bottom:2px; }
+.fcard-sub { font-size:12px; font-weight:300; color:var(--muted); }
+
+.fcard-pills { display:flex; flex-wrap:wrap; gap:5px; padding:0 18px 14px 64px; }
+.fcard-pill {
+  font-size:11px; font-weight:500; color:var(--rose);
+  background:var(--rose-bg); border:1px solid var(--rose-bd);
+  padding:2px 8px; border-radius:999px;
 }
-.m-card.done-state .mc-pill{color:var(--green);background:var(--green-bg);border-color:var(--green-bd);}
-.mc-actions{
-  display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+.fcard.done .fcard-pill { color:var(--green); background:var(--green-bg); border-color:var(--green-bd); }
+
+.fcard-actions {
+  display:flex; align-items:center; gap:8px; flex-wrap:wrap;
   padding:12px 18px;
-  background:rgba(0,0,0,.015);border-top:1px solid var(--border);
+  background:rgba(0,0,0,.015); border-top:1px solid var(--border);
 }
-.m-card.done-state .mc-actions{background:var(--green-bg);}
+.fcard.done .fcard-actions { background:var(--green-bg); }
 
-/* ── DONE BANNER ── */
-.done-banner{
+.btn-fill {
+  display:inline-flex; align-items:center; gap:7px;
+  background:var(--navy); color:#fff;
+  padding:10px 18px; border-radius:8px;
+  font-size:13px; font-weight:600;
+  transition:background .15s, transform .12s;
+}
+.btn-fill:hover { background:var(--navy2); transform:translateY(-1px); }
+.fcard.done .btn-fill { background:var(--muted); }
+
+.btn-check {
+  display:inline-flex; align-items:center; gap:6px;
+  border:1.5px solid var(--border); background:var(--white);
+  color:var(--muted); padding:9px 14px; border-radius:8px;
+  font-size:12px; font-weight:500; transition:all .15s;
+}
+.btn-check:hover { border-color:var(--green); color:var(--green); background:var(--green-bg); }
+.fcard.done .btn-check {
+  background:var(--green-bg); border-color:var(--green-bd);
+  color:var(--green); font-weight:600; pointer-events:none;
+}
+.btn-undo {
+  margin-left:auto; font-size:11px; color:var(--muted);
+  text-decoration:underline; text-underline-offset:3px; transition:color .15s;
+}
+.btn-undo:hover { color:var(--text); }
+.btn-undo[hidden] { display:none; }
+
+/* ─────────────────── ESCALAS SELECTOR ─────────────────── */
+.select-note {
+  display:flex; align-items:flex-start; gap:10px;
+  background:var(--amber-bg); border:1px solid var(--amber-bd);
+  border-radius:10px; padding:12px 15px; margin-bottom:18px;
+}
+.select-note .ni { font-size:17px; flex-shrink:0; }
+.select-note p { font-size:13px; color:var(--amber-tx); line-height:1.6; }
+.select-note strong { font-weight:600; }
+
+.toggle-list { display:flex; flex-direction:column; gap:8px; margin-bottom:20px; }
+.escala-toggle {
+  display:flex; align-items:flex-start; gap:12px;
+  padding:14px 16px; border-radius:12px;
+  border:1.5px solid var(--border); background:var(--white);
+  cursor:pointer; text-align:left; width:100%;
+  transition:border-color .15s, background .15s;
+}
+.escala-toggle:hover { border-color:var(--rose-bd); background:var(--rose-bg); }
+.escala-toggle.on { border-color:var(--rose); background:var(--rose-bg); }
+.et-box {
+  width:20px; height:20px; border-radius:5px;
+  border:2px solid var(--border); background:var(--white);
+  display:flex; align-items:center; justify-content:center;
+  flex-shrink:0; margin-top:1px; transition:all .15s;
+  font-size:12px; color:#fff;
+}
+.escala-toggle.on .et-box { background:var(--rose); border-color:var(--rose); }
+.et-body { flex:1; }
+.et-title { font-size:14px; font-weight:600; color:var(--text); margin-bottom:2px; }
+.et-sub { font-size:12px; font-weight:300; color:var(--muted); line-height:1.5; }
+
+.btn-confirmar {
+  width:100%; padding:14px; border-radius:10px;
+  background:var(--navy); color:#fff;
+  font-size:14px; font-weight:600;
+  transition:background .15s, opacity .15s;
+}
+.btn-confirmar:hover { background:var(--navy2); }
+.btn-confirmar:disabled { opacity:.35; cursor:not-allowed; }
+
+/* ─────────────────── DONE BANNER ─────────────────── */
+.done-banner {
   display:none;
-  background:var(--green-bg);border:1.5px solid var(--green-bd);
-  border-radius:16px;padding:28px 24px;text-align:center;
-  margin-top:16px;animation:fadeIn .4s ease;
+  background:var(--green-bg); border:1.5px solid var(--green-bd);
+  border-radius:16px; padding:28px 24px; text-align:center;
+  margin-top:16px; animation:fadeIn .4s ease;
 }
-.done-banner.show{display:block;}
-.done-icon{font-size:44px;margin-bottom:12px;}
-.done-title{
+.done-banner.show { display:block; }
+.done-emoji { font-size:44px; margin-bottom:12px; }
+.done-title {
   font-family:'Playfair Display',serif;
-  font-size:20px;font-weight:700;color:var(--green);margin-bottom:10px;
+  font-size:20px; font-weight:700; color:var(--green); margin-bottom:10px;
 }
-.done-text{font-size:14px;font-weight:300;color:var(--muted);line-height:1.75;margin-bottom:20px;}
-.done-wa{
-  display:inline-flex;align-items:center;gap:8px;
-  background:#25D366;color:#fff;
-  padding:12px 24px;border-radius:10px;
-  font-size:14px;font-weight:600;transition:background .15s;
+.done-text { font-size:14px; font-weight:300; color:var(--muted); line-height:1.75; margin-bottom:20px; }
+.done-wa {
+  display:inline-flex; align-items:center; gap:8px;
+  background:#25D366; color:#fff;
+  padding:12px 24px; border-radius:10px;
+  font-size:14px; font-weight:600; transition:background .15s;
 }
-.done-wa:hover{background:#22c35e;}
+.done-wa:hover { background:#22c35e; }
 
-/* ── DRAWER ── */
-.overlay{
-  position:fixed;inset:0;z-index:500;
+/* ─────────────────── DRAWER ─────────────────── */
+.overlay {
+  position:fixed; inset:0; z-index:500;
   background:rgba(8,14,22,.72);
-  backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);
-  opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s;
+  backdrop-filter:blur(5px); -webkit-backdrop-filter:blur(5px);
+  opacity:0; visibility:hidden;
+  transition:opacity .3s, visibility .3s;
 }
-.overlay.open{opacity:1;visibility:visible;}
-.drawer{
-  position:fixed;top:0;right:0;bottom:0;z-index:501;
-  width:min(680px,100vw);background:var(--white);
-  display:flex;flex-direction:column;
+.overlay.open { opacity:1; visibility:visible; }
+
+.drawer {
+  position:fixed; top:0; right:0; bottom:0; z-index:501;
+  width:min(680px, 100vw); background:var(--white);
+  display:flex; flex-direction:column;
   transform:translateX(102%);
   transition:transform .38s cubic-bezier(.22,.9,.3,1);
   box-shadow:-16px 0 48px rgba(0,0,0,.18);
 }
-.drawer.open{transform:translateX(0);}
-.dw-head{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:14px 18px;background:var(--navy);
-  border-bottom:1px solid rgba(255,255,255,.06);flex-shrink:0;
+.drawer.open { transform:translateX(0); }
+
+.dw-head {
+  display:flex; align-items:center; justify-content:space-between;
+  padding:14px 18px; background:var(--navy);
+  border-bottom:1px solid rgba(255,255,255,.06); flex-shrink:0;
 }
-.dw-info{display:flex;flex-direction:column;gap:2px;}
-.dw-label{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--rose-lt);}
-.dw-title{font-family:'Playfair Display',serif;font-size:16px;font-weight:600;color:var(--white);}
-.dw-x{
-  width:34px;height:34px;border-radius:50%;
-  border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.07);
-  color:rgba(255,255,255,.7);font-size:20px;line-height:1;
-  display:flex;align-items:center;justify-content:center;
-  transition:background .15s;flex-shrink:0;
+.dw-info { display:flex; flex-direction:column; gap:2px; }
+.dw-label { font-size:10px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--rose-lt); }
+.dw-title { font-family:'Playfair Display',serif; font-size:16px; font-weight:600; color:#fff; }
+.dw-close {
+  width:34px; height:34px; border-radius:50%;
+  border:1px solid rgba(255,255,255,.15); background:rgba(255,255,255,.07);
+  color:rgba(255,255,255,.7); font-size:20px; line-height:1;
+  display:flex; align-items:center; justify-content:center;
+  transition:background .15s; flex-shrink:0;
 }
-.dw-x:hover{background:rgba(255,255,255,.15);}
-.dw-body{flex:1;overflow:hidden;position:relative;}
-.dw-body iframe{width:100%;height:100%;border:none;display:block;}
-.loader{
-  position:absolute;inset:0;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  gap:14px;background:var(--white);z-index:2;transition:opacity .35s;
+.dw-close:hover { background:rgba(255,255,255,.15); }
+
+.dw-body { flex:1; overflow:hidden; position:relative; }
+.dw-body iframe { width:100%; height:100%; border:none; display:block; }
+.dw-loader {
+  position:absolute; inset:0; z-index:2; background:var(--white);
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px;
+  transition:opacity .35s;
 }
-.loader.hidden{opacity:0;pointer-events:none;}
-.spinner{
-  width:32px;height:32px;
-  border:3px solid rgba(192,115,122,.15);border-top-color:var(--rose);
-  border-radius:50%;animation:spin .8s linear infinite;
+.dw-loader.hidden { opacity:0; pointer-events:none; }
+.spinner {
+  width:32px; height:32px;
+  border:3px solid rgba(192,115,122,.15); border-top-color:var(--rose);
+  border-radius:50%; animation:spin .8s linear infinite;
 }
-@keyframes spin{to{transform:rotate(360deg);}}
-.loader p{font-size:13px;color:var(--muted);}
-.dw-foot{
-  padding:12px 18px;background:var(--white);
-  border-top:1px solid var(--border);flex-shrink:0;
-  display:flex;gap:10px;
+@keyframes spin { to { transform:rotate(360deg); } }
+.dw-loader p { font-size:13px; color:var(--muted); }
+
+.dw-foot {
+  padding:12px 18px; background:var(--white);
+  border-top:1px solid var(--border); flex-shrink:0;
+  display:flex; gap:10px;
 }
-.btn-dw-done{
-  display:inline-flex;align-items:center;gap:7px;
-  background:var(--green);color:#fff;
-  padding:11px 20px;border-radius:8px;font-size:13px;font-weight:600;
+.btn-dw-done {
+  display:inline-flex; align-items:center; gap:7px;
+  background:var(--green); color:#fff;
+  padding:11px 20px; border-radius:8px; font-size:13px; font-weight:600;
   transition:background .15s;
 }
-.btn-dw-done:hover{background:#15803d;}
-.btn-dw-back{
-  display:inline-flex;align-items:center;gap:6px;
-  border:1.5px solid var(--border);color:var(--muted);
-  padding:10px 16px;border-radius:8px;font-size:13px;font-weight:500;
-  background:var(--white);transition:all .15s;
+.btn-dw-done:hover { background:#15803d; }
+.btn-dw-close {
+  display:inline-flex; align-items:center; gap:6px;
+  border:1.5px solid var(--border); color:var(--muted);
+  padding:10px 16px; border-radius:8px; font-size:13px; font-weight:500;
+  background:var(--white); transition:all .15s;
 }
-.btn-dw-back:hover{border-color:var(--navy);color:var(--navy);}
+.btn-dw-close:hover { border-color:var(--navy); color:var(--navy); }
 
-/* ── KEYFRAMES ── */
-@keyframes fadeIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
-
-/* ── RESPONSIVE ── */
-@media(max-width:480px){
-  .topbar-logo-label{display:none;}
-  .dw-body{} /* full width already */
+/* ─────────────────── FOOTER ─────────────────── */
+.site-footer {
+  background:var(--white); border-top:1px solid var(--border);
+  padding:48px 20px 32px;
 }
-
-/* ── FOOTER ── */
-.site-footer{
-  background:var(--white);border-top:1px solid var(--border);
-  padding:48px 20px 32px;margin-top:auto;
+.footer-inner { max-width:520px; margin:0 auto; }
+.footer-logo-wrap { margin-bottom:24px; }
+.footer-logo-wrap img { width:52px; height:52px; object-fit:contain; }
+.footer-cols { display:flex; gap:40px; flex-wrap:wrap; margin-bottom:24px; }
+.footer-col h4 {
+  font-size:11px; font-weight:800; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--text); margin-bottom:12px;
 }
-.footer-inner{max-width:520px;margin:0 auto;}
-.footer-top{display:flex;flex-direction:column;gap:24px;margin-bottom:28px;}
-.footer-logo-wrap{
-  width:52px;height:52px;flex-shrink:0;
+.footer-links { display:flex; flex-direction:column; gap:7px; }
+.footer-links a {
+  font-size:14px; color:var(--muted);
+  text-decoration:underline; text-underline-offset:3px; transition:color .15s;
 }
-.footer-logo-wrap img{width:52px;height:52px;object-fit:contain;}
-.footer-cols{display:flex;gap:40px;flex-wrap:wrap;}
-.footer-col h4{
-  font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--text);margin-bottom:12px;
+.footer-links a:hover { color:var(--text); }
+.footer-social {
+  display:flex; gap:12px; padding-top:20px;
+  border-top:1px solid var(--border); margin-bottom:20px;
 }
-.footer-links{display:flex;flex-direction:column;gap:7px;}
-.footer-links a{
-  font-size:14px;color:var(--muted);
-  text-decoration:underline;text-underline-offset:3px;transition:color .15s;
-}
-.footer-links a:hover{color:var(--text);}
-.footer-social{display:flex;gap:12px;margin-top:28px;padding-top:20px;border-top:1px solid var(--border);}
-.soc{
-  width:40px;height:40px;border-radius:50%;
+.soc {
+  width:40px; height:40px; border-radius:50%;
   border:1px solid var(--border);
-  display:flex;align-items:center;justify-content:center;
-  transition:border-color .15s,box-shadow .15s;text-decoration:none;
+  display:flex; align-items:center; justify-content:center;
+  transition:border-color .15s, box-shadow .15s; text-decoration:none;
 }
-.soc:hover{border-color:rgba(0,0,0,.25);box-shadow:0 2px 8px rgba(0,0,0,.07);}
-.soc svg{width:20px;height:20px;fill:none;stroke:rgba(0,0,0,.65);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
-.footer-legal{
-  margin-top:20px;padding-top:16px;border-top:1px solid var(--border);
-  font-size:12px;color:var(--muted);line-height:1.65;
-}
-.footer-legal a{color:var(--muted);text-decoration:underline;text-underline-offset:3px;}
-@media(max-width:480px){
-  .footer-top{flex-wrap:wrap;gap:20px;}
-  .footer-cols{gap:24px;}
-}
+.soc:hover { border-color:rgba(0,0,0,.25); box-shadow:0 2px 8px rgba(0,0,0,.07); }
+.soc svg { width:20px; height:20px; fill:none; stroke:rgba(0,0,0,.65); stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+.footer-legal { font-size:12px; color:var(--muted); line-height:1.65; }
+.footer-legal a { color:var(--muted); text-decoration:underline; text-underline-offset:3px; }
 
-
-/* ── CONTEXT BANNER ── */
-.context-banner {
-  display:none;align-items:center;gap:10px;
-  padding:10px 20px;
-  font-size:13px;font-weight:600;
-  flex-shrink:0;position:sticky;top:56px;z-index:100;
+/* ─────────────────── UTILS ─────────────────── */
+@keyframes fadeIn { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
+@media(max-width:480px) {
+  .topbar-logo-label { display:none; }
+  .footer-cols { gap:24px; }
 }
-.banner-navy{background:var(--navy);color:rgba(255,255,255,.85);}
-.banner-amber{background:#fef3c7;color:#92400e;border-bottom:1px solid rgba(234,179,8,.25);}
-.cb-icon{font-size:14px;flex-shrink:0;}
-.cb-circle{
-  width:22px;height:22px;border-radius:50%;
-  background:var(--rose);color:#fff;
-  display:flex;align-items:center;justify-content:center;
-  font-family:'Playfair Display',serif;font-size:12px;font-weight:700;
-  flex-shrink:0;
-}
-
 </style>
 </head>
 <body>
 
-<!-- ── TOPBAR ── -->
+<!-- TOPBAR -->
 <header class="topbar">
   <a href="https://www.eutimya.org/" class="topbar-logo">
     <img src="https://raw.githubusercontent.com/moymaa/drmoyapsiq/main/unnamed.png" alt="Eutimya"/>
     <span class="topbar-logo-label">Eutimya · Expediente</span>
   </a>
-  <button class="btn-back" id="backBtn" onclick="goBack()">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-      <polyline points="15 18 9 12 15 6"/>
-    </svg>
+  <button class="btn-back" id="btnBack" onclick="goBack()">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
     Regresar
   </button>
 </header>
 
-<div class="context-banner" id="contextBanner"></div>
+<!-- CONTEXT BANNER -->
+<div class="ctx-banner" id="ctxBanner"></div>
 
-<!-- ════════════════════════════
-  SCREEN 0 — INICIO
-════════════════════════════ -->
+<!-- ═══════════════════════════════════════
+  SCREEN 0 — SELECTOR
+═══════════════════════════════════════ -->
 <div class="screen active" id="s0">
-  <div class="center">
-    <div class="box">
+  <div class="selector-wrap">
+    <div class="selector-box">
       <p class="eyebrow">Eutimya · Formularios</p>
       <h1 class="page-title">¿Qué formulario necesitas?</h1>
       <p class="page-desc">Selecciona la opción que tu médico te indicó o que corresponde a tu situación.</p>
-
       <div class="choices">
-        <button class="choice" onclick="goTo('s-primera')">
+        <button class="choice-btn" onclick="showScreen('s-primera')">
           <div class="choice-icon">📋</div>
           <div class="choice-text">
             <p class="choice-title">Expediente de primera vez</p>
@@ -472,8 +443,7 @@ button{font-family:'DM Sans',sans-serif;cursor:pointer;border:none;background:no
           </div>
           <span class="choice-arrow">›</span>
         </button>
-
-        <button class="choice" onclick="goTo('s-bariatrica')">
+        <button class="choice-btn" onclick="showScreen('s-bariatrica')">
           <div class="choice-icon">⚕️</div>
           <div class="choice-text">
             <p class="choice-title">Protocolo de cirugía bariátrica</p>
@@ -481,8 +451,7 @@ button{font-family:'DM Sans',sans-serif;cursor:pointer;border:none;background:no
           </div>
           <span class="choice-arrow">›</span>
         </button>
-
-        <button class="choice" onclick="goTo('s-escalas')">
+        <button class="choice-btn" onclick="showScreen('s-escalas')">
           <div class="choice-icon">📊</div>
           <div class="choice-text">
             <p class="choice-title">Escalas indicadas por médico</p>
@@ -492,576 +461,283 @@ button{font-family:'DM Sans',sans-serif;cursor:pointer;border:none;background:no
         </button>
       </div>
     </div>
+  </div>
 </div>
 
-<!-- ════════════════════════════
-  SCREEN — EXPEDIENTE PRIMERA VEZ
-════════════════════════════ -->
+<!-- ═══════════════════════════════════════
+  SCREEN — PRIMERA VEZ
+═══════════════════════════════════════ -->
 <div class="screen" id="s-primera">
-  <div class="form-screen-inner">
-    <div class="form-hero">
-      <div class="form-hero-inner">
-        <div class="form-hero-tag">📋 Primera vez</div>
-        <h2 class="form-hero-title">Expediente de primera vez</h2>
-        <p class="form-hero-sub">Historia clínica, datos de identificación y escalas de tamizaje iniciales</p>
-      </div>
+  <div class="form-hero">
+    <div class="form-hero-inner">
+      <div class="form-hero-tag">📋 Primera vez</div>
+      <h2 class="form-hero-title">Expediente de primera vez</h2>
+      <p class="form-hero-sub">Historia clínica, datos de identificación y escalas de tamizaje iniciales</p>
     </div>
-    <div class="form-body">
-      <div class="time-row">
-        <span>⏱</span>
-        <p><strong>~15–20 minutos.</strong> Puedes tomar descansos. Google guarda tu progreso si inicias sesión.</p>
-      </div>
-      <div class="solo-card" id="card-pv">
-        <div class="sc-body">
-          <p class="sc-title">Expediente clínico de primera vez</p>
-          <p class="sc-sub">Incluye datos de identificación, motivo de consulta, antecedentes personales y familiares, medicamentos actuales y escalas de tamizaje generales.</p>
-          <div class="sc-pills">
-            <span class="sc-pill">PHQ-9</span>
-            <span class="sc-pill">GAD-7</span>
-            <span class="sc-pill">ISI</span>
-            <span class="sc-pill">~15–20 min</span>
-          </div>
-          <div class="sc-actions">
-            <button class="btn-open" onclick="openDrawer('pv','Expediente de primera vez','https://docs.google.com/forms/d/e/1FAIpQLSeU7vGbVJSEUdM2av0zKSbLUAHuP-F1KSSKyR0CYzvz0xHybw/viewform?embedded=true')">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-              Llenar formulario
-            </button>
-            <button class="btn-check" id="check-pv" onclick="markSoloDone('pv')">✓ Ya lo completé</button>
-            <button class="btn-undo hidden" id="undo-pv" onclick="undoSoloDone('pv','Expediente de primera vez')">Desmarcar</button>
+  </div>
+  <div class="form-body">
+    <div class="time-row">
+      <span class="ti">⏱</span>
+      <p><strong>~15–20 minutos.</strong> Google guarda tu progreso si tienes sesión iniciada.</p>
+    </div>
+    <div class="cards-stack">
+      <div class="fcard" id="fc-pv">
+        <div class="fcard-head">
+          <div class="fcard-num" id="fn-pv">1</div>
+          <div class="fcard-info">
+            <p class="fcard-title">Expediente clínico de primera vez</p>
+            <p class="fcard-sub">Datos de identificación, antecedentes, medicamentos y escalas generales</p>
           </div>
         </div>
+        <div class="fcard-pills">
+          <span class="fcard-pill">PHQ-9</span>
+          <span class="fcard-pill">GAD-7</span>
+          <span class="fcard-pill">ISI</span>
+          <span class="fcard-pill">~15–20 min</span>
+        </div>
+        <div class="fcard-actions">
+          <button class="btn-fill" onclick="openDrawer('pv','Expediente de primera vez','https://docs.google.com/forms/d/e/1FAIpQLSeU7vGbVJSEUdM2av0zKSbLUAHuP-F1KSSKyR0CYzvz0xHybw/viewform?embedded=true')">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            Llenar formulario
+          </button>
+          <button class="btn-check" id="bc-pv" onclick="markDone('pv',['pv'],'done-pv')">✓ Ya lo completé</button>
+          <button class="btn-undo" id="bu-pv" hidden onclick="undoDone('pv','1','done-pv')">Desmarcar</button>
+        </div>
       </div>
-      <div class="done-banner" id="done-pv">
-        <div class="done-icon">🎉</div>
-        <p class="done-title">¡Muchas gracias!</p>
-        <p class="done-text">Hemos recibido tu expediente. Puedes informar a tu médico que ya lo completaste.</p>
-        <a href="https://wa.me/526731205121" class="done-wa" target="_blank" rel="noopener">💬 WhatsApp</a>
-      </div>
+    </div>
+    <div class="done-banner" id="done-pv">
+      <div class="done-emoji">🎉</div>
+      <p class="done-title">¡Muchas gracias!</p>
+      <p class="done-text">Hemos recibido tu expediente. Puedes informar a tu médico que ya lo completaste.</p>
+      <a href="https://wa.me/526731205121" class="done-wa" target="_blank" rel="noopener">💬 WhatsApp</a>
     </div>
   </div>
 </div>
 
-<!-- ════════════════════════════
-  SCREEN — BARIÁTRICA
-════════════════════════════ -->
+<!-- ═══════════════════════════════════════
+  SCREEN — BARIÁTRICA (protocolo standalone)
+═══════════════════════════════════════ -->
 <div class="screen" id="s-bariatrica">
-  <div class="form-screen-inner">
-    <div class="form-hero">
-      <div class="form-hero-inner">
-        <div class="form-hero-tag">⚕️ Protocolo</div>
-        <h2 class="form-hero-title">Protocolo de cirugía bariátrica</h2>
-        <p class="form-hero-sub">Evaluación psiquiátrica para protocolo pre y postoperatorio</p>
-      </div>
+  <div class="form-hero">
+    <div class="form-hero-inner">
+      <div class="form-hero-tag">⚕️ Protocolo</div>
+      <h2 class="form-hero-title">Protocolo de cirugía bariátrica</h2>
+      <p class="form-hero-sub">Evaluación psiquiátrica pre y postoperatoria</p>
     </div>
-    <div class="form-body">
-      <div class="time-row">
-        <span>⏱</span>
-        <p><strong>~12–15 minutos.</strong> Completa con toda la información disponible; si no recuerdas algún dato puedes dejarlo en blanco.</p>
-      </div>
-      <div class="solo-card" id="card-bari">
-        <div class="sc-body">
-          <p class="sc-title">Evaluación psiquiátrica · Cirugía bariátrica</p>
-          <p class="sc-sub">Incluye historia clínica general, antecedentes quirúrgicos, hábitos alimentarios, evaluación del estado de ánimo y escalas específicas para conducta alimentaria.</p>
-          <div class="sc-pills">
-            <span class="sc-pill">EAT-26</span>
-            <span class="sc-pill">BES</span>
-            <span class="sc-pill">~12–15 min</span>
-          </div>
-          <div class="sc-actions">
-            <button class="btn-open" onclick="openDrawer('bari','Protocolo de cirugía bariátrica','https://docs.google.com/forms/d/e/1FAIpQLSdx-zY35ZlAmlzIvIqBoVpGa4EoiYXl4TtLN1nA36xkURwWVg/viewform?embedded=true')">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-              Llenar formulario
-            </button>
-            <button class="btn-check" id="check-bari" onclick="markSoloDone('bari')">✓ Ya lo completé</button>
-            <button class="btn-undo hidden" id="undo-bari" onclick="undoSoloDone('bari','Protocolo de cirugía bariátrica')">Desmarcar</button>
+  </div>
+  <div class="form-body">
+    <div class="time-row">
+      <span class="ti">⏱</span>
+      <p><strong>~12–15 minutos.</strong> Si no recuerdas algún dato puedes dejarlo en blanco.</p>
+    </div>
+    <div class="cards-stack">
+      <div class="fcard" id="fc-bari">
+        <div class="fcard-head">
+          <div class="fcard-num" id="fn-bari">1</div>
+          <div class="fcard-info">
+            <p class="fcard-title">Evaluación psiquiátrica · Cirugía bariátrica</p>
+            <p class="fcard-sub">Historia clínica, hábitos alimentarios y escalas específicas</p>
           </div>
         </div>
+        <div class="fcard-pills">
+          <span class="fcard-pill">EAT-26</span>
+          <span class="fcard-pill">BES</span>
+          <span class="fcard-pill">~12–15 min</span>
+        </div>
+        <div class="fcard-actions">
+          <button class="btn-fill" onclick="openDrawer('bari','Protocolo de cirugía bariátrica','https://docs.google.com/forms/d/e/1FAIpQLSdx-zY35ZlAmlzIvIqBoVpGa4EoiYXl4TtLN1nA36xkURwWVg/viewform?embedded=true')">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            Llenar formulario
+          </button>
+          <button class="btn-check" id="bc-bari" onclick="markDone('bari',['bari'],'done-bari')">✓ Ya lo completé</button>
+          <button class="btn-undo" id="bu-bari" hidden onclick="undoDone('bari','1','done-bari')">Desmarcar</button>
+        </div>
       </div>
-      <div class="done-banner" id="done-bari">
-        <div class="done-icon">🎉</div>
-        <p class="done-title">¡Muchas gracias!</p>
-        <p class="done-text">Hemos recibido tu evaluación. Puedes informar a tu médico que ya la completaste.</p>
-        <a href="https://wa.me/526731205121" class="done-wa" target="_blank" rel="noopener">💬 WhatsApp</a>
-      </div>
+    </div>
+    <div class="done-banner" id="done-bari">
+      <div class="done-emoji">🎉</div>
+      <p class="done-title">¡Muchas gracias!</p>
+      <p class="done-text">Hemos recibido tu evaluación. Puedes informar a tu médico que ya la completaste.</p>
+      <a href="https://wa.me/526731205121" class="done-wa" target="_blank" rel="noopener">💬 WhatsApp</a>
     </div>
   </div>
 </div>
 
-<!-- ════════════════════════════
-  SCREEN — ESCALAS
-════════════════════════════ -->
-<div class="screen" id="s-escalas">
-  <div class="form-screen-inner">
-    <div class="form-hero">
-      <div class="form-hero-inner">
-        <div class="form-hero-tag">📊 Escalas</div>
-        <h2 class="form-hero-title">Escalas indicadas por médico</h2>
-        <p class="form-hero-sub">Selecciona las que tu médico te indicó completar</p>
+<!-- ═══════════════════════════════════════
+  SCREEN — PRIMERA VEZ + BARIÁTRICA (combo)
+═══════════════════════════════════════ -->
+<div class="screen" id="s-combo-bari">
+  <div class="form-hero">
+    <div class="form-hero-inner">
+      <div class="form-hero-tag">⚕️ Protocolo completo</div>
+      <h2 class="form-hero-title">Expediente + Protocolo Bariátrica</h2>
+      <p class="form-hero-sub">Completa los dos formularios en el orden indicado</p>
+    </div>
+  </div>
+  <div class="form-body">
+    <div class="time-row">
+      <span class="ti">⏱</span>
+      <p><strong>~30–35 minutos en total.</strong> Puedes tomar descansos entre formularios.</p>
+    </div>
+    <div class="cards-stack">
+      <!-- Card 1 -->
+      <div class="fcard" id="fc-cb1">
+        <div class="fcard-head">
+          <div class="fcard-num" id="fn-cb1">1</div>
+          <div class="fcard-info">
+            <p class="fcard-title">Expediente de primera vez</p>
+            <p class="fcard-sub">Historia clínica, antecedentes y escalas generales</p>
+          </div>
+        </div>
+        <div class="fcard-pills">
+          <span class="fcard-pill">PHQ-9</span><span class="fcard-pill">GAD-7</span><span class="fcard-pill">~15 min</span>
+        </div>
+        <div class="fcard-actions">
+          <button class="btn-fill" onclick="openDrawer('cb1','Expediente de primera vez','https://docs.google.com/forms/d/e/1FAIpQLSeU7vGbVJSEUdM2av0zKSbLUAHuP-F1KSSKyR0CYzvz0xHybw/viewform?embedded=true')">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            Llenar formulario
+          </button>
+          <button class="btn-check" id="bc-cb1" onclick="markDone('cb1',['cb1','cb2'],'done-combo-bari')">✓ Ya lo completé</button>
+          <button class="btn-undo" id="bu-cb1" hidden onclick="undoDone('cb1','1','done-combo-bari')">Desmarcar</button>
+        </div>
+      </div>
+      <!-- Card 2 -->
+      <div class="fcard" id="fc-cb2">
+        <div class="fcard-head">
+          <div class="fcard-num" id="fn-cb2">2</div>
+          <div class="fcard-info">
+            <p class="fcard-title">Protocolo de cirugía bariátrica</p>
+            <p class="fcard-sub">Evaluación psiquiátrica, hábitos alimentarios y escalas específicas</p>
+          </div>
+        </div>
+        <div class="fcard-pills">
+          <span class="fcard-pill">EAT-26</span><span class="fcard-pill">BES</span><span class="fcard-pill">~12 min</span>
+        </div>
+        <div class="fcard-actions">
+          <button class="btn-fill" onclick="openDrawer('cb2','Protocolo de cirugía bariátrica','https://docs.google.com/forms/d/e/1FAIpQLSdx-zY35ZlAmlzIvIqBoVpGa4EoiYXl4TtLN1nA36xkURwWVg/viewform?embedded=true')">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            Llenar formulario
+          </button>
+          <button class="btn-check" id="bc-cb2" onclick="markDone('cb2',['cb1','cb2'],'done-combo-bari')">✓ Ya lo completé</button>
+          <button class="btn-undo" id="bu-cb2" hidden onclick="undoDone('cb2','2','done-combo-bari')">Desmarcar</button>
+        </div>
       </div>
     </div>
-    <div class="form-body">
+    <div class="done-banner" id="done-combo-bari">
+      <div class="done-emoji">🎉</div>
+      <p class="done-title">¡Muchas gracias!</p>
+      <p class="done-text">Hemos recibido los dos formularios. Puedes informar a tu médico que ya los completaste.</p>
+      <a href="https://wa.me/526731205121" class="done-wa" target="_blank" rel="noopener">💬 WhatsApp</a>
+    </div>
+  </div>
+</div>
 
-      <!-- STEP A: selector -->
-      <div id="escalas-selector">
-        <div class="select-note">
-          <span>📌</span>
-          <p><strong>Tu médico te indicó cuáles completar.</strong> Marca todas las que correspondan y presiona el botón para continuar.</p>
-        </div>
+<!-- ═══════════════════════════════════════
+  SCREEN — ESCALAS (selector + forms dinámicos)
+═══════════════════════════════════════ -->
+<div class="screen" id="s-escalas">
+  <div class="form-hero">
+    <div class="form-hero-inner">
+      <div class="form-hero-tag">📊 Escalas</div>
+      <h2 class="form-hero-title" id="escalas-hero-title">Escalas indicadas por médico</h2>
+      <p class="form-hero-sub" id="escalas-hero-sub">Selecciona las que tu médico te indicó completar</p>
+    </div>
+  </div>
+  <div class="form-body">
 
-        <div class="escala-toggles">
-          <button class="escala-toggle" id="tog-asrs" onclick="toggleEscala('asrs')">
-            <div class="et-check"><span class="et-check-mark">✓</span></div>
-            <div class="et-text">
-              <p class="et-title">Adult ADHD Self-Report Scale (ASRS v1.1)</p>
-              <p class="et-sub">Escala de autoreporte de síntomas · OMS · 18 ítems · ~5 min</p>
-            </div>
-          </button>
-          <button class="escala-toggle" id="tog-diva" onclick="toggleEscala('diva')">
-            <div class="et-check"><span class="et-check-mark">✓</span></div>
-            <div class="et-text">
-              <p class="et-title">Entrevista Diagnóstica para el TDAH en adultos (DIVA 2.0)</p>
-              <p class="et-sub">Entrevista estructurada completa · Historia escolar y laboral · ~10 min</p>
-            </div>
-          </button>
-          <button class="escala-toggle" id="tog-tca" onclick="toggleEscala('tca')">
-            <div class="et-check"><span class="et-check-mark">✓</span></div>
-            <div class="et-text">
-              <p class="et-title">Trastornos de la conducta alimentaria</p>
-              <p class="et-sub">Evaluación de hábitos alimentarios, imagen corporal y conductas de riesgo · ~8 min</p>
-            </div>
-          </button>
-        </div>
-
-        <button class="btn-confirm" id="confirmBtn" onclick="confirmarEscalas()" disabled>
-          Continuar con las escalas seleccionadas →
+    <!-- Paso A: selector -->
+    <div id="escalas-selector">
+      <div class="select-note">
+        <span class="ni">📌</span>
+        <p><strong>Tu médico te indicó cuáles completar.</strong> Marca todas las que correspondan y presiona continuar.</p>
+      </div>
+      <div class="toggle-list">
+        <button class="escala-toggle" id="tog-asrs" onclick="toggleEscala('asrs')">
+          <div class="et-box">✓</div>
+          <div class="et-body">
+            <p class="et-title">Adult ADHD Self-Report Scale (ASRS v1.1)</p>
+            <p class="et-sub">Escala de autoreporte de síntomas · OMS · 18 ítems · ~5 min</p>
+          </div>
+        </button>
+        <button class="escala-toggle" id="tog-diva" onclick="toggleEscala('diva')">
+          <div class="et-box">✓</div>
+          <div class="et-body">
+            <p class="et-title">Entrevista Diagnóstica para el TDAH en adultos (DIVA 2.0)</p>
+            <p class="et-sub">Entrevista estructurada completa · Historia escolar y laboral · ~10 min</p>
+          </div>
+        </button>
+        <button class="escala-toggle" id="tog-tca" onclick="toggleEscala('tca')">
+          <div class="et-box">✓</div>
+          <div class="et-body">
+            <p class="et-title">Trastornos de la conducta alimentaria</p>
+            <p class="et-sub">Evaluación de hábitos, imagen corporal y conductas de riesgo · ~8 min</p>
+          </div>
         </button>
       </div>
-
-      <!-- STEP B: form cards (generadas dinámicamente) -->
-      <div id="escalas-forms" style="display:none;">
-        <div class="multi-cards" id="multiCards"></div>
-        <div class="done-banner" id="done-escalas">
-          <div class="done-icon">🎉</div>
-          <p class="done-title">¡Muchas gracias!</p>
-          <p class="done-text">Hemos recibido todas las escalas. Puedes informar a tu médico que ya las completaste.</p>
-          <a href="https://wa.me/526731205121" class="done-wa" target="_blank" rel="noopener">💬 WhatsApp</a>
-        </div>
-      </div>
-
+      <button class="btn-confirmar" id="btnConfirmar" onclick="confirmarEscalas()" disabled>
+        Continuar con las escalas seleccionadas →
+      </button>
     </div>
+
+    <!-- Paso B: cards generadas -->
+    <div id="escalas-forms" style="display:none;">
+      <div class="cards-stack" id="escalas-cards"></div>
+      <div class="done-banner" id="done-escalas">
+        <div class="done-emoji">🎉</div>
+        <p class="done-title">¡Muchas gracias!</p>
+        <p class="done-text">Hemos recibido todas las escalas. Puedes informar a tu médico que ya las completaste.</p>
+        <a href="https://wa.me/526731205121" class="done-wa" target="_blank" rel="noopener">💬 WhatsApp</a>
+      </div>
+    </div>
+
   </div>
 </div>
 
-<!-- ── OVERLAY + DRAWER ── -->
+<!-- OVERLAY + DRAWER -->
 <div class="overlay" id="overlay" onclick="closeDrawer()"></div>
 <div class="drawer" id="drawer" role="dialog" aria-modal="true">
   <div class="dw-head">
     <div class="dw-info">
-      <span class="dw-label" id="dwLabel">Formulario</span>
-      <span class="dw-title" id="dwTitle">Cargando...</span>
+      <span class="dw-label">Eutimya · Formulario</span>
+      <span class="dw-title" id="dw-title-text">Cargando...</span>
     </div>
-    <button class="dw-x" onclick="closeDrawer()">×</button>
+    <button class="dw-close" onclick="closeDrawer()">×</button>
   </div>
   <div class="dw-body">
-    <div class="loader" id="loader">
-      <div class="spinner"></div>
-      <p>Cargando formulario…</p>
-    </div>
-    <iframe id="formFrame" src="about:blank" title="Formulario" onload="frameLoaded()"></iframe>
+    <div class="dw-loader" id="dwLoader"><div class="spinner"></div><p>Cargando formulario…</p></div>
+    <iframe id="formIframe" src="about:blank" title="Formulario" onload="iframeLoaded()"></iframe>
   </div>
   <div class="dw-foot">
     <button class="btn-dw-done" onclick="doneFromDrawer()">✓ Ya lo completé</button>
-    <button class="btn-dw-back" onclick="closeDrawer()">Volver</button>
+    <button class="btn-dw-close" onclick="closeDrawer()">Volver</button>
   </div>
 </div>
 
-<script>
-
-/* ══════════════════════════
-   URL PARAMETER ROUTING
-   
-   Uso:
-   ?               → selector (s0, todos los contextos)
-   ?paso=3         → primera vez como paso 3 del proceso
-   ?recordatorio=1 → primera vez (recordatorio, olvidó completarlo)
-   ?tipo=bariatrica→ primera vez + bariátrica
-   ?tipo=tdah      → ASRS + DIVA
-   ?tipo=tca       → solo bariátrica (TCA)
-══════════════════════════ */
-function getParam(name) {
-  return new URLSearchParams(window.location.search).get(name);
-}
-
-function applyUrlRouting() {
-  var paso    = getParam('paso');
-  var rec     = getParam('recordatorio');
-  var tipo    = getParam('tipo');
-
-  // ── Paso 3 del proceso ──
-  if (paso === '3') {
-    setContextBanner({
-      icon: '3',
-      iconStyle: 'circle',
-      text: 'Último paso para confirmar tu cita',
-      color: 'navy'
-    });
-    goDirectTo('s-primera');
-    return;
-  }
-
-  // ── Recordatorio ──
-  if (rec === '1') {
-    setContextBanner({
-      icon: '⏰',
-      text: 'Recibimos un recordatorio — tu expediente está pendiente de completar',
-      color: 'amber'
-    });
-    goDirectTo('s-primera');
-    return;
-  }
-
-  // ── Bariátrica: primera vez + bariátrica ──
-  if (tipo === 'bariatrica') {
-    buildCustomPlan([
-      { id:'general', screen:'s-primera' },
-      { id:'bariatrica', screen:'s-bariatrica' }
-    ], 'Protocolo Bariátrica');
-    return;
-  }
-
-  // ── TDAH: ASRS + DIVA ──
-  if (tipo === 'tdah') {
-    selectedEscalas['asrs'] = true;
-    selectedEscalas['diva'] = true;
-    goDirectTo('s-escalas');
-    setTimeout(function(){ confirmarEscalas(); }, 50);
-    return;
-  }
-
-  // ── TCA: solo bariátrica ──
-  if (tipo === 'tca') {
-    goDirectTo('s-bariatrica');
-    return;
-  }
-}
-
-function goDirectTo(id) {
-  document.querySelectorAll('.screen').forEach(function(s){ s.classList.remove('active'); });
-  document.getElementById(id).classList.add('active');
-  // No back button for direct links
-  document.getElementById('backBtn').className = 'btn-back';
-}
-
-function buildCustomPlan(steps, label) {
-  // steps = [{id, screen}] — we build a multi-form plan screen on s-plan-custom
-  // Simpler: re-use s-escalas with custom forms
-  var ids = steps.map(function(s){ return s.id; });
-  
-  // Map to ESCALAS or FORMS data
-  var ALL = {
-    general: {
-      title: 'Expediente de primera vez',
-      sub:   'Historia clínica, datos de identificación y escalas generales',
-      pills: ['~15 min', 'PHQ-9', 'GAD-7', 'ISI'],
-      src:   'https://docs.google.com/forms/d/e/1FAIpQLSeU7vGbVJSEUdM2av0zKSbLUAHuP-F1KSSKyR0CYzvz0xHybw/viewform?embedded=true'
-    },
-    bariatrica: {
-      title: 'Protocolo Bariátrica / TCA',
-      sub:   'Evaluación psiquiátrica pre/postoperatoria y conducta alimentaria',
-      pills: ['~12 min', 'EAT-26', 'BES'],
-      src:   'https://docs.google.com/forms/d/e/1FAIpQLSdx-zY35ZlAmlzIvIqBoVpGa4EoiYXl4TtLN1nA36xkURwWVg/viewform?embedded=true'
-    }
-  };
-
-  var html = '';
-  ids.forEach(function(id, idx){
-    var f = ALL[id] || ESCALAS[id];
-    if(!f) return;
-    var pills = f.pills.map(function(p){ return '<span class="mc-pill">'+p+'</span>'; }).join('');
-    html +=
-      '<div class="m-card" id="mc-'+id+'">' +
-        '<div class="mc-head">' +
-          '<div class="mc-num" id="mcn-'+id+'">'+(idx+1)+'</div>' +
-          '<div class="mc-info">' +
-            '<p class="mc-title">'+f.title+'</p>' +
-            '<p class="mc-sub">'+f.sub+'</p>' +
-          '</div>' +
-        '</div>' +
-        '<div class="mc-pills">'+pills+'</div>' +
-        '<div class="mc-actions">' +
-          '<button class="btn-open" onclick="openDrawer(''+id+'',''+f.title.replace(/'/g,"\'")+'  ',''+f.src+'')">'+
-            '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>'+
-            ' Llenar formulario'+
-          '</button>'+
-          '<button class="btn-check" id="mcheck-'+id+'" onclick="markMultiDone(''+id+'','+JSON.stringify(ids)+')">✓ Ya lo completé</button>'+
-          '<button class="btn-undo hidden" id="mundo-'+id+'" onclick="undoMultiDone(''+id+'','+JSON.stringify(ids)+')">Desmarcar</button>'+
-        '</div>'+
-      '</div>';
-  });
-
-  document.getElementById('multiCards').innerHTML = html;
-  document.getElementById('escalas-selector').style.display = 'none';
-  document.getElementById('escalas-forms').style.display = 'block';
-
-  // Update hero text
-  var heroTitle = document.querySelector('#s-escalas .form-hero-title');
-  if(heroTitle) heroTitle.textContent = label;
-  var heroSub = document.querySelector('#s-escalas .form-hero-sub');
-  if(heroSub) heroSub.textContent = 'Completa los formularios en el orden indicado';
-
-  goDirectTo('s-escalas');
-}
-
-
-function setContextBanner(opts) {
-  var banner = document.getElementById('contextBanner');
-  if (!banner) return;
-  var isCircle = opts.iconStyle === 'circle';
-  var colorClass = 'banner-' + (opts.color || 'navy');
-  banner.className = 'context-banner ' + colorClass;
-  banner.innerHTML =
-    '<span class="cb-icon' + (isCircle ? ' cb-circle' : '') + '">' + opts.icon + '</span>' +
-    '<span class="cb-text">' + opts.text + '</span>';
-  banner.style.display = 'flex';
-}
-
-// Run on load
-window.addEventListener('DOMContentLoaded', applyUrlRouting);
-
-/* ══════════════════════════
-   ESCALAS DATA
-══════════════════════════ */
-var ESCALAS = {
-  asrs: {
-    title: 'Adult ADHD Self-Report Scale (ASRS v1.1)',
-    sub:   'Escala de autoreporte · 18 ítems · OMS',
-    pills: ['~5 min', '18 ítems'],
-    src:   'https://docs.google.com/forms/d/e/1FAIpQLSeupeXJte8uaDkoOa7l_dcA9KnXVge-GKDjHRbfUQZKujNeyw/viewform?embedded=true'
-  },
-  diva: {
-    title: 'Entrevista Diagnóstica para el TDAH en adultos (DIVA 2.0)',
-    sub:   'Entrevista estructurada completa',
-    pills: ['~10 min', 'Historia escolar', 'Historia laboral'],
-    src:   'https://docs.google.com/forms/d/e/1FAIpQLSftISSsoVr3XPM9TdB6CxNDJImzeps1Zm1hksZ7LJi7wzd0yA/viewform?embedded=true'
-  },
-  tca: {
-    title: 'Trastornos de la conducta alimentaria',
-    sub:   'Evaluación de hábitos, imagen corporal y conductas de riesgo',
-    pills: ['~8 min', 'EAT-26'],
-    src:   'https://docs.google.com/forms/d/e/1FAIpQLSeLQOdnYlkQ1yxrUyVcLl4p_RA9Z_yxYI8ZJhCw22lgIX7i2A/viewform?embedded=true'
-  }
-};
-
-/* ══════════════════════════
-   NAVIGATION STATE
-══════════════════════════ */
-var navHistory = [];
-
-function goTo(id) {
-  var cur = document.querySelector('.screen.active');
-  if (cur) navHistory.push(cur.id);
-  document.querySelectorAll('.screen').forEach(function(s){ s.classList.remove('active'); });
-  document.getElementById(id).classList.add('active');
-  window.scrollTo(0,0);
-  document.getElementById('backBtn').className = navHistory.length > 0 ? 'btn-back show' : 'btn-back';
-}
-
-function goBack() {
-  if (!navHistory.length) return;
-  var prev = navHistory.pop();
-  document.querySelectorAll('.screen').forEach(function(s){ s.classList.remove('active'); });
-  document.getElementById(prev).classList.add('active');
-  window.scrollTo(0,0);
-  document.getElementById('backBtn').className = navHistory.length > 0 ? 'btn-back show' : 'btn-back';
-}
-
-/* ══════════════════════════
-   SOLO FORM (primera vez / bariátrica)
-══════════════════════════ */
-function markSoloDone(id) {
-  document.getElementById('card-' + id).classList.add('done-state');
-  var c = document.getElementById('check-' + id);
-  if(c) c.textContent = '✓ Completado';
-  var u = document.getElementById('undo-' + id);
-  if(u) u.classList.remove('hidden');
-  document.getElementById('done-' + id).classList.add('show');
-  document.getElementById('done-' + id).scrollIntoView({ behavior:'smooth', block:'nearest' });
-}
-
-function undoSoloDone(id) {
-  document.getElementById('card-' + id).classList.remove('done-state');
-  var c = document.getElementById('check-' + id);
-  if(c) c.textContent = '✓ Ya lo completé';
-  var u = document.getElementById('undo-' + id);
-  if(u) u.classList.add('hidden');
-  document.getElementById('done-' + id).classList.remove('show');
-}
-
-/* ══════════════════════════
-   ESCALAS SELECTOR
-══════════════════════════ */
-var selectedEscalas = {};
-
-function toggleEscala(id) {
-  selectedEscalas[id] = !selectedEscalas[id];
-  var btn = document.getElementById('tog-' + id);
-  btn.classList.toggle('selected', !!selectedEscalas[id]);
-  var anySelected = Object.values(selectedEscalas).some(Boolean);
-  document.getElementById('confirmBtn').disabled = !anySelected;
-}
-
-function confirmarEscalas() {
-  var chosen = Object.keys(selectedEscalas).filter(function(k){ return selectedEscalas[k]; });
-  var completedEscalas = {};
-  chosen.forEach(function(id){ completedEscalas[id] = false; });
-
-  // Build multi-cards
-  var html = '';
-  chosen.forEach(function(id, idx) {
-    var f = ESCALAS[id];
-    var pills = f.pills.map(function(p){ return '<span class="mc-pill">'+p+'</span>'; }).join('');
-    html +=
-      '<div class="m-card" id="mc-'+id+'">' +
-        '<div class="mc-head">' +
-          '<div class="mc-num" id="mcn-'+id+'">'+(idx+1)+'</div>' +
-          '<div class="mc-info">' +
-            '<p class="mc-title">'+f.title+'</p>' +
-            '<p class="mc-sub">'+f.sub+'</p>' +
-          '</div>' +
-        '</div>' +
-        '<div class="mc-pills">'+pills+'</div>' +
-        '<div class="mc-actions">' +
-          '<button class="btn-open" onclick="openDrawer(\''+id+'\',\''+f.title.replace(/'/g,"\\'")+'  \',\''+f.src+'\')">'+
-            '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>'+
-            ' Llenar escala'+
-          '</button>'+
-          '<button class="btn-check" id="mcheck-'+id+'" onclick="markMultiDone(\''+id+'\','+JSON.stringify(chosen)+')">✓ Ya la completé</button>'+
-          '<button class="btn-undo hidden" id="mundo-'+id+'" onclick="undoMultiDone(\''+id+'\','+JSON.stringify(chosen)+')">Desmarcar</button>'+
-        '</div>'+
-      '</div>';
-  });
-
-  document.getElementById('multiCards').innerHTML = html;
-  document.getElementById('escalas-selector').style.display = 'none';
-  document.getElementById('escalas-forms').style.display = 'block';
-}
-
-/* ══════════════════════════
-   MULTI-FORM COMPLETION
-══════════════════════════ */
-function markMultiDone(id, all) {
-  document.getElementById('mc-' + id).classList.add('done-state');
-  var n = document.getElementById('mcn-' + id);
-  if(n) n.textContent = '✓';
-  var c = document.getElementById('mcheck-' + id);
-  if(c) c.textContent = '✓ Completada';
-  var u = document.getElementById('mundo-' + id);
-  if(u) u.classList.remove('hidden');
-
-  // Check all done
-  var allDone = all.every(function(k){
-    return document.getElementById('mc-'+k).classList.contains('done-state');
-  });
-  if(allDone) {
-    var b = document.getElementById('done-escalas');
-    b.classList.add('show');
-    b.scrollIntoView({ behavior:'smooth', block:'nearest' });
-  }
-}
-
-function undoMultiDone(id, all) {
-  var card = document.getElementById('mc-' + id);
-  card.classList.remove('done-state');
-  var n = document.getElementById('mcn-' + id);
-  if(n) n.textContent = all.indexOf(id) + 1;
-  var c = document.getElementById('mcheck-' + id);
-  if(c) c.textContent = '✓ Ya la completé';
-  var u = document.getElementById('mundo-' + id);
-  if(u) u.classList.add('hidden');
-  document.getElementById('done-escalas').classList.remove('show');
-}
-
-/* ══════════════════════════
-   DRAWER
-══════════════════════════ */
-var currentDrawerFormId = null;
-var currentMarkFn = null;
-
-function openDrawer(formId, title, src) {
-  currentDrawerFormId = formId;
-  document.getElementById('dwLabel').textContent = 'Eutimya · Formulario';
-  document.getElementById('dwTitle').textContent = title.trim();
-
-  var frame = document.getElementById('formFrame');
-  document.getElementById('loader').classList.remove('hidden');
-  frame.src = src;
-
-  document.getElementById('drawer').classList.add('open');
-  document.getElementById('overlay').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-
-function closeDrawer() {
-  document.getElementById('drawer').classList.remove('open');
-  document.getElementById('overlay').classList.remove('open');
-  document.body.style.overflow = '';
-}
-
-function frameLoaded() {
-  var f = document.getElementById('formFrame');
-  if(f.src !== 'about:blank') {
-    document.getElementById('loader').classList.add('hidden');
-  }
-}
-
-function doneFromDrawer() {
-  var id = currentDrawerFormId;
-  closeDrawer();
-  // Detect which screen is active and call appropriate done fn
-  if(id === 'pv') markSoloDone('pv');
-  else if(id === 'bari') markSoloDone('bari');
-  else if(id === 'seg') markSoloDone('seg');
-  else {
-    // escalas
-    var chosen = Object.keys(selectedEscalas).filter(function(k){ return selectedEscalas[k]; });
-    markMultiDone(id, chosen);
-  }
-}
-
-document.addEventListener('keydown', function(e){
-  if(e.key === 'Escape') closeDrawer();
-});
-</script>
-
-
-
-<!-- ── FOOTER ── -->
+<!-- FOOTER -->
 <footer class="site-footer">
   <div class="footer-inner">
-    <div class="footer-top">
-      <div class="footer-logo-wrap">
-        <img src="https://github.com/moymaa/drmoyapsiq/blob/main/unnamed(30).png?raw=true" alt="Eutimya"/>
-      </div>
-      <div class="footer-cols">
-        <div class="footer-col">
-          <h4>Enlaces</h4>
-          <div class="footer-links">
-            <a href="https://eutimya.org/">Inicio</a>
-            <a href="https://www.eutimya.org/agendar">Agendar</a>
-            <a href="https://www.eutimya.org/profesionales">Profesionales</a>
-            <a href="https://www.eutimya.org/blog">Blog</a>
-            <a href="https://www.eutimya.org/nosotros">Nosotros</a>
-            <a href="https://www.eutimya.org/validar">Validar</a>
-            <a href="https://www.eutimya.org/factura">Facturación</a>
-          </div>
+    <div class="footer-logo-wrap">
+      <img src="https://github.com/moymaa/drmoyapsiq/blob/main/unnamed(30).png?raw=true" alt="Eutimya"/>
+    </div>
+    <div class="footer-cols">
+      <div class="footer-col">
+        <h4>Enlaces</h4>
+        <div class="footer-links">
+          <a href="https://eutimya.org/">Inicio</a>
+          <a href="https://www.eutimya.org/agendar">Agendar</a>
+          <a href="https://www.eutimya.org/profesionales">Profesionales</a>
+          <a href="https://www.eutimya.org/blog">Blog</a>
+          <a href="https://www.eutimya.org/nosotros">Nosotros</a>
+          <a href="https://www.eutimya.org/validar">Validar</a>
+          <a href="https://www.eutimya.org/factura">Facturación</a>
         </div>
-        <div class="footer-col">
-          <h4>Recursos para pacientes</h4>
-          <div class="footer-links">
-            <a href="https://www.eutimya.org/exp">Registro de expediente</a>
-            <a href="https://www.eutimya.org/pagos">Formas de pago</a>
-            <a href="https://www.eutimya.org/agendar">Horarios / Reagendar</a>
-          </div>
+      </div>
+      <div class="footer-col">
+        <h4>Recursos para pacientes</h4>
+        <div class="footer-links">
+          <a href="https://www.eutimya.org/exp">Registro de expediente</a>
+          <a href="https://www.eutimya.org/pagos">Formas de pago</a>
+          <a href="https://www.eutimya.org/agendar">Horarios / Reagendar</a>
         </div>
       </div>
     </div>
@@ -1087,5 +763,254 @@ document.addEventListener('keydown', function(e){
   </div>
 </footer>
 
+<script>
+/* ═══════════════════════════════
+   ESCALAS DATA
+═══════════════════════════════ */
+var ESCALAS_DATA = {
+  asrs: {
+    title: 'Adult ADHD Self-Report Scale (ASRS v1.1)',
+    sub:   'Escala de autoreporte · OMS · 18 ítems',
+    pills: ['~5 min','18 ítems'],
+    src:   'https://docs.google.com/forms/d/e/1FAIpQLSeupeXJte8uaDkoOa7l_dcA9KnXVge-GKDjHRbfUQZKujNeyw/viewform?embedded=true'
+  },
+  diva: {
+    title: 'Entrevista Diagnóstica para el TDAH en adultos (DIVA 2.0)',
+    sub:   'Entrevista estructurada completa · Historia escolar y laboral',
+    pills: ['~10 min','DIVA 2.0'],
+    src:   'https://docs.google.com/forms/d/e/1FAIpQLSftISSsoVr3XPM9TdB6CxNDJImzeps1Zm1hksZ7LJi7wzd0yA/viewform?embedded=true'
+  },
+  tca: {
+    title: 'Trastornos de la conducta alimentaria',
+    sub:   'Evaluación de hábitos, imagen corporal y conductas de riesgo',
+    pills: ['~8 min','EAT-26'],
+    src:   'https://docs.google.com/forms/d/e/1FAIpQLSeLQOdnYlkQ1yxrUyVcLl4p_RA9Z_yxYI8ZJhCw22lgIX7i2A/viewform?embedded=true'
+  }
+};
+
+/* ═══════════════════════════════
+   NAVIGATION
+═══════════════════════════════ */
+var navStack = [];
+
+function showScreen(id) {
+  var cur = document.querySelector('.screen.active');
+  if (cur) navStack.push(cur.id);
+  document.querySelectorAll('.screen').forEach(function(s) { s.classList.remove('active'); });
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0, 0);
+  document.getElementById('btnBack').className = navStack.length ? 'btn-back show' : 'btn-back';
+}
+
+function goBack() {
+  if (!navStack.length) return;
+  var prev = navStack.pop();
+  document.querySelectorAll('.screen').forEach(function(s) { s.classList.remove('active'); });
+  document.getElementById(prev).classList.add('active');
+  window.scrollTo(0, 0);
+  document.getElementById('btnBack').className = navStack.length ? 'btn-back show' : 'btn-back';
+}
+
+function showDirect(id) {
+  document.querySelectorAll('.screen').forEach(function(s) { s.classList.remove('active'); });
+  document.getElementById(id).classList.add('active');
+  navStack = [];
+  document.getElementById('btnBack').className = 'btn-back';
+  window.scrollTo(0, 0);
+}
+
+/* ═══════════════════════════════
+   COMPLETION
+═══════════════════════════════ */
+function markDone(cardId, allIds, bannerId) {
+  var card = document.getElementById('fc-' + cardId);
+  var num  = document.getElementById('fn-' + cardId);
+  var chk  = document.getElementById('bc-' + cardId);
+  var und  = document.getElementById('bu-' + cardId);
+  if (card) card.classList.add('done');
+  if (num)  num.textContent = '✓';
+  if (chk)  chk.textContent = '✓ Completado';
+  if (und)  und.removeAttribute('hidden');
+
+  // Check if all in group are done
+  var allDone = allIds.every(function(id) {
+    var c = document.getElementById('fc-' + id);
+    return c && c.classList.contains('done');
+  });
+  if (allDone) {
+    var banner = document.getElementById(bannerId);
+    if (banner) {
+      banner.classList.add('show');
+      banner.scrollIntoView({ behavior:'smooth', block:'nearest' });
+    }
+  }
+}
+
+function undoDone(cardId, numLabel, bannerId) {
+  var card = document.getElementById('fc-' + cardId);
+  var num  = document.getElementById('fn-' + cardId);
+  var chk  = document.getElementById('bc-' + cardId);
+  var und  = document.getElementById('bu-' + cardId);
+  if (card) card.classList.remove('done');
+  if (num)  num.textContent = numLabel;
+  if (chk)  chk.textContent = '✓ Ya lo completé';
+  if (und)  und.setAttribute('hidden','');
+  var banner = document.getElementById(bannerId);
+  if (banner) banner.classList.remove('show');
+}
+
+/* ═══════════════════════════════
+   ESCALAS SELECTOR
+═══════════════════════════════ */
+var selected = { asrs:false, diva:false, tca:false };
+
+function toggleEscala(id) {
+  selected[id] = !selected[id];
+  var tog = document.getElementById('tog-' + id);
+  if (selected[id]) tog.classList.add('on');
+  else tog.classList.remove('on');
+  var any = selected.asrs || selected.diva || selected.tca;
+  document.getElementById('btnConfirmar').disabled = !any;
+}
+
+function confirmarEscalas() {
+  var chosen = ['asrs','diva','tca'].filter(function(k) { return selected[k]; });
+  var html = '';
+  chosen.forEach(function(id, idx) {
+    var f = ESCALAS_DATA[id];
+    var pills = f.pills.map(function(p) { return '<span class="fcard-pill">'+p+'</span>'; }).join('');
+    var safeTitle = f.title.replace(/'/g, '&apos;');
+    var safeSrc   = f.src;
+    html +=
+      '<div class="fcard" id="fc-'+id+'">'+
+        '<div class="fcard-head">'+
+          '<div class="fcard-num" id="fn-'+id+'">'+(idx+1)+'</div>'+
+          '<div class="fcard-info">'+
+            '<p class="fcard-title">'+f.title+'</p>'+
+            '<p class="fcard-sub">'+f.sub+'</p>'+
+          '</div>'+
+        '</div>'+
+        '<div class="fcard-pills">'+pills+'</div>'+
+        '<div class="fcard-actions">'+
+          '<button class="btn-fill" onclick="openDrawer(\''+id+'\',\''+safeTitle+'\',\''+safeSrc+'\')">'+
+            '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>'+
+            ' Llenar escala'+
+          '</button>'+
+          '<button class="btn-check" id="bc-'+id+'" onclick="markDone(\''+id+'\','+JSON.stringify(chosen)+',\'done-escalas\')">✓ Ya la completé</button>'+
+          '<button class="btn-undo" id="bu-'+id+'" hidden onclick="undoDone(\''+id+'\','+(idx+1)+',\'done-escalas\')">Desmarcar</button>'+
+        '</div>'+
+      '</div>';
+  });
+  document.getElementById('escalas-cards').innerHTML = html;
+  document.getElementById('escalas-selector').style.display = 'none';
+  document.getElementById('escalas-forms').style.display = 'block';
+}
+
+/* ═══════════════════════════════
+   DRAWER
+═══════════════════════════════ */
+var activeFormId = null;
+var activeFormGroup = null;
+var activeFormBanner = null;
+
+function openDrawer(formId, title, src) {
+  activeFormId = formId;
+  document.getElementById('dw-title-text').textContent = title;
+  document.getElementById('dwLoader').classList.remove('hidden');
+  document.getElementById('formIframe').src = src;
+  document.getElementById('drawer').classList.add('open');
+  document.getElementById('overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeDrawer() {
+  document.getElementById('drawer').classList.remove('open');
+  document.getElementById('overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function iframeLoaded() {
+  var f = document.getElementById('formIframe');
+  if (f.src !== 'about:blank') {
+    document.getElementById('dwLoader').classList.add('hidden');
+  }
+}
+
+function doneFromDrawer() {
+  closeDrawer();
+  if (!activeFormId) return;
+  // Determine group & banner from active screen
+  var activeScreen = document.querySelector('.screen.active');
+  if (!activeScreen) return;
+  var sid = activeScreen.id;
+
+  if (sid === 's-primera')     markDone(activeFormId, ['pv'], 'done-pv');
+  else if (sid === 's-bariatrica') markDone(activeFormId, ['bari'], 'done-bari');
+  else if (sid === 's-combo-bari') {
+    var group = ['cb1','cb2'];
+    markDone(activeFormId, group, 'done-combo-bari');
+  }
+  else if (sid === 's-escalas') {
+    var chosen = ['asrs','diva','tca'].filter(function(k) { return selected[k]; });
+    markDone(activeFormId, chosen, 'done-escalas');
+  }
+}
+
+/* ═══════════════════════════════
+   URL ROUTING
+   ?paso=3         → primera vez, banner "Paso 3"
+   ?recordatorio=1 → primera vez, banner ámbar
+   ?tipo=bariatrica→ primera vez + bariátrica (combo)
+   ?tipo=tdah      → ASRS + DIVA
+   ?tipo=tca       → solo bariátrica
+═══════════════════════════════ */
+function route() {
+  var p = new URLSearchParams(window.location.search);
+  var paso = p.get('paso');
+  var rec  = p.get('recordatorio');
+  var tipo = p.get('tipo');
+
+  if (paso === '3') {
+    showBanner('navy', '<span class="ctx-num">3</span> Último paso para confirmar tu cita');
+    showDirect('s-primera');
+    return;
+  }
+  if (rec === '1') {
+    showBanner('amber', '⏰ Tu expediente está pendiente — recibimos un recordatorio');
+    showDirect('s-primera');
+    return;
+  }
+  if (tipo === 'bariatrica') {
+    showDirect('s-combo-bari');
+    return;
+  }
+  if (tipo === 'tdah') {
+    selected.asrs = true; selected.diva = true;
+    document.getElementById('tog-asrs').classList.add('on');
+    document.getElementById('tog-diva').classList.add('on');
+    document.getElementById('btnConfirmar').disabled = false;
+    showDirect('s-escalas');
+    setTimeout(confirmarEscalas, 80);
+    return;
+  }
+  if (tipo === 'tca') {
+    showDirect('s-bariatrica');
+    return;
+  }
+  // Sin parámetros → selector
+}
+
+function showBanner(cls, html) {
+  var b = document.getElementById('ctxBanner');
+  b.className = 'ctx-banner show ' + cls;
+  b.innerHTML = html;
+}
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeDrawer();
+});
+
+route();
+</script>
 </body>
 </html>
