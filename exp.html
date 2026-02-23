@@ -9,7 +9,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <style>
-/* ─────────────────── TOKENS ─────────────────── */
 :root {
   --navy:    #0d1b2a;
   --navy2:   #112240;
@@ -34,409 +33,194 @@
 }
 *,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
 html { -webkit-text-size-adjust:100%; }
-body {
-  font-family:'DM Sans',system-ui,sans-serif;
-  background:var(--white); color:var(--text);
-  min-height:100vh; overflow-x:hidden;
-}
+body { font-family:'DM Sans',system-ui,sans-serif; background:var(--white); color:var(--text); min-height:100vh; overflow-x:hidden; }
 a { color:inherit; text-decoration:none; }
 button { font-family:inherit; cursor:pointer; border:none; background:none; }
 
-/* ─────────────────── TOPBAR ─────────────────── */
-.topbar {
-  position:fixed; top:0; left:0; right:0; z-index:200;
-  height:56px; display:flex; align-items:center; justify-content:space-between;
-  padding:0 20px;
-  background:rgba(255,255,255,.96);
-  backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
-  border-bottom:1px solid var(--border);
-}
+/* TOPBAR */
+.topbar { position:fixed; top:0; left:0; right:0; z-index:200; height:56px; display:flex; align-items:center; justify-content:space-between; padding:0 20px; background:rgba(255,255,255,.96); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border-bottom:1px solid var(--border); }
 .topbar-logo { display:flex; align-items:center; gap:10px; text-decoration:none; }
 .topbar-logo img { height:26px; }
 .topbar-logo-label { font-size:12px; font-weight:500; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); }
-.btn-back {
-  display:none; align-items:center; gap:5px;
-  font-size:13px; font-weight:500; color:var(--muted);
-  transition:color .15s; padding:6px 0;
-}
+.btn-back { display:none; align-items:center; gap:5px; font-size:13px; font-weight:500; color:var(--muted); transition:color .15s; padding:6px 0; }
 .btn-back.show { display:flex; }
 .btn-back:hover { color:var(--text); }
 .btn-back svg { width:16px; height:16px; }
 
-/* ─────────────────── CONTEXT BANNER ─────────────────── */
-.ctx-banner {
-  display:none; position:sticky; top:56px; z-index:100;
-  align-items:center; gap:10px;
-  padding:10px 20px; font-size:13px; font-weight:600;
-}
-.ctx-banner.show { display:flex; }
-.ctx-banner.navy { background:var(--navy); color:rgba(255,255,255,.85); }
-.ctx-banner.amber { background:var(--amber-bg); color:var(--amber-tx); border-bottom:1px solid var(--amber-bd); }
-.ctx-num {
-  width:22px; height:22px; border-radius:50%;
-  background:var(--rose); color:#fff;
-  display:flex; align-items:center; justify-content:center;
-  font-family:'Playfair Display',serif; font-size:12px; font-weight:700;
-  flex-shrink:0;
-}
-
-/* ─────────────────── SCREEN SYSTEM ─────────────────── */
+/* SCREENS */
 .screen { display:none; padding-top:56px; }
 .screen.active { display:block; }
 
-/* ─────────────────── SCREEN 0: SELECTOR ─────────────────── */
-.selector-wrap {
-  min-height:calc(100vh - 56px);
-  display:flex; align-items:center; justify-content:center;
-  padding:40px 20px 60px;
-}
+/* SELECTOR */
+.selector-wrap { min-height:calc(100vh - 56px); display:flex; align-items:center; justify-content:center; padding:40px 20px 60px; }
 .selector-box { width:100%; max-width:520px; }
-.eyebrow {
-  font-size:11px; font-weight:700; letter-spacing:.18em; text-transform:uppercase;
-  color:var(--rose); margin-bottom:14px;
-  display:flex; align-items:center; gap:8px;
-}
+.eyebrow { font-size:11px; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--rose); margin-bottom:14px; display:flex; align-items:center; gap:8px; }
 .eyebrow::before { content:''; width:16px; height:1px; background:var(--rose); }
-.page-title {
-  font-family:'Playfair Display',serif;
-  font-size:clamp(24px,5vw,34px); font-weight:700;
-  color:var(--navy); line-height:1.15; margin-bottom:10px;
-}
+.page-title { font-family:'Playfair Display',serif; font-size:clamp(24px,5vw,34px); font-weight:700; color:var(--navy); line-height:1.15; margin-bottom:10px; }
 .page-desc { font-size:14px; font-weight:300; color:var(--muted); line-height:1.75; margin-bottom:28px; }
-
 .choices { display:flex; flex-direction:column; gap:10px; }
-.choice-btn {
-  display:flex; align-items:center; gap:14px;
-  padding:18px 20px;
-  background:var(--white); border:1.5px solid var(--border);
-  border-radius:14px; cursor:pointer; text-align:left; width:100%;
-  transition:border-color .18s, box-shadow .18s, transform .12s;
-}
-.choice-btn:hover {
-  border-color:var(--rose);
-  box-shadow:0 4px 20px rgba(192,115,122,.1);
-  transform:translateY(-1px);
-}
-.choice-icon {
-  width:44px; height:44px; border-radius:12px;
-  background:var(--rose-bg);
-  display:flex; align-items:center; justify-content:center;
-  font-size:20px; flex-shrink:0;
-}
+.choice-btn { display:flex; align-items:center; gap:14px; padding:18px 20px; background:var(--white); border:1.5px solid var(--border); border-radius:14px; cursor:pointer; text-align:left; width:100%; transition:border-color .18s, box-shadow .18s, transform .12s; }
+.choice-btn:hover { border-color:var(--rose); box-shadow:0 4px 20px rgba(192,115,122,.1); transform:translateY(-1px); }
+.choice-icon { width:44px; height:44px; border-radius:12px; background:var(--rose-bg); display:flex; align-items:center; justify-content:center; font-size:20px; flex-shrink:0; }
 .choice-text { flex:1; }
 .choice-title { font-size:15px; font-weight:600; color:var(--text); margin-bottom:2px; }
 .choice-sub { font-size:12px; font-weight:300; color:var(--muted); line-height:1.5; }
 .choice-arrow { color:var(--rose); font-size:22px; flex-shrink:0; transition:transform .18s; }
 .choice-btn:hover .choice-arrow { transform:translateX(3px); }
 
-/* ─────────────────── FORM SCREEN ─────────────────── */
-.form-hero {
-  background:var(--navy);
-  padding:72px 20px 36px;
-  position:relative; overflow:hidden;
-}
-.form-hero::before {
-  content:''; position:absolute; inset:0;
-  background:
-    radial-gradient(ellipse 70% 60% at 0% 50%, rgba(192,115,122,.18) 0%, transparent 55%),
-    radial-gradient(ellipse 50% 40% at 100% 20%, rgba(201,169,110,.09) 0%, transparent 55%),
-    radial-gradient(ellipse 40% 50% at 60% 90%, rgba(192,115,122,.07) 0%, transparent 50%);
-}
+/* HERO */
+.form-hero { background:var(--navy); padding:72px 20px 36px; position:relative; overflow:hidden; }
+.form-hero::before { content:''; position:absolute; inset:0; background: radial-gradient(ellipse 70% 60% at 0% 50%, rgba(192,115,122,.18) 0%, transparent 55%), radial-gradient(ellipse 50% 40% at 100% 20%, rgba(201,169,110,.09) 0%, transparent 55%), radial-gradient(ellipse 40% 50% at 60% 90%, rgba(192,115,122,.07) 0%, transparent 50%); }
 .form-hero-inner { max-width:520px; margin:0 auto; position:relative; z-index:1; }
-.form-hero-tag {
-  display:inline-flex; align-items:center; gap:7px;
-  background:var(--rose-bg); border:1px solid var(--rose-bd);
-  border-radius:999px; padding:5px 14px;
-  font-size:11px; font-weight:700; letter-spacing:.12em; text-transform:uppercase;
-  color:var(--rose-lt); margin-bottom:18px;
-}
+.form-hero-tag { display:inline-flex; align-items:center; gap:7px; background:var(--rose-bg); border:1px solid var(--rose-bd); border-radius:999px; padding:5px 14px; font-size:11px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--rose-lt); margin-bottom:18px; }
 .form-hero-tag::before { content:''; width:5px; height:5px; border-radius:50%; background:var(--rose); flex-shrink:0; }
-.form-hero-title {
-  font-family:'Playfair Display',serif;
-  font-size:clamp(22px,4.5vw,32px); font-weight:700;
-  color:var(--white); line-height:1.15; margin-bottom:10px;
-  letter-spacing:-.01em;
-}
-.form-hero-sub {
-  font-size:13px; font-weight:300; color:rgba(255,255,255,.5);
-  line-height:1.7; max-width:420px;
-}
-
+.form-hero-title { font-family:'Playfair Display',serif; font-size:clamp(22px,4.5vw,32px); font-weight:700; color:var(--white); line-height:1.15; margin-bottom:10px; letter-spacing:-.01em; }
+.form-hero-sub { font-size:13px; font-weight:300; color:rgba(255,255,255,.5); line-height:1.7; max-width:420px; }
 .form-body { max-width:520px; margin:0 auto; padding:24px 20px 48px; }
-
-.time-row {
-  display:flex; align-items:center; gap:10px;
-  background:var(--cream); border:1px solid var(--border);
-  border-radius:10px; padding:12px 16px; margin-bottom:20px;
-}
+.time-row { display:flex; align-items:center; gap:10px; background:var(--cream); border:1px solid var(--border); border-radius:10px; padding:12px 16px; margin-bottom:20px; }
 .time-row .ti { font-size:18px; flex-shrink:0; }
 .time-row p { font-size:13px; color:var(--muted); line-height:1.5; }
 .time-row strong { color:var(--text); font-weight:600; }
 
-/* ─────────────────── FORM CARDS ─────────────────── */
+/* CARDS */
 .cards-stack { display:flex; flex-direction:column; gap:10px; }
-
-.fcard {
-  background:var(--white); border:1.5px solid var(--border);
-  border-radius:14px; overflow:hidden;
-  transition:border-color .2s;
-}
+.fcard { background:var(--white); border:1.5px solid var(--border); border-radius:14px; overflow:hidden; transition:border-color .2s; }
 .fcard.done { border-color:var(--green-bd); }
-
 .fcard-head { display:flex; align-items:center; gap:12px; padding:16px 18px; }
-.fcard-num {
-  width:34px; height:34px; border-radius:50%;
-  border:2px solid var(--rose);
-  display:flex; align-items:center; justify-content:center;
-  font-family:'Playfair Display',serif; font-size:13px; font-weight:700; color:var(--rose);
-  flex-shrink:0; transition:all .2s;
-}
-.fcard.done .fcard-num {
-  background:var(--green); border-color:var(--green);
-  color:#fff; font-family:'DM Sans',sans-serif; font-size:16px; font-weight:400;
-}
+.fcard-num { width:34px; height:34px; border-radius:50%; border:2px solid var(--rose); display:flex; align-items:center; justify-content:center; font-family:'Playfair Display',serif; font-size:13px; font-weight:700; color:var(--rose); flex-shrink:0; transition:all .2s; }
+.fcard.done .fcard-num { background:var(--green); border-color:var(--green); color:#fff; font-family:'DM Sans',sans-serif; font-size:16px; font-weight:400; }
 .fcard-info { flex:1; }
 .fcard-title { font-size:14px; font-weight:600; color:var(--text); margin-bottom:2px; }
 .fcard-sub { font-size:12px; font-weight:300; color:var(--muted); }
-
 .fcard-pills { display:flex; flex-wrap:wrap; gap:5px; padding:0 18px 14px 64px; }
-.fcard-pill {
-  font-size:11px; font-weight:500; color:var(--rose);
-  background:var(--rose-bg); border:1px solid var(--rose-bd);
-  padding:2px 8px; border-radius:999px;
-}
+.fcard-pill { font-size:11px; font-weight:500; color:var(--rose); background:var(--rose-bg); border:1px solid var(--rose-bd); padding:2px 8px; border-radius:999px; }
 .fcard.done .fcard-pill { color:var(--green); background:var(--green-bg); border-color:var(--green-bd); }
-
-.fcard-actions {
-  display:flex; align-items:center; gap:8px; flex-wrap:wrap;
-  padding:12px 18px;
-  background:rgba(0,0,0,.015); border-top:1px solid var(--border);
-}
+.fcard-actions { display:flex; align-items:center; gap:8px; flex-wrap:wrap; padding:12px 18px; background:rgba(0,0,0,.015); border-top:1px solid var(--border); }
 .fcard.done .fcard-actions { background:var(--green-bg); }
-
-.btn-fill {
-  display:inline-flex; align-items:center; gap:7px;
-  background:var(--navy); color:#fff;
-  padding:10px 18px; border-radius:8px;
-  font-size:13px; font-weight:600;
-  transition:background .15s, transform .12s;
-}
+.btn-fill { display:inline-flex; align-items:center; gap:7px; background:var(--navy); color:#fff; padding:10px 18px; border-radius:8px; font-size:13px; font-weight:600; transition:background .15s, transform .12s; }
 .btn-fill:hover { background:var(--navy2); transform:translateY(-1px); }
 .fcard.done .btn-fill { background:var(--muted); }
-
-.btn-check {
-  display:inline-flex; align-items:center; gap:6px;
-  border:1.5px solid var(--border); background:var(--white);
-  color:var(--muted); padding:9px 14px; border-radius:8px;
-  font-size:12px; font-weight:500; transition:all .15s;
-}
-.btn-check:hover { border-color:var(--green); color:var(--green); background:var(--green-bg); }
-.fcard.done .btn-check {
-  background:var(--green-bg); border-color:var(--green-bd);
-  color:var(--green); font-weight:600; pointer-events:none;
-}
-.btn-undo {
-  margin-left:auto; font-size:11px; color:var(--muted);
-  text-decoration:underline; text-underline-offset:3px; transition:color .15s;
-}
+.btn-undo { margin-left:auto; font-size:11px; color:var(--muted); text-decoration:underline; text-underline-offset:3px; transition:color .15s; }
 .btn-undo:hover { color:var(--text); }
 .btn-undo[hidden] { display:none; }
 
-/* ─────────────────── ESCALAS SELECTOR ─────────────────── */
-.select-note {
-  display:flex; align-items:flex-start; gap:10px;
-  background:var(--amber-bg); border:1px solid var(--amber-bd);
-  border-radius:10px; padding:12px 15px; margin-bottom:18px;
-}
+/* ESCALAS */
+.select-note { display:flex; align-items:flex-start; gap:10px; background:var(--amber-bg); border:1px solid var(--amber-bd); border-radius:10px; padding:12px 15px; margin-bottom:18px; }
 .select-note .ni { font-size:17px; flex-shrink:0; }
 .select-note p { font-size:13px; color:var(--amber-tx); line-height:1.6; }
 .select-note strong { font-weight:600; }
-
-.toggle-section-label {
-  font-size:10px; font-weight:800; letter-spacing:.14em; text-transform:uppercase;
-  color:var(--muted); padding:6px 4px 4px;
-  margin-top:6px;
-  display:flex; align-items:center; gap:8px;
-}
+.toggle-section-label { font-size:10px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); padding:6px 4px 4px; margin-top:6px; display:flex; align-items:center; gap:8px; }
 .toggle-section-label::after { content:''; flex:1; height:1px; background:var(--border); }
-
 .toggle-list { display:flex; flex-direction:column; gap:8px; margin-bottom:20px; }
-.escala-toggle {
-  display:flex; align-items:flex-start; gap:12px;
-  padding:14px 16px; border-radius:12px;
-  border:1.5px solid var(--border); background:var(--white);
-  cursor:pointer; text-align:left; width:100%;
-  transition:border-color .15s, background .15s;
-}
+.escala-toggle { display:flex; align-items:flex-start; gap:12px; padding:14px 16px; border-radius:12px; border:1.5px solid var(--border); background:var(--white); cursor:pointer; text-align:left; width:100%; transition:border-color .15s, background .15s; }
 .escala-toggle:hover { border-color:var(--rose-bd); background:var(--rose-bg); }
 .escala-toggle.on { border-color:var(--rose); background:var(--rose-bg); }
-
 .escala-toggle.seg { border-color:rgba(99,102,241,.18); }
 .escala-toggle.seg:hover { border-color:var(--indigo); background:var(--indigo-bg); }
 .escala-toggle.seg.on { border-color:var(--indigo); background:var(--indigo-bg); }
 .escala-toggle.seg.on .et-box { background:var(--indigo); border-color:var(--indigo); }
-
-.et-box {
-  width:20px; height:20px; border-radius:5px;
-  border:2px solid var(--border); background:var(--white);
-  display:flex; align-items:center; justify-content:center;
-  flex-shrink:0; margin-top:1px; transition:all .15s;
-  font-size:12px; color:#fff;
-}
+.et-box { width:20px; height:20px; border-radius:5px; border:2px solid var(--border); background:var(--white); display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:1px; transition:all .15s; font-size:12px; color:#fff; }
 .escala-toggle.on .et-box { background:var(--rose); border-color:var(--rose); }
 .et-body { flex:1; }
 .et-title { font-size:14px; font-weight:600; color:var(--text); margin-bottom:2px; }
 .et-sub { font-size:12px; font-weight:300; color:var(--muted); line-height:1.5; }
-
-.btn-confirmar {
-  width:100%; padding:14px; border-radius:10px;
-  background:var(--navy); color:#fff;
-  font-size:14px; font-weight:600;
-  transition:background .15s, opacity .15s;
-}
+.btn-confirmar { width:100%; padding:14px; border-radius:10px; background:var(--navy); color:#fff; font-size:14px; font-weight:600; transition:background .15s, opacity .15s; }
 .btn-confirmar:hover { background:var(--navy2); }
 .btn-confirmar:disabled { opacity:.35; cursor:not-allowed; }
 
-/* ─────────────────── DONE BANNER ─────────────────── */
-.done-banner {
-  display:none;
-  background:var(--green-bg); border:1.5px solid var(--green-bd);
-  border-radius:16px; padding:28px 24px; text-align:center;
-  margin-top:16px; animation:fadeIn .4s ease;
-}
+/* DONE BANNER */
+.done-banner { display:none; background:var(--green-bg); border:1.5px solid var(--green-bd); border-radius:16px; padding:28px 24px; text-align:center; margin-top:16px; animation:fadeIn .4s ease; }
 .done-banner.show { display:block; }
 .done-emoji { font-size:44px; margin-bottom:12px; }
-.done-title {
-  font-family:'Playfair Display',serif;
-  font-size:20px; font-weight:700; color:var(--green); margin-bottom:10px;
-}
+.done-title { font-family:'Playfair Display',serif; font-size:20px; font-weight:700; color:var(--green); margin-bottom:10px; }
 .done-text { font-size:14px; font-weight:300; color:var(--muted); line-height:1.75; margin-bottom:20px; }
-.done-wa {
-  display:inline-flex; align-items:center; gap:8px;
-  background:#25D366; color:#fff;
-  padding:12px 24px; border-radius:10px;
-  font-size:14px; font-weight:600; transition:background .15s;
-}
+.done-wa { display:inline-flex; align-items:center; gap:8px; background:#25D366; color:#fff; padding:12px 24px; border-radius:10px; font-size:14px; font-weight:600; transition:background .15s; }
 .done-wa:hover { background:#22c35e; }
 
-/* ─────────────────── DRAWER ─────────────────── */
-.overlay {
-  position:fixed; inset:0; z-index:500;
-  background:rgba(8,14,22,.72);
-  backdrop-filter:blur(5px); -webkit-backdrop-filter:blur(5px);
-  opacity:0; visibility:hidden;
-  transition:opacity .3s, visibility .3s;
+/* ══════ PRE-OPEN MODAL ══════ */
+.modal-overlay {
+  position:fixed; inset:0; z-index:600;
+  background:rgba(8,14,22,.75);
+  backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px);
+  display:flex; align-items:center; justify-content:center; padding:20px;
+  opacity:0; visibility:hidden; transition:opacity .25s, visibility .25s;
 }
+.modal-overlay.open { opacity:1; visibility:visible; }
+.modal-box {
+  background:var(--white); border-radius:20px; max-width:420px; width:100%;
+  padding:30px 26px 24px;
+  box-shadow:0 24px 80px rgba(0,0,0,.22);
+  transform:translateY(14px) scale(.97);
+  transition:transform .28s cubic-bezier(.22,.9,.3,1);
+}
+.modal-overlay.open .modal-box { transform:translateY(0) scale(1); }
+.modal-icon { font-size:34px; margin-bottom:14px; }
+.modal-title { font-family:'Playfair Display',serif; font-size:18px; font-weight:700; color:var(--navy); margin-bottom:18px; line-height:1.25; }
+
+.modal-steps { display:flex; flex-direction:column; gap:10px; margin-bottom:24px; }
+.mstep { display:flex; align-items:flex-start; gap:12px; background:var(--cream); border-radius:10px; padding:12px 14px; }
+.mstep-num { width:22px; height:22px; border-radius:50%; flex-shrink:0; background:var(--navy); color:#fff; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700; margin-top:1px; }
+.mstep-text { font-size:13px; color:var(--text); line-height:1.55; }
+.mstep-text strong { font-weight:600; }
+
+.modal-actions { display:flex; gap:10px; }
+.btn-modal-go { flex:1; display:flex; align-items:center; justify-content:center; gap:8px; background:var(--navy); color:#fff; padding:13px 20px; border-radius:10px; font-size:14px; font-weight:600; transition:background .15s; }
+.btn-modal-go:hover { background:var(--navy2); }
+.btn-modal-cancel { padding:13px 16px; border-radius:10px; border:1.5px solid var(--border); color:var(--muted); font-size:13px; font-weight:500; background:var(--white); transition:all .15s; }
+.btn-modal-cancel:hover { border-color:var(--navy); color:var(--navy); }
+
+/* ══════ POST-CLOSE CONFIRM MODAL ══════ */
+.modal-title-sm { font-family:'Playfair Display',serif; font-size:17px; font-weight:700; color:var(--navy); margin-bottom:8px; }
+.modal-body { font-size:13px; font-weight:300; color:var(--muted); line-height:1.65; margin-bottom:22px; }
+.modal-body strong { color:var(--text); font-weight:600; }
+.modal-col-actions { display:flex; flex-direction:column; gap:8px; }
+.btn-confirm-yes { display:flex; align-items:center; justify-content:center; gap:8px; background:var(--green); color:#fff; padding:13px 20px; border-radius:10px; font-size:14px; font-weight:600; transition:background .15s; }
+.btn-confirm-yes:hover { background:#15803d; }
+.btn-confirm-no { display:flex; align-items:center; justify-content:center; border:1.5px solid var(--border); color:var(--muted); padding:12px 20px; border-radius:10px; font-size:13px; font-weight:500; background:var(--white); transition:all .15s; }
+.btn-confirm-no:hover { border-color:var(--navy); color:var(--navy); }
+
+/* DRAWER */
+.overlay { position:fixed; inset:0; z-index:500; background:rgba(8,14,22,.72); backdrop-filter:blur(5px); -webkit-backdrop-filter:blur(5px); opacity:0; visibility:hidden; transition:opacity .3s, visibility .3s; }
 .overlay.open { opacity:1; visibility:visible; }
-
-.drawer {
-  position:fixed; top:0; right:0; bottom:0; z-index:501;
-  width:min(680px, 100vw); background:var(--white);
-  display:flex; flex-direction:column;
-  transform:translateX(102%);
-  transition:transform .38s cubic-bezier(.22,.9,.3,1);
-  box-shadow:-16px 0 48px rgba(0,0,0,.18);
-}
+.drawer { position:fixed; top:0; right:0; bottom:0; z-index:501; width:min(680px, 100vw); background:var(--white); display:flex; flex-direction:column; transform:translateX(102%); transition:transform .38s cubic-bezier(.22,.9,.3,1); box-shadow:-16px 0 48px rgba(0,0,0,.18); }
 .drawer.open { transform:translateX(0); }
-
-.dw-head {
-  display:flex; align-items:center; justify-content:space-between;
-  padding:14px 18px; background:var(--navy);
-  border-bottom:1px solid rgba(255,255,255,.06); flex-shrink:0;
-}
+.dw-head { display:flex; align-items:center; justify-content:space-between; padding:14px 18px; background:var(--navy); border-bottom:1px solid rgba(255,255,255,.06); flex-shrink:0; }
 .dw-info { display:flex; flex-direction:column; gap:2px; }
 .dw-label { font-size:10px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--rose-lt); }
 .dw-title { font-family:'Playfair Display',serif; font-size:16px; font-weight:600; color:#fff; }
-.dw-close {
-  width:34px; height:34px; border-radius:50%;
-  border:1px solid rgba(255,255,255,.15); background:rgba(255,255,255,.07);
-  color:rgba(255,255,255,.7); font-size:20px; line-height:1;
-  display:flex; align-items:center; justify-content:center;
-  transition:background .15s; flex-shrink:0;
-}
+.dw-close { width:34px; height:34px; border-radius:50%; border:1px solid rgba(255,255,255,.15); background:rgba(255,255,255,.07); color:rgba(255,255,255,.7); font-size:20px; line-height:1; display:flex; align-items:center; justify-content:center; transition:background .15s; flex-shrink:0; }
 .dw-close:hover { background:rgba(255,255,255,.15); }
-
 .dw-body { flex:1; overflow:hidden; position:relative; }
 .dw-body iframe { width:100%; height:100%; border:none; display:block; }
-.dw-loader {
-  position:absolute; inset:0; z-index:2; background:var(--white);
-  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px;
-  transition:opacity .35s;
-}
+.dw-loader { position:absolute; inset:0; z-index:2; background:var(--white); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px; transition:opacity .35s; }
 .dw-loader.hidden { opacity:0; pointer-events:none; }
-.spinner {
-  width:32px; height:32px;
-  border:3px solid rgba(192,115,122,.15); border-top-color:var(--rose);
-  border-radius:50%; animation:spin .8s linear infinite;
-}
+.spinner { width:32px; height:32px; border:3px solid rgba(192,115,122,.15); border-top-color:var(--rose); border-radius:50%; animation:spin .8s linear infinite; }
 @keyframes spin { to { transform:rotate(360deg); } }
 .dw-loader p { font-size:13px; color:var(--muted); }
 
-.dw-foot {
-  padding:12px 18px; background:var(--white);
-  border-top:1px solid var(--border); flex-shrink:0;
-  display:flex; gap:10px;
-}
-.btn-dw-done {
-  display:inline-flex; align-items:center; gap:7px;
-  background:var(--green); color:#fff;
-  padding:11px 20px; border-radius:8px; font-size:13px; font-weight:600;
-  transition:background .15s;
-}
-.btn-dw-done:hover { background:#15803d; }
-.btn-dw-close {
-  display:inline-flex; align-items:center; gap:6px;
-  border:1.5px solid var(--border); color:var(--muted);
-  padding:10px 16px; border-radius:8px; font-size:13px; font-weight:500;
-  background:var(--white); transition:all .15s;
-}
-.btn-dw-close:hover { border-color:var(--navy); color:var(--navy); }
-
-/* ─────────────────── FOOTER ─────────────────── */
-.site-footer {
-  background:var(--white); border-top:1px solid var(--border);
-  padding:48px 20px 32px;
-}
+/* FOOTER */
+.site-footer { background:var(--white); border-top:1px solid var(--border); padding:48px 20px 32px; }
 .footer-inner { max-width:520px; margin:0 auto; }
 .footer-logo-wrap { margin-bottom:24px; }
 .footer-logo-wrap img { width:52px; height:52px; object-fit:contain; }
 .footer-cols { display:flex; gap:40px; flex-wrap:wrap; margin-bottom:24px; }
-.footer-col h4 {
-  font-size:11px; font-weight:800; letter-spacing:.1em; text-transform:uppercase;
-  color:var(--text); margin-bottom:12px;
-}
+.footer-col h4 { font-size:11px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:var(--text); margin-bottom:12px; }
 .footer-links { display:flex; flex-direction:column; gap:7px; }
-.footer-links a {
-  font-size:14px; color:var(--muted);
-  text-decoration:underline; text-underline-offset:3px; transition:color .15s;
-}
+.footer-links a { font-size:14px; color:var(--muted); text-decoration:underline; text-underline-offset:3px; transition:color .15s; }
 .footer-links a:hover { color:var(--text); }
-.footer-social {
-  display:flex; gap:12px; padding-top:20px;
-  border-top:1px solid var(--border); margin-bottom:20px;
-}
-.soc {
-  width:40px; height:40px; border-radius:50%;
-  border:1px solid var(--border);
-  display:flex; align-items:center; justify-content:center;
-  transition:border-color .15s, box-shadow .15s; text-decoration:none;
-}
+.footer-social { display:flex; gap:12px; padding-top:20px; border-top:1px solid var(--border); margin-bottom:20px; }
+.soc { width:40px; height:40px; border-radius:50%; border:1px solid var(--border); display:flex; align-items:center; justify-content:center; transition:border-color .15s, box-shadow .15s; text-decoration:none; }
 .soc:hover { border-color:rgba(0,0,0,.25); box-shadow:0 2px 8px rgba(0,0,0,.07); }
 .soc svg { width:20px; height:20px; fill:none; stroke:rgba(0,0,0,.65); stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
 .footer-legal { font-size:12px; color:var(--muted); line-height:1.65; }
 .footer-legal a { color:var(--muted); text-decoration:underline; text-underline-offset:3px; }
 
-/* ─────────────────── UTILS ─────────────────── */
 @keyframes fadeIn { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
-@media(max-width:480px) {
-  .topbar-logo-label { display:none; }
-  .footer-cols { gap:24px; }
-}
+@media(max-width:480px) { .topbar-logo-label { display:none; } .footer-cols { gap:24px; } .modal-box { padding:24px 18px 20px; } }
 </style>
 </head>
 <body>
 
-<!-- TOPBAR -->
 <header class="topbar">
   <a href="https://www.eutimya.org/" class="topbar-logo">
     <img src="https://raw.githubusercontent.com/moymaa/drmoyapsiq/main/unnamed.png" alt="Eutimya"/>
@@ -448,12 +232,7 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; }
   </button>
 </header>
 
-<!-- CONTEXT BANNER -->
-<div class="ctx-banner" id="ctxBanner"></div>
-
-<!-- ═══════════════════════════════════════
-  SCREEN 0 — SELECTOR
-═══════════════════════════════════════ -->
+<!-- ═══ SCREEN 0 — SELECTOR ═══ -->
 <div class="screen active" id="s0">
   <div class="selector-wrap">
     <div class="selector-box">
@@ -490,9 +269,7 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; }
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════
-  SCREEN — PRIMERA VEZ  (?1)
-═══════════════════════════════════════ -->
+<!-- ═══ SCREEN — PRIMERA VEZ (?1) ═══ -->
 <div class="screen" id="s-primera">
   <div class="form-hero">
     <div class="form-hero-inner">
@@ -516,14 +293,10 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; }
           </div>
         </div>
         <div class="fcard-pills">
-          <span class="fcard-pill">PHQ-9</span>
-          <span class="fcard-pill">GAD-7</span>
-          <span class="fcard-pill">ISI</span>
-          <span class="fcard-pill">~15–20 min</span>
+          <span class="fcard-pill">PHQ-9</span><span class="fcard-pill">GAD-7</span><span class="fcard-pill">ISI</span><span class="fcard-pill">~15–20 min</span>
         </div>
         <div class="fcard-actions">
-          <p style="font-size:12px;font-weight:300;color:var(--muted);line-height:1.55;margin-bottom:10px;">Al terminar recibirás una <strong style="color:var(--text);">copia de tus respuestas al correo</strong> que proporcionaste. Eso confirma que lo recibimos.</p>
-          <button class="btn-fill" onclick="openDrawer('pv','Expediente de primera vez','https://docs.google.com/forms/d/e/1FAIpQLSeU7vGbVJSEUdM2av0zKSbLUAHuP-F1KSSKyR0CYzvz0xHybw/viewform?embedded=true')">
+          <button class="btn-fill" onclick="openPreModal('pv','Expediente de primera vez','https://docs.google.com/forms/d/e/1FAIpQLSeU7vGbVJSEUdM2av0zKSbLUAHuP-F1KSSKyR0CYzvz0xHybw/viewform?embedded=true')">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
             Llenar formulario
           </button>
@@ -540,9 +313,7 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; }
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════
-  SCREEN — BARIÁTRICA  (?tca)
-═══════════════════════════════════════ -->
+<!-- ═══ SCREEN — BARIÁTRICA (?tca) ═══ -->
 <div class="screen" id="s-bariatrica">
   <div class="form-hero">
     <div class="form-hero-inner">
@@ -566,13 +337,10 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; }
           </div>
         </div>
         <div class="fcard-pills">
-          <span class="fcard-pill">EAT-26</span>
-          <span class="fcard-pill">BES</span>
-          <span class="fcard-pill">~12–15 min</span>
+          <span class="fcard-pill">EAT-26</span><span class="fcard-pill">BES</span><span class="fcard-pill">~12–15 min</span>
         </div>
         <div class="fcard-actions">
-          <p style="font-size:12px;font-weight:300;color:var(--muted);line-height:1.55;margin-bottom:10px;">Al terminar recibirás una <strong style="color:var(--text);">copia de tus respuestas al correo</strong> que proporcionaste. Eso confirma que lo recibimos.</p>
-          <button class="btn-fill" onclick="openDrawer('bari','Protocolo de cirugía bariátrica','https://docs.google.com/forms/d/e/1FAIpQLSdx-zY35ZlAmlzIvIqBoVpGa4EoiYXl4TtLN1nA36xkURwWVg/viewform?embedded=true')">
+          <button class="btn-fill" onclick="openPreModal('bari','Protocolo de cirugía bariátrica','https://docs.google.com/forms/d/e/1FAIpQLSdx-zY35ZlAmlzIvIqBoVpGa4EoiYXl4TtLN1nA36xkURwWVg/viewform?embedded=true')">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
             Llenar formulario
           </button>
@@ -589,9 +357,7 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; }
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════
-  SCREEN — EXPEDIENTE + BARIÁTRICA COMBO  (?esb)
-═══════════════════════════════════════ -->
+<!-- ═══ SCREEN — COMBO (?esb) ═══ -->
 <div class="screen" id="s-combo-bari">
   <div class="form-hero">
     <div class="form-hero-inner">
@@ -618,8 +384,7 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; }
           <span class="fcard-pill">PHQ-9</span><span class="fcard-pill">GAD-7</span><span class="fcard-pill">~15 min</span>
         </div>
         <div class="fcard-actions">
-          <p style="font-size:12px;font-weight:300;color:var(--muted);line-height:1.55;margin-bottom:10px;">Al terminar recibirás una <strong style="color:var(--text);">copia de tus respuestas al correo</strong> que proporcionaste. Eso confirma que lo recibimos.</p>
-          <button class="btn-fill" onclick="openDrawer('cb1','Expediente de primera vez','https://docs.google.com/forms/d/e/1FAIpQLSeU7vGbVJSEUdM2av0zKSbLUAHuP-F1KSSKyR0CYzvz0xHybw/viewform?embedded=true')">
+          <button class="btn-fill" onclick="openPreModal('cb1','Expediente de primera vez','https://docs.google.com/forms/d/e/1FAIpQLSeU7vGbVJSEUdM2av0zKSbLUAHuP-F1KSSKyR0CYzvz0xHybw/viewform?embedded=true')">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
             Llenar formulario
           </button>
@@ -638,8 +403,7 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; }
           <span class="fcard-pill">EAT-26</span><span class="fcard-pill">BES</span><span class="fcard-pill">~12 min</span>
         </div>
         <div class="fcard-actions">
-          <p style="font-size:12px;font-weight:300;color:var(--muted);line-height:1.55;margin-bottom:10px;">Al terminar recibirás una <strong style="color:var(--text);">copia de tus respuestas al correo</strong> que proporcionaste. Eso confirma que lo recibimos.</p>
-          <button class="btn-fill" onclick="openDrawer('cb2','Protocolo de cirugía bariátrica','https://docs.google.com/forms/d/e/1FAIpQLSdx-zY35ZlAmlzIvIqBoVpGa4EoiYXl4TtLN1nA36xkURwWVg/viewform?embedded=true')">
+          <button class="btn-fill" onclick="openPreModal('cb2','Protocolo de cirugía bariátrica','https://docs.google.com/forms/d/e/1FAIpQLSdx-zY35ZlAmlzIvIqBoVpGa4EoiYXl4TtLN1nA36xkURwWVg/viewform?embedded=true')">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
             Llenar formulario
           </button>
@@ -656,70 +420,43 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; }
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════
-  SCREEN — ESCALAS  (?es / ?tdah)
-═══════════════════════════════════════ -->
+<!-- ═══ SCREEN — ESCALAS (?es / ?tdah) ═══ -->
 <div class="screen" id="s-escalas">
   <div class="form-hero">
     <div class="form-hero-inner">
       <div class="form-hero-tag">📊 Escalas</div>
-      <h2 class="form-hero-title" id="escalas-hero-title">Escalas indicadas por médico</h2>
-      <p class="form-hero-sub" id="escalas-hero-sub">Selecciona las que tu médico te indicó completar</p>
+      <h2 class="form-hero-title">Escalas indicadas por médico</h2>
+      <p class="form-hero-sub">Selecciona las que tu médico te indicó completar</p>
     </div>
   </div>
   <div class="form-body">
-
-    <!-- Paso A: selector -->
     <div id="escalas-selector">
       <div class="select-note">
         <span class="ni">📌</span>
         <p><strong>Tu médico te indicó cuáles completar.</strong> Marca todas las que correspondan y presiona continuar.</p>
       </div>
-
       <div class="toggle-list">
         <p class="toggle-section-label">Escalas de diagnóstico</p>
-
         <button class="escala-toggle" id="tog-asrs" onclick="toggleEscala('asrs')">
           <div class="et-box">✓</div>
-          <div class="et-body">
-            <p class="et-title">Adult ADHD Self-Report Scale (ASRS v1.1)</p>
-            <p class="et-sub">Escala de autoreporte de síntomas · OMS · 18 ítems · ~5 min</p>
-          </div>
+          <div class="et-body"><p class="et-title">Adult ADHD Self-Report Scale (ASRS v1.1)</p><p class="et-sub">Escala de autoreporte de síntomas · OMS · 18 ítems · ~5 min</p></div>
         </button>
-
         <button class="escala-toggle" id="tog-diva" onclick="toggleEscala('diva')">
           <div class="et-box">✓</div>
-          <div class="et-body">
-            <p class="et-title">Entrevista Diagnóstica para el TDAH en adultos (DIVA 2.0)</p>
-            <p class="et-sub">Entrevista estructurada completa · Historia escolar y laboral · ~10 min</p>
-          </div>
+          <div class="et-body"><p class="et-title">Entrevista Diagnóstica para el TDAH en adultos (DIVA 2.0)</p><p class="et-sub">Entrevista estructurada completa · Historia escolar y laboral · ~10 min</p></div>
         </button>
-
         <button class="escala-toggle" id="tog-tca" onclick="toggleEscala('tca')">
           <div class="et-box">✓</div>
-          <div class="et-body">
-            <p class="et-title">Trastornos de la conducta alimentaria</p>
-            <p class="et-sub">Evaluación de hábitos, imagen corporal y conductas de riesgo · ~8 min</p>
-          </div>
+          <div class="et-body"><p class="et-title">Trastornos de la conducta alimentaria</p><p class="et-sub">Evaluación de hábitos, imagen corporal y conductas de riesgo · ~8 min</p></div>
         </button>
-
         <p class="toggle-section-label">Seguimiento</p>
-
         <button class="escala-toggle seg" id="tog-seguimiento" onclick="toggleEscala('seguimiento')">
           <div class="et-box">✓</div>
-          <div class="et-body">
-            <p class="et-title">Escalas de seguimiento</p>
-            <p class="et-sub">PHQ-9 · GAD-7 · ISI · YMRS — todo en un solo formulario · ~8–10 min</p>
-          </div>
+          <div class="et-body"><p class="et-title">Escalas de seguimiento</p><p class="et-sub">PHQ-9 · GAD-7 · ISI · YMRS — todo en un solo formulario · ~8–10 min</p></div>
         </button>
       </div>
-
-      <button class="btn-confirmar" id="btnConfirmar" onclick="confirmarEscalas()" disabled>
-        Continuar con las escalas seleccionadas →
-      </button>
+      <button class="btn-confirmar" id="btnConfirmar" onclick="confirmarEscalas()" disabled>Continuar con las escalas seleccionadas →</button>
     </div>
-
-    <!-- Paso B: cards generadas -->
     <div id="escalas-forms" style="display:none;">
       <div class="cards-stack" id="escalas-cards"></div>
       <div class="done-banner" id="done-escalas">
@@ -729,11 +466,10 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; }
         <a href="https://wa.me/526731205121" class="done-wa" target="_blank" rel="noopener">💬 WhatsApp</a>
       </div>
     </div>
-
   </div>
 </div>
 
-<!-- OVERLAY + DRAWER -->
+<!-- OVERLAY + DRAWER (sin footer) -->
 <div class="overlay" id="overlay" onclick="closeDrawer()"></div>
 <div class="drawer" id="drawer" role="dialog" aria-modal="true">
   <div class="dw-head">
@@ -747,9 +483,47 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; }
     <div class="dw-loader" id="dwLoader"><div class="spinner"></div><p>Cargando formulario…</p></div>
     <iframe id="formIframe" src="about:blank" title="Formulario" onload="iframeLoaded()"></iframe>
   </div>
-  <div class="dw-foot">
-    <button class="btn-dw-done" onclick="doneFromDrawer()">✓ Ya lo completé</button>
-    <button class="btn-dw-close" onclick="closeDrawer()">Cerrar</button>
+</div>
+
+<!-- MODAL 1: Aviso antes de abrir -->
+<div class="modal-overlay" id="preModal">
+  <div class="modal-box">
+    <div class="modal-icon">✉️</div>
+    <h2 class="modal-title">Antes de comenzar</h2>
+    <div class="modal-steps">
+      <div class="mstep">
+        <div class="mstep-num">1</div>
+        <p class="mstep-text">Llena el formulario completo y presiona <strong>Enviar</strong> al final.</p>
+      </div>
+      <div class="mstep">
+        <div class="mstep-num">2</div>
+        <p class="mstep-text">Google enviará automáticamente una <strong>copia de tus respuestas al correo</strong> que registres.</p>
+      </div>
+      <div class="mstep">
+        <div class="mstep-num">3</div>
+        <p class="mstep-text">Al recibir ese correo, <strong>significa que lo recibimos</strong>. Regresa aquí para confirmarlo y listo.</p>
+      </div>
+    </div>
+    <div class="modal-actions">
+      <button class="btn-modal-go" onclick="launchDrawerFromModal()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        Abrir formulario
+      </button>
+      <button class="btn-modal-cancel" onclick="closePreModal()">Cancelar</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL 2: Confirmación de correo recibido -->
+<div class="modal-overlay" id="confirmModal">
+  <div class="modal-box">
+    <div class="modal-icon">📬</div>
+    <h2 class="modal-title-sm">¿Ya recibiste el correo de confirmación?</h2>
+    <p class="modal-body">Google envía una copia de tus respuestas al correo que registraste al inicio del formulario. <strong>Si ya lo recibiste, significa que lo recibimos correctamente.</strong></p>
+    <div class="modal-col-actions">
+      <button class="btn-confirm-yes" onclick="confirmDone()">✓ &nbsp;Sí, ya recibí el correo</button>
+      <button class="btn-confirm-no" onclick="closeConfirmModal()">Todavía no — lo reviso después</button>
+    </div>
   </div>
 </div>
 
@@ -798,101 +572,63 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; }
     <div class="footer-legal">
       © Eutimya 2025–2026 &nbsp;·&nbsp;
       Al usar este sitio, usted acepta el <a href="https://www.eutimya.org/aviso-de-privacidad-y-consentimiento-informado" target="_blank" rel="noopener">Aviso de Privacidad y el Consentimiento Informado.</a>
-      ARCO/revocación: <a href="mailto:privacidad@eutimya.org">privacidad@eutimya.org</a>
     </div>
   </div>
 </footer>
 
 <script>
-/* ═══════════════════════════════
-   ESCALAS DATA
-═══════════════════════════════ */
+/* ═══ DATA ═══ */
 var ESCALAS_DATA = {
-  asrs: {
-    title: 'Adult ADHD Self-Report Scale (ASRS v1.1)',
-    sub:   'Escala de autoreporte · OMS · 18 ítems',
-    pills: ['~5 min','18 ítems'],
-    src:   'https://docs.google.com/forms/d/e/1FAIpQLSftISSsoVr3XPM9TdB6CxNDJImzeps1Zm1hksZ7LJi7wzd0yA/viewform?embedded=true'
-  },
-  diva: {
-    title: 'Entrevista Diagnóstica para el TDAH en adultos (DIVA 2.0)',
-    sub:   'Entrevista estructurada completa · Historia escolar y laboral',
-    pills: ['~10 min','DIVA 2.0'],
-    src:   'https://docs.google.com/forms/d/e/1FAIpQLSeupeXJte8uaDkoOa7l_dcA9KnXVge-GKDjHRbfUQZKujNeyw/viewform?embedded=true'
-  },
-  tca: {
-    title: 'Trastornos de la conducta alimentaria',
-    sub:   'Evaluación de hábitos, imagen corporal y conductas de riesgo',
-    pills: ['~8 min','EAT-26'],
-    src:   'https://docs.google.com/forms/d/e/1FAIpQLSeLQOdnYlkQ1yxrUyVcLl4p_RA9Z_yxYI8ZJhCw22lgIX7i2A/viewform?embedded=true'
-  },
-  seguimiento: {
-    title: 'Escalas de seguimiento',
-    sub:   'PHQ-9 · GAD-7 · ISI · YMRS — en un solo formulario',
-    pills: ['~8–10 min','PHQ-9','GAD-7','ISI','YMRS'],
-    src:   'https://docs.google.com/forms/d/e/1FAIpQLSeLQOdnYlkQ1yxrUyVcLl4p_RA9Z_yxYI8ZJhCw22lgIX7i2A/viewform?embedded=true'
-  }
+  asrs:        { title:'Adult ADHD Self-Report Scale (ASRS v1.1)',                   sub:'Escala de autoreporte · OMS · 18 ítems',                             pills:['~5 min','18 ítems'],                    src:'https://docs.google.com/forms/d/e/1FAIpQLSftISSsoVr3XPM9TdB6CxNDJImzeps1Zm1hksZ7LJi7wzd0yA/viewform?embedded=true' },
+  diva:        { title:'Entrevista Diagnóstica para el TDAH en adultos (DIVA 2.0)',  sub:'Entrevista estructurada completa · Historia escolar y laboral',       pills:['~10 min','DIVA 2.0'],                   src:'https://docs.google.com/forms/d/e/1FAIpQLSeupeXJte8uaDkoOa7l_dcA9KnXVge-GKDjHRbfUQZKujNeyw/viewform?embedded=true' },
+  tca:         { title:'Trastornos de la conducta alimentaria',                      sub:'Evaluación de hábitos, imagen corporal y conductas de riesgo',        pills:['~8 min','EAT-26'],                      src:'https://docs.google.com/forms/d/e/1FAIpQLSeLQOdnYlkQ1yxrUyVcLl4p_RA9Z_yxYI8ZJhCw22lgIX7i2A/viewform?embedded=true' },
+  seguimiento: { title:'Escalas de seguimiento',                                     sub:'PHQ-9 · GAD-7 · ISI · YMRS — en un solo formulario',                  pills:['~8–10 min','PHQ-9','GAD-7','ISI','YMRS'],src:'https://docs.google.com/forms/d/e/1FAIpQLSeLQOdnYlkQ1yxrUyVcLl4p_RA9Z_yxYI8ZJhCw22lgIX7i2A/viewform?embedded=true' }
 };
 
-/* ═══════════════════════════════
-   NAVIGATION
-═══════════════════════════════ */
+/* ═══ NAVIGATION ═══ */
 var navStack = [];
-
 function showScreen(id) {
   var cur = document.querySelector('.screen.active');
   if (cur) navStack.push(cur.id);
-  document.querySelectorAll('.screen').forEach(function(s) { s.classList.remove('active'); });
+  document.querySelectorAll('.screen').forEach(function(s){ s.classList.remove('active'); });
   document.getElementById(id).classList.add('active');
-  window.scrollTo(0, 0);
+  window.scrollTo(0,0);
   document.getElementById('btnBack').className = navStack.length ? 'btn-back show' : 'btn-back';
 }
-
 function goBack() {
   if (!navStack.length) return;
   var prev = navStack.pop();
-  document.querySelectorAll('.screen').forEach(function(s) { s.classList.remove('active'); });
+  document.querySelectorAll('.screen').forEach(function(s){ s.classList.remove('active'); });
   document.getElementById(prev).classList.add('active');
-  window.scrollTo(0, 0);
+  window.scrollTo(0,0);
   document.getElementById('btnBack').className = navStack.length ? 'btn-back show' : 'btn-back';
 }
-
 function showDirect(id) {
-  document.querySelectorAll('.screen').forEach(function(s) { s.classList.remove('active'); });
+  document.querySelectorAll('.screen').forEach(function(s){ s.classList.remove('active'); });
   document.getElementById(id).classList.add('active');
   navStack = [];
   document.getElementById('btnBack').className = 'btn-back';
-  window.scrollTo(0, 0);
+  window.scrollTo(0,0);
 }
 
-/* ═══════════════════════════════
-   COMPLETION
-═══════════════════════════════ */
+/* ═══ COMPLETION ═══ */
 function markDone(cardId, allIds, bannerId) {
-  var card = document.getElementById('fc-' + cardId);
-  var num  = document.getElementById('fn-' + cardId);
-  var und  = document.getElementById('bu-' + cardId);
+  var card = document.getElementById('fc-'+cardId);
+  var num  = document.getElementById('fn-'+cardId);
+  var und  = document.getElementById('bu-'+cardId);
   if (card) card.classList.add('done');
   if (num)  num.textContent = '✓';
   if (und)  und.removeAttribute('hidden');
-
-  var allDone = allIds.every(function(id) {
-    var c = document.getElementById('fc-' + id);
-    return c && c.classList.contains('done');
-  });
+  var allDone = allIds.every(function(id){ var c=document.getElementById('fc-'+id); return c&&c.classList.contains('done'); });
   if (allDone) {
     var banner = document.getElementById(bannerId);
-    if (banner) {
-      banner.classList.add('show');
-      banner.scrollIntoView({ behavior:'smooth', block:'nearest' });
-    }
+    if (banner) { banner.classList.add('show'); banner.scrollIntoView({behavior:'smooth',block:'nearest'}); }
   }
 }
-
 function undoDone(cardId, numLabel, bannerId) {
-  var card = document.getElementById('fc-' + cardId);
-  var num  = document.getElementById('fn-' + cardId);
-  var und  = document.getElementById('bu-' + cardId);
+  var card = document.getElementById('fc-'+cardId);
+  var num  = document.getElementById('fn-'+cardId);
+  var und  = document.getElementById('bu-'+cardId);
   if (card) card.classList.remove('done');
   if (num)  num.textContent = numLabel;
   if (und)  und.setAttribute('hidden','');
@@ -900,155 +636,120 @@ function undoDone(cardId, numLabel, bannerId) {
   if (banner) banner.classList.remove('show');
 }
 
-/* ═══════════════════════════════
-   ESCALAS SELECTOR
-═══════════════════════════════ */
+/* ═══ ESCALAS SELECTOR ═══ */
 var ALL_KEYS = ['asrs','diva','tca','seguimiento'];
-var selected = {};
-ALL_KEYS.forEach(function(k) { selected[k] = false; });
-
+var selected = {}; ALL_KEYS.forEach(function(k){ selected[k]=false; });
 function toggleEscala(id) {
   selected[id] = !selected[id];
-  var tog = document.getElementById('tog-' + id);
-  if (selected[id]) tog.classList.add('on');
-  else tog.classList.remove('on');
-  var any = ALL_KEYS.some(function(k) { return selected[k]; });
-  document.getElementById('btnConfirmar').disabled = !any;
+  var tog = document.getElementById('tog-'+id);
+  if (selected[id]) tog.classList.add('on'); else tog.classList.remove('on');
+  document.getElementById('btnConfirmar').disabled = !ALL_KEYS.some(function(k){ return selected[k]; });
 }
-
 function confirmarEscalas() {
-  var chosen = ALL_KEYS.filter(function(k) { return selected[k]; });
+  var chosen = ALL_KEYS.filter(function(k){ return selected[k]; });
   var html = '';
   chosen.forEach(function(id, idx) {
     var f = ESCALAS_DATA[id];
-    var pills = f.pills.map(function(p) { return '<span class="fcard-pill">'+p+'</span>'; }).join('');
-    var safeTitle = f.title.replace(/'/g, '&apos;');
-    html +=
-      '<div class="fcard" id="fc-'+id+'">'+
-        '<div class="fcard-head">'+
-          '<div class="fcard-num" id="fn-'+id+'">'+(idx+1)+'</div>'+
-          '<div class="fcard-info">'+
-            '<p class="fcard-title">'+f.title+'</p>'+
-            '<p class="fcard-sub">'+f.sub+'</p>'+
-          '</div>'+
-        '</div>'+
-        '<div class="fcard-pills">'+pills+'</div>'+
-        '<div class="fcard-actions">'+
-          '<p style="font-size:12px;font-weight:300;color:var(--muted);line-height:1.55;margin-bottom:10px;">Al terminar recibirás una <strong style="color:var(--text)">copia de tus respuestas al correo</strong> que proporcionaste. Eso confirma que lo recibimos.</p>'+
-          '<button class="btn-fill" onclick="openDrawer(\''+id+'\',\''+safeTitle+'\',\''+f.src+'\')">'+
-            '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>'+
-            ' Llenar escala'+
-          '</button>'+
-          '<button class="btn-undo" id="bu-'+id+'" hidden onclick="undoDone(\''+id+'\','+(idx+1)+',\'done-escalas\')">Desmarcar</button>'+
-        '</div>'+
-      '</div>';
+    var pills = f.pills.map(function(p){ return '<span class="fcard-pill">'+p+'</span>'; }).join('');
+    var st = f.title.replace(/'/g,"&apos;");
+    html += '<div class="fcard" id="fc-'+id+'"><div class="fcard-head"><div class="fcard-num" id="fn-'+id+'">'+(idx+1)+'</div><div class="fcard-info"><p class="fcard-title">'+f.title+'</p><p class="fcard-sub">'+f.sub+'</p></div></div><div class="fcard-pills">'+pills+'</div><div class="fcard-actions"><button class="btn-fill" onclick="openPreModal(\''+id+'\',\''+st+'\',\''+f.src+'\')"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> Llenar escala</button><button class="btn-undo" id="bu-'+id+'" hidden onclick="undoDone(\''+id+'\','+(idx+1)+',\'done-escalas\')">Desmarcar</button></div></div>';
   });
   document.getElementById('escalas-cards').innerHTML = html;
   document.getElementById('escalas-selector').style.display = 'none';
   document.getElementById('escalas-forms').style.display = 'block';
 }
 
-/* ═══════════════════════════════
-   DRAWER
-═══════════════════════════════ */
-var activeFormId = null;
-
-function openDrawer(formId, title, src) {
-  activeFormId = formId;
-  document.getElementById('dw-title-text').textContent = title;
-  document.getElementById('dwLoader').classList.remove('hidden');
-  document.getElementById('formIframe').src = src;
-  document.getElementById('drawer').classList.add('open');
-  document.getElementById('overlay').classList.add('open');
-  document.body.style.overflow = 'hidden';
+/* ═══ PRE-OPEN MODAL ═══ */
+var pendingFormId=null, pendingTitle=null, pendingSrc=null;
+function openPreModal(formId, title, src) {
+  pendingFormId=formId; pendingTitle=title; pendingSrc=src;
+  document.getElementById('preModal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closePreModal() {
+  document.getElementById('preModal').classList.remove('open');
+  document.body.style.overflow='';
+  pendingFormId=pendingTitle=pendingSrc=null;
+}
+function launchDrawerFromModal() {
+  document.getElementById('preModal').classList.remove('open');
+  openDrawer(pendingFormId, pendingTitle, pendingSrc);
 }
 
+/* ═══ DRAWER ═══ */
+var activeFormId=null;
+function openDrawer(formId, title, src) {
+  activeFormId=formId;
+  document.getElementById('dw-title-text').textContent=title;
+  document.getElementById('dwLoader').classList.remove('hidden');
+  document.getElementById('formIframe').src=src;
+  document.getElementById('drawer').classList.add('open');
+  document.getElementById('overlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
 function closeDrawer() {
   document.getElementById('drawer').classList.remove('open');
   document.getElementById('overlay').classList.remove('open');
-  document.body.style.overflow = '';
-}
-
-function iframeLoaded() {
-  var f = document.getElementById('formIframe');
-  if (f.src !== 'about:blank') {
-    document.getElementById('dwLoader').classList.add('hidden');
+  document.body.style.overflow='';
+  if (activeFormId) {
+    setTimeout(function(){
+      document.getElementById('confirmModal').classList.add('open');
+      document.body.style.overflow='hidden';
+    }, 300);
   }
 }
+function iframeLoaded() {
+  var f=document.getElementById('formIframe');
+  if (f.src!=='about:blank') document.getElementById('dwLoader').classList.add('hidden');
+}
 
-function doneFromDrawer() {
-  closeDrawer();
+/* ═══ CONFIRM MODAL ═══ */
+function closeConfirmModal() {
+  document.getElementById('confirmModal').classList.remove('open');
+  document.body.style.overflow='';
+}
+function confirmDone() {
+  closeConfirmModal();
   if (!activeFormId) return;
-  var activeScreen = document.querySelector('.screen.active');
-  if (!activeScreen) return;
-  var sid = activeScreen.id;
-
-  if      (sid === 's-primera')    markDone(activeFormId, ['pv'],        'done-pv');
-  else if (sid === 's-bariatrica') markDone(activeFormId, ['bari'],      'done-bari');
-  else if (sid === 's-combo-bari') markDone(activeFormId, ['cb1','cb2'], 'done-combo-bari');
-  else if (sid === 's-escalas') {
-    var chosen = ALL_KEYS.filter(function(k) { return selected[k]; });
+  var sid = document.querySelector('.screen.active').id;
+  if      (sid==='s-primera')    markDone(activeFormId, ['pv'],        'done-pv');
+  else if (sid==='s-bariatrica') markDone(activeFormId, ['bari'],      'done-bari');
+  else if (sid==='s-combo-bari') markDone(activeFormId, ['cb1','cb2'], 'done-combo-bari');
+  else if (sid==='s-escalas') {
+    var chosen=ALL_KEYS.filter(function(k){ return selected[k]; });
     markDone(activeFormId, chosen, 'done-escalas');
   }
+  activeFormId=null;
 }
 
-/* ═══════════════════════════════
-   URL ROUTING
-   ?1     → primera vez
-   ?tca   → bariátrica
-   ?esb   → expediente + bariátrica
-   ?tdah  → ASRS + DIVA
-   ?es    → escalas de seguimiento
-   (sin params) → selector general
-═══════════════════════════════ */
+/* ═══ URL ROUTING ═══ */
 function route() {
-  var p   = new URLSearchParams(window.location.search);
-  var has = function(k) { return p.has(k); };
-
-  if (has('1')) {
-    showDirect('s-primera');
-    return;
-  }
-
-  if (has('esb')) {
-    showDirect('s-combo-bari');
-    return;
-  }
-
+  var p=new URLSearchParams(window.location.search);
+  var has=function(k){ return p.has(k); };
+  if (has('1'))   { showDirect('s-primera');    return; }
+  if (has('esb')) { showDirect('s-combo-bari'); return; }
+  if (has('tca')) { showDirect('s-bariatrica'); return; }
   if (has('tdah')) {
-    selected.asrs = true;
-    selected.diva = true;
+    selected.asrs=true; selected.diva=true;
     document.getElementById('tog-asrs').classList.add('on');
     document.getElementById('tog-diva').classList.add('on');
-    document.getElementById('btnConfirmar').disabled = false;
+    document.getElementById('btnConfirmar').disabled=false;
     showDirect('s-escalas');
-    setTimeout(confirmarEscalas, 80);
+    setTimeout(confirmarEscalas,80);
     return;
   }
-
-  if (has('tca')) {
-    showDirect('s-bariatrica');
-    return;
-  }
-
   if (has('es')) {
-    selected.seguimiento = true;
+    selected.seguimiento=true;
     document.getElementById('tog-seguimiento').classList.add('on');
-    document.getElementById('btnConfirmar').disabled = false;
+    document.getElementById('btnConfirmar').disabled=false;
     showDirect('s-escalas');
-    setTimeout(confirmarEscalas, 80);
+    setTimeout(confirmarEscalas,80);
     return;
   }
-
-  /* Sin parámetros → pantalla de selección (s0 ya está activo) */
+  /* sin parámetros → s0 ya activo */
 }
 
-/* ═══════════════════════════════
-   INIT — ejecutar routing al cargar
-═══════════════════════════════ */
-document.addEventListener('DOMContentLoaded', function() {
-  route();
-});
+document.addEventListener('DOMContentLoaded', function(){ route(); });
 </script>
 </body>
 </html>
