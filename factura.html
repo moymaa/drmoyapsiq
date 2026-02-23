@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Solicitud de factura · Eutimya</title>
+<meta name="robots" content="noindex,nofollow"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --navy:    #0d1b2a;
+  --navy2:   #112240;
+  --rose:    #c0737a;
+  --rose-lt: #d4949a;
+  --rose-bg: rgba(192,115,122,.08);
+  --rose-bd: rgba(192,115,122,.22);
+  --white:   #ffffff;
+  --cream:   #f5f3ef;
+  --text:    #111827;
+  --muted:   #6b7280;
+  --border:  rgba(0,0,0,.09);
+  --green:   #16a34a;
+  --green-bg:rgba(22,163,74,.07);
+  --green-bd:rgba(22,163,74,.2);
+  --amber:   #d97706;
+  --amber-bg:#fef3c7;
+  --amber-bd:rgba(234,179,8,.3);
+  --amber-tx:#92400e;
+}
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+html { -webkit-text-size-adjust:100%; }
+body {
+  font-family:'DM Sans',system-ui,sans-serif;
+  background:var(--white); color:var(--text);
+  min-height:100vh; overflow-x:hidden;
+}
+a { color:inherit; text-decoration:none; }
+
+/* ─── TOPBAR ─── */
+.topbar {
+  position:fixed; top:0; left:0; right:0; z-index:200;
+  height:56px; display:flex; align-items:center; justify-content:space-between;
+  padding:0 20px;
+  background:rgba(255,255,255,.96);
+  backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+}
+.topbar-logo { display:flex; align-items:center; gap:10px; }
+.topbar-logo img { height:26px; }
+.topbar-logo-label { font-size:12px; font-weight:500; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); }
+
+/* ─── HERO ─── */
+.hero {
+  background:var(--navy);
+  padding:88px 20px 40px;
+  position:relative; overflow:hidden;
+}
+.hero::before {
+  content:''; position:absolute; inset:0;
+  background:
+    radial-gradient(ellipse 60% 70% at 0% 40%, rgba(192,115,122,.18) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 40% at 100% 10%, rgba(201,169,110,.09) 0%, transparent 55%),
+    radial-gradient(ellipse 35% 50% at 70% 95%, rgba(192,115,122,.07) 0%, transparent 50%);
+}
+.hero-inner { max-width:540px; margin:0 auto; position:relative; z-index:1; }
+.hero-tag {
+  display:inline-flex; align-items:center; gap:7px;
+  background:var(--rose-bg); border:1px solid var(--rose-bd);
+  border-radius:999px; padding:5px 14px;
+  font-size:11px; font-weight:700; letter-spacing:.12em; text-transform:uppercase;
+  color:var(--rose-lt); margin-bottom:18px;
+}
+.hero-tag::before { content:''; width:5px; height:5px; border-radius:50%; background:var(--rose); }
+.hero-title {
+  font-family:'Playfair Display',serif;
+  font-size:clamp(24px,5vw,34px); font-weight:700;
+  color:var(--white); line-height:1.15; margin-bottom:10px;
+}
+.hero-sub {
+  font-size:13px; font-weight:300; color:rgba(255,255,255,.5);
+  line-height:1.75; max-width:420px;
+}
+
+/* ─── BODY ─── */
+.body { max-width:540px; margin:0 auto; padding:28px 20px 60px; }
+
+/* ─── STEPS ─── */
+.steps-label {
+  font-size:11px; font-weight:700; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--rose); margin-bottom:14px;
+  display:flex; align-items:center; gap:8px;
+}
+.steps-label::before { content:''; width:16px; height:1px; background:var(--rose); }
+
+.steps { display:flex; flex-direction:column; gap:0; margin-bottom:24px; }
+.step {
+  display:flex; gap:16px; align-items:flex-start;
+  padding:18px 0;
+  border-bottom:1px solid var(--border);
+  animation:fadeUp .4s ease both;
+}
+.step:last-child { border-bottom:none; }
+.step:nth-child(1){ animation-delay:.05s; }
+.step:nth-child(2){ animation-delay:.12s; }
+.step:nth-child(3){ animation-delay:.19s; }
+
+.step-num {
+  width:32px; height:32px; border-radius:50%; flex-shrink:0;
+  background:var(--navy); color:var(--white);
+  display:flex; align-items:center; justify-content:center;
+  font-family:'Playfair Display',serif; font-size:13px; font-weight:700;
+  margin-top:1px;
+}
+.step-body {}
+.step-title { font-size:14px; font-weight:600; color:var(--text); margin-bottom:4px; }
+.step-desc { font-size:13px; font-weight:300; color:var(--muted); line-height:1.65; }
+.step-desc a {
+  color:var(--rose); text-decoration:underline; text-underline-offset:3px;
+  font-weight:500; transition:color .15s;
+}
+.step-desc a:hover { color:var(--navy); }
+.step-desc strong { color:var(--text); font-weight:600; }
+
+/* Chips for doctors */
+.doc-chips { display:flex; flex-wrap:wrap; gap:6px; margin-top:8px; }
+.doc-chip {
+  display:inline-flex; align-items:center; gap:5px;
+  background:var(--navy); color:rgba(255,255,255,.85);
+  border-radius:8px; padding:6px 12px;
+  font-size:12px; font-weight:500;
+}
+.doc-chip::before { content:'👤'; font-size:13px; }
+
+/* WhatsApp button */
+.btn-wa {
+  display:inline-flex; align-items:center; gap:7px;
+  background:#25D366; color:#fff;
+  padding:10px 16px; border-radius:8px;
+  font-size:13px; font-weight:600; margin-top:10px;
+  transition:background .15s; cursor:pointer; border:none; font-family:inherit;
+}
+.btn-wa:hover { background:#22c35e; }
+.btn-wa svg { width:16px; height:16px; fill:#fff; flex-shrink:0; }
+
+/* ─── ALERT ─── */
+.alert {
+  display:flex; align-items:flex-start; gap:12px;
+  background:var(--amber-bg); border:1px solid var(--amber-bd);
+  border-radius:12px; padding:14px 16px; margin-bottom:24px;
+  animation:fadeUp .4s ease .25s both;
+}
+.alert-icon { font-size:18px; flex-shrink:0; margin-top:1px; }
+.alert-body {}
+.alert-title { font-size:13px; font-weight:600; color:var(--amber-tx); margin-bottom:3px; }
+.alert-text { font-size:12px; font-weight:300; color:var(--amber-tx); line-height:1.65; }
+.alert-text a { color:var(--amber); text-decoration:underline; text-underline-offset:3px; font-weight:500; }
+
+/* ─── DIVIDER ─── */
+.divider {
+  display:flex; align-items:center; gap:12px;
+  margin:24px 0;
+  font-size:11px; font-weight:700; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--muted);
+}
+.divider::before, .divider::after { content:''; flex:1; height:1px; background:var(--border); }
+
+/* ─── FORM CARD ─── */
+.form-card {
+  background:var(--white); border:1.5px solid var(--border);
+  border-radius:16px; overflow:hidden;
+  box-shadow:0 4px 24px rgba(0,0,0,.06);
+  animation:fadeUp .4s ease .35s both;
+}
+.form-card-head {
+  display:flex; align-items:center; gap:12px;
+  padding:16px 20px;
+  background:var(--navy);
+}
+.form-card-icon {
+  width:36px; height:36px; border-radius:10px;
+  background:var(--rose-bg); border:1px solid var(--rose-bd);
+  display:flex; align-items:center; justify-content:center;
+  font-size:17px; flex-shrink:0;
+}
+.form-card-info {}
+.form-card-title { font-size:14px; font-weight:600; color:var(--white); }
+.form-card-sub { font-size:11px; font-weight:300; color:rgba(255,255,255,.45); margin-top:1px; }
+
+.form-card-body { padding:20px; }
+.time-badge {
+  display:inline-flex; align-items:center; gap:6px;
+  background:var(--cream); border:1px solid var(--border);
+  border-radius:8px; padding:6px 12px;
+  font-size:12px; color:var(--muted); margin-bottom:16px;
+}
+.time-badge strong { color:var(--text); font-weight:600; }
+
+.btn-open {
+  width:100%; display:flex; align-items:center; justify-content:center; gap:8px;
+  background:var(--navy); color:#fff;
+  padding:14px; border-radius:10px;
+  font-size:14px; font-weight:600; font-family:inherit;
+  border:none; cursor:pointer;
+  transition:background .15s, transform .12s;
+}
+.btn-open:hover { background:var(--navy2); transform:translateY(-1px); }
+.btn-open svg { width:16px; height:16px; }
+
+/* ─── DRAWER ─── */
+.overlay {
+  position:fixed; inset:0; z-index:500;
+  background:rgba(8,14,22,.72);
+  backdrop-filter:blur(5px); -webkit-backdrop-filter:blur(5px);
+  opacity:0; visibility:hidden; transition:opacity .3s, visibility .3s;
+}
+.overlay.open { opacity:1; visibility:visible; }
+
+.drawer {
+  position:fixed; top:0; right:0; bottom:0; z-index:501;
+  width:min(680px,100vw); background:var(--white);
+  display:flex; flex-direction:column;
+  transform:translateX(102%);
+  transition:transform .38s cubic-bezier(.22,.9,.3,1);
+  box-shadow:-16px 0 48px rgba(0,0,0,.18);
+}
+.drawer.open { transform:translateX(0); }
+
+.dw-head {
+  display:flex; align-items:center; justify-content:space-between;
+  padding:14px 18px; background:var(--navy);
+  border-bottom:1px solid rgba(255,255,255,.06); flex-shrink:0;
+}
+.dw-info { display:flex; flex-direction:column; gap:2px; }
+.dw-label { font-size:10px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--rose-lt); }
+.dw-title { font-family:'Playfair Display',serif; font-size:16px; font-weight:600; color:#fff; }
+.dw-close {
+  width:34px; height:34px; border-radius:50%;
+  border:1px solid rgba(255,255,255,.15); background:rgba(255,255,255,.07);
+  color:rgba(255,255,255,.7); font-size:20px; line-height:1;
+  display:flex; align-items:center; justify-content:center;
+  transition:background .15s; cursor:pointer;
+}
+.dw-close:hover { background:rgba(255,255,255,.15); }
+
+.dw-body { flex:1; overflow:hidden; position:relative; }
+.dw-body iframe { width:100%; height:100%; border:none; display:block; }
+.dw-loader {
+  position:absolute; inset:0; z-index:2; background:var(--white);
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px;
+  transition:opacity .35s;
+}
+.dw-loader.hidden { opacity:0; pointer-events:none; }
+.spinner {
+  width:32px; height:32px;
+  border:3px solid rgba(192,115,122,.15); border-top-color:var(--rose);
+  border-radius:50%; animation:spin .8s linear infinite;
+}
+@keyframes spin { to { transform:rotate(360deg); } }
+.dw-loader p { font-size:13px; color:var(--muted); }
+
+.dw-foot {
+  padding:12px 18px; background:var(--white);
+  border-top:1px solid var(--border); flex-shrink:0;
+  display:flex; gap:10px;
+}
+.btn-dw-close {
+  display:inline-flex; align-items:center; gap:6px;
+  border:1.5px solid var(--border); color:var(--muted);
+  padding:10px 16px; border-radius:8px; font-size:13px; font-weight:500;
+  background:var(--white); cursor:pointer; font-family:inherit;
+  transition:all .15s;
+}
+.btn-dw-close:hover { border-color:var(--navy); color:var(--navy); }
+
+/* ─── FOOTER ─── */
+.site-footer {
+  background:var(--white); border-top:1px solid var(--border);
+  padding:40px 20px 28px;
+}
+.footer-inner { max-width:540px; margin:0 auto; }
+.footer-logo-wrap { margin-bottom:20px; }
+.footer-logo-wrap img { width:48px; height:48px; object-fit:contain; }
+.footer-cols { display:flex; gap:40px; flex-wrap:wrap; margin-bottom:20px; }
+.footer-col h4 { font-size:11px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:var(--text); margin-bottom:10px; }
+.footer-links { display:flex; flex-direction:column; gap:6px; }
+.footer-links a { font-size:13px; color:var(--muted); text-decoration:underline; text-underline-offset:3px; transition:color .15s; }
+.footer-links a:hover { color:var(--text); }
+.footer-social { display:flex; gap:10px; padding-top:18px; border-top:1px solid var(--border); margin-bottom:16px; }
+.soc {
+  width:38px; height:38px; border-radius:50%; border:1px solid var(--border);
+  display:flex; align-items:center; justify-content:center;
+  transition:border-color .15s, box-shadow .15s;
+}
+.soc:hover { border-color:rgba(0,0,0,.25); box-shadow:0 2px 8px rgba(0,0,0,.07); }
+.soc svg { width:18px; height:18px; fill:none; stroke:rgba(0,0,0,.65); stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+.footer-legal { font-size:11px; color:var(--muted); line-height:1.65; }
+.footer-legal a { color:var(--muted); text-decoration:underline; text-underline-offset:3px; }
+
+/* ─── UTILS ─── */
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(12px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+@media(max-width:480px){
+  .topbar-logo-label { display:none; }
+  .footer-cols { gap:20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<header class="topbar">
+  <a href="https://www.eutimya.org/" class="topbar-logo">
+    <img src="https://raw.githubusercontent.com/moymaa/drmoyapsiq/main/unnamed.png" alt="Eutimya"/>
+    <span class="topbar-logo-label">Eutimya · Facturación</span>
+  </a>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">🧾 Facturación</div>
+    <h1 class="hero-title">Solicitud de factura</h1>
+    <p class="hero-sub">Sigue los pasos a continuación antes de llenar el formulario. El proceso toma menos de 2 minutos.</p>
+  </div>
+</div>
+
+<!-- BODY -->
+<div class="body">
+
+  <!-- Pasos previos -->
+  <p class="steps-label">Antes de continuar</p>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <p class="step-title">Envía tu comprobante de pago por WhatsApp</p>
+        <p class="step-desc">Manda tu ticket o captura de pago directamente al médico que te atendió para validar la consulta.</p>
+        <div style="display:flex;flex-direction:column;gap:8px;margin-top:10px;">
+          <a href="https://wa.me/526731205121" target="_blank" rel="noopener">
+            <button class="btn-wa">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.997 2C6.477 2 2 6.477 2 12c0 1.79.467 3.47 1.285 4.926L2 22l5.233-1.27A9.953 9.953 0 0 0 11.997 22C17.52 22 22 17.523 22 12S17.52 2 11.997 2zm0 18.162a8.147 8.147 0 0 1-4.151-1.136l-.298-.178-3.1.752.778-2.99-.196-.308A8.162 8.162 0 1 1 11.997 20.162z"/></svg>
+              Dr. Moya
+            </button>
+          </a>
+          <a href="https://wa.me/525513580092" target="_blank" rel="noopener">
+            <button class="btn-wa">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.997 2C6.477 2 2 6.477 2 12c0 1.79.467 3.47 1.285 4.926L2 22l5.233-1.27A9.953 9.953 0 0 0 11.997 22C17.52 22 22 17.523 22 12S17.52 2 11.997 2zm0 18.162a8.147 8.147 0 0 1-4.151-1.136l-.298-.178-3.1.752.778-2.99-.196-.308A8.162 8.162 0 1 1 11.997 20.162z"/></svg>
+              Dra. Sharon Venecia
+            </button>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <p class="step-title">Llena el formulario con tus datos fiscales</p>
+        <p class="step-desc">Ten a la mano tu <strong>RFC</strong>, razón social y correo para recibir la factura. El formulario tarda menos de 2 minutos.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <p class="step-title">Recibe tu factura en máximo 5 días hábiles</p>
+        <p class="step-desc">Se enviará al correo que proporciones. Si no la recibes, escribe a <a href="mailto:contabilidad@mqmcontadores.com">contabilidad@mqmcontadores.com</a></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Alert -->
+  <div class="alert">
+    <span class="alert-icon">⚠️</span>
+    <div class="alert-body">
+      <p class="alert-title">Requisito previo obligatorio</p>
+      <p class="alert-text">El comprobante de pago debe enviarse <strong>antes</strong> de solicitar la factura. Sin ese paso, no es posible procesarla.</p>
+    </div>
+  </div>
+
+  <!-- Divider -->
+  <div class="divider">Formulario de solicitud</div>
+
+  <!-- Form card -->
+  <div class="form-card">
+    <div class="form-card-head">
+      <div class="form-card-icon">🧾</div>
+      <div class="form-card-info">
+        <p class="form-card-title">Datos para facturación</p>
+        <p class="form-card-sub">RFC · Razón social · Uso de CFDI · Correo</p>
+      </div>
+    </div>
+    <div class="form-card-body">
+      <div class="time-badge">⏱ <strong>~2 minutos</strong> &nbsp;·&nbsp; Recibirás tu factura al correo proporcionado</div>
+      <button class="btn-open" onclick="openDrawer()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        Llenar formulario de facturación
+      </button>
+    </div>
+  </div>
+
+</div>
+
+<!-- OVERLAY + DRAWER -->
+<div class="overlay" id="overlay" onclick="closeDrawer()"></div>
+<div class="drawer" id="drawer" role="dialog" aria-modal="true">
+  <div class="dw-head">
+    <div class="dw-info">
+      <span class="dw-label">Eutimya · Facturación</span>
+      <span class="dw-title">Solicitud de factura</span>
+    </div>
+    <button class="dw-close" onclick="closeDrawer()">×</button>
+  </div>
+  <div class="dw-body">
+    <div class="dw-loader" id="dwLoader">
+      <div class="spinner"></div>
+      <p>Cargando formulario…</p>
+    </div>
+    <iframe
+      id="formIframe"
+      src="about:blank"
+      title="Formulario de facturación"
+      onload="iframeLoaded()">
+    </iframe>
+  </div>
+  <div class="dw-foot">
+    <button class="btn-dw-close" onclick="closeDrawer()">← Cerrar</button>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-logo-wrap">
+      <img src="https://github.com/moymaa/drmoyapsiq/blob/main/unnamed(30).png?raw=true" alt="Eutimya"/>
+    </div>
+    <div class="footer-cols">
+      <div class="footer-col">
+        <h4>Enlaces</h4>
+        <div class="footer-links">
+          <a href="https://eutimya.org/">Inicio</a>
+          <a href="https://www.eutimya.org/agendar">Agendar</a>
+          <a href="https://www.eutimya.org/profesionales">Profesionales</a>
+          <a href="https://www.eutimya.org/blog">Blog</a>
+          <a href="https://www.eutimya.org/nosotros">Nosotros</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Recursos</h4>
+        <div class="footer-links">
+          <a href="https://www.eutimya.org/exp">Expediente</a>
+          <a href="https://www.eutimya.org/pagos">Formas de pago</a>
+          <a href="https://www.eutimya.org/agendar">Reagendar</a>
+          <a href="https://www.eutimya.org/validar">Validar</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-social">
+      <a class="soc" href="https://tiktok.com/@eutimya.mental" target="_blank" rel="noopener" aria-label="TikTok">
+        <svg viewBox="0 0 24 24"><path d="M14 3v10.1a4.1 4.1 0 1 1-3-3.95"/><path d="M14 3c1.2 2.2 3 3.8 6 4v3c-2.4-.1-4.3-1-6-2.5"/></svg>
+      </a>
+      <a class="soc" href="mailto:eutimya.mental@gmail.com" aria-label="Email">
+        <svg viewBox="0 0 24 24"><path d="M4 6h16v12H4z"/><path d="M4 7l8 6 8-6"/></svg>
+      </a>
+      <a class="soc" href="https://instagram.com/eutimya.mental" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      </a>
+      <a class="soc" href="https://facebook.com/eutimya.mental" target="_blank" rel="noopener" aria-label="Facebook">
+        <svg viewBox="0 0 24 24"><path d="M14 8h3V5h-3c-2.2 0-4 1.8-4 4v3H7v3h3v6h3v-6h3l1-3h-4V9c0-.6.4-1 1-1z"/></svg>
+      </a>
+    </div>
+    <div class="footer-legal">
+      © Eutimya 2025–2026 &nbsp;·&nbsp;
+      Al usar este sitio aceptas el <a href="https://www.eutimya.org/aviso-de-privacidad-y-consentimiento-informado" target="_blank" rel="noopener">Aviso de Privacidad.</a>
+      &nbsp;·&nbsp; ARCO: <a href="mailto:contacto@eutimya.org">contacto@eutimya.org</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+function openDrawer() {
+  var iframe = document.getElementById('formIframe');
+  if (iframe.src === 'about:blank') {
+    iframe.src = 'https://docs.google.com/forms/d/e/1FAIpQLScFNiADOOOlDMBey5EdN0EgeefgnuUUKlxtWeV5BHb5uGtSKw/viewform?embedded=true';
+  }
+  document.getElementById('drawer').classList.add('open');
+  document.getElementById('overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeDrawer() {
+  document.getElementById('drawer').classList.remove('open');
+  document.getElementById('overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function iframeLoaded() {
+  var f = document.getElementById('formIframe');
+  if (f.src !== 'about:blank') {
+    document.getElementById('dwLoader').classList.add('hidden');
+  }
+}
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeDrawer();
+});
+</script>
+</body>
+</html>
