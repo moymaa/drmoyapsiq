@@ -252,7 +252,6 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; }
 .select-note p { font-size:13px; color:var(--amber-tx); line-height:1.6; }
 .select-note strong { font-weight:600; }
 
-/* Section label inside toggle list */
 .toggle-section-label {
   font-size:10px; font-weight:800; letter-spacing:.14em; text-transform:uppercase;
   color:var(--muted); padding:6px 4px 4px;
@@ -272,7 +271,6 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; }
 .escala-toggle:hover { border-color:var(--rose-bd); background:var(--rose-bg); }
 .escala-toggle.on { border-color:var(--rose); background:var(--rose-bg); }
 
-/* Seguimiento toggle variant */
 .escala-toggle.seg { border-color:rgba(99,102,241,.18); }
 .escala-toggle.seg:hover { border-color:var(--indigo); background:var(--indigo-bg); }
 .escala-toggle.seg.on { border-color:var(--indigo); background:var(--indigo-bg); }
@@ -493,8 +491,7 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; }
 </div>
 
 <!-- ═══════════════════════════════════════
-  SCREEN — PRIMERA VEZ
-  Ruta directa: ?1
+  SCREEN — PRIMERA VEZ  (?1)
 ═══════════════════════════════════════ -->
 <div class="screen" id="s-primera">
   <div class="form-hero">
@@ -530,6 +527,7 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; }
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
             Llenar formulario
           </button>
+          <button class="btn-undo" id="bu-pv" hidden onclick="undoDone('pv',1,'done-pv')">Desmarcar</button>
         </div>
       </div>
     </div>
@@ -543,8 +541,7 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; }
 </div>
 
 <!-- ═══════════════════════════════════════
-  SCREEN — BARIÁTRICA (solo)
-  Ruta directa: ?tca
+  SCREEN — BARIÁTRICA  (?tca)
 ═══════════════════════════════════════ -->
 <div class="screen" id="s-bariatrica">
   <div class="form-hero">
@@ -579,6 +576,7 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; }
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
             Llenar formulario
           </button>
+          <button class="btn-undo" id="bu-bari" hidden onclick="undoDone('bari',1,'done-bari')">Desmarcar</button>
         </div>
       </div>
     </div>
@@ -592,8 +590,7 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; }
 </div>
 
 <!-- ═══════════════════════════════════════
-  SCREEN — PRIMERA VEZ + BARIÁTRICA (combo)
-  Ruta directa: ?esb
+  SCREEN — EXPEDIENTE + BARIÁTRICA COMBO  (?esb)
 ═══════════════════════════════════════ -->
 <div class="screen" id="s-combo-bari">
   <div class="form-hero">
@@ -609,7 +606,6 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; }
       <p><strong>~30–35 minutos en total.</strong> Puedes tomar descansos entre formularios.</p>
     </div>
     <div class="cards-stack">
-      <!-- Card 1 -->
       <div class="fcard" id="fc-cb1">
         <div class="fcard-head">
           <div class="fcard-num" id="fn-cb1">1</div>
@@ -627,9 +623,9 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; }
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
             Llenar formulario
           </button>
+          <button class="btn-undo" id="bu-cb1" hidden onclick="undoDone('cb1',1,'done-combo-bari')">Desmarcar</button>
         </div>
       </div>
-      <!-- Card 2 -->
       <div class="fcard" id="fc-cb2">
         <div class="fcard-head">
           <div class="fcard-num" id="fn-cb2">2</div>
@@ -647,6 +643,7 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; }
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
             Llenar formulario
           </button>
+          <button class="btn-undo" id="bu-cb2" hidden onclick="undoDone('cb2',2,'done-combo-bari')">Desmarcar</button>
         </div>
       </div>
     </div>
@@ -660,9 +657,7 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; }
 </div>
 
 <!-- ═══════════════════════════════════════
-  SCREEN — ESCALAS (selector + forms dinámicos)
-  Ruta directa: ?es   (selector abierto)
-               ?tdah  (ASRS + DIVA auto-confirmados)
+  SCREEN — ESCALAS  (?es / ?tdah)
 ═══════════════════════════════════════ -->
 <div class="screen" id="s-escalas">
   <div class="form-hero">
@@ -682,8 +677,6 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; }
       </div>
 
       <div class="toggle-list">
-
-        <!-- ── Diagnóstico / Primera vez ── -->
         <p class="toggle-section-label">Escalas de diagnóstico</p>
 
         <button class="escala-toggle" id="tog-asrs" onclick="toggleEscala('asrs')">
@@ -710,7 +703,6 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; }
           </div>
         </button>
 
-        <!-- ── Seguimiento ── -->
         <p class="toggle-section-label">Seguimiento</p>
 
         <button class="escala-toggle seg" id="tog-seguimiento" onclick="toggleEscala('seguimiento')">
@@ -720,13 +712,12 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; }
             <p class="et-sub">PHQ-9 · GAD-7 · ISI · YMRS — todo en un solo formulario · ~8–10 min</p>
           </div>
         </button>
-
-      </div><!-- /toggle-list -->
+      </div>
 
       <button class="btn-confirmar" id="btnConfirmar" onclick="confirmarEscalas()" disabled>
         Continuar con las escalas seleccionadas →
       </button>
-    </div><!-- /escalas-selector -->
+    </div>
 
     <!-- Paso B: cards generadas -->
     <div id="escalas-forms" style="display:none;">
@@ -755,6 +746,10 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; }
   <div class="dw-body">
     <div class="dw-loader" id="dwLoader"><div class="spinner"></div><p>Cargando formulario…</p></div>
     <iframe id="formIframe" src="about:blank" title="Formulario" onload="iframeLoaded()"></iframe>
+  </div>
+  <div class="dw-foot">
+    <button class="btn-dw-done" onclick="doneFromDrawer()">✓ Ya lo completé</button>
+    <button class="btn-dw-close" onclick="closeDrawer()">Cerrar</button>
   </div>
 </div>
 
@@ -790,7 +785,7 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; }
       <a class="soc" href="https://tiktok.com/@eutimya.mental" target="_blank" rel="noopener" aria-label="TikTok">
         <svg viewBox="0 0 24 24"><path d="M14 3v10.1a4.1 4.1 0 1 1-3-3.95"/><path d="M14 3c1.2 2.2 3 3.8 6 4v3c-2.4-.1-4.3-1-6-2.5"/></svg>
       </a>
-      <a class="soc" href="/cdn-cgi/l/email-protection#afcadadbc6c2d6ce81c2cac1dbcec3efc8c2cec6c381ccc0c2" aria-label="Email">
+      <a class="soc" href="mailto:contacto@eutimya.org" aria-label="Email">
         <svg viewBox="0 0 24 24"><path d="M4 6h16v12H4z"/><path d="M4 7l8 6 8-6"/></svg>
       </a>
       <a class="soc" href="https://instagram.com/eutimya.mental" target="_blank" rel="noopener" aria-label="Instagram">
@@ -803,20 +798,16 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; }
     <div class="footer-legal">
       © Eutimya 2025–2026 &nbsp;·&nbsp;
       Al usar este sitio, usted acepta el <a href="https://www.eutimya.org/aviso-de-privacidad-y-consentimiento-informado" target="_blank" rel="noopener">Aviso de Privacidad y el Consentimiento Informado.</a>
-      ARCO/revocación: <a href="/cdn-cgi/l/email-protection#8ae9e5e4feebe9fee5caeffffee3e7f3eba4e5f8ed"><span class="__cf_email__" data-cfemail="45262a2b312426312a052030312c283c246b2a3722">[email&#160;protected]</span></a>
+      ARCO/revocación: <a href="mailto:privacidad@eutimya.org">privacidad@eutimya.org</a>
     </div>
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 /* ═══════════════════════════════
    ESCALAS DATA
-   NOTA: ASRS y DIVA — src corregidos (estaban invertidos)
-   NOTA: seguimiento — reemplaza cada URL_SEGUIMIENTO_* con
-         el enlace embebido de tu Google Form correspondiente
 ═══════════════════════════════ */
 var ESCALAS_DATA = {
-  /* ── TDAH ── */
   asrs: {
     title: 'Adult ADHD Self-Report Scale (ASRS v1.1)',
     sub:   'Escala de autoreporte · OMS · 18 ítems',
@@ -829,14 +820,12 @@ var ESCALAS_DATA = {
     pills: ['~10 min','DIVA 2.0'],
     src:   'https://docs.google.com/forms/d/e/1FAIpQLSeupeXJte8uaDkoOa7l_dcA9KnXVge-GKDjHRbfUQZKujNeyw/viewform?embedded=true'
   },
-  /* ── TCA ── */
   tca: {
     title: 'Trastornos de la conducta alimentaria',
     sub:   'Evaluación de hábitos, imagen corporal y conductas de riesgo',
     pills: ['~8 min','EAT-26'],
     src:   'https://docs.google.com/forms/d/e/1FAIpQLSeLQOdnYlkQ1yxrUyVcLl4p_RA9Z_yxYI8ZJhCw22lgIX7i2A/viewform?embedded=true'
   },
-  /* ── SEGUIMIENTO ── formulario único */
   seguimiento: {
     title: 'Escalas de seguimiento',
     sub:   'PHQ-9 · GAD-7 · ISI · YMRS — en un solo formulario',
@@ -945,7 +934,7 @@ function confirmarEscalas() {
         '</div>'+
         '<div class="fcard-pills">'+pills+'</div>'+
         '<div class="fcard-actions">'+
-          '<p style="font-size:12px;font-weight:300;color:var(--muted);line-height:1.55;margin-bottom:10px;">Al terminar recibirás una <strong style=\"color:var(--text)\">copia de tus respuestas al correo</strong> que proporcionaste. Eso confirma que lo recibimos.</p>'+
+          '<p style="font-size:12px;font-weight:300;color:var(--muted);line-height:1.55;margin-bottom:10px;">Al terminar recibirás una <strong style="color:var(--text)">copia de tus respuestas al correo</strong> que proporcionaste. Eso confirma que lo recibimos.</p>'+
           '<button class="btn-fill" onclick="openDrawer(\''+id+'\',\''+safeTitle+'\',\''+f.src+'\')">'+
             '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>'+
             ' Llenar escala'+
@@ -994,11 +983,9 @@ function doneFromDrawer() {
   if (!activeScreen) return;
   var sid = activeScreen.id;
 
-  if      (sid === 's-primera')     markDone(activeFormId, ['pv'], 'done-pv');
-  else if (sid === 's-bariatrica')  markDone(activeFormId, ['bari'], 'done-bari');
-  else if (sid === 's-combo-bari') {
-    markDone(activeFormId, ['cb1','cb2'], 'done-combo-bari');
-  }
+  if      (sid === 's-primera')    markDone(activeFormId, ['pv'],        'done-pv');
+  else if (sid === 's-bariatrica') markDone(activeFormId, ['bari'],      'done-bari');
+  else if (sid === 's-combo-bari') markDone(activeFormId, ['cb1','cb2'], 'done-combo-bari');
   else if (sid === 's-escalas') {
     var chosen = ALL_KEYS.filter(function(k) { return selected[k]; });
     markDone(activeFormId, chosen, 'done-escalas');
@@ -1006,34 +993,31 @@ function doneFromDrawer() {
 }
 
 /* ═══════════════════════════════
-   URL ROUTING — tabla de parámetros
-   ──────────────────────────────
-   ?1     → solo primera vez
-   ?esb   → expediente + bariátrica (combo)
-   ?tdah  → ASRS + DIVA auto-confirmados
-   ?tca   → solo protocolo bariátrica
-   ?es    → selector de escalas (abierto)
-   (sin parámetros) → pantalla de selección
+   URL ROUTING
+   ?1     → primera vez
+   ?tca   → bariátrica
+   ?esb   → expediente + bariátrica
+   ?tdah  → ASRS + DIVA
+   ?es    → escalas de seguimiento
+   (sin params) → selector general
 ═══════════════════════════════ */
 function route() {
   var p   = new URLSearchParams(window.location.search);
   var has = function(k) { return p.has(k); };
 
-  /* ?1 — solo primera vez */
   if (has('1')) {
     showDirect('s-primera');
     return;
   }
 
-  /* ?esb — expediente + bariátrica */
   if (has('esb')) {
     showDirect('s-combo-bari');
     return;
   }
 
-  /* ?tdah — ASRS + DIVA auto-confirmados */
   if (has('tdah')) {
-    selected.asrs = true; selected.diva = true;
+    selected.asrs = true;
+    selected.diva = true;
     document.getElementById('tog-asrs').classList.add('on');
     document.getElementById('tog-diva').classList.add('on');
     document.getElementById('btnConfirmar').disabled = false;
@@ -1042,13 +1026,11 @@ function route() {
     return;
   }
 
-  /* ?tca — solo protocolo bariátrica */
   if (has('tca')) {
     showDirect('s-bariatrica');
     return;
   }
 
-  /* ?es — escalas de seguimiento directo */
   if (has('es')) {
     selected.seguimiento = true;
     document.getElementById('tog-seguimiento').classList.add('on');
@@ -1058,4 +1040,15 @@ function route() {
     return;
   }
 
-  /* Sin parámetros → pantalla de selec
+  /* Sin parámetros → pantalla de selección (s0 ya está activo) */
+}
+
+/* ═══════════════════════════════
+   INIT — ejecutar routing al cargar
+═══════════════════════════════ */
+document.addEventListener('DOMContentLoaded', function() {
+  route();
+});
+</script>
+</body>
+</html>
