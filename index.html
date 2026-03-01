@@ -209,9 +209,7 @@ a{color:inherit;text-decoration:none}
   display:flex;align-items:center;gap:.7rem;
   margin-bottom:2rem;
 }
-.stars-text{
-  color:#f59e0b;font-size:1.1rem;letter-spacing:.05em;
-}
+.stars-text{color:#f59e0b;font-size:1.1rem;letter-spacing:.05em;}
 .stars-label{font-size:.8rem;color:var(--ink-light);font-weight:400}
 .hero-desc{
   font-size:.95rem;line-height:1.8;color:var(--ink-mid);
@@ -244,7 +242,7 @@ a{color:inherit;text-decoration:none}
 .cred{display:flex;align-items:center;gap:.3rem}
 .cred-dot{width:5px;height:5px;border-radius:50%;background:var(--gold);flex-shrink:0}
 
-/* ═══ HERO RIGHT (photo) ═══ */
+/* ═══ HERO RIGHT ═══ */
 .hero-right{
   position:relative;overflow:hidden;
   min-height:600px;
@@ -493,6 +491,7 @@ a{color:inherit;text-decoration:none}
   width:100%;display:flex;align-items:center;justify-content:space-between;gap:1rem;
   padding:1.1rem 0;font-size:.95rem;font-weight:600;color:var(--ink);
   background:none;border:none;cursor:pointer;text-align:left;
+  -webkit-tap-highlight-color:transparent;
 }
 .faq-q:hover{color:var(--gold)}
 .faq-icon{
@@ -501,6 +500,7 @@ a{color:inherit;text-decoration:none}
   display:flex;align-items:center;justify-content:center;
   font-size:.95rem;color:var(--ink-mid);
   transition:.25s;
+  pointer-events:none;
 }
 .faq-item.open .faq-icon{background:var(--ink);color:#fff;border-color:var(--ink);transform:rotate(45deg)}
 .faq-a{
@@ -573,9 +573,7 @@ a{color:inherit;text-decoration:none}
   display:grid;grid-template-columns:1.6fr 1fr 1fr;
   gap:3rem;margin-bottom:2.5rem;
 }
-.footer-brand img{
-  margin-bottom:1rem;
-}
+.footer-brand img{margin-bottom:1rem;}
 .footer-brand p{font-size:.8rem;color:rgba(255,255,255,.5);line-height:1.7;max-width:280px}
 .footer-col h4{
   font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
@@ -595,7 +593,7 @@ a{color:inherit;text-decoration:none}
 }
 .footer-ceds{display:flex;flex-wrap:wrap;gap:.8rem}
 
-/* ═══ CUANDO / SEÑALES ═══ */
+/* ═══ CUANDO ═══ */
 .cuando-grid{
   display:grid;grid-template-columns:repeat(3,1fr);
   gap:1rem;margin-top:2.5rem;
@@ -611,9 +609,7 @@ a{color:inherit;text-decoration:none}
 .cuando-sub{font-size:.8rem;color:var(--ink-mid);line-height:1.55}
 
 /* ═══ COMPARE TABLE ═══ */
-.compare-table{
-  width:100%;border-collapse:collapse;font-size:.86rem;
-}
+.compare-table{width:100%;border-collapse:collapse;font-size:.86rem;}
 .compare-table th{
   padding:.75rem 1rem;text-align:left;
   background:var(--ink);color:#fff;font-size:.78rem;font-weight:700;
@@ -634,7 +630,7 @@ a{color:inherit;text-decoration:none}
   margin-top:1.5rem;
 }
 
-/* ═══ PRICING CARDS ═══ */
+/* ═══ PRICING ═══ */
 .pricing-grid{
   display:grid;grid-template-columns:1fr 1fr;
   gap:1.2rem;margin-top:2.5rem;
@@ -734,15 +730,10 @@ a{color:inherit;text-decoration:none}
   border-radius:100px;padding:.25rem .75rem;color:rgba(255,255,255,.8);
 }
 
-/* ═══ PARALLAX & ANIMATIONS ═══ */
-.hero-right img{
-  will-change:transform;
-  transition:transform .1s linear;
-}
-/* Hero entrance animations */
+/* ═══ ANIMATIONS ═══ */
+.hero-right img{will-change:transform;transition:transform .1s linear;}
 .hero-left > *{
-  opacity:0;
-  transform:translateY(22px);
+  opacity:0;transform:translateY(22px);
   animation:fadeUp .7s ease forwards;
 }
 .hero-left > *:nth-child(1){animation-delay:.05s}
@@ -753,30 +744,14 @@ a{color:inherit;text-decoration:none}
 .hero-left > *:nth-child(6){animation-delay:.5s}
 .hero-left > *:nth-child(7){animation-delay:.57s}
 .hero-left > *:nth-child(8){animation-delay:.63s}
-
-@keyframes fadeUp{
-  to{opacity:1;transform:translateY(0)}
-}
-
-/* Hero right image reveal */
+@keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
 .hero-right{
   clip-path:inset(100% 0 0 0);
   animation:revealDown .8s cubic-bezier(.25,.8,.25,1) .1s forwards;
 }
-@keyframes revealDown{
-  to{clip-path:inset(0% 0 0 0)}
-}
-
-/* Scroll reveal for sections */
-.scroll-reveal{
-  opacity:0;
-  transform:translateY(30px);
-  transition:opacity .6s ease, transform .6s ease;
-}
-.scroll-reveal.visible{
-  opacity:1;
-  transform:translateY(0);
-}
+@keyframes revealDown{to{clip-path:inset(0% 0 0 0)}}
+.scroll-reveal{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease;}
+.scroll-reveal.visible{opacity:1;transform:translateY(0);}
 
 /* ═══ WA FLOAT ═══ */
 .wa-float{
@@ -792,15 +767,6 @@ a{color:inherit;text-decoration:none}
 .wa-float:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(37,211,102,.5)}
 .wa-float svg{width:20px;height:20px;fill:#fff;flex:0 0 auto}
 
-@media(max-width:768px){
-  .cuando-grid{grid-template-columns:1fr 1fr}
-  .pricing-grid{grid-template-columns:1fr}
-  #ia-salud-mental .wrap > div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
-}
-@media(max-width:480px){
-  .cuando-grid{grid-template-columns:1fr}
-}
-
 /* ═══ MOBILE HERO OVERLAY ═══ */
 .hero-mobile-overlay{display:none}
 
@@ -813,130 +779,56 @@ a{color:inherit;text-decoration:none}
   .footer-inner{grid-template-columns:1fr 1fr}
 }
 @media(max-width:768px){
-  /* Hero: single column, full-height image with text overlay */
-  .hero{
-    display:block;
-    padding-top:68px;
-    min-height:0;
-  }
-  .hero-left{
-    display:none !important;
-    height:0 !important;
-    padding:0 !important;
-    margin:0 !important;
-    overflow:hidden !important;
-  }
+  .hero{display:block;padding-top:68px;min-height:0;}
+  .hero-left{display:none!important;height:0!important;padding:0!important;margin:0!important;overflow:hidden!important;}
   .hero-right{
     position:relative;
     height:calc(100svh - 68px);
-    min-height:500px;
-    max-height:none;
-    overflow:hidden;
+    min-height:500px;max-height:none;overflow:hidden;
   }
   .hero-right img{
     width:100%;height:100%;
-    object-fit:cover;
-    object-position:center 5%;
+    object-fit:cover;object-position:center 5%;
     transform:scale(1.06);
   }
-  /* dramatic gradient: dark navy from bottom 65% up */
   .hero-right::before{
-    content:'';
-    position:absolute;inset:0;
-    background:linear-gradient(
-      to top,
-      rgba(13,27,42,1) 0%,
-      rgba(13,27,42,.88) 28%,
-      rgba(13,27,42,.4) 55%,
-      transparent 80%
-    );
+    content:'';position:absolute;inset:0;
+    background:linear-gradient(to top,rgba(13,27,42,1) 0%,rgba(13,27,42,.88) 28%,rgba(13,27,42,.4) 55%,transparent 80%);
     z-index:1;
   }
-  /* hide original badge */
   .hero-right-overlay{display:none}
-
-  /* Mobile text overlay */
   .hero-mobile-overlay{
-    display:flex;
-    flex-direction:column;
-    justify-content:flex-end;
-    position:absolute;
-    inset:0;
-    z-index:2;
+    display:flex;flex-direction:column;justify-content:flex-end;
+    position:absolute;inset:0;z-index:2;
     padding:0 1.6rem 2.2rem;
   }
-
-  /* Eyebrow */
   .hmo-eyebrow{
     display:flex;align-items:center;gap:.5rem;
     font-size:.68rem;font-weight:700;letter-spacing:.14em;
-    text-transform:uppercase;color:#fff;
-    margin-bottom:.85rem;
-    opacity:0;
-    animation:hmoUp .6s ease .15s forwards;
+    text-transform:uppercase;color:#fff;margin-bottom:.85rem;
+    opacity:0;animation:hmoUp .6s ease .15s forwards;
   }
-  .hmo-eyebrow::before{
-    content:'';display:block;width:22px;height:1px;background:#fff;flex-shrink:0;
-  }
-
-  /* Name block */
-  .hmo-name{
-    line-height:1.0;
-    margin-bottom:.9rem;
-    opacity:0;
-    animation:hmoUp .65s ease .3s forwards;
-  }
+  .hmo-eyebrow::before{content:'';display:block;width:22px;height:1px;background:#fff;flex-shrink:0;}
+  .hmo-name{line-height:1.0;margin-bottom:.9rem;opacity:0;animation:hmoUp .65s ease .3s forwards;}
   .hmo-name-main{
-    display:block;
-    font-family:var(--serif);
+    display:block;font-family:var(--serif);
     font-size:clamp(2.4rem,9.5vw,3.4rem);
-    font-weight:700;
-    color:#fff;
-    letter-spacing:-.01em;
+    font-weight:700;color:#fff;letter-spacing:-.01em;
   }
   .hmo-name-sub{
-    display:block;
-    font-family:var(--serif);
+    display:block;font-family:var(--serif);
     font-size:clamp(1.9rem,7.5vw,2.7rem);
-    font-weight:400;
-    font-style:italic;
-    color:var(--gold);
-    letter-spacing:.01em;
+    font-weight:400;font-style:italic;color:var(--gold);letter-spacing:.01em;
   }
-
-  /* Role */
-  .hmo-role{
-    font-size:.78rem;
-    color:rgba(255,255,255,.72);
-    line-height:1.6;
-    margin-bottom:1rem;
-    opacity:0;
-    animation:hmoUp .6s ease .48s forwards;
-  }
-
-  /* Stars */
-  .hmo-stars{
-    display:flex;align-items:center;gap:.6rem;
-    opacity:0;
-    animation:hmoUp .6s ease .62s forwards;
-    margin-bottom:1.4rem;
-  }
+  .hmo-role{font-size:.78rem;color:rgba(255,255,255,.72);line-height:1.6;margin-bottom:1rem;opacity:0;animation:hmoUp .6s ease .48s forwards;}
+  .hmo-stars{display:flex;align-items:center;gap:.6rem;opacity:0;animation:hmoUp .6s ease .62s forwards;margin-bottom:1.4rem;}
   .hmo-stars-ico{color:#f59e0b;font-size:1rem;letter-spacing:.06em}
   .hmo-stars-txt{font-size:.75rem;color:rgba(255,255,255,.65);font-weight:400}
-
-  /* CTA row */
-  .hmo-cta{
-    display:flex;gap:.7rem;
-    opacity:0;
-    animation:hmoUp .6s ease .75s forwards;
-  }
+  .hmo-cta{display:flex;gap:.7rem;opacity:0;animation:hmoUp .6s ease .75s forwards;}
   .hmo-btn-main{
     flex:1;display:flex;align-items:center;justify-content:center;gap:.45rem;
-    background:var(--gold);color:#fff;
-    padding:.75rem 1.2rem;border-radius:8px;
-    font-size:.82rem;font-weight:700;
-    box-shadow:0 4px 20px rgba(184,137,58,.35);
-    transition:filter .2s;
+    background:var(--gold);color:#fff;padding:.75rem 1.2rem;border-radius:8px;
+    font-size:.82rem;font-weight:700;box-shadow:0 4px 20px rgba(184,137,58,.35);transition:filter .2s;
   }
   .hmo-btn-main:hover{filter:brightness(1.1)}
   .hmo-btn-wa{
@@ -944,18 +836,10 @@ a{color:inherit;text-decoration:none}
     border:1.5px solid rgba(255,255,255,.25);color:#fff;
     padding:.75rem 1.1rem;border-radius:8px;
     font-size:.82rem;font-weight:600;
-    backdrop-filter:blur(6px);
-    background:rgba(255,255,255,.08);
-    transition:background .2s;
+    backdrop-filter:blur(6px);background:rgba(255,255,255,.08);transition:background .2s;
   }
   .hmo-btn-wa:hover{background:rgba(255,255,255,.15)}
-
-  @keyframes hmoUp{
-    from{opacity:0;transform:translateY(18px)}
-    to{opacity:1;transform:translateY(0)}
-  }
-
-  /* rest of mobile layout */
+  @keyframes hmoUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
   .about-grid{grid-template-columns:1fr}
   .services-grid{grid-template-columns:1fr}
   .cond-grid{grid-template-columns:1fr 1fr}
@@ -970,9 +854,13 @@ a{color:inherit;text-decoration:none}
   .hero-actions{flex-direction:column}
   .btn-main,.btn-wa{width:100%;justify-content:center}
   .cred-grid{grid-template-columns:1fr}
+  .cuando-grid{grid-template-columns:1fr 1fr}
+  .pricing-grid{grid-template-columns:1fr}
+  #ia-salud-mental .wrap > div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
 }
 @media(max-width:480px){
   .cond-grid{grid-template-columns:1fr}
+  .cuando-grid{grid-template-columns:1fr}
   .hero-name{font-size:1.9rem}
 }
 </style>
@@ -998,7 +886,8 @@ a{color:inherit;text-decoration:none}
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
       Agendar Cita
     </a>
-    <button class="hamburger" type="button" id="hbg" aria-label="Menú" onclick="document.getElementById('mnav').classList.toggle('open')">
+    <!-- SIN onclick inline — el JS lo maneja -->
+    <button class="hamburger" type="button" id="hbg" aria-label="Menú">
       <span></span><span></span><span></span>
     </button>
   </div>
@@ -1065,15 +954,13 @@ a{color:inherit;text-decoration:none}
     <img src="https://lh3.googleusercontent.com/pw/AP1GczOqR75P60pnKq1lU4B7E8LkSC1xHGPyu1pQ8rBbqVdh3jbBWc8vwWDl3mI_qWrhhvHGzaxXEZIIBrS8U1XD5n4PND0V7_ZpFfIuZMMS8f7g-fgWA7tZNBcCpEDsPI5oC-zJNM1iLLYHh3XSmYgxL0Jwvg=w994-h1490-s-no-gm"
          alt="Dr. Deldhy Nicolás Moya Sánchez — Psiquiatra CDMX frente a la Biblioteca Central UNAM"
          loading="eager"/>
-
-    <!-- Mobile-only cinematic text overlay -->
     <div class="hero-mobile-overlay">
       <p class="hmo-eyebrow">Psiquiatra Certificado · CDMX</p>
       <h1 class="hmo-name">
         <span class="hmo-name-main">Dr. Moya Sánchez</span>
         <span class="hmo-name-sub">Deldhy Nicolás</span>
       </h1>
-      <p class="hmo-role">Especialista en Psiquiatría · UNAM · Mención Honorífica · Alta Especialidad en Psiquiatría de Enlace · Certificado CMP · Actualización médica constante</p>
+      <p class="hmo-role">Especialista en Psiquiatría · UNAM · Mención Honorífica · Alta Especialidad en Psiquiatría de Enlace · Certificado CMP</p>
       <div class="hmo-stars">
         <span class="hmo-stars-ico">★★★★★</span>
         <span class="hmo-stars-txt">5.0 Google · +100 reseñas verificadas</span>
@@ -1094,7 +981,6 @@ a{color:inherit;text-decoration:none}
         </span>
       </div>
     </div>
-
     <div class="hero-right-overlay">
       <span class="hero-right-badge">Consulta presencial · Del Valle, CDMX · En línea</span>
     </div>
@@ -1109,7 +995,7 @@ a{color:inherit;text-decoration:none}
       <span class="stat-l">+100 reseñas Google</span>
     </div>
     <div>
-      <span class="stat-n">+</span>
+      <span class="stat-n">+9</span>
       <span class="stat-l">Publicaciones indexadas</span>
     </div>
     <div>
@@ -1206,11 +1092,13 @@ a{color:inherit;text-decoration:none}
         </div>
       </div>
     </div>
-    <div class="pay-note" style="margin-top:1.5rem">
+    <div class="pay-note">
       <strong>Formas de pago:</strong> Transferencia SPEI · MercadoPago · PayPal · Tarjeta débito/crédito (Stripe) · CoDi · Efectivo · Pagos internacionales · <a href="https://www.eutimya.org/factura" target="_blank" rel="noopener" style="color:var(--gold);font-weight:700">Facturación disponible</a>
     </div>
   </div>
 </section>
+
+<!-- ACERCA -->
 <section class="section section-alt" id="acerca">
   <div class="wrap">
     <div class="about-grid">
@@ -1251,12 +1139,10 @@ a{color:inherit;text-decoration:none}
       <div class="about-visual">
         <div class="office-img">
           <img src="https://github.com/moymaa/drmoyapsiq/blob/main/unnamed%2815%29.png?raw=true"
-               alt="Sala de espera — Consultorio Eutimya, Moras 619, Col. Del Valle, CDMX"
-               loading="lazy"/>
+               alt="Sala de espera — Consultorio Eutimya, Moras 619, Col. Del Valle, CDMX" loading="lazy"/>
         </div>
         <div class="eutimya-card">
-          <img src="https://github.com/moymaa/drmoyapsiq/blob/main/unnamed%2830%29.png?raw=true"
-               alt="Eutimya" loading="lazy"/>
+          <img src="https://github.com/moymaa/drmoyapsiq/blob/main/unnamed%2830%29.png?raw=true" alt="Eutimya" loading="lazy"/>
           <div class="eutimya-card-text">
             <strong>Consultorio Eutimya</strong>
             Moras 619, Col. Del Valle, Benito Juárez, CDMX · Consulta presencial y en línea
@@ -1332,8 +1218,6 @@ a{color:inherit;text-decoration:none}
       <div class="cond"><span class="cond-bullet"></span>Psiquiatría en enf. médica</div>
       <div class="cond"><span class="cond-bullet"></span>Control de impulsos</div>
     </div>
-
-    <!-- Enlace block -->
     <div class="enlace-block">
       <div class="enlace-label">🔬 Alta Especialidad concluida · UNAM</div>
       <div class="enlace-h3">Psiquiatría de Enlace:<br/>Salud mental en el hospital</div>
@@ -1346,8 +1230,6 @@ a{color:inherit;text-decoration:none}
         <span class="enlace-pill">📖 Psychosomatic Medicine</span>
       </div>
     </div>
-
-    <!-- Zonas SEO -->
     <div style="margin-top:2.5rem">
       <div style="font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-light);margin-bottom:.8rem">Psiquiatra en CDMX · Colonias y zonas cercanas</div>
       <div class="zones-wrap">
@@ -1377,18 +1259,10 @@ a{color:inherit;text-decoration:none}
     <h2 class="hosp-title">Consulta en hospitales privados de referencia en CDMX</h2>
     <p class="hosp-sub">Credencializado en centros de alta especialidad de la Ciudad de México</p>
     <div class="hosp-logos">
-      <div class="hosp-pill">
-        <span class="hosp-pill-text">Hospital<br/>Ángeles</span>
-      </div>
-      <div class="hosp-pill">
-        <span class="hosp-pill-text">Hospital<br/>Diomed</span>
-      </div>
-      <div class="hosp-pill">
-        <span class="hosp-pill-text">Hospital<br/>Gran Roma</span>
-      </div>
-      <div class="hosp-pill">
-        <span class="hosp-pill-text">Hospital<br/>Lira y Serafín</span>
-      </div>
+      <div class="hosp-pill"><span class="hosp-pill-text">Hospital<br/>Ángeles</span></div>
+      <div class="hosp-pill"><span class="hosp-pill-text">Hospital<br/>Diomed</span></div>
+      <div class="hosp-pill"><span class="hosp-pill-text">Hospital<br/>Gran Roma</span></div>
+      <div class="hosp-pill"><span class="hosp-pill-text">Hospital<br/>Lira y Serafín</span></div>
     </div>
   </div>
 </div>
@@ -1398,7 +1272,7 @@ a{color:inherit;text-decoration:none}
   <div class="wrap">
     <p class="eyebrow">Investigación científica</p>
     <h2 class="section-h">Publicaciones en revistas indexadas</h2>
-    <p class="section-sub">Autor y coautor en revistas nacionales e internacionales. Peer reviewer activo para <em>Cureus Journal of Medical Science</em> (múltiples artículos evaluados).</p>
+    <p class="section-sub">Autor y coautor en revistas nacionales e internacionales. Peer reviewer activo para <em>Cureus Journal of Medical Science</em>.</p>
     <div class="pubs-grid">
       <div class="pub">
         <div class="pub-n">1</div>
@@ -1474,7 +1348,7 @@ a{color:inherit;text-decoration:none}
       </div>
     </div>
     <div class="pay-note" style="margin-top:1.5rem">
-      🔍 <strong>Revisor Académico (Peer Reviewer)</strong> activo en <em>Cureus Journal of Medical Science</em> (múltiples artículos evaluados) ·
+      🔍 <strong>Revisor Académico (Peer Reviewer)</strong> activo en <em>Cureus Journal of Medical Science</em> ·
       <a href="https://orcid.org/0000-0002-7989-4646" target="_blank" rel="noopener" style="color:var(--gold)">ORCID: 0000-0002-7989-4646</a> ·
       <a href="https://scholar.google.es/citations?user=fAmCp1QAAAAJ" target="_blank" rel="noopener" style="color:var(--gold)">Google Scholar</a>
     </div>
@@ -1597,7 +1471,6 @@ a{color:inherit;text-decoration:none}
     </div>
   </div>
 </section>
-</section>
 
 <!-- IA Y SALUD MENTAL -->
 <section class="section section-alt" id="ia-salud-mental">
@@ -1632,6 +1505,7 @@ a{color:inherit;text-decoration:none}
   </div>
 </section>
 
+<!-- RESEÑAS -->
 <section class="section" id="resenas">
   <div class="wrap">
     <p class="eyebrow">Lo que dicen los pacientes</p>
@@ -1647,7 +1521,7 @@ a{color:inherit;text-decoration:none}
         Ver en Google Maps →
       </a>
     </div>
-    <div class="reviews-grid" style="grid-template-columns:repeat(3,1fr)">
+    <div class="reviews-grid">
       <div class="review">
         <div style="display:flex;align-items:center;gap:.7rem;margin-bottom:.7rem">
           <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#1a2e45,#2563eb);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:.9rem;flex-shrink:0">M</div>
@@ -1758,70 +1632,70 @@ a{color:inherit;text-decoration:none}
     <h2 class="section-h">Dudas sobre la consulta psiquiátrica</h2>
     <div class="faq-list">
       <div class="faq-item">
-        <button class="faq-q" onclick="faqToggle(this)">
+        <button class="faq-q" type="button">
           ¿Qué pasa en la primera consulta psiquiátrica?
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-a">Se revisa la historia clínica completa, síntomas actuales, antecedentes familiares y personales, funcionamiento cotidiano y objetivos terapéuticos. Con esa información se construye una hipótesis diagnóstica, se considera el diagnóstico diferencial y se diseña un plan de tratamiento con indicaciones claras. La primera cita dura aproximadamente 60 minutos. Antes de la cita recibirás acceso al expediente de primera vez con escalas de tamizaje validadas.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" onclick="faqToggle(this)">
+        <button class="faq-q" type="button">
           ¿Cuánto cuesta la consulta psiquiátrica en CDMX?
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-a">Consulta en línea: $1,400 MXN por sesión de 50 minutos. Consulta presencial en Col. del Valle, CDMX: $1,600 MXN. El costo incluye evaluación completa, nota médica y plan de tratamiento. Si se acordó un monto diferente previamente, ese aplica. Se emite factura si la solicitas.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" onclick="faqToggle(this)">
+        <button class="faq-q" type="button">
           ¿La consulta psiquiátrica en línea es tan efectiva como la presencial?
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-a">Sí. La evidencia actual respalda la efectividad de la telepsiquiatría para la mayoría de los trastornos. La evaluación, ajuste de medicación y seguimiento se realizan en línea sin perder calidad clínica. Disponible para toda la República Mexicana y el extranjero a través de Google Meet.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" onclick="faqToggle(this)">
+        <button class="faq-q" type="button">
           ¿Cuándo necesito ver a un psiquiatra y no solo a un psicólogo?
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-a">Cuando los síntomas afectan significativamente el funcionamiento diario (trabajo, sueño, relaciones), cuando se considera tratamiento farmacológico, o cuando el psicólogo lo recomienda. El psiquiatra es el especialista indicado si necesitas diagnóstico médico formal, prescripción de medicamentos o sospecha de trastornos biológicos como depresión mayor, trastorno bipolar, TDAH o psicosis.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" onclick="faqToggle(this)">
+        <button class="faq-q" type="button">
           ¿Cuál es la diferencia entre psiquiatra y psicólogo?
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-a">El psiquiatra es médico especialista y puede prescribir medicamentos, solicitar estudios de laboratorio y realizar diagnóstico clínico completo. El psicólogo ofrece psicoterapia pero no puede recetar fármacos. Con frecuencia trabajan en equipo para un tratamiento integral más efectivo.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" onclick="faqToggle(this)">
+        <button class="faq-q" type="button">
           ¿Se atiende TDAH en adultos?
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-a">Sí. El TDAH en adultos es una de las áreas principales del Dr. Moya, con publicaciones científicas al respecto. La evaluación incluye entrevista clínica estructurada, escalas validadas (ASRS) y exploración de comorbilidades. Existe un protocolo especializado disponible en <a href="https://www.eutimya.org/tdah" target="_blank" rel="noopener" style="color:var(--gold)">eutimya.org/tdah</a>.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" onclick="faqToggle(this)">
+        <button class="faq-q" type="button">
           ¿Hay protocolo psiquiátrico para cirugía bariátrica?
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-a">Sí. Existe un protocolo específico con instrumentos validados e informe para el equipo quirúrgico. El Dr. Moya ha presentado trabajos clínicos en este tema en congresos nacionales e internacionales. Disponible en <a href="https://www.eutimya.org/esb" target="_blank" rel="noopener" style="color:var(--gold)">eutimya.org/esb</a>. Atención pre y posoperatoria.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" onclick="faqToggle(this)">
+        <button class="faq-q" type="button">
           ¿Qué debo llevar a mi primera consulta?
           <span class="faq-icon">+</span>
         </button>
-        <div class="faq-a">No es requisito traer nada. Si tienes estudios previos (laboratorios, EEG, resonancias) o notas de otro médico, es útil compartirlos. Llenar el expediente digital de primera vez (<a href="https://psiquiatra-cdmx.eutimya.org/exp?1" target="_blank" rel="noopener" style="color:var(--gold)">eutimya.org/exp</a>) antes de la consulta mejora significativamente el aprovechamiento de la sesión.</div>
+        <div class="faq-a">No es requisito traer nada. Si tienes estudios previos (laboratorios, EEG, resonancias) o notas de otro médico, es útil compartirlos. Llenar el expediente digital de primera vez antes de la consulta mejora significativamente el aprovechamiento de la sesión.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" onclick="faqToggle(this)">
+        <button class="faq-q" type="button">
           ¿Qué es la Psiquiatría de Enlace?
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-a">Es la subespecialidad que atiende los problemas emocionales y mentales de pacientes hospitalizados por enfermedades médicas o quirúrgicas. El Dr. Moya cuenta con Alta Especialidad en Psiquiatría de Enlace por la UNAM (CMN 20 de Noviembre) concluida, y ha publicado sobre su experiencia en revistas internacionales indexadas.</div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" onclick="faqToggle(this)">
+        <button class="faq-q" type="button">
           ¿Se puede emitir justificante o constancia médica?
           <span class="faq-icon">+</span>
         </button>
@@ -1836,9 +1710,7 @@ a{color:inherit;text-decoration:none}
   <div class="cta-inner">
     <h2>Da el primer paso hacia tu bienestar mental</h2>
     <p>Primera cita disponible esta semana. Atención presencial en Del Valle, CDMX, o en línea desde cualquier lugar del país.</p>
-    <a href="https://psiquiatra-cdmx.eutimya.org/cita" class="btn-gold">
-      Reservar mi consulta →
-    </a>
+    <a href="https://psiquiatra-cdmx.eutimya.org/cita" class="btn-gold">Reservar mi consulta →</a>
   </div>
 </div>
 
@@ -1863,7 +1735,6 @@ a{color:inherit;text-decoration:none}
             <a href="https://wa.me/526731205121" class="contact-v">+52 673 120 5121</a>
           </div>
         </div>
-        
         <div class="contact-item">
           <div class="contact-ic">🌐</div>
           <div>
@@ -1898,7 +1769,7 @@ a{color:inherit;text-decoration:none}
           <a href="https://www.eutimya.org/validar" target="_blank" rel="noopener" style="color:var(--gold)">Validar constancia</a> ·
           <a href="https://www.eutimya.org/factura" target="_blank" rel="noopener" style="color:var(--gold)">Facturación</a>
         </div>
-        <button onclick="saveVCF()" style="margin-top:.8rem;width:100%;padding:.7rem;border:1.5px solid var(--rule);border-radius:8px;font-size:.84rem;font-weight:600;color:var(--ink);background:#fff;cursor:pointer;transition:all .2s" onmouseover="this.style.background='var(--canvas)'" onmouseout="this.style.background='#fff'">📇 Guardar contacto (.vcf)</button>
+        <button id="vcf-btn" style="margin-top:.8rem;width:100%;padding:.7rem;border:1.5px solid var(--rule);border-radius:8px;font-size:.84rem;font-weight:600;color:var(--ink);background:#fff;cursor:pointer;transition:all .2s">📇 Guardar contacto (.vcf)</button>
       </div>
       <div class="map-wrap">
         <iframe
@@ -1953,63 +1824,92 @@ a{color:inherit;text-decoration:none}
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-// Parallax hero image
+<script>
+// ── Parallax hero image
 (function(){
-  var heroImg = document.querySelector('.hero-right img');
-  if(!heroImg) return;
-  function onScroll(){
-    var scrollY = window.pageYOffset;
-    var max = window.innerHeight;
-    if(scrollY <= max){
-      heroImg.style.transform = 'translateY(' + (scrollY * 0.22) + 'px) scale(1.06)';
-    }
-  }
-  // Initial scale so we have room to parallax without white edges
-  heroImg.style.transform = 'translateY(0px) scale(1.06)';
-  window.addEventListener('scroll', onScroll, {passive:true});
+  var img = document.querySelector('.hero-right img');
+  if(!img) return;
+  img.style.transform = 'translateY(0px) scale(1.06)';
+  window.addEventListener('scroll', function(){
+    var sy = window.pageYOffset;
+    if(sy <= window.innerHeight)
+      img.style.transform = 'translateY(' + (sy * 0.22) + 'px) scale(1.06)';
+  }, {passive:true});
 })();
 
-// Scroll reveal for cards and sections
+// ── Scroll reveal
 (function(){
-  var targets = document.querySelectorAll('.svc, .price-card, .cond-item, .review-card, .pub-card, .cuando-item, .stat-n');
-  targets.forEach(function(el){ el.classList.add('scroll-reveal'); });
+  var els = document.querySelectorAll('.svc, .price-card, .review, .pub, .cuando-item');
+  els.forEach(function(el){ el.classList.add('scroll-reveal'); });
   function check(){
-    targets.forEach(function(el){
-      var r = el.getBoundingClientRect();
-      if(r.top < window.innerHeight - 60){
+    els.forEach(function(el){
+      if(el.getBoundingClientRect().top < window.innerHeight - 60)
         el.classList.add('visible');
-      }
     });
   }
   window.addEventListener('scroll', check, {passive:true});
   check();
 })();
-document.getElementById('hbg').addEventListener('click',()=>{
-  document.getElementById('mnav').classList.toggle('open');
-});
-document.querySelectorAll('#mnav a').forEach(a=>
-  a.addEventListener('click',()=>document.getElementById('mnav').classList.remove('open'))
-);
 
-// smooth scroll
-document.querySelectorAll('a[href^="#"]').forEach(a=>{
-  a.addEventListener('click',e=>{
-    const t=document.querySelector(a.getAttribute('href'));
-    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}
+// ── Hamburger (un solo listener, sin onclick inline)
+(function(){
+  var hbg  = document.getElementById('hbg');
+  var mnav = document.getElementById('mnav');
+  if(!hbg || !mnav) return;
+  hbg.addEventListener('click', function(){ mnav.classList.toggle('open'); });
+  mnav.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){ mnav.classList.remove('open'); });
+  });
+})();
+
+// ── Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(function(a){
+  a.addEventListener('click', function(e){
+    var t = document.querySelector(a.getAttribute('href'));
+    if(t){ e.preventDefault(); t.scrollIntoView({behavior:'smooth', block:'start'}); }
   });
 });
 
-// FAQ
-function faqToggle(btn){
-  const item=btn.parentElement;
-  const open=item.classList.contains('open');
-  document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));
-  if(!open) item.classList.add('open');
-}
+// ── FAQ (addEventListener, sin onclick inline — funciona en móvil)
+document.querySelectorAll('.faq-q').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    var item   = btn.parentElement;
+    var isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(function(i){ i.classList.remove('open'); });
+    if(!isOpen) item.classList.add('open');
+  });
+});
 
-// VCF download
-function saveVCF(){
-  var vcard="BEGIN:VCARD\r\nVERSION:3.0\r\nN:Moya Sánchez;Deldhy Nicolás;;Dr.;\r\nFN:Dr. Moya Sánchez Deldhy Nicolás\r\nTITLE:Psiquiatra | Psiquiatría de Enlace | UNAM\r\nORG:Eutimya Salud Mental\r\nTEL;TYPE=CELL:+526731205121\r\nEMAIL:deldhym@gmail.com\r\nURL:https://psiquiatra-cdmx.eutimya.org/\r\nitem1.URL;TYPE=WhatsApp:https://wa.me/526731205121\r\nitem1.X-ABLabel:WhatsApp\r\nitem2.URL;TYPE=Citas:https://www.eutimya.org/agendar\r\nitem2.X-ABLabel:Agendar cita\r\nADR;TYPE=WORK:;;Calle Moras 619, Col. Del Valle Sur;Ciudad de México;;03104;México\r\nNOTE:Cédulas: CP 12152669 / CE 14788885. CONACEM 24803862. COFEPRIS 2609142002A00043.\r\nEND:VCARD\r\n";
-  var blob=new Blob([vcard],{type:'text/vcard;charset=utf-8'});
-  var u
+// ── VCF download
+document.getElementById('vcf-btn').addEventListener('click', function(){
+  var lines = [
+    'BEGIN:VCARD',
+    'VERSION:3.0',
+    'N:Moya S\u00e1nchez;Deldhy Nicol\u00e1s;;Dr.;',
+    'FN:Dr. Deldhy Nicol\u00e1s Moya S\u00e1nchez',
+    'TITLE:Psiquiatra | Psiquiatr\u00eda de Enlace | UNAM',
+    'ORG:Eutimya Salud Mental',
+    'TEL;TYPE=CELL:+526731205121',
+    'EMAIL:deldhym@gmail.com',
+    'URL:https://psiquiatra-cdmx.eutimya.org/',
+    'item1.URL;TYPE=WhatsApp:https://wa.me/526731205121',
+    'item1.X-ABLabel:WhatsApp',
+    'item2.URL;TYPE=Citas:https://psiquiatra-cdmx.eutimya.org/cita',
+    'item2.X-ABLabel:Agendar cita',
+    'ADR;TYPE=WORK:;;Calle Moras 619\\, Col. Del Valle Sur;Ciudad de M\u00e9xico;;03104;M\u00e9xico',
+    'NOTE:C\u00e9dulas: CP 12152669 / CE 14788885. CONACEM 24803862. COFEPRIS 2609142002A00043.',
+    'END:VCARD'
+  ];
+  var blob = new Blob([lines.join('\r\n')], {type:'text/vcard;charset=utf-8'});
+  var url  = URL.createObjectURL(blob);
+  var a    = document.createElement('a');
+  a.href = url;
+  a.download = 'DrMoyaSanchez.vcf';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+});
+</script>
+</body>
+</html>
