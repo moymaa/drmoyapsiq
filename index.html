@@ -127,482 +127,257 @@ img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
 
 /* ═══ NAV ═══ */
-.nav{
-  position:fixed;top:0;left:0;right:0;z-index:100;
-  background:rgba(255,255,255,.97);
-  border-bottom:1px solid var(--rule);
-  backdrop-filter:blur(10px);
-}
-.nav-inner{
-  max-width:1200px;margin:0 auto;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:.9rem 2rem;
-  gap:1.5rem;
-}
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,.97);border-bottom:1px solid var(--rule);backdrop-filter:blur(10px);}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:.9rem 2rem;gap:1.5rem;}
 .nav-logo img{height:34px;width:auto}
-.nav-links{
-  display:flex;gap:2.2rem;list-style:none;
-  flex:1;justify-content:center;
-}
-.nav-links a{
-  font-size:.8rem;font-weight:500;letter-spacing:.07em;
-  text-transform:uppercase;color:var(--ink-mid);
-  transition:color .2s;
-}
+.nav-links{display:flex;gap:2.2rem;list-style:none;flex:1;justify-content:center;}
+.nav-links a{font-size:.8rem;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-mid);transition:color .2s;}
 .nav-links a:hover{color:var(--ink)}
-.nav-btn{
-  display:inline-flex;align-items:center;gap:.45rem;
-  background:var(--ink);color:var(--white);
-  padding:.55rem 1.4rem;border-radius:6px;
-  font-size:.78rem;font-weight:600;letter-spacing:.06em;
-  text-transform:uppercase;white-space:nowrap;
-  transition:background .2s;
-}
+.nav-btn{display:inline-flex;align-items:center;gap:.45rem;background:var(--ink);color:var(--white);padding:.55rem 1.4rem;border-radius:6px;font-size:.78rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;transition:background .2s;}
 .nav-btn:hover{background:#1e3a5f}
 .hamburger{display:none;background:none;border:none;cursor:pointer;padding:.4rem;flex-direction:column;gap:5px}
 .hamburger span{display:block;width:22px;height:2px;background:var(--ink);border-radius:2px;transition:.25s}
-.mobile-nav{
-  display:none;position:fixed;top:68px;left:0;right:0;
-  background:#fff;border-bottom:1px solid var(--rule);
-  padding:1.2rem 2rem;z-index:99;box-shadow:var(--shadow-lg);
-}
+.mobile-nav{display:none;position:fixed;top:68px;left:0;right:0;background:#fff;border-bottom:1px solid var(--rule);padding:1.2rem 2rem;z-index:99;box-shadow:var(--shadow-lg);}
 .mobile-nav.open{display:block}
 .mobile-nav ul{list-style:none}
 .mobile-nav li{padding:.65rem 0;border-bottom:1px solid var(--rule)}
 .mobile-nav a{font-size:.95rem;font-weight:500;color:var(--ink)}
 
 /* ═══ HERO ═══ */
-.hero{
-  min-height:100vh;
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  padding-top:68px;
-}
-.hero-left{
-  display:flex;flex-direction:column;justify-content:center;
-  padding:5rem 4rem 5rem 6rem;
-  background:var(--white);
-  position:relative;
-}
-.hero-left::after{
-  content:'';
-  position:absolute;right:0;top:15%;bottom:15%;
-  width:1px;background:linear-gradient(180deg,transparent,var(--rule) 30%,var(--rule) 70%,transparent);
-}
-.hero-tag{
-  display:inline-flex;align-items:center;gap:.5rem;
-  font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--gold);margin-bottom:1.4rem;
-}
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;padding-top:68px;}
+.hero-left{display:flex;flex-direction:column;justify-content:center;padding:5rem 4rem 5rem 6rem;background:var(--white);position:relative;}
+.hero-left::after{content:'';position:absolute;right:0;top:15%;bottom:15%;width:1px;background:linear-gradient(180deg,transparent,var(--rule) 30%,var(--rule) 70%,transparent);}
+.hero-tag{display:inline-flex;align-items:center;gap:.5rem;font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:1.4rem;}
 .hero-tag span{display:block;width:28px;height:1px;background:var(--gold)}
-.hero-name{
-  font-family:var(--serif);
-  font-size:clamp(2.2rem,3.5vw,3.2rem);
-  font-weight:700;line-height:1.1;
-  color:var(--ink);margin-bottom:.5rem;
-}
-.hero-role{
-  font-size:.95rem;color:var(--ink-mid);font-weight:400;
-  margin-bottom:2rem;line-height:1.5;
-}
-.hero-stars{
-  display:flex;align-items:center;gap:.7rem;
-  margin-bottom:2rem;
-}
+.hero-name{font-family:var(--serif);font-size:clamp(2.2rem,3.5vw,3.2rem);font-weight:700;line-height:1.1;color:var(--ink);margin-bottom:.5rem;}
+.hero-role{font-size:.95rem;color:var(--ink-mid);font-weight:400;margin-bottom:2rem;line-height:1.5;}
+.hero-stars{display:flex;align-items:center;gap:.7rem;margin-bottom:2rem;}
 .stars-text{color:#f59e0b;font-size:1.1rem;letter-spacing:.05em;}
 .stars-label{font-size:.8rem;color:var(--ink-light);font-weight:400}
-.hero-desc{
-  font-size:.95rem;line-height:1.8;color:var(--ink-mid);
-  max-width:440px;margin-bottom:2.2rem;
-}
+.hero-desc{font-size:.95rem;line-height:1.8;color:var(--ink-mid);max-width:440px;margin-bottom:2.2rem;}
 .hero-actions{display:flex;gap:.8rem;flex-wrap:wrap;margin-bottom:2.5rem}
-.btn-main{
-  display:inline-flex;align-items:center;gap:.5rem;
-  background:var(--ink);color:#fff;
-  padding:.85rem 2rem;border-radius:8px;
-  font-size:.88rem;font-weight:600;
-  transition:background .2s,transform .15s;
-  box-shadow:0 4px 16px rgba(13,27,42,.18);
-}
+.btn-main{display:inline-flex;align-items:center;gap:.5rem;background:var(--ink);color:#fff;padding:.85rem 2rem;border-radius:8px;font-size:.88rem;font-weight:600;transition:background .2s,transform .15s;box-shadow:0 4px 16px rgba(13,27,42,.18);}
 .btn-main:hover{background:#1e3a5f;transform:translateY(-1px)}
-.btn-wa{
-  display:inline-flex;align-items:center;gap:.5rem;
-  border:1.5px solid var(--rule);color:var(--ink);
-  padding:.85rem 1.8rem;border-radius:8px;
-  font-size:.88rem;font-weight:500;
-  transition:all .2s;
-}
+.btn-wa{display:inline-flex;align-items:center;gap:.5rem;border:1.5px solid var(--rule);color:var(--ink);padding:.85rem 1.8rem;border-radius:8px;font-size:.88rem;font-weight:500;transition:all .2s;}
 .btn-wa:hover{border-color:var(--ink);background:var(--canvas)}
-.hero-creds{
-  display:flex;flex-wrap:wrap;gap:.6rem 1.2rem;
-  font-size:.73rem;color:var(--ink-light);
-  padding-top:1.8rem;
-  border-top:1px solid var(--rule);
-}
+.hero-creds{display:flex;flex-wrap:wrap;gap:.6rem 1.2rem;font-size:.73rem;color:var(--ink-light);padding-top:1.8rem;border-top:1px solid var(--rule);}
 .cred{display:flex;align-items:center;gap:.3rem}
 .cred-dot{width:5px;height:5px;border-radius:50%;background:var(--gold);flex-shrink:0}
 
 /* ═══ HERO RIGHT ═══ */
-.hero-right{
-  position:relative;overflow:hidden;
-  min-height:600px;
-}
-.hero-right img{
-  width:100%;height:100%;
-  object-fit:cover;object-position:center top;
-}
-.hero-right-overlay{
-  position:absolute;bottom:0;left:0;right:0;
-  background:linear-gradient(to top,rgba(13,27,42,.55) 0%,transparent 50%);
-  padding:2rem;
-}
-.hero-right-badge{
-  display:inline-block;
-  background:rgba(255,255,255,.15);
-  border:1px solid rgba(255,255,255,.3);
-  backdrop-filter:blur(8px);
-  color:#fff;
-  padding:.5rem 1rem;border-radius:6px;
-  font-size:.75rem;font-weight:500;letter-spacing:.04em;
-}
+.hero-right{position:relative;overflow:hidden;min-height:600px;}
+.hero-right img{width:100%;height:100%;object-fit:cover;object-position:center top;}
+.hero-right-overlay{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(13,27,42,.55) 0%,transparent 50%);padding:2rem;}
+.hero-right-badge{display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);backdrop-filter:blur(8px);color:#fff;padding:.5rem 1rem;border-radius:6px;font-size:.75rem;font-weight:500;letter-spacing:.04em;}
 
 /* ═══ STATS BAR ═══ */
-.stats-bar{
-  background:var(--ink);
-  padding:2.5rem 2rem;
+.stats-bar{background:var(--ink);padding:2.5rem 2rem;}
+.stats-inner{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;text-align:center;}
+.stat-n{font-family:var(--serif);font-size:2rem;font-weight:700;color:var(--gold);display:block;line-height:1;margin-bottom:.3rem;}
+.stat-l{font-size:.75rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.6);}
+
+/* ═══ TICKER FORMACIÓN ═══ */
+.ticker-wrap{
+  background:var(--white);
+  border-top:1px solid var(--rule);
+  border-bottom:1px solid var(--rule);
+  padding:1rem 0 1.1rem;
+  overflow:hidden;
 }
-.stats-inner{
-  max-width:1000px;margin:0 auto;
-  display:grid;grid-template-columns:repeat(4,1fr);
-  gap:1.5rem;
+.ticker-label{
   text-align:center;
+  font-size:.6rem;
+  font-weight:700;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--ink-light);
+  margin-bottom:.6rem;
+  opacity:.45;
 }
-.stat-n{
+.ticker-track-container{
+  overflow:hidden;
+  width:100%;
+  mask-image:linear-gradient(90deg,transparent 0%,black 6%,black 94%,transparent 100%);
+  -webkit-mask-image:linear-gradient(90deg,transparent 0%,black 6%,black 94%,transparent 100%);
+}
+.ticker-track{
+  display:inline-flex;
+  align-items:center;
+  white-space:nowrap;
+  animation:tickerScroll 40s linear infinite;
+  will-change:transform;
+}
+.ticker-track:hover{animation-play-state:paused}
+.ticker-item{
+  display:inline-flex;
+  flex-direction:column;
+  align-items:center;
+  gap:.06rem;
+  padding:0 2rem;
+  cursor:default;
+  transition:opacity .2s;
+}
+.ticker-item:hover{opacity:.65}
+.ticker-dot{
+  width:4px;height:4px;border-radius:50%;
+  background:var(--gold);opacity:.5;
+  margin-bottom:.15rem;
+  flex-shrink:0;
+}
+.ticker-name{
   font-family:var(--serif);
-  font-size:2rem;font-weight:700;
-  color:var(--gold);
-  display:block;line-height:1;margin-bottom:.3rem;
+  font-size:.9rem;
+  font-weight:700;
+  color:var(--ink);
+  letter-spacing:.01em;
+  line-height:1.1;
 }
-.stat-l{
-  font-size:.75rem;font-weight:500;letter-spacing:.06em;
-  text-transform:uppercase;color:rgba(255,255,255,.6);
+.ticker-sub{
+  font-size:.58rem;
+  font-weight:500;
+  letter-spacing:.07em;
+  text-transform:uppercase;
+  color:var(--ink-light);
+  opacity:.6;
+  line-height:1;
+}
+.ticker-sep{
+  font-size:.5rem;
+  color:var(--rule);
+  padding:0 .1rem;
+  flex-shrink:0;
+  align-self:center;
+}
+@keyframes tickerScroll{
+  0%{transform:translateX(0)}
+  100%{transform:translateX(-50%)}
+}
+@media(max-width:768px){
+  .ticker-item{padding:0 1.3rem}
+  .ticker-name{font-size:.82rem}
+  .ticker-track{animation-duration:28s}
 }
 
 /* ═══ SECTION BASE ═══ */
 .section{padding:5.5rem 2rem}
 .section-alt{background:var(--canvas)}
 .wrap{max-width:1200px;margin:0 auto}
-.eyebrow{
-  display:inline-flex;align-items:center;gap:.5rem;
-  font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--gold);margin-bottom:.8rem;
-}
+.eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem;}
 .eyebrow::before{content:'';width:22px;height:1px;background:var(--gold)}
-.section-h{
-  font-family:var(--serif);
-  font-size:clamp(1.7rem,3vw,2.3rem);
-  font-weight:700;color:var(--ink);line-height:1.2;
-  margin-bottom:1rem;
-}
-.section-sub{
-  font-size:.95rem;color:var(--ink-mid);
-  max-width:540px;line-height:1.75;
-}
+.section-h{font-family:var(--serif);font-size:clamp(1.7rem,3vw,2.3rem);font-weight:700;color:var(--ink);line-height:1.2;margin-bottom:1rem;}
+.section-sub{font-size:.95rem;color:var(--ink-mid);max-width:540px;line-height:1.75;}
 
 /* ═══ ABOUT ═══ */
-.about-grid{
-  display:grid;grid-template-columns:1fr 1fr;
-  gap:5rem;align-items:center;
-}
-.about-body p{
-  font-size:.95rem;color:var(--ink-mid);
-  line-height:1.85;margin-bottom:1rem;
-}
-.about-chips{
-  display:flex;flex-wrap:wrap;gap:.5rem;
-  margin-top:1.8rem;
-}
-.chip{
-  display:inline-flex;align-items:center;gap:.3rem;
-  font-size:.75rem;font-weight:500;
-  border:1px solid var(--rule);
-  border-radius:100px;padding:.28rem .75rem;
-  color:var(--ink-mid);background:#fff;
-}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
+.about-body p{font-size:.95rem;color:var(--ink-mid);line-height:1.85;margin-bottom:1rem;}
+.about-chips{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.8rem;}
+.chip{display:inline-flex;align-items:center;gap:.3rem;font-size:.75rem;font-weight:500;border:1px solid var(--rule);border-radius:100px;padding:.28rem .75rem;color:var(--ink-mid);background:#fff;}
 .chip .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);flex-shrink:0}
-.about-visual{
-  display:flex;flex-direction:column;gap:1.2rem;
-}
-.office-img{
-  border-radius:var(--r);overflow:hidden;
-  box-shadow:var(--shadow-lg);
-}
-.office-img img{
-  width:100%;height:300px;object-fit:cover;
-  transition:transform .5s;
-}
+.about-visual{display:flex;flex-direction:column;gap:1.2rem;}
+.office-img{border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow-lg);}
+.office-img img{width:100%;height:300px;object-fit:cover;transition:transform .5s;}
 .office-img:hover img{transform:scale(1.02)}
-.eutimya-card{
-  background:var(--ink);border-radius:var(--r);
-  padding:1.4rem 1.6rem;
-  display:flex;align-items:center;gap:1.2rem;
-}
-.eutimya-card img{
-  height:36px;width:auto;
-  filter:brightness(0) invert(1);opacity:.9;
-  flex-shrink:0;
-}
+.eutimya-card{background:var(--ink);border-radius:var(--r);padding:1.4rem 1.6rem;display:flex;align-items:center;gap:1.2rem;}
+.eutimya-card img{height:36px;width:auto;filter:brightness(0) invert(1);opacity:.9;flex-shrink:0;}
 .eutimya-card-text{font-size:.82rem;color:rgba(255,255,255,.75);line-height:1.5}
 .eutimya-card-text strong{color:#fff;display:block;font-size:.88rem;margin-bottom:.15rem}
-.cred-grid{
-  display:grid;grid-template-columns:1fr 1fr;
-  gap:.7rem;margin-top:1.5rem;
-}
-.cred-card{
-  border:1px solid var(--rule);border-radius:8px;
-  padding:.85rem 1rem;background:#fff;
-  transition:border-color .2s;
-}
+.cred-grid{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin-top:1.5rem;}
+.cred-card{border:1px solid var(--rule);border-radius:8px;padding:.85rem 1rem;background:#fff;transition:border-color .2s;}
 .cred-card:hover{border-color:var(--gold)}
 .cred-k{font-size:.68rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-light);margin-bottom:.15rem}
 .cred-v{font-size:.82rem;font-weight:600;color:var(--ink)}
 
 /* ═══ SERVICES ═══ */
-.services-grid{
-  display:grid;grid-template-columns:repeat(3,1fr);
-  gap:1.2rem;margin-top:3rem;
-}
-.svc{
-  border:1px solid var(--rule);border-radius:var(--r);
-  padding:1.8rem;background:#fff;
-  position:relative;overflow:hidden;
-  transition:box-shadow .25s,transform .2s;
-}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:3rem;}
+.svc{border:1px solid var(--rule);border-radius:var(--r);padding:1.8rem;background:#fff;position:relative;overflow:hidden;transition:box-shadow .25s,transform .2s;}
 .svc:hover{box-shadow:var(--shadow-lg);transform:translateY(-3px)}
-.svc::after{
-  content:'';position:absolute;bottom:0;left:0;right:0;height:2px;
-  background:linear-gradient(90deg,var(--ink),var(--gold));
-  transform:scaleX(0);transform-origin:left;
-  transition:transform .35s;
-}
+.svc::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--ink),var(--gold));transform:scaleX(0);transform-origin:left;transition:transform .35s;}
 .svc:hover::after{transform:scaleX(1)}
-.svc-icon{
-  width:44px;height:44px;border-radius:8px;
-  background:var(--canvas);
-  display:flex;align-items:center;justify-content:center;
-  font-size:1.3rem;margin-bottom:1rem;
-}
+.svc-icon{width:44px;height:44px;border-radius:8px;background:var(--canvas);display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:1rem;}
 .svc h3{font-size:.95rem;font-weight:600;color:var(--ink);margin-bottom:.45rem}
 .svc p{font-size:.83rem;color:var(--ink-mid);line-height:1.65}
 
 /* ═══ CONDITIONS ═══ */
-.cond-grid{
-  display:grid;grid-template-columns:repeat(4,1fr);
-  gap:.7rem;margin-top:2.5rem;
-}
-.cond{
-  display:flex;align-items:center;gap:.6rem;
-  border:1px solid var(--rule);border-radius:8px;
-  padding:.75rem 1rem;background:#fff;
-  font-size:.83rem;font-weight:500;color:var(--ink);
-  transition:all .2s;
-}
+.cond-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.7rem;margin-top:2.5rem;}
+.cond{display:flex;align-items:center;gap:.6rem;border:1px solid var(--rule);border-radius:8px;padding:.75rem 1rem;background:#fff;font-size:.83rem;font-weight:500;color:var(--ink);transition:all .2s;}
 .cond:hover{background:var(--ink);color:#fff;border-color:var(--ink);transform:translateY(-1px)}
 .cond-bullet{width:7px;height:7px;border-radius:50%;background:var(--gold);flex-shrink:0;transition:background .2s}
 .cond:hover .cond-bullet{background:var(--gold)}
 
 /* ═══ HOSPITALS ═══ */
-.hospitals{
-  background:var(--ink);
-  padding:4.5rem 2rem;
-}
+.hospitals{background:var(--ink);padding:4.5rem 2rem;}
 .hospitals-inner{max-width:1100px;margin:0 auto;text-align:center}
-.hosp-eyebrow{
-  font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--gold);margin-bottom:.5rem;
-}
-.hosp-title{
-  font-family:var(--serif);font-size:1.6rem;font-weight:600;color:#fff;
-  margin-bottom:.5rem;
-}
+.hosp-eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem;}
+.hosp-title{font-family:var(--serif);font-size:1.6rem;font-weight:600;color:#fff;margin-bottom:.5rem;}
 .hosp-sub{font-size:.85rem;color:rgba(255,255,255,.55);margin-bottom:3rem}
-.hosp-logos{
-  display:flex;align-items:center;justify-content:center;
-  flex-wrap:wrap;gap:1.5rem;
-}
-.hosp-pill{
-  background:rgba(255,255,255,.07);
-  border:1px solid rgba(255,255,255,.12);
-  border-radius:10px;
-  padding:1rem 1.8rem;
-  display:flex;align-items:center;justify-content:center;
-  min-width:140px;min-height:72px;
-  transition:background .2s;
-}
+.hosp-logos{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:1.5rem;}
+.hosp-pill{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:1rem 1.8rem;display:flex;align-items:center;justify-content:center;min-width:140px;min-height:72px;transition:background .2s;}
 .hosp-pill:hover{background:rgba(255,255,255,.12)}
 .hosp-pill img{height:50px;width:auto;object-fit:contain}
-.hosp-pill-text{
-  font-size:.8rem;font-weight:600;
-  color:rgba(255,255,255,.7);letter-spacing:.04em;text-transform:uppercase;
-  text-align:center;
-}
+.hosp-pill-text{font-size:.8rem;font-weight:600;color:rgba(255,255,255,.7);letter-spacing:.04em;text-transform:uppercase;text-align:center;}
 
 /* ═══ PUBLICATIONS ═══ */
-.pubs-grid{
-  display:grid;grid-template-columns:1fr 1fr;
-  gap:1rem;margin-top:2.5rem;
-}
-.pub{
-  border:1px solid var(--rule);border-radius:var(--r);
-  padding:1.3rem 1.5rem;background:#fff;
-  display:grid;grid-template-columns:32px 1fr;
-  gap:.9rem;align-items:start;
-  transition:border-color .2s;
-}
+.pubs-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2.5rem;}
+.pub{border:1px solid var(--rule);border-radius:var(--r);padding:1.3rem 1.5rem;background:#fff;display:grid;grid-template-columns:32px 1fr;gap:.9rem;align-items:start;transition:border-color .2s;}
 .pub:hover{border-color:rgba(184,137,58,.4)}
-.pub-n{
-  font-family:var(--serif);font-size:1.5rem;font-weight:700;
-  color:var(--rule);line-height:1;text-align:center;
-}
+.pub-n{font-family:var(--serif);font-size:1.5rem;font-weight:700;color:var(--rule);line-height:1;text-align:center;}
 .pub-title{font-size:.86rem;font-weight:600;color:var(--ink);line-height:1.4;margin-bottom:.25rem}
 .pub-journal{font-size:.76rem;color:var(--ink-light);font-style:italic}
 .pub-doi{font-size:.7rem;color:var(--gold);font-family:monospace;margin-top:.15rem}
 
 /* ═══ REVIEWS ═══ */
-.reviews-grid{
-  display:grid;grid-template-columns:repeat(3,1fr);
-  gap:1.2rem;margin-top:2.5rem;
-}
-.review{
-  border:1px solid var(--rule);border-radius:var(--r);
-  padding:1.5rem;background:#fff;
-}
+.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:2.5rem;}
+.review{border:1px solid var(--rule);border-radius:var(--r);padding:1.5rem;background:#fff;}
 .review-stars{color:#f59e0b;font-size:.95rem;letter-spacing:.08em;margin-bottom:.7rem}
-.review-text{
-  font-size:.86rem;color:var(--ink-mid);line-height:1.75;
-  font-style:italic;margin-bottom:1rem;
-}
+.review-text{font-size:.86rem;color:var(--ink-mid);line-height:1.75;font-style:italic;margin-bottom:1rem;}
 .review-author{font-size:.78rem;font-weight:600;color:var(--ink)}
 
 /* ═══ FAQ ═══ */
 .faq-list{max-width:780px;margin-top:2rem}
 .faq-item{border-bottom:1px solid var(--rule)}
-.faq-q{
-  width:100%;display:flex;align-items:center;justify-content:space-between;gap:1rem;
-  padding:1.1rem 0;font-size:.95rem;font-weight:600;color:var(--ink);
-  background:none;border:none;cursor:pointer;text-align:left;
-  -webkit-tap-highlight-color:transparent;
-}
+.faq-q{width:100%;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.1rem 0;font-size:.95rem;font-weight:600;color:var(--ink);background:none;border:none;cursor:pointer;text-align:left;-webkit-tap-highlight-color:transparent;}
 .faq-q:hover{color:var(--gold)}
-.faq-icon{
-  width:24px;height:24px;flex-shrink:0;
-  border-radius:50%;border:1.5px solid var(--rule);
-  display:flex;align-items:center;justify-content:center;
-  font-size:.95rem;color:var(--ink-mid);
-  transition:.25s;
-  pointer-events:none;
-}
+.faq-icon{width:24px;height:24px;flex-shrink:0;border-radius:50%;border:1.5px solid var(--rule);display:flex;align-items:center;justify-content:center;font-size:.95rem;color:var(--ink-mid);transition:.25s;pointer-events:none;}
 .faq-item.open .faq-icon{background:var(--ink);color:#fff;border-color:var(--ink);transform:rotate(45deg)}
-.faq-a{
-  display:none;font-size:.88rem;color:var(--ink-mid);
-  line-height:1.8;padding-bottom:1.1rem;
-}
+.faq-a{display:none;font-size:.88rem;color:var(--ink-mid);line-height:1.8;padding-bottom:1.1rem;}
 .faq-item.open .faq-a{display:block}
 
 /* ═══ CTA BAND ═══ */
-.cta-band{
-  background:var(--ink);padding:5.5rem 2rem;text-align:center;
-  position:relative;overflow:hidden;
-}
-.cta-band::before{
-  content:'';position:absolute;inset:0;
-  background:radial-gradient(ellipse 60% 80% at center,rgba(184,137,58,.1) 0%,transparent 70%);
-}
+.cta-band{background:var(--ink);padding:5.5rem 2rem;text-align:center;position:relative;overflow:hidden;}
+.cta-band::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at center,rgba(184,137,58,.1) 0%,transparent 70%);}
 .cta-inner{position:relative;max-width:640px;margin:0 auto}
-.cta-inner h2{
-  font-family:var(--serif);font-size:clamp(1.8rem,3vw,2.5rem);
-  font-weight:700;color:#fff;margin-bottom:.9rem;
-}
+.cta-inner h2{font-family:var(--serif);font-size:clamp(1.8rem,3vw,2.5rem);font-weight:700;color:#fff;margin-bottom:.9rem;}
 .cta-inner p{font-size:.97rem;color:rgba(255,255,255,.7);margin-bottom:2rem;line-height:1.7}
-.btn-gold{
-  display:inline-flex;align-items:center;gap:.5rem;
-  background:var(--gold);color:#fff;
-  padding:1rem 2.5rem;border-radius:8px;
-  font-size:.95rem;font-weight:600;
-  box-shadow:0 4px 20px rgba(184,137,58,.35);
-  transition:filter .2s,transform .15s;
-}
+.btn-gold{display:inline-flex;align-items:center;gap:.5rem;background:var(--gold);color:#fff;padding:1rem 2.5rem;border-radius:8px;font-size:.95rem;font-weight:600;box-shadow:0 4px 20px rgba(184,137,58,.35);transition:filter .2s,transform .15s;}
 .btn-gold:hover{filter:brightness(1.1);transform:translateY(-1px)}
 
 /* ═══ CONTACT ═══ */
-.contact-grid{
-  display:grid;grid-template-columns:1fr 1fr;
-  gap:4rem;align-items:start;
-}
-.contact-title{
-  font-family:var(--serif);font-size:1.5rem;font-weight:600;
-  color:var(--ink);margin-bottom:1.8rem;
-}
-.contact-item{
-  display:flex;gap:.9rem;align-items:flex-start;
-  margin-bottom:1.3rem;
-}
-.contact-ic{
-  width:38px;height:38px;flex-shrink:0;
-  background:var(--canvas);border:1px solid var(--rule);
-  border-radius:8px;display:flex;align-items:center;justify-content:center;
-  font-size:.95rem;
-}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;}
+.contact-title{font-family:var(--serif);font-size:1.5rem;font-weight:600;color:var(--ink);margin-bottom:1.8rem;}
+.contact-item{display:flex;gap:.9rem;align-items:flex-start;margin-bottom:1.3rem;}
+.contact-ic{width:38px;height:38px;flex-shrink:0;background:var(--canvas);border:1px solid var(--rule);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.95rem;}
 .contact-k{font-size:.7rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-light);margin-bottom:.1rem}
 .contact-v{font-size:.9rem;font-weight:500;color:var(--ink);transition:color .2s}
 .contact-v:hover{color:var(--gold)}
-.map-wrap{
-  border-radius:var(--r);overflow:hidden;
-  border:1px solid var(--rule);height:300px;
-  box-shadow:var(--shadow);
-}
+.map-wrap{border-radius:var(--r);overflow:hidden;border:1px solid var(--rule);height:300px;box-shadow:var(--shadow);}
 .map-wrap iframe{width:100%;height:100%;border:none}
 
 /* ═══ FOOTER ═══ */
-.footer{
-  background:var(--ink);
-  padding:3.5rem 2rem 2rem;
-}
-.footer-inner{
-  max-width:1200px;margin:0 auto;
-  display:grid;grid-template-columns:1.6fr 1fr 1fr;
-  gap:3rem;margin-bottom:2.5rem;
-}
+.footer{background:var(--ink);padding:3.5rem 2rem 2rem;}
+.footer-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:3rem;margin-bottom:2.5rem;}
 .footer-brand img{margin-bottom:1rem;}
 .footer-brand p{font-size:.8rem;color:rgba(255,255,255,.5);line-height:1.7;max-width:280px}
-.footer-col h4{
-  font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
-  color:#fff;margin-bottom:.9rem;
-}
+.footer-col h4{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#fff;margin-bottom:.9rem;}
 .footer-col ul{list-style:none}
 .footer-col li{margin-bottom:.4rem}
 .footer-col a{font-size:.8rem;color:rgba(255,255,255,.5);transition:color .2s}
 .footer-col a:hover{color:var(--gold)}
-.footer-bottom{
-  max-width:1200px;margin:0 auto;
-  border-top:1px solid rgba(255,255,255,.08);
-  padding-top:1.5rem;
-  display:flex;align-items:center;justify-content:space-between;
-  flex-wrap:wrap;gap:.5rem;
-  font-size:.72rem;color:rgba(255,255,255,.35);
-}
+.footer-bottom{max-width:1200px;margin:0 auto;border-top:1px solid rgba(255,255,255,.08);padding-top:1.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem;font-size:.72rem;color:rgba(255,255,255,.35);}
 .footer-ceds{display:flex;flex-wrap:wrap;gap:.8rem}
 
 /* ═══ CUANDO ═══ */
-.cuando-grid{
-  display:grid;grid-template-columns:repeat(3,1fr);
-  gap:1rem;margin-top:2.5rem;
-}
-.cuando-item{
-  border:1px solid var(--rule);border-radius:var(--r);
-  padding:1.4rem;background:#fff;
-  transition:box-shadow .2s,transform .2s;
-}
+.cuando-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2.5rem;}
+.cuando-item{border:1px solid var(--rule);border-radius:var(--r);padding:1.4rem;background:#fff;transition:box-shadow .2s,transform .2s;}
 .cuando-item:hover{box-shadow:var(--shadow-lg);transform:translateY(-2px)}
 .cuando-icon{font-size:1.6rem;margin-bottom:.6rem}
 .cuando-name{font-size:.9rem;font-weight:700;color:var(--ink);margin-bottom:.3rem}
@@ -610,63 +385,29 @@ a{color:inherit;text-decoration:none}
 
 /* ═══ COMPARE TABLE ═══ */
 .compare-table{width:100%;border-collapse:collapse;font-size:.86rem;}
-.compare-table th{
-  padding:.75rem 1rem;text-align:left;
-  background:var(--ink);color:#fff;font-size:.78rem;font-weight:700;
-  letter-spacing:.05em;text-transform:uppercase;
-}
+.compare-table th{padding:.75rem 1rem;text-align:left;background:var(--ink);color:#fff;font-size:.78rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;}
 .compare-table th:first-child{border-radius:8px 0 0 0}
 .compare-table th:last-child{border-radius:0 8px 0 0}
-.compare-table td{
-  padding:.7rem 1rem;border-bottom:1px solid var(--rule);
-  color:var(--ink-mid);vertical-align:top;
-}
+.compare-table td{padding:.7rem 1rem;border-bottom:1px solid var(--rule);color:var(--ink-mid);vertical-align:top;}
 .compare-table tr:hover td{background:var(--canvas)}
 .ct-ok{color:#16a34a;font-weight:700}
-.pay-note{
-  background:var(--canvas);border:1px solid var(--rule);
-  border-radius:8px;padding:1rem 1.2rem;
-  font-size:.84rem;color:var(--ink-mid);line-height:1.6;
-  margin-top:1.5rem;
-}
+.pay-note{background:var(--canvas);border:1px solid var(--rule);border-radius:8px;padding:1rem 1.2rem;font-size:.84rem;color:var(--ink-mid);line-height:1.6;margin-top:1.5rem;}
 
 /* ═══ PRICING ═══ */
-.pricing-grid{
-  display:grid;grid-template-columns:1fr 1fr;
-  gap:1.2rem;margin-top:2.5rem;
-}
-.price-card{
-  border:1.5px solid var(--rule);border-radius:var(--r);
-  padding:1.8rem;background:#fff;
-  transition:box-shadow .25s,transform .2s;
-  position:relative;
-}
+.pricing-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-top:2.5rem;}
+.price-card{border:1.5px solid var(--rule);border-radius:var(--r);padding:1.8rem;background:#fff;transition:box-shadow .25s,transform .2s;position:relative;}
 .price-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-3px)}
 .price-card.featured{border-color:var(--gold);background:linear-gradient(135deg,#fdfbf5 0%,#fff 100%)}
-.price-tag{
-  display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.08em;
-  text-transform:uppercase;background:var(--gold-pale);color:var(--gold);
-  border-radius:4px;padding:.2rem .6rem;margin-bottom:.8rem;
-}
+.price-tag{display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:var(--gold-pale);color:var(--gold);border-radius:4px;padding:.2rem .6rem;margin-bottom:.8rem;}
 .price-name{font-family:var(--serif);font-size:1.3rem;font-weight:700;color:var(--ink);margin-bottom:.3rem}
-.price-amount{
-  font-family:var(--serif);font-size:2rem;font-weight:700;
-  color:var(--ink);line-height:1;margin-bottom:.4rem;
-}
+.price-amount{font-family:var(--serif);font-size:2rem;font-weight:700;color:var(--ink);line-height:1;margin-bottom:.4rem;}
 .price-amount span{font-size:.9rem;color:var(--ink-light);font-weight:400}
 .price-desc{font-size:.82rem;color:var(--ink-mid);margin-bottom:1rem;line-height:1.5}
 .price-includes{margin-bottom:1.2rem}
-.price-row{
-  display:flex;align-items:center;gap:.45rem;
-  font-size:.82rem;color:var(--ink-mid);padding:.2rem 0;
-}
+.price-row{display:flex;align-items:center;gap:.45rem;font-size:.82rem;color:var(--ink-mid);padding:.2rem 0;}
 .price-row::before{content:'✓';color:#16a34a;font-weight:700;flex-shrink:0}
 .price-btns{display:flex;gap:.6rem;flex-wrap:wrap}
-.btn-price{
-  display:inline-flex;align-items:center;gap:.4rem;
-  padding:.6rem 1.2rem;border-radius:6px;
-  font-size:.8rem;font-weight:600;transition:all .2s;
-}
+.btn-price{display:inline-flex;align-items:center;gap:.4rem;padding:.6rem 1.2rem;border-radius:6px;font-size:.8rem;font-weight:600;transition:all .2s;}
 .btn-price-main{background:var(--gold);color:#fff}
 .btn-price-main:hover{filter:brightness(1.1)}
 .btn-price-ghost{border:1px solid var(--rule);color:var(--ink-mid)}
@@ -674,68 +415,38 @@ a{color:inherit;text-decoration:none}
 
 /* ═══ PONENCIAS ═══ */
 .act-list{margin-top:2rem;display:flex;flex-direction:column;gap:.8rem}
-.act-item{
-  display:flex;align-items:start;gap:1rem;
-  border:1px solid var(--rule);border-radius:8px;
-  padding:1.1rem 1.3rem;background:#fff;
-  transition:border-color .2s;
-}
+.act-item{display:flex;align-items:start;gap:1rem;border:1px solid var(--rule);border-radius:8px;padding:1.1rem 1.3rem;background:#fff;transition:border-color .2s;}
 .act-item:hover{border-color:rgba(184,137,58,.35)}
 .act-type{font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);margin-bottom:.2rem}
 .act-text{font-size:.86rem;font-weight:600;color:var(--ink);line-height:1.4;margin-bottom:.15rem}
 .act-year{font-size:.75rem;color:var(--ink-light)}
 .cert-row{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:2rem}
-.cert-chip{
-  font-size:.73rem;font-weight:600;
-  border:1px solid var(--rule);border-radius:100px;
-  padding:.25rem .75rem;color:var(--ink-mid);background:#fff;
-  transition:all .2s;
-}
+.cert-chip{font-size:.73rem;font-weight:600;border:1px solid var(--rule);border-radius:100px;padding:.25rem .75rem;color:var(--ink-mid);background:#fff;transition:all .2s;}
 .cert-chip:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
 
 /* ═══ LIDERAZGO ═══ */
 .lead-rows{margin-top:2rem;display:flex;flex-direction:column;gap:0}
-.lead-row{
-  display:flex;align-items:flex-start;gap:1rem;
-  padding:1rem 0;border-bottom:1px solid var(--rule);
-}
+.lead-row{display:flex;align-items:flex-start;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--rule);}
 .lead-row:last-child{border-bottom:none}
-.lead-dot{
-  width:10px;height:10px;border-radius:50%;
-  background:var(--gold);flex-shrink:0;margin-top:.35rem;
-}
+.lead-dot{width:10px;height:10px;border-radius:50%;background:var(--gold);flex-shrink:0;margin-top:.35rem;}
 .lead-text{font-size:.9rem;color:var(--ink);line-height:1.5}
 .lead-year{font-size:.75rem;color:var(--ink-light);margin-top:.2rem}
 
 /* ═══ ZONES ═══ */
 .zones-wrap{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.8rem}
-.zone{
-  font-size:.78rem;font-weight:500;
-  border:1px solid var(--rule);border-radius:100px;
-  padding:.25rem .75rem;color:var(--ink-mid);background:#fff;
-}
+.zone{font-size:.78rem;font-weight:500;border:1px solid var(--rule);border-radius:100px;padding:.25rem .75rem;color:var(--ink-mid);background:#fff;}
 
 /* ═══ ENLACE BLOCK ═══ */
-.enlace-block{
-  background:var(--ink);border-radius:var(--r);
-  padding:2rem 2.2rem;margin-top:2.5rem;
-}
+.enlace-block{background:var(--ink);border-radius:var(--r);padding:2rem 2.2rem;margin-top:2.5rem;}
 .enlace-label{font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem}
 .enlace-h3{font-family:var(--serif);font-size:1.4rem;font-weight:700;color:#fff;margin-bottom:.8rem;line-height:1.2}
 .enlace-text{font-size:.88rem;color:rgba(255,255,255,.7);line-height:1.75;margin-bottom:1.2rem}
 .enlace-pills{display:flex;flex-wrap:wrap;gap:.5rem}
-.enlace-pill{
-  font-size:.75rem;font-weight:600;
-  background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);
-  border-radius:100px;padding:.25rem .75rem;color:rgba(255,255,255,.8);
-}
+.enlace-pill{font-size:.75rem;font-weight:600;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:100px;padding:.25rem .75rem;color:rgba(255,255,255,.8);}
 
 /* ═══ ANIMATIONS ═══ */
 .hero-right img{will-change:transform;transition:transform .1s linear;}
-.hero-left > *{
-  opacity:0;transform:translateY(22px);
-  animation:fadeUp .7s ease forwards;
-}
+.hero-left > *{opacity:0;transform:translateY(22px);animation:fadeUp .7s ease forwards;}
 .hero-left > *:nth-child(1){animation-delay:.05s}
 .hero-left > *:nth-child(2){animation-delay:.15s}
 .hero-left > *:nth-child(3){animation-delay:.25s}
@@ -745,25 +456,13 @@ a{color:inherit;text-decoration:none}
 .hero-left > *:nth-child(7){animation-delay:.57s}
 .hero-left > *:nth-child(8){animation-delay:.63s}
 @keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
-.hero-right{
-  clip-path:inset(100% 0 0 0);
-  animation:revealDown .8s cubic-bezier(.25,.8,.25,1) .1s forwards;
-}
+.hero-right{clip-path:inset(100% 0 0 0);animation:revealDown .8s cubic-bezier(.25,.8,.25,1) .1s forwards;}
 @keyframes revealDown{to{clip-path:inset(0% 0 0 0)}}
 .scroll-reveal{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease;}
 .scroll-reveal.visible{opacity:1;transform:translateY(0);}
 
 /* ═══ WA FLOAT ═══ */
-.wa-float{
-  position:fixed;bottom:24px;right:20px;z-index:999;
-  display:inline-flex;align-items:center;gap:8px;
-  background:#25D366;color:#fff;
-  padding:12px 18px;border-radius:999px;
-  font-family:var(--sans);font-weight:800;font-size:14px;
-  box-shadow:0 6px 28px rgba(37,211,102,.4);
-  text-decoration:none;
-  transition:transform .15s,box-shadow .2s;
-}
+.wa-float{position:fixed;bottom:24px;right:20px;z-index:999;display:inline-flex;align-items:center;gap:8px;background:#25D366;color:#fff;padding:12px 18px;border-radius:999px;font-family:var(--sans);font-weight:800;font-size:14px;box-shadow:0 6px 28px rgba(37,211,102,.4);text-decoration:none;transition:transform .15s,box-shadow .2s;}
 .wa-float:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(37,211,102,.5)}
 .wa-float svg{width:20px;height:20px;fill:#fff;flex:0 0 auto}
 
@@ -781,63 +480,24 @@ a{color:inherit;text-decoration:none}
 @media(max-width:768px){
   .hero{display:block;padding-top:68px;min-height:0;}
   .hero-left{display:none!important;height:0!important;padding:0!important;margin:0!important;overflow:hidden!important;}
-  .hero-right{
-    position:relative;
-    height:calc(100svh - 68px);
-    min-height:500px;max-height:none;overflow:hidden;
-  }
-  .hero-right img{
-    width:100%;height:100%;
-    object-fit:cover;object-position:center 5%;
-    transform:scale(1.06);
-  }
-  .hero-right::before{
-    content:'';position:absolute;inset:0;
-    background:linear-gradient(to top,rgba(13,27,42,1) 0%,rgba(13,27,42,.88) 28%,rgba(13,27,42,.4) 55%,transparent 80%);
-    z-index:1;
-  }
+  .hero-right{position:relative;height:calc(100svh - 68px);min-height:500px;max-height:none;overflow:hidden;}
+  .hero-right img{width:100%;height:100%;object-fit:cover;object-position:center 5%;transform:scale(1.06);}
+  .hero-right::before{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(13,27,42,1) 0%,rgba(13,27,42,.88) 28%,rgba(13,27,42,.4) 55%,transparent 80%);z-index:1;}
   .hero-right-overlay{display:none}
-  .hero-mobile-overlay{
-    display:flex;flex-direction:column;justify-content:flex-end;
-    position:absolute;inset:0;z-index:2;
-    padding:0 1.6rem 2.2rem;
-  }
-  .hmo-eyebrow{
-    display:flex;align-items:center;gap:.5rem;
-    font-size:.68rem;font-weight:700;letter-spacing:.14em;
-    text-transform:uppercase;color:#fff;margin-bottom:.85rem;
-    opacity:0;animation:hmoUp .6s ease .15s forwards;
-  }
+  .hero-mobile-overlay{display:flex;flex-direction:column;justify-content:flex-end;position:absolute;inset:0;z-index:2;padding:0 1.6rem 2.2rem;}
+  .hmo-eyebrow{display:flex;align-items:center;gap:.5rem;font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#fff;margin-bottom:.85rem;opacity:0;animation:hmoUp .6s ease .15s forwards;}
   .hmo-eyebrow::before{content:'';display:block;width:22px;height:1px;background:#fff;flex-shrink:0;}
   .hmo-name{line-height:1.0;margin-bottom:.9rem;opacity:0;animation:hmoUp .65s ease .3s forwards;}
-  .hmo-name-main{
-    display:block;font-family:var(--serif);
-    font-size:clamp(2.4rem,9.5vw,3.4rem);
-    font-weight:700;color:#fff;letter-spacing:-.01em;
-  }
-  .hmo-name-sub{
-    display:block;font-family:var(--serif);
-    font-size:clamp(1.9rem,7.5vw,2.7rem);
-    font-weight:400;font-style:italic;color:var(--gold);letter-spacing:.01em;
-  }
+  .hmo-name-main{display:block;font-family:var(--serif);font-size:clamp(2.4rem,9.5vw,3.4rem);font-weight:700;color:#fff;letter-spacing:-.01em;}
+  .hmo-name-sub{display:block;font-family:var(--serif);font-size:clamp(1.9rem,7.5vw,2.7rem);font-weight:400;font-style:italic;color:var(--gold);letter-spacing:.01em;}
   .hmo-role{font-size:.78rem;color:rgba(255,255,255,.72);line-height:1.6;margin-bottom:1rem;opacity:0;animation:hmoUp .6s ease .48s forwards;}
   .hmo-stars{display:flex;align-items:center;gap:.6rem;opacity:0;animation:hmoUp .6s ease .62s forwards;margin-bottom:1.4rem;}
   .hmo-stars-ico{color:#f59e0b;font-size:1rem;letter-spacing:.06em}
   .hmo-stars-txt{font-size:.75rem;color:rgba(255,255,255,.65);font-weight:400}
   .hmo-cta{display:flex;gap:.7rem;opacity:0;animation:hmoUp .6s ease .75s forwards;}
-  .hmo-btn-main{
-    flex:1;display:flex;align-items:center;justify-content:center;gap:.45rem;
-    background:var(--gold);color:#fff;padding:.75rem 1.2rem;border-radius:8px;
-    font-size:.82rem;font-weight:700;box-shadow:0 4px 20px rgba(184,137,58,.35);transition:filter .2s;
-  }
+  .hmo-btn-main{flex:1;display:flex;align-items:center;justify-content:center;gap:.45rem;background:var(--gold);color:#fff;padding:.75rem 1.2rem;border-radius:8px;font-size:.82rem;font-weight:700;box-shadow:0 4px 20px rgba(184,137,58,.35);transition:filter .2s;}
   .hmo-btn-main:hover{filter:brightness(1.1)}
-  .hmo-btn-wa{
-    display:flex;align-items:center;justify-content:center;gap:.45rem;
-    border:1.5px solid rgba(255,255,255,.25);color:#fff;
-    padding:.75rem 1.1rem;border-radius:8px;
-    font-size:.82rem;font-weight:600;
-    backdrop-filter:blur(6px);background:rgba(255,255,255,.08);transition:background .2s;
-  }
+  .hmo-btn-wa{display:flex;align-items:center;justify-content:center;gap:.45rem;border:1.5px solid rgba(255,255,255,.25);color:#fff;padding:.75rem 1.1rem;border-radius:8px;font-size:.82rem;font-weight:600;backdrop-filter:blur(6px);background:rgba(255,255,255,.08);transition:background .2s;}
   .hmo-btn-wa:hover{background:rgba(255,255,255,.15)}
   @keyframes hmoUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
   .about-grid{grid-template-columns:1fr}
@@ -871,8 +531,7 @@ a{color:inherit;text-decoration:none}
 <nav class="nav" id="nav">
   <div class="nav-inner">
     <a href="/" aria-label="Eutimya — Inicio">
-      <img src="https://raw.githubusercontent.com/moymaa/drmoyapsiq/main/unnamed.png"
-           alt="Eutimya" height="34" loading="eager"/>
+      <img src="https://raw.githubusercontent.com/moymaa/drmoyapsiq/main/unnamed.png" alt="Eutimya" height="34" loading="eager"/>
     </a>
     <ul class="nav-links">
       <li><a href="#cuando">¿Cuándo?</a></li>
@@ -886,7 +545,6 @@ a{color:inherit;text-decoration:none}
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
       Agendar Cita
     </a>
-    <!-- SIN onclick inline — el JS lo maneja -->
     <button class="hamburger" type="button" id="hbg" aria-label="Menú">
       <span></span><span></span><span></span>
     </button>
@@ -925,9 +583,7 @@ a{color:inherit;text-decoration:none}
       <span class="stars-text">★★★★★</span>
       <span class="stars-label">5.0 Google · +100 reseñas verificadas</span>
     </div>
-    <p class="hero-desc">
-      Psiquiatra con formación de alto nivel en UNAM (mención honorífica) y Alta Especialidad en <strong>Psiquiatría de Enlace</strong>. Certificado por el Consejo Mexicano de Psiquiatría. Múltiples publicaciones en revistas indexadas internacionales. Autor de investigaciones en neuromodulación, TDAH, delirium y depresión. Consulta presencial en Del Valle o en línea desde cualquier lugar.
-    </p>
+    <p class="hero-desc">Psiquiatra con formación de alto nivel en UNAM (mención honorífica) y Alta Especialidad en <strong>Psiquiatría de Enlace</strong>. Certificado por el Consejo Mexicano de Psiquiatría. Múltiples publicaciones en revistas indexadas internacionales. Autor de investigaciones en neuromodulación, TDAH, delirium y depresión. Consulta presencial en Del Valle o en línea desde cualquier lugar.</p>
     <div class="hero-actions">
       <a href="https://psiquiatra-cdmx.eutimya.org/cita" class="btn-main">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
@@ -952,8 +608,7 @@ a{color:inherit;text-decoration:none}
   </div>
   <div class="hero-right">
     <img src="https://lh3.googleusercontent.com/pw/AP1GczOqR75P60pnKq1lU4B7E8LkSC1xHGPyu1pQ8rBbqVdh3jbBWc8vwWDl3mI_qWrhhvHGzaxXEZIIBrS8U1XD5n4PND0V7_ZpFfIuZMMS8f7g-fgWA7tZNBcCpEDsPI5oC-zJNM1iLLYHh3XSmYgxL0Jwvg=w994-h1490-s-no-gm"
-         alt="Dr. Deldhy Nicolás Moya Sánchez — Psiquiatra CDMX frente a la Biblioteca Central UNAM"
-         loading="eager"/>
+         alt="Dr. Deldhy Nicolás Moya Sánchez — Psiquiatra CDMX frente a la Biblioteca Central UNAM" loading="eager"/>
     <div class="hero-mobile-overlay">
       <p class="hmo-eyebrow">Psiquiatra Certificado · CDMX</p>
       <h1 class="hmo-name">
@@ -1009,6 +664,61 @@ a{color:inherit;text-decoration:none}
   </div>
 </div>
 
+<!-- ═══ TICKER FORMACIÓN & AFILIACIONES ═══ -->
+<div class="ticker-wrap" aria-hidden="true">
+  <div class="ticker-label">Formación · Afiliaciones · Certificaciones</div>
+  <div class="ticker-track-container">
+    <div class="ticker-track">
+      <!-- Set 1 -->
+      <div class="ticker-item"><div class="ticker-dot"></div><span class="ticker-name">UNAM</span><span class="ticker-sub">Mención Honorífica</span></div>
+      <span class="ticker-sep">◆</span>
+      <div class="ticker-item"><div class="ticker-dot"></div><span class="ticker-name">CMN 20 de Noviembre</span><span class="ticker-sub">ISSSTE · Médico Adscrito</span></div>
+      <span class="ticker-sep">◆</span>
+      <div class="ticker-item"><div class="ticker-dot"></div><span class="ticker-name">Stanford Medicine</span><span class="ticker-sub">CME Certified</span></div>
+      <span class="ticker-sep">◆</span>
+      <div class="ticker-item"><div class="ticker-dot"></div><span class="ticker-name">McLean / MGH</span><span class="ticker-sub">Harvard CME</span></div>
+      <span class="ticker-sep">◆</span>
+      <div class="ticker-item"><div class="ticker-dot"></div><span class="ticker-name">APA</span><span class="ticker-sub">American Psychiatric Assoc.</span></div>
+      <span class="ticker-sep">◆</span>
+      <div class="ticker-item"><div class="ticker-dot"></div><span class="ticker-name">ACLP</span><span class="ticker-sub">Consultation-Liaison Psychiatry</span></div>
+      <span class="ticker-sep">◆</span>
+      <div class="ticker-item"><div class="ticker-dot"></div><span class="ticker-name">UAS</span><span class="ticker-sub">Univ. Autónoma de Sinaloa</span></div>
+      <span class="ticker-sep">◆</span>
+      <div class="ticker-item"><div class="ticker-dot"></div><span class="ticker-name">Shriners International</span><span class="ticker-sub">Miembro Activo</span></div>
+      <span class="ticker-sep">◆</span>
+      <div class="ticker-item"><div class="ticker-dot"></div><span class="ticker-name">APM</span><span class="ticker-sub">Asoc. Psiquiátrica Mexicana</span></div>
+      <span class="ticker-sep">◆</span>
+      <div class="ticker-item"><div class="ticker-dot"></div><span class="ticker-name">IMPCCC</span><span class="ticker-sub">Inst. Mex. Psicoterapia CC</span></div>
+      <span class="ticker-sep">◆</span>
+      <div class="ticker-item"><div class="ticker-dot"></div><span class="ticker-name">World Congress of Psychiatry</span><span class="ticker-sub">24th · CDMX 2024</span></div>
+      <span class="ticker-sep">◆</span>
+      <!-- Set 2 — exact duplicate for seamless loop -->
+      <div class="ticker-item"><div class="ticker-dot"></div><span class="ticker-name">UNAM</span><span class="ticker-sub">Mención Honorífica</span></div>
+      <span class="ticker-sep">◆</span>
+      <div class="ticker-item"><div class="ticker-dot"></div><span class="ticker-name">CMN 20 de Noviembre</span><span class="ticker-sub">ISSSTE · Médico Adscrito</span></div>
+      <span class="ticker-sep">◆</span>
+      <div class="ticker-item"><div class="ticker-dot"></div><span class="ticker-name">Stanford Medicine</span><span class="ticker-sub">CME Certified</span></div>
+      <span class="ticker-sep">◆</span>
+      <div class="ticker-item"><div class="ticker-dot"></div><span class="ticker-name">McLean / MGH</span><span class="ticker-sub">Harvard CME</span></div>
+      <span class="ticker-sep">◆</span>
+      <div class="ticker-item"><div class="ticker-dot"></div><span class="ticker-name">APA</span><span class="ticker-sub">American Psychiatric Assoc.</span></div>
+      <span class="ticker-sep">◆</span>
+      <div class="ticker-item"><div class="ticker-dot"></div><span class="ticker-name">ACLP</span><span class="ticker-sub">Consultation-Liaison Psychiatry</span></div>
+      <span class="ticker-sep">◆</span>
+      <div class="ticker-item"><div class="ticker-dot"></div><span class="ticker-name">UAS</span><span class="ticker-sub">Univ. Autónoma de Sinaloa</span></div>
+      <span class="ticker-sep">◆</span>
+      <div class="ticker-item"><div class="ticker-dot"></div><span class="ticker-name">Shriners International</span><span class="ticker-sub">Miembro Activo</span></div>
+      <span class="ticker-sep">◆</span>
+      <div class="ticker-item"><div class="ticker-dot"></div><span class="ticker-name">APM</span><span class="ticker-sub">Asoc. Psiquiátrica Mexicana</span></div>
+      <span class="ticker-sep">◆</span>
+      <div class="ticker-item"><div class="ticker-dot"></div><span class="ticker-name">IMPCCC</span><span class="ticker-sub">Inst. Mex. Psicoterapia CC</span></div>
+      <span class="ticker-sep">◆</span>
+      <div class="ticker-item"><div class="ticker-dot"></div><span class="ticker-name">World Congress of Psychiatry</span><span class="ticker-sub">24th · CDMX 2024</span></div>
+      <span class="ticker-sep">◆</span>
+    </div>
+  </div>
+</div>
+
 <!-- CUANDO CONSULTAR -->
 <section class="section" id="cuando">
   <div class="wrap">
@@ -1016,36 +726,12 @@ a{color:inherit;text-decoration:none}
     <h2 class="section-h">Señales de que necesitas un <em>psiquiatra en CDMX</em></h2>
     <p class="section-sub">No es necesario esperar a estar en crisis. Una evaluación temprana da claridad diagnóstica y evita que los síntomas escalen.</p>
     <div class="cuando-grid">
-      <div class="cuando-item">
-        <div class="cuando-icon">😰</div>
-        <div class="cuando-name">Ansiedad persistente</div>
-        <div class="cuando-sub">Preocupación constante, ataques de pánico, síntomas físicos sin causa médica</div>
-      </div>
-      <div class="cuando-item">
-        <div class="cuando-icon">😔</div>
-        <div class="cuando-name">Tristeza prolongada</div>
-        <div class="cuando-sub">Ánimo bajo por más de 2 semanas, pérdida de interés, fatiga o pensamientos negativos</div>
-      </div>
-      <div class="cuando-item">
-        <div class="cuando-icon">🧩</div>
-        <div class="cuando-name">Problemas de atención</div>
-        <div class="cuando-sub">Desorganización crónica, impulsividad, procrastinación — posible TDAH en adultos</div>
-      </div>
-      <div class="cuando-item">
-        <div class="cuando-icon">🛏️</div>
-        <div class="cuando-name">Insomnio crónico</div>
-        <div class="cuando-sub">Dificultad para dormir o sueño no reparador que afecta el rendimiento diario</div>
-      </div>
-      <div class="cuando-item">
-        <div class="cuando-icon">💊</div>
-        <div class="cuando-name">Necesitas medicación</div>
-        <div class="cuando-sub">Tu médico o psicólogo recomienda evaluación psiquiátrica o ajuste de medicamentos</div>
-      </div>
-      <div class="cuando-item">
-        <div class="cuando-icon">⚖️</div>
-        <div class="cuando-name">Cirugía bariátrica</div>
-        <div class="cuando-sub">Se requiere evaluación psiquiátrica preoperatoria por el equipo quirúrgico</div>
-      </div>
+      <div class="cuando-item"><div class="cuando-icon">😰</div><div class="cuando-name">Ansiedad persistente</div><div class="cuando-sub">Preocupación constante, ataques de pánico, síntomas físicos sin causa médica</div></div>
+      <div class="cuando-item"><div class="cuando-icon">😔</div><div class="cuando-name">Tristeza prolongada</div><div class="cuando-sub">Ánimo bajo por más de 2 semanas, pérdida de interés, fatiga o pensamientos negativos</div></div>
+      <div class="cuando-item"><div class="cuando-icon">🧩</div><div class="cuando-name">Problemas de atención</div><div class="cuando-sub">Desorganización crónica, impulsividad, procrastinación — posible TDAH en adultos</div></div>
+      <div class="cuando-item"><div class="cuando-icon">🛏️</div><div class="cuando-name">Insomnio crónico</div><div class="cuando-sub">Dificultad para dormir o sueño no reparador que afecta el rendimiento diario</div></div>
+      <div class="cuando-item"><div class="cuando-icon">💊</div><div class="cuando-name">Necesitas medicación</div><div class="cuando-sub">Tu médico o psicólogo recomienda evaluación psiquiátrica o ajuste de medicamentos</div></div>
+      <div class="cuando-item"><div class="cuando-icon">⚖️</div><div class="cuando-name">Cirugía bariátrica</div><div class="cuando-sub">Se requiere evaluación psiquiátrica preoperatoria por el equipo quirúrgico</div></div>
     </div>
   </div>
 </section>
@@ -1110,22 +796,10 @@ a{color:inherit;text-decoration:none}
         <p>Como <strong>Profesor de Medicina Psicológica en la Facultad de Medicina UNAM</strong> y con certificaciones por Stanford, McLean Hospital y la APA, me mantengo al día con los últimos avances. Miembro activo de la <strong>ACLP</strong> y la Asociación Psiquiátrica Mexicana.</p>
         <p style="font-size:.8rem;color:var(--ink-light);margin-top:.5rem">Médico Adscrito al Servicio de Psiquiatría, CMN "20 de Noviembre", ISSSTE (2026). Maestría en Administración de Clínicas y Hospitales.</p>
         <div class="cred-grid">
-          <div class="cred-card">
-            <div class="cred-k">ORCID</div>
-            <div class="cred-v">0000-0002-7989-4646</div>
-          </div>
-          <div class="cred-card">
-            <div class="cred-k">CP Maestría</div>
-            <div class="cred-v">14670759</div>
-          </div>
-          <div class="cred-card">
-            <div class="cred-k">Peer Reviewer</div>
-            <div class="cred-v">Cureus Journal of Medical Science</div>
-          </div>
-          <div class="cred-card">
-            <div class="cred-k">LinkedIn</div>
-            <div class="cred-v">/drmoyapsiq</div>
-          </div>
+          <div class="cred-card"><div class="cred-k">ORCID</div><div class="cred-v">0000-0002-7989-4646</div></div>
+          <div class="cred-card"><div class="cred-k">CP Maestría</div><div class="cred-v">14670759</div></div>
+          <div class="cred-card"><div class="cred-k">Peer Reviewer</div><div class="cred-v">Cureus Journal of Medical Science</div></div>
+          <div class="cred-card"><div class="cred-k">LinkedIn</div><div class="cred-v">/drmoyapsiq</div></div>
         </div>
         <div class="about-chips">
           <span class="chip"><span class="dot"></span>ACLP Member</span>
@@ -1138,8 +812,7 @@ a{color:inherit;text-decoration:none}
       </div>
       <div class="about-visual">
         <div class="office-img">
-          <img src="https://github.com/moymaa/drmoyapsiq/blob/main/unnamed%2815%29.png?raw=true"
-               alt="Sala de espera — Consultorio Eutimya, Moras 619, Col. Del Valle, CDMX" loading="lazy"/>
+          <img src="https://github.com/moymaa/drmoyapsiq/blob/main/unnamed%2815%29.png?raw=true" alt="Sala de espera — Consultorio Eutimya, Moras 619, Col. Del Valle, CDMX" loading="lazy"/>
         </div>
         <div class="eutimya-card">
           <img src="https://github.com/moymaa/drmoyapsiq/blob/main/unnamed%2830%29.png?raw=true" alt="Eutimya" loading="lazy"/>
@@ -1160,36 +833,12 @@ a{color:inherit;text-decoration:none}
     <h2 class="section-h">¿En qué puedo ayudarte?</h2>
     <p class="section-sub">Atención psiquiátrica integral, diagnóstico basado en evidencia y tratamiento personalizado — en consultorio o en línea.</p>
     <div class="services-grid">
-      <div class="svc">
-        <div class="svc-icon">🧠</div>
-        <h3>Consulta Psiquiátrica Integral</h3>
-        <p>Valoración completa: anamnesis, exploración del estado mental, diagnóstico diferencial y plan terapéutico personalizado. Sesiones de 50 minutos desde $1,400 MXN.</p>
-      </div>
-      <div class="svc">
-        <div class="svc-icon">🏥</div>
-        <h3>Psiquiatría de Enlace</h3>
-        <p>Interconsulta y comanejo de pacientes hospitalizados con comorbilidades psiquiátricas. Alta Especialidad concluida por la UNAM en CMN 20 de Noviembre, ISSSTE. Miembro ACLP.</p>
-      </div>
-      <div class="svc">
-        <div class="svc-icon">⚡</div>
-        <h3>Neuromodulación (TMS / tDCS)</h3>
-        <p>Estimulación magnética transcraneal (TMS) y estimulación eléctrica transcraneal (tDCS) para depresión refractaria, TDAH y otros trastornos. Investigador activo en el área.</p>
-      </div>
-      <div class="svc">
-        <div class="svc-icon">💊</div>
-        <h3>Psicofarmacología</h3>
-        <p>Prescripción, ajuste y seguimiento farmacológico riguroso. Recetas de medicamentos controlados con firma autógrafa para psicotrópicos y estupefacientes.</p>
-      </div>
-      <div class="svc">
-        <div class="svc-icon">🧩</div>
-        <h3>Terapia Cognitivo-Conductual</h3>
-        <p>Intervenciones TCC estructuradas para ansiedad, depresión, insomnio y trastornos adaptativos. Diplomado por el Instituto Mexicano de Psicoterapia Cognitivo Conductual.</p>
-      </div>
-      <div class="svc">
-        <div class="svc-icon">⚖️</div>
-        <h3>Psiquiatría en Cirugía Bariátrica</h3>
-        <p>Valoración psiquiátrica pre y posoperatoria. Manejo de comorbilidades afectivas y trastornos de la conducta alimentaria. Ponente en congresos internacionales sobre el tema.</p>
-      </div>
+      <div class="svc"><div class="svc-icon">🧠</div><h3>Consulta Psiquiátrica Integral</h3><p>Valoración completa: anamnesis, exploración del estado mental, diagnóstico diferencial y plan terapéutico personalizado. Sesiones de 50 minutos desde $1,400 MXN.</p></div>
+      <div class="svc"><div class="svc-icon">🏥</div><h3>Psiquiatría de Enlace</h3><p>Interconsulta y comanejo de pacientes hospitalizados con comorbilidades psiquiátricas. Alta Especialidad concluida por la UNAM en CMN 20 de Noviembre, ISSSTE. Miembro ACLP.</p></div>
+      <div class="svc"><div class="svc-icon">⚡</div><h3>Neuromodulación (TMS / tDCS)</h3><p>Estimulación magnética transcraneal (TMS) y estimulación eléctrica transcraneal (tDCS) para depresión refractaria, TDAH y otros trastornos. Investigador activo en el área.</p></div>
+      <div class="svc"><div class="svc-icon">💊</div><h3>Psicofarmacología</h3><p>Prescripción, ajuste y seguimiento farmacológico riguroso. Recetas de medicamentos controlados con firma autógrafa para psicotrópicos y estupefacientes.</p></div>
+      <div class="svc"><div class="svc-icon">🧩</div><h3>Terapia Cognitivo-Conductual</h3><p>Intervenciones TCC estructuradas para ansiedad, depresión, insomnio y trastornos adaptativos. Diplomado por el Instituto Mexicano de Psicoterapia Cognitivo Conductual.</p></div>
+      <div class="svc"><div class="svc-icon">⚖️</div><h3>Psiquiatría en Cirugía Bariátrica</h3><p>Valoración psiquiátrica pre y posoperatoria. Manejo de comorbilidades afectivas y trastornos de la conducta alimentaria. Ponente en congresos internacionales sobre el tema.</p></div>
     </div>
   </div>
 </section>
@@ -1233,20 +882,7 @@ a{color:inherit;text-decoration:none}
     <div style="margin-top:2.5rem">
       <div style="font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-light);margin-bottom:.8rem">Psiquiatra en CDMX · Colonias y zonas cercanas</div>
       <div class="zones-wrap">
-        <span class="zone">Col. Del Valle</span>
-        <span class="zone">Narvarte</span>
-        <span class="zone">Nápoles</span>
-        <span class="zone">Roma Norte / Sur</span>
-        <span class="zone">Condesa</span>
-        <span class="zone">Doctores</span>
-        <span class="zone">Benito Juárez</span>
-        <span class="zone">Insurgentes Sur</span>
-        <span class="zone">Coyoacán</span>
-        <span class="zone">Miguel Hidalgo</span>
-        <span class="zone">Cuauhtémoc</span>
-        <span class="zone">Xochimilco</span>
-        <span class="zone">Tlalpan</span>
-        <span class="zone">Todo México (en línea)</span>
+        <span class="zone">Col. Del Valle</span><span class="zone">Narvarte</span><span class="zone">Nápoles</span><span class="zone">Roma Norte / Sur</span><span class="zone">Condesa</span><span class="zone">Doctores</span><span class="zone">Benito Juárez</span><span class="zone">Insurgentes Sur</span><span class="zone">Coyoacán</span><span class="zone">Miguel Hidalgo</span><span class="zone">Cuauhtémoc</span><span class="zone">Xochimilco</span><span class="zone">Tlalpan</span><span class="zone">Todo México (en línea)</span>
       </div>
     </div>
   </div>
@@ -1274,78 +910,15 @@ a{color:inherit;text-decoration:none}
     <h2 class="section-h">Publicaciones en revistas indexadas</h2>
     <p class="section-sub">Autor y coautor en revistas nacionales e internacionales. Peer reviewer activo para <em>Cureus Journal of Medical Science</em>.</p>
     <div class="pubs-grid">
-      <div class="pub">
-        <div class="pub-n">1</div>
-        <div>
-          <div class="pub-title">Transcranial Direct Current Stimulation as an Adjuvant Therapy for Major Depressive Disorder</div>
-          <div class="pub-journal">Neuropsychiatric Investigation · 2025; 63:1-8</div>
-          <div class="pub-doi">DOI: 10.5152/NeuropsychiatricInvest.2025.25020</div>
-        </div>
-      </div>
-      <div class="pub">
-        <div class="pub-n">2</div>
-        <div>
-          <div class="pub-title">Liaison Psychiatry in a Tertiary Care Hospital: Experience of the "20 de Noviembre" National Medical Center</div>
-          <div class="pub-journal">Psychosomatic Medicine and General Practice · 2025, Vol. 10, No. 3</div>
-          <div class="pub-doi">DOI: 10.26766/pmgp.v10i3.625</div>
-        </div>
-      </div>
-      <div class="pub">
-        <div class="pub-n">3</div>
-        <div>
-          <div class="pub-title">Socio-demographic characteristics and pharmacological treatment options in patients with delirium</div>
-          <div class="pub-journal">European Psychiatry · 2024</div>
-          <div class="pub-doi">DOI: 10.1192/j.eurpsy.2024.757</div>
-        </div>
-      </div>
-      <div class="pub">
-        <div class="pub-n">4</div>
-        <div>
-          <div class="pub-title">Papel de los Antagonistas del Receptor NMDA en el Tratamiento de Trastornos Depresivos en Adolescentes</div>
-          <div class="pub-journal">Innoscience Journal · ISSN 3005-8953 · Octubre 2023</div>
-          <div class="pub-doi">DOI: 10.5281/zenodo.10215497</div>
-        </div>
-      </div>
-      <div class="pub">
-        <div class="pub-n">5</div>
-        <div>
-          <div class="pub-title">Características sociodemográficas y opciones de tratamiento farmacológico en pacientes con delirium</div>
-          <div class="pub-journal">Revista Asociación Psiquiátrica Mexicana · Septiembre 2023</div>
-          <div class="pub-doi">DOI: 10.17613/ya3j-kq10</div>
-        </div>
-      </div>
-      <div class="pub">
-        <div class="pub-n">6</div>
-        <div>
-          <div class="pub-title">Trastorno por déficit de atención e hiperactividad en la infancia: Revisión narrativa</div>
-          <div class="pub-journal">Revista Asociación Psiquiátrica Mexicana · Vol. 4 · Diciembre 2022</div>
-          <div class="pub-doi">DOI: 10.5281/zenodo.8286782</div>
-        </div>
-      </div>
-      <div class="pub">
-        <div class="pub-n">7</div>
-        <div>
-          <div class="pub-title">Electrocardiograma vs electrocardiograma celular en el servicio de urgencias</div>
-          <div class="pub-journal">Revista de Medicina Interna de México · 2021</div>
-          <div class="pub-doi">DOI: 10.24245/mim.v37i2.3694</div>
-        </div>
-      </div>
-      <div class="pub">
-        <div class="pub-n">8</div>
-        <div>
-          <div class="pub-title">Neuromodulación no invasiva en epilepsia: Estimulación eléctrica transcraneal por corriente directa</div>
-          <div class="pub-journal">Archivos de Neurociencia · Diciembre 2017</div>
-          <div class="pub-doi"><a href="https://doi.org/10.17613/tvyy-7p58" target="_blank" rel="noopener">DOI: 10.17613/tvyy-7p58</a></div>
-        </div>
-      </div>
-      <div class="pub">
-        <div class="pub-n">9</div>
-        <div>
-          <div class="pub-title">Novel Pharmacological Strategies for the Management of Insomnia</div>
-          <div class="pub-journal">Journal of Neurology and Experimental Neural Science · Enero 2017</div>
-          <div class="pub-doi"><a href="https://doi.org/10.17613/8fpz-8512" target="_blank" rel="noopener">DOI: 10.17613/8fpz-8512</a></div>
-        </div>
-      </div>
+      <div class="pub"><div class="pub-n">1</div><div><div class="pub-title">Transcranial Direct Current Stimulation as an Adjuvant Therapy for Major Depressive Disorder</div><div class="pub-journal">Neuropsychiatric Investigation · 2025; 63:1-8</div><div class="pub-doi">DOI: 10.5152/NeuropsychiatricInvest.2025.25020</div></div></div>
+      <div class="pub"><div class="pub-n">2</div><div><div class="pub-title">Liaison Psychiatry in a Tertiary Care Hospital: Experience of the "20 de Noviembre" National Medical Center</div><div class="pub-journal">Psychosomatic Medicine and General Practice · 2025, Vol. 10, No. 3</div><div class="pub-doi">DOI: 10.26766/pmgp.v10i3.625</div></div></div>
+      <div class="pub"><div class="pub-n">3</div><div><div class="pub-title">Socio-demographic characteristics and pharmacological treatment options in patients with delirium</div><div class="pub-journal">European Psychiatry · 2024</div><div class="pub-doi">DOI: 10.1192/j.eurpsy.2024.757</div></div></div>
+      <div class="pub"><div class="pub-n">4</div><div><div class="pub-title">Papel de los Antagonistas del Receptor NMDA en el Tratamiento de Trastornos Depresivos en Adolescentes</div><div class="pub-journal">Innoscience Journal · ISSN 3005-8953 · Octubre 2023</div><div class="pub-doi">DOI: 10.5281/zenodo.10215497</div></div></div>
+      <div class="pub"><div class="pub-n">5</div><div><div class="pub-title">Características sociodemográficas y opciones de tratamiento farmacológico en pacientes con delirium</div><div class="pub-journal">Revista Asociación Psiquiátrica Mexicana · Septiembre 2023</div><div class="pub-doi">DOI: 10.17613/ya3j-kq10</div></div></div>
+      <div class="pub"><div class="pub-n">6</div><div><div class="pub-title">Trastorno por déficit de atención e hiperactividad en la infancia: Revisión narrativa</div><div class="pub-journal">Revista Asociación Psiquiátrica Mexicana · Vol. 4 · Diciembre 2022</div><div class="pub-doi">DOI: 10.5281/zenodo.8286782</div></div></div>
+      <div class="pub"><div class="pub-n">7</div><div><div class="pub-title">Electrocardiograma vs electrocardiograma celular en el servicio de urgencias</div><div class="pub-journal">Revista de Medicina Interna de México · 2021</div><div class="pub-doi">DOI: 10.24245/mim.v37i2.3694</div></div></div>
+      <div class="pub"><div class="pub-n">8</div><div><div class="pub-title">Neuromodulación no invasiva en epilepsia: Estimulación eléctrica transcraneal por corriente directa</div><div class="pub-journal">Archivos de Neurociencia · Diciembre 2017</div><div class="pub-doi"><a href="https://doi.org/10.17613/tvyy-7p58" target="_blank" rel="noopener">DOI: 10.17613/tvyy-7p58</a></div></div></div>
+      <div class="pub"><div class="pub-n">9</div><div><div class="pub-title">Novel Pharmacological Strategies for the Management of Insomnia</div><div class="pub-journal">Journal of Neurology and Experimental Neural Science · Enero 2017</div><div class="pub-doi"><a href="https://doi.org/10.17613/8fpz-8512" target="_blank" rel="noopener">DOI: 10.17613/8fpz-8512</a></div></div></div>
     </div>
     <div class="pay-note" style="margin-top:1.5rem">
       🔍 <strong>Revisor Académico (Peer Reviewer)</strong> activo en <em>Cureus Journal of Medical Science</em> ·
@@ -1361,55 +934,13 @@ a{color:inherit;text-decoration:none}
     <p class="eyebrow">Ponencias y actividad académica</p>
     <h2 class="section-h">Congresos y ponencias destacados</h2>
     <div class="act-list">
-      <div class="act-item">
-        <div>
-          <div class="act-type">🤖 Ponente Internacional</div>
-          <div class="act-text">1.° Congreso Internacional de IA Aplicada a la Salud (SNTISSSTE) — "Inteligencia artificial y salud mental"</div>
-          <div class="act-year">Noviembre 2025</div>
-        </div>
-      </div>
-      <div class="act-item">
-        <div>
-          <div class="act-type">⚖️ Ponente · Psiquiatría de Enlace</div>
-          <div class="act-text">1.er Encuentro Interinstitucional de Residentes de Psiquiatría de Enlace (ISSSTE) — "La otra cara de la cirugía bariátrica: perfil psicológico y social de los pacientes"</div>
-          <div class="act-year">Noviembre 2025</div>
-        </div>
-      </div>
-      <div class="act-item">
-        <div>
-          <div class="act-type">🧠 Ponente · Salud Mental MhGAP</div>
-          <div class="act-text">Curso "Salud Mental MhGAP para Médicos Generales y Familiares, 8ª edición" (ISSSTE) — "Autolesión y suicidio infantojuvenil"</div>
-          <div class="act-year">Mayo 2025</div>
-        </div>
-      </div>
-      <div class="act-item">
-        <div>
-          <div class="act-type">⚡ Ponente · Neuromodulación</div>
-          <div class="act-text">VI Curso Monográfico de Psiquiatría de Enlace · "TDCS en depresión — estudio CMN 20 de Noviembre"</div>
-          <div class="act-year">Noviembre 2024</div>
-        </div>
-      </div>
-      <div class="act-item">
-        <div>
-          <div class="act-type">🌎 Cartel Científico · 3er Lugar</div>
-          <div class="act-text">24th World Congress of Psychiatry CDMX + 4to Curso Soc. Mexicana de Neuromodulación — "Estimulación eléctrica transcraneal en depresión mayor"</div>
-          <div class="act-year">2024</div>
-        </div>
-      </div>
-      <div class="act-item">
-        <div>
-          <div class="act-type">🔬 Coautor · Cartel Científico</div>
-          <div class="act-text">32nd European Congress of Psychiatry · Budapest — "Socio-demographic characteristics in delirium"</div>
-          <div class="act-year">Abril 2024</div>
-        </div>
-      </div>
-      <div class="act-item">
-        <div>
-          <div class="act-type">🤖 Ponente · IA y Bioética</div>
-          <div class="act-text">Primer Simposium "Salud Mental y Bioética: Nuevas Perspectivas" — "IA, Robótica, Salud Mental y Bioética"</div>
-          <div class="act-year">Agosto 2024</div>
-        </div>
-      </div>
+      <div class="act-item"><div><div class="act-type">🤖 Ponente Internacional</div><div class="act-text">1.° Congreso Internacional de IA Aplicada a la Salud (SNTISSSTE) — "Inteligencia artificial y salud mental"</div><div class="act-year">Noviembre 2025</div></div></div>
+      <div class="act-item"><div><div class="act-type">⚖️ Ponente · Psiquiatría de Enlace</div><div class="act-text">1.er Encuentro Interinstitucional de Residentes de Psiquiatría de Enlace (ISSSTE) — "La otra cara de la cirugía bariátrica: perfil psicológico y social de los pacientes"</div><div class="act-year">Noviembre 2025</div></div></div>
+      <div class="act-item"><div><div class="act-type">🧠 Ponente · Salud Mental MhGAP</div><div class="act-text">Curso "Salud Mental MhGAP para Médicos Generales y Familiares, 8ª edición" (ISSSTE) — "Autolesión y suicidio infantojuvenil"</div><div class="act-year">Mayo 2025</div></div></div>
+      <div class="act-item"><div><div class="act-type">⚡ Ponente · Neuromodulación</div><div class="act-text">VI Curso Monográfico de Psiquiatría de Enlace · "TDCS en depresión — estudio CMN 20 de Noviembre"</div><div class="act-year">Noviembre 2024</div></div></div>
+      <div class="act-item"><div><div class="act-type">🌎 Cartel Científico · 3er Lugar</div><div class="act-text">24th World Congress of Psychiatry CDMX + 4to Curso Soc. Mexicana de Neuromodulación — "Estimulación eléctrica transcraneal en depresión mayor"</div><div class="act-year">2024</div></div></div>
+      <div class="act-item"><div><div class="act-type">🔬 Coautor · Cartel Científico</div><div class="act-text">32nd European Congress of Psychiatry · Budapest — "Socio-demographic characteristics in delirium"</div><div class="act-year">Abril 2024</div></div></div>
+      <div class="act-item"><div><div class="act-type">🤖 Ponente · IA y Bioética</div><div class="act-text">Primer Simposium "Salud Mental y Bioética: Nuevas Perspectivas" — "IA, Robótica, Salud Mental y Bioética"</div><div class="act-year">Agosto 2024</div></div></div>
     </div>
     <div class="cert-row">
       <span class="cert-chip">Stanford Medicine</span>
@@ -1433,41 +964,11 @@ a{color:inherit;text-decoration:none}
     <h2 class="section-h">Liderazgo y cargos de representación</h2>
     <p class="section-sub">El Dr. Moya ocupó los más altos cargos de representación médica residente en México, siendo voz de miles de médicos residentes ante el ISSSTE.</p>
     <div class="lead-rows">
-      <div class="lead-row">
-        <div class="lead-dot"></div>
-        <div>
-          <div class="lead-text">👑 <strong>Jefe Nacional de Médicos Residentes del ISSSTE</strong> — Máximo cargo de representación residente a nivel nacional</div>
-          <div class="lead-year">2022–2023</div>
-        </div>
-      </div>
-      <div class="lead-row">
-        <div class="lead-dot"></div>
-        <div>
-          <div class="lead-text">🏛️ <strong>Consejero Nacional de Médicos Residentes del ISSSTE</strong></div>
-          <div class="lead-year">2023–2025</div>
-        </div>
-      </div>
-      <div class="lead-row">
-        <div class="lead-dot"></div>
-        <div>
-          <div class="lead-text">🏥 <strong>Jefe de Residentes · CMN 20 de Noviembre</strong></div>
-          <div class="lead-year">Gestiones 2022–2023 y 2024–2025</div>
-        </div>
-      </div>
-      <div class="lead-row">
-        <div class="lead-dot"></div>
-        <div>
-          <div class="lead-text">📋 <strong>Médico Adscrito · Servicio de Psiquiatría</strong> — Centro Médico Nacional "20 de Noviembre", ISSSTE</div>
-          <div class="lead-year">2026 – vigente</div>
-        </div>
-      </div>
-      <div class="lead-row">
-        <div class="lead-dot"></div>
-        <div>
-          <div class="lead-text">🎓 <strong>Profesor Titular UNAM</strong> — Medicina Psicológica y Comunicación · Facultad de Medicina</div>
-          <div class="lead-year">2025 – vigente</div>
-        </div>
-      </div>
+      <div class="lead-row"><div class="lead-dot"></div><div><div class="lead-text">👑 <strong>Jefe Nacional de Médicos Residentes del ISSSTE</strong> — Máximo cargo de representación residente a nivel nacional</div><div class="lead-year">2022–2023</div></div></div>
+      <div class="lead-row"><div class="lead-dot"></div><div><div class="lead-text">🏛️ <strong>Consejero Nacional de Médicos Residentes del ISSSTE</strong></div><div class="lead-year">2023–2025</div></div></div>
+      <div class="lead-row"><div class="lead-dot"></div><div><div class="lead-text">🏥 <strong>Jefe de Residentes · CMN 20 de Noviembre</strong></div><div class="lead-year">Gestiones 2022–2023 y 2024–2025</div></div></div>
+      <div class="lead-row"><div class="lead-dot"></div><div><div class="lead-text">📋 <strong>Médico Adscrito · Servicio de Psiquiatría</strong> — Centro Médico Nacional "20 de Noviembre", ISSSTE</div><div class="lead-year">2026 – vigente</div></div></div>
+      <div class="lead-row"><div class="lead-dot"></div><div><div class="lead-text">🎓 <strong>Profesor Titular UNAM</strong> — Medicina Psicológica y Comunicación · Facultad de Medicina</div><div class="lead-year">2025 – vigente</div></div></div>
     </div>
   </div>
 </section>
@@ -1513,81 +1014,16 @@ a{color:inherit;text-decoration:none}
     <p class="section-sub">Más de 100 reseñas verificadas de pacientes en CDMX y en línea.</p>
     <div style="display:flex;align-items:center;gap:1.2rem;margin:1.5rem 0 2rem">
       <div style="font-family:var(--serif);font-size:3rem;font-weight:700;color:var(--gold);line-height:1">5.0</div>
-      <div>
-        <div style="color:#f59e0b;font-size:1.1rem;letter-spacing:.08em">★★★★★</div>
-        <div style="font-size:.82rem;color:var(--ink-light)">+100 reseñas verificadas · Google Maps</div>
-      </div>
-      <a href="https://maps.app.goo.gl/pKqMrtE4XjdD2buw5" target="_blank" rel="noopener" style="margin-left:auto;display:inline-flex;align-items:center;gap:.4rem;font-size:.8rem;font-weight:600;color:var(--gold);border:1px solid var(--gold-pale);border-radius:6px;padding:.4rem .9rem;background:var(--gold-pale)">
-        Ver en Google Maps →
-      </a>
+      <div><div style="color:#f59e0b;font-size:1.1rem;letter-spacing:.08em">★★★★★</div><div style="font-size:.82rem;color:var(--ink-light)">+100 reseñas verificadas · Google Maps</div></div>
+      <a href="https://maps.app.goo.gl/pKqMrtE4XjdD2buw5" target="_blank" rel="noopener" style="margin-left:auto;display:inline-flex;align-items:center;gap:.4rem;font-size:.8rem;font-weight:600;color:var(--gold);border:1px solid var(--gold-pale);border-radius:6px;padding:.4rem .9rem;background:var(--gold-pale)">Ver en Google Maps →</a>
     </div>
     <div class="reviews-grid">
-      <div class="review">
-        <div style="display:flex;align-items:center;gap:.7rem;margin-bottom:.7rem">
-          <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#1a2e45,#2563eb);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:.9rem;flex-shrink:0">M</div>
-          <div>
-            <div style="font-size:.85rem;font-weight:700;color:var(--ink)">María F.</div>
-            <div class="review-stars">★★★★★</div>
-          </div>
-        </div>
-        <p class="review-text">"Excelente psiquiatra. Me explicó claramente mi diagnóstico desde la primera consulta y se nota que está muy actualizado. Llevaba meses con ansiedad y ya noto una mejora real."</p>
-        <span class="review-author">Google Maps · hace 2 semanas</span>
-      </div>
-      <div class="review">
-        <div style="display:flex;align-items:center;gap:.7rem;margin-bottom:.7rem">
-          <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#0f766e,#059669);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:.9rem;flex-shrink:0">R</div>
-          <div>
-            <div style="font-size:.85rem;font-weight:700;color:var(--ink)">Roberto A.</div>
-            <div class="review-stars">★★★★★</div>
-          </div>
-        </div>
-        <p class="review-text">"El Doctor me dio un diagnóstico claro de TDAH que llevaba años sin detectarse. El proceso fue muy ordenado, con escalas de evaluación, sin apresurarse. La consulta online funciona perfectamente."</p>
-        <span class="review-author">Google Maps · hace 1 mes</span>
-      </div>
-      <div class="review">
-        <div style="display:flex;align-items:center;gap:.7rem;margin-bottom:.7rem">
-          <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#7c3aed,#a855f7);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:.9rem;flex-shrink:0">C</div>
-          <div>
-            <div style="font-size:.85rem;font-weight:700;color:var(--ink)">Claudia V.</div>
-            <div class="review-stars">★★★★★</div>
-          </div>
-        </div>
-        <p class="review-text">"Llevé a mi esposo después de que varios médicos no lograban dar con el diagnóstico. Fue muy metódico, empático y nos explicó todo con calma. ¡Totalmente recomendado!"</p>
-        <span class="review-author">Google Maps · hace 6 semanas</span>
-      </div>
-      <div class="review">
-        <div style="display:flex;align-items:center;gap:.7rem;margin-bottom:.7rem">
-          <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#b45309,#d97706);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:.9rem;flex-shrink:0">J</div>
-          <div>
-            <div style="font-size:.85rem;font-weight:700;color:var(--ink)">Jorge L.</div>
-            <div class="review-stars">★★★★★</div>
-          </div>
-        </div>
-        <p class="review-text">"El Doctor combina lo académico con lo humano. Me ayudó con insomnio y episodios de pánico. Me explica todo en palabras claras y el sistema de pago y agenda es muy fácil de usar."</p>
-        <span class="review-author">Google Maps · hace 2 meses</span>
-      </div>
-      <div class="review">
-        <div style="display:flex;align-items:center;gap:.7rem;margin-bottom:.7rem">
-          <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#be185d,#ec4899);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:.9rem;flex-shrink:0">S</div>
-          <div>
-            <div style="font-size:.85rem;font-weight:700;color:var(--ink)">Sofía M.</div>
-            <div class="review-stars">★★★★★</div>
-          </div>
-        </div>
-        <p class="review-text">"Acudí para evaluación de cirugía bariátrica y el Dr. Moya fue increíble. Evaluación muy completa, me explicó qué esperar antes y después del procedimiento."</p>
-        <span class="review-author">Google Maps · hace 3 meses</span>
-      </div>
-      <div class="review">
-        <div style="display:flex;align-items:center;gap:.7rem;margin-bottom:.7rem">
-          <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#065f46,#10b981);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:.9rem;flex-shrink:0">A</div>
-          <div>
-            <div style="font-size:.85rem;font-weight:700;color:var(--ink)">Ana G.</div>
-            <div class="review-stars">★★★★★</div>
-          </div>
-        </div>
-        <p class="review-text">"Excelente atención, muy profesional y empático. Me sentí escuchada y con un plan claro de tratamiento. Llevo 3 meses de seguimiento y los resultados son notorios."</p>
-        <span class="review-author">Google Maps · hace 4 meses</span>
-      </div>
+      <div class="review"><div style="display:flex;align-items:center;gap:.7rem;margin-bottom:.7rem"><div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#1a2e45,#2563eb);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:.9rem;flex-shrink:0">M</div><div><div style="font-size:.85rem;font-weight:700;color:var(--ink)">María F.</div><div class="review-stars">★★★★★</div></div></div><p class="review-text">"Excelente psiquiatra. Me explicó claramente mi diagnóstico desde la primera consulta y se nota que está muy actualizado. Llevaba meses con ansiedad y ya noto una mejora real."</p><span class="review-author">Google Maps · hace 2 semanas</span></div>
+      <div class="review"><div style="display:flex;align-items:center;gap:.7rem;margin-bottom:.7rem"><div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#0f766e,#059669);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:.9rem;flex-shrink:0">R</div><div><div style="font-size:.85rem;font-weight:700;color:var(--ink)">Roberto A.</div><div class="review-stars">★★★★★</div></div></div><p class="review-text">"El Doctor me dio un diagnóstico claro de TDAH que llevaba años sin detectarse. El proceso fue muy ordenado, con escalas de evaluación, sin apresurarse. La consulta online funciona perfectamente."</p><span class="review-author">Google Maps · hace 1 mes</span></div>
+      <div class="review"><div style="display:flex;align-items:center;gap:.7rem;margin-bottom:.7rem"><div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#7c3aed,#a855f7);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:.9rem;flex-shrink:0">C</div><div><div style="font-size:.85rem;font-weight:700;color:var(--ink)">Claudia V.</div><div class="review-stars">★★★★★</div></div></div><p class="review-text">"Llevé a mi esposo después de que varios médicos no lograban dar con el diagnóstico. Fue muy metódico, empático y nos explicó todo con calma. ¡Totalmente recomendado!"</p><span class="review-author">Google Maps · hace 6 semanas</span></div>
+      <div class="review"><div style="display:flex;align-items:center;gap:.7rem;margin-bottom:.7rem"><div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#b45309,#d97706);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:.9rem;flex-shrink:0">J</div><div><div style="font-size:.85rem;font-weight:700;color:var(--ink)">Jorge L.</div><div class="review-stars">★★★★★</div></div></div><p class="review-text">"El Doctor combina lo académico con lo humano. Me ayudó con insomnio y episodios de pánico. Me explica todo en palabras claras y el sistema de pago y agenda es muy fácil de usar."</p><span class="review-author">Google Maps · hace 2 meses</span></div>
+      <div class="review"><div style="display:flex;align-items:center;gap:.7rem;margin-bottom:.7rem"><div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#be185d,#ec4899);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:.9rem;flex-shrink:0">S</div><div><div style="font-size:.85rem;font-weight:700;color:var(--ink)">Sofía M.</div><div class="review-stars">★★★★★</div></div></div><p class="review-text">"Acudí para evaluación de cirugía bariátrica y el Dr. Moya fue increíble. Evaluación muy completa, me explicó qué esperar antes y después del procedimiento."</p><span class="review-author">Google Maps · hace 3 meses</span></div>
+      <div class="review"><div style="display:flex;align-items:center;gap:.7rem;margin-bottom:.7rem"><div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#065f46,#10b981);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:.9rem;flex-shrink:0">A</div><div><div style="font-size:.85rem;font-weight:700;color:var(--ink)">Ana G.</div><div class="review-stars">★★★★★</div></div></div><p class="review-text">"Excelente atención, muy profesional y empático. Me sentí escuchada y con un plan claro de tratamiento. Llevo 3 meses de seguimiento y los resultados son notorios."</p><span class="review-author">Google Maps · hace 4 meses</span></div>
     </div>
     <div style="margin-top:1.2rem;text-align:center">
       <a href="https://maps.app.goo.gl/pKqMrtE4XjdD2buw5" target="_blank" rel="noopener" class="btn-wa">📍 Ver todas las reseñas en Google Maps →</a>
@@ -1603,13 +1039,7 @@ a{color:inherit;text-decoration:none}
     <p class="section-sub">La diferencia principal: el psiquiatra es médico especialista y puede prescribir medicamentos. En muchos casos trabajan en equipo.</p>
     <div style="margin-top:2rem;overflow-x:auto">
       <table class="compare-table">
-        <thead>
-          <tr>
-            <th>Criterio</th>
-            <th>Psiquiatra</th>
-            <th>Psicólogo</th>
-          </tr>
-        </thead>
+        <thead><tr><th>Criterio</th><th>Psiquiatra</th><th>Psicólogo</th></tr></thead>
         <tbody>
           <tr><td>Formación</td><td>Médico especialista (6+4 años mín.)</td><td>Lic. en Psicología (4–5 años)</td></tr>
           <tr><td>Prescribir fármacos</td><td class="ct-ok">✓ Sí</td><td style="color:var(--ink-light)">✗ No</td></tr>
@@ -1619,9 +1049,7 @@ a{color:inherit;text-decoration:none}
         </tbody>
       </table>
     </div>
-    <div class="pay-note">
-      <strong>Recomendación clínica:</strong> cuando los síntomas afectan significativamente el funcionamiento diario (trabajo, sueño, relaciones), o cuando se considera tratamiento farmacológico, la evaluación psiquiátrica es el primer paso correcto.
-    </div>
+    <div class="pay-note"><strong>Recomendación clínica:</strong> cuando los síntomas afectan significativamente el funcionamiento diario (trabajo, sueño, relaciones), o cuando se considera tratamiento farmacológico, la evaluación psiquiátrica es el primer paso correcto.</div>
   </div>
 </section>
 
@@ -1631,76 +1059,16 @@ a{color:inherit;text-decoration:none}
     <p class="eyebrow">Preguntas frecuentes</p>
     <h2 class="section-h">Dudas sobre la consulta psiquiátrica</h2>
     <div class="faq-list">
-      <div class="faq-item">
-        <button class="faq-q" type="button">
-          ¿Qué pasa en la primera consulta psiquiátrica?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-a">Se revisa la historia clínica completa, síntomas actuales, antecedentes familiares y personales, funcionamiento cotidiano y objetivos terapéuticos. Con esa información se construye una hipótesis diagnóstica, se considera el diagnóstico diferencial y se diseña un plan de tratamiento con indicaciones claras. La primera cita dura aproximadamente 60 minutos. Antes de la cita recibirás acceso al expediente de primera vez con escalas de tamizaje validadas.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" type="button">
-          ¿Cuánto cuesta la consulta psiquiátrica en CDMX?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-a">Consulta en línea: $1,400 MXN por sesión de 50 minutos. Consulta presencial en Col. del Valle, CDMX: $1,600 MXN. El costo incluye evaluación completa, nota médica y plan de tratamiento. Si se acordó un monto diferente previamente, ese aplica. Se emite factura si la solicitas.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" type="button">
-          ¿La consulta psiquiátrica en línea es tan efectiva como la presencial?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-a">Sí. La evidencia actual respalda la efectividad de la telepsiquiatría para la mayoría de los trastornos. La evaluación, ajuste de medicación y seguimiento se realizan en línea sin perder calidad clínica. Disponible para toda la República Mexicana y el extranjero a través de Google Meet.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" type="button">
-          ¿Cuándo necesito ver a un psiquiatra y no solo a un psicólogo?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-a">Cuando los síntomas afectan significativamente el funcionamiento diario (trabajo, sueño, relaciones), cuando se considera tratamiento farmacológico, o cuando el psicólogo lo recomienda. El psiquiatra es el especialista indicado si necesitas diagnóstico médico formal, prescripción de medicamentos o sospecha de trastornos biológicos como depresión mayor, trastorno bipolar, TDAH o psicosis.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" type="button">
-          ¿Cuál es la diferencia entre psiquiatra y psicólogo?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-a">El psiquiatra es médico especialista y puede prescribir medicamentos, solicitar estudios de laboratorio y realizar diagnóstico clínico completo. El psicólogo ofrece psicoterapia pero no puede recetar fármacos. Con frecuencia trabajan en equipo para un tratamiento integral más efectivo.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" type="button">
-          ¿Se atiende TDAH en adultos?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-a">Sí. El TDAH en adultos es una de las áreas principales del Dr. Moya, con publicaciones científicas al respecto. La evaluación incluye entrevista clínica estructurada, escalas validadas (ASRS) y exploración de comorbilidades. Existe un protocolo especializado disponible en <a href="https://www.eutimya.org/tdah" target="_blank" rel="noopener" style="color:var(--gold)">eutimya.org/tdah</a>.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" type="button">
-          ¿Hay protocolo psiquiátrico para cirugía bariátrica?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-a">Sí. Existe un protocolo específico con instrumentos validados e informe para el equipo quirúrgico. El Dr. Moya ha presentado trabajos clínicos en este tema en congresos nacionales e internacionales. Disponible en <a href="https://www.eutimya.org/esb" target="_blank" rel="noopener" style="color:var(--gold)">eutimya.org/esb</a>. Atención pre y posoperatoria.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" type="button">
-          ¿Qué debo llevar a mi primera consulta?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-a">No es requisito traer nada. Si tienes estudios previos (laboratorios, EEG, resonancias) o notas de otro médico, es útil compartirlos. Llenar el expediente digital de primera vez antes de la consulta mejora significativamente el aprovechamiento de la sesión.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" type="button">
-          ¿Qué es la Psiquiatría de Enlace?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-a">Es la subespecialidad que atiende los problemas emocionales y mentales de pacientes hospitalizados por enfermedades médicas o quirúrgicas. El Dr. Moya cuenta con Alta Especialidad en Psiquiatría de Enlace por la UNAM (CMN 20 de Noviembre) concluida, y ha publicado sobre su experiencia en revistas internacionales indexadas.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" type="button">
-          ¿Se puede emitir justificante o constancia médica?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-a">Sí. Se extiende constancia de cita o justificante laboral/escolar sin costo adicional. Solo indícalo al agendar o al inicio de la consulta.</div>
-      </div>
+      <div class="faq-item"><button class="faq-q" type="button">¿Qué pasa en la primera consulta psiquiátrica?<span class="faq-icon">+</span></button><div class="faq-a">Se revisa la historia clínica completa, síntomas actuales, antecedentes familiares y personales, funcionamiento cotidiano y objetivos terapéuticos. Con esa información se construye una hipótesis diagnóstica, se considera el diagnóstico diferencial y se diseña un plan de tratamiento con indicaciones claras. La primera cita dura aproximadamente 60 minutos. Antes de la cita recibirás acceso al expediente de primera vez con escalas de tamizaje validadas.</div></div>
+      <div class="faq-item"><button class="faq-q" type="button">¿Cuánto cuesta la consulta psiquiátrica en CDMX?<span class="faq-icon">+</span></button><div class="faq-a">Consulta en línea: $1,400 MXN por sesión de 50 minutos. Consulta presencial en Col. del Valle, CDMX: $1,600 MXN. El costo incluye evaluación completa, nota médica y plan de tratamiento. Si se acordó un monto diferente previamente, ese aplica. Se emite factura si la solicitas.</div></div>
+      <div class="faq-item"><button class="faq-q" type="button">¿La consulta psiquiátrica en línea es tan efectiva como la presencial?<span class="faq-icon">+</span></button><div class="faq-a">Sí. La evidencia actual respalda la efectividad de la telepsiquiatría para la mayoría de los trastornos. La evaluación, ajuste de medicación y seguimiento se realizan en línea sin perder calidad clínica. Disponible para toda la República Mexicana y el extranjero a través de Google Meet.</div></div>
+      <div class="faq-item"><button class="faq-q" type="button">¿Cuándo necesito ver a un psiquiatra y no solo a un psicólogo?<span class="faq-icon">+</span></button><div class="faq-a">Cuando los síntomas afectan significativamente el funcionamiento diario (trabajo, sueño, relaciones), cuando se considera tratamiento farmacológico, o cuando el psicólogo lo recomienda. El psiquiatra es el especialista indicado si necesitas diagnóstico médico formal, prescripción de medicamentos o sospecha de trastornos biológicos como depresión mayor, trastorno bipolar, TDAH o psicosis.</div></div>
+      <div class="faq-item"><button class="faq-q" type="button">¿Cuál es la diferencia entre psiquiatra y psicólogo?<span class="faq-icon">+</span></button><div class="faq-a">El psiquiatra es médico especialista y puede prescribir medicamentos, solicitar estudios de laboratorio y realizar diagnóstico clínico completo. El psicólogo ofrece psicoterapia pero no puede recetar fármacos. Con frecuencia trabajan en equipo para un tratamiento integral más efectivo.</div></div>
+      <div class="faq-item"><button class="faq-q" type="button">¿Se atiende TDAH en adultos?<span class="faq-icon">+</span></button><div class="faq-a">Sí. El TDAH en adultos es una de las áreas principales del Dr. Moya, con publicaciones científicas al respecto. La evaluación incluye entrevista clínica estructurada, escalas validadas (ASRS) y exploración de comorbilidades. Existe un protocolo especializado disponible en <a href="https://www.eutimya.org/tdah" target="_blank" rel="noopener" style="color:var(--gold)">eutimya.org/tdah</a>.</div></div>
+      <div class="faq-item"><button class="faq-q" type="button">¿Hay protocolo psiquiátrico para cirugía bariátrica?<span class="faq-icon">+</span></button><div class="faq-a">Sí. Existe un protocolo específico con instrumentos validados e informe para el equipo quirúrgico. El Dr. Moya ha presentado trabajos clínicos en este tema en congresos nacionales e internacionales. Disponible en <a href="https://www.eutimya.org/esb" target="_blank" rel="noopener" style="color:var(--gold)">eutimya.org/esb</a>. Atención pre y posoperatoria.</div></div>
+      <div class="faq-item"><button class="faq-q" type="button">¿Qué debo llevar a mi primera consulta?<span class="faq-icon">+</span></button><div class="faq-a">No es requisito traer nada. Si tienes estudios previos (laboratorios, EEG, resonancias) o notas de otro médico, es útil compartirlos. Llenar el expediente digital de primera vez antes de la consulta mejora significativamente el aprovechamiento de la sesión.</div></div>
+      <div class="faq-item"><button class="faq-q" type="button">¿Qué es la Psiquiatría de Enlace?<span class="faq-icon">+</span></button><div class="faq-a">Es la subespecialidad que atiende los problemas emocionales y mentales de pacientes hospitalizados por enfermedades médicas o quirúrgicas. El Dr. Moya cuenta con Alta Especialidad en Psiquiatría de Enlace por la UNAM (CMN 20 de Noviembre) concluida, y ha publicado sobre su experiencia en revistas internacionales indexadas.</div></div>
+      <div class="faq-item"><button class="faq-q" type="button">¿Se puede emitir justificante o constancia médica?<span class="faq-icon">+</span></button><div class="faq-a">Sí. Se extiende constancia de cita o justificante laboral/escolar sin costo adicional. Solo indícalo al agendar o al inicio de la consulta.</div></div>
     </div>
   </div>
 </section>
@@ -1721,48 +1089,12 @@ a{color:inherit;text-decoration:none}
       <div>
         <p class="eyebrow">Contacto</p>
         <h3 class="contact-title">Agenda tu consulta</h3>
-        <div class="contact-item">
-          <div class="contact-ic">📍</div>
-          <div>
-            <div class="contact-k">Consultorio presencial</div>
-            <span class="contact-v">Moras 619, Col. Del Valle, Benito Juárez, CDMX 03100</span>
-          </div>
-        </div>
-        <div class="contact-item">
-          <div class="contact-ic">📱</div>
-          <div>
-            <div class="contact-k">WhatsApp / Teléfono</div>
-            <a href="https://wa.me/526731205121" class="contact-v">+52 673 120 5121</a>
-          </div>
-        </div>
-        <div class="contact-item">
-          <div class="contact-ic">🌐</div>
-          <div>
-            <div class="contact-k">Agendar en línea</div>
-            <a href="https://psiquiatra-cdmx.eutimya.org/cita" class="contact-v">eutimya.org/cita</a>
-          </div>
-        </div>
-        <div class="contact-item">
-          <div class="contact-ic">💼</div>
-          <div>
-            <div class="contact-k">LinkedIn</div>
-            <a href="https://linkedin.com/in/drmoyapsiq" class="contact-v" target="_blank" rel="noopener">/drmoyapsiq</a>
-          </div>
-        </div>
-        <div class="contact-item">
-          <div class="contact-ic">📸</div>
-          <div>
-            <div class="contact-k">Instagram</div>
-            <a href="https://www.instagram.com/deldhym/" class="contact-v" target="_blank" rel="noopener">@deldhym</a>
-          </div>
-        </div>
-        <div class="contact-item">
-          <div class="contact-ic">🔬</div>
-          <div>
-            <div class="contact-k">ORCID / Scholar</div>
-            <a href="https://orcid.org/0000-0002-7989-4646" class="contact-v" target="_blank" rel="noopener">0000-0002-7989-4646</a>
-          </div>
-        </div>
+        <div class="contact-item"><div class="contact-ic">📍</div><div><div class="contact-k">Consultorio presencial</div><span class="contact-v">Moras 619, Col. Del Valle, Benito Juárez, CDMX 03100</span></div></div>
+        <div class="contact-item"><div class="contact-ic">📱</div><div><div class="contact-k">WhatsApp / Teléfono</div><a href="https://wa.me/526731205121" class="contact-v">+52 673 120 5121</a></div></div>
+        <div class="contact-item"><div class="contact-ic">🌐</div><div><div class="contact-k">Agendar en línea</div><a href="https://psiquiatra-cdmx.eutimya.org/cita" class="contact-v">eutimya.org/cita</a></div></div>
+        <div class="contact-item"><div class="contact-ic">💼</div><div><div class="contact-k">LinkedIn</div><a href="https://linkedin.com/in/drmoyapsiq" class="contact-v" target="_blank" rel="noopener">/drmoyapsiq</a></div></div>
+        <div class="contact-item"><div class="contact-ic">📸</div><div><div class="contact-k">Instagram</div><a href="https://www.instagram.com/deldhym/" class="contact-v" target="_blank" rel="noopener">@deldhym</a></div></div>
+        <div class="contact-item"><div class="contact-ic">🔬</div><div><div class="contact-k">ORCID / Scholar</div><a href="https://orcid.org/0000-0002-7989-4646" class="contact-v" target="_blank" rel="noopener">0000-0002-7989-4646</a></div></div>
         <div style="margin-top:1rem;padding:.8rem 1rem;border:1px solid var(--rule);border-radius:8px;font-size:.76rem;color:var(--ink-light);line-height:1.6">
           <strong style="color:var(--ink)">Aviso COFEPRIS:</strong> 2609142002A00043 · Cédulas: CP 12152669 / CE 14788885 · CONACEM 24803862<br/>
           <a href="https://www.eutimya.org/aviso-de-privacidad-y-consentimiento-informado" target="_blank" rel="noopener" style="color:var(--gold)">Aviso de privacidad</a> ·
@@ -1772,12 +1104,7 @@ a{color:inherit;text-decoration:none}
         <button id="vcf-btn" style="margin-top:.8rem;width:100%;padding:.7rem;border:1.5px solid var(--rule);border-radius:8px;font-size:.84rem;font-weight:600;color:var(--ink);background:#fff;cursor:pointer;transition:all .2s">📇 Guardar contacto (.vcf)</button>
       </div>
       <div class="map-wrap">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3763.3!2d-99.1728!3d19.3890!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1ff1f7b8a8e0d%3A0x0!2sMoras+619%2C+Del+Valle%2C+Benito+Ju%C3%A1rez%2C+CDMX!5e0!3m2!1ses!2smx!4v1"
-          allowfullscreen="" loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-          title="Ubicación consultorio — Moras 619, Del Valle, CDMX">
-        </iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3763.3!2d-99.1728!3d19.3890!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1ff1f7b8a8e0d%3A0x0!2sMoras+619%2C+Del+Valle%2C+Benito+Ju%C3%A1rez%2C+CDMX!5e0!3m2!1ses!2smx!4v1" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Ubicación consultorio — Moras 619, Del Valle, CDMX"></iframe>
       </div>
     </div>
   </div>
@@ -1787,8 +1114,7 @@ a{color:inherit;text-decoration:none}
 <footer class="footer">
   <div class="footer-inner">
     <div class="footer-brand">
-      <img src="https://raw.githubusercontent.com/moymaa/drmoyapsiq/main/unnamed.png"
-           alt="Eutimya" loading="lazy" style="height:30px;width:auto;opacity:.9;margin-bottom:1rem"/>
+      <img src="https://raw.githubusercontent.com/moymaa/drmoyapsiq/main/unnamed.png" alt="Eutimya" loading="lazy" style="height:30px;width:auto;opacity:.9;margin-bottom:1rem"/>
       <p>Psiquiatría especializada en CDMX. Atención presencial y en línea. Diagnóstico y tratamiento basado en evidencia. Consulta desde $1,400 MXN.</p>
     </div>
     <div class="footer-col">
@@ -1825,90 +1151,49 @@ a{color:inherit;text-decoration:none}
 </footer>
 
 <script>
-// ── Parallax hero image
 (function(){
-  var img = document.querySelector('.hero-right img');
-  if(!img) return;
-  img.style.transform = 'translateY(0px) scale(1.06)';
-  window.addEventListener('scroll', function(){
-    var sy = window.pageYOffset;
-    if(sy <= window.innerHeight)
-      img.style.transform = 'translateY(' + (sy * 0.22) + 'px) scale(1.06)';
-  }, {passive:true});
+  var img=document.querySelector('.hero-right img');
+  if(!img)return;
+  img.style.transform='translateY(0px) scale(1.06)';
+  window.addEventListener('scroll',function(){
+    var sy=window.pageYOffset;
+    if(sy<=window.innerHeight)img.style.transform='translateY('+(sy*0.22)+'px) scale(1.06)';
+  },{passive:true});
 })();
-
-// ── Scroll reveal
 (function(){
-  var els = document.querySelectorAll('.svc, .price-card, .review, .pub, .cuando-item');
-  els.forEach(function(el){ el.classList.add('scroll-reveal'); });
-  function check(){
-    els.forEach(function(el){
-      if(el.getBoundingClientRect().top < window.innerHeight - 60)
-        el.classList.add('visible');
-    });
-  }
-  window.addEventListener('scroll', check, {passive:true});
-  check();
+  var els=document.querySelectorAll('.svc,.price-card,.review,.pub,.cuando-item');
+  els.forEach(function(el){el.classList.add('scroll-reveal');});
+  function check(){els.forEach(function(el){if(el.getBoundingClientRect().top<window.innerHeight-60)el.classList.add('visible');});}
+  window.addEventListener('scroll',check,{passive:true});check();
 })();
-
-// ── Hamburger (un solo listener, sin onclick inline)
 (function(){
-  var hbg  = document.getElementById('hbg');
-  var mnav = document.getElementById('mnav');
-  if(!hbg || !mnav) return;
-  hbg.addEventListener('click', function(){ mnav.classList.toggle('open'); });
-  mnav.querySelectorAll('a').forEach(function(a){
-    a.addEventListener('click', function(){ mnav.classList.remove('open'); });
-  });
+  var hbg=document.getElementById('hbg');
+  var mnav=document.getElementById('mnav');
+  if(!hbg||!mnav)return;
+  hbg.addEventListener('click',function(){mnav.classList.toggle('open');});
+  mnav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){mnav.classList.remove('open');});});
 })();
-
-// ── Smooth scroll
 document.querySelectorAll('a[href^="#"]').forEach(function(a){
-  a.addEventListener('click', function(e){
-    var t = document.querySelector(a.getAttribute('href'));
-    if(t){ e.preventDefault(); t.scrollIntoView({behavior:'smooth', block:'start'}); }
+  a.addEventListener('click',function(e){
+    var t=document.querySelector(a.getAttribute('href'));
+    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}
   });
 });
-
-// ── FAQ (addEventListener, sin onclick inline — funciona en móvil)
 document.querySelectorAll('.faq-q').forEach(function(btn){
-  btn.addEventListener('click', function(){
-    var item   = btn.parentElement;
-    var isOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item.open').forEach(function(i){ i.classList.remove('open'); });
-    if(!isOpen) item.classList.add('open');
+  btn.addEventListener('click',function(){
+    var item=btn.parentElement;
+    var isOpen=item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(function(i){i.classList.remove('open');});
+    if(!isOpen)item.classList.add('open');
   });
 });
-
-// ── VCF download
-document.getElementById('vcf-btn').addEventListener('click', function(){
-  var lines = [
-    'BEGIN:VCARD',
-    'VERSION:3.0',
-    'N:Moya S\u00e1nchez;Deldhy Nicol\u00e1s;;Dr.;',
-    'FN:Dr. Deldhy Nicol\u00e1s Moya S\u00e1nchez',
-    'TITLE:Psiquiatra | Psiquiatr\u00eda de Enlace | UNAM',
-    'ORG:Eutimya Salud Mental',
-    'TEL;TYPE=CELL:+526731205121',
-    'EMAIL:deldhym@gmail.com',
-    'URL:https://psiquiatra-cdmx.eutimya.org/',
-    'item1.URL;TYPE=WhatsApp:https://wa.me/526731205121',
-    'item1.X-ABLabel:WhatsApp',
-    'item2.URL;TYPE=Citas:https://psiquiatra-cdmx.eutimya.org/cita',
-    'item2.X-ABLabel:Agendar cita',
-    'ADR;TYPE=WORK:;;Calle Moras 619\\, Col. Del Valle Sur;Ciudad de M\u00e9xico;;03104;M\u00e9xico',
-    'NOTE:C\u00e9dulas: CP 12152669 / CE 14788885. CONACEM 24803862. COFEPRIS 2609142002A00043.',
-    'END:VCARD'
-  ];
-  var blob = new Blob([lines.join('\r\n')], {type:'text/vcard;charset=utf-8'});
-  var url  = URL.createObjectURL(blob);
-  var a    = document.createElement('a');
-  a.href = url;
-  a.download = 'DrMoyaSanchez.vcf';
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-  URL.revokeObjectURL(url);
+document.getElementById('vcf-btn').addEventListener('click',function(){
+  var lines=['BEGIN:VCARD','VERSION:3.0','N:Moya S\u00e1nchez;Deldhy Nicol\u00e1s;;Dr.;','FN:Dr. Deldhy Nicol\u00e1s Moya S\u00e1nchez','TITLE:Psiquiatra | Psiquiatr\u00eda de Enlace | UNAM','ORG:Eutimya Salud Mental','TEL;TYPE=CELL:+526731205121','EMAIL:deldhym@gmail.com','URL:https://psiquiatra-cdmx.eutimya.org/','item1.URL;TYPE=WhatsApp:https://wa.me/526731205121','item1.X-ABLabel:WhatsApp','item2.URL;TYPE=Citas:https://psiquiatra-cdmx.eutimya.org/cita','item2.X-ABLabel:Agendar cita','ADR;TYPE=WORK:;;Calle Moras 619\\, Col. Del Valle Sur;Ciudad de M\u00e9xico;;03104;M\u00e9xico','NOTE:C\u00e9dulas: CP 12152669 / CE 14788885. CONACEM 24803862. COFEPRIS 2609142002A00043.','END:VCARD'];
+  var blob=new Blob([lines.join('\r\n')],{type:'text/vcard;charset=utf-8'});
+  var url=URL.createObjectURL(blob);
+  var a=document.createElement('a');
+  a.href=url;a.download='DrMoyaSanchez.vcf';
+  document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(url);
 });
 </script>
 </body>
