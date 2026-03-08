@@ -411,6 +411,12 @@ padding:40px 20px 28px;
 .footer-links { display:flex; flex-direction:column; gap:6px; }
 .footer-links a { font-size:13px; color:var(--muted); text-decoration:underline; text-underline-offset:3px; transition:color .15s; }
 .footer-links a:hover { color:var(--text); }
+.footer-picker-btn {
+  background:none; border:none; padding:0; cursor:pointer; font-family:inherit;
+  font-size:13px; color:var(--muted); text-decoration:underline; text-underline-offset:3px;
+  transition:color .15s; text-align:left;
+}
+.footer-picker-btn:hover { color:var(--text); }
 .footer-social { display:flex; gap:10px; padding-top:18px; border-top:1px solid var(--border); margin-bottom:16px; }
 .soc {
 width:38px; height:38px; border-radius:50%; border:1px solid var(--border);
@@ -422,7 +428,58 @@ transition:border-color .15s, box-shadow .15s;
 .footer-legal { font-size:11px; color:var(--muted); line-height:1.65; }
 .footer-legal a { color:var(--muted); text-decoration:underline; text-underline-offset:3px; }
 
-/* ─── UTILS ─── */
+/* ─── PAGOS PICKER ─── */
+.pagos-backdrop {
+  display:none; position:fixed; inset:0; z-index:600;
+  background:rgba(8,14,22,.55);
+  backdrop-filter:blur(4px); -webkit-backdrop-filter:blur(4px);
+  align-items:center; justify-content:center;
+  padding:20px;
+}
+.pagos-backdrop.open { display:flex; }
+.pagos-modal {
+  background:#fff; border-radius:20px;
+  padding:28px 24px 24px;
+  width:100%; max-width:340px;
+  box-shadow:0 24px 64px rgba(0,0,0,.22);
+  animation:fadeUp .22s ease;
+}
+.pagos-modal-title {
+  font-size:11px; font-weight:700; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--muted); margin-bottom:16px;
+}
+.pagos-option {
+  display:flex; align-items:center; gap:14px;
+  border:1.5px solid var(--border); border-radius:14px;
+  padding:14px 16px; margin-bottom:10px;
+  text-decoration:none; color:var(--text);
+  transition:border-color .18s, box-shadow .18s, transform .15s;
+  cursor:pointer;
+}
+.pagos-option:last-of-type { margin-bottom:0; }
+.pagos-option:hover {
+  border-color:rgba(184,137,58,.5);
+  box-shadow:0 4px 16px rgba(0,0,0,.07);
+  transform:translateY(-1px);
+}
+.pagos-option-icon {
+  width:42px; height:42px; border-radius:12px;
+  background:var(--cream);
+  display:flex; align-items:center; justify-content:center;
+  font-size:20px; flex-shrink:0;
+  overflow:hidden;
+}
+.pagos-option-icon img { width:100%; height:100%; object-fit:cover; border-radius:12px; }
+.pagos-option-name { font-size:14px; font-weight:600; }
+.pagos-option-sub  { font-size:11px; font-weight:300; color:var(--muted); margin-top:1px; }
+.pagos-cancel {
+  display:block; width:100%; margin-top:14px;
+  background:none; border:none; cursor:pointer;
+  font-size:13px; color:var(--muted); font-family:inherit;
+  padding:8px; border-radius:8px; transition:color .15s, background .15s;
+}
+.pagos-cancel:hover { color:var(--text); background:var(--cream); }
+
 @keyframes fadeUp {
 from { opacity:0; transform:translateY(12px); }
 to   { opacity:1; transform:translateY(0); }
@@ -444,10 +501,9 @@ to   { opacity:1; transform:translateY(0); }
   </a>
   <ul class="topbar-links">
     <li><a href="https://www.eutimya.org/">Inicio</a></li>
-    <li><a href="https://psiquiatra-cdmx.eutimya.org/cita">Agendar</a></li>
-    <li><a href="https://www.eutimya.org/pagos">Pagos</a></li>
+    <li><a href="https://mental.eutimya.org/#agendar">Agendar</a></li>
+    <li><a href="https://mental.eutimya.org/#pagos">Pagos</a></li>
     <li><a href="https://www.eutimya.org/profesionales">Profesionales</a></li>
-    <li><a href="https://wa.me/526731205121" target="_blank" rel="noopener">WhatsApp</a></li>
     <li><a href="https://www.eutimya.org/validar">Validar</a></li>
   </ul>
   <button class="hamburger" id="hbg" type="button" aria-label="Menú">
@@ -458,10 +514,9 @@ to   { opacity:1; transform:translateY(0); }
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
   <a href="https://www.eutimya.org/">Inicio</a>
-  <a href="https://psiquiatra-cdmx.eutimya.org/cita">Agendar cita</a>
-  <a href="https://www.eutimya.org/pagos">Formas de pago</a>
+  <a href="https://mental.eutimya.org/#agendar">Agendar cita</a>
+  <a href="https://mental.eutimya.org/#pagos">Formas de pago</a>
   <a href="https://www.eutimya.org/profesionales">Profesionales</a>
-  <a href="https://wa.me/526731205121" target="_blank" rel="noopener">WhatsApp</a>
   <a href="https://www.eutimya.org/validar">Validar documentos</a>
 </div>
 
@@ -560,20 +615,20 @@ to   { opacity:1; transform:translateY(0); }
 <div class="recursos">
   <p class="recursos-label">También puede interesarte</p>
   <div class="recursos-grid">
-    <a href="https://psiquiatra-cdmx.eutimya.org/cita" class="rec-card">
+    <button onclick="openAgendarPicker()" class="rec-card" style="border:1px solid var(--border);cursor:pointer;text-align:left;width:100%;background:var(--white);">
       <div class="rec-icon">📅</div>
       <div class="rec-body">
         <p class="rec-title">Agendar cita</p>
         <p class="rec-sub">Primera consulta o seguimiento</p>
       </div>
-    </a>
-    <a href="https://www.eutimya.org/pagos" class="rec-card">
+    </button>
+    <button onclick="openPagosPicker()" class="rec-card" style="border:none;cursor:pointer;text-align:left;width:100%;background:var(--white);">
       <div class="rec-icon">💳</div>
       <div class="rec-body">
         <p class="rec-title">Formas de pago</p>
         <p class="rec-sub">SPEI, tarjeta, MercadoPago</p>
       </div>
-    </a>
+    </button>
     <a href="https://www.eutimya.org/validar" class="rec-card">
       <div class="rec-icon">🔍</div>
       <div class="rec-body">
@@ -588,6 +643,54 @@ to   { opacity:1; transform:translateY(0); }
         <p class="rec-sub">Accede a tu expediente clínico</p>
       </div>
     </a>
+  </div>
+</div>
+
+<!-- PAGOS PICKER -->
+<div class="pagos-backdrop" id="pagosBackdrop" onclick="closePagosPicker(event)">
+  <div class="pagos-modal" role="dialog" aria-modal="true" aria-label="Selecciona profesional">
+    <p class="pagos-modal-title">¿Con quién es tu cita?</p>
+    <a href="https://www.eutimya.org/pagos" class="pagos-option">
+      <div class="pagos-option-icon">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczOqR75P60pnKq1lU4B7E8LkSC1xHGPyu1pQ8rBbqVdh3jbBWc8vwWDl3mI_qWrhhvHGzaxXEZIIBrS8U1XD5n4PND0V7_ZpFfIuZMMS8f7g-fgWA7tZNBcCpEDsPI5oC-zJNM1iLLYHh3XSmYgxL0Jwvg=w994-h1490-s-no-gm" alt="Dr. Moya" style="object-position:center top"/>
+      </div>
+      <div>
+        <p class="pagos-option-name">Dr. Deldhy Moya</p>
+        <p class="pagos-option-sub">Psiquiatría de Enlace · CDMX</p>
+      </div>
+    </a>
+    <a href="https://paido.eutimya.org/cita" class="pagos-option">
+      <div class="pagos-option-icon"><img src="https://raw.githubusercontent.com/moymaa/paido/refs/heads/main/WhatsApp%20Image%202026-02-22%20at%2023.19.43.jpeg" alt="Dra. Sharon" style="object-position:center top"/></div>
+      <div>
+        <p class="pagos-option-name">Dra. Sharon Núñez</p>
+        <p class="pagos-option-sub">Paidopsiquiatría · CDMX</p>
+      </div>
+    </a>
+    <button class="pagos-cancel" onclick="closePagosPicker()">Cancelar</button>
+  </div>
+</div>
+
+<!-- AGENDAR PICKER -->
+<div class="pagos-backdrop" id="agendarBackdrop" onclick="closeAgendarPicker(event)">
+  <div class="pagos-modal" role="dialog" aria-modal="true" aria-label="Selecciona profesional">
+    <p class="pagos-modal-title">¿Con quién es tu cita?</p>
+    <a href="https://psiquiatra-cdmx.eutimya.org/cita" class="pagos-option">
+      <div class="pagos-option-icon">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczOqR75P60pnKq1lU4B7E8LkSC1xHGPyu1pQ8rBbqVdh3jbBWc8vwWDl3mI_qWrhhvHGzaxXEZIIBrS8U1XD5n4PND0V7_ZpFfIuZMMS8f7g-fgWA7tZNBcCpEDsPI5oC-zJNM1iLLYHh3XSmYgxL0Jwvg=w994-h1490-s-no-gm" alt="Dr. Moya" style="object-position:center top"/>
+      </div>
+      <div>
+        <p class="pagos-option-name">Dr. Deldhy Moya</p>
+        <p class="pagos-option-sub">Psiquiatría de Enlace · CDMX</p>
+      </div>
+    </a>
+    <a href="https://paido.eutimya.org/cita" class="pagos-option">
+      <div class="pagos-option-icon"><img src="https://raw.githubusercontent.com/moymaa/paido/refs/heads/main/WhatsApp%20Image%202026-02-22%20at%2023.19.43.jpeg" alt="Dra. Sharon" style="object-position:center top"/></div>
+      <div>
+        <p class="pagos-option-name">Dra. Sharon Núñez</p>
+        <p class="pagos-option-sub">Paidopsiquiatría · CDMX</p>
+      </div>
+    </a>
+    <button class="pagos-cancel" onclick="closeAgendarPicker()">Cancelar</button>
   </div>
 </div>
 
@@ -629,7 +732,7 @@ to   { opacity:1; transform:translateY(0); }
         <h4>Enlaces</h4>
         <div class="footer-links">
           <a href="https://eutimya.org/">Inicio</a>
-          <a href="https://www.eutimya.org/agendar">Agendar</a>
+          <button onclick="openAgendarPicker()" class="footer-picker-btn">Agendar</button>
           <a href="https://www.eutimya.org/profesionales">Profesionales</a>
           <a href="https://www.eutimya.org/blog">Blog</a>
           <a href="https://www.eutimya.org/nosotros">Nosotros</a>
@@ -639,8 +742,8 @@ to   { opacity:1; transform:translateY(0); }
         <h4>Recursos</h4>
         <div class="footer-links">
           <a href="https://www.eutimya.org/exp">Expediente</a>
-          <a href="https://www.eutimya.org/pagos">Formas de pago</a>
-          <a href="https://www.eutimya.org/agendar">Reagendar</a>
+          <button onclick="openPagosPicker()" class="footer-picker-btn">Formas de pago</button>
+          <button onclick="openAgendarPicker()" class="footer-picker-btn">Reagendar</button>
           <a href="https://www.eutimya.org/validar">Validar</a>
         </div>
       </div>
@@ -668,26 +771,56 @@ to   { opacity:1; transform:translateY(0); }
 </footer>
 
 <script>
-// ── BACK BUTTON ──────────────────────────────────────
+// ── ORIGIN CONFIG ────────────────────────────────────
 (function(){
+  var ref = document.referrer || '';
+
+  var config = {
+    moya: {
+      home:    'https://psiquiatra-cdmx.eutimya.org/',
+      agendar: 'https://psiquiatra-cdmx.eutimya.org/cita',
+      pagos:   'https://www.eutimya.org/pagos',
+      back:    'Dr. Moya'
+    },
+    sharon: {
+      home:    'https://paido.eutimya.org/',
+      agendar: 'https://paido.eutimya.org/cita',
+      pagos:   'https://paido.eutimya.org/cita',
+      back:    'Dra. Sharon'
+    },
+    default: {
+      home:    'https://www.eutimya.org/',
+      agendar: 'https://psiquiatra-cdmx.eutimya.org/cita',
+      pagos:   'https://www.eutimya.org/pagos',
+      back:    'Regresar'
+    }
+  };
+
+  var origin = ref.indexOf('paido.eutimya.org') !== -1 ? 'sharon'
+             : ref.indexOf('psiquiatra-cdmx.eutimya.org') !== -1 ? 'moya'
+             : ref.indexOf('eutimya.org') !== -1 ? 'moya'
+             : 'default';
+
+  var c = config[origin];
+
+  // Back button
   var btn = document.getElementById('backBtn');
   var lbl = document.getElementById('backLabel');
-  var ref = document.referrer || '';
-  var origins = [
-    { match: 'psiquiatra-cdmx.eutimya.org', url: 'https://psiquiatra-cdmx.eutimya.org/', label: 'Dr. Moya' },
-    { match: 'paido.eutimya.org',             url: 'https://paido.eutimya.org/',           label: 'Dra. Sharon' },
-    { match: 'eutimya.org',                  url: 'https://www.eutimya.org/',              label: 'Eutimya' }
-  ];
-  var matched = origins.find(function(o){ return ref.indexOf(o.match) !== -1; });
-  if (matched) {
-    btn.href = matched.url;
-    lbl.textContent = matched.label;
-  } else {
-    btn.addEventListener('click', function(e){
-      if (history.length > 1) { e.preventDefault(); history.back(); }
-    });
-    lbl.textContent = 'Regresar';
+  if (btn && lbl) {
+    btn.href = c.home;
+    lbl.textContent = c.back;
+    if (origin === 'default') {
+      btn.addEventListener('click', function(e){
+        if (history.length > 1) { e.preventDefault(); history.back(); }
+      });
+    }
   }
+
+  // All data-link elements
+  document.querySelectorAll('[data-link]').forEach(function(el){
+    var key = el.getAttribute('data-link');
+    if (c[key]) el.href = c[key];
+  });
 })();
 
 // ── HAMBURGER ────────────────────────────────────────
@@ -745,9 +878,34 @@ function iframeLoaded() {
   }
 }
 
+// ── PAGOS PICKER ─────────────────────────────────────
+function openPagosPicker() {
+  document.getElementById('pagosBackdrop').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closePagosPicker(e) {
+  if (!e || e.target === document.getElementById('pagosBackdrop')) {
+    document.getElementById('pagosBackdrop').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+}
 document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') closeDrawer();
+  if (e.key === 'Escape') {
+    closePagosPicker();
+    closeAgendarPicker();
+    closeDrawer();
+  }
 });
+function openAgendarPicker() {
+  document.getElementById('agendarBackdrop').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeAgendarPicker(e) {
+  if (!e || e.target === document.getElementById('agendarBackdrop')) {
+    document.getElementById('agendarBackdrop').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+}
 </script>
 
 </body>
