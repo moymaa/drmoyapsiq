@@ -41,6 +41,17 @@
   "paymentAccepted":"Cash, Bank Transfer, Credit Card, PayPal, MercadoPago",
   "currenciesAccepted":"MXN",
   "medicalSpecialty":["Psychiatry","Consultation-Liaison Psychiatry"],
+  "availableService":[
+    {"@type":"MedicalTherapy","name":"Diagnóstico psiquiátrico","description":"Evaluación diagnóstica completa con historia clínica, exploración mental y escalas validadas"},
+    {"@type":"MedicalTherapy","name":"Tratamiento de ansiedad","description":"TAG, ataques de pánico, fobias, estrés crónico"},
+    {"@type":"MedicalTherapy","name":"Tratamiento de depresión","description":"Depresión mayor, distimia, episodios mixtos"},
+    {"@type":"MedicalTherapy","name":"TDAH en adultos","description":"Diagnóstico y tratamiento con escalas validadas (ASRS)"},
+    {"@type":"MedicalTherapy","name":"Insomnio y trastornos del sueño","description":"Insomnio crónico, parasomnias, higiene del sueño"},
+    {"@type":"MedicalTherapy","name":"Trastorno bipolar","description":"Diagnóstico diferencial y estabilización del ánimo"},
+    {"@type":"MedicalTherapy","name":"Psiquiatría de Enlace","description":"Delirium, depresión en enfermedades crónicas, ansiedad perioperatoria"},
+    {"@type":"MedicalTherapy","name":"Evaluación bariátrica","description":"Protocolo psiquiátrico pre y posoperatorio para cirugía bariátrica"},
+    {"@type":"MedicalTherapy","name":"Neuromodulación","description":"TMS y tDCS para depresión resistente"}
+  ],
   "identifier":[
     {"@type":"PropertyValue","name":"Cédula Profesional","value":"12152669"},
     {"@type":"PropertyValue","name":"Cédula Especialidad","value":"14788885"},
@@ -50,6 +61,7 @@
   ],
   "alumniOf":{"@type":"CollegeOrUniversity","name":"Universidad Nacional Autónoma de México"},
   "worksFor":{"@type":"MedicalOrganization","name":"Centro Médico Nacional 20 de Noviembre, ISSSTE"},
+  "memberOf":{"@type":"MedicalOrganization","name":"Eutimya"},
   "address":{"@type":"PostalAddress","streetAddress":"Calle Moras 619","addressLocality":"Colonia Del Valle Sur","addressRegion":"Ciudad de México","postalCode":"03104","addressCountry":"MX"},
   "geo":{"@type":"GeoCoordinates","latitude":19.3905,"longitude":-99.1649},
   "openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"09:00","closes":"20:00"}],
@@ -68,17 +80,32 @@
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",
+  "@type":"BreadcrumbList",
+  "itemListElement":[
+    {"@type":"ListItem","position":1,"name":"Eutimya Salud Mental","item":"https://www.eutimya.org/"},
+    {"@type":"ListItem","position":2,"name":"Psiquiatra CDMX","item":"https://psiquiatra-cdmx.eutimya.org/"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
   "@type":"FAQPage",
   "mainEntity":[
-    {"@type":"Question","name":"¿Qué pasa en la primera consulta psiquiátrica?","acceptedAnswer":{"@type":"Answer","text":"Se revisa la historia clínica completa, síntomas actuales, antecedentes familiares y personales. Se construye una hipótesis diagnóstica con diagnóstico diferencial y se diseña un plan de tratamiento con indicaciones claras."}},
-    {"@type":"Question","name":"¿Cuánto cuesta la consulta psiquiátrica en CDMX?","acceptedAnswer":{"@type":"Answer","text":"Consulta en línea $1,400 MXN. Consulta presencial en Col. del Valle, CDMX $1,600 MXN."}},
-    {"@type":"Question","name":"¿Emiten factura (CFDI)?","acceptedAnswer":{"@type":"Answer","text":"Sí. Emitimos CFDI por todas las consultas. Solicita tu factura en eutimya.org/factura."}},
-    {"@type":"Question","name":"¿Qué formas de pago aceptan?","acceptedAnswer":{"@type":"Answer","text":"Aceptamos transferencia SPEI, tarjeta débito/crédito (Stripe), MercadoPago, PayPal, CoDi, efectivo y pagos internacionales. Más info en eutimya.org/pagos."}}
+    {"@type":"Question","name":"¿Qué pasa en la primera consulta psiquiátrica?","acceptedAnswer":{"@type":"Answer","text":"Se revisa la historia clínica completa, síntomas actuales, antecedentes familiares y personales. Se construye una hipótesis diagnóstica con diagnóstico diferencial y se diseña un plan de tratamiento con indicaciones claras. La primera cita dura aproximadamente 60 minutos."}},
+    {"@type":"Question","name":"¿Cuánto cuesta la consulta psiquiátrica en CDMX?","acceptedAnswer":{"@type":"Answer","text":"Consulta en línea $1,400 MXN. Consulta presencial en Col. del Valle, CDMX $1,600 MXN. El costo incluye evaluación completa, nota médica y plan de tratamiento. Se emite factura si la solicitas."}},
+    {"@type":"Question","name":"¿El Dr. Moya atiende en línea?","acceptedAnswer":{"@type":"Answer","text":"Sí. La consulta en línea se realiza por videoconferencia (Google Meet) con la misma calidad que la presencial. Disponible para toda la República Mexicana y el extranjero."}},
+    {"@type":"Question","name":"¿Cuándo necesito ver a un psiquiatra y no solo a un psicólogo?","acceptedAnswer":{"@type":"Answer","text":"Cuando los síntomas afectan significativamente el funcionamiento diario (trabajo, sueño, relaciones), cuando se considera tratamiento farmacológico, o cuando el psicólogo lo recomienda. El psiquiatra es el especialista indicado si necesitas diagnóstico médico formal o prescripción de medicamentos."}},
+    {"@type":"Question","name":"¿Cuál es la diferencia entre psiquiatra y psicólogo?","acceptedAnswer":{"@type":"Answer","text":"El psiquiatra es médico especialista y puede prescribir medicamentos y emitir diagnósticos médicos. El psicólogo realiza psicoterapia. En muchos casos trabajan en equipo."}},
+    {"@type":"Question","name":"¿Se atiende TDAH en adultos?","acceptedAnswer":{"@type":"Answer","text":"Sí. El TDAH en adultos es una de las áreas principales del Dr. Moya, con publicaciones científicas al respecto. La evaluación incluye entrevista clínica estructurada, escalas validadas (ASRS) y exploración de comorbilidades."}},
+    {"@type":"Question","name":"¿Hay protocolo psiquiátrico para cirugía bariátrica?","acceptedAnswer":{"@type":"Answer","text":"Sí. Existe un protocolo específico con instrumentos validados e informe para el equipo quirúrgico. Disponible para evaluación pre y posoperatoria en eutimya.org/esb."}},
+    {"@type":"Question","name":"¿Dónde está el consultorio?","acceptedAnswer":{"@type":"Answer","text":"Calle Moras 619, Col. Del Valle Sur, Alcaldía Benito Juárez, CDMX, C.P. 03104. Cerca de Metro Insurgentes Sur y Metrobús Del Valle."}},
+    {"@type":"Question","name":"¿Emiten factura (CFDI)?","acceptedAnswer":{"@type":"Answer","text":"Sí. Emitimos CFDI por todas las consultas, sin costo adicional. Solicita tu factura en eutimya.org/factura."}},
+    {"@type":"Question","name":"¿Qué formas de pago aceptan?","acceptedAnswer":{"@type":"Answer","text":"Transferencia SPEI, tarjeta débito/crédito (Stripe), MercadoPago, PayPal, CoDi, efectivo y pagos internacionales. Más info en eutimya.org/pagos."}}
   ]
 }
 </script>
 <style>
-/* ═══ TOKENS ═══ */
 :root{
   --ink:#0d1b2a;
   --ink-mid:#334155;
@@ -99,8 +126,6 @@ html{scroll-behavior:smooth;overflow-x:hidden}
 body{font-family:var(--sans);color:var(--ink);background:var(--white);-webkit-font-smoothing:antialiased;line-height:1.6;overflow-x:hidden}
 img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
-
-/* ═══ NAV ═══ */
 .nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,.97);border-bottom:1px solid var(--rule);backdrop-filter:blur(10px);}
 .nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:.9rem 2rem;gap:1.5rem;}
 .nav-logo img{height:34px;width:auto}
@@ -116,8 +141,6 @@ a{color:inherit;text-decoration:none}
 .mobile-nav ul{list-style:none}
 .mobile-nav li{padding:.65rem 0;border-bottom:1px solid var(--rule)}
 .mobile-nav a{font-size:.95rem;font-weight:500;color:var(--ink)}
-
-/* ═══ HERO ═══ */
 .hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;padding-top:68px;}
 .hero-left{display:flex;flex-direction:column;justify-content:center;padding:5rem 4rem 5rem 6rem;background:var(--white);position:relative;}
 .hero-left::after{content:'';position:absolute;right:0;top:15%;bottom:15%;width:1px;background:linear-gradient(180deg,transparent,var(--rule) 30%,var(--rule) 70%,transparent);}
@@ -137,20 +160,14 @@ a{color:inherit;text-decoration:none}
 .hero-creds{display:flex;flex-wrap:wrap;gap:.6rem 1.2rem;font-size:.73rem;color:var(--ink-light);padding-top:1.8rem;border-top:1px solid var(--rule);}
 .cred{display:flex;align-items:center;gap:.3rem}
 .cred-dot{width:5px;height:5px;border-radius:50%;background:var(--gold);flex-shrink:0}
-
-/* ═══ HERO RIGHT ═══ */
 .hero-right{position:relative;overflow:hidden;min-height:600px;}
 .hero-right img{width:100%;height:100%;object-fit:cover;object-position:center top;}
 .hero-right-overlay{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(13,27,42,.55) 0%,transparent 50%);padding:2rem;}
 .hero-right-badge{display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);backdrop-filter:blur(8px);color:#fff;padding:.5rem 1rem;border-radius:6px;font-size:.75rem;font-weight:500;letter-spacing:.04em;}
-
-/* ═══ STATS BAR ═══ */
 .stats-bar{background:var(--ink);padding:2.5rem 2rem;}
 .stats-inner{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;text-align:center;}
 .stat-n{font-family:var(--serif);font-size:2rem;font-weight:700;color:var(--gold);display:block;line-height:1;margin-bottom:.3rem;}
 .stat-l{font-size:.75rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.6);}
-
-/* ═══ TICKER ═══ */
 .ticker-wrap{background:var(--white);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:1rem 0 1.1rem;overflow:hidden;}
 .ticker-label{text-align:center;font-size:.6rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-light);margin-bottom:.6rem;opacity:.45;}
 .ticker-track-container{overflow:hidden;width:100%;mask-image:linear-gradient(90deg,transparent 0%,black 6%,black 94%,transparent 100%);-webkit-mask-image:linear-gradient(90deg,transparent 0%,black 6%,black 94%,transparent 100%);}
@@ -164,8 +181,6 @@ a{color:inherit;text-decoration:none}
 .ticker-sep{font-size:.5rem;color:var(--rule);padding:0 .1rem;flex-shrink:0;align-self:center;}
 @keyframes tickerScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 @media(max-width:768px){.ticker-item{padding:0 1.3rem}.ticker-name{font-size:.82rem}.ticker-track{animation-duration:28s}}
-
-/* ═══ SECTION BASE ═══ */
 .section{padding:5.5rem 2rem}
 .section-alt{background:var(--canvas)}
 .wrap{max-width:1200px;margin:0 auto}
@@ -173,8 +188,6 @@ a{color:inherit;text-decoration:none}
 .eyebrow::before{content:'';width:22px;height:1px;background:var(--gold)}
 .section-h{font-family:var(--serif);font-size:clamp(1.7rem,3vw,2.3rem);font-weight:700;color:var(--ink);line-height:1.2;margin-bottom:1rem;}
 .section-sub{font-size:.95rem;color:var(--ink-mid);max-width:540px;line-height:1.75;}
-
-/* ═══ ABOUT ═══ */
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
 .about-body p{font-size:.95rem;color:var(--ink-mid);line-height:1.85;margin-bottom:1rem;}
 .about-chips{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.8rem;}
@@ -193,8 +206,6 @@ a{color:inherit;text-decoration:none}
 .cred-card:hover{border-color:var(--gold)}
 .cred-k{font-size:.68rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-light);margin-bottom:.15rem}
 .cred-v{font-size:.82rem;font-weight:600;color:var(--ink)}
-
-/* ═══ SERVICES ═══ */
 .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:3rem;}
 .svc{border:1px solid var(--rule);border-radius:var(--r);padding:1.8rem;background:#fff;position:relative;overflow:hidden;transition:box-shadow .25s,transform .2s;}
 .svc:hover{box-shadow:var(--shadow-lg);transform:translateY(-3px)}
@@ -203,15 +214,11 @@ a{color:inherit;text-decoration:none}
 .svc-icon{width:44px;height:44px;border-radius:8px;background:var(--canvas);display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:1rem;}
 .svc h3{font-size:.95rem;font-weight:600;color:var(--ink);margin-bottom:.45rem}
 .svc p{font-size:.83rem;color:var(--ink-mid);line-height:1.65}
-
-/* ═══ CONDITIONS ═══ */
 .cond-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.7rem;margin-top:2.5rem;}
 .cond{display:flex;align-items:center;gap:.6rem;border:1px solid var(--rule);border-radius:8px;padding:.75rem 1rem;background:#fff;font-size:.83rem;font-weight:500;color:var(--ink);transition:all .2s;}
 .cond:hover{background:var(--ink);color:#fff;border-color:var(--ink);transform:translateY(-1px)}
 .cond-bullet{width:7px;height:7px;border-radius:50%;background:var(--gold);flex-shrink:0;transition:background .2s}
 .cond:hover .cond-bullet{background:var(--gold)}
-
-/* ═══ HOSPITALS ═══ */
 .hospitals{background:var(--ink);padding:4.5rem 2rem;}
 .hospitals-inner{max-width:1100px;margin:0 auto;text-align:center}
 .hosp-eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem;}
@@ -220,9 +227,8 @@ a{color:inherit;text-decoration:none}
 .hosp-logos{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:1.5rem;}
 .hosp-pill{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:1rem 1.8rem;display:flex;align-items:center;justify-content:center;min-width:140px;min-height:72px;transition:background .2s;}
 .hosp-pill:hover{background:rgba(255,255,255,.12)}
+.hosp-pill img{height:50px;width:auto;object-fit:contain}
 .hosp-pill-text{font-size:.8rem;font-weight:600;color:rgba(255,255,255,.7);letter-spacing:.04em;text-transform:uppercase;text-align:center;}
-
-/* ═══ PUBLICATIONS ═══ */
 .pubs-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2.5rem;}
 .pub{border:1px solid var(--rule);border-radius:var(--r);padding:1.3rem 1.5rem;background:#fff;display:grid;grid-template-columns:32px 1fr;gap:.9rem;align-items:start;transition:border-color .2s;}
 .pub:hover{border-color:rgba(184,137,58,.4)}
@@ -230,15 +236,11 @@ a{color:inherit;text-decoration:none}
 .pub-title{font-size:.86rem;font-weight:600;color:var(--ink);line-height:1.4;margin-bottom:.25rem}
 .pub-journal{font-size:.76rem;color:var(--ink-light);font-style:italic}
 .pub-doi{font-size:.7rem;color:var(--gold);font-family:monospace;margin-top:.15rem}
-
-/* ═══ REVIEWS ═══ */
 .reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:2.5rem;}
 .review{border:1px solid var(--rule);border-radius:var(--r);padding:1.5rem;background:#fff;}
 .review-stars{color:#f59e0b;font-size:.95rem;letter-spacing:.08em;margin-bottom:.7rem}
 .review-text{font-size:.86rem;color:var(--ink-mid);line-height:1.75;font-style:italic;margin-bottom:1rem;}
 .review-author{font-size:.78rem;font-weight:600;color:var(--ink)}
-
-/* ═══ FAQ ═══ */
 .faq-list{max-width:780px;margin-top:2rem}
 .faq-item{border-bottom:1px solid var(--rule)}
 .faq-q{width:100%;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.1rem 0;font-size:.95rem;font-weight:600;color:var(--ink);background:none;border:none;cursor:pointer;text-align:left;-webkit-tap-highlight-color:transparent;}
@@ -247,8 +249,6 @@ a{color:inherit;text-decoration:none}
 .faq-item.open .faq-icon{background:var(--ink);color:#fff;border-color:var(--ink);transform:rotate(45deg)}
 .faq-a{display:none;font-size:.88rem;color:var(--ink-mid);line-height:1.8;padding-bottom:1.1rem;}
 .faq-item.open .faq-a{display:block}
-
-/* ═══ CTA BAND ═══ */
 .cta-band{background:var(--ink);padding:5.5rem 2rem;text-align:center;position:relative;overflow:hidden;}
 .cta-band::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at center,rgba(184,137,58,.1) 0%,transparent 70%);}
 .cta-inner{position:relative;max-width:640px;margin:0 auto}
@@ -256,8 +256,6 @@ a{color:inherit;text-decoration:none}
 .cta-inner p{font-size:.97rem;color:rgba(255,255,255,.7);margin-bottom:2rem;line-height:1.7}
 .btn-gold{display:inline-flex;align-items:center;gap:.5rem;background:var(--gold);color:#fff;padding:1rem 2.5rem;border-radius:8px;font-size:.95rem;font-weight:600;box-shadow:0 4px 20px rgba(184,137,58,.35);transition:filter .2s,transform .15s;}
 .btn-gold:hover{filter:brightness(1.1);transform:translateY(-1px)}
-
-/* ═══ CONTACT ═══ */
 .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;}
 .contact-title{font-family:var(--serif);font-size:1.5rem;font-weight:600;color:var(--ink);margin-bottom:1.8rem;}
 .contact-item{display:flex;gap:.9rem;align-items:flex-start;margin-bottom:1.3rem;}
@@ -267,8 +265,6 @@ a{color:inherit;text-decoration:none}
 .contact-v:hover{color:var(--gold)}
 .map-wrap{border-radius:var(--r);overflow:hidden;border:1px solid var(--rule);height:300px;box-shadow:var(--shadow);}
 .map-wrap iframe{width:100%;height:100%;border:none}
-
-/* ═══ FOOTER ═══ */
 .footer{background:var(--ink);padding:3.5rem 2rem 2rem;}
 .footer-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:3rem;margin-bottom:2.5rem;}
 .footer-brand img{margin-bottom:1rem;}
@@ -280,16 +276,12 @@ a{color:inherit;text-decoration:none}
 .footer-col a:hover{color:var(--gold)}
 .footer-bottom{max-width:1200px;margin:0 auto;border-top:1px solid rgba(255,255,255,.08);padding-top:1.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem;font-size:.72rem;color:rgba(255,255,255,.35);}
 .footer-ceds{display:flex;flex-wrap:wrap;gap:.8rem}
-
-/* ═══ CUANDO ═══ */
 .cuando-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2.5rem;}
 .cuando-item{border:1px solid var(--rule);border-radius:var(--r);padding:1.4rem;background:#fff;transition:box-shadow .2s,transform .2s;}
 .cuando-item:hover{box-shadow:var(--shadow-lg);transform:translateY(-2px)}
 .cuando-icon{font-size:1.6rem;margin-bottom:.6rem}
 .cuando-name{font-size:.9rem;font-weight:700;color:var(--ink);margin-bottom:.3rem}
 .cuando-sub{font-size:.8rem;color:var(--ink-mid);line-height:1.55}
-
-/* ═══ COMPARE TABLE ═══ */
 .compare-table{width:100%;border-collapse:collapse;font-size:.86rem;}
 .compare-table th{padding:.75rem 1rem;text-align:left;background:var(--ink);color:#fff;font-size:.78rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;}
 .compare-table th:first-child{border-radius:8px 0 0 0}
@@ -298,7 +290,6 @@ a{color:inherit;text-decoration:none}
 .compare-table tr:hover td{background:var(--canvas)}
 .ct-ok{color:#16a34a;font-weight:700}
 .pay-note{background:var(--canvas);border:1px solid var(--rule);border-radius:8px;padding:1rem 1.2rem;font-size:.84rem;color:var(--ink-mid);line-height:1.6;margin-top:1.5rem;}
-
 /* ═══ PAY CARDS ═══ */
 .pay-cards{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;margin-top:.9rem;}
 .pay-card{border:1px solid var(--rule);border-radius:10px;padding:1.1rem 1.3rem;background:#fff;display:flex;align-items:center;gap:.9rem;transition:border-color .25s,box-shadow .25s,transform .2s;}
@@ -310,8 +301,6 @@ a{color:inherit;text-decoration:none}
 .pay-card-btn{display:inline-flex;align-items:center;gap:.3rem;background:var(--gold);color:#fff;padding:.45rem 1rem;border-radius:6px;font-size:.74rem;font-weight:700;white-space:nowrap;flex-shrink:0;letter-spacing:.02em;transition:filter .2s,transform .15s;box-shadow:0 2px 8px rgba(184,137,58,.3);}
 .pay-card-btn:hover{filter:brightness(1.1);transform:translateY(-1px);}
 @media(max-width:600px){.pay-cards{grid-template-columns:1fr;}}
-
-/* ═══ PRICING ═══ */
 .pricing-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-top:2.5rem;}
 .price-card{border:1.5px solid var(--rule);border-radius:var(--r);padding:1.8rem;background:#fff;transition:box-shadow .25s,transform .2s;position:relative;}
 .price-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-3px)}
@@ -330,8 +319,6 @@ a{color:inherit;text-decoration:none}
 .btn-price-main:hover{filter:brightness(1.1)}
 .btn-price-ghost{border:1px solid var(--rule);color:var(--ink-mid)}
 .btn-price-ghost:hover{border-color:var(--ink);color:var(--ink)}
-
-/* ═══ PONENCIAS ═══ */
 .act-list{margin-top:2rem;display:flex;flex-direction:column;gap:.8rem}
 .act-item{display:flex;align-items:start;gap:1rem;border:1px solid var(--rule);border-radius:8px;padding:1.1rem 1.3rem;background:#fff;transition:border-color .2s;}
 .act-item:hover{border-color:rgba(184,137,58,.35)}
@@ -341,28 +328,20 @@ a{color:inherit;text-decoration:none}
 .cert-row{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:2rem}
 .cert-chip{font-size:.73rem;font-weight:600;border:1px solid var(--rule);border-radius:100px;padding:.25rem .75rem;color:var(--ink-mid);background:#fff;transition:all .2s;}
 .cert-chip:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
-
-/* ═══ LIDERAZGO ═══ */
 .lead-rows{margin-top:2rem;display:flex;flex-direction:column;gap:0}
 .lead-row{display:flex;align-items:flex-start;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--rule);}
 .lead-row:last-child{border-bottom:none}
 .lead-dot{width:10px;height:10px;border-radius:50%;background:var(--gold);flex-shrink:0;margin-top:.35rem;}
 .lead-text{font-size:.9rem;color:var(--ink);line-height:1.5}
 .lead-year{font-size:.75rem;color:var(--ink-light);margin-top:.2rem}
-
-/* ═══ ZONES ═══ */
 .zones-wrap{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.8rem}
 .zone{font-size:.78rem;font-weight:500;border:1px solid var(--rule);border-radius:100px;padding:.25rem .75rem;color:var(--ink-mid);background:#fff;}
-
-/* ═══ ENLACE BLOCK ═══ */
 .enlace-block{background:var(--ink);border-radius:var(--r);padding:2rem 2.2rem;margin-top:2.5rem;}
 .enlace-label{font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem}
 .enlace-h3{font-family:var(--serif);font-size:1.4rem;font-weight:700;color:#fff;margin-bottom:.8rem;line-height:1.2}
 .enlace-text{font-size:.88rem;color:rgba(255,255,255,.7);line-height:1.75;margin-bottom:1.2rem}
 .enlace-pills{display:flex;flex-wrap:wrap;gap:.5rem}
 .enlace-pill{font-size:.75rem;font-weight:600;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:100px;padding:.25rem .75rem;color:rgba(255,255,255,.8);}
-
-/* ═══ ANIMATIONS ═══ */
 .hero-right img{will-change:transform;transition:transform .1s linear;}
 .hero-left > *{opacity:0;transform:translateY(22px);animation:fadeUp .7s ease forwards;}
 .hero-left > *:nth-child(1){animation-delay:.05s}
@@ -378,16 +357,10 @@ a{color:inherit;text-decoration:none}
 @keyframes revealDown{to{clip-path:inset(0% 0 0 0)}}
 .scroll-reveal{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease;}
 .scroll-reveal.visible{opacity:1;transform:translateY(0);}
-
-/* ═══ WA FLOAT ═══ */
 .wa-float{position:fixed;bottom:24px;right:20px;z-index:999;display:inline-flex;align-items:center;gap:8px;background:#25D366;color:#fff;padding:12px 18px;border-radius:999px;font-family:var(--sans);font-weight:800;font-size:14px;box-shadow:0 6px 28px rgba(37,211,102,.4);text-decoration:none;transition:transform .15s,box-shadow .2s;}
 .wa-float:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(37,211,102,.5)}
 .wa-float svg{width:20px;height:20px;fill:#fff;flex:0 0 auto}
-
-/* ═══ MOBILE HERO OVERLAY ═══ */
 .hero-mobile-overlay{display:none}
-
-/* ═══ RESPONSIVE ═══ */
 @media(max-width:1024px){
   .services-grid{grid-template-columns:1fr 1fr}
   .cond-grid{grid-template-columns:repeat(3,1fr)}
@@ -456,6 +429,7 @@ a{color:inherit;text-decoration:none}
       <li><a href="#acerca">Acerca</a></li>
       <li><a href="#servicios">Servicios</a></li>
       <li><a href="#publicaciones">Investigación</a></li>
+      <li><a href="#ia-salud-mental">IA &amp; Salud Mental</a></li>
       <li><a href="https://www.eutimya.org/pagos" target="_blank" rel="noopener">Pagos</a></li>
       <li><a href="https://www.eutimya.org/factura" target="_blank" rel="noopener">Factura</a></li>
       <li><a href="#contacto">Contacto</a></li>
@@ -477,9 +451,10 @@ a{color:inherit;text-decoration:none}
     <li><a href="#honorarios">Honorarios</a></li>
     <li><a href="#padecimientos">Padecimientos</a></li>
     <li><a href="#publicaciones">Investigación</a></li>
+    <li><a href="#ponencias">Congresos</a></li>
     <li><a href="https://www.eutimya.org/pagos" target="_blank" rel="noopener">💳 Formas de pago</a></li>
     <li><a href="https://www.eutimya.org/factura" target="_blank" rel="noopener">🧾 Solicitar factura</a></li>
-    <li><a href="#faq">Preguntas frecuentes</a></li>
+    <li><a href="#faq">Preguntas</a></li>
     <li><a href="#contacto">Contacto</a></li>
     <li style="border:none;padding-top:.9rem">
       <a href="https://psiquiatra-cdmx.eutimya.org/cita" style="font-weight:700;color:#0d1b2a">→ Agendar Cita</a>
@@ -503,7 +478,7 @@ a{color:inherit;text-decoration:none}
       <span class="stars-text">★★★★★</span>
       <span class="stars-label">5.0 Google · +100 reseñas verificadas</span>
     </div>
-    <p class="hero-desc">Psiquiatra con formación de alto nivel en UNAM (mención honorífica) y Alta Especialidad en <strong>Psiquiatría de Enlace</strong>. Certificado por el Consejo Mexicano de Psiquiatría. Múltiples publicaciones en revistas indexadas internacionales. Consulta presencial en Del Valle o en línea desde cualquier lugar.</p>
+    <p class="hero-desc">Psiquiatra con formación de alto nivel en UNAM (mención honorífica) y Alta Especialidad en <strong>Psiquiatría de Enlace</strong>. Certificado por el Consejo Mexicano de Psiquiatría. Múltiples publicaciones en revistas indexadas internacionales. Autor de investigaciones en neuromodulación, TDAH, delirium y depresión. Consulta presencial en Del Valle o en línea desde cualquier lugar.</p>
     <div class="hero-actions">
       <a href="https://psiquiatra-cdmx.eutimya.org/cita" class="btn-main">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
@@ -591,7 +566,11 @@ a{color:inherit;text-decoration:none}
       <span class="ticker-sep">◆</span>
       <div class="ticker-item"><div class="ticker-dot"></div><span class="ticker-name">UAS</span><span class="ticker-sub">Univ. Autónoma de Sinaloa</span></div>
       <span class="ticker-sep">◆</span>
+      <div class="ticker-item"><div class="ticker-dot"></div><span class="ticker-name">Shriners International</span><span class="ticker-sub">Miembro Activo</span></div>
+      <span class="ticker-sep">◆</span>
       <div class="ticker-item"><div class="ticker-dot"></div><span class="ticker-name">APM</span><span class="ticker-sub">Asoc. Psiquiátrica Mexicana</span></div>
+      <span class="ticker-sep">◆</span>
+      <div class="ticker-item"><div class="ticker-dot"></div><span class="ticker-name">IMPCCC</span><span class="ticker-sub">Inst. Mex. Psicoterapia CC</span></div>
       <span class="ticker-sep">◆</span>
       <div class="ticker-item"><div class="ticker-dot"></div><span class="ticker-name">World Congress of Psychiatry</span><span class="ticker-sub">24th · CDMX 2024</span></div>
       <span class="ticker-sep">◆</span>
@@ -610,7 +589,11 @@ a{color:inherit;text-decoration:none}
       <span class="ticker-sep">◆</span>
       <div class="ticker-item"><div class="ticker-dot"></div><span class="ticker-name">UAS</span><span class="ticker-sub">Univ. Autónoma de Sinaloa</span></div>
       <span class="ticker-sep">◆</span>
+      <div class="ticker-item"><div class="ticker-dot"></div><span class="ticker-name">Shriners International</span><span class="ticker-sub">Miembro Activo</span></div>
+      <span class="ticker-sep">◆</span>
       <div class="ticker-item"><div class="ticker-dot"></div><span class="ticker-name">APM</span><span class="ticker-sub">Asoc. Psiquiátrica Mexicana</span></div>
+      <span class="ticker-sep">◆</span>
+      <div class="ticker-item"><div class="ticker-dot"></div><span class="ticker-name">IMPCCC</span><span class="ticker-sub">Inst. Mex. Psicoterapia CC</span></div>
       <span class="ticker-sep">◆</span>
       <div class="ticker-item"><div class="ticker-dot"></div><span class="ticker-name">World Congress of Psychiatry</span><span class="ticker-sub">24th · CDMX 2024</span></div>
       <span class="ticker-sep">◆</span>
@@ -635,7 +618,7 @@ a{color:inherit;text-decoration:none}
   </div>
 </section>
 
-<!-- PRICING -->
+<!-- HONORARIOS -->
 <section class="section section-alt" id="honorarios">
   <div class="wrap">
     <p class="eyebrow">Honorarios</p>
@@ -677,10 +660,8 @@ a{color:inherit;text-decoration:none}
         </div>
       </div>
     </div>
-
-    <!-- ═══ PAGO Y FACTURA ═══ -->
     <div class="pay-note">
-      <strong>Formas de pago:</strong> Transferencia SPEI · MercadoPago · PayPal · Tarjeta débito/crédito (Stripe) · CoDi · Efectivo · Pagos internacionales
+      <strong>Formas de pago:</strong> Transferencia SPEI · MercadoPago · PayPal · Tarjeta débito/crédito (Stripe) · CoDi · Efectivo · Pagos internacionales · <a href="https://www.eutimya.org/factura" target="_blank" rel="noopener" style="color:var(--gold);font-weight:700">Facturación disponible</a>
     </div>
     <div class="pay-cards">
       <div class="pay-card">
@@ -700,7 +681,6 @@ a{color:inherit;text-decoration:none}
         <a href="https://www.eutimya.org/pagos" target="_blank" rel="noopener" class="pay-card-btn">Ver métodos →</a>
       </div>
     </div>
-
   </div>
 </section>
 
@@ -802,7 +782,7 @@ a{color:inherit;text-decoration:none}
     <div style="margin-top:2.5rem">
       <div style="font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-light);margin-bottom:.8rem">Psiquiatra en CDMX · Colonias y zonas cercanas</div>
       <div class="zones-wrap">
-        <span class="zone">Col. Del Valle</span><span class="zone">Narvarte</span><span class="zone">Nápoles</span><span class="zone">Roma Norte / Sur</span><span class="zone">Condesa</span><span class="zone">Doctores</span><span class="zone">Benito Juárez</span><span class="zone">Insurgentes Sur</span><span class="zone">Coyoacán</span><span class="zone">Miguel Hidalgo</span><span class="zone">Cuauhtémoc</span><span class="zone">Todo México (en línea)</span>
+        <span class="zone">Col. Del Valle</span><span class="zone">Narvarte</span><span class="zone">Nápoles</span><span class="zone">Roma Norte / Sur</span><span class="zone">Condesa</span><span class="zone">Doctores</span><span class="zone">Benito Juárez</span><span class="zone">Insurgentes Sur</span><span class="zone">Coyoacán</span><span class="zone">Miguel Hidalgo</span><span class="zone">Cuauhtémoc</span><span class="zone">Xochimilco</span><span class="zone">Tlalpan</span><span class="zone">Todo México (en línea)</span>
       </div>
     </div>
   </div>
@@ -871,6 +851,7 @@ a{color:inherit;text-decoration:none}
       <span class="cert-chip">ACLP Member</span>
       <span class="cert-chip">Soc. Mexicana de Neuromodulación</span>
       <span class="cert-chip">UNAM – Ética IA</span>
+      <span class="cert-chip">UNAM – IA Práctica Docente</span>
       <span class="cert-chip">24th World Congress of Psychiatry</span>
     </div>
   </div>
@@ -902,23 +883,24 @@ a{color:inherit;text-decoration:none}
       <div style="background:#fff;border:1px solid var(--rule);border-radius:var(--r);padding:1.8rem">
         <div style="font-size:1.5rem;margin-bottom:.8rem">🤖</div>
         <h3 style="font-family:var(--serif);font-size:1.1rem;color:var(--ink);margin-bottom:.7rem">IA en la práctica psiquiátrica</h3>
-        <p style="font-size:.88rem;color:var(--ink-mid);line-height:1.75">La inteligencia artificial está transformando el campo de la salud mental: desde el apoyo al diagnóstico, el análisis de patrones clínicos, hasta el desarrollo de herramientas de screening y escalas psicométricas asistidas. El Dr. Moya sigue de cerca estos avances con un enfoque crítico y basado en evidencia.</p>
+        <p style="font-size:.88rem;color:var(--ink-mid);line-height:1.75">La inteligencia artificial está transformando el campo de la salud mental: desde el apoyo al diagnóstico, el análisis de patrones clínicos, hasta el desarrollo de herramientas de screening y escalas psicométricas asistidas. El Dr. Moya sigue de cerca estos avances con un enfoque crítico y basado en evidencia, integrando el conocimiento sobre posibilidades y limitaciones actuales de la IA en su práctica.</p>
       </div>
       <div style="background:#fff;border:1px solid var(--rule);border-radius:var(--r);padding:1.8rem">
         <div style="font-size:1.5rem;margin-bottom:.8rem">🎓</div>
         <h3 style="font-family:var(--serif);font-size:1.1rem;color:var(--ink);margin-bottom:.7rem">Formación académica en IA</h3>
-        <p style="font-size:.88rem;color:var(--ink-mid);line-height:1.75">Ha completado formación especializada en esta área, incluyendo <strong>Ética de la Inteligencia Artificial</strong> (UNAM, 2026) e <strong>IA en la Práctica Docente</strong> (UNAM). Ponente en el 1.° Congreso Internacional de IA Aplicada a la Salud.</p>
+        <p style="font-size:.88rem;color:var(--ink-mid);line-height:1.75">Ha completado formación especializada en esta área, incluyendo el curso <strong>Ética de la Inteligencia Artificial</strong> (UNAM, Facultad de Medicina, 2026) y el curso de <strong>IA e Implementación en la Práctica Docente</strong> (UNAM). Además, ha participado como ponente en el 1.° Congreso Internacional de IA Aplicada a la Salud con la ponencia "Inteligencia Artificial y Salud Mental".</p>
       </div>
     </div>
     <div class="enlace-block" style="margin-top:2rem">
       <div class="enlace-label">Postura clínica</div>
       <h3 class="enlace-h3">Un enfoque informado, ético y consciente de sus límites</h3>
-      <p class="enlace-text">El uso de IA en salud mental es un campo en expansión con enorme potencial, pero también con desafíos éticos y regulatorios importantes. Cualquier herramienta tecnológica es un complemento, nunca un sustituto del especialista.</p>
+      <p class="enlace-text">El uso de IA en salud mental es un campo en expansión con enorme potencial, pero también con desafíos éticos y regulatorios importantes. En nuestra práctica, nos mantenemos actualizados sobre estos desarrollos sin perder de vista que la relación médico-paciente, el juicio clínico y la ética médica siguen siendo el centro de la atención psiquiátrica de calidad. Cualquier herramienta tecnológica es un complemento, nunca un sustituto del especialista.</p>
       <div class="enlace-pills">
         <span class="enlace-pill">🧠 IA en diagnóstico</span>
         <span class="enlace-pill">📊 Escalas psicométricas asistidas</span>
         <span class="enlace-pill">⚖️ Ética en IA médica</span>
         <span class="enlace-pill">🎓 UNAM – Ética IA 2026</span>
+        <span class="enlace-pill">📡 Actualización constante</span>
       </div>
     </div>
   </div>
@@ -978,13 +960,14 @@ a{color:inherit;text-decoration:none}
     <h2 class="section-h">Dudas sobre la consulta psiquiátrica</h2>
     <div class="faq-list">
       <div class="faq-item"><button class="faq-q" type="button">¿Qué pasa en la primera consulta psiquiátrica?<span class="faq-icon">+</span></button><div class="faq-a">Se revisa la historia clínica completa, síntomas actuales, antecedentes familiares y personales, funcionamiento cotidiano y objetivos terapéuticos. Con esa información se construye una hipótesis diagnóstica, se considera el diagnóstico diferencial y se diseña un plan de tratamiento con indicaciones claras. La primera cita dura aproximadamente 60 minutos. Antes de la cita recibirás acceso al expediente de primera vez con escalas de tamizaje validadas.</div></div>
-      <div class="faq-item"><button class="faq-q" type="button">¿Cuánto cuesta la consulta psiquiátrica en CDMX?<span class="faq-icon">+</span></button><div class="faq-a">Consulta en línea: $1,400 MXN por sesión de 50 minutos. Consulta presencial en Col. del Valle, CDMX: $1,600 MXN. El costo incluye evaluación completa, nota médica y plan de tratamiento. Se emite factura si la solicitas en <a href="https://www.eutimya.org/factura" target="_blank" rel="noopener" style="color:var(--gold)">eutimya.org/factura</a>.</div></div>
-      <div class="faq-item"><button class="faq-q" type="button">¿Qué formas de pago aceptan?<span class="faq-icon">+</span></button><div class="faq-a">Aceptamos todas las formas: transferencia SPEI, tarjeta de débito o crédito (Stripe), MercadoPago, PayPal, CoDi, efectivo y pagos internacionales. Sin preferencia específica — elige la que te sea más cómoda. Consulta todos los métodos en <a href="https://www.eutimya.org/pagos" target="_blank" rel="noopener" style="color:var(--gold)">eutimya.org/pagos</a>.</div></div>
+      <div class="faq-item"><button class="faq-q" type="button">¿Cuánto cuesta la consulta psiquiátrica en CDMX?<span class="faq-icon">+</span></button><div class="faq-a">Consulta en línea: $1,400 MXN por sesión de 50 minutos. Consulta presencial en Col. del Valle, CDMX: $1,600 MXN. El costo incluye evaluación completa, nota médica y plan de tratamiento. Si se acordó un monto diferente previamente, ese aplica. Se emite factura si la solicitas.</div></div>
+      <div class="faq-item"><button class="faq-q" type="button">¿Qué formas de pago aceptan?<span class="faq-icon">+</span></button><div class="faq-a">Aceptamos todas las formas: transferencia SPEI, tarjeta de débito o crédito (Stripe), MercadoPago, PayPal, CoDi, efectivo y pagos internacionales. Elige la que te sea más cómoda. Consulta todos los métodos en <a href="https://www.eutimya.org/pagos" target="_blank" rel="noopener" style="color:var(--gold)">eutimya.org/pagos</a>.</div></div>
       <div class="faq-item"><button class="faq-q" type="button">¿Emiten factura (CFDI)?<span class="faq-icon">+</span></button><div class="faq-a">Sí, facturamos. Emitimos CFDI por todas las consultas, sin costo adicional. Solicita tu factura en <a href="https://www.eutimya.org/factura" target="_blank" rel="noopener" style="color:var(--gold)">eutimya.org/factura</a>. Solo necesitas tu RFC y datos fiscales. También puedes indicarlo al momento de pagar o al inicio de la consulta.</div></div>
       <div class="faq-item"><button class="faq-q" type="button">¿La consulta psiquiátrica en línea es tan efectiva como la presencial?<span class="faq-icon">+</span></button><div class="faq-a">Sí. La evidencia actual respalda la efectividad de la telepsiquiatría para la mayoría de los trastornos. La evaluación, ajuste de medicación y seguimiento se realizan en línea sin perder calidad clínica. Disponible para toda la República Mexicana y el extranjero a través de Google Meet.</div></div>
       <div class="faq-item"><button class="faq-q" type="button">¿Cuándo necesito ver a un psiquiatra y no solo a un psicólogo?<span class="faq-icon">+</span></button><div class="faq-a">Cuando los síntomas afectan significativamente el funcionamiento diario (trabajo, sueño, relaciones), cuando se considera tratamiento farmacológico, o cuando el psicólogo lo recomienda. El psiquiatra es el especialista indicado si necesitas diagnóstico médico formal, prescripción de medicamentos o sospecha de trastornos biológicos como depresión mayor, trastorno bipolar, TDAH o psicosis.</div></div>
-      <div class="faq-item"><button class="faq-q" type="button">¿Se atiende TDAH en adultos?<span class="faq-icon">+</span></button><div class="faq-a">Sí. El TDAH en adultos es una de las áreas principales del Dr. Moya, con publicaciones científicas al respecto. La evaluación incluye entrevista clínica estructurada, escalas validadas (ASRS) y exploración de comorbilidades. Protocolo disponible en <a href="https://www.eutimya.org/tdah" target="_blank" rel="noopener" style="color:var(--gold)">eutimya.org/tdah</a>.</div></div>
-      <div class="faq-item"><button class="faq-q" type="button">¿Hay protocolo psiquiátrico para cirugía bariátrica?<span class="faq-icon">+</span></button><div class="faq-a">Sí. Existe un protocolo específico con instrumentos validados e informe para el equipo quirúrgico. Disponible en <a href="https://www.eutimya.org/esb" target="_blank" rel="noopener" style="color:var(--gold)">eutimya.org/esb</a>. Atención pre y posoperatoria.</div></div>
+      <div class="faq-item"><button class="faq-q" type="button">¿Cuál es la diferencia entre psiquiatra y psicólogo?<span class="faq-icon">+</span></button><div class="faq-a">El psiquiatra es médico especialista y puede prescribir medicamentos, solicitar estudios de laboratorio y realizar diagnóstico clínico completo. El psicólogo ofrece psicoterapia pero no puede recetar fármacos. Con frecuencia trabajan en equipo para un tratamiento integral más efectivo.</div></div>
+      <div class="faq-item"><button class="faq-q" type="button">¿Se atiende TDAH en adultos?<span class="faq-icon">+</span></button><div class="faq-a">Sí. El TDAH en adultos es una de las áreas principales del Dr. Moya, con publicaciones científicas al respecto. La evaluación incluye entrevista clínica estructurada, escalas validadas (ASRS) y exploración de comorbilidades. Existe un protocolo especializado disponible en <a href="https://www.eutimya.org/tdah" target="_blank" rel="noopener" style="color:var(--gold)">eutimya.org/tdah</a>.</div></div>
+      <div class="faq-item"><button class="faq-q" type="button">¿Hay protocolo psiquiátrico para cirugía bariátrica?<span class="faq-icon">+</span></button><div class="faq-a">Sí. Existe un protocolo específico con instrumentos validados e informe para el equipo quirúrgico. El Dr. Moya ha presentado trabajos clínicos en este tema en congresos nacionales e internacionales. Disponible en <a href="https://www.eutimya.org/esb" target="_blank" rel="noopener" style="color:var(--gold)">eutimya.org/esb</a>. Atención pre y posoperatoria.</div></div>
       <div class="faq-item"><button class="faq-q" type="button">¿Qué debo llevar a mi primera consulta?<span class="faq-icon">+</span></button><div class="faq-a">No es requisito traer nada. Si tienes estudios previos (laboratorios, EEG, resonancias) o notas de otro médico, es útil compartirlos. Llenar el expediente digital de primera vez antes de la consulta mejora significativamente el aprovechamiento de la sesión.</div></div>
       <div class="faq-item"><button class="faq-q" type="button">¿Qué es la Psiquiatría de Enlace?<span class="faq-icon">+</span></button><div class="faq-a">Es la subespecialidad que atiende los problemas emocionales y mentales de pacientes hospitalizados por enfermedades médicas o quirúrgicas. El Dr. Moya cuenta con Alta Especialidad en Psiquiatría de Enlace por la UNAM (CMN 20 de Noviembre) concluida, y ha publicado sobre su experiencia en revistas internacionales indexadas.</div></div>
       <div class="faq-item"><button class="faq-q" type="button">¿Se puede emitir justificante o constancia médica?<span class="faq-icon">+</span></button><div class="faq-a">Sí. Se extiende constancia de cita o justificante laboral/escolar sin costo adicional. Solo indícalo al agendar o al inicio de la consulta.</div></div>
@@ -1011,10 +994,11 @@ a{color:inherit;text-decoration:none}
         <div class="contact-item"><div class="contact-ic">📍</div><div><div class="contact-k">Consultorio presencial</div><span class="contact-v">Moras 619, Col. Del Valle, Benito Juárez, CDMX 03100</span></div></div>
         <div class="contact-item"><div class="contact-ic">📱</div><div><div class="contact-k">WhatsApp / Teléfono</div><a href="https://wa.me/526731205121" class="contact-v">+52 673 120 5121</a></div></div>
         <div class="contact-item"><div class="contact-ic">🌐</div><div><div class="contact-k">Agendar en línea</div><a href="https://psiquiatra-cdmx.eutimya.org/cita" class="contact-v">eutimya.org/cita</a></div></div>
-        <div class="contact-item"><div class="contact-ic">🧾</div><div><div class="contact-k">Facturación (CFDI)</div><a href="https://www.eutimya.org/factura" class="contact-v" target="_blank" rel="noopener">eutimya.org/factura</a></div></div>
-        <div class="contact-item"><div class="contact-ic">💳</div><div><div class="contact-k">Formas de pago</div><a href="https://www.eutimya.org/pagos" class="contact-v" target="_blank" rel="noopener">eutimya.org/pagos</a></div></div>
         <div class="contact-item"><div class="contact-ic">💼</div><div><div class="contact-k">LinkedIn</div><a href="https://linkedin.com/in/drmoyapsiq" class="contact-v" target="_blank" rel="noopener">/drmoyapsiq</a></div></div>
+        <div class="contact-item"><div class="contact-ic">📸</div><div><div class="contact-k">Instagram</div><a href="https://www.instagram.com/deldhym/" class="contact-v" target="_blank" rel="noopener">@deldhym</a></div></div>
         <div class="contact-item"><div class="contact-ic">🔬</div><div><div class="contact-k">ORCID / Scholar</div><a href="https://orcid.org/0000-0002-7989-4646" class="contact-v" target="_blank" rel="noopener">0000-0002-7989-4646</a></div></div>
+        <div class="contact-item"><div class="contact-ic">🧾</div><div><div class="contact-k">Facturación</div><a href="https://www.eutimya.org/factura" class="contact-v" target="_blank" rel="noopener">eutimya.org/factura</a></div></div>
+        <div class="contact-item"><div class="contact-ic">💳</div><div><div class="contact-k">Formas de pago</div><a href="https://www.eutimya.org/pagos" class="contact-v" target="_blank" rel="noopener">eutimya.org/pagos</a></div></div>
         <div style="margin-top:1rem;padding:.8rem 1rem;border:1px solid var(--rule);border-radius:8px;font-size:.76rem;color:var(--ink-light);line-height:1.6">
           <strong style="color:var(--ink)">Aviso COFEPRIS:</strong> 2609142002A00043 · Cédulas: CP 12152669 / CE 14788885 · CONACEM 24803862<br/>
           <a href="https://www.eutimya.org/aviso-de-privacidad-y-consentimiento-informado" target="_blank" rel="noopener" style="color:var(--gold)">Aviso de privacidad</a> ·
@@ -1053,9 +1037,9 @@ a{color:inherit;text-decoration:none}
         <li><a href="#acerca">Acerca del doctor</a></li>
         <li><a href="#padecimientos">Padecimientos</a></li>
         <li><a href="#publicaciones">Publicaciones</a></li>
-        <li><a href="https://www.eutimya.org/pagos" target="_blank" rel="noopener">Formas de pago</a></li>
-        <li><a href="https://www.eutimya.org/factura" target="_blank" rel="noopener">Facturación</a></li>
         <li><a href="#faq">Preguntas frecuentes</a></li>
+        <li><a href="https://www.eutimya.org/pagos" target="_blank" rel="noopener">Formas de pago</a></li>
+        <li><a href="https://www.eutimya.org/factura" target="_blank" rel="noopener">Facturación (CFDI)</a></li>
         <li><a href="https://psiquiatra-cdmx.eutimya.org/cita">Agendar cita</a></li>
       </ul>
     </div>
@@ -1066,6 +1050,7 @@ a{color:inherit;text-decoration:none}
       <span>CP LIC 12152669</span>
       <span>CE PSIQ 14788885</span>
       <span>Consejo CMP 24803862</span>
+      <span>CP MTRA 14670759</span>
       <span>COFEPRIS 2609142002A00043</span>
     </div>
   </div>
@@ -1082,7 +1067,7 @@ a{color:inherit;text-decoration:none}
   },{passive:true});
 })();
 (function(){
-  var els=document.querySelectorAll('.svc,.price-card,.review,.pub,.cuando-item,.pay-card');
+  var els=document.querySelectorAll('.svc,.price-card,.review,.pub,.cuando-item');
   els.forEach(function(el){el.classList.add('scroll-reveal');});
   function check(){els.forEach(function(el){if(el.getBoundingClientRect().top<window.innerHeight-60)el.classList.add('visible');});}
   window.addEventListener('scroll',check,{passive:true});check();
