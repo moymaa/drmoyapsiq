@@ -380,7 +380,7 @@ body {
 //  CONFIG  ← solo edita esta sección
 // ══════════════════════════════════════
 const CFG = {
-  API_KEY:     'AIzaSyBMT0hkma4QhaYLUWzFwTSgLoVDjGVWjMg',
+  PROXY:       'https://script.google.com/macros/s/AKfycbw0qMZYdatYDDcgmmRYEtkoYmzclsIWB48KlvNJvD09H8TrQOcpg3cRVeBmFUEFSzP9yw/exec',   // ← pega aquí la URL de tu GAS deployment
   CAL_ID:      'deldhym@gmail.com',
   PAY_URL:     'https://eutimya.org/pagos',
   DURATION:    50,          // minutos por cita
@@ -475,18 +475,11 @@ function dayStatus(date) {
 async function fetchBusy(y,m) {
   const mk = mKey(y,m);
   if (S.busy[mk] !== undefined) return;
-  if (CFG.API_KEY === 'PEGA_AQUI_TU_API_KEY') { S.busy[mk]=[]; return; }
-  const tMin = new Date(y,m,1).toISOString();
-  const tMax = new Date(y,m+1,0,23,59,59).toISOString();
+  if (!CFG.PROXY || CFG.PROXY.indexOf('script.google.com') === -1) { S.busy[mk]=[]; return; }
   try {
-    const r = await fetch(
-      `https://www.googleapis.com/calendar/v3/freeBusy?key=${CFG.API_KEY}`,
-      { method:'POST', headers:{'Content-Type':'application/json'},
-        body:JSON.stringify({ timeMin:tMin, timeMax:tMax,
-          timeZone:CFG.TZ, items:[{id:CFG.CAL_ID}] }) }
-    );
+    const r = await fetch(`${CFG.PROXY}?y=${y}&m=${m}`);
     const d = await r.json();
-    S.busy[mk] = (d.calendars?.[CFG.CAL_ID]?.busy||[])
+    S.busy[mk] = (d.busy||[])
       .map(b=>({start:new Date(b.start),end:new Date(b.end)}));
   } catch { S.busy[mk]=[]; }
 }

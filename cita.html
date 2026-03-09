@@ -996,7 +996,7 @@ function goToStep(n){[1,2,3].forEach(function(i){if(i!==n)closeCard(i);});update
 //  CALENDAR CONFIG
 // ════════════════════════════════════════
 var CAL = {
-  API_KEY: 'AIzaSyBMT0hkma4QhaYLUWzFwTSgLoVDjGVWjMg',
+  PROXY:   'https://script.google.com/macros/s/AKfycbw0qMZYdatYDDcgmmRYEtkoYmzclsIWB48KlvNJvD09H8TrQOcpg3cRVeBmFUEFSzP9yw/exec',   // ← pega aquí la URL de tu GAS deployment
   CAL_ID:  'deldhym@gmail.com',
   PAY_URL: 'https://eutimya.org/pagos',
   BOOK_URLS: {
@@ -1084,15 +1084,11 @@ async function calFetchBusy(y,m){
   var mk=cMKey(y,m);
   if(CS.busy[mk]!==undefined)return;
   CS.busy[mk]=[];
+  if(!CAL.PROXY||CAL.PROXY.indexOf('script.google.com')===-1)return;
   try{
-    var tMin=new Date(y,m,1).toISOString();
-    var tMax=new Date(y,m+1,0,23,59,59).toISOString();
-    var r=await fetch('https://www.googleapis.com/calendar/v3/freeBusy?key='+CAL.API_KEY,{
-      method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({timeMin:tMin,timeMax:tMax,timeZone:CAL.TZ,items:[{id:CAL.CAL_ID}]})
-    });
+    var r=await fetch(CAL.PROXY+'?y='+y+'&m='+m);
     var d=await r.json();
-    CS.busy[mk]=(d.calendars&&d.calendars[CAL.CAL_ID]&&d.calendars[CAL.CAL_ID].busy||[])
+    CS.busy[mk]=(d.busy||[])
       .map(function(b){return{start:new Date(b.start),end:new Date(b.end)};});
   }catch(e){CS.busy[mk]=[];}
 }
