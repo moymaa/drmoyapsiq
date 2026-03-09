@@ -372,6 +372,11 @@ details.acc-urgent[open] .acc-chev-urgent{transform:rotate(180deg)}
 .lwe-step-badge{width:26px;height:26px;border-radius:50%;background:var(--ink);color:#fff;font-size:.72rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
 .lwe-step-txt strong{display:block;font-size:.83rem;font-weight:700;color:var(--ink);}
 .lwe-step-txt span{font-size:.75rem;color:var(--ink-light);line-height:1.4;}
+.lwe-step-link{text-decoration:none;color:inherit;transition:background .15s,border-color .15s,transform .12s;}
+.lwe-step-link:hover{background:#f0f4ff;border-color:#a3b8f5;transform:translateX(3px);}
+.lwe-step-arrow{font-size:.85rem;color:var(--ink-light);flex-shrink:0;margin-left:auto;align-self:center;transition:color .15s;}
+.lwe-step-link:hover .lwe-step-arrow{color:var(--ink);}
+.lwe-step-link:hover .lwe-step-badge{background:#1a73e8;}
 .lwe-divider{height:1px;background:var(--rule);margin:.85rem 0;}
 .lwe-flow{font-size:.8rem;line-height:1.65;color:var(--ink-mid);margin-bottom:1rem;}
 .lwe-flow strong{color:var(--ink);font-weight:700;}
@@ -475,7 +480,7 @@ details.acc-urgent[open] .acc-chev-urgent{transform:rotate(180deg)}
   </div>
 
   <!-- PASO 1 -->
-  <div class="step-card" id="card1">
+  <div class="step-card" id="card1" data-step-anchor="step1">
     <div class="step-header" onclick="toggleCard(1)">
       <div class="step-num-badge">1</div>
       <div class="step-meta">
@@ -531,7 +536,7 @@ details.acc-urgent[open] .acc-chev-urgent{transform:rotate(180deg)}
   </div>
 
   <!-- PASO 2 -->
-  <div class="step-card" id="card2">
+  <div class="step-card" id="card2" data-step-anchor="step2">
     <div class="step-header" onclick="toggleCard(2)">
       <div class="step-num-badge">2</div>
       <div class="step-meta">
@@ -592,7 +597,7 @@ details.acc-urgent[open] .acc-chev-urgent{transform:rotate(180deg)}
   </div>
 
   <!-- PASO 3 -->
-  <div class="step-card" id="card3">
+  <div class="step-card" id="card3" data-step-anchor="step3">
     <div class="step-header" onclick="toggleCard(3)">
       <div class="step-num-badge">3</div>
       <div class="step-meta">
@@ -756,18 +761,21 @@ details.acc-urgent[open] .acc-chev-urgent{transform:rotate(180deg)}
       </div>
       <p style="font-size:.83rem;font-weight:600;color:var(--ink);margin-bottom:.65rem;">Para registrarte, completa los 3 pasos:</p>
       <div class="lwe-steps">
-        <div class="lwe-step">
+        <a href="/cita#step1" onclick="closeLwe()" class="lwe-step lwe-step-link">
           <div class="lwe-step-badge">1</div>
           <div class="lwe-step-txt"><strong>💳 Pago</strong><span>Realiza el pago y conserva tu comprobante.</span></div>
-        </div>
-        <div class="lwe-step">
+          <span class="lwe-step-arrow">→</span>
+        </a>
+        <a href="/cita#step2" onclick="closeLwe()" class="lwe-step lwe-step-link">
           <div class="lwe-step-badge">2</div>
           <div class="lwe-step-txt"><strong>🗓️ Fecha disponible</strong><span>Elige la próxima fecha en el calendario. Puede cambiar si hay cancelación de otro paciente.</span></div>
-        </div>
-        <div class="lwe-step">
+          <span class="lwe-step-arrow">→</span>
+        </a>
+        <a href="/cita#step3" onclick="closeLwe()" class="lwe-step lwe-step-link">
           <div class="lwe-step-badge">3</div>
           <div class="lwe-step-txt"><strong>📄 Expediente</strong><span>Completa tu registro de primera vez.</span></div>
-        </div>
+          <span class="lwe-step-arrow">→</span>
+        </a>
       </div>
       <div class="lwe-divider"></div>
       <div class="lwe-flow">
@@ -1054,7 +1062,19 @@ function copyClabe(){
   fallback();
 }
 
-// ── LISTA DE ESPERA MODAL ──
+// ── ANCHOR STEP NAVIGATION ──
+(function(){
+  function handleStepHash(){
+    var hash=window.location.hash;
+    var map={step1:1,step2:2,step3:3};
+    if(hash&&map[hash.replace('#','')]){
+      var n=map[hash.replace('#','')];
+      setTimeout(function(){goToStep(n);},120);
+    }
+  }
+  handleStepHash();
+  window.addEventListener('hashchange',handleStepHash);
+})();
 function openLwe(){var m=document.getElementById('lweModal');if(m){m.classList.add('is-open');document.body.style.overflow='hidden';}}
 function closeLwe(){var m=document.getElementById('lweModal');if(m){m.classList.remove('is-open');document.body.style.overflow='';}}
 
