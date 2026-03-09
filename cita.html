@@ -18,35 +18,14 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&family=Google+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
 <style>
-/* ══════════════════════════════════
-   BASE VARS & RESET
-══════════════════════════════════ */
 :root{
-  --ink:#0d1b2a;
-  --ink-mid:#334155;
-  --ink-light:#64748b;
-  --gold:#b8893a;
-  --gold-pale:#f5ecd7;
-  --white:#ffffff;
-  --canvas:#fafaf8;
-  --rule:#e8e6e1;
-  --serif:'Playfair Display',Georgia,serif;
-  --sans:'DM Sans','Helvetica Neue',sans-serif;
-  --r:10px;
-  --shadow:0 2px 12px rgba(13,27,42,.07);
-  --shadow-lg:0 8px 40px rgba(13,27,42,.12);
-  --blue:#1a73e8;
-  /* calendar vars */
-  --cal-green:#188038;
-  --cal-green-bg:#e6f4ea;
-  --cal-green-hover:#c6e8cc;
-  --cal-red:#c5221f;
-  --cal-red-bg:#fce8e6;
-  --cal-gray-100:#f1f3f4;
-  --cal-gray-200:#e8eaed;
-  --cal-gray-400:#bdc1c6;
-  --cal-gray-600:#80868b;
-  --cal-gray-700:#5f6368;
+  --ink:#0d1b2a;--ink-mid:#334155;--ink-light:#64748b;--gold:#b8893a;--gold-pale:#f5ecd7;
+  --white:#ffffff;--canvas:#fafaf8;--rule:#e8e6e1;
+  --serif:'Playfair Display',Georgia,serif;--sans:'DM Sans','Helvetica Neue',sans-serif;
+  --r:10px;--shadow:0 2px 12px rgba(13,27,42,.07);--shadow-lg:0 8px 40px rgba(13,27,42,.12);
+  --blue:#1a73e8;--cal-green:#188038;--cal-green-bg:#e6f4ea;--cal-green-hover:#c6e8cc;
+  --cal-red:#c5221f;--cal-red-bg:#fce8e6;--cal-gray-100:#f1f3f4;--cal-gray-200:#e8eaed;
+  --cal-gray-400:#bdc1c6;--cal-gray-600:#80868b;--cal-gray-700:#5f6368;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;overflow-x:hidden}
@@ -54,9 +33,6 @@ body{font-family:var(--sans);color:var(--ink);background:var(--white);-webkit-fo
 img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
 
-/* ══════════════════════════════════
-   NAV
-══════════════════════════════════ */
 .nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,.97);border-bottom:1px solid var(--rule);backdrop-filter:blur(10px);}
 .nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:.9rem 2rem;gap:1.5rem;}
 .nav-logo img{height:34px;width:auto}
@@ -73,9 +49,6 @@ a{color:inherit;text-decoration:none}
 .mobile-nav li{padding:.65rem 0;border-bottom:1px solid var(--rule)}
 .mobile-nav a{font-size:.95rem;font-weight:500;color:var(--ink)}
 
-/* ══════════════════════════════════
-   HERO
-══════════════════════════════════ */
 .page-hero{background:var(--ink);padding:8rem 2rem 4.5rem;position:relative;overflow:hidden;margin-top:68px;}
 .page-hero-bg{position:absolute;inset:0;z-index:0;background-image:url('https://raw.githubusercontent.com/moymaa/drmoyapsiq/main/1AAA1C69-6C0F-4205-9FDC-9CF3CA6A17E8%20(1).png');background-size:cover;background-position:center 10%;filter:brightness(.7) saturate(.6) blur(1px);transform:scale(1.04);}
 .page-hero::before{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(to right,rgba(13,27,42,.96) 0%,rgba(13,27,42,.88) 55%,rgba(13,27,42,.72) 100%);}
@@ -87,23 +60,14 @@ a{color:inherit;text-decoration:none}
 .page-hero-back{display:inline-flex;align-items:center;gap:.5rem;border:1px solid rgba(255,255,255,.6);background:rgba(255,255,255,.18);color:#fff;padding:.55rem 1.2rem;border-radius:6px;font-size:.8rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;backdrop-filter:blur(8px);transition:background .15s,border-color .15s;}
 .page-hero-back:hover{background:rgba(255,255,255,.28);border-color:#fff}
 
-/* ══════════════════════════════════
-   TIP BAR
-══════════════════════════════════ */
 .tip-bar{background:var(--canvas);border-bottom:1px solid var(--rule);}
 .tip-bar-inner{max-width:760px;margin:0 auto;padding:.9rem 2rem;display:flex;align-items:flex-start;gap:.75rem;}
 .tip-bar-icon{font-size:1.1rem;line-height:1;flex-shrink:0;margin-top:.1rem}
 .tip-bar-text{font-size:.87rem;line-height:1.6;color:var(--ink-mid);}
 .tip-bar-text strong{color:var(--ink);font-weight:600}
 
-/* ══════════════════════════════════
-   CONTENT
-══════════════════════════════════ */
 .content{max-width:760px;margin:0 auto;padding:3rem 2rem 6rem;}
 
-/* ══════════════════════════════════
-   FLOW STEPS
-══════════════════════════════════ */
 .flow-wrap{display:flex;align-items:center;margin-bottom:2.5rem;}
 .flow-step{flex:1 1 0;display:flex;flex-direction:column;align-items:center;gap:5px;position:relative;cursor:pointer;background:none;border:none;padding:4px 0;font-family:var(--sans);-webkit-tap-highlight-color:transparent;}
 .flow-step:not(:last-child)::after{content:"";position:absolute;top:17px;left:calc(50% + 18px);right:calc(-50% + 18px);height:1px;background:var(--rule);z-index:0;}
@@ -115,9 +79,6 @@ a{color:inherit;text-decoration:none}
 .flow-label{font-size:.72rem;font-weight:600;color:var(--ink-light);text-align:center;letter-spacing:.04em;text-transform:uppercase;transition:color .15s}
 .flow-step.active .flow-label,.flow-step:hover .flow-label{color:var(--ink)}
 
-/* ══════════════════════════════════
-   STEP CARDS
-══════════════════════════════════ */
 .step-card{border:1px solid var(--rule);border-radius:var(--r);overflow:hidden;margin-bottom:.85rem;background:#fff;transition:box-shadow .2s;}
 .step-card.is-active{box-shadow:var(--shadow-lg);}
 .step-header{padding:1.1rem 1.3rem;display:flex;align-items:center;gap:.9rem;cursor:pointer;user-select:none;-webkit-tap-highlight-color:transparent;transition:background .15s;}
@@ -132,9 +93,6 @@ a{color:inherit;text-decoration:none}
 .step-body{overflow:hidden;height:0;border-top:1px solid var(--rule);transition:height .28s cubic-bezier(.2,.8,.2,1);}
 .step-inner{padding:1.3rem 1.5rem 1.6rem}
 
-/* ══════════════════════════════════
-   FEES & PAYMENTS
-══════════════════════════════════ */
 .fee-block{margin-bottom:1rem;padding:1rem 1.1rem;background:var(--canvas);border:1px solid var(--rule);border-radius:8px;}
 .fee-label{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--ink-light);margin-bottom:.75rem;}
 .fee-item{display:flex;align-items:center;justify-content:space-between;padding:.55rem 0;border-bottom:1px solid var(--rule);}
@@ -167,9 +125,6 @@ details.transfer-acc[open] .t-chev{transform:rotate(180deg)}
 .notice{background:rgba(13,27,42,.04);border:1px solid rgba(13,27,42,.10);border-radius:8px;padding:.85rem 1rem;font-size:.83rem;line-height:1.6;color:var(--ink);font-weight:500;margin-bottom:.85rem;}
 .notice strong{font-weight:700}
 
-/* ══════════════════════════════════
-   BUTTONS
-══════════════════════════════════ */
 .btn-stack{display:flex;flex-direction:column;gap:.55rem;margin-top:.9rem}
 .btn{display:flex;align-items:center;justify-content:center;gap:.5rem;width:100%;padding:.85rem .9rem;border-radius:8px;font-weight:600;font-size:.88rem;cursor:pointer;transition:box-shadow .15s,transform .08s;text-decoration:none;font-family:var(--sans);border:1px solid transparent;}
 .btn:hover{box-shadow:var(--shadow-lg);transform:translateY(-1px)}
@@ -181,208 +136,68 @@ details.transfer-acc[open] .t-chev{transform:rotate(180deg)}
 .btn-wa{background:#25D366;color:#fff;border-color:#25D366}
 .btn-ghost{background:#fff;color:var(--ink);border-color:var(--rule)}
 
-/* ══════════════════════════════════
-   STEP 2 — CALENDAR CTAs
-══════════════════════════════════ */
-.cal-cta-row{
-  display:grid;grid-template-columns:1fr 1fr;gap:.75rem;
-  margin-bottom:1rem;
-}
-.cal-cta-btn{
-  position:relative;overflow:hidden;
-  display:flex;flex-direction:column;align-items:flex-start;
-  padding:1.4rem 1.2rem 1.2rem;
-  border-radius:12px;
-  border:none;
-  cursor:pointer;
-  font-family:var(--sans);
-  text-align:left;
-  transition:transform .18s cubic-bezier(.2,.8,.2,1), box-shadow .18s;
-}
-.cal-cta-btn::before{
-  content:'';
-  position:absolute;inset:0;
-  opacity:0;
-  transition:opacity .2s;
-}
+.cal-cta-row{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-bottom:1rem;}
+.cal-cta-btn{position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:flex-start;padding:1.4rem 1.2rem 1.2rem;border-radius:12px;border:none;cursor:pointer;font-family:var(--sans);text-align:left;transition:transform .18s cubic-bezier(.2,.8,.2,1), box-shadow .18s;}
+.cal-cta-btn::before{content:'';position:absolute;inset:0;opacity:0;transition:opacity .2s;}
 .cal-cta-btn:hover{transform:translateY(-3px);}
 .cal-cta-btn:active{transform:translateY(-1px);}
-
-/* BROWSE — dark navy */
-.cal-cta-btn.browse{
-  background:var(--ink);
-  box-shadow:0 4px 20px rgba(13,27,42,.25), inset 0 1px 0 rgba(255,255,255,.07);
-}
-.cal-cta-btn.browse::before{
-  background:linear-gradient(135deg,rgba(26,115,232,.15) 0%,transparent 60%);
-}
-.cal-cta-btn.browse:hover{
-  box-shadow:0 10px 36px rgba(13,27,42,.35), inset 0 1px 0 rgba(255,255,255,.1);
-}
+.cal-cta-btn.browse{background:var(--ink);box-shadow:0 4px 20px rgba(13,27,42,.25), inset 0 1px 0 rgba(255,255,255,.07);}
+.cal-cta-btn.browse::before{background:linear-gradient(135deg,rgba(26,115,232,.15) 0%,transparent 60%);}
+.cal-cta-btn.browse:hover{box-shadow:0 10px 36px rgba(13,27,42,.35), inset 0 1px 0 rgba(255,255,255,.1);}
 .cal-cta-btn.browse:hover::before{opacity:1;}
-
-/* BOOK — dark green */
-.cal-cta-btn.book{
-  background:#0f3d22;
-  box-shadow:0 4px 20px rgba(15,61,34,.3), inset 0 1px 0 rgba(255,255,255,.06);
-}
-.cal-cta-btn.book::before{
-  background:linear-gradient(135deg,rgba(24,128,56,.25) 0%,transparent 60%);
-}
-.cal-cta-btn.book:hover{
-  box-shadow:0 10px 36px rgba(15,61,34,.38), inset 0 1px 0 rgba(255,255,255,.09);
-}
+.cal-cta-btn.book{background:#0f3d22;box-shadow:0 4px 20px rgba(15,61,34,.3), inset 0 1px 0 rgba(255,255,255,.06);}
+.cal-cta-btn.book::before{background:linear-gradient(135deg,rgba(24,128,56,.25) 0%,transparent 60%);}
+.cal-cta-btn.book:hover{box-shadow:0 10px 36px rgba(15,61,34,.38), inset 0 1px 0 rgba(255,255,255,.09);}
 .cal-cta-btn.book:hover::before{opacity:1;}
-
-/* icon badge */
-.cal-cta-icon-wrap{
-  width:40px;height:40px;border-radius:10px;
-  display:flex;align-items:center;justify-content:center;
-  margin-bottom:.75rem;
-  flex-shrink:0;
-}
+.cal-cta-icon-wrap{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:.75rem;flex-shrink:0;}
 .browse .cal-cta-icon-wrap{background:rgba(26,115,232,.2);}
 .book .cal-cta-icon-wrap{background:rgba(24,128,56,.25);}
 .cal-cta-icon{font-size:1.2rem;line-height:1;}
-
-/* text */
-.cal-cta-title{
-  font-family:var(--serif);
-  font-size:1.05rem;font-weight:700;
-  line-height:1.15;margin-bottom:.35rem;
-}
+.cal-cta-title{font-family:var(--serif);font-size:1.05rem;font-weight:700;line-height:1.15;margin-bottom:.35rem;}
 .browse .cal-cta-title{color:#fff;}
 .book .cal-cta-title{color:#fff;}
-
-.cal-cta-sub{
-  font-size:.76rem;line-height:1.5;font-weight:400;
-  flex:1;
-}
+.cal-cta-sub{font-size:.76rem;line-height:1.5;font-weight:400;flex:1;}
 .browse .cal-cta-sub{color:rgba(255,255,255,.55);}
 .book .cal-cta-sub{color:rgba(255,255,255,.55);}
-
-/* arrow */
-.cal-cta-arrow{
-  display:inline-flex;align-items:center;gap:4px;
-  margin-top:.75rem;
-  font-size:.7rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
-}
+.cal-cta-arrow{display:inline-flex;align-items:center;gap:4px;margin-top:.75rem;font-size:.7rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;}
 .browse .cal-cta-arrow{color:rgba(255,255,255,.35);}
 .book .cal-cta-arrow{color:rgba(255,255,255,.35);}
-.cal-cta-btn:hover .cal-cta-arrow{
-  opacity:1;
-}
 .browse:hover .cal-cta-arrow{color:rgba(255,255,255,.7);}
 .book:hover .cal-cta-arrow{color:rgba(255,255,255,.7);}
 
-/* ══════════════════════════════════
-   CALENDAR DRAWER
-══════════════════════════════════ */
-.cal-overlay{
-  position:fixed;inset:0;z-index:500;
-  background:rgba(8,14,22,.72);
-  backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);
-  opacity:0;visibility:hidden;
-  transition:opacity .3s,visibility .3s;
-}
+.cal-overlay{position:fixed;inset:0;z-index:500;background:rgba(8,14,22,.72);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s;}
 .cal-overlay.open{opacity:1;visibility:visible;}
-
-.cal-drawer{
-  position:fixed;top:0;right:0;bottom:0;z-index:501;
-  width:min(560px,100vw);
-  background:#f8f9fa;
-  display:flex;flex-direction:column;
-  transform:translateX(102%);
-  transition:transform .38s cubic-bezier(.22,.9,.3,1);
-  box-shadow:-16px 0 48px rgba(0,0,0,.18);
-}
+.cal-drawer{position:fixed;top:0;right:0;bottom:0;z-index:501;width:min(560px,100vw);background:#f8f9fa;display:flex;flex-direction:column;transform:translateX(102%);transition:transform .38s cubic-bezier(.22,.9,.3,1);box-shadow:-16px 0 48px rgba(0,0,0,.18);}
 .cal-drawer.open{transform:translateX(0);}
-
-.cal-dw-head{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:14px 18px;
-  flex-shrink:0;
-  border-bottom:1px solid rgba(255,255,255,.08);
-}
+.cal-dw-head{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;flex-shrink:0;border-bottom:1px solid rgba(255,255,255,.08);}
 .cal-dw-head.browse{background:#1a73e8;}
 .cal-dw-head.book{background:#188038;}
-
 .cal-dw-info{display:flex;flex-direction:column;gap:3px;}
 .cal-dw-mode{font-size:.65rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;}
 .cal-dw-head.browse .cal-dw-mode{color:rgba(255,255,255,.7);}
 .cal-dw-head.book .cal-dw-mode{color:rgba(255,255,255,.7);}
 .cal-dw-title{font-family:'Google Sans',sans-serif;font-size:1rem;font-weight:600;color:#fff;line-height:1.2;}
-.cal-dw-close{
-  width:34px;height:34px;border-radius:50%;
-  border:1px solid rgba(255,255,255,.25);
-  background:rgba(255,255,255,.1);
-  color:rgba(255,255,255,.85);font-size:1.25rem;line-height:1;
-  display:flex;align-items:center;justify-content:center;
-  cursor:pointer;transition:background .15s;flex-shrink:0;
-}
+.cal-dw-close{width:34px;height:34px;border-radius:50%;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.1);color:rgba(255,255,255,.85);font-size:1.25rem;line-height:1;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .15s;flex-shrink:0;}
 .cal-dw-close:hover{background:rgba(255,255,255,.2);}
-
-.cal-dw-banner{
-  padding:10px 16px;
-  font-size:.8rem;font-weight:500;line-height:1.45;
-  flex-shrink:0;
-}
+.cal-dw-banner{padding:10px 16px;font-size:.8rem;font-weight:500;line-height:1.45;flex-shrink:0;}
 .cal-dw-banner.browse{background:#e8f0fe;color:#174ea6;border-bottom:1px solid rgba(26,115,232,.15);}
 .cal-dw-banner.book{background:#e6f4ea;color:#137333;border-bottom:1px solid rgba(24,128,56,.15);}
+.cal-dw-body{flex:1;overflow-y:auto;padding:16px 16px 32px;-webkit-overflow-scrolling:touch;}
 
-.cal-dw-body{
-  flex:1;overflow-y:auto;padding:16px 16px 32px;
-  -webkit-overflow-scrolling:touch;
-}
-
-/* ══════════════════════════════════
-   CALENDAR WIDGET (embedded)
-══════════════════════════════════ */
-.cal-type-row{
-  display:flex;gap:0;
-  border:1px solid var(--cal-gray-200);border-radius:24px;
-  background:#fff;padding:4px;
-  width:fit-content;
-  box-shadow:0 1px 3px rgba(0,0,0,.1);
-  margin-bottom:16px;
-}
-.cal-type-btn{
-  padding:8px 20px;border-radius:20px;border:none;
-  background:transparent;
-  font-family:'Google Sans',sans-serif;font-size:13px;font-weight:500;
-  color:var(--cal-gray-700);cursor:pointer;
-  transition:all .15s;display:flex;align-items:center;gap:5px;
-}
+.cal-type-row{display:flex;gap:0;border:1px solid var(--cal-gray-200);border-radius:24px;background:#fff;padding:4px;width:fit-content;box-shadow:0 1px 3px rgba(0,0,0,.1);margin-bottom:16px;}
+.cal-type-btn{padding:8px 20px;border-radius:20px;border:none;background:transparent;font-family:'Google Sans',sans-serif;font-size:13px;font-weight:500;color:var(--cal-gray-700);cursor:pointer;transition:all .15s;display:flex;align-items:center;gap:5px;}
 .cal-type-btn.active{background:#1a73e8;color:#fff;box-shadow:0 1px 3px rgba(0,0,0,.12);}
 .cal-type-btn:hover:not(.active){background:var(--cal-gray-100);}
-
-.cal-bc{
-  display:flex;align-items:center;gap:5px;
-  font-size:12px;color:var(--cal-gray-600);
-  margin-bottom:10px;min-height:20px;
-}
+.cal-bc{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--cal-gray-600);margin-bottom:10px;min-height:20px;}
 .cal-bc .crumb{color:#1a73e8;cursor:pointer;font-weight:500;}
 .cal-bc .crumb:hover{text-decoration:underline;}
 .cal-bc .sep{color:var(--cal-gray-400);}
-
 .cal-card{background:#fff;border-radius:10px;box-shadow:0 1px 3px rgba(0,0,0,.1);overflow:hidden;}
-.cal-card-head{
-  padding:14px 18px 12px;
-  border-bottom:1px solid var(--cal-gray-200);
-}
-.cal-card-head h2{
-  font-family:'Google Sans',sans-serif;font-size:16px;font-weight:500;
-  color:#202124;text-transform:capitalize;
-}
+.cal-card-head{padding:14px 18px 12px;border-bottom:1px solid var(--cal-gray-200);}
+.cal-card-head h2{font-family:'Google Sans',sans-serif;font-size:16px;font-weight:500;color:#202124;text-transform:capitalize;}
 .cal-card-body{padding:16px 18px 20px;}
-
-/* months grid */
 .cal-months-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
-.cal-month-tile{
-  border:1px solid var(--cal-gray-200);border-radius:8px;
-  padding:14px 10px 12px;text-align:center;cursor:pointer;
-  transition:all .15s;
-}
+.cal-month-tile{border:1px solid var(--cal-gray-200);border-radius:8px;padding:14px 10px 12px;text-align:center;cursor:pointer;transition:all .15s;}
 .cal-month-tile:hover:not(.past){border-color:#1a73e8;background:#e8f0fe;}
 .cal-month-tile.past{opacity:.35;pointer-events:none;}
 .cal-mt-name{font-family:'Google Sans',sans-serif;font-size:14px;font-weight:500;color:#202124;}
@@ -390,46 +205,27 @@ details.transfer-acc[open] .t-chev{transform:rotate(180deg)}
 .cal-mt-count{font-size:11px;margin-top:5px;font-weight:500;}
 .cal-mt-count.has{color:var(--cal-green);}
 .cal-mt-count.none{color:var(--cal-gray-600);font-weight:400;}
-
-/* days grid */
 .cal-dow-row{display:grid;grid-template-columns:repeat(7,1fr);margin-bottom:5px;}
 .cal-dow-lbl{text-align:center;font-size:10px;font-weight:500;color:var(--cal-gray-600);text-transform:uppercase;letter-spacing:.05em;padding:3px 0;}
 .cal-days-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;}
-.cal-day{
-  aspect-ratio:1;border-radius:7px;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  font-size:13px;font-weight:500;position:relative;transition:all .12s;
-}
+.cal-day{aspect-ratio:1;border-radius:7px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:13px;font-weight:500;position:relative;transition:all .12s;}
 .cal-day.empty{pointer-events:none;}
 .cal-day.past{background:var(--cal-gray-100);color:var(--cal-gray-400);pointer-events:none;}
 .cal-day.off{background:var(--cal-gray-100);color:var(--cal-gray-400);pointer-events:none;}
-.cal-day.avail{
-  background:var(--cal-green-bg);color:var(--cal-green);
-  cursor:pointer;border:1px solid rgba(24,128,56,.15);
-}
+.cal-day.avail{background:var(--cal-green-bg);color:var(--cal-green);cursor:pointer;border:1px solid rgba(24,128,56,.15);}
 .cal-day.avail:hover{background:var(--cal-green-hover);transform:scale(1.05);box-shadow:0 2px 6px rgba(24,128,56,.18);z-index:1;}
 .cal-day.busy{background:var(--cal-red-bg);color:var(--cal-red);border:1px solid rgba(197,34,31,.12);pointer-events:none;}
 .cal-day.today-ring{outline:2px solid #1a73e8;outline-offset:-2px;}
 .cal-day-num{font-size:14px;line-height:1;}
 .cal-day-sub{font-size:9px;margin-top:2px;line-height:1;font-weight:400;}
-
-/* slots */
-.cal-slots-date{
-  font-family:'Google Sans',sans-serif;font-size:14px;font-weight:500;
-  color:#202124;text-transform:capitalize;margin-bottom:14px;
-}
+.cal-slots-date{font-family:'Google Sans',sans-serif;font-size:14px;font-weight:500;color:#202124;text-transform:capitalize;margin-bottom:14px;}
 .cal-slots-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(95px,1fr));gap:7px;}
-.cal-slot{padding:10px 7px;border-radius:7px;text-align:center;transition:all .12s;}
-.cal-slot.free{
-  background:var(--cal-green-bg);border:1px solid rgba(24,128,56,.2);
-  color:var(--cal-green);cursor:pointer;
-}
+.cal-slot{padding:10px 7px;border-radius:7px;text-align:center;transition:all .12px;}
+.cal-slot.free{background:var(--cal-green-bg);border:1px solid rgba(24,128,56,.2);color:var(--cal-green);cursor:pointer;}
 .cal-slot.free:hover{background:var(--cal-green-hover);transform:translateY(-2px);box-shadow:0 3px 8px rgba(24,128,56,.18);}
 .cal-slot.busy{background:var(--cal-red-bg);border:1px solid rgba(197,34,31,.15);color:var(--cal-red);cursor:default;opacity:.75;}
 .cal-slot-t{display:block;font-size:14px;font-weight:500;}
 .cal-slot-l{display:block;font-size:10px;margin-top:2px;font-weight:400;}
-
-/* legend */
 .cal-legend{display:flex;flex-wrap:wrap;gap:12px;margin-top:16px;padding-top:14px;border-top:1px solid var(--cal-gray-200);}
 .cal-leg{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--cal-gray-700);}
 .cal-leg-sq{width:12px;height:12px;border-radius:3px;flex-shrink:0;}
@@ -437,8 +233,6 @@ details.transfer-acc[open] .t-chev{transform:rotate(180deg)}
 .cal-leg-sq.r{background:var(--cal-red-bg);border:1px solid rgba(197,34,31,.2);}
 .cal-leg-sq.e{background:var(--cal-gray-100);border:1px solid var(--cal-gray-200);}
 
-/* loading */
-/* ── CAL DRAWER FOOTER ── */
 .cal-dw-footer{flex-shrink:0;border-top:1px solid var(--cal-gray-200);background:#fff;}
 .cal-footer-acc{background:#fff;}
 .cal-footer-sum{list-style:none;cursor:pointer;padding:11px 16px;display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:#5f6368;background:#fff;transition:background .15s;user-select:none;}
@@ -448,11 +242,11 @@ details.transfer-acc[open] .t-chev{transform:rotate(180deg)}
 .cal-footer-chev{margin-left:auto;font-size:10px;opacity:.5;transition:transform .18s;flex-shrink:0;}
 details.cal-footer-acc[open] .cal-footer-chev{transform:rotate(180deg);}
 .cal-footer-body{padding:8px 14px 14px;display:flex;flex-direction:column;gap:8px;border-top:1px solid #f1f3f4;}
-.cal-footer-btn{display:flex;flex-direction:column;padding:10px 12px;border-radius:8px;font-size:13px;font-weight:700;text-decoration:none;line-height:1.3;transition:all .14s;}
+.cal-footer-btn{display:flex;flex-direction:column;padding:10px 12px;border-radius:8px;font-size:13px;font-weight:700;text-decoration:none;line-height:1.3;transition:all .14s;cursor:pointer;}
 .cal-footer-btn span{font-size:11px;font-weight:400;margin-top:2px;opacity:.75;}
 .cal-footer-btn.dark{background:#0d1b2a;color:#fff;border:1.5px solid #b8893a;}
 .cal-footer-btn.dark:hover{background:#1e3a5f;}
-.cal-footer-btn.wa{background:#25D366;color:#fff;}
+.cal-footer-btn.wa{background:#25D366;color:#fff;border:none;}
 .cal-footer-btn.wa:hover{filter:brightness(1.06);}
 
 .cal-loading{display:flex;justify-content:center;padding:40px;}
@@ -461,16 +255,10 @@ details.cal-footer-acc[open] .cal-footer-chev{transform:rotate(180deg);}
 .cal-view{animation:calFadeUp .2s ease;}
 @keyframes calFadeUp{from{opacity:0;transform:translateY(7px);}to{opacity:1;transform:none;}}
 
-/* ══════════════════════════════════
-   LOCATION BOX
-══════════════════════════════════ */
 .location-box{border:1px solid var(--rule);border-radius:8px;padding:.9rem;background:var(--canvas);font-size:.82rem;line-height:1.65;margin-bottom:.75rem;color:var(--ink-mid);}
 .location-box strong{font-weight:600;color:var(--ink)}
 .location-box a{color:var(--blue);font-weight:600}
 
-/* ══════════════════════════════════
-   ACCORDIONS
-══════════════════════════════════ */
 .acc{border:1px solid var(--rule);border-radius:8px;overflow:hidden;margin-top:.55rem;background:#fff}
 .acc-sum{list-style:none;cursor:pointer;padding:.8rem .95rem;display:flex;align-items:center;justify-content:space-between;gap:.5rem;font-weight:600;font-size:.85rem;color:var(--ink);background:#fff;transition:background .15s;}
 .acc-sum:hover{background:var(--canvas)}
@@ -496,9 +284,6 @@ details.acc-urgent[open] .acc-chev-urgent{transform:rotate(180deg)}
 .acc-body-urgent p:last-child{margin-bottom:0}
 .acc-body-urgent strong{color:#b91c1c;font-weight:700}
 
-/* ══════════════════════════════════
-   EXPEDIENTE DRAWER
-══════════════════════════════════ */
 .exp-pills{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.7rem}
 .exp-pill{padding:.55rem 1rem;border-radius:999px;border:1px solid var(--rule);background:#fff;font-weight:600;font-size:.8rem;text-decoration:none;color:var(--ink);transition:box-shadow .12s,border-color .15s;}
 .exp-pill:hover{box-shadow:var(--shadow);border-color:var(--ink-light)}
@@ -522,9 +307,6 @@ details.acc-urgent[open] .acc-chev-urgent{transform:rotate(180deg)}
 @keyframes expSpin{to{transform:rotate(360deg);}}
 .exp-dw-loader p{font-size:.82rem;color:var(--ink-light);}
 
-/* ══════════════════════════════════
-   BIO MINI
-══════════════════════════════════ */
 .bio-mini{border:1px solid var(--rule);border-radius:var(--r);background:#fff;overflow:hidden;margin-top:2.2rem;display:flex;align-items:stretch;box-shadow:var(--shadow);}
 .bio-mini-photo{width:110px;flex-shrink:0;object-fit:cover;object-position:center top;display:block;}
 .bio-mini-body{padding:1.1rem 1.2rem;flex:1;display:flex;flex-direction:column;justify-content:center;gap:.3rem;}
@@ -538,9 +320,6 @@ details.acc-urgent[open] .acc-chev-urgent{transform:rotate(180deg)}
 .bio-mini-link{display:inline-flex;align-items:center;gap:.35rem;margin-top:.65rem;font-size:.75rem;font-weight:600;color:var(--gold);border:1px solid rgba(184,137,58,.3);border-radius:6px;padding:.3rem .75rem;width:fit-content;transition:background .15s,border-color .15s;}
 .bio-mini-link:hover{background:var(--gold-pale);border-color:rgba(184,137,58,.5)}
 
-/* ══════════════════════════════════
-   FOOTER & MISC
-══════════════════════════════════ */
 .footer{background:var(--ink);padding:3.5rem 2rem 2rem}
 .footer-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:3rem;margin-bottom:2.5rem;}
 .footer-brand p{font-size:.8rem;color:rgba(255,255,255,.5);line-height:1.7;max-width:280px}
@@ -555,7 +334,6 @@ details.acc-urgent[open] .acc-chev-urgent{transform:rotate(180deg)}
 .wa-float:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(37,211,102,.5)}
 .wa-float svg{width:20px;height:20px;fill:#fff;flex:0 0 auto}
 
-/* TZ modal */
 .tz-modal{position:fixed;top:0;left:0;right:0;bottom:0;width:100%;height:100%;z-index:99999;display:none;align-items:center;justify-content:center;padding:20px;}
 .tz-modal.is-open{display:flex}
 .tz-backdrop{position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(13,27,42,.6);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);opacity:0;transition:opacity .22s;}
@@ -573,7 +351,39 @@ details.acc-urgent[open] .acc-chev-urgent{transform:rotate(180deg)}
 .tz-ok{width:100%;padding:.85rem;border-radius:8px;border:none;background:var(--ink);color:#fff;font-weight:600;font-size:.88rem;cursor:pointer;font-family:var(--sans);transition:background .2s,transform .08s;}
 .tz-ok:hover{background:#1e3a5f;transform:translateY(-1px)}
 
-/* Anims */
+/* ══════════════════════════════════
+   LISTA ESPERA MODAL & REFERENCIA MODAL
+══════════════════════════════════ */
+.lwe-modal,.ref-modal{position:fixed;inset:0;z-index:99998;display:none;align-items:center;justify-content:center;padding:16px;}
+.lwe-modal.is-open,.ref-modal.is-open{display:flex;}
+.lwe-backdrop,.ref-backdrop{position:absolute;inset:0;background:rgba(13,27,42,.72);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);}
+.lwe-panel,.ref-panel{position:relative;z-index:2;width:100%;max-width:420px;background:#fff;border-radius:16px;border:1px solid var(--rule);box-shadow:0 24px 64px rgba(13,27,42,.3);overflow:hidden;max-height:90vh;display:flex;flex-direction:column;}
+.lwe-head,.ref-head{padding:1.1rem 1.3rem .9rem;border-bottom:1px solid var(--rule);flex-shrink:0;display:flex;align-items:flex-start;justify-content:space-between;gap:.75rem;}
+.lwe-head-txt,.ref-head-txt{display:flex;flex-direction:column;gap:3px;}
+.lwe-head-eyebrow,.ref-head-eyebrow{font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-light);}
+.lwe-head-title,.ref-head-title{font-family:var(--serif);font-size:1.1rem;font-weight:700;color:var(--ink);line-height:1.2;}
+.lwe-close,.ref-close{width:30px;height:30px;border-radius:50%;border:1px solid var(--rule);background:var(--canvas);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1rem;color:var(--ink-light);flex-shrink:0;transition:background .12s;}
+.lwe-close:hover,.ref-close:hover{background:var(--rule);}
+.lwe-body,.ref-body{padding:1.1rem 1.3rem 1.4rem;overflow-y:auto;-webkit-overflow-scrolling:touch;}
+.lwe-limit{background:rgba(245,158,11,.06);border:1px solid rgba(245,158,11,.3);border-radius:8px;padding:.75rem .9rem;font-size:.8rem;line-height:1.65;color:var(--ink-mid);margin-bottom:1rem;}
+.lwe-limit strong{color:#92400e;font-weight:700;}
+.lwe-steps{display:flex;flex-direction:column;gap:.5rem;margin-bottom:1rem;}
+.lwe-step{display:flex;align-items:flex-start;gap:.65rem;padding:.6rem .7rem;border-radius:8px;background:var(--canvas);border:1px solid var(--rule);}
+.lwe-step-badge{width:26px;height:26px;border-radius:50%;background:var(--ink);color:#fff;font-size:.72rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+.lwe-step-txt strong{display:block;font-size:.83rem;font-weight:700;color:var(--ink);}
+.lwe-step-txt span{font-size:.75rem;color:var(--ink-light);line-height:1.4;}
+.lwe-divider{height:1px;background:var(--rule);margin:.85rem 0;}
+.lwe-flow{font-size:.8rem;line-height:1.65;color:var(--ink-mid);margin-bottom:1rem;}
+.lwe-flow strong{color:var(--ink);font-weight:700;}
+.ref-option{display:flex;align-items:center;gap:.7rem;padding:.95rem 1rem;border-radius:10px;font-size:.88rem;font-weight:700;text-decoration:none;color:#fff;margin-bottom:.55rem;transition:all .14s;border:none;cursor:pointer;width:100%;font-family:var(--sans);text-align:left;}
+.ref-option:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(0,0,0,.15);}
+.ref-option.primary{background:var(--ink);border:1.5px solid var(--gold);}
+.ref-option.secondary{background:#25D366;}
+.ref-option-txt{display:flex;flex-direction:column;line-height:1.3;}
+.ref-option-txt span{font-size:.72rem;font-weight:400;opacity:.75;margin-top:2px;}
+.ref-divider{height:1px;background:var(--rule);margin:.9rem 0;position:relative;}
+.ref-divider::after{content:'o si no responde';position:absolute;top:-9px;left:50%;transform:translateX(-50%);background:#fff;padding:0 10px;font-size:.7rem;color:var(--ink-light);white-space:nowrap;}
+
 @keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
 .page-hero-inner > *{opacity:0;transform:translateY(20px);animation:fadeUp .6s ease forwards;}
 .page-hero-inner > *:nth-child(1){animation-delay:.08s}
@@ -582,27 +392,17 @@ details.acc-urgent[open] .acc-chev-urgent{transform:rotate(180deg)}
 .page-hero-inner > *:nth-child(4){animation-delay:.36s}
 .page-hero-inner > *:nth-child(5){animation-delay:.44s}
 
-/* Responsive */
 @media(max-width:768px){
-  .nav-links{display:none}
-  .hamburger{display:flex}
-  .nav-btn{padding:.45rem .8rem;font-size:.72rem}
-  .footer-inner{grid-template-columns:1fr}
-  .pay-grid{grid-template-columns:1fr 1fr}
-  .page-hero{padding:6.5rem 1.2rem 3rem}
-  .content{padding:2rem 1.2rem 5rem}
-  .step-inner{padding:1rem 1.1rem 1.2rem}
-  .tip-bar-inner{padding:.8rem 1.2rem}
+  .nav-links{display:none}.hamburger{display:flex}.nav-btn{padding:.45rem .8rem;font-size:.72rem}
+  .footer-inner{grid-template-columns:1fr}.pay-grid{grid-template-columns:1fr 1fr}
+  .page-hero{padding:6.5rem 1.2rem 3rem}.content{padding:2rem 1.2rem 5rem}
+  .step-inner{padding:1rem 1.1rem 1.2rem}.tip-bar-inner{padding:.8rem 1.2rem}
 }
 @media(max-width:480px){
-  .footer-bottom{flex-direction:column;align-items:flex-start}
-  .bio-mini-photo{width:80px}
-  .bio-mini-body{padding:.85rem .95rem}
-  .bio-mini-name{font-size:.95rem}
-  .cal-cta-row{grid-template-columns:1fr}
-  .cal-months-grid{grid-template-columns:repeat(2,1fr);}
-  .cal-slots-grid{grid-template-columns:repeat(3,1fr);}
-  .cal-dw-body{padding:12px 12px 24px;}
+  .footer-bottom{flex-direction:column;align-items:flex-start}.bio-mini-photo{width:80px}
+  .bio-mini-body{padding:.85rem .95rem}.bio-mini-name{font-size:.95rem}
+  .cal-cta-row{grid-template-columns:1fr}.cal-months-grid{grid-template-columns:repeat(2,1fr);}
+  .cal-slots-grid{grid-template-columns:repeat(3,1fr);}.cal-dw-body{padding:12px 12px 24px;}
   .cal-day-sub{display:none;}
 }
 </style>
@@ -644,7 +444,6 @@ details.acc-urgent[open] .acc-chev-urgent{transform:rotate(180deg)}
   WhatsApp
 </a>
 
-<!-- HERO -->
 <section class="page-hero">
   <div class="page-hero-bg"></div>
   <div class="page-hero-inner">
@@ -663,8 +462,6 @@ details.acc-urgent[open] .acc-chev-urgent{transform:rotate(180deg)}
 </div>
 
 <div class="content">
-
-  <!-- FLOW INDICATOR -->
   <div class="flow-wrap">
     <button class="flow-step active" id="fstep1" onclick="goToStep(1)" type="button">
       <div class="flow-num">1</div><div class="flow-label">Pago</div>
@@ -677,7 +474,7 @@ details.acc-urgent[open] .acc-chev-urgent{transform:rotate(180deg)}
     </button>
   </div>
 
-  <!-- ── PASO 1: PAGO ── -->
+  <!-- PASO 1 -->
   <div class="step-card" id="card1">
     <div class="step-header" onclick="toggleCard(1)">
       <div class="step-num-badge">1</div>
@@ -700,7 +497,6 @@ details.acc-urgent[open] .acc-chev-urgent{transform:rotate(180deg)}
             <div style="text-align:right"><div class="fee-price">$1,600</div><div class="fee-curr">MXN</div></div>
           </div>
         </div>
-
         <details class="transfer-acc">
           <summary class="transfer-sum">🏦 Pagar por transferencia — Banamex<span class="t-chev">▾</span></summary>
           <div class="transfer-body">
@@ -716,7 +512,6 @@ details.acc-urgent[open] .acc-chev-urgent{transform:rotate(180deg)}
             <div class="policy-note" style="margin-top:.75rem">⚠️ En concepto escribe <strong>solo el nombre del paciente</strong>.</div>
           </div>
         </details>
-
         <div class="pay-label">Otras opciones de pago</div>
         <div class="pay-grid">
           <a class="pay-pill" href="https://link.mercadopago.com.mx/deldhym">Efectivo</a>
@@ -726,7 +521,6 @@ details.acc-urgent[open] .acc-chev-urgent{transform:rotate(180deg)}
           <a class="pay-pill" href="https://www.eutimya.org/pagos/codi">CoDi</a>
           <a class="pay-pill" href="https://buy.stripe.com/aEU6qDbpt3G9aS4bII">Internacional</a>
         </div>
-
         <div class="btn-stack">
           <a class="btn btn-wa" href="https://wa.me/526731205121?text=Hola%20Doctor.%20Ya%20realic%C3%A9%20el%20pago%20y%20adjunto%20mi%20comprobante%20para%20confirmaci%C3%B3n%20de%20cita.">📲 WhatsApp — Enviar comprobante</a>
           <button class="btn btn-dark" type="button" onclick="goToStep(2)">Ya envié el comprobante → Ver horarios</button>
@@ -736,7 +530,7 @@ details.acc-urgent[open] .acc-chev-urgent{transform:rotate(180deg)}
     </div>
   </div>
 
-  <!-- ── PASO 2: HORARIO ── -->
+  <!-- PASO 2 -->
   <div class="step-card" id="card2">
     <div class="step-header" onclick="toggleCard(2)">
       <div class="step-num-badge">2</div>
@@ -748,10 +542,7 @@ details.acc-urgent[open] .acc-chev-urgent{transform:rotate(180deg)}
     </div>
     <div class="step-body" id="body2">
       <div class="step-inner">
-
         <div class="notice">🚨 <strong>Atención:</strong> Envía tu comprobante de pago por WhatsApp <strong>al menos 24 horas antes</strong> para asegurar tu horario. Sin comprobante, el lugar puede ser ocupado por otro paciente.</div>
-
-        <!-- ── CALENDAR CTAs ── -->
         <div class="cal-cta-row">
           <button class="cal-cta-btn browse" type="button" onclick="openCalDrawer('browse')">
             <div class="cal-cta-icon-wrap"><span class="cal-cta-icon">📅</span></div>
@@ -766,12 +557,12 @@ details.acc-urgent[open] .acc-chev-urgent{transform:rotate(180deg)}
             <div class="cal-cta-arrow">Confirmar cita →</div>
           </button>
         </div>
-
         <div class="location-box">
           📌 <strong>Consultorio:</strong> Calle Moras 619, Col. Del Valle Sur, Alcaldía Benito Juárez, CDMX, C.P. 03104 · <a href="https://maps.app.goo.gl/GXHkFxXcKrnqAdSg6">Ver en mapa</a><br><br>
           🎥 <strong>Online:</strong> Google Meet &nbsp;·&nbsp;<a href="https://apps.apple.com/us/app/google-meet/id1096918571">iPhone</a> &nbsp;|&nbsp;<a href="https://play.google.com/store/apps/details?id=com.google.android.apps.tachyon">Android</a> &nbsp;|&nbsp;<a href="https://meet.google.com/">PC</a>
         </div>
 
+        <!-- ACCORDION URGENTE — botones actualizados -->
         <details class="acc-urgent">
           <summary class="acc-sum-urgent">
             <div class="acc-sum-urgent-left"><div class="acc-pulse-dot"></div>🚨 ¿La próxima cita disponible está muy lejana?</div>
@@ -780,14 +571,14 @@ details.acc-urgent[open] .acc-chev-urgent{transform:rotate(180deg)}
           <div class="acc-body-urgent">
             <p>Si necesitas atención <strong>pronto</strong> y los horarios disponibles están muy alejados, tienes dos opciones:</p>
             <div style="display:flex;flex-direction:column;gap:.55rem;margin-top:.75rem">
-              <a href="https://wa.me/526731205121?text=Hola%20Doctor.%20Quiero%20quedar%20en%20la%20lista%20de%20espera%20prioritaria%20del%20Dr.%20Moya." style="display:flex;align-items:center;gap:.6rem;padding:.8rem .9rem;border-radius:8px;font-weight:700;font-size:.85rem;text-decoration:none;background:var(--ink);color:#fff;border:2px solid var(--gold);">
+              <button onclick="openLwe()" type="button" style="display:flex;align-items:center;gap:.6rem;padding:.8rem .9rem;border-radius:8px;font-weight:700;font-size:.85rem;background:var(--ink);color:#fff;border:2px solid var(--gold);cursor:pointer;font-family:var(--sans);width:100%;text-align:left;">
                 <span style="font-size:1rem">📋</span>
                 <div style="display:flex;flex-direction:column;line-height:1.3"><span>Lista de espera prioritaria</span><span style="font-size:.72rem;font-weight:500;opacity:.7">Te avisamos en cuanto haya un lugar</span></div>
-              </a>
-              <a href="https://wa.me/526731205121?text=Hola%20Doctor.%20La%20pr%C3%B3xima%20cita%20disponible%20est%C3%A1%20muy%20lejana%20y%20necesito%20atenci%C3%B3n%20pronto.%20%C2%BFMe%20puede%20referir%20con%20un%20colega%3F" style="display:flex;align-items:center;gap:.6rem;padding:.8rem .9rem;border-radius:8px;font-weight:700;font-size:.85rem;text-decoration:none;background:#25D366;color:#fff;">
+              </button>
+              <button onclick="openRef()" type="button" style="display:flex;align-items:center;gap:.6rem;padding:.8rem .9rem;border-radius:8px;font-weight:700;font-size:.85rem;background:#25D366;color:#fff;border:none;cursor:pointer;font-family:var(--sans);width:100%;text-align:left;">
                 <span style="font-size:1rem">👥</span>
                 <div style="display:flex;flex-direction:column;line-height:1.3"><span>Referencia con colega de confianza</span><span style="font-size:.72rem;font-weight:500;opacity:.85">Atención pronta con especialista recomendado</span></div>
-              </a>
+              </button>
             </div>
           </div>
         </details>
@@ -795,13 +586,12 @@ details.acc-urgent[open] .acc-chev-urgent{transform:rotate(180deg)}
         <details class="acc"><summary class="acc-sum">¿Tu cita coincide con trabajo o escuela?<span class="acc-chev">▾</span></summary><div class="acc-body"><p>No hay problema. Se puede extender una <strong>constancia de cita o justificante</strong> sin costo adicional.</p></div></details>
         <details class="acc"><summary class="acc-sum">¿No encuentras horario adecuado?<span class="acc-chev">▾</span></summary><div class="acc-body"><p>Elige el horario más cercano disponible para apartar tu lugar. Avísanos por WhatsApp para la <strong>lista prioritaria</strong> en caso de cancelaciones.</p></div></details>
         <details class="acc"><summary class="acc-sum">Cancelaciones y tolerancia<span class="acc-chev">▾</span></summary><div class="acc-body"><p>Notifica con al menos <strong>24 horas</strong> de anticipación. De lo contrario, se reinicia el proceso de agenda y pago.</p><p>Hay <strong>15 minutos de tolerancia</strong>. ⚠️ La cita se confirma al completar: <strong>pago + agenda + expediente</strong>.</p></div></details>
-
         <div class="btn-stack" style="margin-top:1rem"><button class="btn btn-dark" type="button" onclick="goToStep(3)">Ya elegí horario → Llenar expediente</button></div>
       </div>
     </div>
   </div>
 
-  <!-- ── PASO 3: EXPEDIENTE ── -->
+  <!-- PASO 3 -->
   <div class="step-card" id="card3">
     <div class="step-header" onclick="toggleCard(3)">
       <div class="step-num-badge">3</div>
@@ -839,11 +629,9 @@ details.acc-urgent[open] .acc-chev-urgent{transform:rotate(180deg)}
       <a class="bio-mini-link" href="https://psiquiatra-cdmx.eutimya.org/">Ver perfil completo →</a>
     </div>
   </div>
-
   <div class="legal-note">Al agendar aceptas el <a href="https://www.eutimya.org/aviso-de-privacidad-y-consentimiento-informado">aviso de privacidad y consentimiento informado</a>.</div>
 </div>
 
-<!-- FOOTER -->
 <footer class="footer">
   <div class="footer-inner">
     <div class="footer-brand">
@@ -877,9 +665,7 @@ details.acc-urgent[open] .acc-chev-urgent{transform:rotate(180deg)}
   </div>
 </footer>
 
-<!-- ══════════════════════════════════
-     CALENDAR DRAWER
-══════════════════════════════════ -->
+<!-- CALENDAR DRAWER -->
 <div class="cal-overlay" id="calOverlay" onclick="closeCalDrawer()"></div>
 <div class="cal-drawer" id="calDrawer" role="dialog" aria-modal="true">
   <div class="cal-dw-head browse" id="calDwHead">
@@ -892,11 +678,7 @@ details.acc-urgent[open] .acc-chev-urgent{transform:rotate(180deg)}
   <div class="cal-dw-banner browse" id="calDwBanner">
     📅 Estás en modo <strong>consulta</strong>. Al seleccionar un horario serás redirigido a pagar.
   </div>
-  <div class="cal-dw-body" id="calDwBody">
-    <!-- calendar renders here -->
-  </div>
-
-  <!-- Sticky bottom — solo visible en modo browse -->
+  <div class="cal-dw-body" id="calDwBody"></div>
   <div class="cal-dw-footer" id="calDwFooter">
     <details class="cal-footer-acc">
       <summary class="cal-footer-sum">
@@ -905,22 +687,21 @@ details.acc-urgent[open] .acc-chev-urgent{transform:rotate(180deg)}
         <span class="cal-footer-chev">▾</span>
       </summary>
       <div class="cal-footer-body">
-        <a href="https://wa.me/526731205121?text=Hola%20Doctor.%20Quiero%20quedar%20en%20la%20lista%20de%20espera%20prioritaria." class="cal-footer-btn dark">
+        <!-- FOOTER — botones actualizados -->
+        <button onclick="closeCalDrawer();openLwe()" type="button" class="cal-footer-btn dark">
           📋 Lista de espera prioritaria
           <span>Te avisamos en cuanto haya lugar</span>
-        </a>
-        <a href="https://wa.me/526731205121?text=Hola%20Doctor.%20La%20pr%C3%B3xima%20cita%20disponible%20est%C3%A1%20muy%20lejana.%20%C2%BFMe%20puede%20referir%20con%20un%20colega%3F" class="cal-footer-btn wa">
+        </button>
+        <button onclick="closeCalDrawer();openRef()" type="button" class="cal-footer-btn wa">
           👥 Referencia con colega de confianza
           <span>Atención pronta con especialista recomendado</span>
-        </a>
+        </button>
       </div>
     </details>
   </div>
 </div>
 
-<!-- ══════════════════════════════════
-     TZ MODAL
-══════════════════════════════════ -->
+<!-- TZ MODAL -->
 <div class="tz-modal" id="tzModal">
   <div class="tz-backdrop" onclick="closeTzModal(false)"></div>
   <div class="tz-panel" role="dialog" aria-modal="true">
@@ -937,9 +718,7 @@ details.acc-urgent[open] .acc-chev-urgent{transform:rotate(180deg)}
   </div>
 </div>
 
-<!-- ══════════════════════════════════
-     EXPEDIENTE DRAWER
-══════════════════════════════════ -->
+<!-- EXPEDIENTE DRAWER -->
 <div class="exp-overlay" id="expOverlay" onclick="closeExpDrawer()"></div>
 <div class="exp-drawer" id="expDrawer" role="dialog" aria-modal="true">
   <div class="exp-dw-head">
@@ -958,10 +737,86 @@ details.acc-urgent[open] .acc-chev-urgent{transform:rotate(180deg)}
   </div>
 </div>
 
+<!-- ══════════════════════════════════
+     LISTA DE ESPERA MODAL
+══════════════════════════════════ -->
+<div class="lwe-modal" id="lweModal" role="dialog" aria-modal="true">
+  <div class="lwe-backdrop" onclick="closeLwe()"></div>
+  <div class="lwe-panel">
+    <div class="lwe-head">
+      <div class="lwe-head-txt">
+        <span class="lwe-head-eyebrow">Agenda · Eutimya</span>
+        <span class="lwe-head-title">📋 Lista de Espera Prioritaria</span>
+      </div>
+      <button class="lwe-close" onclick="closeLwe()">✕</button>
+    </div>
+    <div class="lwe-body">
+      <div class="lwe-limit">
+        ⚠️ <strong>La agenda tiene un límite diario de pacientes.</strong> No es posible abrir espacios adicionales. Los lugares solo se liberan por <strong>cancelación o modificación</strong> de otro paciente — y puede que no haya ninguna. En ese caso, la cita ya agendada sería la definitiva.
+      </div>
+      <p style="font-size:.83rem;font-weight:600;color:var(--ink);margin-bottom:.65rem;">Para registrarte, completa los 3 pasos:</p>
+      <div class="lwe-steps">
+        <div class="lwe-step">
+          <div class="lwe-step-badge">1</div>
+          <div class="lwe-step-txt"><strong>💳 Pago</strong><span>Realiza el pago y conserva tu comprobante.</span></div>
+        </div>
+        <div class="lwe-step">
+          <div class="lwe-step-badge">2</div>
+          <div class="lwe-step-txt"><strong>🗓️ Fecha disponible</strong><span>Elige la próxima fecha en el calendario. Puede cambiar si hay cancelación de otro paciente.</span></div>
+        </div>
+        <div class="lwe-step">
+          <div class="lwe-step-badge">3</div>
+          <div class="lwe-step-txt"><strong>📄 Expediente</strong><span>Completa tu registro de primera vez.</span></div>
+        </div>
+      </div>
+      <div class="lwe-divider"></div>
+      <div class="lwe-flow">
+        Nos gustaría atender a más pacientes, pero la agenda tiene un máximo diario que no se puede ampliar. Si se presenta una cancelación, <strong>te enviaremos un WhatsApp</strong> con los horarios disponibles. Si acordamos el cambio, <strong>nosotros movemos el evento en el calendario</strong> — tú solo necesitas acudir.
+      </div>
+      <a href="https://wa.me/526731205121?text=Hola%20Doctor.%20Ya%20complet%C3%A9%20los%203%20pasos%20(pago%2C%20fecha%20y%20expediente).%20Adjunto%20mi%20comprobante%20de%20pago.%20Me%20gustar%C3%ADa%20quedar%20en%20la%20lista%20de%20espera%20prioritaria%20para%20recibir%20notificaci%C3%B3n%20en%20caso%20de%20cancelaci%C3%B3n." style="display:flex;align-items:center;justify-content:center;gap:.5rem;padding:.9rem;border-radius:8px;font-weight:700;font-size:.88rem;text-decoration:none;color:#fff;background:#25D366;">
+        📲 Avisar por WhatsApp — Ya hice los 3 pasos
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════
+     REFERENCIA MODAL
+══════════════════════════════════ -->
+<div class="ref-modal" id="refModal" role="dialog" aria-modal="true">
+  <div class="ref-backdrop" onclick="closeRef()"></div>
+  <div class="ref-panel">
+    <div class="ref-head">
+      <div class="ref-head-txt">
+        <span class="ref-head-eyebrow">Eutimya · Red de Colegas</span>
+        <span class="ref-head-title">👥 Referencia con Colega de Confianza</span>
+      </div>
+      <button class="ref-close" onclick="closeRef()">✕</button>
+    </div>
+    <div class="ref-body">
+      <p style="font-size:.83rem;color:var(--ink-mid);line-height:1.65;margin-bottom:1rem;">Te referimos con especialistas en quienes confiamos. Primera opción: <strong>Dra. Natalia</strong>, psiquiatra de nuestra red.</p>
+      <a class="ref-option primary" href="https://mental.eutimya.org/natalia" target="_blank" rel="noopener">
+        <span style="font-size:1.2rem;flex-shrink:0">🩺</span>
+        <div class="ref-option-txt">
+          Ver perfil de la Dra. Natalia
+          <span>Abre en nueva pestaña · Agenda directamente con ella</span>
+        </div>
+      </a>
+      <div class="ref-divider"></div>
+      <p style="font-size:.78rem;color:var(--ink-light);line-height:1.55;margin-bottom:.65rem;">Si la Dra. Natalia no tiene disponibilidad o no responde, escríbenos y te referimos con otro especialista de confianza.</p>
+      <a class="ref-option secondary" href="https://wa.me/526731205121?text=Hola%20Doctor.%20Revis%C3%A9%20el%20perfil%20de%20la%20Dra.%20Natalia%20pero%20no%20tiene%20disponibilidad%20o%20no%20responde.%20%C2%BFMe%20puede%20referir%20con%20otro%20colega%3F" target="_blank" rel="noopener">
+        <span style="font-size:1.1rem;flex-shrink:0">💬</span>
+        <div class="ref-option-txt">
+          WhatsApp — Necesito otra referencia
+          <span>Te enviamos con otro especialista de nuestra confianza</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
 <script>
-// ════════════════════════════════════════
-//  STEP ACCORDION
-// ════════════════════════════════════════
+// ── STEP ACCORDION ──
 function getPanel(n){return document.getElementById('body'+n);}
 function getCard(n){return document.getElementById('card'+n);}
 function openCard(n,skipScroll){
@@ -992,194 +847,94 @@ function updateFlow(n){
 function goToStep(n){[1,2,3].forEach(function(i){if(i!==n)closeCard(i);});updateFlow(n);openCard(n,false);}
 (function(){[1,2,3].forEach(function(n){var p=getPanel(n);if(p)p.style.height='0px';});})();
 
-// ════════════════════════════════════════
-//  CALENDAR CONFIG
-// ════════════════════════════════════════
-var CAL = {
-  PROXY:   'https://script.google.com/macros/s/AKfycbxT4MaXgIzLtJcVOCrbDtcCXM8Ut55CAoVbT5bzAfDEG31JAbkkkz51wTx_kbZqh4DY/exec',   // ← pega aquí la URL de tu GAS deployment
-  CAL_ID:  'deldhym@gmail.com',
-  PAY_URL: 'https://eutimya.org/pagos',
-  BOOK_URLS: {
-    presencial: 'https://calendar.app.google/hVPCfAaEvMhS1VFj7',
-    online:     'https://calendar.app.google/YTgW98iGSFEUMa4W7'
-  },
-  DURATION: 50,
-  TZ: 'America/Mexico_City',
-  AHEAD_MONTHS: 12,
-  MIN_HOURS: 6,
-  SCHED: {
-    presencial: {
-      0:[{s:'09:00',e:'13:00'},{s:'13:20',e:'14:10'}],
-      1:[{s:'09:00',e:'13:00'},{s:'13:20',e:'14:10'}],
-      2:[{s:'09:00',e:'13:00'},{s:'13:20',e:'14:10'}],
-      3:[{s:'09:00',e:'13:00'},{s:'13:20',e:'14:10'}],
-      4:[{s:'09:00',e:'13:00'},{s:'13:20',e:'14:10'}],
-      5:[{s:'09:00',e:'18:00'}],
-      6:[{s:'10:00',e:'18:00'}]
-    },
-    online: {
-      0:[{s:'09:00',e:'13:00'},{s:'13:20',e:'14:10'},{s:'20:30',e:'21:30'}],
-      1:[{s:'09:00',e:'13:00'},{s:'13:20',e:'14:10'},{s:'20:30',e:'21:30'}],
-      2:[{s:'09:00',e:'13:00'},{s:'13:20',e:'14:10'},{s:'20:30',e:'21:30'}],
-      3:[{s:'09:00',e:'13:00'},{s:'13:20',e:'14:10'},{s:'20:30',e:'21:30'}],
-      4:[{s:'09:00',e:'13:00'},{s:'13:20',e:'14:10'},{s:'20:30',e:'21:30'}],
-      5:[],6:[]
-    }
+// ── CALENDAR CONFIG ──
+var CAL={
+  PROXY:'https://script.google.com/macros/s/AKfycbxT4MaXgIzLtJcVOCrbDtcCXM8Ut55CAoVbT5bzAfDEG31JAbkkkz51wTx_kbZqh4DY/exec',
+  CAL_ID:'deldhym@gmail.com',PAY_URL:'https://eutimya.org/pagos',
+  BOOK_URLS:{presencial:'https://calendar.app.google/hVPCfAaEvMhS1VFj7',online:'https://calendar.app.google/YTgW98iGSFEUMa4W7'},
+  DURATION:50,TZ:'America/Mexico_City',AHEAD_MONTHS:12,MIN_HOURS:6,
+  SCHED:{
+    presencial:{0:[{s:'09:00',e:'13:00'},{s:'13:20',e:'14:10'}],1:[{s:'09:00',e:'13:00'},{s:'13:20',e:'14:10'}],2:[{s:'09:00',e:'13:00'},{s:'13:20',e:'14:10'}],3:[{s:'09:00',e:'13:00'},{s:'13:20',e:'14:10'}],4:[{s:'09:00',e:'13:00'},{s:'13:20',e:'14:10'}],5:[{s:'09:00',e:'18:00'}],6:[{s:'10:00',e:'18:00'}]},
+    online:{0:[{s:'09:00',e:'13:00'},{s:'13:20',e:'14:10'},{s:'20:30',e:'21:30'}],1:[{s:'09:00',e:'13:00'},{s:'13:20',e:'14:10'},{s:'20:30',e:'21:30'}],2:[{s:'09:00',e:'13:00'},{s:'13:20',e:'14:10'},{s:'20:30',e:'21:30'}],3:[{s:'09:00',e:'13:00'},{s:'13:20',e:'14:10'},{s:'20:30',e:'21:30'}],4:[{s:'09:00',e:'13:00'},{s:'13:20',e:'14:10'},{s:'20:30',e:'21:30'}],5:[],6:[]}
   }
 };
-
-// ════════════════════════════════════════
-//  CALENDAR STATE
-// ════════════════════════════════════════
-var CS = {
-  mode: 'browse',   // 'browse' | 'book'
-  type: 'presencial',
-  view: 'months',
-  selMonth: null,
-  selDate: null,
-  busy: {}
-};
-
-var NOW   = new Date();
-var TODAY = new Date(NOW); TODAY.setHours(0,0,0,0);
+var CS={mode:'browse',type:'presencial',view:'months',selMonth:null,selDate:null,busy:{}};
+var NOW=new Date();var TODAY=new Date(NOW);TODAY.setHours(0,0,0,0);
 var MN=['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
 var DN=['Lun','Mar','Mié','Jue','Vie','Sáb','Dom'];
-
 function cdow(d){return(d.getDay()+6)%7;}
 function cToMin(t){var p=t.split(':').map(Number);return p[0]*60+p[1];}
 function cFmMin(m){return String(Math.floor(m/60)).padStart(2,'0')+':'+String(m%60).padStart(2,'0');}
 function cMKey(y,m){return y+'-'+String(m+1).padStart(2,'0');}
 function cDKey(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');}
-
 function calSlots(date){
-  var blocks=CAL.SCHED[CS.type][cdow(date)]||[];
-  var out=[];
-  blocks.forEach(function(b){
-    var c=cToMin(b.s),end=cToMin(b.e);
-    while(c+CAL.DURATION<=end){out.push(cFmMin(c));c+=CAL.DURATION;}
-  });
+  var blocks=CAL.SCHED[CS.type][cdow(date)]||[];var out=[];
+  blocks.forEach(function(b){var c=cToMin(b.s),end=cToMin(b.e);while(c+CAL.DURATION<=end){out.push(cFmMin(c));c+=CAL.DURATION;}});
   var cutoff=new Date(NOW.getTime()+CAL.MIN_HOURS*3600000);
-  return out.filter(function(t){
-    var p=t.split(':').map(Number);
-    var dt=new Date(date);dt.setHours(p[0],p[1],0,0);
-    return dt>cutoff;
-  });
+  return out.filter(function(t){var p=t.split(':').map(Number);var dt=new Date(date);dt.setHours(p[0],p[1],0,0);return dt>cutoff;});
 }
-
 function calIsBusy(date,t){
-  var mk=cMKey(date.getFullYear(),date.getMonth());
-  var p=t.split(':').map(Number);
-  var ss=new Date(date);ss.setHours(p[0],p[1],0,0);
-  var se=new Date(ss);se.setMinutes(se.getMinutes()+CAL.DURATION);
-  return (CS.busy[mk]||[]).some(function(b){return ss<b.end&&se>b.start;});
+  var mk=cMKey(date.getFullYear(),date.getMonth());var p=t.split(':').map(Number);
+  var ss=new Date(date);ss.setHours(p[0],p[1],0,0);var se=new Date(ss);se.setMinutes(se.getMinutes()+CAL.DURATION);
+  return(CS.busy[mk]||[]).some(function(b){return ss<b.end&&se>b.start;});
 }
-
-function calDayStatus(date){
-  var all=calSlots(date);if(!all.length)return{free:0};
-  var free=all.filter(function(t){return!calIsBusy(date,t);}).length;
-  return{free:free};
-}
-
+function calDayStatus(date){var all=calSlots(date);if(!all.length)return{free:0};var free=all.filter(function(t){return!calIsBusy(date,t);}).length;return{free:free};}
 async function calFetchBusy(y,m){
-  var mk=cMKey(y,m);
-  if(CS.busy[mk]!==undefined)return;
-  CS.busy[mk]=[];
+  var mk=cMKey(y,m);if(CS.busy[mk]!==undefined)return;CS.busy[mk]=[];
   if(!CAL.PROXY||CAL.PROXY.indexOf('script.google.com')===-1)return;
-  try{
-    var r=await fetch(CAL.PROXY+'?y='+y+'&m='+m);
-    var d=await r.json();
-    CS.busy[mk]=(d.busy||[])
-      .map(function(b){return{start:new Date(b.start),end:new Date(b.end)};});
-  }catch(e){CS.busy[mk]=[];}
+  try{var r=await fetch(CAL.PROXY+'?y='+y+'&m='+m);var d=await r.json();CS.busy[mk]=(d.busy||[]).map(function(b){return{start:new Date(b.start),end:new Date(b.end)};});}catch(e){CS.busy[mk]=[];}
 }
-
-// ════════════════════════════════════════
-//  CALENDAR RENDER
-// ════════════════════════════════════════
 function calSetBody(h){document.getElementById('calDwBody').innerHTML=h;}
 function calSpin(){calSetBody('<div style="display:flex;justify-content:center;padding:40px"><div class="cal-spinner"></div></div>');}
-
 function calBC(){
   var tn=CS.type==='presencial'?'Presencial':'Online';
   if(CS.view==='months')return'';
-  if(CS.view==='days'){
-    var sm=CS.selMonth;
-    return'<div class="cal-bc"><span class="crumb" onclick="calGoMonths()">'+tn+'</span><span class="sep">›</span><span>'+MN[sm.m]+' '+sm.y+'</span></div>';
-  }
-  if(CS.view==='slots'){
-    var lbl=CS.selDate.toLocaleDateString('es-MX',{weekday:'long',day:'numeric',month:'long'});
-    return'<div class="cal-bc"><span class="crumb" onclick="calGoMonths()">'+tn+'</span><span class="sep">›</span><span class="crumb" onclick="calGoDays()">'+MN[CS.selMonth.m]+'</span><span class="sep">›</span><span style="text-transform:capitalize">'+lbl+'</span></div>';
-  }
+  if(CS.view==='days'){var sm=CS.selMonth;return'<div class="cal-bc"><span class="crumb" onclick="calGoMonths()">'+tn+'</span><span class="sep">›</span><span>'+MN[sm.m]+' '+sm.y+'</span></div>';}
+  if(CS.view==='slots'){var lbl=CS.selDate.toLocaleDateString('es-MX',{weekday:'long',day:'numeric',month:'long'});return'<div class="cal-bc"><span class="crumb" onclick="calGoMonths()">'+tn+'</span><span class="sep">›</span><span class="crumb" onclick="calGoDays()">'+MN[CS.selMonth.m]+'</span><span class="sep">›</span><span style="text-transform:capitalize">'+lbl+'</span></div>';}
   return'';
 }
-
 function calRenderMonths(){
   CS.view='months';CS.selDate=null;
   var base=new Date(TODAY.getFullYear(),TODAY.getMonth(),1);
   var html='<div class="cal-type-row">';
   html+='<button class="cal-type-btn'+(CS.type==='presencial'?' active':'')+'" onclick="calSetType(\'presencial\',event)">📍 Presencial</button>';
   html+='<button class="cal-type-btn'+(CS.type==='online'?' active':'')+'" onclick="calSetType(\'online\',event)">💻 Online</button>';
-  html+='</div>';
-  html+='<div class="cal-card"><div class="cal-card-head"><h2>Selecciona un mes</h2></div><div class="cal-card-body">';
-  html+='<div class="cal-months-grid cal-view">';
+  html+='</div><div class="cal-card"><div class="cal-card-head"><h2>Selecciona un mes</h2></div><div class="cal-card-body"><div class="cal-months-grid cal-view">';
   for(var i=0;i<CAL.AHEAD_MONTHS;i++){
-    var d=new Date(base);d.setMonth(d.getMonth()+i);
-    var y=d.getFullYear(),m=d.getMonth();
-    var past=d<base;
-    var avail=0;
+    var d=new Date(base);d.setMonth(d.getMonth()+i);var y=d.getFullYear(),m=d.getMonth();
+    var past=d<base;var avail=0;
     if(!past){var dim=new Date(y,m+1,0).getDate();for(var day=1;day<=dim;day++){var dd=new Date(y,m,day);if(dd<TODAY)continue;if((CAL.SCHED[CS.type][cdow(dd)]||[]).length>0)avail++;}}
     html+='<div class="cal-month-tile'+(past?' past':'')+'" onclick="calSelMonth('+y+','+m+')">';
     html+='<div class="cal-mt-name">'+MN[m]+'</div><div class="cal-mt-year">'+y+'</div>';
-    html+='<div class="cal-mt-count '+(avail>0?'has':'none')+'">'+(past?'—':avail>0?avail+' días':'Sin disp.')+'</div>';
-    html+='</div>';
+    html+='<div class="cal-mt-count '+(avail>0?'has':'none')+'">'+(past?'—':avail>0?avail+' días':'Sin disp.')+'</div></div>';
   }
-  html+='</div></div></div>';
-  calSetBody(html);
+  html+='</div></div></div>';calSetBody(html);
 }
-
 async function calRenderDays(){
-  CS.view='days';CS.selDate=null;
-  calSpin();
-  var y=CS.selMonth.y,m=CS.selMonth.m;
-  await calFetchBusy(y,m);
-  var dim=new Date(y,m+1,0).getDate();
-  var first=cdow(new Date(y,m,1));
-  var todayK=cDKey(TODAY);
+  CS.view='days';CS.selDate=null;calSpin();
+  var y=CS.selMonth.y,m=CS.selMonth.m;await calFetchBusy(y,m);
+  var dim=new Date(y,m+1,0).getDate();var first=cdow(new Date(y,m,1));var todayK=cDKey(TODAY);
   var html='<div class="cal-type-row">';
   html+='<button class="cal-type-btn'+(CS.type==='presencial'?' active':'')+'" onclick="calSetType(\'presencial\',event)">📍 Presencial</button>';
   html+='<button class="cal-type-btn'+(CS.type==='online'?' active':'')+'" onclick="calSetType(\'online\',event)">💻 Online</button>';
-  html+='</div>';
-  html+=calBC();
-  html+='<div class="cal-card"><div class="cal-card-head"><h2>'+MN[m]+' '+y+'</h2></div><div class="cal-card-body">';
-  html+='<div class="cal-view">';
+  html+='</div>'+calBC()+'<div class="cal-card"><div class="cal-card-head"><h2>'+MN[m]+' '+y+'</h2></div><div class="cal-card-body"><div class="cal-view">';
   html+='<div class="cal-dow-row">';DN.forEach(function(l){html+='<div class="cal-dow-lbl">'+l+'</div>';});html+='</div>';
   html+='<div class="cal-days-grid">';
   for(var i=0;i<first;i++)html+='<div class="cal-day empty"></div>';
   for(var d2=1;d2<=dim;d2++){
-    var date=new Date(y,m,d2);var dk=cDKey(date);
-    var isPast=date<TODAY;var isToday=dk===todayK;
-    var blocks=CAL.SCHED[CS.type][cdow(date)]||[];
-    var tr=isToday?' today-ring':'';
+    var date=new Date(y,m,d2);var dk=cDKey(date);var isPast=date<TODAY;var isToday=dk===todayK;
+    var blocks=CAL.SCHED[CS.type][cdow(date)]||[];var tr=isToday?' today-ring':'';
     if(isPast){html+='<div class="cal-day past'+tr+'"><span class="cal-day-num">'+d2+'</span></div>';}
     else if(!blocks.length){html+='<div class="cal-day off'+tr+'"><span class="cal-day-num">'+d2+'</span><span class="cal-day-sub">No disp.</span></div>';}
-    else{
-      var free=calDayStatus(date).free;
-      if(free===0){html+='<div class="cal-day busy'+tr+'"><span class="cal-day-num">'+d2+'</span><span class="cal-day-sub">Ocupado</span></div>';}
-      else{html+='<div class="cal-day avail'+tr+'" onclick="calSelDay('+y+','+m+','+d2+')"><span class="cal-day-num">'+d2+'</span><span class="cal-day-sub">'+free+' libre'+(free!==1?'s':'')+'</span></div>';}
-    }
+    else{var free=calDayStatus(date).free;if(free===0){html+='<div class="cal-day busy'+tr+'"><span class="cal-day-num">'+d2+'</span><span class="cal-day-sub">Ocupado</span></div>';}else{html+='<div class="cal-day avail'+tr+'" onclick="calSelDay('+y+','+m+','+d2+')"><span class="cal-day-num">'+d2+'</span><span class="cal-day-sub">'+free+' libre'+(free!==1?'s':'')+'</span></div>';}}
   }
-  html+='</div>';
-  html+='<div class="cal-legend"><div class="cal-leg"><div class="cal-leg-sq g"></div>Disponible</div><div class="cal-leg"><div class="cal-leg-sq r"></div>No disponible</div><div class="cal-leg"><div class="cal-leg-sq e"></div>Pasado</div></div>';
-  html+='</div></div></div>';
+  html+='</div><div class="cal-legend"><div class="cal-leg"><div class="cal-leg-sq g"></div>Disponible</div><div class="cal-leg"><div class="cal-leg-sq r"></div>No disponible</div><div class="cal-leg"><div class="cal-leg-sq e"></div>Pasado</div></div></div></div></div>';
   calSetBody(html);
 }
-
 function calRenderSlots(){
-  CS.view='slots';
-  var date=CS.selDate;
+  CS.view='slots';var date=CS.selDate;
   var lbl=date.toLocaleDateString('es-MX',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
-  var all=calSlots(date);
-  var html=calBC();
+  var all=calSlots(date);var html=calBC();
   html+='<div class="cal-card"><div class="cal-card-head"><h2>Selecciona un horario</h2></div><div class="cal-card-body"><div class="cal-view">';
   html+='<div class="cal-slots-date" style="text-transform:capitalize">'+lbl+'</div>';
   if(!all.length){html+='<p style="color:#80868b;font-size:13px;">Sin horarios disponibles.</p>';}
@@ -1193,132 +948,79 @@ function calRenderSlots(){
     html+='</div>';
   }
   html+='<div class="cal-legend" style="margin-top:14px;"><div class="cal-leg"><div class="cal-leg-sq g"></div>'+(CS.mode==='browse'?'Clic → ir a pagar':'Clic → confirmar cita')+'</div><div class="cal-leg"><div class="cal-leg-sq r"></div>No disponible</div></div>';
-  html+='</div></div></div>';
-  calSetBody(html);
+  html+='</div></div></div>';calSetBody(html);
 }
-
-// ════════════════════════════════════════
-//  CALENDAR ACTIONS
-// ════════════════════════════════════════
-function calSetType(type,e){
-  CS.type=type;CS.busy={};
-  calRenderMonths();
-}
+function calSetType(type,e){CS.type=type;CS.busy={};calRenderMonths();}
 function calSelMonth(y,m){CS.selMonth={y:y,m:m};calRenderDays();}
 function calSelDay(y,m,d){CS.selDate=new Date(y,m,d);CS.selMonth={y:y,m:m};calRenderSlots();}
 function calGoMonths(){CS.selDate=null;calRenderMonths();}
 function calGoDays(){CS.selDate=null;calRenderDays();}
-
 function calSelSlot(t){
-  var d=CS.selDate;
-  if(CS.mode==='browse'){
-    // Cierra drawer y lleva al paso 1 (pago)
-    closeCalDrawer();
-    goToStep(1);
-  } else {
-    // book mode → TZ modal → Google Calendar
-    _tzUrl=CAL.BOOK_URLS[CS.type];
-    openTzModal(_tzUrl);
-  }
+  if(CS.mode==='browse'){closeCalDrawer();goToStep(1);}
+  else{_tzUrl=CAL.BOOK_URLS[CS.type];openTzModal(_tzUrl);}
 }
-
-// ════════════════════════════════════════
-//  CALENDAR DRAWER OPEN/CLOSE
-// ════════════════════════════════════════
 function calRenderBookCards(){
-  CS.view='months'; // reset state
+  CS.view='months';
   var html='<div class="cal-view" style="display:flex;flex-direction:column;gap:12px;margin-top:4px;">';
-  // Online card
   html+='<button onclick="calBookModality(\'online\')" style="display:flex;flex-direction:column;align-items:flex-start;padding:1.2rem 1.1rem 1rem;border-radius:10px;background:#0d1b2a;border:none;cursor:pointer;text-align:left;transition:all .16s;box-shadow:0 4px 18px rgba(13,27,42,.18);" onmouseover="this.style.transform=\'translateY(-2px)\'" onmouseout="this.style.transform=\'none\'">';
   html+='<span style="display:inline-flex;align-items:center;gap:3px;padding:2px 8px;border-radius:999px;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.1);font-size:.67rem;font-weight:700;color:rgba(255,255,255,.85);letter-spacing:.06em;text-transform:uppercase;margin-bottom:.65rem;">💻 EN LÍNEA</span>';
   html+='<span style="font-family:var(--serif);font-size:1.15rem;font-weight:700;color:#fff;line-height:1.1;margin-bottom:.15rem;">Online</span>';
   html+='<span style="font-family:var(--serif);font-size:1.55rem;font-weight:700;color:#b8893a;line-height:1;">$1,400</span>';
   html+='<span style="font-size:.67rem;font-weight:500;color:rgba(255,255,255,.55);margin-bottom:.55rem;">MXN · sesión 50 min</span>';
   html+='<span style="font-size:.75rem;color:rgba(255,255,255,.7);line-height:1.5;margin-bottom:.5rem;">Google Meet<br>Desde cualquier lugar</span>';
-  html+='<span style="font-size:.65rem;font-weight:700;color:rgba(255,255,255,.4);letter-spacing:.05em;text-transform:uppercase;margin-top:auto;">Toca para agendar →</span>';
-  html+='</button>';
-  // Presencial card
+  html+='<span style="font-size:.65rem;font-weight:700;color:rgba(255,255,255,.4);letter-spacing:.05em;text-transform:uppercase;margin-top:auto;">Toca para agendar →</span></button>';
   html+='<button onclick="calBookModality(\'presencial\')" style="display:flex;flex-direction:column;align-items:flex-start;padding:1.2rem 1.1rem 1rem;border-radius:10px;background:#0d1b2a;border:none;cursor:pointer;text-align:left;transition:all .16s;box-shadow:0 4px 18px rgba(13,27,42,.18);" onmouseover="this.style.transform=\'translateY(-2px)\'" onmouseout="this.style.transform=\'none\'">';
   html+='<span style="display:inline-flex;align-items:center;gap:3px;padding:2px 8px;border-radius:999px;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.1);font-size:.67rem;font-weight:700;color:rgba(255,255,255,.85);letter-spacing:.06em;text-transform:uppercase;margin-bottom:.65rem;">📍 CDMX</span>';
   html+='<span style="font-family:var(--serif);font-size:1.15rem;font-weight:700;color:#fff;line-height:1.1;margin-bottom:.15rem;">Presencial</span>';
   html+='<span style="font-family:var(--serif);font-size:1.55rem;font-weight:700;color:#b8893a;line-height:1;">$1,600</span>';
   html+='<span style="font-size:.67rem;font-weight:500;color:rgba(255,255,255,.55);margin-bottom:.55rem;">MXN · sesión 50 min</span>';
   html+='<span style="font-size:.75rem;color:rgba(255,255,255,.7);line-height:1.5;margin-bottom:.5rem;">Moras 619, Del Valle<br>Benito Juárez, CDMX</span>';
-  html+='<span style="font-size:.65rem;font-weight:700;color:rgba(255,255,255,.4);letter-spacing:.05em;text-transform:uppercase;margin-top:auto;">Toca para agendar →</span>';
-  html+='</button>';
-  html+='</div>';
-  calSetBody(html);
+  html+='<span style="font-size:.65rem;font-weight:700;color:rgba(255,255,255,.4);letter-spacing:.05em;text-transform:uppercase;margin-top:auto;">Toca para agendar →</span></button>';
+  html+='</div>';calSetBody(html);
 }
-
-function calBookModality(type){
-  _tzUrl=CAL.BOOK_URLS[type];
-  openTzModal(_tzUrl);
-}
-
+function calBookModality(type){_tzUrl=CAL.BOOK_URLS[type];openTzModal(_tzUrl);}
 function openCalDrawer(mode){
-  CS.mode=mode;
-  CS.view='months';CS.selDate=null;
-  // update header
+  CS.mode=mode;CS.view='months';CS.selDate=null;
   var head=document.getElementById('calDwHead');
   var modeEl=document.getElementById('calDwMode');
   var titleEl=document.getElementById('calDwTitle');
   var banner=document.getElementById('calDwBanner');
-  head.className='cal-dw-head '+mode;
-  banner.className='cal-dw-banner '+mode;
+  head.className='cal-dw-head '+mode;banner.className='cal-dw-banner '+mode;
   if(mode==='browse'){
-    modeEl.textContent='Consulta disponibilidad';
-    titleEl.textContent='Fechas y horarios disponibles';
+    modeEl.textContent='Consulta disponibilidad';titleEl.textContent='Fechas y horarios disponibles';
     banner.innerHTML='📅 Estás en modo <strong>consulta</strong>. Al seleccionar un horario regresarás al paso de pago.';
     calRenderMonths();
-  } else {
-    // book mode: show modality cards directly — Google Calendar has its own date picker
-    modeEl.textContent='Confirmar cita — Ya pagué';
-    titleEl.textContent='Elige modalidad';
+  }else{
+    modeEl.textContent='Confirmar cita — Ya pagué';titleEl.textContent='Elige modalidad';
     banner.innerHTML='✅ Selecciona la modalidad de tu cita. Serás redirigido al calendario para elegir fecha y hora.';
     calRenderBookCards();
   }
-  document.getElementById('calDwFooter').style.display = mode==='browse' ? '' : 'none';
+  document.getElementById('calDwFooter').style.display=mode==='browse'?'':'none';
   document.getElementById('calDrawer').classList.add('open');
   document.getElementById('calOverlay').classList.add('open');
   document.body.style.overflow='hidden';
 }
-
 function closeCalDrawer(){
   document.getElementById('calDrawer').classList.remove('open');
   document.getElementById('calOverlay').classList.remove('open');
   document.body.style.overflow='';
 }
 
-// ════════════════════════════════════════
-//  TZ MODAL
-// ════════════════════════════════════════
+// ── TZ MODAL ──
 var _tzUrl='';
 function openTzModal(url){
-  _tzUrl=url;var m=document.getElementById('tzModal');
-  if(!m)return;
-  m.setAttribute('aria-hidden','false');m.style.display='flex';
-  document.body.style.overflow='hidden';
-  requestAnimationFrame(function(){
-    var bd=m.querySelector('.tz-backdrop'),pn=m.querySelector('.tz-panel');
-    if(bd)bd.style.opacity='1';
-    if(pn){pn.style.transform='scale(1)';pn.style.opacity='1';}
-  });
+  _tzUrl=url;var m=document.getElementById('tzModal');if(!m)return;
+  m.setAttribute('aria-hidden','false');m.style.display='flex';document.body.style.overflow='hidden';
+  requestAnimationFrame(function(){var bd=m.querySelector('.tz-backdrop'),pn=m.querySelector('.tz-panel');if(bd)bd.style.opacity='1';if(pn){pn.style.transform='scale(1)';pn.style.opacity='1';}});
 }
 function closeTzModal(go){
   var m=document.getElementById('tzModal');if(!m)return;
   var bd=m.querySelector('.tz-backdrop'),pn=m.querySelector('.tz-panel');
-  if(bd)bd.style.opacity='0';
-  if(pn){pn.style.transform='scale(.92)';pn.style.opacity='0';}
-  setTimeout(function(){
-    m.style.display='none';m.setAttribute('aria-hidden','true');
-    document.body.style.overflow='hidden'; // keep cal drawer scroll locked
-    if(go&&_tzUrl)window.open(_tzUrl,'_blank');
-  },260);
+  if(bd)bd.style.opacity='0';if(pn){pn.style.transform='scale(.92)';pn.style.opacity='0';}
+  setTimeout(function(){m.style.display='none';m.setAttribute('aria-hidden','true');document.body.style.overflow='hidden';if(go&&_tzUrl)window.open(_tzUrl,'_blank');},260);
 }
 
-// ════════════════════════════════════════
-//  EXPEDIENTE DRAWER
-// ════════════════════════════════════════
+// ── EXPEDIENTE DRAWER ──
 function openExpDrawer(){
   document.getElementById('expLoader').classList.remove('hidden');
   document.getElementById('expIframe').src='https://docs.google.com/forms/d/e/1FAIpQLSeU7vGbVJSEUdM2av0zKSbLUAHuP-F1KSSKyR0CYzvz0xHybw/viewform?embedded=true';
@@ -1331,26 +1033,19 @@ function closeExpDrawer(){
   document.getElementById('expOverlay').classList.remove('open');
   document.body.style.overflow='';
 }
-function expIframeLoaded(){
-  var f=document.getElementById('expIframe');
-  if(f.src!=='about:blank')document.getElementById('expLoader').classList.add('hidden');
-}
+function expIframeLoaded(){var f=document.getElementById('expIframe');if(f.src!=='about:blank')document.getElementById('expLoader').classList.add('hidden');}
 
-// ════════════════════════════════════════
-//  NAV / MISC
-// ════════════════════════════════════════
-document.getElementById('hbg').addEventListener('click',function(e){
-  e.stopPropagation();document.getElementById('mnav').classList.toggle('open');
-});
-document.addEventListener('click',function(e){
-  var mnav=document.getElementById('mnav'),hbg=document.getElementById('hbg');
-  if(mnav.classList.contains('open')&&!mnav.contains(e.target)&&!hbg.contains(e.target))mnav.classList.remove('open');
-});
+// ── NAV ──
+document.getElementById('hbg').addEventListener('click',function(e){e.stopPropagation();document.getElementById('mnav').classList.toggle('open');});
+document.addEventListener('click',function(e){var mnav=document.getElementById('mnav'),hbg=document.getElementById('hbg');if(mnav.classList.contains('open')&&!mnav.contains(e.target)&&!hbg.contains(e.target))mnav.classList.remove('open');});
 document.querySelectorAll('#mnav a').forEach(function(a){a.addEventListener('click',function(){document.getElementById('mnav').classList.remove('open');});});
+
+// ── ESC closes all modals ──
 document.addEventListener('keydown',function(e){
-  if(e.key==='Escape'){closeCalDrawer();closeExpDrawer();closeTzModal(false);}
+  if(e.key==='Escape'){closeCalDrawer();closeExpDrawer();closeTzModal(false);closeLwe();closeRef();}
 });
 
+// ── COPY CLABE ──
 function copyClabe(){
   var text='002740701139090629',msg=document.getElementById('copy-msg');
   function done(ok){if(msg)msg.textContent=ok?'✓ CLABE copiada':'Cópiala manualmente.';if(ok)setTimeout(function(){if(msg)msg.textContent='';},3500);}
@@ -1358,6 +1053,14 @@ function copyClabe(){
   if(navigator.clipboard&&typeof navigator.clipboard.writeText==='function'){navigator.clipboard.writeText(text).then(function(){done(true);}).catch(fallback);return;}
   fallback();
 }
+
+// ── LISTA DE ESPERA MODAL ──
+function openLwe(){var m=document.getElementById('lweModal');if(m){m.classList.add('is-open');document.body.style.overflow='hidden';}}
+function closeLwe(){var m=document.getElementById('lweModal');if(m){m.classList.remove('is-open');document.body.style.overflow='';}}
+
+// ── REFERENCIA MODAL ──
+function openRef(){var m=document.getElementById('refModal');if(m){m.classList.add('is-open');document.body.style.overflow='hidden';}}
+function closeRef(){var m=document.getElementById('refModal');if(m){m.classList.remove('is-open');document.body.style.overflow='';}}
 </script>
 </body>
 </html>
