@@ -862,8 +862,23 @@ var CAL={
   BOOK_URLS:{presencial:'https://calendar.app.google/hVPCfAaEvMhS1VFj7',online:'https://calendar.app.google/YTgW98iGSFEUMa4W7'},
   DURATION:50,TZ:'America/Mexico_City',AHEAD_MONTHS:12,MIN_HOURS:6,
   SCHED:{
-    presencial:{0:[{s:'09:00',e:'13:00'},{s:'13:20',e:'14:10'}],1:[{s:'09:00',e:'13:00'},{s:'13:20',e:'14:10'}],2:[{s:'09:00',e:'13:00'},{s:'13:20',e:'14:10'}],3:[{s:'09:00',e:'13:00'},{s:'13:20',e:'14:10'}],4:[{s:'09:00',e:'13:00'},{s:'13:20',e:'14:10'}],5:[{s:'09:00',e:'18:00'}],6:[{s:'10:00',e:'18:00'}]},
-    online:{0:[{s:'09:00',e:'13:00'},{s:'13:20',e:'14:10'},{s:'20:30',e:'21:30'}],1:[{s:'09:00',e:'13:00'},{s:'13:20',e:'14:10'},{s:'20:30',e:'21:30'}],2:[{s:'09:00',e:'13:00'},{s:'13:20',e:'14:10'},{s:'20:30',e:'21:30'}],3:[{s:'09:00',e:'13:00'},{s:'13:20',e:'14:10'},{s:'20:30',e:'21:30'}],4:[{s:'09:00',e:'13:00'},{s:'13:20',e:'14:10'},{s:'20:30',e:'21:30'}],5:[],6:[]}
+    presencial:{
+      0:['09:00','10:00','11:00','12:00','13:20'],
+      1:['09:00','10:00','11:00','12:00','13:20'],
+      2:['09:00','10:00','11:00','12:00','13:20'],
+      3:['09:00','10:00','11:00','12:00','13:20'],
+      4:['09:00','10:00','11:00','12:00','13:20'],
+      5:['09:00','10:00','11:00','12:00','13:00','14:00','15:00','16:00','17:00'],
+      6:['10:00','11:00','12:00','13:00','14:00','15:00','16:00','17:00']
+    },
+    online:{
+      0:['09:00','10:00','11:00','12:00','13:20','20:30'],
+      1:['09:00','10:00','11:00','12:00','13:20','20:30'],
+      2:['09:00','10:00','11:00','12:00','13:20','20:30'],
+      3:['09:00','10:00','11:00','12:00','13:20','20:30'],
+      4:['09:00','10:00','11:00','12:00','13:20','20:30'],
+      5:[],6:[]
+    }
   }
 };
 var CS={mode:'browse',type:'presencial',view:'months',selMonth:null,selDate:null,busy:{}};
@@ -876,10 +891,9 @@ function cFmMin(m){return String(Math.floor(m/60)).padStart(2,'0')+':'+String(m%
 function cMKey(y,m){return y+'-'+String(m+1).padStart(2,'0');}
 function cDKey(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');}
 function calSlots(date){
-  var blocks=CAL.SCHED[CS.type][cdow(date)]||[];var out=[];
-  blocks.forEach(function(b){var c=cToMin(b.s),end=cToMin(b.e);while(c+CAL.DURATION<=end){out.push(cFmMin(c));c+=CAL.DURATION;}});
+  var times=CAL.SCHED[CS.type][cdow(date)]||[];
   var cutoff=new Date(NOW.getTime()+CAL.MIN_HOURS*3600000);
-  return out.filter(function(t){var p=t.split(':').map(Number);var dt=new Date(date);dt.setHours(p[0],p[1],0,0);return dt>cutoff;});
+  return times.filter(function(t){var p=t.split(':').map(Number);var dt=new Date(date);dt.setHours(p[0],p[1],0,0);return dt>cutoff;});
 }
 function calIsBusy(date,t){
   var mk=cMKey(date.getFullYear(),date.getMonth());var p=t.split(':').map(Number);
@@ -910,11 +924,11 @@ function calRenderMonths(){
   html+='</div><div class="cal-card"><div class="cal-card-head"><h2>Selecciona un mes</h2></div><div class="cal-card-body"><div class="cal-months-grid cal-view">';
   for(var i=0;i<CAL.AHEAD_MONTHS;i++){
     var d=new Date(base);d.setMonth(d.getMonth()+i);var y=d.getFullYear(),m=d.getMonth();
-    var past=d<base;var avail=0;
-    if(!past){var dim=new Date(y,m+1,0).getDate();for(var day=1;day<=dim;day++){var dd=new Date(y,m,day);if(dd<TODAY)continue;if((CAL.SCHED[CS.type][cdow(dd)]||[]).length>0)avail++;}}
+    var past=d<base;var totalSlots=0;
+    if(!past){var dim=new Date(y,m+1,0).getDate();for(var day=1;day<=dim;day++){var dd=new Date(y,m,day);if(dd<TODAY)continue;totalSlots+=(CAL.SCHED[CS.type][cdow(dd)]||[]).length;}}
     html+='<div class="cal-month-tile'+(past?' past':'')+'" onclick="calSelMonth('+y+','+m+')">';
     html+='<div class="cal-mt-name">'+MN[m]+'</div><div class="cal-mt-year">'+y+'</div>';
-    html+='<div class="cal-mt-count '+(avail>0?'has':'none')+'">'+(past?'—':avail>0?avail+' días':'Sin disp.')+'</div></div>';
+    html+='<div class="cal-mt-count '+(totalSlots>0?'has':'none')+'">'+(past?'—':totalSlots>0?totalSlots+' horarios':'Sin disp.')+'</div></div>';
   }
   html+='</div></div></div>';calSetBody(html);
 }
