@@ -289,6 +289,21 @@ details.acc-urgent[open] .acc-chev-urgent{transform:rotate(180deg)}
 .exp-pill:hover{box-shadow:var(--shadow);border-color:var(--ink-light)}
 .legal-note{margin-top:1.8rem;padding:.75rem 1rem;border:1px solid var(--rule);border-radius:8px;background:var(--canvas);font-size:.73rem;line-height:1.6;color:var(--ink-light);text-align:center;}
 .legal-note a{color:var(--ink-mid);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+
+.policy-acc{margin-top:.5rem;border:1px solid var(--rule);border-radius:8px;background:#fff;overflow:hidden;}
+.policy-sum{list-style:none;cursor:pointer;padding:.7rem 1rem;display:flex;align-items:center;justify-content:space-between;font-size:.73rem;font-weight:600;color:var(--ink-light);background:var(--canvas);transition:background .15s;user-select:none;}
+.policy-sum:hover{background:#f0f0ee;}
+.policy-sum::-webkit-details-marker{display:none;}
+.policy-chev{transition:transform .18s;font-size:.65rem;opacity:.5;flex-shrink:0;}
+details.policy-acc[open] .policy-chev{transform:rotate(180deg);}
+.policy-body{padding:.9rem 1rem 1rem;border-top:1px solid var(--rule);display:flex;flex-direction:column;gap:.65rem;}
+.policy-section{display:flex;gap:.6rem;font-size:.78rem;line-height:1.6;color:var(--ink-mid);}
+.policy-section strong{display:block;color:var(--ink);font-weight:700;font-size:.8rem;margin-bottom:.15rem;}
+.policy-section p{margin:0;}
+.policy-num{width:22px;height:22px;border-radius:50%;background:var(--ink);color:#fff;font-size:.6rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;letter-spacing:-.01em;}
+.policy-refund{font-size:.78rem;line-height:1.6;color:var(--ink-mid);background:rgba(184,137,58,.06);border:1px solid rgba(184,137,58,.25);border-radius:7px;padding:.65rem .8rem;}
+.policy-refund strong{color:#92400e;}
+.policy-accept{font-size:.72rem;color:var(--ink-light);text-align:center;padding-top:.3rem;border-top:1px solid var(--rule);}
 .exp-overlay{position:fixed;inset:0;z-index:500;background:rgba(8,14,22,.72);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s;}
 .exp-overlay.open{opacity:1;visibility:visible;}
 .exp-drawer{position:fixed;top:0;right:0;bottom:0;z-index:501;width:min(680px,100vw);background:#fff;display:flex;flex-direction:column;transform:translateX(102%);transition:transform .38s cubic-bezier(.22,.9,.3,1);box-shadow:-16px 0 48px rgba(0,0,0,.18);}
@@ -634,7 +649,116 @@ details.acc-urgent[open] .acc-chev-urgent{transform:rotate(180deg)}
       <a class="bio-mini-link" href="https://psiquiatra-cdmx.eutimya.org/">Ver perfil completo →</a>
     </div>
   </div>
-  <div class="legal-note">Al agendar aceptas el <a href="https://www.eutimya.org/aviso-de-privacidad-y-consentimiento-informado">aviso de privacidad y consentimiento informado</a>.</div>
+  <details class="policy-acc">
+    <summary class="policy-sum">🔒 Aviso de privacidad y consentimiento informado <span class="policy-chev">▾</span></summary>
+    <div class="policy-body">
+      <div class="policy-section">
+        <div class="policy-num">I</div>
+        <div>
+          <strong>Responsable del tratamiento</strong>
+          <p>Dr. Deldhy Nicolás Moya Sánchez, Médico Especialista en Psiquiatría (Cédula de Especialidad 14788885), con domicilio en Calle Moras 619, Col. Del Valle Sur, Alcaldía Benito Juárez, Ciudad de México, C.P. 03104, es el responsable del tratamiento de sus datos personales.</p>
+        </div>
+      </div>
+      <div class="policy-section">
+        <div class="policy-num">II</div>
+        <div>
+          <strong>Datos personales recabados</strong>
+          <p>Se recaban datos de identificación (nombre, fecha de nacimiento, género), contacto (correo electrónico, teléfono), y datos personales sensibles de carácter clínico (antecedentes médicos, psiquiátricos, motivo de consulta, escalas de evaluación). Estos últimos se encuentran especialmente protegidos conforme al artículo 9 de la LFPDPPP.</p>
+        </div>
+      </div>
+      <div class="policy-section">
+        <div class="policy-num">III</div>
+        <div>
+          <strong>Finalidades del tratamiento</strong>
+          <p>Sus datos se utilizan para: (a) integrar y mantener el expediente clínico conforme a la NOM-004-SSA3-2012; (b) coordinar y confirmar citas; (c) emitir recetas, notas médicas y documentación clínica; (d) facturación electrónica cuando sea solicitada; (e) envío de recordatorios de cita por medios electrónicos.</p>
+        </div>
+      </div>
+      <div class="policy-section">
+        <div class="policy-num">IV</div>
+        <div>
+          <strong>Transferencias de datos</strong>
+          <p>Sus datos no serán transferidos a terceros sin su consentimiento expreso, salvo las excepciones previstas en el artículo 37 de la LFPDPPP: cumplimiento de obligaciones legales, requerimientos de autoridades sanitarias competentes (COFEPRIS, IMSS, ISSSTE) o mandato judicial.</p>
+        </div>
+      </div>
+      <div class="policy-section">
+        <div class="policy-num">V</div>
+        <div>
+          <strong>Derechos ARCO</strong>
+          <p>Usted tiene derecho a <strong>Acceder, Rectificar, Cancelar u Oponerse</strong> al tratamiento de sus datos personales. Para ejercerlos, envíe su solicitud por WhatsApp al <a href="https://wa.me/526731205121" style="color:var(--ink-mid);font-weight:600;">número de contacto del consultorio</a>. Su solicitud será atendida en un plazo máximo de 20 días hábiles.</p>
+        </div>
+      </div>
+      <div class="policy-section">
+        <div class="policy-num">VI</div>
+        <div>
+          <strong>Consentimiento informado</strong>
+          <p>La atención psiquiátrica implica la recopilación de información clínica sensible. Al utilizar esta plataforma, el paciente otorga su consentimiento informado para la integración del expediente clínico, la evaluación psiquiátrica y el tratamiento de sus datos conforme a lo dispuesto en la NOM-004-SSA3-2012 y la Ley General de Salud.</p>
+        </div>
+      </div>
+      <div class="policy-section">
+        <div class="policy-num">VII</div>
+        <div>
+          <strong>Confidencialidad y seguridad</strong>
+          <p>La información clínica está protegida por el secreto profesional médico. Se implementan medidas técnicas, administrativas y físicas para resguardar sus datos contra acceso no autorizado, pérdida o divulgación indebida, conforme al Reglamento de la LFPDPPP.</p>
+        </div>
+      </div>
+      <div class="policy-refund" style="background:rgba(13,27,42,.04);border-color:rgba(13,27,42,.15);">
+        📄 El aviso de privacidad integral se encuentra disponible en <a href="https://www.eutimya.org/aviso-de-privacidad-y-consentimiento-informado" style="color:var(--ink);font-weight:700;text-decoration:underline;text-underline-offset:3px">eutimya.org/aviso-de-privacidad</a>.
+      </div>
+      <p class="policy-accept">Solo con agendar y utilizar esta plataforma declaras haber leído y aceptar el presente aviso de privacidad y consentimiento informado.</p>
+    </div>
+  </details>
+
+  <details class="policy-acc">
+    <summary class="policy-sum">📋 Política de cancelaciones, inasistencia y puntualidad <span class="policy-chev">▾</span></summary>
+    <div class="policy-body">
+      <div class="policy-section">
+        <div class="policy-num">1</div>
+        <div>
+          <strong>Confirmación de la cita</strong>
+          <p>La cita se confirma únicamente al completar los tres elementos: registro en agenda, pago correspondiente y expediente/formulario (cuando aplique). Hasta entonces el horario no está reservado.</p>
+        </div>
+      </div>
+      <div class="policy-section">
+        <div class="policy-num">2</div>
+        <div>
+          <strong>Cancelaciones o reprogramaciones</strong>
+          <p>Notifica con al menos <strong>24 horas de anticipación</strong>. En ese caso, el pago puede aplicarse a una nueva cita o solicitar reembolso.</p>
+        </div>
+      </div>
+      <div class="policy-section">
+        <div class="policy-num">3</div>
+        <div>
+          <strong>Cancelación tardía o inasistencia</strong>
+          <p>Con menos de 24 horas o sin aviso: el espacio se considera utilizado, el cobro completo procede y se requiere nuevo proceso de agenda y pago. El horario queda reservado exclusivamente para el paciente y no se ofrece a otros.</p>
+        </div>
+      </div>
+      <div class="policy-section">
+        <div class="policy-num">4</div>
+        <div>
+          <strong>Puntualidad · 15 min de tolerancia</strong>
+          <p>Pasados 15 minutos, la sesión se realiza con el tiempo restante disponible o se considera cita perdida, según la agenda.</p>
+        </div>
+      </div>
+      <div class="policy-section">
+        <div class="policy-num">5</div>
+        <div>
+          <strong>Retraso del profesional</strong>
+          <p>Se ajustará el tiempo de sesión o se ofrecerá reprogramación sin costo.</p>
+        </div>
+      </div>
+      <div class="policy-section">
+        <div class="policy-num">6</div>
+        <div>
+          <strong>Situaciones extraordinarias</strong>
+          <p>Circunstancias médicas o fuerza mayor se evalúan individualmente.</p>
+        </div>
+      </div>
+      <div class="policy-refund">
+        💰 <strong>Reembolsos:</strong> Con ≥24 h de anticipación, el pago puede aplicarse a nueva cita o reembolsarse. En cancelación tardía o inasistencia sin aviso, no hay reembolso.
+      </div>
+      <p class="policy-accept">Solo con agendar y utilizar esta plataforma declaras haber leído y aceptar esta política.</p>
+    </div>
+  </details>
 </div>
 
 <footer class="footer">
