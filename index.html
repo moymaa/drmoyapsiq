@@ -98,7 +98,7 @@
     {"@type":"PropertyValue","name":"ORCID","value":"0000-0002-7989-4646"}
   ],
   "alumniOf":{"@type":"CollegeOrUniversity","name":"Universidad Nacional Autónoma de México"},
-  "worksFor":{"@type":"MedicalOrganization","name":"Centro Médico Nacional 20 de Noviembre, ISSSTE"},
+  "worksFor":{"@type":"MedicalOrganization","name":"Centro Médico Nacional 20 de Noviembre, ISSSTE","description":"4.° mejor hospital de México · Ranking Newsweek/Statista World's Best Hospitals 2026"},
   "memberOf":{"@type":"MedicalOrganization","name":"Eutimya"},
   "address":{"@type":"PostalAddress","streetAddress":"Calle Moras 619","addressLocality":"Colonia Del Valle Sur","addressRegion":"Ciudad de México","postalCode":"03104","addressCountry":"MX"},
   "geo":{"@type":"GeoCoordinates","latitude":19.3905,"longitude":-99.1649},
@@ -612,6 +612,32 @@ a{color:inherit;text-decoration:none}
   .nav-links .nav-hide-md{display:none}
 }
 
+
+/* Artículos grid responsive */
+#articulos > .wrap > div[style*="repeat(3"] {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+}
+@media(max-width:900px){
+  #articulos > .wrap > div[style*="repeat(3"] {
+    grid-template-columns: 1fr 1fr !important;
+  }
+}
+@media(max-width:580px){
+  #articulos > .wrap > div[style*="repeat(3"] {
+    grid-template-columns: 1fr !important;
+  }
+}
+/* Medios grid responsive */
+#liderazgo div[style*="1fr 1fr"] {
+  display: grid !important;
+}
+@media(max-width:640px){
+  #liderazgo div[style*="1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+  }
+}
+
 </style>
 
 <script type="application/ld+json">
@@ -950,6 +976,7 @@ a{color:inherit;text-decoration:none}
       <li><a href="#acerca">Acerca</a></li>
       <li><a href="#servicios">Servicios</a></li>
       <li class="nav-hide-md"><a href="#publicaciones">Investigación</a></li>
+      <li class="nav-hide-md"><a href="#articulos">Artículos</a></li>
       <li><a href="#ia-salud-mental" title="IA y Salud Mental">IA &amp; Salud Mental</a></li>
       <li class="nav-hide-md"><a href="#credenciales">Cédulas</a></li>
       <li><a href="https://www.eutimya.org/pagos" target="_blank" rel="noopener">Pagos</a></li>
@@ -973,7 +1000,9 @@ a{color:inherit;text-decoration:none}
     <li><a href="#honorarios">Honorarios</a></li>
     <li><a href="#padecimientos">Padecimientos</a></li>
     <li class="nav-hide-md"><a href="#publicaciones">Investigación</a></li>
+      <li class="nav-hide-md"><a href="#articulos">Artículos</a></li>
     <li><a href="#ponencias">Congresos</a></li>
+    <li><a href="#articulos">Artículos</a></li>
     <li><a href="#credenciales">Cédulas y Títulos</a></li>
     <li><a href="https://www.eutimya.org/pagos" target="_blank" rel="noopener">Formas de pago</a></li>
     <li><a href="https://www.eutimya.org/factura" target="_blank" rel="noopener">Solicitar factura</a></li>
@@ -1069,6 +1098,7 @@ El Dr. Deldhy Nicolás Moya Sánchez es psiquiatra en la Ciudad de México, egre
     <div><span class="stat-n">★ 5.0</span><span class="stat-l">+100 reseñas Google</span></div>
     <div><span class="stat-n">+9</span><span class="stat-l">Publicaciones indexadas</span></div>
     <div><span class="stat-n">✓</span><span class="stat-l">Certificado CMP · Actualización constante</span></div>
+    <div><span class="stat-n">#4</span><span class="stat-l">CMN "20 Nov." · Mejor hospital México 2026</span></div>
     <div><span class="stat-n">★ UNAM</span><span class="stat-l">Mención Honorífica · Trayectoria destacada</span></div>
   </div>
 </div>
@@ -1258,7 +1288,9 @@ El Dr. Deldhy Nicolás Moya Sánchez es psiquiatra en la Ciudad de México, egre
         <p>Soy psiquiatra egresado con <strong>mención honorífica</strong> del Centro Médico Nacional "20 de Noviembre" (UNAM), con <strong>Alta Especialidad en Psiquiatría de Enlace</strong> — lo que me permite entender la salud mental en su contexto médico completo: no solo el diagnóstico psiquiátrico, sino cómo interactúa con enfermedades crónicas, cirugías o condiciones médicas.</p>
         <p>Mis consultas están basadas en evidencia. Uso escalas clínicas validadas, aplico psicofarmacología actualizada y combino con orientación en Terapia Cognitivo Conductual cuando es útil. Investigo activamente: tengo múltiples publicaciones en revistas internacionales indexadas y participo como revisor en <em>Cureus Journal</em>.</p>
         <p>Como <strong>Profesor de Medicina Psicológica en la Facultad de Medicina UNAM</strong> y con certificaciones por Stanford, McLean Hospital y la APA, me mantengo al día con los últimos avances. Miembro activo de la <strong>ACLP</strong> y la Asociación Psiquiátrica Mexicana.</p>
-        <p style="font-size:.8rem;color:var(--ink-light);margin-top:.5rem">Médico Adscrito al Servicio de Psiquiatría, CMN "20 de Noviembre", ISSSTE (2026). Maestría en Administración de Clínicas y Hospitales.</p>
+        <p style="font-size:.85rem;color:var(--ink-mid);margin-top:.5rem;line-height:1.75">
+  Como <strong>Médico Adscrito al Servicio de Psiquiatría del CMN "20 de Noviembre" (ISSSTE)</strong> y <strong>Profesor de Medicina Psicológica en la Facultad de Medicina de la UNAM</strong>, combina la práctica institucional de alto nivel con la consulta privada en Eutimya. Ha sido <strong>Jefe Nacional de Médicos Residentes del ISSSTE</strong> (2022–2023) y <strong>Consejero Nacional de Médicos Residentes del ISSSTE</strong> (2023–2025). Maestría en Administración de Clínicas y Hospitales.
+</p>
         <div class="cred-grid">
           <div class="cred-card"><div class="cred-k">ORCID</div><div class="cred-v">0000-0002-7989-4646</div></div>
           <div class="cred-card"><div class="cred-k">CP Maestría</div><div class="cred-v">14670759</div></div>
@@ -1435,18 +1467,198 @@ El Dr. Deldhy Nicolás Moya Sánchez es psiquiatra en la Ciudad de México, egre
   </div>
 </section>
 
+
+<!-- ARTÍCULOS Y BLOGS -->
+<section class="section section-alt" id="articulos">
+  <div class="wrap">
+    <p class="eyebrow">Divulgación y opinión</p>
+    <h2 class="section-h">Artículos y publicaciones de divulgación</h2>
+    <p class="section-sub">Textos publicados en distintas plataformas sobre salud mental, psiquiatría y temas de interés clínico, dirigidos tanto a profesionales como al público general.</p>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2rem">
+
+      <a href="https://eutimya.blogspot.com/2026/01/tdah-en-adultos-que-es-por-que-veces-se.html" target="_blank" rel="noopener" style="text-decoration:none;color:inherit">
+        <div style="background:#fff;border:1px solid var(--rule);border-radius:var(--r);padding:1.5rem;height:100%;display:flex;flex-direction:column;transition:box-shadow .2s" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,.08)'" onmouseout="this.style.boxShadow='none'">
+          <span style="display:inline-block;background:#f4a735;color:#fff;font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.25rem .65rem;border-radius:20px;margin-bottom:1rem;align-self:flex-start">Eutimya Blog</span>
+          <h3 style="font-family:var(--serif);font-size:1rem;color:var(--ink);margin-bottom:.7rem;line-height:1.45">TDAH en adultos: qué es, por qué a veces se detecta tarde y qué dice la evidencia</h3>
+          <p style="font-size:.82rem;color:var(--ink-mid);line-height:1.7;flex:1">Revisión clínica basada en neurociencia 2023 sobre el diagnóstico diferencial, curso longitudinal y evidencia actual del TDAH de inicio en la adultez.</p>
+          <span style="font-size:.8rem;color:var(--ink-mid);margin-top:1rem;font-weight:600">Enero 2026 · Leer →</span>
+        </div>
+      </a>
+
+      <a href="https://psiquiatria.com/ia-evaluacion-screening-escalas-psicometricas/inteligencia-artificial-en-salud-mental-usos-clinicos-riesgos-y-lineamientos-para-una-implementacion-etica" target="_blank" rel="noopener" style="text-decoration:none;color:inherit">
+        <div style="background:#fff;border:1px solid var(--rule);border-radius:var(--r);padding:1.5rem;height:100%;display:flex;flex-direction:column;transition:box-shadow .2s" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,.08)'" onmouseout="this.style.boxShadow='none'">
+          <span style="display:inline-block;background:#2563eb;color:#fff;font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.25rem .65rem;border-radius:20px;margin-bottom:1rem;align-self:flex-start">Psiquiatria.com</span>
+          <h3 style="font-family:var(--serif);font-size:1rem;color:var(--ink);margin-bottom:.7rem;line-height:1.45">Inteligencia Artificial en Salud Mental: Usos Clínicos, Riesgos y Lineamientos para una Implementación Ética</h3>
+          <p style="font-size:.82rem;color:var(--ink-mid);line-height:1.7;flex:1">Revisión sobre aplicaciones clínicas reales de la IA en psiquiatría, con análisis crítico de riesgos éticos y propuesta de lineamientos para su uso responsable.</p>
+          <span style="font-size:.8rem;color:var(--ink-mid);margin-top:1rem;font-weight:600">Psiquiatria.com · Leer →</span>
+        </div>
+      </a>
+
+      <a href="https://psiquiatria.com/bibliopsiquis/blog.php?artid=13696&idrev=&idvol=" target="_blank" rel="noopener" style="text-decoration:none;color:inherit">
+        <div style="background:#fff;border:1px solid var(--rule);border-radius:var(--r);padding:1.5rem;height:100%;display:flex;flex-direction:column;transition:box-shadow .2s" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,.08)'" onmouseout="this.style.boxShadow='none'">
+          <span style="display:inline-block;background:#2563eb;color:#fff;font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.25rem .65rem;border-radius:20px;margin-bottom:1rem;align-self:flex-start">Psiquiatria.com</span>
+          <h3 style="font-family:var(--serif);font-size:1rem;color:var(--ink);margin-bottom:.7rem;line-height:1.45">¿Por qué es esencial la Psiquiatría en la Cirugía Bariátrica?</h3>
+          <p style="font-size:.82rem;color:var(--ink-mid);line-height:1.7;flex:1">Impacto de la evaluación psiquiátrica preoperatoria en ansiedad, depresión y comportamiento alimentario. Enfoque de Psiquiatría de Enlace en cirugía metabólica.</p>
+          <span style="font-size:.8rem;color:var(--ink-mid);margin-top:1rem;font-weight:600">Psiquiatria.com · Leer →</span>
+        </div>
+      </a>
+
+      <a href="https://substack.com/@drmoyapsiq/p-184614570" target="_blank" rel="noopener" style="text-decoration:none;color:inherit">
+        <div style="background:#fff;border:1px solid var(--rule);border-radius:var(--r);padding:1.5rem;height:100%;display:flex;flex-direction:column;transition:box-shadow .2s" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,.08)'" onmouseout="this.style.boxShadow='none'">
+          <span style="display:inline-block;background:#ff6719;color:#fff;font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.25rem .65rem;border-radius:20px;margin-bottom:1rem;align-self:flex-start">Substack</span>
+          <h3 style="font-family:var(--serif);font-size:1rem;color:var(--ink);margin-bottom:.7rem;line-height:1.45">¿Por qué importa que un médico esté realmente calificado?</h3>
+          <p style="font-size:.82rem;color:var(--ink-mid);line-height:1.7;flex:1">Reflexión sobre la importancia de la certificación médica real, la diferencia entre acreditación y calificación, y lo que el paciente debe verificar antes de consultar.</p>
+          <span style="font-size:.8rem;color:var(--ink-mid);margin-top:1rem;font-weight:600">Substack · Leer →</span>
+        </div>
+      </a>
+
+      <a href="https://www.reddit.com/r/mental/comments/1n2ixiz/funcionan_los_antidepresivos_lo_que_veo_a_diario/" target="_blank" rel="noopener" style="text-decoration:none;color:inherit">
+        <div style="background:#fff;border:1px solid var(--rule);border-radius:var(--r);padding:1.5rem;height:100%;display:flex;flex-direction:column;transition:box-shadow .2s" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,.08)'" onmouseout="this.style.boxShadow='none'">
+          <span style="display:inline-block;background:#ff4500;color:#fff;font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.25rem .65rem;border-radius:20px;margin-bottom:1rem;align-self:flex-start">Reddit</span>
+          <h3 style="font-family:var(--serif);font-size:1rem;color:var(--ink);margin-bottom:.7rem;line-height:1.45">¿Funcionan los antidepresivos? Lo que veo a diario</h3>
+          <p style="font-size:.82rem;color:var(--ink-mid);line-height:1.7;flex:1">Perspectiva clínica directa sobre eficacia real de los antidepresivos en la consulta diaria: mitos, evidencia y lo que los pacientes necesitan saber.</p>
+          <span style="font-size:.8rem;color:var(--ink-mid);margin-top:1rem;font-weight:600">Reddit r/mental · Leer →</span>
+        </div>
+      </a>
+
+      <a href="https://medium.com/@drmoyapsiq/when-the-spark-goes-quiet-on-identity-validation-and-doing-hard-work-in-silence-9ba7e0003fe6" target="_blank" rel="noopener" style="text-decoration:none;color:inherit">
+        <div style="background:#fff;border:1px solid var(--rule);border-radius:var(--r);padding:1.5rem;height:100%;display:flex;flex-direction:column;transition:box-shadow .2s" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,.08)'" onmouseout="this.style.boxShadow='none'">
+          <span style="display:inline-block;background:#242424;color:#fff;font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.25rem .65rem;border-radius:20px;margin-bottom:1rem;align-self:flex-start">Medium</span>
+          <h3 style="font-family:var(--serif);font-size:1rem;color:var(--ink);margin-bottom:.7rem;line-height:1.45">When the Spark Goes Quiet: On Identity, Validation, and Doing Hard Work in Silence</h3>
+          <p style="font-size:.82rem;color:var(--ink-mid);line-height:1.7;flex:1">On the psychology of identity, the need for external validation, and why meaningful work often happens away from applause. In English.</p>
+          <span style="font-size:.8rem;color:var(--ink-mid);margin-top:1rem;font-weight:600">Medium · Read →</span>
+        </div>
+      </a>
+
+      <a href="https://medium.com/@drmoyapsiq/understanding-anxiety-when-thoughts-turn-against-us-0e8f7474c8c2" target="_blank" rel="noopener" style="text-decoration:none;color:inherit">
+        <div style="background:#fff;border:1px solid var(--rule);border-radius:var(--r);padding:1.5rem;height:100%;display:flex;flex-direction:column;transition:box-shadow .2s" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,.08)'" onmouseout="this.style.boxShadow='none'">
+          <span style="display:inline-block;background:#242424;color:#fff;font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.25rem .65rem;border-radius:20px;margin-bottom:1rem;align-self:flex-start">Medium</span>
+          <h3 style="font-family:var(--serif);font-size:1rem;color:var(--ink);margin-bottom:.7rem;line-height:1.45">Understanding Anxiety: When Thoughts Turn Against Us</h3>
+          <p style="font-size:.82rem;color:var(--ink-mid);line-height:1.7;flex:1">A clinical perspective on the cognitive mechanisms of anxiety and how intrusive thoughts escalate into disorder. In English.</p>
+          <span style="font-size:.8rem;color:var(--ink-mid);margin-top:1rem;font-weight:600">Medium · Read →</span>
+        </div>
+      </a>
+
+    </div>
+
+    <style>
+      @media(max-width:900px){
+        #articulos .art-grid{grid-template-columns:1fr 1fr!important}
+      }
+      @media(max-width:600px){
+        #articulos .art-grid{grid-template-columns:1fr!important}
+      }
+    </style>
+    <script>
+      document.querySelector('#articulos [style*="repeat(3"]') && 
+        document.querySelector('#articulos [style*="repeat(3"]').classList.add('art-grid');
+    </script>
+
+  </div>
+</section>
+
 <!-- LIDERAZGO -->
 <section class="section" id="liderazgo">
   <div class="wrap">
     <p class="eyebrow">Representación médica nacional</p>
     <h2 class="section-h">Liderazgo y cargos de representación</h2>
     <p class="section-sub">El Dr. Moya ocupó los más altos cargos de representación médica residente en México, siendo voz de miles de médicos residentes ante el ISSSTE.</p>
+    
+    <!-- Badge ranking Newsweek/Statista 2026 -->
+    <a href="https://www.gob.mx/issste/prensa/centro-medico-nacional-20-de-noviembre-del-issste-entre-los-10-mejores-hospitales-del-pais-marti-batres?idiom=es-MX" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;display:block;margin-bottom:2rem">
+      <div style="background:linear-gradient(135deg,#0a2240 0%,#1a3a5c 100%);border-radius:var(--r);padding:1.5rem 2rem;display:flex;flex-wrap:wrap;gap:1.2rem;align-items:center">
+        <div style="display:flex;align-items:center;gap:1rem;flex:1;min-width:200px">
+          <div style="background:rgba(255,255,255,.12);border-radius:50%;width:56px;height:56px;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+            <span style="font-size:1.8rem;line-height:1">🏆</span>
+          </div>
+          <div>
+            <div style="font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:.2rem">Newsweek · Statista · World's Best Hospitals 2026</div>
+            <div style="font-size:1.15rem;font-weight:700;color:#fff;line-height:1.3">CMN "20 de Noviembre" — <span style="color:#f4a735">4.° mejor hospital de México</span></div>
+            <div style="font-size:.78rem;color:rgba(255,255,255,.65);margin-top:.25rem">Entre los 10 mejores del país (públicos y privados) · Ranking de 60 hospitales nacionales · Febrero 2026</div>
+          </div>
+        </div>
+        <span style="font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.5);white-space:nowrap">Ver fuente →</span>
+      </div>
+    </a>
     <div class="lead-rows">
       <div class="lead-row"><div class="lead-dot"></div><div><div class="lead-text">👑 <strong>Jefe Nacional de Médicos Residentes del ISSSTE</strong> — Máximo cargo de representación residente a nivel nacional</div><div class="lead-year">2022–2023</div></div></div>
       <div class="lead-row"><div class="lead-dot"></div><div><div class="lead-text">🏛️ <strong>Consejero Nacional de Médicos Residentes del ISSSTE</strong></div><div class="lead-year">2023–2025</div></div></div>
       <div class="lead-row"><div class="lead-dot"></div><div><div class="lead-text">🏥 <strong>Jefe de Residentes · CMN 20 de Noviembre</strong></div><div class="lead-year">Gestiones 2022–2023 y 2024–2025</div></div></div>
       <div class="lead-row"><div class="lead-dot"></div><div><div class="lead-text">📋 <strong>Médico Adscrito · Servicio de Psiquiatría</strong> — Centro Médico Nacional "20 de Noviembre", ISSSTE</div><div class="lead-year">2026 – vigente</div></div></div>
       <div class="lead-row"><div class="lead-dot"></div><div><div class="lead-text">🎓 <strong>Profesor Titular UNAM</strong> — Medicina Psicológica y Comunicación · Facultad de Medicina</div><div class="lead-year">2025 – vigente</div></div></div>
+    </div>
+
+    <div style="margin-top:2.5rem;border-top:1px solid var(--rule);padding-top:2rem">
+      <p class="eyebrow" style="margin-bottom:1rem">Presencia en medios y participaciones institucionales</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+
+        <a href="https://comunicacionsocial.diputados.gob.mx/index.php/boletines/-la-comision-de-derechos-de-la-ni-ez-y-adolescencia-organizo-en-san-lazaro-el-foro-salud-mental-" target="_blank" rel="noopener" style="text-decoration:none;color:inherit">
+          <div style="background:var(--bg-alt,#faf9f7);border:1px solid var(--rule);border-radius:var(--r);padding:1.2rem;display:flex;gap:.9rem;align-items:flex-start;transition:box-shadow .2s" onmouseover="this.style.boxShadow='0 4px 12px rgba(0,0,0,.07)'" onmouseout="this.style.boxShadow='none'">
+            <span style="font-size:1.5rem;line-height:1">🏛️</span>
+            <div>
+              <div style="font-size:.7rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-mid);margin-bottom:.35rem">Cámara de Diputados · H. Congreso</div>
+              <div style="font-size:.88rem;font-weight:600;color:var(--ink);line-height:1.4">Foro "Salud Mental" — Comisión de Derechos de la Niñez y Adolescencia</div>
+              <div style="font-size:.78rem;color:var(--ink-mid);margin-top:.3rem">Ponente invitado · San Lázaro, CDMX</div>
+            </div>
+          </div>
+        </a>
+
+        <a href="https://lasalud.mx/tag/dr-deldhy-nicolas-moya-sanchez/" target="_blank" rel="noopener" style="text-decoration:none;color:inherit">
+          <div style="background:var(--bg-alt,#faf9f7);border:1px solid var(--rule);border-radius:var(--r);padding:1.2rem;display:flex;gap:.9rem;align-items:flex-start;transition:box-shadow .2s" onmouseover="this.style.boxShadow='0 4px 12px rgba(0,0,0,.07)'" onmouseout="this.style.boxShadow='none'">
+            <span style="font-size:1.5rem;line-height:1">📰</span>
+            <div>
+              <div style="font-size:.7rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-mid);margin-bottom:.35rem">LaSalud.mx</div>
+              <div style="font-size:.88rem;font-weight:600;color:var(--ink);line-height:1.4">Artículos y menciones en portal de salud nacional</div>
+              <div style="font-size:.78rem;color:var(--ink-mid);margin-top:.3rem">Ver todas las menciones →</div>
+            </div>
+          </div>
+        </a>
+
+        <a href="https://mundodehoy.com/tag/deldhy-nicolas-moya-sanchez/" target="_blank" rel="noopener" style="text-decoration:none;color:inherit">
+          <div style="background:var(--bg-alt,#faf9f7);border:1px solid var(--rule);border-radius:var(--r);padding:1.2rem;display:flex;gap:.9rem;align-items:flex-start;transition:box-shadow .2s" onmouseover="this.style.boxShadow='0 4px 12px rgba(0,0,0,.07)'" onmouseout="this.style.boxShadow='none'">
+            <span style="font-size:1.5rem;line-height:1">📰</span>
+            <div>
+              <div style="font-size:.7rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-mid);margin-bottom:.35rem">Mundo de Hoy</div>
+              <div style="font-size:.88rem;font-weight:600;color:var(--ink);line-height:1.4">Cobertura: Toma de protesta Jefatura de Médicos Residentes CMN 20 de Noviembre e ISSSTE</div>
+              <div style="font-size:.78rem;color:var(--ink-mid);margin-top:.3rem">Abril 2024 · Ver cobertura →</div>
+            </div>
+          </div>
+        </a>
+
+        <a href="https://www.debate.com.mx/guamuchil/Buscan-disminuir-indices-de-suicidios-en-medicos-residentes-20220308-0334.html" target="_blank" rel="noopener" style="text-decoration:none;color:inherit">
+          <div style="background:var(--bg-alt,#faf9f7);border:1px solid var(--rule);border-radius:var(--r);padding:1.2rem;display:flex;gap:.9rem;align-items:flex-start;transition:box-shadow .2s" onmouseover="this.style.boxShadow='0 4px 12px rgba(0,0,0,.07)'" onmouseout="this.style.boxShadow='none'">
+            <span style="font-size:1.5rem;line-height:1">📰</span>
+            <div>
+              <div style="font-size:.7rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-mid);margin-bottom:.35rem">El Debate · Salud</div>
+              <div style="font-size:.88rem;font-weight:600;color:var(--ink);line-height:1.4">Buscan disminuir índices de suicidios en médicos residentes</div>
+              <div style="font-size:.78rem;color:var(--ink-mid);margin-top:.3rem">Marzo 2022 · Fuente citada como especialista →</div>
+            </div>
+          </div>
+        </a>
+
+        <a href="https://www.debate.com.mx/guamuchil/En-Mexico-aumentaron-trastornos-psiquiatricos-en-pandemia-de-Covid-19-20211124-0320.html" target="_blank" rel="noopener" style="text-decoration:none;color:inherit">
+          <div style="background:var(--bg-alt,#faf9f7);border:1px solid var(--rule);border-radius:var(--r);padding:1.2rem;display:flex;gap:.9rem;align-items:flex-start;transition:box-shadow .2s" onmouseover="this.style.boxShadow='0 4px 12px rgba(0,0,0,.07)'" onmouseout="this.style.boxShadow='none'">
+            <span style="font-size:1.5rem;line-height:1">📰</span>
+            <div>
+              <div style="font-size:.7rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-mid);margin-bottom:.35rem">El Debate · Salud Mental</div>
+              <div style="font-size:.88rem;font-weight:600;color:var(--ink);line-height:1.4">En México aumentaron trastornos psiquiátricos en pandemia de COVID-19</div>
+              <div style="font-size:.78rem;color:var(--ink-mid);margin-top:.3rem">Noviembre 2021 · Fuente citada como especialista →</div>
+            </div>
+          </div>
+        </a>
+
+        <a href="https://www.linkedin.com/feed/update/urn:li:activity:7432086532326522880/" target="_blank" rel="noopener" style="text-decoration:none;color:inherit">
+          <div style="background:var(--bg-alt,#faf9f7);border:1px solid var(--rule);border-radius:var(--r);padding:1.2rem;display:flex;gap:.9rem;align-items:flex-start;transition:box-shadow .2s" onmouseover="this.style.boxShadow='0 4px 12px rgba(0,0,0,.07)'" onmouseout="this.style.boxShadow='none'">
+            <span style="font-size:1.5rem;line-height:1">💼</span>
+            <div>
+              <div style="font-size:.7rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-mid);margin-bottom:.35rem">LinkedIn</div>
+              <div style="font-size:.88rem;font-weight:600;color:var(--ink);line-height:1.4">Participación y actividad profesional en LinkedIn</div>
+              <div style="font-size:.78rem;color:var(--ink-mid);margin-top:.3rem">Ver publicación →</div>
+            </div>
+          </div>
+        </a>
+
+      </div>
     </div>
   </div>
 </section>
@@ -1541,6 +1753,36 @@ El Dr. Deldhy Nicolás Moya Sánchez es psiquiatra en la Ciudad de México, egre
       🔍 <strong>Verificación oficial:</strong>
       <a href="https://www.gob.mx/cedulaprofesional" target="_blank" rel="noopener">Cédulas SEP · cedulaprofesional.sep.gob.mx</a> ·
       <a href="https://conacem.org.mx" target="_blank" rel="noopener">Certificado CMP · conacem.org.mx</a>
+    </div>
+
+    <!-- Verificación de certificación -->
+    <div style="margin-top:2.5rem;border-top:1px solid var(--rule);padding-top:2rem">
+      <p class="eyebrow" style="margin-bottom:1rem">Certificación vigente — verificación pública</p>
+      <div style="background:linear-gradient(135deg,#f0f7ff 0%,#e8f4e8 100%);border:1px solid #c3d9f0;border-radius:var(--r);padding:1.8rem;display:flex;flex-wrap:wrap;gap:1.5rem;align-items:center">
+        <div style="flex:1;min-width:220px">
+          <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:.5rem">
+            <span style="font-size:1.6rem">✅</span>
+            <strong style="font-family:var(--serif);font-size:1.05rem;color:var(--ink)">Especialista Certificado en Psiquiatría</strong>
+          </div>
+          <p style="font-size:.83rem;color:var(--ink-mid);line-height:1.7;margin:0">
+            Consejo Mexicano de Psiquiatría, A.C. · N.º&nbsp;<strong>24803862</strong><br>
+            Vigencia: <strong>01&nbsp;marzo&nbsp;2025&nbsp;—&nbsp;01&nbsp;marzo&nbsp;2030</strong><br>
+            Foja:&nbsp;70 · Libro:&nbsp;1
+          </p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:.7rem">
+          <a href="https://consejomexicanopsiquiatria.org.mx/psiquiatria/pm935/" target="_blank" rel="noopener"
+             style="display:inline-flex;align-items:center;gap:.5rem;background:#1a3a5c;color:#fff;font-size:.78rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:.6rem 1.2rem;border-radius:6px;text-decoration:none;transition:opacity .2s"
+             onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
+            <span>🏥</span> Verificar en CMP
+          </a>
+          <a href="https://atum.conacem.net/consultar/0de8b040-330c-4000-a30d-9ee2a4a87df2" target="_blank" rel="noopener"
+             style="display:inline-flex;align-items:center;gap:.5rem;background:#1a5c3a;color:#fff;font-size:.78rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:.6rem 1.2rem;border-radius:6px;text-decoration:none;transition:opacity .2s"
+             onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
+            <span>🔍</span> Verificar en CONACEM
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
