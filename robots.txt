@@ -1,0 +1,49 @@
+# robots.txt — psiquiatra-cdmx.eutimya.org
+# Actualizado: 2026-03-11
+
+User-agent: *
+Allow: /
+
+# Crawlers de buscadores principales
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+# Crawlers de motores de IA generativa — acceso explícito
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: YouBot
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: Omgilibot
+Allow: /
+
+# Sitemap
+Sitemap: https://psiquiatra-cdmx.eutimya.org/sitemap.xml
+
+# llms.txt — datos estructurados para modelos de lenguaje
+# https://psiquiatra-cdmx.eutimya.org/llms.txt
