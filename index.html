@@ -247,8 +247,8 @@ a{color:inherit;text-decoration:none}
 .nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,.97);border-bottom:1px solid var(--rule);backdrop-filter:blur(10px);}
 .nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:.9rem 2rem;gap:1.5rem;}
 .nav-logo img{height:34px;width:auto}
-.nav-links{display:flex;gap:2.2rem;list-style:none;flex:1;justify-content:center;}
-.nav-links a{font-size:.8rem;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-mid);transition:color .2s;}
+.nav-links{display:flex;gap:1.1rem;list-style:none;flex:1;justify-content:center;}
+.nav-links a{font-size:.72rem;font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-mid);transition:color .2s;white-space:nowrap;}
 .nav-links a:hover{color:var(--ink)}
 .nav-btn{display:inline-flex;align-items:center;gap:.45rem;background:var(--ink);color:var(--white);padding:.55rem 1.4rem;border-radius:6px;font-size:.78rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;transition:background .2s;}
 .nav-btn:hover{background:#1e3a5f}
@@ -601,6 +601,17 @@ a{color:inherit;text-decoration:none}
 /* Nav link Cédulas */
 .nav-links .nav-credenciales{}
 
+
+/* Nav en pantallas medianas — ajuste fino */
+@media(max-width:1200px){
+  .nav-links{gap:.7rem}
+  .nav-links a{font-size:.68rem;letter-spacing:.02em}
+}
+@media(max-width:1024px){
+  /* Ocultar links menos críticos en tablet — mantener los esenciales */
+  .nav-links .nav-hide-md{display:none}
+}
+
 </style>
 
 <script type="application/ld+json">
@@ -938,11 +949,11 @@ a{color:inherit;text-decoration:none}
       <li><a href="#cuando">¿Cuándo?</a></li>
       <li><a href="#acerca">Acerca</a></li>
       <li><a href="#servicios">Servicios</a></li>
-      <li><a href="#publicaciones">Investigación</a></li>
-      <li><a href="#ia-salud-mental">IA &amp; Salud Mental</a></li>
-      <li><a href="#credenciales">Cédulas</a></li>
+      <li class="nav-hide-md"><a href="#publicaciones">Investigación</a></li>
+      <li><a href="#ia-salud-mental" title="IA y Salud Mental">IA &amp; Salud Mental</a></li>
+      <li class="nav-hide-md"><a href="#credenciales">Cédulas</a></li>
       <li><a href="https://www.eutimya.org/pagos" target="_blank" rel="noopener">Pagos</a></li>
-      <li><a href="https://www.eutimya.org/factura" target="_blank" rel="noopener">Factura</a></li>
+      <li class="nav-hide-md"><a href="https://www.eutimya.org/factura" target="_blank" rel="noopener">Factura</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul>
     <a href="https://psiquiatra-cdmx.eutimya.org/cita" class="nav-btn">
@@ -961,7 +972,7 @@ a{color:inherit;text-decoration:none}
     <li><a href="#servicios">Servicios</a></li>
     <li><a href="#honorarios">Honorarios</a></li>
     <li><a href="#padecimientos">Padecimientos</a></li>
-    <li><a href="#publicaciones">Investigación</a></li>
+    <li class="nav-hide-md"><a href="#publicaciones">Investigación</a></li>
     <li><a href="#ponencias">Congresos</a></li>
     <li><a href="#credenciales">Cédulas y Títulos</a></li>
     <li><a href="https://www.eutimya.org/pagos" target="_blank" rel="noopener">Formas de pago</a></li>
@@ -1481,47 +1492,47 @@ El Dr. Deldhy Nicolás Moya Sánchez es psiquiatra en la Ciudad de México, egre
     <p class="section-sub">Documentación oficial verificable. Todas las cédulas pueden consultarse en el portal SEP y CONACEM.</p>
     <div class="creds-gallery-grid">
       <div class="cred-thumb" role="button" tabindex="0" onclick="lbOpen(0)">
-        <img src="https://raw.githubusercontent.com/moymaa/drmoyapsiq/main/CP.jpg" alt="Cédula Profesional · Médico General · SEP No. 12152669" loading="lazy"/>
+        <img src="https://github.com/moymaa/drmoyapsiq/raw/4031156912c89e4aa45b7be56553e2cf6ddd0145/CP.jpg" alt="Cédula Profesional · Médico General · SEP No. 12152669" loading="lazy"/>
         <div class="cred-zoom-icon">+</div>
         <div class="cred-thumb-label">Cédula Profesional · Médico General · SEP No. 12152669 · UAS</div>
       </div>
       <div class="cred-thumb" role="button" tabindex="0" onclick="lbOpen(1)">
-        <img src="https://raw.githubusercontent.com/moymaa/drmoyapsiq/main/med.jpg" alt="Título Electrónico · Médico General · UAS" loading="lazy"/>
+        <img src="https://github.com/moymaa/drmoyapsiq/raw/4031156912c89e4aa45b7be56553e2cf6ddd0145/med.jpg" alt="Título Electrónico · Médico General · UAS" loading="lazy"/>
         <div class="cred-zoom-icon">+</div>
         <div class="cred-thumb-label">Título Electrónico · Médico General · UAS</div>
       </div>
       <div class="cred-thumb" role="button" tabindex="0" onclick="lbOpen(2)">
-        <img src="https://raw.githubusercontent.com/moymaa/drmoyapsiq/main/titulo.jpg" alt="Título Especialista en Psiquiatría · Mención Honorífica · UNAM" loading="lazy"/>
+        <img src="https://github.com/moymaa/drmoyapsiq/raw/4031156912c89e4aa45b7be56553e2cf6ddd0145/titulo.jpg" alt="Título Especialista en Psiquiatría · Mención Honorífica · UNAM" loading="lazy"/>
         <div class="cred-zoom-icon">+</div>
         <div class="cred-thumb-label">Título Especialista en Psiquiatría · Mención Honorífica · UNAM</div>
       </div>
       <div class="cred-thumb" role="button" tabindex="0" onclick="lbOpen(3)">
-        <img src="https://raw.githubusercontent.com/moymaa/drmoyapsiq/main/CE.jpg" alt="Cédula de Especialidad · Psiquiatría · SEP No. 14788885" loading="lazy"/>
+        <img src="https://github.com/moymaa/drmoyapsiq/raw/4031156912c89e4aa45b7be56553e2cf6ddd0145/CE.jpg" alt="Cédula de Especialidad · Psiquiatría · SEP No. 14788885" loading="lazy"/>
         <div class="cred-zoom-icon">+</div>
         <div class="cred-thumb-label">Cédula de Especialidad · Psiquiatría · SEP No. 14788885 · UNAM</div>
       </div>
       <div class="cred-thumb" role="button" tabindex="0" onclick="lbOpen(4)">
-        <img src="https://raw.githubusercontent.com/moymaa/drmoyapsiq/main/diploma.jpg" alt="Diploma Alta Especialidad · Psiquiatría de Enlace · UNAM 2025–2026" loading="lazy"/>
+        <img src="https://github.com/moymaa/drmoyapsiq/raw/4031156912c89e4aa45b7be56553e2cf6ddd0145/diploma.jpg" alt="Diploma Alta Especialidad · Psiquiatría de Enlace · UNAM 2025–2026" loading="lazy"/>
         <div class="cred-zoom-icon">+</div>
         <div class="cred-thumb-label">Diploma Alta Especialidad · Psiquiatría de Enlace · UNAM 2025–2026</div>
       </div>
       <div class="cred-thumb" role="button" tabindex="0" onclick="lbOpen(5)">
-        <img src="https://raw.githubusercontent.com/moymaa/drmoyapsiq/main/consejo.jpg" alt="Certificado Especialista en Psiquiatría · CONACEM 2025–2030" loading="lazy"/>
+        <img src="https://github.com/moymaa/drmoyapsiq/raw/4031156912c89e4aa45b7be56553e2cf6ddd0145/consejo.jpg" alt="Certificado Especialista en Psiquiatría · CONACEM 2025–2030" loading="lazy"/>
         <div class="cred-zoom-icon">+</div>
         <div class="cred-thumb-label">Certificado Especialista en Psiquiatría · CONACEM 2025–2030</div>
       </div>
       <div class="cred-thumb" role="button" tabindex="0" onclick="lbOpen(6)">
-        <img src="https://raw.githubusercontent.com/moymaa/drmoyapsiq/main/maestria.jpg" alt="Título · Maestría Administración de Clínicas y Hospitales · IUCA" loading="lazy"/>
+        <img src="https://github.com/moymaa/drmoyapsiq/raw/4031156912c89e4aa45b7be56553e2cf6ddd0145/maestria.jpg" alt="Título · Maestría Administración de Clínicas y Hospitales · IUCA" loading="lazy"/>
         <div class="cred-zoom-icon">+</div>
         <div class="cred-thumb-label">Título · Maestría Administración de Clínicas y Hospitales · IUCA</div>
       </div>
       <div class="cred-thumb" role="button" tabindex="0" onclick="lbOpen(7)">
-        <img src="https://raw.githubusercontent.com/moymaa/drmoyapsiq/main/CM.jpg" alt="Cédula Profesional · Maestría · SEP No. 14670759" loading="lazy"/>
+        <img src="https://github.com/moymaa/drmoyapsiq/raw/4031156912c89e4aa45b7be56553e2cf6ddd0145/CM.jpg" alt="Cédula Profesional · Maestría · SEP No. 14670759" loading="lazy"/>
         <div class="cred-zoom-icon">+</div>
         <div class="cred-thumb-label">Cédula Profesional · Maestría · SEP No. 14670759</div>
       </div>
       <div class="cred-thumb" role="button" tabindex="0" onclick="lbOpen(8)">
-        <img src="https://raw.githubusercontent.com/moymaa/drmoyapsiq/main/TCC.jpg" alt="Diploma Diplomado · Terapia Cognitivo Conductual · IMPCCC · 2023" loading="lazy"/>
+        <img src="https://github.com/moymaa/drmoyapsiq/raw/4031156912c89e4aa45b7be56553e2cf6ddd0145/TCC.jpg" alt="Diploma Diplomado · Terapia Cognitivo Conductual · IMPCCC · 2023" loading="lazy"/>
         <div class="cred-zoom-icon">+</div>
         <div class="cred-thumb-label">Diploma Diplomado · Terapia Cognitivo Conductual · IMPCCC · 2023</div>
       </div>
@@ -1800,15 +1811,15 @@ document.getElementById('vcf-btn').addEventListener('click',function(){
 /* ═══ LIGHTBOX ═══ */
 (function(){
   var creds=[
-    {src:'https://raw.githubusercontent.com/moymaa/drmoyapsiq/main/CP.jpg',cap:'Cédula Profesional · Médico General · SEP No. 12152669 · UAS'},
-    {src:'https://raw.githubusercontent.com/moymaa/drmoyapsiq/main/med.jpg',cap:'Título Electrónico · Médico General · UAS'},
-    {src:'https://raw.githubusercontent.com/moymaa/drmoyapsiq/main/titulo.jpg',cap:'Título Especialista en Psiquiatría · Mención Honorífica · UNAM'},
-    {src:'https://raw.githubusercontent.com/moymaa/drmoyapsiq/main/CE.jpg',cap:'Cédula de Especialidad · Psiquiatría · SEP No. 14788885 · UNAM'},
-    {src:'https://raw.githubusercontent.com/moymaa/drmoyapsiq/main/diploma.jpg',cap:'Diploma Alta Especialidad · Psiquiatría de Enlace · UNAM 2025–2026'},
-    {src:'https://raw.githubusercontent.com/moymaa/drmoyapsiq/main/consejo.jpg',cap:'Certificado Especialista en Psiquiatría · CONACEM 2025–2030'},
-    {src:'https://raw.githubusercontent.com/moymaa/drmoyapsiq/main/maestria.jpg',cap:'Título · Maestría Administración de Clínicas y Hospitales · IUCA'},
-    {src:'https://raw.githubusercontent.com/moymaa/drmoyapsiq/main/CM.jpg',cap:'Cédula Profesional · Maestría · SEP No. 14670759'},
-    {src:'https://raw.githubusercontent.com/moymaa/drmoyapsiq/main/TCC.jpg',cap:'Diploma Diplomado · Terapia Cognitivo Conductual · IMPCCC · 2023'}
+    {src:'https://github.com/moymaa/drmoyapsiq/raw/4031156912c89e4aa45b7be56553e2cf6ddd0145/CP.jpg',cap:'Cédula Profesional · Médico General · SEP No. 12152669 · UAS'},
+    {src:'https://github.com/moymaa/drmoyapsiq/raw/4031156912c89e4aa45b7be56553e2cf6ddd0145/med.jpg',cap:'Título Electrónico · Médico General · UAS'},
+    {src:'https://github.com/moymaa/drmoyapsiq/raw/4031156912c89e4aa45b7be56553e2cf6ddd0145/titulo.jpg',cap:'Título Especialista en Psiquiatría · Mención Honorífica · UNAM'},
+    {src:'https://github.com/moymaa/drmoyapsiq/raw/4031156912c89e4aa45b7be56553e2cf6ddd0145/CE.jpg',cap:'Cédula de Especialidad · Psiquiatría · SEP No. 14788885 · UNAM'},
+    {src:'https://github.com/moymaa/drmoyapsiq/raw/4031156912c89e4aa45b7be56553e2cf6ddd0145/diploma.jpg',cap:'Diploma Alta Especialidad · Psiquiatría de Enlace · UNAM 2025–2026'},
+    {src:'https://github.com/moymaa/drmoyapsiq/raw/4031156912c89e4aa45b7be56553e2cf6ddd0145/consejo.jpg',cap:'Certificado Especialista en Psiquiatría · CONACEM 2025–2030'},
+    {src:'https://github.com/moymaa/drmoyapsiq/raw/4031156912c89e4aa45b7be56553e2cf6ddd0145/maestria.jpg',cap:'Título · Maestría Administración de Clínicas y Hospitales · IUCA'},
+    {src:'https://github.com/moymaa/drmoyapsiq/raw/4031156912c89e4aa45b7be56553e2cf6ddd0145/CM.jpg',cap:'Cédula Profesional · Maestría · SEP No. 14670759'},
+    {src:'https://github.com/moymaa/drmoyapsiq/raw/4031156912c89e4aa45b7be56553e2cf6ddd0145/TCC.jpg',cap:'Diploma Diplomado · Terapia Cognitivo Conductual · IMPCCC · 2023'}
   ];
   var cur=0;
   var overlay=document.getElementById('lb-overlay');
