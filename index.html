@@ -1486,6 +1486,30 @@ El Dr. Deldhy Nicolás Moya Sánchez es psiquiatra en la Ciudad de México, egre
     <p class="section-sub">Textos publicados en distintas plataformas sobre salud mental, psiquiatría y temas de interés clínico, dirigidos tanto a profesionales como al público general.</p>
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2rem">
 
+      <!-- THE CONVERSATION · Featured article (full width) -->
+      <a href="https://theconversation.com/anxiety-and-adhd-can-overlap-heres-how-to-untangle-these-widespread-mental-health-disorders-271124" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;grid-column:1/-1">
+        <div style="background:#fff;border:2px solid #1a5276;border-radius:var(--r);overflow:hidden;display:flex;gap:0;transition:box-shadow .2s;box-shadow:0 2px 12px rgba(26,82,118,.08)" onmouseover="this.style.boxShadow='0 8px 32px rgba(26,82,118,.15)'" onmouseout="this.style.boxShadow='0 2px 12px rgba(26,82,118,.08)'">
+          <!-- Imagen lateral -->
+          <div style="flex-shrink:0;width:280px;min-height:200px;overflow:hidden;display:flex;align-items:center;justify-content:center;background:#f0f4f8">
+            <img src="https://images.theconversation.com/files/722663/original/file-20260308-57-ue39fh.jpg?ixlib=rb-4.1.0&rect=0%2C34%2C6000%2C3375&q=45&auto=format&w=600&fit=clip" alt="Ansiedad y TDAH — The Conversation" style="width:100%;height:100%;object-fit:cover;display:block"/>
+          </div>
+          <!-- Contenido -->
+          <div style="padding:1.6rem 2rem;display:flex;flex-direction:column;flex:1;min-width:0">
+            <div style="display:flex;align-items:center;gap:.75rem;flex-wrap:wrap;margin-bottom:1rem">
+              <span style="display:inline-block;background:#1a5276;color:#fff;font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.28rem .7rem;border-radius:20px">The Conversation</span>
+              <span style="font-size:.72rem;color:var(--ink-light);font-weight:500">Marzo 2026 · UNAM</span>
+              <span style="font-size:.72rem;background:#fef9ec;border:1px solid #f4a735;color:#b7791f;border-radius:20px;padding:.18rem .6rem;font-weight:600">✦ Artículo destacado</span>
+            </div>
+            <h3 style="font-family:var(--serif);font-size:1.25rem;font-weight:700;color:var(--ink);margin-bottom:.8rem;line-height:1.4">Anxiety and ADHD can overlap — here's how to untangle these widespread mental health disorders</h3>
+            <p style="font-size:.88rem;color:var(--ink-mid);line-height:1.75;flex:1;margin:0 0 1.2rem">El TDAH no diagnosticado puede esconderse detrás de la ansiedad durante años. Este artículo, publicado en The Conversation y avalado por la UNAM, explica por qué tratar solo lo visible puede dejar el problema de fondo sin resolver — y qué claves clínicas permiten distinguir ansiedad primaria de ansiedad secundaria al TDAH.</p>
+            <div style="display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap">
+              <span style="font-size:.8rem;font-weight:700;color:#1a5276">The Conversation · Leer artículo completo →</span>
+              <span style="font-size:.76rem;color:var(--ink-light)">Creative Commons · Deldhy N. Moya Sánchez</span>
+            </div>
+          </div>
+        </div>
+      </a>
+
       <a href="https://eutimya.blogspot.com/2026/01/tdah-en-adultos-que-es-por-que-veces-se.html" target="_blank" rel="noopener" style="text-decoration:none;color:inherit">
         <div style="background:#fff;border:1px solid var(--rule);border-radius:var(--r);padding:1.5rem;height:100%;display:flex;flex-direction:column;transition:box-shadow .2s" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,.08)'" onmouseout="this.style.boxShadow='none'">
           <span style="display:inline-block;background:#f4a735;color:#fff;font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.25rem .65rem;border-radius:20px;margin-bottom:1rem;align-self:flex-start">Eutimya Blog</span>
@@ -1557,6 +1581,10 @@ El Dr. Deldhy Nicolás Moya Sánchez es psiquiatra en la Ciudad de México, egre
       }
       @media(max-width:600px){
         #articulos .art-grid{grid-template-columns:1fr!important}
+      }
+      @media(max-width:768px){
+        #articulos a[style*="grid-column"] > div{flex-direction:column!important}
+        #articulos a[style*="grid-column"] div[style*="width:280px"]{width:100%!important;height:180px!important}
       }
     </style>
     <script>
