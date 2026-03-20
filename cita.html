@@ -206,16 +206,13 @@ details.transfer-acc[open] .t-chev{transform:rotate(180deg)}
 .cal-mt-count.has{color:var(--cal-green);}
 .cal-mt-count.none{color:var(--cal-red);font-weight:500;}
 .cal-month-tile.no-avail{background:var(--cal-red-bg);border-color:rgba(197,34,31,.3);pointer-events:none;cursor:default;}
-
-/* Botón regresar en vistas del calendario */
 .cal-btn-back{display:inline-flex;align-items:center;gap:4px;background:none;border:none;padding:0 0 12px 0;font-family:'Google Sans',sans-serif;font-size:12px;font-weight:500;color:#1a73e8;cursor:pointer;}
 .cal-btn-back:hover{text-decoration:underline;}
-
-/* Flotante rojo lejana */
-.lejana-float{position:fixed;bottom:24px;left:20px;z-index:502;display:none;align-items:center;gap:8px;background:linear-gradient(135deg,#dc2626,#b91c1c);color:#fff;padding:11px 16px;border-radius:999px;font-family:var(--sans);font-weight:700;font-size:13px;box-shadow:0 6px 24px rgba(185,28,28,.45);border:none;cursor:pointer;transition:transform .15s,box-shadow .2s;}
+.lejana-float{position:fixed;bottom:82px;right:20px;z-index:502;display:none;align-items:center;gap:8px;background:linear-gradient(135deg,#dc2626,#b91c1c);color:#fff;padding:11px 16px;border-radius:999px;font-family:var(--sans);font-weight:700;font-size:13px;box-shadow:0 6px 24px rgba(185,28,28,.45);border:none;cursor:pointer;transition:transform .15s,box-shadow .2s;}
 .lejana-float:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(185,28,28,.55);}
 .lejana-float.visible{display:inline-flex;}
 .lejana-float-dot{width:8px;height:8px;border-radius:50%;background:#fca5a5;flex-shrink:0;animation:dotPulse 1.2s ease-in-out infinite;}
+#lejanaMenu{position:fixed;bottom:140px;right:20px;z-index:503;background:#fff;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,.18);border:1px solid #f1f3f4;padding:10px;width:240px;display:none;flex-direction:column;gap:8px;}
 .cal-dow-row{display:grid;grid-template-columns:repeat(7,1fr);margin-bottom:5px;}
 .cal-dow-lbl{text-align:center;font-size:10px;font-weight:500;color:var(--cal-gray-600);text-transform:uppercase;letter-spacing:.05em;padding:3px 0;}
 .cal-days-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;}
@@ -822,14 +819,11 @@ details.policy-acc[open] .policy-chev{transform:rotate(180deg);}
   <div id="calDwFooter" style="display:none"></div>
 </div>
 
-<!-- Flotante rojo lejana -->
 <button class="lejana-float" id="lejanaFloat" onclick="toggleLejanaMenu()">
   <span class="lejana-float-dot"></span>
   🚨 ¿Cita muy lejana?
 </button>
-
-<!-- Mini menú lejana -->
-<div id="lejanaMenu" style="position:fixed;bottom:76px;left:20px;z-index:503;background:#fff;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,.18);border:1px solid #f1f3f4;padding:10px;width:240px;display:none;flex-direction:column;gap:8px;">
+<div id="lejanaMenu" style="position:fixed;bottom:140px;right:20px;z-index:503;background:#fff;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,.18);border:1px solid #f1f3f4;padding:10px;width:240px;display:none;flex-direction:column;gap:8px;">
   <button onclick="closeLejana();closeCalDrawer();openLwe()" style="display:flex;flex-direction:column;padding:10px 12px;border-radius:8px;background:#0d1b2a;color:#fff;border:1.5px solid #b8893a;font-size:13px;font-weight:700;line-height:1.3;cursor:pointer;text-align:left;">
     📋 Lista de espera prioritaria
     <span style="font-size:11px;font-weight:400;margin-top:2px;opacity:.75;">Te avisamos si hay cancelación</span>
