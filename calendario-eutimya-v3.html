@@ -170,16 +170,24 @@ body {
   margin-top: 6px;
   font-weight: 500;
 }
-.mt-count.has  { color: var(--green); }
-.mt-count.none { color: var(--red);  font-weight: 500; }
+.mt-count.has { color: var(--green); }
+.mt-count.none { color: var(--red); font-weight: 500; }
 .month-tile.no-avail {
-  border-color: rgba(197,34,31,0.30);
   background: var(--red-bg);
+  border-color: rgba(197,34,31,0.3);
+  pointer-events: none;
+  cursor: default;
 }
-.month-tile.no-avail:hover:not(.past) {
-  border-color: var(--red);
-  background: #f5c6c5;
+
+/* Botón regresar */
+.btn-back {
+  display: inline-flex; align-items: center; gap: 5px;
+  background: none; border: none; padding: 0 0 14px 0;
+  font-family: 'Google Sans', sans-serif;
+  font-size: 13px; font-weight: 500;
+  color: var(--blue); cursor: pointer;
 }
+.btn-back:hover { text-decoration: underline; }
 
 .dow-row {
   display: grid; grid-template-columns: repeat(7,1fr);
@@ -291,28 +299,6 @@ body {
 @keyframes spin { to { transform: rotate(360deg); } }
 
 .view { animation: fadeUp 0.2s ease; }
-
-.btn-back {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: none;
-  border: 1px solid var(--gray-200);
-  border-radius: 20px;
-  padding: 7px 16px 7px 12px;
-  font-family: 'Google Sans', sans-serif;
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--gray-700);
-  cursor: pointer;
-  margin-bottom: 16px;
-  transition: all 0.15s;
-}
-.btn-back:hover {
-  background: var(--gray-100);
-  border-color: var(--gray-400);
-  color: var(--gray-900);
-}
 @keyframes fadeUp {
   from { opacity:0; transform:translateY(8px); }
   to   { opacity:1; transform:none; }
@@ -477,16 +463,26 @@ function renderMonths() {
 
     let totalSlots = 0;
     if (!past) {
+      const cutoff = new Date(NOW.getTime() + CFG.MIN_HOURS_BEFORE * 3600000);
       const days = new Date(y,m+1,0).getDate();
       for (let day=1; day<=days; day++) {
         const dd = new Date(y,m,day);
         if (dd < TODAY) continue;
-        totalSlots += (CFG.SCHED[S.type][dow(dd)]||[]).length;
+        const sched = CFG.SCHED[S.type][dow(dd)] || [];
+        if (dd.getTime() === TODAY.getTime()) {
+          totalSlots += sched.filter(t => {
+            const [h,mn] = t.split(':').map(Number);
+            const dt = new Date(dd); dt.setHours(h,mn,0,0);
+            return dt > cutoff;
+          }).length;
+        } else {
+          totalSlots += sched.length;
+        }
       }
     }
 
     const noAvail = !past && totalSlots === 0;
-    html += `<div class="month-tile${past?' past':''}${noAvail?' no-avail':''}" onclick="${noAvail?'':('selMonth('+y+','+m+')')}">
+    html += `<div class="month-tile${past?' past':''}${noAvail?' no-avail':''}" onclick="${(!past&&!noAvail)?'selMonth('+y+','+m+')':''}">
       <div class="mt-name">${MN[m]}</div>
       <div class="mt-year">${y}</div>
       <div class="mt-count ${totalSlots>0?'has':'none'}">
@@ -509,7 +505,7 @@ async function renderDays() {
   const todayK = dKey(TODAY);
 
   let html = '<div class="view">';
-  html += `<button class="btn-back" onclick="goMonths()">← Regresar a meses</button>`;
+  html += `<button class="btn-back" onclick="goMonths()">← Meses</button>`;
   html += '<div class="dow-row">';
   DN.forEach(l=>{ html+=`<div class="dow-lbl">${l}</div>`; });
   html += '</div><div class="days-grid">';
@@ -557,7 +553,7 @@ function renderSlots() {
 
   const all = slots(date);
   let html = '<div class="view">';
-  html += `<button class="btn-back" onclick="goDays()">← Regresar al calendario</button>`;
+  html += `<button class="btn-back" onclick="goDays()">← ${MN[S.selMonth.m]} ${S.selMonth.y}</button>`;
   html += `<div class="slots-date" style="text-transform:capitalize">${lbl}</div>`;
 
   if (!all.length) {
