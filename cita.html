@@ -208,11 +208,17 @@ details.transfer-acc[open] .t-chev{transform:rotate(180deg)}
 .cal-month-tile.no-avail{background:var(--cal-red-bg);border-color:rgba(197,34,31,.3);pointer-events:none;cursor:default;}
 .cal-btn-back{display:inline-flex;align-items:center;gap:4px;background:none;border:none;padding:0 0 12px 0;font-family:'Google Sans',sans-serif;font-size:12px;font-weight:500;color:#1a73e8;cursor:pointer;}
 .cal-btn-back:hover{text-decoration:underline;}
-.lejana-float{position:fixed;bottom:82px;right:20px;z-index:502;display:none;align-items:center;gap:8px;background:linear-gradient(135deg,#dc2626,#b91c1c);color:#fff;padding:11px 16px;border-radius:999px;font-family:var(--sans);font-weight:700;font-size:13px;box-shadow:0 6px 24px rgba(185,28,28,.45);border:none;cursor:pointer;transition:transform .15s,box-shadow .2s;}
-.lejana-float:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(185,28,28,.55);}
+/* Tile cargando */
+.cal-mt-count.loading{color:var(--cal-gray-400);font-weight:400;}
+.cal-mt-count.loading::after{content:'';display:inline-block;width:8px;height:8px;margin-left:4px;border:1.5px solid var(--cal-gray-300);border-top-color:var(--cal-gray-600);border-radius:50%;animation:calSpin .7s linear infinite;vertical-align:middle;}
+
+/* Botón flotante rojo draggable */
+.lejana-float{position:fixed;bottom:88px;right:20px;z-index:502;display:none;align-items:center;gap:8px;background:linear-gradient(135deg,#dc2626,#b91c1c);color:#fff;padding:11px 16px;border-radius:999px;font-family:var(--sans);font-weight:700;font-size:13px;box-shadow:0 6px 24px rgba(185,28,28,.45);border:none;cursor:grab;transition:box-shadow .2s;touch-action:none;user-select:none;}
+.lejana-float:hover{box-shadow:0 10px 30px rgba(185,28,28,.55);}
 .lejana-float.visible{display:inline-flex;}
-.lejana-float-dot{width:8px;height:8px;border-radius:50%;background:#fca5a5;flex-shrink:0;animation:dotPulse 1.2s ease-in-out infinite;}
-#lejanaMenu{position:fixed;bottom:140px;right:20px;z-index:503;background:#fff;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,.18);border:1px solid #f1f3f4;padding:10px;width:240px;display:none;flex-direction:column;gap:8px;}
+.lejana-float.dragging{cursor:grabbing;transition:none;box-shadow:0 14px 36px rgba(185,28,28,.6);}
+.lejana-float-dot{width:8px;height:8px;border-radius:50%;background:#fca5a5;flex-shrink:0;animation:dotPulse 1.2s ease-in-out infinite;pointer-events:none;}
+#lejanaMenu{position:fixed;z-index:503;background:#fff;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,.18);border:1px solid #f1f3f4;padding:10px;width:240px;display:none;flex-direction:column;gap:8px;}
 .cal-dow-row{display:grid;grid-template-columns:repeat(7,1fr);margin-bottom:5px;}
 .cal-dow-lbl{text-align:center;font-size:10px;font-weight:500;color:var(--cal-gray-600);text-transform:uppercase;letter-spacing:.05em;padding:3px 0;}
 .cal-days-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;}
@@ -819,11 +825,12 @@ details.policy-acc[open] .policy-chev{transform:rotate(180deg);}
   <div id="calDwFooter" style="display:none"></div>
 </div>
 
-<button class="lejana-float" id="lejanaFloat" onclick="toggleLejanaMenu()">
+<!-- Flotante rojo lejana (draggable) -->
+<button class="lejana-float" id="lejanaFloat">
   <span class="lejana-float-dot"></span>
   🚨 ¿Cita muy lejana?
 </button>
-<div id="lejanaMenu" style="position:fixed;bottom:140px;right:20px;z-index:503;background:#fff;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,.18);border:1px solid #f1f3f4;padding:10px;width:240px;display:none;flex-direction:column;gap:8px;">
+<div id="lejanaMenu" style="position:fixed;z-index:503;background:#fff;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,.18);border:1px solid #f1f3f4;padding:10px;width:240px;display:none;flex-direction:column;gap:8px;">
   <button onclick="closeLejana();closeCalDrawer();openLwe()" style="display:flex;flex-direction:column;padding:10px 12px;border-radius:8px;background:#0d1b2a;color:#fff;border:1.5px solid #b8893a;font-size:13px;font-weight:700;line-height:1.3;cursor:pointer;text-align:left;">
     📋 Lista de espera prioritaria
     <span style="font-size:11px;font-weight:400;margin-top:2px;opacity:.75;">Te avisamos si hay cancelación</span>
@@ -1046,20 +1053,56 @@ function calBC(){
 function calRenderMonths(){
   CS.view='months';CS.selDate=null;
   var base=new Date(TODAY.getFullYear(),TODAY.getMonth(),1);
+  var cutoff=new Date(NOW.getTime()+CAL.MIN_HOURS*3600000);
   var html='<div class="cal-type-row">';
   html+='<button class="cal-type-btn'+(CS.type==='presencial'?' active':'')+'" onclick="calSetType(\'presencial\',event)">📍 Presencial</button>';
   html+='<button class="cal-type-btn'+(CS.type==='online'?' active':'')+'" onclick="calSetType(\'online\',event)">💻 Online</button>';
   html+='</div><div class="cal-card"><div class="cal-card-head"><h2>Selecciona un mes</h2></div><div class="cal-card-body"><div class="cal-months-grid cal-view">';
+
+  var monthsMeta=[];
   for(var i=0;i<CAL.AHEAD_MONTHS;i++){
     var d=new Date(base);d.setMonth(d.getMonth()+i);var y=d.getFullYear(),m=d.getMonth();
-    var past=d<base;var totalSlots=0;
-    if(!past){var dim=new Date(y,m+1,0).getDate();var cutoff=new Date(NOW.getTime()+CAL.MIN_HOURS*3600000);for(var day=1;day<=dim;day++){var dd=new Date(y,m,day);if(dd<TODAY)continue;var sched=CAL.SCHED[CS.type][cdow(dd)]||[];if(dd.getTime()===TODAY.getTime()){totalSlots+=sched.filter(function(t){var p=t.split(':').map(Number);var dt=new Date(dd);dt.setHours(p[0],p[1],0,0);return dt>cutoff;}).length;}else{totalSlots+=sched.length;}}}
-    var noAvail=!past&&totalSlots===0;
-    html+='<div class="cal-month-tile'+(past?' past':'')+(noAvail?' no-avail':'')+'" onclick="'+((!past&&!noAvail)?'calSelMonth('+y+','+m+')':'')+'">'; 
+    var past=d<base;
+    // Conteo teórico (sin ocupados) para primer render rápido
+    var schedSlots=0;
+    if(!past){var dim=new Date(y,m+1,0).getDate();for(var day=1;day<=dim;day++){var dd=new Date(y,m,day);if(dd<TODAY)continue;var sched=CAL.SCHED[CS.type][cdow(dd)]||[];if(dd.getTime()===TODAY.getTime()){schedSlots+=sched.filter(function(t){var p=t.split(':').map(Number);var dt2=new Date(dd);dt2.setHours(p[0],p[1],0,0);return dt2>cutoff;}).length;}else{schedSlots+=sched.length;}}}
+    var tileId='cal-tile-'+y+'-'+m;
+    var alreadyFetched=CS.busy[cMKey(y,m)]!==undefined;
+    var countClass=past?'none':(schedSlots>0?(alreadyFetched?'has':'loading'):'none');
+    var countTxt=past?'—':(schedSlots>0?(alreadyFetched?schedSlots+' horarios':'cargando...'):'Sin disp.');
+    html+='<div id="'+tileId+'" class="cal-month-tile'+(past?' past':'')+((!past&&schedSlots===0)?' no-avail':'')+'" onclick="'+((!past&&schedSlots>0)?'calSelMonth('+y+','+m+')':'')+'">'; 
     html+='<div class="cal-mt-name">'+MN[m]+'</div><div class="cal-mt-year">'+y+'</div>';
-    html+='<div class="cal-mt-count '+(totalSlots>0?'has':'none')+'">'+(past?'—':totalSlots>0?totalSlots+' horarios':'Sin disp.')+'</div></div>';
+    html+='<div id="cnt-'+y+'-'+m+'" class="cal-mt-count '+countClass+'">'+countTxt+'</div></div>';
+    if(!past&&schedSlots>0)monthsMeta.push({y:y,m:m,schedSlots:schedSlots});
   }
   html+='</div></div></div>';calSetBody(html);
+
+  // Fetch busy en paralelo y actualizar tiles
+  monthsMeta.forEach(function(meta){
+    (async function(){
+      await calFetchBusy(meta.y,meta.m);
+      var cntEl=document.getElementById('cnt-'+meta.y+'-'+meta.m);
+      var tileEl=document.getElementById('cal-tile-'+meta.y+'-'+meta.m);
+      if(!cntEl||!tileEl)return;
+      var cutoff2=new Date(NOW.getTime()+CAL.MIN_HOURS*3600000);
+      var free=0;
+      var dim=new Date(meta.y,meta.m+1,0).getDate();
+      for(var day=1;day<=dim;day++){
+        var dd=new Date(meta.y,meta.m,day);
+        if(dd<TODAY)continue;
+        var sched=CAL.SCHED[CS.type][cdow(dd)]||[];
+        var times=sched;
+        if(dd.getTime()===TODAY.getTime()){times=sched.filter(function(t){var p=t.split(':').map(Number);var dt3=new Date(dd);dt3.setHours(p[0],p[1],0,0);return dt3>cutoff2;});}
+        times.forEach(function(t){if(!calIsBusy(dd,t))free++;});
+      }
+      if(free===0){
+        cntEl.className='cal-mt-count none';cntEl.textContent='Sin disp.';
+        tileEl.classList.add('no-avail');tileEl.onclick=null;tileEl.removeAttribute('onclick');
+      }else{
+        cntEl.className='cal-mt-count has';cntEl.textContent=free+' horarios';
+      }
+    })();
+  });
 }
 async function calRenderDays(){
   CS.view='days';CS.selDate=null;calSpin();
@@ -1147,7 +1190,7 @@ function openCalDrawer(mode){
     calRenderBookCards();
   }
   document.getElementById('calDwFooter').style.display='none';
-  var lf=document.getElementById('lejanaFloat');if(lf&&mode==='browse')lf.classList.add('visible');
+  if(mode==='browse'){var lf=document.getElementById('lejanaFloat');if(lf)lf.classList.add('visible');}
   document.getElementById('calDrawer').classList.add('open');
   document.getElementById('calOverlay').classList.add('open');
   document.body.style.overflow='hidden';
@@ -1159,8 +1202,70 @@ function closeCalDrawer(){
   var lf=document.getElementById('lejanaFloat');if(lf)lf.classList.remove('visible');
   closeLejana();
 }
-function toggleLejanaMenu(){var m=document.getElementById('lejanaMenu');if(!m)return;m.style.display=m.style.display==='flex'?'none':'flex';}
+function toggleLejanaMenu(){
+  var btn=document.getElementById('lejanaFloat');
+  var menu=document.getElementById('lejanaMenu');
+  if(!menu||!btn)return;
+  if(menu.style.display==='flex'){menu.style.display='none';return;}
+  var br=btn.getBoundingClientRect();
+  var menuW=240;var menuH=130;
+  var top=br.top-menuH-8;
+  var left=br.right-menuW;
+  if(top<8)top=br.bottom+8;
+  if(left<8)left=8;
+  menu.style.top=top+'px';menu.style.left=left+'px';menu.style.right='auto';menu.style.bottom='auto';
+  menu.style.display='flex';
+}
 function closeLejana(){var m=document.getElementById('lejanaMenu');if(m)m.style.display='none';}
+
+// Drag iOS-style
+(function(){
+  var btn,isDragging,startX,startY,btnStartLeft,btnStartTop,moved;
+  function initDrag(){
+    btn=document.getElementById('lejanaFloat');
+    if(!btn)return;
+    btn.addEventListener('pointerdown',onDown);
+    btn.addEventListener('click',function(e){if(moved){e.stopPropagation();e.preventDefault();}else{toggleLejanaMenu();}},true);
+  }
+  function onDown(e){
+    isDragging=true;moved=false;
+    var r=btn.getBoundingClientRect();
+    btnStartLeft=r.left;btnStartTop=r.top;
+    startX=e.clientX;startY=e.clientY;
+    btn.setPointerCapture(e.pointerId);
+    btn.classList.add('dragging');
+    btn.style.transition='none';
+    btn.style.right='auto';btn.style.bottom='auto';
+    btn.style.left=btnStartLeft+'px';btn.style.top=btnStartTop+'px';
+    e.preventDefault();
+  }
+  document.addEventListener('pointermove',function(e){
+    if(!isDragging)return;
+    var dx=e.clientX-startX;var dy=e.clientY-startY;
+    if(Math.abs(dx)>4||Math.abs(dy)>4)moved=true;
+    btn.style.left=(btnStartLeft+dx)+'px';
+    btn.style.top=(btnStartTop+dy)+'px';
+  });
+  document.addEventListener('pointerup',function(e){
+    if(!isDragging)return;
+    isDragging=false;
+    btn.classList.remove('dragging');
+    btn.style.transition='';
+    // Snap al borde más cercano
+    var r=btn.getBoundingClientRect();
+    var cx=r.left+r.width/2;
+    var cy=r.top+r.height/2;
+    var W=window.innerWidth;var H=window.innerHeight;
+    var snapRight=cx>W/2;
+    var finalLeft=snapRight?(W-r.width-20):20;
+    var finalTop=Math.max(20,Math.min(cy-r.height/2,H-r.height-20));
+    btn.style.left=finalLeft+'px';
+    btn.style.top=finalTop+'px';
+    btn.style.right='auto';btn.style.bottom='auto';
+    closeLejana();
+  });
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',initDrag);}else{initDrag();}
+})();
 
 // ── TZ MODAL ──
 var _tzUrl='';
