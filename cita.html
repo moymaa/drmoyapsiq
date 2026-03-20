@@ -213,7 +213,7 @@ details.transfer-acc[open] .t-chev{transform:rotate(180deg)}
 .cal-mt-count.loading::after{content:'';display:inline-block;width:8px;height:8px;margin-left:4px;border:1.5px solid var(--cal-gray-300);border-top-color:var(--cal-gray-600);border-radius:50%;animation:calSpin .7s linear infinite;vertical-align:middle;}
 
 /* Botón flotante rojo draggable */
-.lejana-float{position:fixed;bottom:88px;right:20px;z-index:502;display:none;align-items:center;gap:8px;background:linear-gradient(135deg,#dc2626,#b91c1c);color:#fff;padding:11px 16px;border-radius:999px;font-family:var(--sans);font-weight:700;font-size:13px;box-shadow:0 6px 24px rgba(185,28,28,.45);border:none;cursor:grab;transition:box-shadow .2s;touch-action:none;user-select:none;}
+.lejana-float{position:fixed;bottom:80px;right:20px;z-index:502;display:none;align-items:center;gap:8px;background:linear-gradient(135deg,#dc2626,#b91c1c);color:#fff;padding:12px 18px;border-radius:999px;font-family:var(--sans);font-weight:700;font-size:14px;box-shadow:0 6px 24px rgba(185,28,28,.45);border:none;cursor:grab;transition:box-shadow .2s;touch-action:none;user-select:none;}
 .lejana-float:hover{box-shadow:0 10px 30px rgba(185,28,28,.55);}
 .lejana-float.visible{display:inline-flex;}
 .lejana-float.dragging{cursor:grabbing;transition:none;box-shadow:0 14px 36px rgba(185,28,28,.6);}
@@ -1265,6 +1265,17 @@ function closeLejana(){var m=document.getElementById('lejanaMenu');if(m)m.style.
     closeLejana();
   });
   if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',initDrag);}else{initDrag();}
+
+  // Cerrar menú al click afuera
+  document.addEventListener('pointerup',function(e){
+    if(isDragging)return;
+    var menu=document.getElementById('lejanaMenu');
+    var btn=document.getElementById('lejanaFloat');
+    if(!menu||menu.style.display!=='flex')return;
+    if(!menu.contains(e.target)&&e.target!==btn&&!btn.contains(e.target)){
+      menu.style.display='none';
+    }
+  });
 })();
 
 // ── TZ MODAL ──
