@@ -440,7 +440,7 @@ details.policy-acc[open] .policy-chev{transform:rotate(180deg);}
   .cal-day-sub{display:none;}
 }
 
-/* ═════ NUEVOS: MODAL PAGO + BANNER POST-PAGO ═════ */
+/* NUEVOS: MODAL AVISO PAGO */
 .payment-warning-modal{position:fixed;top:0;left:0;right:0;bottom:0;z-index:99999;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(13,27,42,.7);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);}
 .payment-warning-modal.is-open{display:flex}
 .pwm-panel{position:relative;z-index:2;width:100%;max-width:480px;background:#fff;border-radius:16px;border:1px solid var(--rule);box-shadow:0 24px 64px rgba(13,27,42,.3);overflow:hidden;animation:pwmSlideIn .32s cubic-bezier(.2,.8,.2,1)}
@@ -489,27 +489,27 @@ details.policy-acc[open] .policy-chev{transform:rotate(180deg);}
   <div class="pwm-panel">
     <div class="pwm-header">
       <div class="pwm-icon">⚠️</div>
-      <div class="pwm-title">¿Aún no has pagado?</div>
-      <div class="pwm-subtitle">El calendario es solo para consultar. Debes pagar primero para agendar.</div>
+      <div class="pwm-title">Aún no has elegido horario</div>
+      <div class="pwm-subtitle">Primero debes pagar. Después de pagar, vuelve aquí para elegir tu cita.</div>
     </div>
     <div class="pwm-body">
       <div class="pwm-steps">
         <div class="pwm-step">
           <div class="pwm-step-num">1</div>
-          <div><strong>Paga</strong> subiendo la transferencia o usando otra forma de pago en el Paso 1</div>
+          <div><strong>Paga</strong> tu consulta en el Paso 1 (transferencia, Stripe, PayPal, etc)</div>
         </div>
         <div class="pwm-step">
           <div class="pwm-step-num">2</div>
-          <div><strong>Copian CLABE</strong> o selecciona tu forma de pago (se abre en una pestaña nueva)</div>
+          <div><strong>Vuelve</strong> y haz clic en el botón <strong>"Ya pagué → Agendar"</strong></div>
         </div>
         <div class="pwm-step">
           <div class="pwm-step-num">3</div>
-          <div><strong>Vuelve aquí</strong> y haz clic en <strong>"Ya pagué → Agendar"</strong> para elegir tu cita</div>
+          <div><strong>Elige tu cita</strong> directamente en el calendario confirmado</div>
         </div>
       </div>
       <div class="pwm-actions">
-        <button class="pwm-btn pwm-btn-primary" onclick="closePaymentWarningModal();goToStep(1)">Ir al Paso 1 → Pagar</button>
-        <button class="pwm-btn pwm-btn-secondary" onclick="closePaymentWarningModal()">Cerrar</button>
+        <button class="pwm-btn pwm-btn-primary" onclick="closePaymentWarningModal();closeCalDrawer();goToStep(1)">Entendido, ir a pagar</button>
+        <button class="pwm-btn pwm-btn-secondary" onclick="closePaymentWarningModal()">Volver al calendario</button>
       </div>
     </div>
   </div>
@@ -650,13 +650,13 @@ details.policy-acc[open] .policy-chev{transform:rotate(180deg);}
       <div class="step-inner">
         <div class="notice">🚨 <strong>Atención:</strong> Envía tu comprobante de pago por WhatsApp <strong>al menos 24 horas antes</strong> para asegurar tu horario. Sin comprobante, el lugar puede ser ocupado por otro paciente.</div>
         <div class="cal-cta-row">
-          <button class="cal-cta-btn browse" type="button" onclick="openBrowseCalendarWithWarning()">
+          <button class="cal-cta-btn browse" type="button" onclick="openCalDrawer('browse')">
             <div class="cal-cta-icon-wrap"><span class="cal-cta-icon">📅</span></div>
             <div class="cal-cta-title">Ver disponibilidad</div>
             <div class="cal-cta-sub">Consulta fechas y horarios. Al seleccionar, te lleva a pagar.</div>
             <div class="cal-cta-arrow">Explorar fechas →</div>
           </button>
-          <button class="cal-cta-btn book" type="button" onclick="openBookCalendar()">
+          <button class="cal-cta-btn book" type="button" onclick="openCalDrawer('book')">
             <div class="cal-cta-icon-wrap"><span class="cal-cta-icon">✅</span></div>
             <div class="cal-cta-title">Ya pagué → Agendar</div>
             <div class="cal-cta-sub">Elige tu cita y confirma directamente en el calendario.</div>
@@ -1222,7 +1222,7 @@ function calSelDay(y,m,d){CS.selDate=new Date(y,m,d);CS.selMonth={y:y,m:m};calRe
 function calGoMonths(){CS.selDate=null;calRenderMonths();}
 function calGoDays(){CS.selDate=null;calRenderDays();}
 function calSelSlot(t){
-  if(CS.mode==='browse'){closeCalDrawer();goToStep(1);}
+  if(CS.mode==='browse'){openPaymentWarningModal();}
   else{_tzUrl=CAL.BOOK_URLS[CS.type];openTzModal(_tzUrl);}
 }
 function calRenderBookCards(){
@@ -1351,28 +1351,16 @@ function closeLejana(){var m=document.getElementById('lejanaMenu');if(m)m.style.
 })();
 
 // ════════════════════════════════════════════════════
-// NUEVOS: MODAL PAGO + HANDLERS
+// NUEVOS: MODALES Y HANDLERS DE PAGO
 // ════════════════════════════════════════════════════
 
-// MODALES DE PAGO
+// MODALES
 function openPaymentWarningModal(){
   document.getElementById('paymentWarningModal').classList.add('is-open');
 }
 
 function closePaymentWarningModal(){
   document.getElementById('paymentWarningModal').classList.remove('is-open');
-}
-
-function openBrowseCalendarWithWarning(){
-  openCalDrawer('browse');
-}
-
-function openBookCalendar(){
-  if(!hasPaid()){
-    openPaymentWarningModal();
-  }else{
-    openCalDrawer('book');
-  }
 }
 
 // DETECCIÓN DE PAGO
