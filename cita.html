@@ -470,6 +470,31 @@ details.policy-acc[open] .policy-chev{transform:rotate(180deg);}
 .post-payment-banner-sub{font-size:.82rem;color:#155724;line-height:1.5;}
 .post-payment-banner-close{flex:0 0 auto;width:28px;height:28px;border-radius:50%;border:1px solid var(--cal-green);background:transparent;color:var(--cal-green);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;font-size:1.1rem;font-weight:700;}
 .post-payment-banner-close:hover{background:rgba(24,128,56,.1)}
+
+/* CLABE COPIED MODAL */
+.clabe-copied-modal{position:fixed;top:0;left:0;right:0;bottom:0;z-index:99999;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(13,27,42,.7);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);}
+.clabe-copied-modal.is-open{display:flex}
+.ccm-panel{position:relative;z-index:2;width:100%;max-width:420px;background:#fff;border-radius:16px;border:1px solid var(--rule);box-shadow:0 24px 64px rgba(13,27,42,.3);overflow:hidden;animation:ccmSlideIn .4s cubic-bezier(.2,.8,.2,1)}
+@keyframes ccmSlideIn{from{transform:scale(.92) translateY(-20px);opacity:0;}to{transform:scale(1) translateY(0);opacity:1;}}
+.ccm-header{padding:2rem 2rem 1.2rem;display:flex;flex-direction:column;align-items:center;text-align:center;}
+.ccm-icon{font-size:3.5rem;margin-bottom:.8rem;animation:checkPulse .5s ease forwards;}
+@keyframes checkPulse{0%{transform:scale(0);opacity:0;}50%{transform:scale(1.15);}100%{transform:scale(1);opacity:1;}}
+.ccm-title{font-family:var(--serif);font-size:1.35rem;font-weight:700;color:var(--ink);line-height:1.2;margin-bottom:.4rem;}
+.ccm-subtitle{font-size:.9rem;color:var(--ink-mid);line-height:1.6;}
+.ccm-body{padding:1.6rem 2rem;}
+.ccm-instruction{background:var(--cal-green-bg);border:1px solid rgba(24,128,56,.3);border-radius:10px;padding:1.1rem;margin-bottom:1.2rem;}
+.ccm-instruction-title{font-weight:700;font-size:.88rem;color:var(--cal-green);margin-bottom:.5rem;display:flex;align-items:center;gap:.5rem;}
+.ccm-instruction-text{font-size:.82rem;color:#155724;line-height:1.6;}
+.ccm-timer{display:flex;align-items:center;justify-content:center;gap:.6rem;padding:1rem;background:var(--canvas);border-radius:8px;margin-bottom:1.2rem;font-size:.82rem;color:var(--ink-mid);}
+.ccm-timer-dot{width:8px;height:8px;border-radius:50%;background:var(--gold);animation:timerBlink 1s infinite;}
+@keyframes timerBlink{0%,100%{opacity:1;}50%{opacity:.3;}}
+.ccm-actions{display:flex;flex-direction:column;gap:.7rem;}
+.ccm-btn{padding:1rem 1.4rem;border-radius:8px;border:none;font-weight:700;font-size:.88rem;cursor:pointer;font-family:var(--sans);transition:all .2s;width:100%;text-align:center;}
+.ccm-btn-primary{background:var(--cal-green);color:#fff;}
+.ccm-btn-primary:hover{background:#106c3f;transform:translateY(-2px);box-shadow:0 6px 20px rgba(24,128,56,.3)}
+.ccm-btn-secondary{background:transparent;border:1.5px solid var(--rule);color:var(--ink);transition:all .2s;}
+.ccm-btn-secondary:hover{border-color:var(--ink-light);background:var(--canvas)}
+
 </style>
 </head>
 <body>
@@ -499,6 +524,30 @@ details.policy-acc[open] .policy-chev{transform:rotate(180deg);}
       <div class="pwm-actions">
         <button class="pwm-btn pwm-btn-primary" onclick="closePaymentWarningModal();closeCalDrawer();goToStep(1)">Entendido, ir a pagar</button>
         <button class="pwm-btn pwm-btn-secondary" onclick="closePaymentWarningModal()">Volver al calendario</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="clabe-copied-modal" id="clabeModal">
+  <div class="ccm-panel">
+    <div class="ccm-header">
+      <div class="ccm-icon">✅</div>
+      <div class="ccm-title">CLABE copiada</div>
+      <div class="ccm-subtitle">Al portapapeles correctamente</div>
+    </div>
+    <div class="ccm-body">
+      <div class="ccm-instruction">
+        <div class="ccm-instruction-title">📱 Siguiente paso:</div>
+        <div class="ccm-instruction-text">Abre tu app del banco (Banamex, BBVA, Santander, etc.) y realiza la transferencia. Después vuelve aquí.</div>
+      </div>
+      <div class="ccm-timer">
+        <div class="ccm-timer-dot"></div>
+        <span>Se cerrará en <strong id="timerCount">30</strong> segundos</span>
+      </div>
+      <div class="ccm-actions">
+        <button class="ccm-btn ccm-btn-primary" onclick="confirmarPagoYAgendar()">✅ Ya pagué: Confirmar ahora</button>
+        <button class="ccm-btn ccm-btn-secondary" onclick="closeClabeModal()">Cerrar</button>
       </div>
     </div>
   </div>
@@ -1359,12 +1408,10 @@ function handlePaymentLink(url){
 }
 
 function handleCopyClabe(){
-  var text='002740701139090629',msg=document.getElementById('copy-msg');
+  var text='002740701139090629';
   function done(ok){
-    if(msg)msg.textContent=ok?'✓ CLABE copiada':'Cópiala manualmente.';
     if(ok){
-      setTimeout(function(){if(msg)msg.textContent='';},3500);
-      setTimeout(function(){openCalDrawer('book');},500);
+      openClabeModal();
     }
   }
   function fallback(){
@@ -1436,6 +1483,55 @@ function closePostPaymentBanner(){
 document.addEventListener('DOMContentLoaded',function(){
   // Banner removido
 });
+
+// ════ CLABE MODAL HANDLERS ════
+var clabeTimerInterval;
+
+function openClabeModal(){
+  var modal=document.getElementById('clabeModal');
+  if(modal){
+    modal.classList.add('is-open');
+    document.body.style.overflow='hidden';
+    startClabeTimer();
+  }
+}
+
+function closeClabeModal(){
+  var modal=document.getElementById('clabeModal');
+  if(modal){
+    modal.classList.remove('is-open');
+    document.body.style.overflow='';
+    stopClabeTimer();
+  }
+}
+
+function confirmarPagoYAgendar(){
+  closeClabeModal();
+  setTimeout(function(){openCalDrawer('book');},300);
+}
+
+function startClabeTimer(){
+  var count=30;
+  var countEl=document.getElementById('timerCount');
+  stopClabeTimer();
+  if(countEl)countEl.textContent='30';
+  clabeTimerInterval=setInterval(function(){
+    count--;
+    if(countEl)countEl.textContent=count;
+    if(count<=0){
+      stopClabeTimer();
+      closeClabeModal();
+      setTimeout(function(){openCalDrawer('book');},300);
+    }
+  },1000);
+}
+
+function stopClabeTimer(){
+  if(clabeTimerInterval){
+    clearInterval(clabeTimerInterval);
+    clabeTimerInterval=null;
+  }
+}
 
 // ── TZ MODAL ──
 var _tzUrl='';
