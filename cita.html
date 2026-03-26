@@ -1355,6 +1355,7 @@ function closePaymentWarningModal(){
 // DETECCIÓN DE PAGO
 function handlePaymentLink(url){
   window.open(url,'_blank');
+  setTimeout(function(){openCalDrawer('book');},500);
 }
 
 function handleCopyClabe(){
@@ -1363,6 +1364,7 @@ function handleCopyClabe(){
     if(msg)msg.textContent=ok?'✓ CLABE copiada':'Cópiala manualmente.';
     if(ok){
       setTimeout(function(){if(msg)msg.textContent='';},3500);
+      setTimeout(function(){openCalDrawer('book');},500);
     }
   }
   function fallback(){
