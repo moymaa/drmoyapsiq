@@ -439,9 +439,81 @@ details.policy-acc[open] .policy-chev{transform:rotate(180deg);}
   .cal-slots-grid{grid-template-columns:repeat(3,1fr);}.cal-dw-body{padding:12px 12px 24px;}
   .cal-day-sub{display:none;}
 }
+
+/* ═════ NUEVOS: MODAL PAGO + BANNER POST-PAGO ═════ */
+.payment-warning-modal{position:fixed;top:0;left:0;right:0;bottom:0;z-index:99999;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(13,27,42,.7);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);}
+.payment-warning-modal.is-open{display:flex}
+.pwm-panel{position:relative;z-index:2;width:100%;max-width:480px;background:#fff;border-radius:16px;border:1px solid var(--rule);box-shadow:0 24px 64px rgba(13,27,42,.3);overflow:hidden;animation:pwmSlideIn .32s cubic-bezier(.2,.8,.2,1)}
+@keyframes pwmSlideIn{from{transform:translateY(20px);opacity:0;}to{transform:translateY(0);opacity:1;}}
+.pwm-header{padding:1.6rem 1.6rem 0;border-bottom:1px solid var(--rule);}
+.pwm-icon{font-size:2.8rem;margin-bottom:.75rem;}
+.pwm-title{font-family:var(--serif);font-size:1.3rem;font-weight:700;color:var(--ink);line-height:1.2;margin-bottom:.5rem;}
+.pwm-subtitle{font-size:.9rem;color:var(--ink-mid);line-height:1.6;margin-bottom:0;}
+.pwm-body{padding:1.6rem;}
+.pwm-steps{display:flex;flex-direction:column;gap:.8rem;margin-bottom:1.2rem;font-size:.87rem;color:var(--ink-mid);line-height:1.7;}
+.pwm-step{display:flex;align-items:flex-start;gap:.6rem;}
+.pwm-step-num{flex:0 0 auto;width:26px;height:26px;border-radius:50%;background:var(--gold);color:#fff;font-weight:700;font-size:.7rem;display:flex;align-items:center;justify-content:center;margin-top:.15rem;}
+.pwm-actions{display:flex;flex-direction:column;gap:.7rem;}
+.pwm-btn{padding:.85rem 1.2rem;border-radius:8px;border:none;font-weight:700;font-size:.85rem;cursor:pointer;font-family:var(--sans);transition:all .2s;width:100%;text-align:center;}
+.pwm-btn-primary{background:var(--ink);color:#fff;}
+.pwm-btn-primary:hover{background:#1e3a5f;transform:translateY(-2px);box-shadow:0 6px 20px rgba(13,27,42,.25)}
+.pwm-btn-secondary{background:var(--canvas);color:var(--ink);border:1px solid var(--rule);}
+.pwm-btn-secondary:hover{background:var(--rule)}
+
+.post-payment-banner{position:sticky;top:0;z-index:50;background:var(--cal-green-bg);border-bottom:2px solid var(--cal-green);padding:1rem 1.5rem;display:none;align-items:center;justify-content:space-between;gap:1rem;animation:slideDown .4s ease;}
+@keyframes slideDown{from{transform:translateY(-100%);opacity:0;}to{transform:translateY(0);opacity:1;}}
+.post-payment-banner.is-visible{display:flex}
+.post-payment-banner-content{display:flex;align-items:center;gap:.8rem;flex:1;}
+.post-payment-banner-icon{font-size:1.5rem;flex:0 0 auto;}
+.post-payment-banner-text{display:flex;flex-direction:column;gap:.2rem;}
+.post-payment-banner-title{font-weight:700;color:var(--cal-green);font-size:.95rem;}
+.post-payment-banner-sub{font-size:.82rem;color:#155724;line-height:1.5;}
+.post-payment-banner-close{flex:0 0 auto;width:28px;height:28px;border-radius:50%;border:1px solid var(--cal-green);background:transparent;color:var(--cal-green);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;font-size:1.1rem;font-weight:700;}
+.post-payment-banner-close:hover{background:rgba(24,128,56,.1)}
 </style>
 </head>
 <body>
+
+<div class="post-payment-banner" id="postPaymentBanner">
+  <div class="post-payment-banner-content">
+    <div class="post-payment-banner-icon">✅</div>
+    <div class="post-payment-banner-text">
+      <div class="post-payment-banner-title">Pago recibido exitosamente</div>
+      <div class="post-payment-banner-sub">Baja para seleccionar tu cita en el calendario. Tienes 24h para completar.</div>
+    </div>
+  </div>
+  <button class="post-payment-banner-close" onclick="closePostPaymentBanner()">✕</button>
+</div>
+
+<div class="payment-warning-modal" id="paymentWarningModal">
+  <div class="pwm-panel">
+    <div class="pwm-header">
+      <div class="pwm-icon">⚠️</div>
+      <div class="pwm-title">¿Aún no has pagado?</div>
+      <div class="pwm-subtitle">El calendario es solo para consultar. Debes pagar primero para agendar.</div>
+    </div>
+    <div class="pwm-body">
+      <div class="pwm-steps">
+        <div class="pwm-step">
+          <div class="pwm-step-num">1</div>
+          <div><strong>Paga</strong> subiendo la transferencia o usando otra forma de pago en el Paso 1</div>
+        </div>
+        <div class="pwm-step">
+          <div class="pwm-step-num">2</div>
+          <div><strong>Copian CLABE</strong> o selecciona tu forma de pago (se abre en una pestaña nueva)</div>
+        </div>
+        <div class="pwm-step">
+          <div class="pwm-step-num">3</div>
+          <div><strong>Vuelve aquí</strong> y haz clic en <strong>"Ya pagué → Agendar"</strong> para elegir tu cita</div>
+        </div>
+      </div>
+      <div class="pwm-actions">
+        <button class="pwm-btn pwm-btn-primary" onclick="closePaymentWarningModal();goToStep(1)">Ir al Paso 1 → Pagar</button>
+        <button class="pwm-btn pwm-btn-secondary" onclick="closePaymentWarningModal()">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <nav class="nav" id="nav">
   <div class="nav-inner">
@@ -536,7 +608,7 @@ details.policy-acc[open] .policy-chev{transform:rotate(180deg);}
           <div class="transfer-body">
             <div class="transfer-bank">Banamex</div>
             <div class="transfer-row"><div class="transfer-lbl">CLABE</div><div class="transfer-val big">002740701139090629</div></div>
-            <button class="copy-btn" onclick="copyClabe()" type="button">📋 Copiar CLABE</button>
+            <button class="copy-btn" onclick="handleCopyClabe()" type="button">📋 Copiar CLABE</button>
             <div class="copy-msg" id="copy-msg" aria-live="polite"></div>
             <div style="margin-top:.75rem;display:flex;flex-direction:column;gap:.3rem;font-size:.82rem">
               <div><span style="color:var(--ink-light);font-size:.73rem">Cuenta:</span> <span style="font-family:monospace;font-weight:700">3909062</span></div>
@@ -548,12 +620,12 @@ details.policy-acc[open] .policy-chev{transform:rotate(180deg);}
         </details>
         <div class="pay-label">Otras opciones de pago</div>
         <div class="pay-grid">
-          <a class="pay-pill" href="https://link.mercadopago.com.mx/deldhym">Efectivo</a>
-          <a class="pay-pill" href="https://buy.stripe.com/aEU6qDbpt3G9aS4bII">Débito / Crédito</a>
-          <a class="pay-pill" href="https://www.paypal.com/paypalme/drmoyapsiq">PayPal</a>
-          <a class="pay-pill" href="https://link.mercadopago.com.mx/deldhym">MercadoPago</a>
-          <a class="pay-pill" href="https://www.eutimya.org/pagos/codi">CoDi</a>
-          <a class="pay-pill" href="https://buy.stripe.com/aEU6qDbpt3G9aS4bII">Internacional</a>
+          <a class="pay-pill" href="#" onclick="handlePaymentLink('https://link.mercadopago.com.mx/deldhym'); return false;">Efectivo</a>
+          <a class="pay-pill" href="#" onclick="handlePaymentLink('https://buy.stripe.com/aEU6qDbpt3G9aS4bII'); return false;">Débito / Crédito</a>
+          <a class="pay-pill" href="#" onclick="handlePaymentLink('https://www.paypal.com/paypalme/drmoyapsiq'); return false;">PayPal</a>
+          <a class="pay-pill" href="#" onclick="handlePaymentLink('https://link.mercadopago.com.mx/deldhym'); return false;">MercadoPago</a>
+          <a class="pay-pill" href="#" onclick="handlePaymentLink('https://www.eutimya.org/pagos/codi'); return false;">CoDi</a>
+          <a class="pay-pill" href="#" onclick="handlePaymentLink('https://buy.stripe.com/aEU6qDbpt3G9aS4bII'); return false;">Internacional</a>
         </div>
         <div class="btn-stack">
           <a class="btn btn-wa" href="https://wa.me/526731205121?text=Hola%20Doctor.%20Ya%20realic%C3%A9%20el%20pago%20y%20adjunto%20mi%20comprobante%20para%20confirmaci%C3%B3n%20de%20cita.">📲 WhatsApp — Enviar comprobante</a>
@@ -578,13 +650,13 @@ details.policy-acc[open] .policy-chev{transform:rotate(180deg);}
       <div class="step-inner">
         <div class="notice">🚨 <strong>Atención:</strong> Envía tu comprobante de pago por WhatsApp <strong>al menos 24 horas antes</strong> para asegurar tu horario. Sin comprobante, el lugar puede ser ocupado por otro paciente.</div>
         <div class="cal-cta-row">
-          <button class="cal-cta-btn browse" type="button" onclick="openCalDrawer('browse')">
+          <button class="cal-cta-btn browse" type="button" onclick="openBrowseCalendarWithWarning()">
             <div class="cal-cta-icon-wrap"><span class="cal-cta-icon">📅</span></div>
             <div class="cal-cta-title">Ver disponibilidad</div>
             <div class="cal-cta-sub">Consulta fechas y horarios. Al seleccionar, te lleva a pagar.</div>
             <div class="cal-cta-arrow">Explorar fechas →</div>
           </button>
-          <button class="cal-cta-btn book" type="button" onclick="openCalDrawer('book')">
+          <button class="cal-cta-btn book" type="button" onclick="openBookCalendar()">
             <div class="cal-cta-icon-wrap"><span class="cal-cta-icon">✅</span></div>
             <div class="cal-cta-title">Ya pagué → Agendar</div>
             <div class="cal-cta-sub">Elige tu cita y confirma directamente en el calendario.</div>
@@ -1277,6 +1349,120 @@ function closeLejana(){var m=document.getElementById('lejanaMenu');if(m)m.style.
     }
   });
 })();
+
+// ════════════════════════════════════════════════════
+// NUEVOS: MODAL PAGO + HANDLERS
+// ════════════════════════════════════════════════════
+
+// MODALES DE PAGO
+function openPaymentWarningModal(){
+  document.getElementById('paymentWarningModal').classList.add('is-open');
+}
+
+function closePaymentWarningModal(){
+  document.getElementById('paymentWarningModal').classList.remove('is-open');
+}
+
+function openBrowseCalendarWithWarning(){
+  openPaymentWarningModal();
+}
+
+function openBookCalendar(){
+  if(!hasPaid()){
+    openPaymentWarningModal();
+  }else{
+    openCalDrawer('book');
+  }
+}
+
+// DETECCIÓN DE PAGO
+function handlePaymentLink(url){
+  markAsPaid();
+  showPostPaymentBanner();
+  window.open(url,'_blank');
+}
+
+function handleCopyClabe(){
+  var text='002740701139090629',msg=document.getElementById('copy-msg');
+  function done(ok){
+    if(msg)msg.textContent=ok?'✓ CLABE copiada':'Cópiala manualmente.';
+    if(ok){
+      markAsPaid();
+      showPostPaymentBanner();
+      setTimeout(function(){if(msg)msg.textContent='';},3500);
+    }
+  }
+  function fallback(){
+    try{
+      var ta=document.createElement('textarea');
+      ta.value=text;
+      ta.style.cssText='position:fixed;top:-9999px;opacity:0;';
+      document.body.appendChild(ta);
+      ta.focus();
+      ta.select();
+      ta.setSelectionRange(0,ta.value.length);
+      var ok=document.execCommand('copy');
+      document.body.removeChild(ta);
+      done(ok);
+    }catch(e){done(false);}
+  }
+  if(navigator.clipboard&&typeof navigator.clipboard.writeText==='function'){
+    navigator.clipboard.writeText(text).then(function(){done(true);}).catch(fallback);
+    return;
+  }
+  fallback();
+}
+
+// LOCALSTORAGE PARA ESTADO DE PAGO
+function markAsPaid(){
+  localStorage.setItem('paymentCompleted',JSON.stringify({
+    completed:true,
+    timestamp:Date.now(),
+    expiresAt:Date.now()+(24*60*60*1000)
+  }));
+}
+
+function hasPaid(){
+  var payment=localStorage.getItem('paymentCompleted');
+  if(!payment)return false;
+  try{
+    var data=JSON.parse(payment);
+    if(data.expiresAt<Date.now()){
+      localStorage.removeItem('paymentCompleted');
+      return false;
+    }
+    return data.completed===true;
+  }catch(e){
+    return false;
+  }
+}
+
+function showPostPaymentBanner(){
+  var banner=document.getElementById('postPaymentBanner');
+  if(banner){
+    banner.classList.add('is-visible');
+    setTimeout(function(){
+      banner.style.display='flex';
+    },10);
+  }
+}
+
+function closePostPaymentBanner(){
+  var banner=document.getElementById('postPaymentBanner');
+  if(banner){
+    banner.classList.remove('is-visible');
+    setTimeout(function(){
+      banner.style.display='none';
+    },400);
+  }
+}
+
+// INICIALIZAR EN CARGA DE PÁGINA
+document.addEventListener('DOMContentLoaded',function(){
+  if(hasPaid()){
+    showPostPaymentBanner();
+  }
+});
 
 // ── TZ MODAL ──
 var _tzUrl='';
