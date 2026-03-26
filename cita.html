@@ -529,25 +529,25 @@ details.policy-acc[open] .policy-chev{transform:rotate(180deg);}
   </div>
 </div>
 
-<div class="clabe-copied-modal" id="clabeModal">
+<div class="clabe-copied-modal" id="paymentConfirmationModal">
   <div class="ccm-panel">
     <div class="ccm-header">
       <div class="ccm-icon">✅</div>
-      <div class="ccm-title">CLABE copiada</div>
-      <div class="ccm-subtitle">Al portapapeles correctamente</div>
+      <div class="ccm-title">Pago procesado</div>
+      <div class="ccm-subtitle">Tu solicitud está siendo procesada</div>
     </div>
     <div class="ccm-body">
       <div class="ccm-instruction">
-        <div class="ccm-instruction-title">📱 Siguiente paso:</div>
-        <div class="ccm-instruction-text">Abre tu app del banco (Banamex, BBVA, Santander, etc.) y realiza la transferencia. Después vuelve aquí.</div>
+        <div class="ccm-instruction-title">📝 Próximo paso:</div>
+        <div class="ccm-instruction-text">Tu pago está en proceso. En el calendario podrás seleccionar tu cita disponible.</div>
       </div>
       <div class="ccm-timer">
         <div class="ccm-timer-dot"></div>
-        <span>Se cerrará en <strong id="timerCount">30</strong> segundos</span>
+        <span>Abriendo en <strong id="timerCount">5</strong> segundos</span>
       </div>
       <div class="ccm-actions">
-        <button class="ccm-btn ccm-btn-primary" onclick="confirmarPagoYAgendar()">✅ Ya pagué: Confirmar ahora</button>
-        <button class="ccm-btn ccm-btn-secondary" onclick="closeClabeModal()">Cerrar</button>
+        <button class="ccm-btn ccm-btn-primary" onclick="confirmarPagoYAgendar()">✅ Continuar a agendar</button>
+        <button class="ccm-btn ccm-btn-secondary" onclick="closePaymentConfirmationModal()">Cerrar</button>
       </div>
     </div>
   </div>
@@ -647,7 +647,6 @@ details.policy-acc[open] .policy-chev{transform:rotate(180deg);}
             <div class="transfer-bank">Banamex</div>
             <div class="transfer-row"><div class="transfer-lbl">CLABE</div><div class="transfer-val big">002740701139090629</div></div>
             <button class="copy-btn" onclick="handleCopyClabe()" type="button">📋 Copiar CLABE</button>
-            <div class="copy-msg" id="copy-msg" aria-live="polite"></div>
             <div style="margin-top:.75rem;display:flex;flex-direction:column;gap:.3rem;font-size:.82rem">
               <div><span style="color:var(--ink-light);font-size:.73rem">Cuenta:</span> <span style="font-family:monospace;font-weight:700">3909062</span></div>
               <div><span style="color:var(--ink-light);font-size:.73rem">Sucursal:</span> <span style="font-family:monospace;font-weight:700">7011</span></div>
@@ -1401,17 +1400,25 @@ function closePaymentWarningModal(){
   document.getElementById('paymentWarningModal').classList.remove('is-open');
 }
 
+function openBrowseCalendarWithWarning(){
+  openCalDrawer('browse');
+}
+
+function openBookCalendar(){
+  openCalDrawer('book');
+}
+
 // DETECCIÓN DE PAGO
 function handlePaymentLink(url){
   window.open(url,'_blank');
-  setTimeout(function(){openCalDrawer('book');},500);
+  openPaymentConfirmationModal(5, 'Pago procesado', 'Tu solicitud está siendo procesada', '📝 Próximo paso:', 'Tu pago está en proceso. En el calendario podrás seleccionar tu cita disponible.');
 }
 
 function handleCopyClabe(){
   var text='002740701139090629';
   function done(ok){
     if(ok){
-      openClabeModal();
+      openPaymentConfirmationModal(30, 'CLABE copiada', 'Al portapapeles correctamente', '📱 Siguiente paso:', 'Abre tu app del banco (Banamex, BBVA, Santander, etc.) y realiza la transferencia.');
     }
   }
   function fallback(){
@@ -1436,97 +1443,65 @@ function handleCopyClabe(){
 }
 
 // LOCALSTORAGE PARA ESTADO DE PAGO
-function markAsPaid(){
-  localStorage.setItem('paymentCompleted',JSON.stringify({
-    completed:true,
-    timestamp:Date.now(),
-    expiresAt:Date.now()+(24*60*60*1000)
-  }));
-}
-
-function hasPaid(){
-  var payment=localStorage.getItem('paymentCompleted');
-  if(!payment)return false;
-  try{
-    var data=JSON.parse(payment);
-    if(data.expiresAt<Date.now()){
-      localStorage.removeItem('paymentCompleted');
-      return false;
-    }
-    return data.completed===true;
-  }catch(e){
-    return false;
-  }
-}
-
-function showPostPaymentBanner(){
-  var banner=document.getElementById('postPaymentBanner');
-  if(banner){
-    banner.classList.add('is-visible');
-    setTimeout(function(){
-      banner.style.display='flex';
-    },10);
-  }
-}
-
-function closePostPaymentBanner(){
-  var banner=document.getElementById('postPaymentBanner');
-  if(banner){
-    banner.classList.remove('is-visible');
-    setTimeout(function(){
-      banner.style.display='none';
-    },400);
-  }
-}
-
 // INICIALIZAR EN CARGA DE PÁGINA
 document.addEventListener('DOMContentLoaded',function(){
-  // Banner removido
+  // Listo
 });
 
-// ════ CLABE MODAL HANDLERS ════
+// ════ PAYMENT CONFIRMATION MODAL HANDLERS ════
 var clabeTimerInterval;
 
-function openClabeModal(){
-  var modal=document.getElementById('clabeModal');
+function openPaymentConfirmationModal(seconds, title, subtitle, instrTitle, instrText){
+  var modal=document.getElementById('paymentConfirmationModal');
   if(modal){
+    // Actualizar contenido
+    var titleEl=modal.querySelector('.ccm-title');
+    var subtitleEl=modal.querySelector('.ccm-subtitle');
+    var instrTitleEl=modal.querySelector('.ccm-instruction-title');
+    var instrTextEl=modal.querySelector('.ccm-instruction-text');
+    
+    if(titleEl)titleEl.textContent=title;
+    if(subtitleEl)subtitleEl.textContent=subtitle;
+    if(instrTitleEl)instrTitleEl.textContent=instrTitle;
+    if(instrTextEl)instrTextEl.textContent=instrText;
+    
     modal.classList.add('is-open');
     document.body.style.overflow='hidden';
-    startClabeTimer();
+    startPaymentTimer(seconds);
   }
 }
 
-function closeClabeModal(){
-  var modal=document.getElementById('clabeModal');
+function closePaymentConfirmationModal(){
+  var modal=document.getElementById('paymentConfirmationModal');
   if(modal){
     modal.classList.remove('is-open');
     document.body.style.overflow='';
-    stopClabeTimer();
+    stopPaymentTimer();
   }
 }
 
 function confirmarPagoYAgendar(){
-  closeClabeModal();
+  closePaymentConfirmationModal();
   setTimeout(function(){openCalDrawer('book');},300);
 }
 
-function startClabeTimer(){
-  var count=30;
+function startPaymentTimer(seconds){
+  var count=seconds;
   var countEl=document.getElementById('timerCount');
-  stopClabeTimer();
-  if(countEl)countEl.textContent='30';
+  stopPaymentTimer();
+  if(countEl)countEl.textContent=count.toString();
   clabeTimerInterval=setInterval(function(){
     count--;
-    if(countEl)countEl.textContent=count;
+    if(countEl)countEl.textContent=count.toString();
     if(count<=0){
-      stopClabeTimer();
-      closeClabeModal();
+      stopPaymentTimer();
+      closePaymentConfirmationModal();
       setTimeout(function(){openCalDrawer('book');},300);
     }
   },1000);
 }
 
-function stopClabeTimer(){
+function stopPaymentTimer(){
   if(clabeTimerInterval){
     clearInterval(clabeTimerInterval);
     clabeTimerInterval=null;
