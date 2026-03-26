@@ -474,23 +474,12 @@ details.policy-acc[open] .policy-chev{transform:rotate(180deg);}
 </head>
 <body>
 
-<div class="post-payment-banner" id="postPaymentBanner">
-  <div class="post-payment-banner-content">
-    <div class="post-payment-banner-icon">✅</div>
-    <div class="post-payment-banner-text">
-      <div class="post-payment-banner-title">Pago recibido exitosamente</div>
-      <div class="post-payment-banner-sub">Baja para seleccionar tu cita en el calendario. Tienes 24h para completar.</div>
-    </div>
-  </div>
-  <button class="post-payment-banner-close" onclick="closePostPaymentBanner()">✕</button>
-</div>
-
 <div class="payment-warning-modal" id="paymentWarningModal">
   <div class="pwm-panel">
     <div class="pwm-header">
       <div class="pwm-icon">⚠️</div>
       <div class="pwm-title">Aún no has elegido horario</div>
-      <div class="pwm-subtitle">Primero debes pagar. Después de pagar, vuelve aquí para elegir tu cita.</div>
+      <div class="pwm-subtitle">Primero debes ir a formas de pago y después al Paso 2 para elegir tu cita.</div>
     </div>
     <div class="pwm-body">
       <div class="pwm-steps">
@@ -1365,8 +1354,6 @@ function closePaymentWarningModal(){
 
 // DETECCIÓN DE PAGO
 function handlePaymentLink(url){
-  markAsPaid();
-  showPostPaymentBanner();
   window.open(url,'_blank');
 }
 
@@ -1375,8 +1362,6 @@ function handleCopyClabe(){
   function done(ok){
     if(msg)msg.textContent=ok?'✓ CLABE copiada':'Cópiala manualmente.';
     if(ok){
-      markAsPaid();
-      showPostPaymentBanner();
       setTimeout(function(){if(msg)msg.textContent='';},3500);
     }
   }
@@ -1447,9 +1432,7 @@ function closePostPaymentBanner(){
 
 // INICIALIZAR EN CARGA DE PÁGINA
 document.addEventListener('DOMContentLoaded',function(){
-  if(hasPaid()){
-    showPostPaymentBanner();
-  }
+  // Banner removido
 });
 
 // ── TZ MODAL ──
