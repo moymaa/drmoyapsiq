@@ -495,6 +495,30 @@ details.policy-acc[open] .policy-chev{transform:rotate(180deg);}
 .ccm-btn-secondary{background:transparent;border:1.5px solid var(--rule);color:var(--ink);transition:all .2s;}
 .ccm-btn-secondary:hover{border-color:var(--ink-light);background:var(--canvas)}
 
+/* EXPEDIENTE MODAL */
+.expediente-confirmation-modal{position:fixed;top:0;left:0;right:0;bottom:0;z-index:99999;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(13,27,42,.7);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);}
+.expediente-confirmation-modal.is-open{display:flex}
+.ecm-panel{position:relative;z-index:2;width:100%;max-width:420px;background:#fff;border-radius:16px;border:1px solid var(--rule);box-shadow:0 24px 64px rgba(13,27,42,.3);overflow:hidden;animation:ecmSlideIn .4s cubic-bezier(.2,.8,.2,1)}
+@keyframes ecmSlideIn{from{transform:scale(.92) translateY(-20px);opacity:0;}to{transform:scale(1) translateY(0);opacity:1;}}
+.ecm-header{padding:2rem 2rem 1.2rem;display:flex;flex-direction:column;align-items:center;text-align:center;}
+.ecm-icon{font-size:3.5rem;margin-bottom:.8rem;animation:expedientePulse .6s ease forwards;}
+@keyframes expedientePulse{0%{transform:scale(0);opacity:0;}50%{transform:scale(1.2);}100%{transform:scale(1);opacity:1;}}
+.ecm-title{font-family:var(--serif);font-size:1.35rem;font-weight:700;color:var(--ink);line-height:1.2;margin-bottom:.4rem;}
+.ecm-subtitle{font-size:.9rem;color:var(--ink-mid);line-height:1.6;}
+.ecm-body{padding:1.6rem 2rem;}
+.ecm-instruction{background:rgba(184,137,58,.08);border:1px solid rgba(184,137,58,.3);border-radius:10px;padding:1.1rem;margin-bottom:1.2rem;}
+.ecm-instruction-title{font-weight:700;font-size:.88rem;color:var(--gold);margin-bottom:.5rem;display:flex;align-items:center;gap:.5rem;}
+.ecm-instruction-text{font-size:.82rem;color:var(--ink-mid);line-height:1.6;}
+.ecm-timer{display:flex;align-items:center;justify-content:center;gap:.6rem;padding:1rem;background:var(--canvas);border-radius:8px;margin-bottom:1.2rem;font-size:.82rem;color:var(--ink-mid);}
+.ecm-timer-dot{width:8px;height:8px;border-radius:50%;background:var(--gold);animation:timerBlink 1s infinite;}
+.ecm-actions{display:flex;flex-direction:column;gap:.7rem;}
+.ecm-btn{padding:1rem 1.4rem;border-radius:8px;border:none;font-weight:700;font-size:.88rem;cursor:pointer;font-family:var(--sans);transition:all .2s;width:100%;text-align:center;}
+.ecm-btn-primary{background:var(--gold);color:#fff;}
+.ecm-btn-primary:hover{background:#a07a2e;transform:translateY(-2px);box-shadow:0 6px 20px rgba(184,137,58,.3)}
+.ecm-btn-secondary{background:transparent;border:1.5px solid var(--rule);color:var(--ink);transition:all .2s;}
+.ecm-btn-secondary:hover{border-color:var(--ink-light);background:var(--canvas)}
+
+
 </style>
 </head>
 <body>
@@ -548,6 +572,30 @@ details.policy-acc[open] .policy-chev{transform:rotate(180deg);}
       <div class="ccm-actions">
         <button class="ccm-btn ccm-btn-primary" onclick="confirmarPagoYAgendar()">✅ Continuar a agendar</button>
         <button class="ccm-btn ccm-btn-secondary" onclick="closePaymentConfirmationModal()">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="expediente-confirmation-modal" id="expedienteModal">
+  <div class="ecm-panel">
+    <div class="ecm-header">
+      <div class="ecm-icon">📋</div>
+      <div class="ecm-title">¡Casi listo!</div>
+      <div class="ecm-subtitle">Tu cita está agendada</div>
+    </div>
+    <div class="ecm-body">
+      <div class="ecm-instruction">
+        <div class="ecm-instruction-title">📝 Volviste del calendario:</div>
+        <div class="ecm-instruction-text">Ahora completa tu expediente con tus datos y antecedentes médicos para que podamos brindarte la mejor atención.</div>
+      </div>
+      <div class="ecm-timer">
+        <div class="ecm-timer-dot"></div>
+        <span>Se abrirá en <strong id="expedienteTimerCount">10</strong> segundos</span>
+      </div>
+      <div class="ecm-actions">
+        <button class="ecm-btn ecm-btn-primary" onclick="abrirExpedienteYCerrar()">📋 Ir a expediente</button>
+        <button class="ecm-btn ecm-btn-secondary" onclick="closeExpedienteModal()">Cerrar</button>
       </div>
     </div>
   </div>
@@ -1281,7 +1329,16 @@ function calRenderBookCards(){
   html+='<span style="font-size:.65rem;font-weight:700;color:rgba(255,255,255,.4);letter-spacing:.05em;text-transform:uppercase;margin-top:auto;">Toca para agendar →</span></button>';
   html+='</div>';calSetBody(html);
 }
-function calBookModality(type){_tzUrl=CAL.BOOK_URLS[type];openTzModal(_tzUrl);}
+function calBookModality(type){
+  _tzUrl=CAL.BOOK_URLS[type];
+  if(_tzUrl)window.open(_tzUrl,'_blank');
+  // Esperar a que usuario vuelva a la página
+  var onPageReturn=function(){
+    window.removeEventListener('focus',onPageReturn);
+    setTimeout(function(){openExpedienteModal();},500);
+  };
+  window.addEventListener('focus',onPageReturn);
+}
 function openCalDrawer(mode){
   CS.mode=mode;CS.view='months';CS.selDate=null;
   var head=document.getElementById('calDwHead');
@@ -1505,6 +1562,55 @@ function stopPaymentTimer(){
   if(clabeTimerInterval){
     clearInterval(clabeTimerInterval);
     clabeTimerInterval=null;
+  }
+}
+
+// ════ EXPEDIENTE MODAL HANDLERS ════
+var expedienteTimerInterval;
+
+function openExpedienteModal(){
+  var modal=document.getElementById('expedienteModal');
+  if(modal){
+    modal.classList.add('is-open');
+    document.body.style.overflow='hidden';
+    startExpedienteTimer();
+  }
+}
+
+function closeExpedienteModal(){
+  var modal=document.getElementById('expedienteModal');
+  if(modal){
+    modal.classList.remove('is-open');
+    document.body.style.overflow='';
+    stopExpedienteTimer();
+  }
+}
+
+function abrirExpedienteYCerrar(){
+  closeExpedienteModal();
+  setTimeout(function(){openExpDrawer();},300);
+}
+
+function startExpedienteTimer(){
+  var count=10;
+  var countEl=document.getElementById('expedienteTimerCount');
+  stopExpedienteTimer();
+  if(countEl)countEl.textContent=count.toString();
+  expedienteTimerInterval=setInterval(function(){
+    count--;
+    if(countEl)countEl.textContent=count.toString();
+    if(count<=0){
+      stopExpedienteTimer();
+      closeExpedienteModal();
+      setTimeout(function(){openExpDrawer();},300);
+    }
+  },1000);
+}
+
+function stopExpedienteTimer(){
+  if(expedienteTimerInterval){
+    clearInterval(expedienteTimerInterval);
+    expedienteTimerInterval=null;
   }
 }
 
