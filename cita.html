@@ -120,6 +120,12 @@ details.transfer-acc[open] .t-chev{transform:rotate(180deg)}
 .pay-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.45rem;margin-bottom:.35rem}
 .pay-pill{display:flex;align-items:center;justify-content:center;padding:.65rem .4rem;border-radius:7px;border:1px solid var(--rule);background:#fff;font-weight:600;font-size:.8rem;cursor:pointer;transition:box-shadow .12s,border-color .12s;text-decoration:none;color:var(--ink);text-align:center;line-height:1.25;}
 .pay-pill:hover{box-shadow:var(--shadow);border-color:#aaa}
+.pay-pill-wrap{position:relative;}
+.pay-drop{display:none;position:absolute;top:calc(100% + 5px);left:0;right:0;min-width:130px;background:#fff;border:1px solid var(--rule);border-radius:8px;box-shadow:var(--shadow-lg);z-index:20;overflow:hidden;}
+.pay-drop.open{display:block;}
+.pay-drop-item{display:block;padding:.55rem .7rem;font-size:.82rem;font-weight:600;color:var(--ink);border-bottom:1px solid var(--rule);text-align:center;transition:background .12s;text-decoration:none;}
+.pay-drop-item:last-child{border-bottom:none;}
+.pay-drop-item:hover{background:var(--gold-pale);}
 .policy-note{border:1px solid rgba(245,158,11,.28);border-radius:8px;padding:.75rem .9rem;background:rgba(245,158,11,.06);font-size:.8rem;line-height:1.55;color:var(--ink-mid);margin-top:.6rem;}
 .policy-note strong{font-weight:700;color:var(--ink)}
 .notice{background:rgba(13,27,42,.04);border:1px solid rgba(13,27,42,.10);border-radius:8px;padding:.85rem 1rem;font-size:.83rem;line-height:1.6;color:var(--ink);font-weight:500;margin-bottom:.85rem;}
@@ -705,10 +711,26 @@ details.policy-acc[open] .policy-chev{transform:rotate(180deg);}
         </details>
         <div class="pay-label">Otras opciones de pago</div>
         <div class="pay-grid">
-          <a class="pay-pill" href="#" onclick="handlePaymentLink('https://mpago.la/22Dukdt'); return false;">Efectivo</a>
-          <a class="pay-pill" href="#" onclick="handlePaymentLink('https://buy.stripe.com/aEU6qDbpt3G9aS4bII'); return false;">Débito / Crédito</a>
+          <a class="pay-pill" href="#" onclick="handlePaymentLink('https://buy.stripe.com/aEU6qDbpt3G9aS4bII'); return false;">Débito | Crédito</a>
+          <a class="pay-pill" href="#" onclick="handlePaymentLink('https://buy.stripe.com/aEU6qDbpt3G9aS4bII'); return false;">Apple Pay</a>
+          <div class="pay-pill-wrap">
+            <a class="pay-pill" href="#" onclick="togglePayDrop('efectivo'); return false;" style="gap:.3rem">Oxxo <span style="font-size:.65rem;opacity:.6">▾</span></a>
+            <div class="pay-drop" id="drop-efectivo">
+              <a class="pay-drop-item" href="https://mpago.la/2y3L1g1" target="_blank" rel="noopener">$1,400</a>
+              <a class="pay-drop-item" href="https://mpago.la/2y3L1g1" target="_blank" rel="noopener">$1,600</a>
+              <a class="pay-drop-item" href="https://link.mercadopago.com.mx/deldhym" target="_blank" rel="noopener">Otro monto</a>
+            </div>
+          </div>
+          <div class="pay-pill-wrap">
+            <a class="pay-pill" href="#" onclick="togglePayDrop('mp'); return false;" style="gap:.3rem">MercadoPago <span style="font-size:.65rem;opacity:.6">▾</span></a>
+            <div class="pay-drop" id="drop-mp">
+              <a class="pay-drop-item" href="https://mpago.la/23Ny9WF" target="_blank" rel="noopener">$1,600</a>
+              <a class="pay-drop-item" href="https://mpago.la/2UFXwst" target="_blank" rel="noopener">$1,400</a>
+              <a class="pay-drop-item" href="https://link.mercadopago.com.mx/deldhym" target="_blank" rel="noopener">Otro monto</a>
+            </div>
+          </div>
           <a class="pay-pill" href="#" onclick="handlePaymentLink('https://www.paypal.com/ncp/payment/27HRFB82USEXC'); return false;">PayPal</a>
-          <a class="pay-pill" href="#" onclick="handlePaymentLink('https://link.mercadopago.com.mx/deldhym'); return false;">MercadoPago</a>
+          <a class="pay-pill" href="#" onclick="handlePaymentLink('https://buy.stripe.com/aEU6qDbpt3G9aS4bII'); return false;">Stripe | Link</a>
           <a class="pay-pill" href="#" onclick="handlePaymentLink('https://www.eutimya.org/pagos/codi'); return false;">CoDi</a>
           <a class="pay-pill" href="#" onclick="handlePaymentLink('https://buy.stripe.com/aEU6qDbpt3G9aS4bII'); return false;">Internacional</a>
         </div>
@@ -1660,6 +1682,20 @@ function closeExpDrawer(){
   document.body.style.overflow='';
 }
 function expIframeLoaded(){var f=document.getElementById('expIframe');if(f.src!=='about:blank')document.getElementById('expLoader').classList.add('hidden');}
+
+// ── PAY DROPDOWN ──
+function togglePayDrop(id){
+  var drop=document.getElementById('drop-'+id);
+  if(!drop)return;
+  var isOpen=drop.classList.contains('open');
+  document.querySelectorAll('.pay-drop.open').forEach(function(d){d.classList.remove('open');});
+  if(!isOpen)drop.classList.add('open');
+}
+document.addEventListener('click',function(e){
+  if(!e.target.closest('.pay-pill-wrap')){
+    document.querySelectorAll('.pay-drop.open').forEach(function(d){d.classList.remove('open');});
+  }
+});
 
 // ── NAV ──
 document.getElementById('hbg').addEventListener('click',function(e){e.stopPropagation();document.getElementById('mnav').classList.toggle('open');});
