@@ -17,9 +17,16 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <style>
+:root{
+  --ink:#0d1b2a;--ink-mid:#334155;--ink-light:#64748b;--gold:#b8893a;--gold-pale:#f5ecd7;
+  --white:#ffffff;--canvas:#fafaf8;--rule:#e8e6e1;
+  --serif:'Playfair Display',Georgia,serif;--sans:'DM Sans','Helvetica Neue',sans-serif;
+  --r:10px;--shadow:0 2px 12px rgba(13,27,42,.07);--shadow-lg:0 8px 40px rgba(13,27,42,.12);
+  --blue:#1a73e8;
+}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;overflow-x:hidden}
-body{font-family:"DM Sans","Helvetica Neue",Arial,sans-serif;color:#0d1b2a;background:#ffffff;-webkit-font-smoothing:antialiased;line-height:1.6;overflow-x:hidden}
+body{font-family:var(--sans);color:var(--ink);background:#ffffff;-webkit-font-smoothing:antialiased;line-height:1.6;overflow-x:hidden}
 img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
 
@@ -40,7 +47,7 @@ a{color:inherit;text-decoration:none}
 .mobile-nav a{font-size:.95rem;font-weight:500;color:#0d1b2a}
 
 .page-hero{background:#0d1b2a;padding:8rem 2rem 4.5rem;position:relative;overflow:hidden;margin-top:68px;}
-.page-hero-bg{position:absolute;inset:0;z-index:0;background-image:url(“https://lh3.googleusercontent.com/pw/AP1GczMhQ6m9BOG6lddqce7vog3-dLP4_oifP2GShaWc1kbQsxyFwuxyweYIykWCzKl49n2yeeyuUfcq0CgMb0GxyAwyIYHLhg2T0wvQRXcQSMnMNY23HN21WoiiRFHgzEcq9zp-rdpo9dmaZmmy7XMgizvYOA=w1024-h1024-s-no-gm”);background-size:cover;background-position:center top;filter:brightness(.4) saturate(.5) blur(3px);transform:scale(1.06);}
+.page-hero-bg{position:absolute;inset:0;z-index:0;background-image:url('https://raw.githubusercontent.com/moymaa/drmoyapsiq/main/1AAA1C69-6C0F-4205-9FDC-9CF3CA6A17E8%20(1).png');background-size:cover;background-position:center 10%;filter:brightness(.7) saturate(.6) blur(1px);transform:scale(1.04);}
 .page-hero::before{content:””;position:absolute;inset:0;z-index:1;background:linear-gradient(to right,rgba(13,27,42,.97) 0%,rgba(13,27,42,.90) 55%,rgba(13,27,42,.75) 100%);}
 .page-hero-inner{position:relative;max-width:760px;margin:0 auto;z-index:2;}
 .page-eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#b8893a;margin-bottom:1rem;}
