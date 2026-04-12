@@ -599,6 +599,18 @@ a{color:inherit;text-decoration:none}
   .geo-cred-table{font-size:.75rem}
   .geo-perfil-text p{font-size:.9rem}
 }
+/* Nav dropdown */
+.nav-dropdown{position:relative}
+.nav-drop-btn{background:none;border:none;cursor:pointer;font-size:.72rem;font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-mid);display:flex;align-items:center;gap:.3rem;padding:0;transition:color .2s;white-space:nowrap}
+.nav-drop-btn:hover{color:var(--ink)}
+.nav-drop-btn svg{transition:transform .2s}
+.nav-dropdown.open .nav-drop-btn svg{transform:rotate(180deg)}
+.nav-drop-menu{display:none;position:absolute;top:calc(100% + 12px);left:50%;transform:translateX(-50%);background:#fff;border:1px solid var(--rule);border-radius:8px;box-shadow:0 8px 32px rgba(13,27,42,.12);list-style:none;padding:.4rem 0;min-width:180px;z-index:200}
+.nav-dropdown.open .nav-drop-menu{display:block}
+.nav-drop-menu a{display:block;padding:.55rem 1.1rem;font-size:.82rem;color:var(--ink-mid);white-space:nowrap;transition:background .15s,color .15s}
+.nav-drop-menu a:hover{background:var(--canvas);color:var(--ink)}
+@media(max-width:1200px){.nav-links{gap:.7rem}.nav-links a,.nav-drop-btn{font-size:.68rem;letter-spacing:.02em}}
+@media(max-width:1024px){.nav-links .nav-hide-md{display:none}}
 /* Nav link Cédulas */
 .nav-links .nav-credenciales{}
 
@@ -692,7 +704,7 @@ a{color:inherit;text-decoration:none}
   "gender":"Male",
   "nationality":"Mexican",
   "knowsLanguage":["es","en"],
-  "description":"Médico psiquiatra mexicano egresado con mención honorífica del CMN 20 de Noviembre (UNAM). Especialista certificado por el Consejo Mexicano de Psiquiatría. Alta Especialidad en Psiquiatría de Enlace concluida. Médico adscrito al Servicio de Psiquiatría del CMN 20 de Noviembre, ISSSTE. Profesor de asignatura en Facultad de Medicina UNAM. Autor de más de 9 publicaciones en revistas indexadas internacionales.",
+  "description":"Médico psiquiatra mexicano egresado con mención honorífica del CMN 20 de Noviembre (UNAM). Especialista certificado por el Consejo Mexicano de Psiquiatría. Alta Especialidad en Psiquiatría de Enlace concluida. Médico adscrito al Servicio de Psiquiatría del CMN 20 de Noviembre, ISSSTE. Profesor de asignatura en Facultad de Medicina UNAM. Autor de múltiples publicaciones en revistas indexadas internacionales.",
   "image":"https://lh3.googleusercontent.com/pw/AP1GczMhQ6m9BOG6lddqce7vog3-dLP4_oifP2GShaWc1kbQsxyFwuxyweYIykWCzKl49n2yeeyuUfcq0CgMb0GxyAwyIYHLhg2T0wvQRXcQSMnMNY23HN21WoiiRFHgzEcq9zp-rdpo9dmaZmmy7XMgizvYOA=w1024-h1024-s-no-gm",
   "url":"https://psiquiatra-cdmx.eutimya.org/",
   "sameAs":[
@@ -867,7 +879,7 @@ a{color:inherit;text-decoration:none}
   "@type":"ItemList",
   "name":"Publicaciones científicas del Dr. Deldhy Nicolás Moya Sánchez",
   "description":"Lista de publicaciones académicas del Dr. Deldhy Nicolás Moya Sánchez en revistas internacionales indexadas. ORCID: 0000-0002-7989-4646",
-  "numberOfItems":9,
+  "numberOfItems":"multiple+",
   "itemListElement":[
     {"@type":"ListItem","position":1,"item":{"@type":"ScholarlyArticle","name":"Factores psiquiátricos predictores del éxito en cirugía bariátrica","author":{"@id":"https://psiquiatra-cdmx.eutimya.org/#physician"},"publisher":{"@type":"Organization","name":"CMN 20 de Noviembre, ISSSTE / UNAM"}}},
     {"@type":"ListItem","position":2,"item":{"@type":"ScholarlyArticle","name":"Función cognitiva y tDCS en depresión mayor","author":{"@id":"https://psiquiatra-cdmx.eutimya.org/#physician"},"publisher":{"@type":"Organization","name":"European Psychiatry / EPA 2024"}}},
@@ -974,14 +986,22 @@ a{color:inherit;text-decoration:none}
     </a>
     <ul class="nav-links">
       <li><a href="#cuando">¿Cuándo?</a></li>
-      <li><a href="#acerca">Acerca</a></li>
       <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#innovacion">Innovación</a></li>
+      <li><a href="#hospitalizacion">Hospitalización</a></li>
       <li class="nav-hide-md"><a href="#publicaciones">Investigación</a></li>
-      <li class="nav-hide-md"><a href="#articulos">Artículos</a></li>
-      <li><a href="#ia-salud-mental" title="IA y Salud Mental">IA &amp; Salud Mental</a></li>
-      <li class="nav-hide-md"><a href="#credenciales">Cédulas</a></li>
-      <li><a href="https://www.eutimya.org/pagos" target="_blank" rel="noopener">Pagos</a></li>
-      <li class="nav-hide-md"><a href="https://www.eutimya.org/factura" target="_blank" rel="noopener">Factura</a></li>
+      <li class="nav-dropdown">
+        <button class="nav-drop-btn" type="button" aria-haspopup="true" aria-expanded="false">
+          Más <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor"><path d="M1 3l4 4 4-4"/></svg>
+        </button>
+        <ul class="nav-drop-menu">
+          <li><a href="#acerca">Acerca del Dr. Moya</a></li>
+          <li><a href="#articulos">Artículos</a></li>
+          <li><a href="#credenciales">Cédulas y Títulos</a></li>
+          <li><a href="https://www.eutimya.org/pagos" target="_blank" rel="noopener">Formas de pago</a></li>
+          <li><a href="https://www.eutimya.org/factura" target="_blank" rel="noopener">Factura CFDI</a></li>
+        </ul>
+      </li>
       <li><a href="#contacto">Contacto</a></li>
     </ul>
     <a href="https://psiquiatra-cdmx.eutimya.org/cita" class="nav-btn">
@@ -998,12 +1018,13 @@ a{color:inherit;text-decoration:none}
     <li><a href="#cuando">¿Cuándo consultar?</a></li>
     <li><a href="#acerca">Acerca</a></li>
     <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#innovacion">Herramientas Innovadoras</a></li>
+    <li><a href="#hospitalizacion">Hospitalización Psiquiátrica</a></li>
     <li><a href="#honorarios">Honorarios</a></li>
     <li><a href="#padecimientos">Padecimientos</a></li>
-    <li class="nav-hide-md"><a href="#publicaciones">Investigación</a></li>
-      <li class="nav-hide-md"><a href="#articulos">Artículos</a></li>
-    <li><a href="#ponencias">Congresos</a></li>
+    <li><a href="#publicaciones">Investigación</a></li>
     <li><a href="#articulos">Artículos</a></li>
+    <li><a href="#ponencias">Congresos</a></li>
     <li><a href="#credenciales">Cédulas y Títulos</a></li>
     <li><a href="https://www.eutimya.org/pagos" target="_blank" rel="noopener">Formas de pago</a></li>
     <li><a href="https://www.eutimya.org/factura" target="_blank" rel="noopener">Solicitar factura</a></li>
@@ -1105,7 +1126,7 @@ El Dr. Deldhy Nicolás Moya Sánchez es psiquiatra en la Ciudad de México, egre
 <div class="stats-bar">
   <div class="stats-inner">
     <div><span class="stat-n">★ 5.0</span><span class="stat-l">+100 reseñas Google</span></div>
-    <div><span class="stat-n">+9</span><span class="stat-l">Publicaciones indexadas</span></div>
+    <div><span class="stat-n" style="font-size:1.1rem;letter-spacing:-.01em">Múltiples</span><span class="stat-l">Publicaciones indexadas internacionales</span></div>
     <div><span class="stat-n">✓</span><span class="stat-l">Certificado CMP · Actualización constante</span></div>
     <div><span class="stat-n">#4</span><span class="stat-l">CMN "20 Nov." · Mejor hospital México 2026</span></div>
     <div><span class="stat-n">★ UNAM</span><span class="stat-l">Mención Honorífica · Trayectoria destacada</span></div>
@@ -1176,7 +1197,7 @@ El Dr. Deldhy Nicolás Moya Sánchez es psiquiatra en la Ciudad de México, egre
       <div class="geo-perfil-text">
         <p>El <strong>Dr. Deldhy Nicolás Moya Sánchez</strong> es <strong>médico psiquiatra certificado</strong> con consultorio en la Colonia Del Valle, Ciudad de México. Egresado <strong>con mención honorífica</strong> del Programa de Especialización en Psiquiatría del Centro Médico Nacional "20 de Noviembre" (ISSSTE–UNAM) y con <strong>Alta Especialidad en Psiquiatría de Enlace</strong> concluida por la UNAM. Su certificación por el <strong>Consejo Mexicano de Psiquiatría (No. 24803862)</strong> tiene vigencia hasta 2030.</p>
         <p>Como <strong>Médico Adscrito al Servicio de Psiquiatría del CMN "20 de Noviembre" (ISSSTE)</strong> y <strong>Profesor de Medicina Psicológica en la Facultad de Medicina de la UNAM</strong>, combina la práctica institucional de alto nivel con la consulta privada en Eutimya. Ha sido <strong>Jefe Nacional de Médicos Residentes del ISSSTE</strong> (2022–2023) y <strong>Consejero Nacional</strong> (2023–2025).</p>
-        <p>Es autor de <strong>más de 9 publicaciones en revistas internacionales indexadas</strong> (European Psychiatry, Psychosomatic Medicine, Neuropsychiatric Investigation) y ha presentado investigaciones en el <strong>24.° Congreso Mundial de Psiquiatría (CDMX 2024)</strong> y el <strong>32.° Congreso Europeo de Psiquiatría (Budapest 2024)</strong>. ORCID: <a href="https://orcid.org/0000-0002-7989-4646" target="_blank" rel="noopener" style="color:var(--gold)">0000-0002-7989-4646</a>.</p>
+        <p>Es autor de <strong>múltiples publicaciones en revistas internacionales indexadas</strong> (European Psychiatry, Psychosomatic Medicine, Neuropsychiatric Investigation) y ha presentado investigaciones en el <strong>24.° Congreso Mundial de Psiquiatría (CDMX 2024)</strong> y el <strong>32.° Congreso Europeo de Psiquiatría (Budapest 2024)</strong>. ORCID: <a href="https://orcid.org/0000-0002-7989-4646" target="_blank" rel="noopener" style="color:var(--gold)">0000-0002-7989-4646</a>.</p>
         <p>Consulta <strong>presencial en Calle Moras 619, Col. Del Valle Sur, Alcaldía Benito Juárez, CDMX</strong> y <strong>en línea para toda la República Mexicana y el extranjero</strong>. Honorarios: <strong>$1,400 MXN en línea</strong> / <strong>$1,600 MXN presencial</strong>. Emite CFDI. Atención en inglés disponible.</p>
       </div>
       <div class="geo-perfil-sidebar">
@@ -1419,32 +1440,240 @@ El Dr. Deldhy Nicolás Moya Sánchez es psiquiatra en la Ciudad de México, egre
       <div class="hosp-pill"><span class="hosp-pill-text">Hospital<br/>Diomed</span></div>
       <div class="hosp-pill"><span class="hosp-pill-text">Hospital<br/>Gran Roma</span></div>
       <div class="hosp-pill"><span class="hosp-pill-text">Hospital<br/>Lira y Serafín</span></div>
+      <a href="https://grupopuntodepartida.com/" target="_blank" rel="noopener" class="hosp-pill" style="text-decoration:none;border-color:rgba(184,137,58,.5);background:rgba(184,137,58,.08)">
+        <div style="text-align:center">
+          <span class="hosp-pill-text" style="color:#f4c97a">Grupo Punto<br/>de Partida</span>
+          <div style="font-size:.6rem;color:rgba(255,255,255,.4);margin-top:.2rem;text-transform:uppercase;letter-spacing:.06em">Hospitalización Psiquiátrica</div>
+        </div>
+      </a>
     </div>
   </div>
 </div>
+
+<!-- HOSPITALIZACIÓN PSIQUIÁTRICA PRIVADA -->
+<section class="section" id="hospitalizacion">
+  <div class="wrap">
+    <p class="eyebrow">Red de Hospitalización</p>
+    <h2 class="section-h">Hospitalización Psiquiátrica Privada</h2>
+    <p class="section-sub">Cuando la gravedad del cuadro clínico lo requiere, canalizamos a nuestros pacientes a una red de hospitales psiquiátricos privados de confianza, con estándares de atención de alta especialidad.</p>
+
+    <!-- GPD Card -->
+    <div style="margin-top:2.5rem;border:2px solid var(--gold);border-radius:var(--r);overflow:hidden;background:#fff;box-shadow:var(--shadow-lg)">
+      <div style="background:linear-gradient(135deg,var(--ink) 0%,#1e3a5f 100%);padding:1.8rem 2.2rem;display:flex;flex-wrap:wrap;gap:1.5rem;align-items:center">
+        <div style="flex:1;min-width:200px">
+          <div style="font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem">Red de Hospitalización Asociada</div>
+          <h3 style="font-family:var(--serif);font-size:1.5rem;font-weight:700;color:#fff;margin-bottom:.3rem">Grupo Punto de Partida</h3>
+          <p style="font-size:.83rem;color:rgba(255,255,255,.68);line-height:1.55">Hospitalización psiquiátrica privada · Red de clínicas especializadas en salud mental · CDMX y área metropolitana</p>
+        </div>
+        <a href="https://grupopuntodepartida.com/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:.5rem;background:var(--gold);color:#fff;font-size:.82rem;font-weight:700;padding:.7rem 1.4rem;border-radius:8px;text-decoration:none;white-space:nowrap;box-shadow:0 4px 16px rgba(184,137,58,.35);transition:filter .2s" onmouseover="this.style.filter='brightness(1.1)'" onmouseout="this.style.filter='none'">
+          🌐 Visitar sitio web →
+        </a>
+      </div>
+
+      <div style="padding:2rem 2.2rem">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem" class="gpd-grid">
+          <div>
+            <h4 style="font-size:.9rem;font-weight:700;color:var(--ink);margin-bottom:1rem">¿Cuándo se indica hospitalización psiquiátrica?</h4>
+            <div style="display:flex;flex-direction:column;gap:.65rem">
+              <div style="display:flex;gap:.7rem;align-items:flex-start">
+                <span style="width:22px;height:22px;background:var(--ink);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;flex-shrink:0;margin-top:.05rem">!</span>
+                <div><strong style="font-size:.86rem;color:var(--ink)">Riesgo suicida elevado</strong><br/><span style="font-size:.8rem;color:var(--ink-mid)">Ideación activa con plan o intento reciente que requiere contención segura las 24h</span></div>
+              </div>
+              <div style="display:flex;gap:.7rem;align-items:flex-start">
+                <span style="width:22px;height:22px;background:var(--ink);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;flex-shrink:0;margin-top:.05rem">!</span>
+                <div><strong style="font-size:.86rem;color:var(--ink)">Episodio maníaco o psicótico agudo</strong><br/><span style="font-size:.8rem;color:var(--ink-mid)">Desorganización conductual grave, agresividad o incapacidad para el autocuidado</span></div>
+              </div>
+              <div style="display:flex;gap:.7rem;align-items:flex-start">
+                <span style="width:22px;height:22px;background:var(--ink);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;flex-shrink:0;margin-top:.05rem">!</span>
+                <div><strong style="font-size:.86rem;color:var(--ink)">Depresión severa refractaria</strong><br/><span style="font-size:.8rem;color:var(--ink-mid)">Incapacidad funcional total o falta de respuesta al tratamiento ambulatorio estructurado</span></div>
+              </div>
+              <div style="display:flex;gap:.7rem;align-items:flex-start">
+                <span style="width:22px;height:22px;background:var(--ink);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;flex-shrink:0;margin-top:.05rem">!</span>
+                <div><strong style="font-size:.86rem;color:var(--ink)">Desintoxicación supervisada</strong><br/><span style="font-size:.8rem;color:var(--ink-mid)">Abstinencia de alcohol o benzodiazepinas con riesgo de complicaciones médicas</span></div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h4 style="font-size:.9rem;font-weight:700;color:var(--ink);margin-bottom:1rem">¿Cómo funciona la canalización?</h4>
+            <div style="display:flex;flex-direction:column;gap:.65rem">
+              <div style="display:flex;gap:.7rem;align-items:flex-start">
+                <span style="width:22px;height:22px;background:var(--gold);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;flex-shrink:0;margin-top:.05rem">1</span>
+                <span style="font-size:.83rem;color:var(--ink-mid)"><strong style="color:var(--ink)">Evaluación en consulta:</strong> el Dr. Moya valora el nivel de cuidado necesario con criterios clínicos estandarizados (LOCUS, criterios DSM-5)</span>
+              </div>
+              <div style="display:flex;gap:.7rem;align-items:flex-start">
+                <span style="width:22px;height:22px;background:var(--gold);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;flex-shrink:0;margin-top:.05rem">2</span>
+                <span style="font-size:.83rem;color:var(--ink-mid)"><strong style="color:var(--ink)">Coordinación directa:</strong> como médico asociado al grupo, facilitamos el ingreso con carta de referencia, antecedentes y plan terapéutico preexistente</span>
+              </div>
+              <div style="display:flex;gap:.7rem;align-items:flex-start">
+                <span style="width:22px;height:22px;background:var(--gold);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;flex-shrink:0;margin-top:.05rem">3</span>
+                <span style="font-size:.83rem;color:var(--ink-mid)"><strong style="color:var(--ink)">Seguimiento continuo:</strong> mantenemos comunicación con el equipo hospitalario y retomamos el manejo ambulatorio al alta</span>
+              </div>
+              <div style="display:flex;gap:.7rem;align-items:flex-start">
+                <span style="width:22px;height:22px;background:var(--gold);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;flex-shrink:0;margin-top:.05rem">4</span>
+                <span style="font-size:.83rem;color:var(--ink-mid)"><strong style="color:var(--ink)">Alta estructurada:</strong> plan de egreso con seguimiento ambulatorio, psicoeducación y plan de seguridad documentado</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mapa -->
+        <div style="margin-top:1.8rem;border-radius:8px;overflow:hidden;height:260px;border:1px solid var(--rule)">
+          <iframe
+            src="https://www.google.com/maps/search/grupo+punto+de+partida+hospital+psiquiatrico+cdmx/@19.4326,-99.1332,12z"
+            width="100%" height="260" style="border:none" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Hospitales Grupo Punto de Partida — CDMX">
+          </iframe>
+        </div>
+
+        <div style="margin-top:1.2rem;background:var(--canvas);border-radius:8px;padding:1rem 1.2rem;font-size:.81rem;color:var(--ink-mid);line-height:1.65">
+          <strong style="color:var(--ink)">Nota clínica:</strong> La hospitalización psiquiátrica es un recurso terapéutico, no un recurso de castigo ni de última instancia. El objetivo es estabilizar el cuadro agudo en un entorno seguro y estructurado, para luego retomar el tratamiento ambulatorio con mayor efectividad. La decisión siempre se toma en conjunto con el paciente y/o su familia, explicando con claridad los criterios clínicos, las alternativas disponibles y los derechos del paciente conforme a la <em>Ley General de Salud</em> y la <em>NOM-025-SSA2-2014</em>.
+        </div>
+
+        <style>@media(max-width:768px){.gpd-grid{grid-template-columns:1fr!important}}</style>
+      </div>
+    </div>
+
+    <!-- CTA hospitalización urgente -->
+    <div style="margin-top:1.5rem;display:flex;flex-wrap:wrap;gap:1rem;align-items:center;background:rgba(13,27,42,.04);border:1px solid var(--rule);border-radius:8px;padding:1.2rem 1.5rem">
+      <div style="flex:1;min-width:180px">
+        <strong style="font-size:.9rem;color:var(--ink)">¿Necesitas hospitalización urgente?</strong>
+        <p style="font-size:.8rem;color:var(--ink-mid);margin-top:.2rem">Contáctanos por WhatsApp. Coordinamos el proceso de ingreso con la mayor brevedad posible.</p>
+      </div>
+      <a href="https://wa.me/526731205121?text=Necesito%20informaci%C3%B3n%20sobre%20hospitalizaci%C3%B3n%20psiqui%C3%A1trica." target="_blank" rel="noopener" class="btn-main" style="white-space:nowrap">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        Consultar por WhatsApp
+      </a>
+    </div>
+
+  </div>
+</section>
 
 <!-- PUBLICATIONS -->
 <section class="section" id="publicaciones">
   <div class="wrap">
     <p class="eyebrow">Investigación científica</p>
     <h2 class="section-h">Publicaciones en revistas indexadas</h2>
-    <p class="section-sub">Autor y coautor en revistas nacionales e internacionales. Peer reviewer activo para <em>Cureus Journal of Medical Science</em>.</p>
+    <p class="section-sub">Autor y coautor en múltiples revistas nacionales e internacionales. Peer reviewer activo para <em>Cureus Journal of Medical Science</em>.</p>
     <div class="pubs-grid">
-      <div class="pub"><div class="pub-n">1</div><div><div class="pub-title">Transcranial Direct Current Stimulation as an Adjuvant Therapy for Major Depressive Disorder</div><div class="pub-journal">Neuropsychiatric Investigation · 2025; 63:1-8</div><div class="pub-doi">DOI: 10.5152/NeuropsychiatricInvest.2025.25020</div></div></div>
-      <div class="pub"><div class="pub-n">2</div><div><div class="pub-title">Liaison Psychiatry in a Tertiary Care Hospital: Experience of the "20 de Noviembre" National Medical Center</div><div class="pub-journal">Psychosomatic Medicine and General Practice · 2025, Vol. 10, No. 3</div><div class="pub-doi">DOI: 10.26766/pmgp.v10i3.625</div></div></div>
-      <div class="pub"><div class="pub-n">3</div><div><div class="pub-title">Socio-demographic characteristics and pharmacological treatment options in patients with delirium</div><div class="pub-journal">European Psychiatry · 2024</div><div class="pub-doi">DOI: 10.1192/j.eurpsy.2024.757</div></div></div>
-      <div class="pub"><div class="pub-n">4</div><div><div class="pub-title">Papel de los Antagonistas del Receptor NMDA en el Tratamiento de Trastornos Depresivos en Adolescentes</div><div class="pub-journal">Innoscience Journal · ISSN 3005-8953 · Octubre 2023</div><div class="pub-doi">DOI: 10.5281/zenodo.10215497</div></div></div>
-      <div class="pub"><div class="pub-n">5</div><div><div class="pub-title">Características sociodemográficas y opciones de tratamiento farmacológico en pacientes con delirium</div><div class="pub-journal">Revista Asociación Psiquiátrica Mexicana · Septiembre 2023</div><div class="pub-doi">DOI: 10.17613/ya3j-kq10</div></div></div>
-      <div class="pub"><div class="pub-n">6</div><div><div class="pub-title">Trastorno por déficit de atención e hiperactividad en la infancia: Revisión narrativa</div><div class="pub-journal">Revista Asociación Psiquiátrica Mexicana · Vol. 4 · Diciembre 2022</div><div class="pub-doi">DOI: 10.5281/zenodo.8286782</div></div></div>
-      <div class="pub"><div class="pub-n">7</div><div><div class="pub-title">Electrocardiograma vs electrocardiograma celular en el servicio de urgencias</div><div class="pub-journal">Revista de Medicina Interna de México · 2021</div><div class="pub-doi">DOI: 10.24245/mim.v37i2.3694</div></div></div>
-      <div class="pub"><div class="pub-n">8</div><div><div class="pub-title">Neuromodulación no invasiva en epilepsia: Estimulación eléctrica transcraneal por corriente directa</div><div class="pub-journal">Archivos de Neurociencia · Diciembre 2017</div><div class="pub-doi"><a href="https://doi.org/10.17613/tvyy-7p58" target="_blank" rel="noopener">DOI: 10.17613/tvyy-7p58</a></div></div></div>
-      <div class="pub"><div class="pub-n">9</div><div><div class="pub-title">Novel Pharmacological Strategies for the Management of Insomnia</div><div class="pub-journal">Journal of Neurology and Experimental Neural Science · Enero 2017</div><div class="pub-doi"><a href="https://doi.org/10.17613/8fpz-8512" target="_blank" rel="noopener">DOI: 10.17613/8fpz-8512</a></div></div></div>
+      <div class="pub"><div class="pub-n" aria-hidden="true">◆</div><div><div class="pub-title">Transcranial Direct Current Stimulation as an Adjuvant Therapy for Major Depressive Disorder</div><div class="pub-journal">Neuropsychiatric Investigation · 2025; 63:1-8</div><div class="pub-doi">DOI: 10.5152/NeuropsychiatricInvest.2025.25020</div></div></div>
+      <div class="pub"><div class="pub-n" aria-hidden="true">◆</div><div><div class="pub-title">Liaison Psychiatry in a Tertiary Care Hospital: Experience of the "20 de Noviembre" National Medical Center</div><div class="pub-journal">Psychosomatic Medicine and General Practice · 2025, Vol. 10, No. 3</div><div class="pub-doi">DOI: 10.26766/pmgp.v10i3.625</div></div></div>
+      <div class="pub"><div class="pub-n" aria-hidden="true">◆</div><div><div class="pub-title">Socio-demographic characteristics and pharmacological treatment options in patients with delirium</div><div class="pub-journal">European Psychiatry · 2024</div><div class="pub-doi">DOI: 10.1192/j.eurpsy.2024.757</div></div></div>
+      <div class="pub"><div class="pub-n" aria-hidden="true">◆</div><div><div class="pub-title">Papel de los Antagonistas del Receptor NMDA en el Tratamiento de Trastornos Depresivos en Adolescentes</div><div class="pub-journal">Innoscience Journal · ISSN 3005-8953 · Octubre 2023</div><div class="pub-doi">DOI: 10.5281/zenodo.10215497</div></div></div>
+      <div class="pub"><div class="pub-n" aria-hidden="true">◆</div><div><div class="pub-title">Características sociodemográficas y opciones de tratamiento farmacológico en pacientes con delirium</div><div class="pub-journal">Revista Asociación Psiquiátrica Mexicana · Septiembre 2023</div><div class="pub-doi">DOI: 10.17613/ya3j-kq10</div></div></div>
+      <div class="pub"><div class="pub-n" aria-hidden="true">◆</div><div><div class="pub-title">Trastorno por déficit de atención e hiperactividad en la infancia: Revisión narrativa</div><div class="pub-journal">Revista Asociación Psiquiátrica Mexicana · Vol. 4 · Diciembre 2022</div><div class="pub-doi">DOI: 10.5281/zenodo.8286782</div></div></div>
+      <div class="pub"><div class="pub-n" aria-hidden="true">◆</div><div><div class="pub-title">Electrocardiograma vs electrocardiograma celular en el servicio de urgencias</div><div class="pub-journal">Revista de Medicina Interna de México · 2021</div><div class="pub-doi">DOI: 10.24245/mim.v37i2.3694</div></div></div>
+      <div class="pub"><div class="pub-n" aria-hidden="true">◆</div><div><div class="pub-title">Neuromodulación no invasiva en epilepsia: Estimulación eléctrica transcraneal por corriente directa</div><div class="pub-journal">Archivos de Neurociencia · Diciembre 2017</div><div class="pub-doi"><a href="https://doi.org/10.17613/tvyy-7p58" target="_blank" rel="noopener">DOI: 10.17613/tvyy-7p58</a></div></div></div>
+      <div class="pub"><div class="pub-n" aria-hidden="true">◆</div><div><div class="pub-title">Novel Pharmacological Strategies for the Management of Insomnia</div><div class="pub-journal">Journal of Neurology and Experimental Neural Science · Enero 2017</div><div class="pub-doi"><a href="https://doi.org/10.17613/8fpz-8512" target="_blank" rel="noopener">DOI: 10.17613/8fpz-8512</a></div></div></div>
     </div>
     <div class="pay-note" style="margin-top:1.5rem">
       🔍 <strong>Revisor Académico (Peer Reviewer)</strong> activo en <em>Cureus Journal of Medical Science</em> ·
       <a href="https://orcid.org/0000-0002-7989-4646" target="_blank" rel="noopener" style="color:var(--gold)">ORCID: 0000-0002-7989-4646</a> ·
       <a href="https://scholar.google.es/citations?user=fAmCp1QAAAAJ" target="_blank" rel="noopener" style="color:var(--gold)">Google Scholar</a>
     </div>
+
+    <!-- PERFILES ACADÉMICOS -->
+    <div style="margin-top:2.2rem">
+      <p style="font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-light);margin-bottom:1rem">Perfiles académicos verificables</p>
+      <div class="acad-profiles-grid">
+
+        <!-- Google Scholar -->
+        <a href="https://scholar.google.es/citations?user=fAmCp1QAAAAJ&hl=es" target="_blank" rel="noopener" class="acad-card">
+          <div class="acad-card-header" style="background:#fff7e6;border-bottom:1px solid #f0e0b0">
+            <div class="acad-card-logo">
+              <svg viewBox="0 0 48 48" width="28" height="28"><path fill="#4285F4" d="M24 24l-10.9-8H35z"/><path fill="#356AC3" d="M24 24l11-8v14H13V16z"/><path fill="#A0C3FF" d="M24 24L13 16v14z"/><circle cx="24" cy="36" r="8" fill="#4285F4"/><path fill="#356AC3" d="M16 36a8 8 0 0 0 8 8v-8z"/></svg>
+            </div>
+            <div>
+              <div class="acad-card-platform">Google Scholar</div>
+              <div class="acad-card-name">Deldhy Nicolas Moya-Sánchez</div>
+            </div>
+            <div class="acad-card-ext">↗</div>
+          </div>
+          <div class="acad-card-body">
+            <div class="acad-card-tag" style="background:#e8f0fe;color:#1a73e8">Salud Mental · UNAM</div>
+            <div class="acad-card-sub">Correo verificado · comunidad.unam.mx · Perfil académico público</div>
+          </div>
+        </a>
+
+        <!-- ORCID -->
+        <a href="https://orcid.org/0000-0002-7989-4646" target="_blank" rel="noopener" class="acad-card">
+          <div class="acad-card-header" style="background:#f3faf3;border-bottom:1px solid #c8e8c8">
+            <div class="acad-card-logo">
+              <svg viewBox="0 0 72 72" width="28" height="28"><circle cx="36" cy="36" r="36" fill="#A6CE39"/><path d="M22.9 12.4h5.5v47.2h-5.5V12.4zm14 0h14.8c14 0 21 8.8 21 23.6 0 14.8-7 23.6-21 23.6H36.9V12.4zm5.5 5.4v36.4h8.7c10.4 0 15.8-6.5 15.8-18.2 0-11.7-5.4-18.2-15.8-18.2H42.4z" fill="#FFF"/><circle cx="25.7" cy="6.8" r="3.4" fill="#FFF"/></svg>
+            </div>
+            <div>
+              <div class="acad-card-platform">ORCID</div>
+              <div class="acad-card-name">Deldhy N. Moya-Sánchez</div>
+            </div>
+            <div class="acad-card-ext">↗</div>
+          </div>
+          <div class="acad-card-body">
+            <div class="acad-card-tag" style="background:#f3faf3;color:#3a7d3a">Dominio verificado · unam.mx</div>
+            <div style="font-family:monospace;font-size:.88rem;font-weight:700;color:var(--ink);letter-spacing:.02em;margin:.7rem 0 .4rem">0000-0002-7989-4646</div>
+            <div class="acad-card-sub">Psiquiatra · CMN 20 de Noviembre · ISSSTE · Alta Especialidad Psiquiatría de Enlace · UNAM</div>
+          </div>
+        </a>
+
+        <!-- ResearchGate -->
+        <a href="https://www.researchgate.net/profile/Deldhy-Nicolas-Moya-Sanchez" target="_blank" rel="noopener" class="acad-card">
+          <div class="acad-card-header" style="background:#f0fbfa;border-bottom:1px solid #b0e0d8">
+            <div class="acad-card-logo">
+              <svg viewBox="0 0 100 100" width="28" height="28"><rect width="100" height="100" rx="8" fill="#00D2BE"/><text x="50" y="68" font-size="58" font-weight="900" font-family="Arial,sans-serif" text-anchor="middle" fill="#fff">RG</text></svg>
+            </div>
+            <div>
+              <div class="acad-card-platform">ResearchGate</div>
+              <div class="acad-card-name">Deldhy Nicolás Moya-Sánchez</div>
+            </div>
+            <div class="acad-card-ext">↗</div>
+          </div>
+          <div class="acad-card-body">
+            <div class="acad-card-tag" style="background:#e0f7f5;color:#00897b">MD, MSc · Verified ✓</div>
+            <div class="acad-card-sub">Consultation-Liaison Psychiatrist · National Medical Center "20 de Noviembre" · Perfil verificado</div>
+          </div>
+        </a>
+
+        <!-- LinkedIn -->
+        <a href="https://www.linkedin.com/in/drmoyapsiq/" target="_blank" rel="noopener" class="acad-card">
+          <div class="acad-card-header" style="background:#f0f7ff;border-bottom:1px solid #b8d4f0">
+            <div class="acad-card-logo">
+              <svg viewBox="0 0 40 40" width="28" height="28"><rect width="40" height="40" rx="6" fill="#0A66C2"/><path fill="#fff" d="M9 15h5v16H9zm2.5-7.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM17 15h5v2.2c.7-1.3 2.4-2.5 4.8-2.5 5.1 0 6.2 3.3 6.2 7.7V31h-5v-8c0-2 0-4.4-2.7-4.4-2.8 0-3.3 2.1-3.3 4.3V31h-5V15z"/></svg>
+            </div>
+            <div>
+              <div class="acad-card-platform">LinkedIn</div>
+              <div class="acad-card-name">Deldhy Nicolás Moya Sánchez</div>
+            </div>
+            <div class="acad-card-ext">↗</div>
+          </div>
+          <div class="acad-card-body">
+            <div class="acad-card-tag" style="background:#e8f1fb;color:#0a66c2">Perfil verificado ✓</div>
+            <div class="acad-card-sub">Psiquiatra y Psiquiatría de Enlace · CMN 20 de Noviembre · UNAM · ISSSTE · @drmoyapsiq</div>
+          </div>
+        </a>
+
+      </div>
+    </div>
+
+    <style>
+      .acad-profiles-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+      .acad-card{display:flex;flex-direction:column;border:1px solid var(--rule);border-radius:var(--r);overflow:hidden;text-decoration:none;color:inherit;transition:box-shadow .22s,transform .18s;background:#fff}
+      .acad-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-3px)}
+      .acad-card-header{display:flex;align-items:center;gap:.75rem;padding:.9rem 1rem;position:relative}
+      .acad-card-logo{width:38px;height:38px;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+      .acad-card-platform{font-size:.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-light);margin-bottom:.12rem}
+      .acad-card-name{font-size:.8rem;font-weight:700;color:var(--ink);line-height:1.2}
+      .acad-card-ext{margin-left:auto;font-size:1rem;color:var(--ink-light);flex-shrink:0;opacity:.5}
+      .acad-card-body{padding:.9rem 1rem 1rem;flex:1;display:flex;flex-direction:column}
+      .acad-card-tag{display:inline-flex;font-size:.68rem;font-weight:700;letter-spacing:.04em;border-radius:100px;padding:.2rem .65rem;align-self:flex-start;margin-bottom:.6rem}
+      .acad-stats-row{display:flex;align-items:center;gap:.5rem;margin:.1rem 0 .5rem}
+      .acad-stat{display:flex;flex-direction:column;align-items:center;gap:.05rem}
+      .acad-stat-n{font-family:var(--serif);font-size:1.1rem;font-weight:700;color:var(--ink);line-height:1}
+      .acad-stat-l{font-size:.62rem;font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-light)}
+      .acad-stat-div{width:1px;height:24px;background:var(--rule);flex-shrink:0}
+      .acad-card-sub{font-size:.73rem;color:var(--ink-light);line-height:1.5;margin-top:auto;padding-top:.4rem}
+      @media(max-width:900px){.acad-profiles-grid{grid-template-columns:1fr 1fr}}
+      @media(max-width:480px){.acad-profiles-grid{grid-template-columns:1fr}}
+    </style>
+
   </div>
 </section>
 
@@ -1698,6 +1927,92 @@ El Dr. Deldhy Nicolás Moya Sánchez es psiquiatra en la Ciudad de México, egre
 
       </div>
     </div>
+  </div>
+</section>
+
+<!-- INNOVACIÓN CLÍNICA — HERRAMIENTAS AVANZADAS -->
+<section class="section section-alt" id="innovacion">
+  <div class="wrap">
+    <p class="eyebrow">Psiquiatría de Vanguardia</p>
+    <h2 class="section-h">Herramientas y tecnologías avanzadas en nuestra práctica</h2>
+    <p class="section-sub">Más allá de la consulta tradicional: integramos evidencia de alto nivel, tecnología clínica y métodos objetivos para una psiquiatría de precisión.</p>
+
+    <!-- App Psicoeducación -->
+    <div style="background:linear-gradient(135deg,#004D44 0%,#006A60 60%,#007a6e 100%);border-radius:var(--r);padding:2rem 2.4rem;margin-top:2.2rem;display:flex;flex-wrap:wrap;gap:1.5rem;align-items:center">
+      <div style="font-size:2.8rem;line-height:1;flex-shrink:0">📱</div>
+      <div style="flex:1;min-width:220px">
+        <div style="font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:.3rem">Desarrollada por Eutimya · PWA instalable</div>
+        <h3 style="font-family:var(--serif);font-size:1.3rem;font-weight:700;color:#fff;margin-bottom:.5rem;line-height:1.3">App de Psicoeducación Eutimya</h3>
+        <p style="font-size:.86rem;color:rgba(255,255,255,.78);line-height:1.7;margin-bottom:0">Aplicación web progresiva (PWA) creada por nuestro equipo, instalable en cualquier dispositivo. Contiene módulos de psicoeducación clínica, herramientas TCC estructuradas, plan de seguridad de crisis, registro de síntomas y recursos para pacientes y familias. Funciona sin conexión. Diseñada por el propio Dr. Moya a partir de los materiales usados en consulta.</p>
+      </div>
+      <a href="https://app.eutimya.org" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:.5rem;background:#fff;color:#004D44;font-size:.84rem;font-weight:700;padding:.75rem 1.6rem;border-radius:8px;white-space:nowrap;box-shadow:0 4px 16px rgba(0,0,0,.15);transition:transform .15s,box-shadow .2s;text-decoration:none" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='none'">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18.01"/></svg>
+        Abrir App →
+      </a>
+    </div>
+
+    <!-- Grid de herramientas -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:1.8rem" class="innov-grid">
+
+      <!-- Farmacogenómica -->
+      <div style="background:#fff;border:1px solid var(--rule);border-radius:var(--r);padding:1.6rem;position:relative;overflow:hidden">
+        <div style="position:absolute;top:0;right:0;width:60px;height:60px;background:linear-gradient(135deg,var(--gold-pale),transparent);border-radius:0 var(--r) 0 60px"></div>
+        <div style="font-size:1.4rem;margin-bottom:.7rem">🧬</div>
+        <h3 style="font-family:var(--serif);font-size:1rem;color:var(--ink);margin-bottom:.5rem">Psiquiatría de Precisión<br/><span style="font-size:.82rem;font-weight:400;color:var(--ink-light)">Farmacogenómica</span></h3>
+        <p style="font-size:.82rem;color:var(--ink-mid);line-height:1.7">En casos seleccionados solicitamos <strong>pruebas farmacogenómicas</strong> (polimorfismos CYP2D6, CYP2C19, ABCB1, SLC6A4) que predicen la respuesta y tolerancia a psicofármacos, reduciendo el ensayo empírico. La evidencia respalda su utilidad en depresión resistente y en pacientes con metabolismo atípico de fármacos.</p>
+        <div style="margin-top:.8rem;font-size:.7rem;color:var(--ink-light);border-top:1px solid var(--rule);padding-top:.6rem">Evidencia: Bousman et al., <em>Lancet Psychiatry</em> 2023; Hodgson et al. 2022</div>
+      </div>
+
+      <!-- IA clínica -->
+      <div style="background:#fff;border:1px solid var(--rule);border-radius:var(--r);padding:1.6rem;position:relative;overflow:hidden">
+        <div style="position:absolute;top:0;right:0;width:60px;height:60px;background:linear-gradient(135deg,var(--gold-pale),transparent);border-radius:0 var(--r) 0 60px"></div>
+        <div style="font-size:1.4rem;margin-bottom:.7rem">🤖</div>
+        <h3 style="font-family:var(--serif);font-size:1rem;color:var(--ink);margin-bottom:.5rem">Integración de IA<br/><span style="font-size:.82rem;font-weight:400;color:var(--ink-light)">Apoyo diagnóstico y clínico</span></h3>
+        <p style="font-size:.82rem;color:var(--ink-mid);line-height:1.7">Utilizamos herramientas de inteligencia artificial como apoyo en el análisis de patrones clínicos, revisión bibliográfica, generación de escalas personalizadas y documentación clínica. No como sustituto del juicio médico, sino como herramienta de apoyo con enfoque crítico y ético, conforme a los lineamientos de la APA y el marco regulatorio vigente.</p>
+        <div style="margin-top:.8rem;font-size:.7rem;color:var(--ink-light);border-top:1px solid var(--rule);padding-top:.6rem">Evidencia: Torous et al., <em>NPJ Digital Medicine</em> 2021; APA AI Policy 2023</div>
+      </div>
+
+      <!-- Wearables -->
+      <div style="background:#fff;border:1px solid var(--rule);border-radius:var(--r);padding:1.6rem;position:relative;overflow:hidden">
+        <div style="position:absolute;top:0;right:0;width:60px;height:60px;background:linear-gradient(135deg,var(--gold-pale),transparent);border-radius:0 var(--r) 0 60px"></div>
+        <div style="font-size:1.4rem;margin-bottom:.7rem">⌚</div>
+        <h3 style="font-family:var(--serif);font-size:1rem;color:var(--ink);margin-bottom:.5rem">Relojes Inteligentes<br/><span style="font-size:.82rem;font-weight:400;color:var(--ink-light)">Monitoreo objetivo</span></h3>
+        <p style="font-size:.82rem;color:var(--ink-mid);line-height:1.7">Cuando el caso lo amerita, integramos datos de <strong>actimetría y monitores portátiles</strong> (variabilidad de frecuencia cardiaca, sueño, actividad física) para objetivar el estado funcional entre consultas. La evidencia respalda su uso en trastornos del sueño, depresión mayor y trastorno bipolar para monitoreo longitudinal no invasivo.</p>
+        <div style="margin-top:.8rem;font-size:.7rem;color:var(--ink-light);border-top:1px solid var(--rule);padding-top:.6rem">Evidencia: Jacobson et al., <em>JMIR Mhealth</em> 2019; Narzisi et al., <em>Sensors</em> 2020</div>
+      </div>
+
+      <!-- Biomarcadores -->
+      <div style="background:#fff;border:1px solid var(--rule);border-radius:var(--r);padding:1.6rem;position:relative;overflow:hidden">
+        <div style="position:absolute;top:0;right:0;width:60px;height:60px;background:linear-gradient(135deg,var(--gold-pale),transparent);border-radius:0 var(--r) 0 60px"></div>
+        <div style="font-size:1.4rem;margin-bottom:.7rem">🔬</div>
+        <h3 style="font-family:var(--serif);font-size:1rem;color:var(--ink);margin-bottom:.5rem">Biomarcadores y Estudios<br/><span style="font-size:.82rem;font-weight:400;color:var(--ink-light)">Psiquiatría objetiva</span></h3>
+        <p style="font-size:.82rem;color:var(--ink-mid);line-height:1.7">Cuando el cuadro clínico lo requiere, solicitamos estudios avanzados: <strong>marcadores inflamatorios</strong> (PCR, IL-6), vitamina D, función tiroidea, litemia y niveles séricos de fármacos, <strong>neurodiagnóstico</strong> (EEG, resonancia magnética) y estudios de sueño (polisomnografía). El objetivo es acercarnos a una psiquiatría más objetiva y medible.</p>
+        <div style="margin-top:.8rem;font-size:.7rem;color:var(--ink-light);border-top:1px solid var(--rule);padding-top:.6rem">Evidencia: Penninx et al., <em>Nat Rev Neurosci</em> 2022; Köhler et al., <em>Brain Behav Immun</em> 2018</div>
+      </div>
+
+      <!-- Pruebas neuropsicológicas -->
+      <div style="background:#fff;border:1px solid var(--rule);border-radius:var(--r);padding:1.6rem;position:relative;overflow:hidden">
+        <div style="position:absolute;top:0;right:0;width:60px;height:60px;background:linear-gradient(135deg,var(--gold-pale),transparent);border-radius:0 var(--r) 0 60px"></div>
+        <div style="font-size:1.4rem;margin-bottom:.7rem">🧩</div>
+        <h3 style="font-family:var(--serif);font-size:1rem;color:var(--ink);margin-bottom:.5rem">Evaluación Neuropsicológica<br/><span style="font-size:.82rem;font-weight:400;color:var(--ink-light)">Escalas validadas</span></h3>
+        <p style="font-size:.82rem;color:var(--ink-mid);line-height:1.7">Aplicamos sistemáticamente escalas clínicas validadas: <strong>ASRS, DIVA 5.0</strong> (TDAH), <strong>PHQ-9, HAM-D</strong> (depresión), <strong>GAD-7</strong> (ansiedad), <strong>PCL-5</strong> (TEPT), <strong>MoCA</strong> (cognición), <strong>ITQ</strong> (trauma). Para casos complejos, coordinamos evaluación neuropsicológica formal con baterías estandarizadas.</p>
+        <div style="margin-top:.8rem;font-size:.7rem;color:var(--ink-light);border-top:1px solid var(--rule);padding-top:.6rem">Escalas: ASRS-v1.1 · PHQ-9 · GAD-7 · PCL-5 · MoCA · DIVA 5.0 · ITQ</div>
+      </div>
+
+      <!-- Neuromodulación -->
+      <div style="background:#fff;border:1px solid var(--rule);border-radius:var(--r);padding:1.6rem;position:relative;overflow:hidden">
+        <div style="position:absolute;top:0;right:0;width:60px;height:60px;background:linear-gradient(135deg,var(--gold-pale),transparent);border-radius:0 var(--r) 0 60px"></div>
+        <div style="font-size:1.4rem;margin-bottom:.7rem">⚡</div>
+        <h3 style="font-family:var(--serif);font-size:1rem;color:var(--ink);margin-bottom:.5rem">Neuromodulación No Invasiva<br/><span style="font-size:.82rem;font-weight:400;color:var(--ink-light)">TMS · tDCS</span></h3>
+        <p style="font-size:.82rem;color:var(--ink-mid);line-height:1.7">Investigador activo en <strong>estimulación transcraneal (tDCS y TMS)</strong> para depresión mayor resistente y TDAH. Área de publicación científica propia: estudio de función cognitiva y síntomas depresivos con tDCS prefrontal (EPA Budapest 2024, WPA CDMX 2024). Disponible como complemento terapéutico en casos seleccionados.</p>
+        <div style="margin-top:.8rem;font-size:.7rem;color:var(--ink-light);border-top:1px solid var(--rule);padding-top:.6rem">DOI: 10.5152/NeuropsychiatricInvest.2025.25020 · Aprobado FDA/CE</div>
+      </div>
+    </div>
+
+    <style>
+      @media(max-width:900px){.innov-grid{grid-template-columns:1fr 1fr!important}}
+      @media(max-width:580px){.innov-grid{grid-template-columns:1fr!important}}
+    </style>
   </div>
 </section>
 
@@ -2089,6 +2404,25 @@ document.getElementById('vcf-btn').addEventListener('click',function(){
   a.href=url;a.download='DrMoyaSanchez.vcf';
   document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(url);
 });
+
+/* ═══ NAV DROPDOWN ═══ */
+(function(){
+  var dropdowns = document.querySelectorAll('.nav-dropdown');
+  dropdowns.forEach(function(dd){
+    var btn = dd.querySelector('.nav-drop-btn');
+    if(!btn) return;
+    btn.addEventListener('click', function(e){
+      e.stopPropagation();
+      var isOpen = dd.classList.contains('open');
+      document.querySelectorAll('.nav-dropdown.open').forEach(function(d){ d.classList.remove('open'); });
+      if(!isOpen) dd.classList.add('open');
+      btn.setAttribute('aria-expanded', !isOpen);
+    });
+  });
+  document.addEventListener('click', function(){
+    document.querySelectorAll('.nav-dropdown.open').forEach(function(d){ d.classList.remove('open'); });
+  });
+})();
 
 /* ═══ LIGHTBOX ═══ */
 (function(){
