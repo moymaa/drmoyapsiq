@@ -2959,23 +2959,41 @@ window.googleTranslateElementInit = function(){
 (function(){
   var isEN = false;
 
-  function setLang(lang){
-    var tryCount = 0;
+  function dispatch(sel, val){
+    sel.value = val;
+    var evt = document.createEvent('HTMLEvents');
+    evt.initEvent('change', false, true);
+    sel.dispatchEvent(evt);
+  }
+
+  function toEnglish(){
+    var tries = 0;
     function attempt(){
       var sel = document.querySelector('.goog-te-combo');
       if(sel){
-        sel.value = lang;
-        var evt = document.createEvent('HTMLEvents');
-        evt.initEvent('change',false,true);
-        sel.dispatchEvent(evt);
-        isEN = (lang === 'en');
+        dispatch(sel, 'en');
+        isEN = true;
         updateBadges();
-      } else if(tryCount < 20){
-        tryCount++;
+      } else if(tries++ < 20){
         setTimeout(attempt, 400);
       }
     }
     attempt();
+  }
+
+  function toSpanish(){
+    /* Google Translate revierte con valor vacío */
+    var sel = document.querySelector('.goog-te-combo');
+    if(sel){
+      dispatch(sel, '');
+      /* segundo intento por si el primer disparo no alcanza */
+      setTimeout(function(){
+        var s2 = document.querySelector('.goog-te-combo');
+        if(s2 && s2.value !== '') dispatch(s2, '');
+      }, 300);
+    }
+    isEN = false;
+    updateBadges();
   }
 
   function updateBadges(){
@@ -2984,7 +3002,7 @@ window.googleTranslateElementInit = function(){
       if(!b) return;
       if(isEN){
         b.style.background = 'linear-gradient(135deg,#b8893a,#c9a04a)';
-        b.title = 'Volver al español';
+        b.title = 'Volver al español · Click to revert';
       } else {
         b.style.background = '';
         b.title = 'Click to switch to English';
@@ -2992,9 +3010,7 @@ window.googleTranslateElementInit = function(){
     });
   }
 
-  function toggle(){
-    isEN ? setLang('es') : setLang('en');
-  }
+  function toggle(){ isEN ? toSpanish() : toEnglish(); }
 
   ['en-badge-d','en-badge-m'].forEach(function(id){
     var el = document.getElementById(id);
