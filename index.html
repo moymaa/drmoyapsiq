@@ -1218,7 +1218,7 @@ El Dr. Deldhy Nicolás Moya Sánchez es psiquiatra en la Ciudad de México, egre
       </a>
     </div>
     <div style="margin-bottom:1.5rem">
-      <span style="display:inline-flex;align-items:center;gap:.45rem;background:linear-gradient(135deg,#1a3a5c,#1e3a5f);color:#fff;border-radius:8px;padding:.45rem 1rem;font-size:.78rem;font-weight:600;letter-spacing:.03em;box-shadow:0 2px 8px rgba(13,27,42,.18)">
+      <span id="en-badge-d" role="button" tabindex="0" title="Click to switch to English" style="cursor:pointer;display:inline-flex;align-items:center;gap:.45rem;background:linear-gradient(135deg,#1a3a5c,#1e3a5f);color:#fff;border-radius:8px;padding:.45rem 1rem;font-size:.78rem;font-weight:600;letter-spacing:.03em;box-shadow:0 2px 8px rgba(13,27,42,.18);transition:filter .2s" onmouseover="this.style.filter='brightness(1.18)'" onmouseout="this.style.filter='none'">
         🇺🇸 Yes, we speak English <span style="opacity:.6;font-weight:400">· Consultations available in English</span>
       </span>
     </div>
@@ -1257,7 +1257,7 @@ El Dr. Deldhy Nicolás Moya Sánchez es psiquiatra en la Ciudad de México, egre
         </a>
       </div>
       <div style="margin-top:.85rem;opacity:0;animation:hmoUp .6s ease .88s forwards;">
-        <span style="display:inline-flex;align-items:center;gap:.4rem;background:rgba(26,58,95,.75);border:1px solid rgba(255,255,255,.15);backdrop-filter:blur(6px);color:#fff;border-radius:8px;padding:.38rem .9rem;font-size:.73rem;font-weight:600;letter-spacing:.03em;">
+        <span id="en-badge-m" role="button" tabindex="0" title="Click to switch to English" style="cursor:pointer;display:inline-flex;align-items:center;gap:.4rem;background:rgba(26,58,95,.75);border:1px solid rgba(255,255,255,.15);backdrop-filter:blur(6px);color:#fff;border-radius:8px;padding:.38rem .9rem;font-size:.73rem;font-weight:600;letter-spacing:.03em;">
           🇺🇸 Yes, we speak English <span style="opacity:.6;font-weight:400"> · English consultations</span>
         </span>
       </div>
@@ -2668,6 +2668,193 @@ document.getElementById('vcf-btn').addEventListener('click',function(){
   });
 })();
 </script>
+<!-- ═══ SOCIAL FLOAT CLUSTER ═══ -->
+<style>
+/* Wrapper fijo en esquina inferior izquierda */
+.sf-wrap{
+  position:fixed;
+  bottom:24px;
+  left:20px;
+  z-index:999;
+  display:flex;
+  flex-direction:column;   /* IG arriba, FB en medio, trigger abajo */
+  align-items:flex-start;
+  gap:10px;
+}
+/* Cada fila: ícono + etiqueta */
+.sf-row{
+  display:flex;
+  flex-direction:row;
+  align-items:center;
+  gap:10px;
+  /* oculto por defecto */
+  opacity:0;
+  transform:translateY(8px) scale(.88);
+  pointer-events:none;
+  transition:
+    opacity .25s ease,
+    transform .32s cubic-bezier(.34,1.56,.64,1);
+}
+.sf-row.sf-show{
+  opacity:1;
+  transform:translateY(0) scale(1);
+  pointer-events:auto;
+}
+/* Botón social circular */
+.sf-btn{
+  width:46px;
+  height:46px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+  text-decoration:none;
+  flex-shrink:0;
+  box-shadow:0 4px 16px rgba(0,0,0,.22);
+  transition:transform .22s cubic-bezier(.34,1.56,.64,1), box-shadow .2s;
+}
+.sf-btn:hover{ transform:scale(1.1); box-shadow:0 6px 22px rgba(0,0,0,.3); }
+.sf-btn:active{ transform:scale(.93); }
+.sf-ig{ background:linear-gradient(135deg,#f09433,#e6683c 30%,#dc2743 55%,#bc1888); }
+.sf-fb{ background:#1877F2; }
+/* Etiqueta pill */
+.sf-label{
+  background:rgba(13,27,42,.84);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  color:#fff;
+  font-family:var(--sans,'DM Sans',sans-serif);
+  font-size:.72rem;
+  font-weight:600;
+  letter-spacing:.03em;
+  padding:.28rem .72rem;
+  border-radius:999px;
+  white-space:nowrap;
+  pointer-events:none;
+  border:1px solid rgba(255,255,255,.12);
+  box-shadow:0 2px 10px rgba(13,27,42,.2);
+}
+/* Botón trigger */
+.sf-trigger{
+  width:52px;
+  height:52px;
+  border-radius:50%;
+  border:none;
+  cursor:pointer;
+  background:var(--ink,#0d1b2a);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 6px 24px rgba(13,27,42,.38);
+  transition:
+    background .2s,
+    box-shadow .2s,
+    transform .3s cubic-bezier(.34,1.56,.64,1);
+  -webkit-tap-highlight-color:transparent;
+  outline:none;
+  position:relative;   /* para los iconos absolutos */
+  overflow:hidden;
+}
+.sf-trigger:hover{ background:#1e3a5f; transform:translateY(-1px); }
+.sf-trigger.sf-open{ background:var(--gold,#b8893a); }
+/* Los dos iconos se superponen */
+.sf-icon{
+  position:absolute;
+  top:50%; left:50%;
+  transform:translate(-50%,-50%);
+  transition:opacity .18s, transform .18s;
+  display:flex;
+}
+.sf-icon-close{ opacity:0; transform:translate(-50%,-50%) rotate(-45deg) scale(.7); }
+.sf-trigger.sf-open .sf-icon-share{ opacity:0; transform:translate(-50%,-50%) rotate(45deg) scale(.7); }
+.sf-trigger.sf-open .sf-icon-close{ opacity:1; transform:translate(-50%,-50%) rotate(0deg) scale(1); }
+/* Pulse inicial */
+@keyframes sfPulse{
+  0%  { box-shadow:0 0 0 0 rgba(184,137,58,.5),0 6px 24px rgba(13,27,42,.38); }
+  70% { box-shadow:0 0 0 11px rgba(184,137,58,0),0 6px 24px rgba(13,27,42,.38); }
+  100%{ box-shadow:0 0 0 0 rgba(184,137,58,0),0 6px 24px rgba(13,27,42,.38); }
+}
+.sf-trigger:not(.sf-open){ animation:sfPulse 2.6s ease 2.5s 3; }
+</style>
+
+<div class="sf-wrap" id="sf-wrap">
+  <!-- Instagram (más arriba) -->
+  <div class="sf-row" id="sf-ig">
+    <a href="https://www.instagram.com/drmoyapsiq/" target="_blank" rel="noopener"
+       class="sf-btn sf-ig" aria-label="Instagram @drmoyapsiq">
+      <svg width="21" height="21" viewBox="0 0 24 24" fill="none"
+           stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="2" width="20" height="20" rx="5"/>
+        <circle cx="12" cy="12" r="4.4"/>
+        <circle cx="17.5" cy="6.5" r=".9" fill="#fff" stroke="none"/>
+      </svg>
+    </a>
+    <span class="sf-label">@drmoyapsiq</span>
+  </div>
+  <!-- Facebook -->
+  <div class="sf-row" id="sf-fb">
+    <a href="https://www.facebook.com/drmoyapsiquia" target="_blank" rel="noopener"
+       class="sf-btn sf-fb" aria-label="Facebook @drmoyapsiquia">
+      <svg width="21" height="21" viewBox="0 0 24 24" fill="#fff">
+        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+      </svg>
+    </a>
+    <span class="sf-label">@drmoyapsiquia</span>
+  </div>
+  <!-- Trigger (siempre visible, abajo) -->
+  <button class="sf-trigger" id="sf-trigger"
+          aria-label="Redes sociales" aria-expanded="false">
+    <span class="sf-icon sf-icon-share">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Meta_Platforms_Inc._logo_%28cropped%29.svg"
+           width="28" height="18"
+           style="filter:brightness(0) invert(1);display:block;pointer-events:none"
+           alt="Meta" loading="lazy">
+    </span>
+    <span class="sf-icon sf-icon-close">
+      <svg width="21" height="21" viewBox="0 0 24 24" fill="none"
+           stroke="#fff" stroke-width="2.3" stroke-linecap="round">
+        <line x1="18" y1="6" x2="6" y2="18"/>
+        <line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </span>
+  </button>
+</div>
+
+<script>
+(function(){
+  var trigger = document.getElementById('sf-trigger');
+  var rows    = [document.getElementById('sf-ig'), document.getElementById('sf-fb')];
+  var isOpen  = false;
+
+  function openMenu(){
+    isOpen = true;
+    trigger.classList.add('sf-open');
+    trigger.setAttribute('aria-expanded','true');
+    rows.forEach(function(row, i){
+      setTimeout(function(){ row.classList.add('sf-show'); }, i * 60);
+    });
+  }
+  function closeMenu(){
+    isOpen = false;
+    trigger.classList.remove('sf-open');
+    trigger.setAttribute('aria-expanded','false');
+    rows.forEach(function(row){ row.classList.remove('sf-show'); });
+  }
+
+  trigger.addEventListener('click', function(e){
+    e.stopPropagation();
+    isOpen ? closeMenu() : openMenu();
+  });
+  document.addEventListener('click', function(e){
+    if(isOpen && !document.getElementById('sf-wrap').contains(e.target)) closeMenu();
+  });
+  document.addEventListener('keydown', function(e){
+    if(isOpen && e.key === 'Escape') closeMenu();
+  });
+})();
+</script>
+
 <!-- back to top -->
 <script>
 (function(){
@@ -2749,6 +2936,74 @@ cirugía bariátrica, neuromodulación (TMS y tDCS).
 - Certificación: https://conacem.org.mx
 - Sitio web: https://psiquiatra-cdmx.eutimya.org/
 - Investigación: https://orcid.org/0000-0002-7989-4646
+</script>
+<!-- ═══ GOOGLE TRANSLATE ═══ -->
+<div id="google_translate_element" style="display:none;visibility:hidden;height:0;overflow:hidden;position:absolute;pointer-events:none"></div>
+<style>
+  /* Ocultar barra de Google Translate */
+  .goog-te-banner-frame,.skiptranslate{display:none!important;height:0!important}
+  body{top:0!important}
+  .goog-te-combo{display:none!important}
+</style>
+<script>
+window.googleTranslateElementInit = function(){
+  new google.translate.TranslateElement({
+    pageLanguage:'es',
+    includedLanguages:'en',
+    autoDisplay:false
+  },'google_translate_element');
+};
+</script>
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" async></script>
+<script>
+(function(){
+  var isEN = false;
+
+  function setLang(lang){
+    var tryCount = 0;
+    function attempt(){
+      var sel = document.querySelector('.goog-te-combo');
+      if(sel){
+        sel.value = lang;
+        var evt = document.createEvent('HTMLEvents');
+        evt.initEvent('change',false,true);
+        sel.dispatchEvent(evt);
+        isEN = (lang === 'en');
+        updateBadges();
+      } else if(tryCount < 20){
+        tryCount++;
+        setTimeout(attempt, 400);
+      }
+    }
+    attempt();
+  }
+
+  function updateBadges(){
+    var badges = [document.getElementById('en-badge-d'), document.getElementById('en-badge-m')];
+    badges.forEach(function(b){
+      if(!b) return;
+      if(isEN){
+        b.style.background = 'linear-gradient(135deg,#b8893a,#c9a04a)';
+        b.title = 'Volver al español';
+      } else {
+        b.style.background = '';
+        b.title = 'Click to switch to English';
+      }
+    });
+  }
+
+  function toggle(){
+    isEN ? setLang('es') : setLang('en');
+  }
+
+  ['en-badge-d','en-badge-m'].forEach(function(id){
+    var el = document.getElementById(id);
+    if(el){
+      el.addEventListener('click', toggle);
+      el.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' ') toggle(); });
+    }
+  });
+})();
 </script>
 </body>
 </html>
