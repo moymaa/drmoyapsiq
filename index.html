@@ -2938,9 +2938,8 @@ cirugía bariátrica, neuromodulación (TMS y tDCS).
 - Investigación: https://orcid.org/0000-0002-7989-4646
 </script>
 <!-- ═══ GOOGLE TRANSLATE ═══ -->
-<div id="google_translate_element" style="display:none;visibility:hidden;height:0;overflow:hidden;position:absolute;pointer-events:none"></div>
+<div id="google_translate_element" style="display:none;position:absolute;height:0;overflow:hidden;pointer-events:none"></div>
 <style>
-  /* Ocultar barra de Google Translate */
   .goog-te-banner-frame,.skiptranslate{display:none!important;height:0!important}
   body{top:0!important}
   .goog-te-combo{display:none!important}
@@ -2957,67 +2956,60 @@ window.googleTranslateElementInit = function(){
 <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" async></script>
 <script>
 (function(){
-  var isEN = false;
-
-  function dispatch(sel, val){
-    sel.value = val;
-    var evt = document.createEvent('HTMLEvents');
-    evt.initEvent('change', false, true);
-    sel.dispatchEvent(evt);
+  function getCookie(name){
+    var m = document.cookie.match('(?:^|;)\\s*'+name+'=([^;]*)');
+    return m ? decodeURIComponent(m[1]) : '';
+  }
+  function setCookie(val){
+    var exp = val ? '' : '; expires=Thu, 01 Jan 1970 00:00:00 UTC';
+    [location.hostname, '.'+location.hostname].forEach(function(d){
+      document.cookie = 'googtrans='+val+exp+'; path=/; domain='+d;
+    });
+    document.cookie = 'googtrans='+val+exp+'; path=/';
   }
 
-  function toEnglish(){
-    var tries = 0;
-    function attempt(){
-      var sel = document.querySelector('.goog-te-combo');
-      if(sel){
-        dispatch(sel, 'en');
-        isEN = true;
-        updateBadges();
-      } else if(tries++ < 20){
-        setTimeout(attempt, 400);
-      }
-    }
-    attempt();
-  }
-
-  function toSpanish(){
-    /* Google Translate revierte con valor vacío */
-    var sel = document.querySelector('.goog-te-combo');
-    if(sel){
-      dispatch(sel, '');
-      /* segundo intento por si el primer disparo no alcanza */
-      setTimeout(function(){
-        var s2 = document.querySelector('.goog-te-combo');
-        if(s2 && s2.value !== '') dispatch(s2, '');
-      }, 300);
-    }
-    isEN = false;
-    updateBadges();
-  }
+  var isEN = getCookie('googtrans').indexOf('/en') !== -1;
 
   function updateBadges(){
-    var badges = [document.getElementById('en-badge-d'), document.getElementById('en-badge-m')];
-    badges.forEach(function(b){
-      if(!b) return;
-      if(isEN){
-        b.style.background = 'linear-gradient(135deg,#b8893a,#c9a04a)';
-        b.title = 'Volver al español · Click to revert';
-      } else {
-        b.style.background = '';
-        b.title = 'Click to switch to English';
+    var pairs = [
+      {
+        id:'en-badge-d',
+        enHTML:'&#127474;&#127485; Regresar al espa&ntilde;ol <span style="opacity:.6;font-weight:400">&middot; Back to Spanish</span>',
+        esHTML:'&#127482;&#127480; Yes, we speak English <span style="opacity:.6;font-weight:400">&middot; Consultations available in English</span>',
+        enBg:'linear-gradient(135deg,#1a5c3a,#22724a)',
+        esBg:'linear-gradient(135deg,#1a3a5c,#1e3a5f)'
+      },
+      {
+        id:'en-badge-m',
+        enHTML:'&#127474;&#127485; Regresar al espa&ntilde;ol <span style="opacity:.6;font-weight:400"> &middot; Volver</span>',
+        esHTML:'&#127482;&#127480; Yes, we speak English <span style="opacity:.6;font-weight:400"> &middot; English consultations</span>',
+        enBg:'rgba(26,92,58,.85)',
+        esBg:'rgba(26,58,95,.75)'
       }
+    ];
+    pairs.forEach(function(p){
+      var el = document.getElementById(p.id);
+      if(!el) return;
+      el.innerHTML = isEN ? p.enHTML : p.esHTML;
+      el.style.background = isEN ? p.enBg : p.esBg;
+      el.title = isEN ? 'Volver al español' : 'Click to switch to English';
     });
   }
 
-  function toggle(){ isEN ? toSpanish() : toEnglish(); }
+  function toggle(){
+    setCookie(isEN ? '' : '/es/en');
+    window.location.reload();
+  }
+
+  updateBadges();
 
   ['en-badge-d','en-badge-m'].forEach(function(id){
     var el = document.getElementById(id);
-    if(el){
-      el.addEventListener('click', toggle);
-      el.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' ') toggle(); });
-    }
+    if(!el) return;
+    el.addEventListener('click', toggle);
+    el.addEventListener('keydown', function(e){
+      if(e.key==='Enter'||e.key===' '){ e.preventDefault(); toggle(); }
+    });
   });
 })();
 </script>
