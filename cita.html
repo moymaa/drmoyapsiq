@@ -1511,6 +1511,9 @@ function openBookCalendar(){
 
 // DETECCIÓN DE PAGO
 function handlePaymentLink(url){
+  // Token de sesión: permite que confirmacion.html valide acceso legítimo
+  var token=Date.now().toString(36)+Math.random().toString(36).substr(2,9);
+  try{localStorage.setItem('eut_tok',token);localStorage.setItem('eut_tok_ts',Date.now().toString());}catch(e){}
   window.open(url,'_blank');
   openPaymentConfirmationModal(5, 'Pago procesado', 'Tu solicitud está siendo procesada', '📝 Próximo paso:', 'Tu pago está en proceso. En el calendario podrás seleccionar tu cita disponible.');
 }

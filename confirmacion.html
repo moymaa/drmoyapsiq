@@ -459,6 +459,56 @@ a{color:inherit;text-decoration:none}
 
 <script>
 // ════════════════════════════════════════
+// GUARD: VALIDACIÓN DE ACCESO LEGÍTIMO
+// Solo pasa quien llegó desde handlePaymentLink() en cita.html
+// Token generado en cita.html y guardado en localStorage (mismo origen)
+// ════════════════════════════════════════
+(function(){
+  var EXPIRY_MS=24*60*60*1000; // 24 horas
+  var token,ts,age;
+  try{
+    token=localStorage.getItem('eut_tok');
+    ts=parseInt(localStorage.getItem('eut_tok_ts')||'0',10);
+  }catch(e){token=null;ts=0;}
+  age=Date.now()-ts;
+
+  if(!token||age>EXPIRY_MS){
+    var expired=token&&age>EXPIRY_MS;
+    document.documentElement.style.visibility='hidden';
+    document.addEventListener('DOMContentLoaded',function(){
+      document.body.innerHTML=[
+        '<div style="min-height:100vh;display:flex;flex-direction:column;',
+        'align-items:center;justify-content:center;padding:2rem;',
+        'font-family:\'DM Sans\',sans-serif;background:#fafaf8;text-align:center;gap:1rem">',
+        '<div style="font-size:3rem">'+(expired?'⏱':'🚫')+'</div>',
+        '<h2 style="font-family:\'Playfair Display\',serif;font-size:1.4rem;',
+        'font-weight:700;color:#0d1b2a;margin:.5rem 0">',
+        (expired?'Enlace expirado':'Acceso no válido')+'</h2>',
+        '<p style="color:#64748b;font-size:.88rem;max-width:320px;line-height:1.6">',
+        (expired
+          ?'Han pasado más de 24 horas. Escríbenos si necesitas confirmar tu pago.'
+          :'Esta página solo es accesible desde el proceso de pago de Eutimya.'),
+        '</p>',
+        '<a href="https://wa.me/526731205121" target="_blank" rel="noopener"',
+        'style="margin-top:.5rem;padding:.8rem 1.5rem;background:#25D366;color:#fff;',
+        'border-radius:8px;font-weight:600;font-size:.85rem;text-decoration:none">',
+        'WhatsApp Eutimya</a>',
+        '<a href="https://psiquiatra-cdmx.eutimya.org/cita"',
+        'style="font-size:.8rem;color:#64748b;margin-top:.25rem">',
+        '← Ir a agendar cita</a>',
+        '</div>'
+      ].join('');
+      document.documentElement.style.visibility='visible';
+    });
+    // Detener ejecución del resto del script
+    throw new Error('eut_access_denied');
+  }
+
+  // Token válido → consumir (un solo uso)
+  try{localStorage.removeItem('eut_tok');localStorage.removeItem('eut_tok_ts');}catch(e){}
+})();
+
+// ════════════════════════════════════════
 // DETECCIÓN DE FUENTE DE PAGO
 // ════════════════════════════════════════
 (function(){
