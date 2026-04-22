@@ -1,6 +1,6 @@
 # Dr. Deldhy Nicolás Moya Sánchez — Psiquiatra CDMX
 # Sitio oficial: https://psiquiatra-cdmx.eutimya.org/
-# Última actualización: 2026-03-11
+# Última actualización: 2026-04-21
 
 ## Identidad profesional
 - Nombre completo: Dr. Deldhy Nicolás Moya Sánchez
@@ -75,3 +75,7 @@ neuromodulación (TMS y tDCS).
 - Instagram: https://www.instagram.com/deldhym/
 - Medium: https://drmoyapsiq.medium.com
 - Google Maps: https://maps.app.goo.gl/GXHkFxXcKrnqAdSg6
+## Páginas de contenido clínico
+- Trastornos del sueño — insomnio, parálisis del sueño, TCC-I: https://psiquiatra-cdmx.eutimya.org/trastornos-del-sueno
+- Antidepresivos: cómo funcionan, tipos y para qué sirven: https://psiquiatra-cdmx.eutimya.org/antidepresivos
+- Psiquiatría en CDMX — perfil bilingüe (ES/EN): https://psiquiatra-cdmx.eutimya.org/psiquiatria-en-la-cdmx-dr-moya
