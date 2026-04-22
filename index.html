@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" style="color-scheme:light">
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
@@ -58,9 +58,9 @@
 <meta property="business:contact_data:postal_code" content="03104"/>
 <meta property="business:contact_data:country_name" content="México"/>
 <meta property="business:contact_data:phone_number" content="+52-673-120-5121"/>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+
+
+
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",
@@ -226,47 +226,46 @@
 </script>
 <style>
 :root{
-  --ink:#1D1D1F;
-  --ink-mid:#424245;
-  --ink-light:#86868B;
-  --gold:#9A6F3A;
-  --gold-pale:#F4EDE0;
-  --white:#FFFFFF;
-  --canvas:#F5F5F7;
-  --rule:#D2D2D7;
-  --serif:'Playfair Display',Georgia,serif;
-  --sans:'DM Sans','Helvetica Neue',sans-serif;
-  --r:10px;
-  --shadow:0 2px 12px rgba(29,29,31,.07);
-  --shadow-lg:0 20px 40px rgba(29,29,31,.12);
-  --apple-ease:cubic-bezier(0.4,0,0.2,1);
+  --ink:#1d1d1f;
+  --ink-mid:#6e6e73;
+  --ink-light:#86868b;
+  --gold:#1d1d1f;
+  --gold-pale:rgba(0,0,0,.05);
+  --white:#ffffff;
+  --canvas:#f5f5f7;
+  --rule:rgba(0,0,0,.08);
+  --serif:-apple-system,BlinkMacSystemFont,'SF Pro Display','Helvetica Neue',sans-serif;
+  --sans:-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif;
+  --r:18px;
+  --shadow:0 2px 8px rgba(0,0,0,.05);
+  --shadow-lg:0 12px 48px rgba(0,0,0,.1);
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;overflow-x:hidden}
 body{font-family:var(--sans);color:var(--ink);background:var(--white);-webkit-font-smoothing:antialiased;line-height:1.6;overflow-x:hidden}
 img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
-.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,.82);border-bottom:1px solid rgba(0,0,0,.07);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);transition:background .3s;}
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,.97);border-bottom:1px solid var(--rule);backdrop-filter:blur(10px);transition:border-color .2s;}
 .nav.menu-open{border-bottom-color:transparent;}
 .nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:.9rem 2rem;gap:1.5rem;}
 .nav-logo img{height:34px;width:auto}
 .nav-links{display:flex;gap:1.1rem;list-style:none;flex:1;justify-content:center;align-items:center;}
 .nav-links a{font-size:.72rem;font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-mid);transition:color .2s;white-space:nowrap;}
 .nav-links a:hover{color:var(--ink)}
-.nav-btn{display:inline-flex;align-items:center;gap:.45rem;background:var(--ink);color:var(--white);padding:.46rem 1.2rem;border-radius:980px;font-size:.8rem;font-weight:500;white-space:nowrap;transition:background .2s,transform .15s;}
-.nav-btn:hover{background:#2d2d2f;transform:scale(1.02)}
+.nav-btn{display:inline-flex;align-items:center;gap:.45rem;background:var(--ink);color:var(--white);padding:.55rem 1.4rem;border-radius:6px;font-size:.78rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;transition:background .2s;}
+.nav-btn:hover{background:#000000}
 .hamburger{display:none;background:none;border:none;cursor:pointer;padding:.4rem;flex-direction:column;gap:5px}
 .hamburger span{display:block;width:22px;height:2px;background:var(--ink);border-radius:2px;transition:.25s}
 /* ── MOBILE NAV SHEET ── */
-.mnav-backdrop{display:none;position:fixed;top:68px;left:0;right:0;bottom:0;background:rgba(29,29,31,.35);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);z-index:98;opacity:0;transition:opacity .3s ease}
+.mnav-backdrop{display:none;position:fixed;top:68px;left:0;right:0;bottom:0;background:rgba(0,0,0,.35);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);z-index:98;opacity:0;transition:opacity .3s ease}
 .mnav-backdrop.open{display:block;opacity:1}
 .mobile-nav{
   display:block;
   position:fixed;top:68px;left:0;right:0;
   background:#fff;
-  border-top:1px solid var(--rule);
+  border-top:2px solid var(--ink);
   border-radius:0 0 20px 20px;
-  box-shadow:0 20px 50px rgba(29,29,31,.15),0 6px 16px rgba(29,29,31,.08);
+  box-shadow:0 20px 50px rgba(0,0,0,.22),0 6px 16px rgba(0,0,0,.1);
   z-index:99;
   max-height:72vh;
   overflow-y:auto;
@@ -285,7 +284,7 @@ a{color:inherit;text-decoration:none}
 /* drag handle */
 .mnav-handle{width:36px;height:4px;background:var(--rule);border-radius:2px;margin:10px auto 4px;flex-shrink:0}
 /* groups */
-.mobile-nav-group{border-bottom:1px solid rgba(210,210,215,.5)}
+.mobile-nav-group{border-bottom:1px solid var(--rule)}
 .mobile-nav-group:last-of-type{border-bottom:none}
 .mobile-nav-group-btn{
   width:100%;display:flex;align-items:center;justify-content:space-between;
@@ -310,7 +309,7 @@ a{color:inherit;text-decoration:none}
   display:flex;align-items:center;gap:.6rem;
   padding:.7rem 1.4rem .7rem 1.8rem;
   font-size:.9rem;font-weight:500;color:var(--ink);
-  border-top:1px solid rgba(210,210,215,.4);
+  border-top:1px solid rgba(232,230,225,.6);
   text-decoration:none;
   transition:background .15s,color .15s;
   -webkit-tap-highlight-color:transparent;
@@ -327,20 +326,16 @@ a{color:inherit;text-decoration:none}
 }
 .mnav-cta-primary{
   display:flex;align-items:center;justify-content:center;gap:.4rem;
-  background:rgba(29,29,31,.82);color:#fff;
-  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
-  border:1px solid rgba(255,255,255,.1);
-  padding:.7rem;border-radius:980px;
+  background:var(--ink);color:#fff;
+  padding:.7rem;border-radius:8px;
   font-size:.82rem;font-weight:700;text-decoration:none;
   transition:background .2s;
 }
-.mnav-cta-primary:active{background:rgba(29,29,31,.95)}
+.mnav-cta-primary:active{background:#000000}
 .mnav-cta-wa{
   display:flex;align-items:center;justify-content:center;gap:.4rem;
-  background:rgba(154,111,58,.82);color:#fff;
-  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
-  border:1px solid rgba(255,255,255,.12);
-  padding:.7rem;border-radius:980px;
+  background:#25D366;color:#fff;
+  padding:.7rem;border-radius:8px;
   font-size:.82rem;font-weight:700;text-decoration:none;
   transition:filter .2s;
 }
@@ -348,25 +343,25 @@ a{color:inherit;text-decoration:none}
 .hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;padding-top:68px;}
 .hero-left{display:flex;flex-direction:column;justify-content:center;padding:5rem 4rem 5rem 6rem;background:var(--white);position:relative;}
 .hero-left::after{content:'';position:absolute;right:0;top:15%;bottom:15%;width:1px;background:linear-gradient(180deg,transparent,var(--rule) 30%,var(--rule) 70%,transparent);}
-.hero-tag{display:inline-flex;align-items:center;gap:.5rem;font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-mid);margin-bottom:1.4rem;}
-.hero-tag span{display:block;width:28px;height:1px;background:var(--ink-light)}
-.hero-name{font-family:var(--serif);font-size:clamp(2.2rem,3.5vw,3.2rem);font-weight:700;line-height:1.1;color:var(--ink);margin-bottom:.5rem;letter-spacing:-0.02em;}
+.hero-tag{display:inline-flex;align-items:center;gap:.5rem;font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:1.4rem;}
+.hero-tag span{display:block;width:28px;height:1px;background:var(--gold)}
+.hero-name{font-family:var(--serif);font-size:clamp(2.2rem,3.5vw,3.2rem);font-weight:700;line-height:1.1;color:var(--ink);margin-bottom:.5rem;}
 .hero-role{font-size:.95rem;color:var(--ink-mid);font-weight:400;margin-bottom:2rem;line-height:1.5;}
 .hero-stars{display:flex;align-items:center;gap:.7rem;margin-bottom:2rem;}
 .stars-text{color:#f59e0b;font-size:1.1rem;letter-spacing:.05em;}
 .stars-label{font-size:.8rem;color:var(--ink-light);font-weight:400}
 .hero-desc{font-size:.95rem;line-height:1.8;color:var(--ink-mid);max-width:440px;margin-bottom:2.2rem;}
 .hero-actions{display:flex;gap:.8rem;flex-wrap:wrap;margin-bottom:2.5rem}
-.btn-main{display:inline-flex;align-items:center;gap:.5rem;background:var(--ink);color:#fff;padding:.85rem 2rem;border-radius:980px;font-size:.88rem;font-weight:600;transition:background .2s,transform .15s,box-shadow .3s;box-shadow:0 4px 16px rgba(29,29,31,.18);}
-.btn-main:hover{background:#2d2d2f;transform:translateY(-1px);box-shadow:0 12px 28px rgba(29,29,31,.22)}
-.btn-wa{display:inline-flex;align-items:center;gap:.5rem;border:1.5px solid var(--rule);color:var(--ink-mid);padding:.85rem 1.8rem;border-radius:980px;font-size:.88rem;font-weight:500;background:#fff;transition:all .2s;box-shadow:0 2px 8px rgba(29,29,31,.06);}
-.btn-wa:hover{background:var(--canvas);border-color:var(--ink);color:var(--ink);box-shadow:0 4px 16px rgba(29,29,31,.1)}
+.btn-main{display:inline-flex;align-items:center;gap:.5rem;background:var(--ink);color:#fff;padding:.85rem 2rem;border-radius:8px;font-size:.88rem;font-weight:600;transition:background .2s,transform .15s;box-shadow:0 4px 16px rgba(0,0,0,.18);}
+.btn-main:hover{background:#000000;transform:translateY(-1px)}
+.btn-wa{display:inline-flex;align-items:center;gap:.5rem;border:1.5px solid var(--rule);color:var(--ink);padding:.85rem 1.8rem;border-radius:8px;font-size:.88rem;font-weight:500;transition:all .2s;}
+.btn-wa:hover{border-color:var(--ink);background:var(--canvas)}
 .hero-creds{display:flex;flex-wrap:wrap;gap:.6rem 1.2rem;font-size:.73rem;color:var(--ink-light);padding-top:1.8rem;border-top:1px solid var(--rule);}
 .cred{display:flex;align-items:center;gap:.3rem}
-.cred-dot{width:5px;height:5px;border-radius:50%;background:var(--ink-light);flex-shrink:0}
+.cred-dot{width:5px;height:5px;border-radius:50%;background:var(--gold);flex-shrink:0}
 .hero-right{position:relative;overflow:hidden;min-height:600px;}
 .hero-right img{width:100%;height:100%;object-fit:cover;object-position:center top;}
-.hero-right-overlay{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(29,29,31,.55) 0%,transparent 50%);padding:2rem;}
+.hero-right-overlay{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(0,0,0,.55) 0%,transparent 50%);padding:2rem;}
 .hero-right-badge{display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);backdrop-filter:blur(8px);color:#fff;padding:.5rem 1rem;border-radius:6px;font-size:.75rem;font-weight:500;letter-spacing:.04em;}
 .stats-bar{background:var(--ink);padding:2.5rem 2rem;}
 .stats-inner{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;text-align:center;}
@@ -379,7 +374,7 @@ a{color:inherit;text-decoration:none}
 .ticker-track:hover{animation-play-state:paused}
 .ticker-item{display:inline-flex;flex-direction:column;align-items:center;gap:.06rem;padding:0 2rem;cursor:default;transition:opacity .2s;}
 .ticker-item:hover{opacity:.65}
-.ticker-dot{width:4px;height:4px;border-radius:50%;background:var(--ink-light);opacity:.4;margin-bottom:.15rem;flex-shrink:0;}
+.ticker-dot{width:4px;height:4px;border-radius:50%;background:var(--gold);opacity:.5;margin-bottom:.15rem;flex-shrink:0;}
 .ticker-name{font-family:var(--serif);font-size:.9rem;font-weight:700;color:var(--ink);letter-spacing:.01em;line-height:1.1;}
 .ticker-sub{font-size:.58rem;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-light);opacity:.6;line-height:1;}
 .ticker-sep{font-size:.5rem;color:var(--rule);padding:0 .1rem;flex-shrink:0;align-self:center;}
@@ -390,7 +385,7 @@ a{color:inherit;text-decoration:none}
 .wrap{max-width:1200px;margin:0 auto}
 .eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem;}
 .eyebrow::before{content:'';width:22px;height:1px;background:var(--gold)}
-.section-h{font-family:var(--serif);font-size:clamp(1.7rem,3vw,2.3rem);font-weight:700;color:var(--ink);line-height:1.2;margin-bottom:1rem;letter-spacing:-0.02em;}
+.section-h{font-family:var(--serif);font-size:clamp(1.7rem,3vw,2.3rem);font-weight:700;color:var(--ink);line-height:1.2;margin-bottom:1rem;}
 .section-sub{font-size:.95rem;color:var(--ink-mid);max-width:540px;line-height:1.75;}
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
 .about-body p{font-size:.95rem;color:var(--ink-mid);line-height:1.85;margin-bottom:1rem;}
@@ -411,8 +406,8 @@ a{color:inherit;text-decoration:none}
 .cred-k{font-size:.68rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-light);margin-bottom:.15rem}
 .cred-v{font-size:.82rem;font-weight:600;color:var(--ink)}
 .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:3rem;}
-.svc{border:1px solid var(--rule);border-radius:var(--r);padding:1.8rem;background:#fff;position:relative;overflow:hidden;transition:box-shadow .5s var(--apple-ease),transform .5s var(--apple-ease);}
-.svc:hover{box-shadow:0 20px 40px rgba(29,29,31,.12);transform:translateY(-3px)}
+.svc{border:1px solid var(--rule);border-radius:var(--r);padding:1.8rem;background:#fff;position:relative;overflow:hidden;transition:box-shadow .25s,transform .2s;}
+.svc:hover{box-shadow:var(--shadow-lg);transform:translateY(-3px)}
 .svc::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--ink),var(--gold));transform:scaleX(0);transform-origin:left;transition:transform .35s;}
 .svc:hover::after{transform:scaleX(1)}
 .svc-icon{width:44px;height:44px;border-radius:8px;background:var(--canvas);display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:1rem;}
@@ -435,7 +430,7 @@ a{color:inherit;text-decoration:none}
 .hosp-pill-text{font-size:.8rem;font-weight:600;color:rgba(255,255,255,.7);letter-spacing:.04em;text-transform:uppercase;text-align:center;}
 .pubs-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2.5rem;}
 .pub{border:1px solid var(--rule);border-radius:var(--r);padding:1.3rem 1.5rem;background:#fff;display:grid;grid-template-columns:32px 1fr;gap:.9rem;align-items:start;transition:border-color .2s;}
-.pub:hover{border-color:rgba(184,137,58,.4)}
+.pub:hover{border-color:rgba(0,0,0,.18)}
 .pub-n{font-family:var(--serif);font-size:1.5rem;font-weight:700;color:var(--rule);line-height:1;text-align:center;}
 .pub-title{font-size:.86rem;font-weight:600;color:var(--ink);line-height:1.4;margin-bottom:.25rem}
 .pub-journal{font-size:.76rem;color:var(--ink-light);font-style:italic}
@@ -454,11 +449,11 @@ a{color:inherit;text-decoration:none}
 .faq-a{display:none;font-size:.88rem;color:var(--ink-mid);line-height:1.8;padding-bottom:1.1rem;}
 .faq-item.open .faq-a{display:block}
 .cta-band{background:var(--ink);padding:5.5rem 2rem;text-align:center;position:relative;overflow:hidden;}
-.cta-band::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at center,rgba(184,137,58,.1) 0%,transparent 70%);}
+.cta-band::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at center,rgba(0,0,0,.05) 0%,transparent 70%);}
 .cta-inner{position:relative;max-width:640px;margin:0 auto}
 .cta-inner h2{font-family:var(--serif);font-size:clamp(1.8rem,3vw,2.5rem);font-weight:700;color:#fff;margin-bottom:.9rem;}
 .cta-inner p{font-size:.97rem;color:rgba(255,255,255,.7);margin-bottom:2rem;line-height:1.7}
-.btn-gold{display:inline-flex;align-items:center;gap:.5rem;background:var(--gold);color:#fff;padding:1rem 2.5rem;border-radius:8px;font-size:.95rem;font-weight:600;box-shadow:0 4px 20px rgba(184,137,58,.35);transition:filter .2s,transform .15s;}
+.btn-gold{display:inline-flex;align-items:center;gap:.5rem;background:var(--gold);color:#fff;padding:1rem 2.5rem;border-radius:8px;font-size:.95rem;font-weight:600;box-shadow:0 4px 20px rgba(0,113,227,.35);transition:filter .2s,transform .15s;}
 .btn-gold:hover{filter:brightness(1.1);transform:translateY(-1px)}
 .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;}
 .contact-title{font-family:var(--serif);font-size:1.5rem;font-weight:600;color:var(--ink);margin-bottom:1.8rem;}
@@ -497,24 +492,18 @@ a{color:inherit;text-decoration:none}
 /* ═══ PAY CARDS ═══ */
 .pay-cards{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;margin-top:.9rem;}
 .pay-card{border:1px solid var(--rule);border-radius:10px;padding:1.1rem 1.3rem;background:#fff;display:flex;align-items:center;gap:.9rem;transition:border-color .25s,box-shadow .25s,transform .2s;}
-.pay-card:hover{border-color:var(--gold);box-shadow:0 4px 20px rgba(184,137,58,.12);transform:translateY(-2px);}
+.pay-card:hover{border-color:var(--gold);box-shadow:0 4px 20px rgba(0,113,227,.12);transform:translateY(-2px);}
 .pay-card-icon{font-size:1.8rem;flex-shrink:0;line-height:1;}
 .pay-card-body{flex:1;min-width:0;}
 .pay-card-body strong{display:block;font-size:.88rem;color:var(--ink);margin-bottom:.18rem;font-weight:700;}
 .pay-card-body p{font-size:.76rem;color:var(--ink-mid);line-height:1.45;margin:0;}
-.pay-card-btn{display:inline-flex;align-items:center;gap:.3rem;background:var(--gold);color:#fff;padding:.45rem 1rem;border-radius:6px;font-size:.74rem;font-weight:700;white-space:nowrap;flex-shrink:0;letter-spacing:.02em;transition:filter .2s,transform .15s;box-shadow:0 2px 8px rgba(184,137,58,.3);}
+.pay-card-btn{display:inline-flex;align-items:center;gap:.3rem;background:var(--gold);color:#fff;padding:.45rem 1rem;border-radius:6px;font-size:.74rem;font-weight:700;white-space:nowrap;flex-shrink:0;letter-spacing:.02em;transition:filter .2s,transform .15s;box-shadow:0 2px 8px rgba(0,0,0,.15);}
 .pay-card-btn:hover{filter:brightness(1.1);transform:translateY(-1px);}
 @media(max-width:600px){.pay-cards{grid-template-columns:1fr;}}
 .pricing-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-top:2.5rem;}
-.price-card{border:1.5px solid var(--rule);border-radius:var(--r);padding:1.8rem;background:#fff;transition:box-shadow .5s var(--apple-ease),transform .5s var(--apple-ease);position:relative;}
-.price-card:hover{box-shadow:0 20px 40px rgba(29,29,31,.12);transform:translateY(-3px)}
-.price-card.featured{border-color:var(--ink);background:var(--ink)}
-.price-card.featured .price-name,.price-card.featured .price-amount{color:#fff}
-.price-card.featured .price-amount span,.price-card.featured .price-desc,.price-card.featured .price-row{color:rgba(255,255,255,.7)}
-.price-card.featured .price-row::before{color:var(--gold)}
-.price-card.featured .price-tag{background:rgba(154,111,58,.25);color:var(--gold)}
-.price-card.featured .btn-price-ghost{border-color:rgba(255,255,255,.25);color:rgba(255,255,255,.75)}
-.price-card.featured .btn-price-ghost:hover{border-color:rgba(255,255,255,.6);color:#fff}
+.price-card{border:1.5px solid var(--rule);border-radius:var(--r);padding:1.8rem;background:#fff;transition:box-shadow .25s,transform .2s;position:relative;}
+.price-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-3px)}
+.price-card.featured{border-color:var(--gold);background:linear-gradient(135deg,#fdfbf5 0%,#fff 100%)}
 .price-tag{display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:var(--gold-pale);color:var(--gold);border-radius:4px;padding:.2rem .6rem;margin-bottom:.8rem;}
 .price-name{font-family:var(--serif);font-size:1.3rem;font-weight:700;color:var(--ink);margin-bottom:.3rem}
 .price-amount{font-family:var(--serif);font-size:2rem;font-weight:700;color:var(--ink);line-height:1;margin-bottom:.4rem;}
@@ -531,7 +520,7 @@ a{color:inherit;text-decoration:none}
 .btn-price-ghost:hover{border-color:var(--ink);color:var(--ink)}
 .act-list{margin-top:2rem;display:flex;flex-direction:column;gap:.8rem}
 .act-item{display:flex;align-items:start;gap:1rem;border:1px solid var(--rule);border-radius:8px;padding:1.1rem 1.3rem;background:#fff;transition:border-color .2s;}
-.act-item:hover{border-color:rgba(184,137,58,.35)}
+.act-item:hover{border-color:rgba(0,113,227,.35)}
 .act-type{font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);margin-bottom:.2rem}
 .act-text{font-size:.86rem;font-weight:600;color:var(--ink);line-height:1.4;margin-bottom:.15rem}
 .act-year{font-size:.75rem;color:var(--ink-light)}
@@ -565,40 +554,25 @@ a{color:inherit;text-decoration:none}
 @keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
 .hero-right{clip-path:inset(100% 0 0 0);animation:revealDown .8s cubic-bezier(.25,.8,.25,1) .1s forwards;}
 @keyframes revealDown{to{clip-path:inset(0% 0 0 0)}}
-.scroll-reveal{opacity:0;transform:translateY(30px) scale(0.97);transition:opacity .6s var(--apple-ease),transform .6s var(--apple-ease);}
-.scroll-reveal.visible{opacity:1;transform:translateY(0) scale(1);}
-.wa-float{position:fixed;bottom:24px;right:20px;z-index:999;display:inline-flex;align-items:center;gap:8px;
-  background:rgba(10,10,14,0.52);
-  color:#fff;padding:12px 18px;border-radius:999px;font-family:var(--sans);font-weight:800;font-size:14px;
-  box-shadow:0 6px 28px rgba(0,0,0,.38),inset 0 1px 0 rgba(255,255,255,.07);
-  border:1px solid rgba(255,255,255,.10);
-  backdrop-filter:blur(22px) saturate(180%);-webkit-backdrop-filter:blur(22px) saturate(180%);
-  text-decoration:none;transition:transform .15s,box-shadow .2s,background .2s,border-color .2s;}
-.wa-float:hover{transform:translateY(-2px);
-  background:rgba(10,10,14,0.78);
-  box-shadow:0 10px 36px rgba(0,0,0,.52),inset 0 1px 0 rgba(255,255,255,.13);
-  border-color:rgba(255,255,255,.18);}
+.scroll-reveal{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease;}
+.scroll-reveal.visible{opacity:1;transform:translateY(0);}
+.wa-float{position:fixed;bottom:24px;right:20px;z-index:999;display:inline-flex;align-items:center;gap:8px;background:#25D366;color:#fff;padding:12px 18px;border-radius:999px;font-family:var(--sans);font-weight:800;font-size:14px;box-shadow:0 6px 28px rgba(37,211,102,.4);text-decoration:none;transition:transform .15s,box-shadow .2s;}
+.wa-float:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(37,211,102,.5)}
 .wa-float svg{width:20px;height:20px;fill:#fff;flex:0 0 auto}
 /* ── BACK TO TOP ── */
 .back-to-top{
   position:fixed;bottom:88px;right:20px;z-index:998;
   width:42px;height:42px;
-  background:rgba(10,10,14,0.52);
-  color:#fff;
-  border:1px solid rgba(255,255,255,.10);border-radius:50%;cursor:pointer;
+  background:var(--ink);color:#fff;
+  border:none;border-radius:50%;cursor:pointer;
   display:flex;align-items:center;justify-content:center;
-  box-shadow:0 4px 20px rgba(0,0,0,.32),inset 0 1px 0 rgba(255,255,255,.07);
-  backdrop-filter:blur(22px) saturate(180%);-webkit-backdrop-filter:blur(22px) saturate(180%);
+  box-shadow:0 4px 18px rgba(0,0,0,.25);
   opacity:0;transform:translateY(12px) scale(.85);
-  transition:opacity .3s ease,transform .3s cubic-bezier(.34,1.56,.64,1),box-shadow .2s,background .2s,border-color .2s;
+  transition:opacity .3s ease,transform .3s cubic-bezier(.34,1.56,.64,1),box-shadow .2s;
   pointer-events:none;
 }
 .back-to-top.visible{opacity:1;transform:translateY(0) scale(1);pointer-events:auto;}
-.back-to-top:hover{
-  background:rgba(10,10,14,0.78);
-  box-shadow:0 8px 28px rgba(0,0,0,.48),inset 0 1px 0 rgba(255,255,255,.13);
-  border-color:rgba(255,255,255,.18);
-  transform:translateY(-2px) scale(1);}
+.back-to-top:hover{background:#000000;box-shadow:0 8px 24px rgba(0,0,0,.32);transform:translateY(-2px) scale(1);}
 .back-to-top:active{transform:scale(.94);}
 .back-to-top svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;transition:transform .2s}
 .back-to-top:hover svg{transform:translateY(-1px)}
@@ -615,23 +589,23 @@ a{color:inherit;text-decoration:none}
   .hero-left{display:none!important;height:0!important;padding:0!important;margin:0!important;overflow:hidden!important;}
   .hero-right{position:relative;height:calc(100svh - 68px);min-height:500px;max-height:none;overflow:hidden;}
   .hero-right img{width:100%;height:100%;object-fit:cover;object-position:center 5%;transform:scale(1.06);}
-  .hero-right::before{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(29,29,31,1) 0%,rgba(29,29,31,.88) 28%,rgba(29,29,31,.4) 55%,transparent 80%);z-index:1;}
+  .hero-right::before{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,1) 0%,rgba(0,0,0,.88) 28%,rgba(0,0,0,.4) 55%,transparent 80%);z-index:1;}
   .hero-right-overlay{display:none}
   .hero-mobile-overlay{display:flex;flex-direction:column;justify-content:flex-end;position:absolute;inset:0;z-index:2;padding:0 1.6rem 2.2rem;}
-  .hmo-eyebrow{display:flex;align-items:center;gap:.5rem;font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.72);margin-bottom:.85rem;opacity:0;animation:hmoUp .6s ease .15s forwards;text-shadow:0 1px 8px rgba(0,0,0,.6),0 0 24px rgba(0,0,0,.4);}
-  .hmo-eyebrow::before{content:'';display:block;width:22px;height:1px;background:rgba(255,255,255,.5);flex-shrink:0;}
+  .hmo-eyebrow{display:flex;align-items:center;gap:.5rem;font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#fff;margin-bottom:.85rem;opacity:0;animation:hmoUp .6s ease .15s forwards;}
+  .hmo-eyebrow::before{content:'';display:block;width:22px;height:1px;background:#fff;flex-shrink:0;}
   .hmo-name{line-height:1.0;margin-bottom:.9rem;opacity:0;animation:hmoUp .65s ease .3s forwards;}
-  .hmo-name-main{display:block;font-family:var(--serif);font-size:clamp(2.4rem,9.5vw,3.4rem);font-weight:700;color:#fff;letter-spacing:-.01em;text-shadow:0 2px 16px rgba(0,0,0,.7),0 0 40px rgba(0,0,0,.5);}
-  .hmo-name-sub{display:block;font-family:var(--serif);font-size:clamp(1.9rem,7.5vw,2.7rem);font-weight:400;font-style:italic;color:rgba(255,255,255,.7);letter-spacing:.01em;text-shadow:0 2px 16px rgba(0,0,0,.7),0 0 40px rgba(0,0,0,.5);}
-  .hmo-role{font-size:.78rem;color:rgba(255,255,255,.72);line-height:1.6;margin-bottom:1rem;opacity:0;animation:hmoUp .6s ease .48s forwards;text-shadow:0 1px 8px rgba(0,0,0,.65),0 0 20px rgba(0,0,0,.45);}
+  .hmo-name-main{display:block;font-family:var(--serif);font-size:clamp(2.4rem,9.5vw,3.4rem);font-weight:700;color:#fff;letter-spacing:-.01em;}
+  .hmo-name-sub{display:block;font-family:var(--serif);font-size:clamp(1.9rem,7.5vw,2.7rem);font-weight:400;font-style:italic;color:var(--gold);letter-spacing:.01em;}
+  .hmo-role{font-size:.78rem;color:rgba(255,255,255,.72);line-height:1.6;margin-bottom:1rem;opacity:0;animation:hmoUp .6s ease .48s forwards;}
   .hmo-stars{display:flex;align-items:center;gap:.6rem;opacity:0;animation:hmoUp .6s ease .62s forwards;margin-bottom:1.4rem;}
   .hmo-stars-ico{color:#f59e0b;font-size:1rem;letter-spacing:.06em}
   .hmo-stars-txt{font-size:.75rem;color:rgba(255,255,255,.65);font-weight:400}
   .hmo-cta{display:flex;gap:.7rem;opacity:0;animation:hmoUp .6s ease .75s forwards;}
-  .hmo-btn-main{flex:1;display:flex;align-items:center;justify-content:center;gap:.45rem;background:#fff;color:var(--ink);padding:.75rem 1.2rem;border-radius:980px;font-size:.82rem;font-weight:700;box-shadow:0 4px 20px rgba(0,0,0,.28);transition:filter .2s;}
-  .hmo-btn-main:hover{filter:brightness(.95)}
-  .hmo-btn-wa{display:flex;align-items:center;justify-content:center;gap:.45rem;border:1px solid rgba(255,255,255,.2);color:#fff;padding:.75rem 1.1rem;border-radius:980px;font-size:.82rem;font-weight:600;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);background:rgba(29,29,31,.35);transition:background .2s;}
-  .hmo-btn-wa:hover{background:rgba(29,29,31,.55)}
+  .hmo-btn-main{flex:1;display:flex;align-items:center;justify-content:center;gap:.45rem;background:var(--gold);color:#fff;padding:.75rem 1.2rem;border-radius:8px;font-size:.82rem;font-weight:700;box-shadow:0 4px 20px rgba(0,113,227,.35);transition:filter .2s;}
+  .hmo-btn-main:hover{filter:brightness(1.1)}
+  .hmo-btn-wa{display:flex;align-items:center;justify-content:center;gap:.45rem;border:1.5px solid rgba(255,255,255,.25);color:#fff;padding:.75rem 1.1rem;border-radius:8px;font-size:.82rem;font-weight:600;backdrop-filter:blur(6px);background:rgba(255,255,255,.08);transition:background .2s;}
+  .hmo-btn-wa:hover{background:rgba(255,255,255,.15)}
   @keyframes hmoUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
   .about-grid{grid-template-columns:1fr}
   .services-grid{grid-template-columns:1fr}
@@ -661,16 +635,16 @@ a{color:inherit;text-decoration:none}
 .creds-gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:2.5rem;}
 .cred-thumb{position:relative;border:1px solid var(--rule);border-radius:var(--r);overflow:hidden;cursor:pointer;background:#fff;transition:box-shadow .25s,transform .2s;}
 .cred-thumb:hover{box-shadow:var(--shadow-lg);transform:translateY(-3px);}
-.cred-thumb img{width:100%;height:220px;object-fit:cover;transition:transform .4s;display:block;}
+.cred-thumb img{width:100%;height:190px;object-fit:cover;transition:transform .4s;}
 .cred-thumb:hover img{transform:scale(1.04);}
 .cred-thumb-label{padding:.6rem .8rem;font-size:.73rem;font-weight:600;color:var(--ink-mid);display:flex;align-items:flex-start;gap:.4rem;line-height:1.35;}
 .cred-thumb-label::before{content:'';width:6px;height:6px;min-width:6px;border-radius:50%;background:var(--gold);margin-top:.25rem;}
-.cred-zoom-icon{position:absolute;top:.6rem;right:.6rem;width:28px;height:28px;background:rgba(29,29,31,.6);border-radius:50%;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .2s;color:#fff;font-size:1rem;font-weight:300;}
+.cred-zoom-icon{position:absolute;top:.6rem;right:.6rem;width:28px;height:28px;background:rgba(0,0,0,.6);border-radius:50%;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .2s;color:#fff;font-size:1rem;font-weight:300;}
 .cred-thumb:hover .cred-zoom-icon{opacity:1;}
 .cred-verify{margin-top:1.8rem;padding:.9rem 1.2rem;border:1px solid var(--rule);border-radius:8px;font-size:.8rem;color:var(--ink-light);line-height:1.7;background:#fff;}
 .cred-verify a{color:var(--gold);font-weight:600;}
 /* Lightbox */
-.lb-overlay{display:none;position:fixed;inset:0;z-index:9999;background:rgba(29,29,31,.93);backdrop-filter:blur(8px);align-items:center;justify-content:center;}
+.lb-overlay{display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.93);backdrop-filter:blur(8px);align-items:center;justify-content:center;}
 .lb-overlay.lb-open{display:flex;}
 .lb-inner{position:relative;display:flex;flex-direction:column;align-items:center;max-width:90vw;max-height:90vh;}
 .lb-img{max-width:85vw;max-height:76vh;object-fit:contain;border-radius:6px;box-shadow:0 8px 48px rgba(0,0,0,.5);transition:opacity .13s;}
@@ -723,12 +697,12 @@ a{color:inherit;text-decoration:none}
   .geo-perfil-text p{font-size:.9rem}
 }
 /* Nav dropdown */
-.nav-dropdown{position:relative;display:flex;align-items:center}
-.nav-drop-btn{background:none;border:none;cursor:pointer;font-size:.72rem;font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-mid);display:flex;align-items:center;gap:.3rem;padding:0;line-height:1;transition:color .2s;white-space:nowrap}
+.nav-dropdown{position:relative}
+.nav-drop-btn{background:none;border:none;cursor:pointer;font-size:.72rem;font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-mid);display:flex;align-items:center;gap:.3rem;padding:0;transition:color .2s;white-space:nowrap}
 .nav-drop-btn:hover{color:var(--ink)}
 .nav-drop-btn svg{transition:transform .2s}
 .nav-dropdown.open .nav-drop-btn svg{transform:rotate(180deg)}
-.nav-drop-menu{display:none;position:absolute;top:calc(100% + 12px);right:0;left:auto;background:#fff;border:1px solid var(--rule);border-radius:10px;box-shadow:0 8px 32px rgba(29,29,31,.12);list-style:none;padding:.4rem 0;min-width:180px;z-index:200}
+.nav-drop-menu{display:none;position:absolute;top:calc(100% + 12px);left:50%;transform:translateX(-50%);background:#fff;border:1px solid var(--rule);border-radius:8px;box-shadow:0 8px 32px rgba(0,0,0,.12);list-style:none;padding:.4rem 0;min-width:180px;z-index:200}
 .nav-dropdown.open .nav-drop-menu{display:block}
 .nav-drop-menu a{display:block;padding:.55rem 1.1rem;font-size:.82rem;color:var(--ink-mid);white-space:nowrap;transition:background .15s,color .15s}
 .nav-drop-menu a:hover{background:var(--canvas);color:var(--ink)}
@@ -774,43 +748,318 @@ a{color:inherit;text-decoration:none}
   }
 }
 
-/* ═══ TEXT JUSTIFICATION ═══ */
-.hero-desc,
-.hero-role,
-.section-sub,
-.about-body p,
-.svc p,
-.enlace-text,
-.review-text,
-.faq-a,
-.footer-brand p,
-.cuando-sub,
-.lead-text,
-.geo-perfil-text p,
-.geo-guide-a,
-.eutimya-card-text,
-.pay-card-body p,
-.price-desc,
-.act-text {
-  text-align: justify;
-  hyphens: auto;
-  -webkit-hyphens: auto;
-  hyphenate-limit-chars: 6 3 3;
-  text-align-last: left;
+
+/* ════════════════════════════════════════════
+   APPLE DESIGN SYSTEM — Glass & Polish Layer
+   ════════════════════════════════════════════ */
+
+/* 1. Body & base */
+body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+h1,h2,h3,h4,h5,h6{letter-spacing:-0.018em;font-weight:700}
+p,li,td{letter-spacing:-.005em}
+
+/* 2. Navigation — Apple frosted glass */
+.nav{
+  background:rgba(255,255,255,.72) !important;
+  backdrop-filter:saturate(180%) blur(20px) !important;
+  -webkit-backdrop-filter:saturate(180%) blur(20px) !important;
+  border-bottom:1px solid rgba(0,0,0,.07) !important;
+  box-shadow:none !important;
 }
-/* Hero role móvil — lista de especialidades, mejor left */
-.hmo-role { text-align: left; }
+/* Nav CTA — Apple blue pill */
+.nav-btn{
+  background:#1d1d1f !important;
+  border-radius:980px !important;
+  box-shadow:0 2px 12px rgba(0,0,0,.14) !important;
+  letter-spacing:-.01em !important;
+  text-transform:none !important;
+  font-size:.82rem !important;
+}
+.nav-btn:hover{background:#000000 !important;opacity:1 !important}
 
-/* ═══ APPLE-STYLE ENHANCEMENTS ═══ */
-.services-grid .svc:nth-child(2),.pubs-grid .pub:nth-child(2),.reviews-grid .review:nth-child(2){transition-delay:.1s}
-.services-grid .svc:nth-child(3),.pubs-grid .pub:nth-child(3),.reviews-grid .review:nth-child(3){transition-delay:.2s}
-.services-grid .svc:nth-child(4),.reviews-grid .review:nth-child(4){transition-delay:.3s}
-.services-grid .svc:nth-child(5){transition-delay:.1s}
-.services-grid .svc:nth-child(6){transition-delay:.2s}
-.hmo-name-main{letter-spacing:-0.02em}
-.cta-band::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at center,rgba(154,111,58,.15) 0%,transparent 70%);}
+/* 3. Mobile nav glass */
+.mobile-nav{
+  background:rgba(255,255,255,.9) !important;
+  backdrop-filter:saturate(180%) blur(24px) !important;
+  -webkit-backdrop-filter:saturate(180%) blur(24px) !important;
+  border-top:none !important;
+  box-shadow:0 20px 60px rgba(0,0,0,.14) !important;
+}
+.mobile-nav-group-items a::before{background:#c7c7cc !important}
+.mnav-cta-primary{
+  background:#1d1d1f !important;
+  border-radius:980px !important;
+  box-shadow:0 2px 10px rgba(0,0,0,.12) !important;
+}
+.mnav-cta-secondary{border-radius:980px !important}
 
+/* 4. Floating action buttons — Apple glass */
+.wa-float{
+  background:rgba(37,211,102,.9) !important;
+  backdrop-filter:blur(20px) saturate(180%) !important;
+  -webkit-backdrop-filter:blur(20px) saturate(180%) !important;
+  border:1px solid rgba(255,255,255,.3) !important;
+  border-radius:980px !important;
+  box-shadow:0 8px 32px rgba(37,211,102,.3),0 2px 8px rgba(0,0,0,.1) !important;
+}
+.wa-float:hover{
+  transform:translateY(-2px) !important;
+  box-shadow:0 12px 40px rgba(37,211,102,.38),0 4px 12px rgba(0,0,0,.12) !important;
+}
+.back-to-top{
+  background:rgba(29,29,31,.5) !important;
+  backdrop-filter:blur(20px) saturate(180%) !important;
+  -webkit-backdrop-filter:blur(20px) saturate(180%) !important;
+  border:1px solid rgba(255,255,255,.16) !important;
+  box-shadow:0 4px 20px rgba(0,0,0,.2) !important;
+}
+.back-to-top:hover{
+  background:rgba(29,29,31,.7) !important;
+  box-shadow:0 8px 28px rgba(0,0,0,.28) !important;
+}
 
+/* 5. Primary CTA buttons */
+.btn-gold,.hmo-btn-main{
+  background:#1d1d1f !important;
+  border-radius:980px !important;
+  box-shadow:0 4px 20px rgba(0,0,0,.15) !important;
+  letter-spacing:-.01em !important;
+}
+.btn-gold:hover,.hmo-btn-main:hover{
+  background:#000000 !important;
+  box-shadow:0 6px 28px rgba(0,0,0,.18) !important;
+  filter:none !important;
+  transform:translateY(-1px) !important;
+}
+
+/* btn-main (dark CTA) */
+.btn-main{
+  background:#1d1d1f !important;
+  border-radius:980px !important;
+  box-shadow:0 4px 18px rgba(0,0,0,.15) !important;
+}
+.btn-main:hover{background:#2d2d2f !important}
+
+/* btn-wa (outline) → apple glass */
+.btn-wa{
+  background:rgba(0,0,0,.04) !important;
+  border:1px solid rgba(0,0,0,.1) !important;
+  border-radius:980px !important;
+  color:#1d1d1f !important;
+}
+.btn-wa:hover{background:rgba(0,0,0,.08) !important;border-color:rgba(0,0,0,.18) !important}
+
+/* hmo-btn-wa glass (on dark hero) */
+.hmo-btn-wa{
+  background:rgba(255,255,255,.1) !important;
+  backdrop-filter:blur(12px) !important;
+  -webkit-backdrop-filter:blur(12px) !important;
+  border:1px solid rgba(255,255,255,.22) !important;
+  border-radius:980px !important;
+  color:#fff !important;
+}
+.hmo-btn-wa:hover{background:rgba(255,255,255,.2) !important}
+
+/* page-hero-back (secondary pages back button) */
+.page-hero-back{
+  background:rgba(255,255,255,.1) !important;
+  backdrop-filter:blur(16px) !important;
+  -webkit-backdrop-filter:blur(16px) !important;
+  border:1px solid rgba(255,255,255,.25) !important;
+  border-radius:980px !important;
+  color:#fff !important;
+}
+.page-hero-back:hover{background:rgba(255,255,255,.2) !important}
+
+/* 6. Cards — subtle Apple style */
+.svc,.price-card,.cuando-item,.pub,.review,.pay-card,.cred-thumb{
+  border-radius:18px !important;
+  border:1px solid rgba(0,0,0,.06) !important;
+  box-shadow:0 2px 8px rgba(0,0,0,.04) !important;
+}
+.svc:hover,.price-card:hover,.cuando-item:hover,.pay-card:hover,.cred-thumb:hover{
+  transform:none !important;
+  box-shadow:0 8px 40px rgba(0,0,0,.1) !important;
+  border-color:rgba(0,0,0,.1) !important;
+}
+/* Card hover accent line — blue */
+.svc::after{background:linear-gradient(90deg,#1d1d1f,#424245) !important}
+
+/* pill/chip elements */
+.cred-chip,.cert-chip,.zone,.enlace-pill{
+  border-radius:980px !important;
+  background:rgba(0,0,0,.05) !important;
+  color:#1d1d1f !important;
+  border-color:rgba(0,0,0,.08) !important;
+}
+.cred-chip:hover,.cert-chip:hover{background:#1d1d1f !important;color:#fff !important;border-color:#1d1d1f !important}
+.cond,.act-item,.transfer-acc,.pay-pill,.chip{border-radius:12px !important}
+
+/* 7. Featured price card glass */
+.price-card.featured{
+  background:linear-gradient(135deg,rgba(0,113,227,.05),rgba(0,113,227,.01)) !important;
+  border-color:rgba(0,0,0,.1) !important;
+}
+
+/* 8. Dark sections — rich Apple black */
+.hospitals,.cta-band,.footer,.enlace-block{background:#1d1d1f !important}
+.footer-brand img{filter:brightness(0) invert(1)}
+.nav-logo img{filter:none !important}
+
+/* enlace-block glass inset */
+.enlace-block{
+  background:rgba(255,255,255,.06) !important;
+  backdrop-filter:blur(12px) !important;
+  -webkit-backdrop-filter:blur(12px) !important;
+  border:1px solid rgba(255,255,255,.1) !important;
+}
+
+/* geo-cta-card */
+.geo-cta-card{
+  background:rgba(255,255,255,.07) !important;
+  backdrop-filter:blur(12px) !important;
+  -webkit-backdrop-filter:blur(12px) !important;
+  border:1px solid rgba(255,255,255,.12) !important;
+  border-radius:14px !important;
+}
+.geo-cred-card{border-radius:14px !important}
+
+/* hero-cred glass */
+.hero-cred{
+  background:rgba(255,255,255,.08) !important;
+  backdrop-filter:blur(16px) !important;
+  -webkit-backdrop-filter:blur(16px) !important;
+  border:1px solid rgba(255,255,255,.15) !important;
+  border-radius:16px !important;
+}
+
+/* 9. CTA radial glow — blue tint */
+.cta-band::before{background:radial-gradient(ellipse 60% 80% at center,rgba(0,0,0,.05),transparent 70%) !important}
+
+/* 10. Ticker — neutral Apple gray */
+.ticker-wrap{background:#f5f5f7;border-top:1px solid rgba(0,0,0,.05);border-bottom:1px solid rgba(0,0,0,.05)}
+.ticker-label{color:#86868b !important}
+.ticker-dot{background:#c7c7cc !important}
+.ticker-sep{color:#d1d1d6 !important}
+.ticker-name{color:#1d1d1f}
+.ticker-sub{color:#86868b}
+
+/* 11. Decorative dots — neutral (NOT blue) */
+.lead-dot,.cred-dot{background:#c7c7cc !important}
+.cond-bullet{background:#c7c7cc !important}
+.cond-bullet,.cond:hover .cond-bullet{background:#1d1d1f !important}/* keep on hover blue */
+.price-row::before{color:#30d158 !important}
+.geo-eeat-check{color:#30d158 !important}
+
+/* 12. Eyebrows — kept blue (Apple product category style) */
+.eyebrow,.hosp-eyebrow,.enlace-label,.geo-cta-label,.act-type,.page-eyebrow{
+  color:#6e6e73 !important;
+  letter-spacing:.05em !important;
+}
+
+/* 13. Section header sizing */
+.section-h{font-size:clamp(2rem,3.5vw,2.8rem) !important;letter-spacing:-.025em !important}
+
+/* 14. Footer links hover */
+.footer-col a:hover{color:#1d1d1f !important}
+
+/* 15. btn-price */
+.btn-price-main{border-radius:980px !important;background:#1d1d1f !important}
+.btn-price-ghost{border-radius:980px !important;background:transparent !important;border:1px solid rgba(0,0,0,.12) !important;color:#1d1d1f !important}
+.btn-price-ghost:hover{background:rgba(0,0,0,.05) !important}
+
+/* 16. pay-card-btn */
+.pay-card-btn{border-radius:980px !important;background:#1d1d1f !important}
+
+/* 17. copy-btn (pagos) */
+.copy-btn{border-radius:12px !important;background:#1d1d1f !important}
+
+/* 18. Map wrap */
+.map-wrap{border-radius:18px !important;border:1px solid rgba(0,0,0,.07) !important}
+
+/* 19. WA float & back-to-top pill */
+.wa-float,.back-to-top{border-radius:980px !important}
+
+/* 20. link.html glass buttons */
+.link-btn{
+  background:rgba(255,255,255,.1) !important;
+  backdrop-filter:blur(12px) !important;
+  -webkit-backdrop-filter:blur(12px) !important;
+  border:1px solid rgba(255,255,255,.18) !important;
+  border-radius:16px !important;
+  color:#fff !important;
+}
+.link-btn:hover{background:rgba(255,255,255,.2) !important}
+.link-btn.primary,.link-btn[href*="cita"]{
+  background:rgba(29,29,31,.85) !important;
+  border-color:rgba(255,255,255,.25) !important;
+}
+.ico-btn{
+  background:rgba(255,255,255,.1) !important;
+  backdrop-filter:blur(12px) !important;
+  -webkit-backdrop-filter:blur(12px) !important;
+  border:1px solid rgba(255,255,255,.15) !important;
+  border-radius:16px !important;
+}
+.ico-btn:hover{background:rgba(255,255,255,.2) !important}
+
+/* 21. calendar page glass cards (cita.html) */
+.cal-card{
+  background:rgba(255,255,255,.08) !important;
+  backdrop-filter:blur(16px) !important;
+  -webkit-backdrop-filter:blur(16px) !important;
+  border:1px solid rgba(255,255,255,.15) !important;
+  border-radius:20px !important;
+}
+
+/* 22. transfer-acc (pagos) */
+.transfer-acc{
+  border-color:rgba(0,0,0,.1) !important;
+  border-radius:14px !important;
+  background:rgba(0,0,0,.03) !important;
+}
+.transfer-sum{color:#1d1d1f !important}
+
+/* 23. Confirmacion / factura page specific */
+.step-circle,.step-line,.progress-bar{background:#1d1d1f !important}
+
+/* 24. Section header h2 bold */
+.hosp-title,.cta-inner h2{letter-spacing:-.025em}
+
+/* 25. bio-mini card */
+.bio-mini{border-radius:18px !important;border:1px solid rgba(0,0,0,.06) !important}
+.bio-mini-eyebrow{color:#1d1d1f !important}
+
+/* 26. review stars — keep amber */
+.review-stars{color:#f59e0b}
+.ct-ok{color:#30d158}
+
+/* 27. Hospital pills */
+.hosp-pill{
+  background:rgba(255,255,255,.07) !important;
+  border:1px solid rgba(255,255,255,.1) !important;
+  border-radius:14px !important;
+  backdrop-filter:blur(8px) !important;
+  -webkit-backdrop-filter:blur(8px) !important;
+}
+.hosp-pill:hover{background:rgba(255,255,255,.14) !important}
+
+/* 28. compare-table header */
+.compare-table th{background:#1d1d1f !important}
+
+/* 29. nav dropdown */
+.nav-drop-menu{
+  border-radius:14px !important;
+  border:1px solid rgba(0,0,0,.08) !important;
+  box-shadow:0 8px 40px rgba(0,0,0,.12) !important;
+  backdrop-filter:blur(20px) !important;
+  -webkit-backdrop-filter:blur(20px) !important;
+}
+.nav-drop-menu a:hover{background:#f5f5f7 !important}
+
+/* 30. FAQ icon */
+.faq-item.open .faq-icon{background:#1d1d1f !important;border-color:#1d1d1f !important}
+.faq-q:hover{color:#6e6e73 !important}
 
 </style>
 
@@ -1146,7 +1395,7 @@ a{color:inherit;text-decoration:none}
 <nav class="nav" id="nav">
   <div class="nav-inner">
     <a href="/" aria-label="Eutimya — Inicio">
-      <img src="http://psiquiatra-cdmx.eutimya.org/eutimyafondoblanco.png" alt="Eutimya" height="34" loading="eager"/>
+      <img src="https://psiquiatra-cdmx.eutimya.org/eutimyafondoblanco.png" alt="Eutimya" height="34" loading="eager"/>
     </a>
     <ul class="nav-links">
       <li><a href="#cuando">¿Cuándo?</a></li>
@@ -1154,7 +1403,6 @@ a{color:inherit;text-decoration:none}
       <li><a href="#innovacion">Innovación</a></li>
       <li><a href="#hospitalizacion">Hospitalización</a></li>
       <li class="nav-hide-md"><a href="#publicaciones">Investigación</a></li>
-      <li><a href="#contacto">Contacto</a></li>
       <li class="nav-dropdown">
         <button class="nav-drop-btn" type="button" aria-haspopup="true" aria-expanded="false">
           Más <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor"><path d="M1 3l4 4 4-4"/></svg>
@@ -1167,6 +1415,7 @@ a{color:inherit;text-decoration:none}
           <li><a href="https://www.eutimya.org/factura" target="_blank" rel="noopener">Factura CFDI</a></li>
         </ul>
       </li>
+      <li><a href="#contacto">Contacto</a></li>
     </ul>
     <a href="https://psiquiatra-cdmx.eutimya.org/cita" class="nav-btn">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
@@ -1285,7 +1534,7 @@ El Dr. Deldhy Nicolás Moya Sánchez es psiquiatra en la Ciudad de México, egre
       </a>
     </div>
     <div style="margin-bottom:1.5rem">
-      <span id="en-badge-d" role="button" tabindex="0" title="Click to switch to English" style="cursor:pointer;display:inline-flex;align-items:center;gap:.45rem;background:linear-gradient(135deg,#1D1D1F,#2d2d2f);color:#fff;border-radius:8px;padding:.45rem 1rem;font-size:.78rem;font-weight:600;letter-spacing:.03em;box-shadow:0 2px 8px rgba(29,29,31,.18);transition:filter .2s" onmouseover="this.style.filter='brightness(1.18)'" onmouseout="this.style.filter='none'">
+      <span id="en-badge-d" role="button" tabindex="0" title="Click to switch to English" style="cursor:pointer;display:inline-flex;align-items:center;gap:.45rem;background:linear-gradient(135deg,#1a3a5c,#000000);color:#fff;border-radius:8px;padding:.45rem 1rem;font-size:.78rem;font-weight:600;letter-spacing:.03em;box-shadow:0 2px 8px rgba(0,0,0,.18);transition:filter .2s" onmouseover="this.style.filter='brightness(1.18)'" onmouseout="this.style.filter='none'">
         🇺🇸 Yes, we speak English <span style="opacity:.6;font-weight:400">· Consultations available in English</span>
       </span>
     </div>
@@ -1294,7 +1543,7 @@ El Dr. Deldhy Nicolás Moya Sánchez es psiquiatra en la Ciudad de México, egre
       <span class="cred"><span class="cred-dot"></span>CE PSIQ 14788885</span>
       <span class="cred"><span class="cred-dot"></span>Consejo 24803862</span>
       <span class="cred"><span class="cred-dot"></span>ORCID 0000-0002-7989-4646</span>
-      <span class="cred" title="Aviso de Publicidad COFEPRIS-02-002-A · Internet/Redes Sociales" style="border-color:var(--rule);background:var(--canvas);">
+      <span class="cred" title="Aviso de Publicidad COFEPRIS-02-002-A · Internet/Redes Sociales" style="border-color:rgba(0,113,227,.35);background:rgba(0,0,0,.04);">
         <span class="cred-dot"></span>COFEPRIS 2609142002A00043
       </span>
     </div>
@@ -1324,13 +1573,13 @@ El Dr. Deldhy Nicolás Moya Sánchez es psiquiatra en la Ciudad de México, egre
         </a>
       </div>
       <div style="margin-top:.85rem;opacity:0;animation:hmoUp .6s ease .88s forwards;">
-        <span id="en-badge-m" role="button" tabindex="0" title="Click to switch to English" style="cursor:pointer;display:inline-flex;align-items:center;gap:.4rem;background:rgba(29,29,31,.75);border:1px solid rgba(255,255,255,.15);backdrop-filter:blur(6px);color:#fff;border-radius:8px;padding:.38rem .9rem;font-size:.73rem;font-weight:600;letter-spacing:.03em;">
+        <span id="en-badge-m" role="button" tabindex="0" title="Click to switch to English" style="cursor:pointer;display:inline-flex;align-items:center;gap:.4rem;background:rgba(0,0,0,.75);border:1px solid rgba(255,255,255,.15);backdrop-filter:blur(6px);color:#fff;border-radius:8px;padding:.38rem .9rem;font-size:.73rem;font-weight:600;letter-spacing:.03em;">
           🇺🇸 Yes, we speak English <span style="opacity:.6;font-weight:400"> · English consultations</span>
         </span>
       </div>
       <div style="margin-top:.5rem;opacity:0;animation:hmoUp .6s ease 1s forwards;">
-        <span style="display:inline-flex;align-items:center;gap:.4rem;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(6px);color:rgba(255,255,255,.6);border-radius:8px;padding:.35rem .85rem;font-size:.68rem;font-weight:500;letter-spacing:.03em;" title="Aviso de Publicidad COFEPRIS-02-002-A · Internet/Redes Sociales">
-          <span style="width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.4);flex-shrink:0;display:inline-block;"></span>COFEPRIS 2609142002A00043
+        <span style="display:inline-flex;align-items:center;gap:.4rem;background:rgba(0,113,227,.15);border:1px solid rgba(0,113,227,.35);backdrop-filter:blur(6px);color:rgba(255,255,255,.85);border-radius:8px;padding:.35rem .85rem;font-size:.68rem;font-weight:500;letter-spacing:.03em;" title="Aviso de Publicidad COFEPRIS-02-002-A · Internet/Redes Sociales">
+          <span style="width:5px;height:5px;border-radius:50%;background:#1d1d1f;flex-shrink:0;display:inline-block;"></span>COFEPRIS 2609142002A00043
         </span>
       </div>
     </div>
@@ -1469,7 +1718,24 @@ El Dr. Deldhy Nicolás Moya Sánchez es psiquiatra en la Ciudad de México, egre
     <p class="section-sub">Sesión de 50 minutos. Primera consulta o seguimiento. Pago confirmado por WhatsApp para agendar horario.</p>
     <div class="pricing-grid">
       <div class="price-card featured">
-        <div class="price-tag">⭐ Más popular · Del Valle · CDMX</div>
+        <div class="price-tag">💻 Más popular · Disponible en todo México</div>
+        <div class="price-name">Consulta Online</div>
+        <div class="price-amount">$1,400 <span>MXN / 50 min</span></div>
+        <div class="price-desc">Google Meet · Desde cualquier ciudad de México y el extranjero</div>
+        <div class="price-includes">
+          <div class="price-row">Evaluación diagnóstica completa</div>
+          <div class="price-row">Historia clínica y exploración mental</div>
+          <div class="price-row">Plan de tratamiento personalizado</div>
+          <div class="price-row">Nota médica y receta electrónica</div>
+          <div class="price-row">Sin necesidad de trasladarse</div>
+        </div>
+        <div class="price-btns">
+          <a class="btn-price btn-price-main" href="https://psiquiatra-cdmx.eutimya.org/cita">📅 Agendar online</a>
+          <a class="btn-price btn-price-ghost" href="https://wa.me/526731205121" target="_blank" rel="noopener">WhatsApp</a>
+        </div>
+      </div>
+      <div class="price-card">
+        <div class="price-tag">📍 Del Valle · Benito Juárez · CDMX</div>
         <div class="price-name">Consulta Presencial</div>
         <div class="price-amount">$1,600 <span>MXN / 50 min</span></div>
         <div class="price-desc">Calle Moras 619, Col. Del Valle Sur, CDMX — consultorio privado</div>
@@ -1483,23 +1749,6 @@ El Dr. Deldhy Nicolás Moya Sánchez es psiquiatra en la Ciudad de México, egre
         <div class="price-btns">
           <a class="btn-price btn-price-main" href="https://psiquiatra-cdmx.eutimya.org/cita">📅 Agendar presencial</a>
           <a class="btn-price btn-price-ghost" href="https://maps.app.goo.gl/GXHkFxXcKrnqAdSg6" target="_blank" rel="noopener">🗺️ Mapa</a>
-        </div>
-      </div>
-      <div class="price-card">
-        <div class="price-tag">💻 Internacional · Todo el mundo</div>
-        <div class="price-name">Consulta Online</div>
-        <div class="price-amount">$1,400 <span>MXN / 50 min</span></div>
-        <div class="price-desc">Google Meet · Desde cualquier país del mundo · En español e inglés</div>
-        <div class="price-includes">
-          <div class="price-row">Evaluación diagnóstica completa</div>
-          <div class="price-row">Historia clínica y exploración mental</div>
-          <div class="price-row">Plan de tratamiento personalizado</div>
-          <div class="price-row">Nota médica y receta electrónica</div>
-          <div class="price-row">Sin necesidad de trasladarse</div>
-        </div>
-        <div class="price-btns">
-          <a class="btn-price btn-price-main" href="https://psiquiatra-cdmx.eutimya.org/cita">📅 Agendar online</a>
-          <a class="btn-price btn-price-ghost" href="https://wa.me/526731205121" target="_blank" rel="noopener">WhatsApp</a>
         </div>
       </div>
     </div>
@@ -1658,10 +1907,10 @@ El Dr. Deldhy Nicolás Moya Sánchez es psiquiatra en la Ciudad de México, egre
       <div class="hosp-pill"><span class="hosp-pill-text">Hospital<br/>Diomed</span></div>
       <div class="hosp-pill"><span class="hosp-pill-text">Hospital<br/>Gran Roma</span></div>
       <div class="hosp-pill"><span class="hosp-pill-text">Hospital<br/>Lira y Serafín</span></div>
-      <a href="https://grupopuntodepartida.com/" target="_blank" rel="noopener" class="hosp-pill" style="text-decoration:none">
+      <a href="https://grupopuntodepartida.com/" target="_blank" rel="noopener" class="hosp-pill" style="text-decoration:none;border-color:rgba(255,255,255,.25);background:rgba(0,0,0,.05)">
         <div style="text-align:center">
-          <span class="hosp-pill-text">Grupo Punto<br/>de Partida</span>
-          <div style="font-size:.75rem;font-weight:600;color:rgba(255,255,255,.55);margin-top:.25rem;letter-spacing:.02em">Hospitalización Psiquiátrica</div>
+          <span class="hosp-pill-text" style="color:#f4c97a">Grupo Punto<br/>de Partida</span>
+          <div style="font-size:.6rem;color:rgba(255,255,255,.4);margin-top:.2rem;text-transform:uppercase;letter-spacing:.06em">Hospitalización Psiquiátrica</div>
         </div>
       </a>
     </div>
@@ -1676,14 +1925,14 @@ El Dr. Deldhy Nicolás Moya Sánchez es psiquiatra en la Ciudad de México, egre
     <p class="section-sub">Cuando la gravedad del cuadro clínico lo requiere, canalizamos a nuestros pacientes a una red de hospitales psiquiátricos privados de confianza, con estándares de atención de alta especialidad.</p>
 
     <!-- GPD Card -->
-    <div style="margin-top:2.5rem;border:1.5px solid var(--rule);border-radius:var(--r);overflow:hidden;background:#fff;box-shadow:var(--shadow-lg)">
-      <div style="background:linear-gradient(135deg,#1D1D1F 0%,#2d2d2f 100%);padding:1.8rem 2.2rem;display:flex;flex-wrap:wrap;gap:1.5rem;align-items:center">
+    <div style="margin-top:2.5rem;border:2px solid var(--gold);border-radius:var(--r);overflow:hidden;background:#fff;box-shadow:var(--shadow-lg)">
+      <div style="background:linear-gradient(135deg,var(--ink) 0%,#000000 100%);padding:1.8rem 2.2rem;display:flex;flex-wrap:wrap;gap:1.5rem;align-items:center">
         <div style="flex:1;min-width:200px">
-          <div style="font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:.4rem">Red de Hospitalización Asociada</div>
+          <div style="font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem">Red de Hospitalización Asociada</div>
           <h3 style="font-family:var(--serif);font-size:1.5rem;font-weight:700;color:#fff;margin-bottom:.3rem">Grupo Punto de Partida</h3>
           <p style="font-size:.83rem;color:rgba(255,255,255,.68);line-height:1.55">Hospitalización psiquiátrica privada · Red de clínicas especializadas en salud mental · CDMX y área metropolitana</p>
         </div>
-        <a href="https://grupopuntodepartida.com/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:.5rem;background:#fff;color:var(--ink);font-size:.82rem;font-weight:700;padding:.7rem 1.4rem;border-radius:8px;text-decoration:none;white-space:nowrap;box-shadow:0 4px 16px rgba(0,0,0,.18);transition:filter .2s" onmouseover="this.style.filter='brightness(.95)'" onmouseout="this.style.filter='none'">
+        <a href="https://grupopuntodepartida.com/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:.5rem;background:var(--gold);color:#fff;font-size:.82rem;font-weight:700;padding:.7rem 1.4rem;border-radius:8px;text-decoration:none;white-space:nowrap;box-shadow:0 4px 16px rgba(0,113,227,.35);transition:filter .2s" onmouseover="this.style.filter='brightness(1.1)'" onmouseout="this.style.filter='none'">
           🌐 Visitar sitio web →
         </a>
       </div>
@@ -1715,19 +1964,19 @@ El Dr. Deldhy Nicolás Moya Sánchez es psiquiatra en la Ciudad de México, egre
             <h4 style="font-size:.9rem;font-weight:700;color:var(--ink);margin-bottom:1rem">¿Cómo funciona la canalización?</h4>
             <div style="display:flex;flex-direction:column;gap:.65rem">
               <div style="display:flex;gap:.7rem;align-items:flex-start">
-                <span style="width:22px;height:22px;background:var(--ink);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;flex-shrink:0;margin-top:.05rem">1</span>
+                <span style="width:22px;height:22px;background:var(--gold);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;flex-shrink:0;margin-top:.05rem">1</span>
                 <span style="font-size:.83rem;color:var(--ink-mid)"><strong style="color:var(--ink)">Evaluación en consulta:</strong> el Dr. Moya valora el nivel de cuidado necesario con criterios clínicos estandarizados (LOCUS, criterios DSM-5)</span>
               </div>
               <div style="display:flex;gap:.7rem;align-items:flex-start">
-                <span style="width:22px;height:22px;background:var(--ink);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;flex-shrink:0;margin-top:.05rem">2</span>
+                <span style="width:22px;height:22px;background:var(--gold);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;flex-shrink:0;margin-top:.05rem">2</span>
                 <span style="font-size:.83rem;color:var(--ink-mid)"><strong style="color:var(--ink)">Coordinación directa:</strong> como médico asociado al grupo, facilitamos el ingreso con carta de referencia, antecedentes y plan terapéutico preexistente</span>
               </div>
               <div style="display:flex;gap:.7rem;align-items:flex-start">
-                <span style="width:22px;height:22px;background:var(--ink);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;flex-shrink:0;margin-top:.05rem">3</span>
+                <span style="width:22px;height:22px;background:var(--gold);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;flex-shrink:0;margin-top:.05rem">3</span>
                 <span style="font-size:.83rem;color:var(--ink-mid)"><strong style="color:var(--ink)">Seguimiento continuo:</strong> mantenemos comunicación con el equipo hospitalario y retomamos el manejo ambulatorio al alta</span>
               </div>
               <div style="display:flex;gap:.7rem;align-items:flex-start">
-                <span style="width:22px;height:22px;background:var(--ink);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;flex-shrink:0;margin-top:.05rem">4</span>
+                <span style="width:22px;height:22px;background:var(--gold);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;flex-shrink:0;margin-top:.05rem">4</span>
                 <span style="font-size:.83rem;color:var(--ink-mid)"><strong style="color:var(--ink)">Alta estructurada:</strong> plan de egreso con seguimiento ambulatorio, psicoeducación y plan de seguridad documentado</span>
               </div>
             </div>
@@ -1751,7 +2000,7 @@ El Dr. Deldhy Nicolás Moya Sánchez es psiquiatra en la Ciudad de México, egre
     </div>
 
     <!-- CTA hospitalización urgente -->
-    <div style="margin-top:1.5rem;display:flex;flex-wrap:wrap;gap:1rem;align-items:center;background:rgba(29,29,31,.04);border:1px solid var(--rule);border-radius:8px;padding:1.2rem 1.5rem">
+    <div style="margin-top:1.5rem;display:flex;flex-wrap:wrap;gap:1rem;align-items:center;background:rgba(0,0,0,.04);border:1px solid var(--rule);border-radius:8px;padding:1.2rem 1.5rem">
       <div style="flex:1;min-width:180px">
         <strong style="font-size:.9rem;color:var(--ink)">¿Necesitas hospitalización urgente?</strong>
         <p style="font-size:.8rem;color:var(--ink-mid);margin-top:.2rem">Contáctanos por WhatsApp. Coordinamos el proceso de ingreso con la mayor brevedad posible.</p>
@@ -1806,7 +2055,7 @@ El Dr. Deldhy Nicolás Moya Sánchez es psiquiatra en la Ciudad de México, egre
             <div class="acad-card-ext">↗</div>
           </div>
           <div class="acad-card-body">
-            <div class="acad-card-tag" style="background:#e8f0fe;color:#1a73e8">Salud Mental · UNAM</div>
+            <div class="acad-card-tag" style="background:#e8f0fe;color:#1d1d1f">Salud Mental · UNAM</div>
             <div class="acad-card-sub">Correo verificado · comunidad.unam.mx · Perfil académico público</div>
           </div>
         </a>
@@ -1966,7 +2215,7 @@ El Dr. Deldhy Nicolás Moya Sánchez es psiquiatra en la Ciudad de México, egre
 
       <a href="https://psiquiatria.com/ia-evaluacion-screening-escalas-psicometricas/inteligencia-artificial-en-salud-mental-usos-clinicos-riesgos-y-lineamientos-para-una-implementacion-etica" target="_blank" rel="noopener" style="text-decoration:none;color:inherit">
         <div style="background:#fff;border:1px solid var(--rule);border-radius:var(--r);padding:1.5rem;height:100%;display:flex;flex-direction:column;transition:box-shadow .2s" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,.08)'" onmouseout="this.style.boxShadow='none'">
-          <span style="display:inline-block;background:#1D1D1F;color:#fff;font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.25rem .65rem;border-radius:20px;margin-bottom:1rem;align-self:flex-start">Psiquiatria.com</span>
+          <span style="display:inline-block;background:#2563eb;color:#fff;font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.25rem .65rem;border-radius:20px;margin-bottom:1rem;align-self:flex-start">Psiquiatria.com</span>
           <h3 style="font-family:var(--serif);font-size:1rem;color:var(--ink);margin-bottom:.7rem;line-height:1.45">Inteligencia Artificial en Salud Mental: Usos Clínicos, Riesgos y Lineamientos para una Implementación Ética</h3>
           <p style="font-size:.82rem;color:var(--ink-mid);line-height:1.7;flex:1">Revisión sobre aplicaciones clínicas reales de la IA en psiquiatría, con análisis crítico de riesgos éticos y propuesta de lineamientos para su uso responsable.</p>
           <span style="font-size:.8rem;color:var(--ink-mid);margin-top:1rem;font-weight:600">Psiquiatria.com · Leer →</span>
@@ -1975,7 +2224,7 @@ El Dr. Deldhy Nicolás Moya Sánchez es psiquiatra en la Ciudad de México, egre
 
       <a href="https://psiquiatria.com/bibliopsiquis/blog.php?artid=13696&idrev=&idvol=" target="_blank" rel="noopener" style="text-decoration:none;color:inherit">
         <div style="background:#fff;border:1px solid var(--rule);border-radius:var(--r);padding:1.5rem;height:100%;display:flex;flex-direction:column;transition:box-shadow .2s" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,.08)'" onmouseout="this.style.boxShadow='none'">
-          <span style="display:inline-block;background:#1D1D1F;color:#fff;font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.25rem .65rem;border-radius:20px;margin-bottom:1rem;align-self:flex-start">Psiquiatria.com</span>
+          <span style="display:inline-block;background:#2563eb;color:#fff;font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.25rem .65rem;border-radius:20px;margin-bottom:1rem;align-self:flex-start">Psiquiatria.com</span>
           <h3 style="font-family:var(--serif);font-size:1rem;color:var(--ink);margin-bottom:.7rem;line-height:1.45">¿Por qué es esencial la Psiquiatría en la Cirugía Bariátrica?</h3>
           <p style="font-size:.82rem;color:var(--ink-mid);line-height:1.7;flex:1">Impacto de la evaluación psiquiátrica preoperatoria en ansiedad, depresión y comportamiento alimentario. Enfoque de Psiquiatría de Enlace en cirugía metabólica.</p>
           <span style="font-size:.8rem;color:var(--ink-mid);margin-top:1rem;font-weight:600">Psiquiatria.com · Leer →</span>
@@ -2048,8 +2297,8 @@ El Dr. Deldhy Nicolás Moya Sánchez es psiquiatra en la Ciudad de México, egre
     <p class="section-sub">El Dr. Moya ocupó los más altos cargos de representación médica residente en México, siendo voz de miles de médicos residentes ante el ISSSTE.</p>
     
     <!-- Badge ranking Newsweek/Statista 2026 -->
-    <a href="https://www.gob.mx/issste/prensa/centro-medico-nacional-20-de-noviembre-del-issste-entre-los-10-mejores-hospitales-del-pais-marti-batres?idiom=es-MX" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;display:block;margin-top:2.5rem;margin-bottom:2rem">
-      <div style="background:linear-gradient(135deg,#1D1D1F 0%,#2d2d2f 100%);border-radius:var(--r);padding:1.5rem 2rem;display:flex;flex-wrap:wrap;gap:1.2rem;align-items:center">
+    <a href="https://www.gob.mx/issste/prensa/centro-medico-nacional-20-de-noviembre-del-issste-entre-los-10-mejores-hospitales-del-pais-marti-batres?idiom=es-MX" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;display:block;margin-bottom:2rem">
+      <div style="background:linear-gradient(135deg,#0a2240 0%,#1a3a5c 100%);border-radius:var(--r);padding:1.5rem 2rem;display:flex;flex-wrap:wrap;gap:1.2rem;align-items:center">
         <div style="display:flex;align-items:center;gap:1rem;flex:1;min-width:200px">
           <div style="background:rgba(255,255,255,.12);border-radius:50%;width:56px;height:56px;display:flex;align-items:center;justify-content:center;flex-shrink:0">
             <span style="font-size:1.8rem;line-height:1">🏆</span>
@@ -2341,12 +2590,12 @@ El Dr. Deldhy Nicolás Moya Sánchez es psiquiatra en la Ciudad de México, egre
         </div>
         <div style="display:flex;flex-direction:column;gap:.7rem">
           <a href="https://consejomexicanopsiquiatria.org.mx/psiquiatria/pm935/" target="_blank" rel="noopener"
-             style="display:inline-flex;align-items:center;gap:.5rem;background:#1D1D1F;color:#fff;font-size:.78rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:.6rem 1.2rem;border-radius:980px;text-decoration:none;transition:opacity .2s"
+             style="display:inline-flex;align-items:center;gap:.5rem;background:#1a3a5c;color:#fff;font-size:.78rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:.6rem 1.2rem;border-radius:6px;text-decoration:none;transition:opacity .2s"
              onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
             <span>🏥</span> Verificar en CMP
           </a>
           <a href="https://atum.conacem.net/consultar/0de8b040-330c-4000-a30d-9ee2a4a87df2" target="_blank" rel="noopener"
-             style="display:inline-flex;align-items:center;gap:.5rem;background:#1D1D1F;color:#fff;font-size:.78rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:.6rem 1.2rem;border-radius:980px;text-decoration:none;transition:opacity .2s"
+             style="display:inline-flex;align-items:center;gap:.5rem;background:#1a5c3a;color:#fff;font-size:.78rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:.6rem 1.2rem;border-radius:6px;text-decoration:none;transition:opacity .2s"
              onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
             <span>🔍</span> Verificar en CONACEM
           </a>
@@ -2391,7 +2640,7 @@ El Dr. Deldhy Nicolás Moya Sánchez es psiquiatra en la Ciudad de México, egre
       <a href="https://maps.app.goo.gl/pKqMrtE4XjdD2buw5" target="_blank" rel="noopener" style="margin-left:auto;display:inline-flex;align-items:center;gap:.4rem;font-size:.8rem;font-weight:600;color:var(--gold);border:1px solid var(--gold-pale);border-radius:6px;padding:.4rem .9rem;background:var(--gold-pale)">Ver en Google Maps →</a>
     </div>
     <div class="reviews-grid">
-      <div class="review"><div style="display:flex;align-items:center;gap:.7rem;margin-bottom:.7rem"><div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#1D1D1F,#424245);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:.9rem;flex-shrink:0">M</div><div><div style="font-size:.85rem;font-weight:700;color:var(--ink)">María F.</div><div class="review-stars">★★★★★</div></div></div><p class="review-text">"Excelente psiquiatra. Me explicó claramente mi diagnóstico desde la primera consulta y se nota que está muy actualizado. Llevaba meses con ansiedad y ya noto una mejora real."</p><span class="review-author">Google Maps · hace 2 semanas</span></div>
+      <div class="review"><div style="display:flex;align-items:center;gap:.7rem;margin-bottom:.7rem"><div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#1a2e45,#2563eb);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:.9rem;flex-shrink:0">M</div><div><div style="font-size:.85rem;font-weight:700;color:var(--ink)">María F.</div><div class="review-stars">★★★★★</div></div></div><p class="review-text">"Excelente psiquiatra. Me explicó claramente mi diagnóstico desde la primera consulta y se nota que está muy actualizado. Llevaba meses con ansiedad y ya noto una mejora real."</p><span class="review-author">Google Maps · hace 2 semanas</span></div>
       <div class="review"><div style="display:flex;align-items:center;gap:.7rem;margin-bottom:.7rem"><div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#0f766e,#059669);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:.9rem;flex-shrink:0">R</div><div><div style="font-size:.85rem;font-weight:700;color:var(--ink)">Roberto A.</div><div class="review-stars">★★★★★</div></div></div><p class="review-text">"El Doctor me dio un diagnóstico claro de TDAH que llevaba años sin detectarse. El proceso fue muy ordenado, con escalas de evaluación, sin apresurarse. La consulta online funciona perfectamente."</p><span class="review-author">Google Maps · hace 1 mes</span></div>
       <div class="review"><div style="display:flex;align-items:center;gap:.7rem;margin-bottom:.7rem"><div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#7c3aed,#a855f7);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:.9rem;flex-shrink:0">C</div><div><div style="font-size:.85rem;font-weight:700;color:var(--ink)">Claudia V.</div><div class="review-stars">★★★★★</div></div></div><p class="review-text">"Llevé a mi esposo después de que varios médicos no lograban dar con el diagnóstico. Fue muy metódico, empático y nos explicó todo con calma. ¡Totalmente recomendado!"</p><span class="review-author">Google Maps · hace 6 semanas</span></div>
       <div class="review"><div style="display:flex;align-items:center;gap:.7rem;margin-bottom:.7rem"><div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#b45309,#d97706);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:.9rem;flex-shrink:0">J</div><div><div style="font-size:.85rem;font-weight:700;color:var(--ink)">Jorge L.</div><div class="review-stars">★★★★★</div></div></div><p class="review-text">"El Doctor combina lo académico con lo humano. Me ayudó con insomnio y episodios de pánico. Me explica todo en palabras claras y el sistema de pago y agenda es muy fácil de usar."</p><span class="review-author">Google Maps · hace 2 meses</span></div>
@@ -2399,9 +2648,7 @@ El Dr. Deldhy Nicolás Moya Sánchez es psiquiatra en la Ciudad de México, egre
       <div class="review"><div style="display:flex;align-items:center;gap:.7rem;margin-bottom:.7rem"><div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#065f46,#10b981);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:.9rem;flex-shrink:0">A</div><div><div style="font-size:.85rem;font-weight:700;color:var(--ink)">Ana G.</div><div class="review-stars">★★★★★</div></div></div><p class="review-text">"Excelente atención, muy profesional y empático. Me sentí escuchada y con un plan claro de tratamiento. Llevo 3 meses de seguimiento y los resultados son notorios."</p><span class="review-author">Google Maps · hace 4 meses</span></div>
     </div>
     <div style="margin-top:1.2rem;text-align:center">
-      <a href="https://maps.app.goo.gl/pKqMrtE4XjdD2buw5" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:.5rem;background:var(--ink);color:#fff;padding:.75rem 1.8rem;border-radius:980px;font-size:.85rem;font-weight:600;text-decoration:none;box-shadow:0 4px 16px rgba(29,29,31,.2);transition:background .2s,transform .15s,box-shadow .3s" onmouseover="this.style.background='#2d2d2f';this.style.transform='translateY(-1px)';this.style.boxShadow='0 8px 24px rgba(29,29,31,.25)'" onmouseout="this.style.background='var(--ink)';this.style.transform='translateY(0)';this.style.boxShadow='0 4px 16px rgba(29,29,31,.2)'">
-        📍 Ver todas las reseñas en Google Maps →
-      </a>
+      <a href="https://maps.app.goo.gl/pKqMrtE4XjdD2buw5" target="_blank" rel="noopener" class="btn-wa">📍 Ver todas las reseñas en Google Maps →</a>
     </div>
   </div>
 </section>
@@ -2537,7 +2784,7 @@ El Dr. Deldhy Nicolás Moya Sánchez es psiquiatra en la Ciudad de México, egre
 <footer class="footer">
   <div class="footer-inner">
     <div class="footer-brand">
-      <img src="http://psiquiatra-cdmx.eutimya.org/eutimyafondoblanco.png" alt="Eutimya" loading="lazy" style="height:30px;width:auto;margin-bottom:1rem;filter:brightness(0) invert(1);opacity:.9"/>
+      <img src="https://psiquiatra-cdmx.eutimya.org/eutimyafondoblanco.png" alt="Eutimya" loading="lazy" style="height:30px;width:auto;opacity:.9;margin-bottom:1rem;filter:brightness(0) invert(1)"/>
       <p>Psiquiatría especializada en CDMX. Atención presencial y en línea. Diagnóstico y tratamiento basado en evidencia. Consulta desde $1,400 MXN.</p>
     </div>
     <div class="footer-col">
@@ -2782,24 +3029,20 @@ document.getElementById('vcf-btn').addEventListener('click',function(){
   color:#fff;
   text-decoration:none;
   flex-shrink:0;
-  background:rgba(10,10,14,0.52);
-  backdrop-filter:blur(22px) saturate(180%);
-  -webkit-backdrop-filter:blur(22px) saturate(180%);
-  border:1px solid rgba(255,255,255,.10);
-  box-shadow:0 4px 18px rgba(0,0,0,.32),inset 0 1px 0 rgba(255,255,255,.06);
-  transition:transform .22s cubic-bezier(.34,1.56,.64,1), box-shadow .2s, background .2s, border-color .2s;
+  box-shadow:0 4px 16px rgba(0,0,0,.22);
+  transition:transform .22s cubic-bezier(.34,1.56,.64,1), box-shadow .2s;
 }
-.sf-btn:hover{ transform:scale(1.08); background:rgba(10,10,14,0.78); border-color:rgba(255,255,255,.18); box-shadow:0 8px 28px rgba(0,0,0,.48),inset 0 1px 0 rgba(255,255,255,.12); }
+.sf-btn:hover{ transform:scale(1.1); box-shadow:0 6px 22px rgba(0,0,0,.3); }
 .sf-btn:active{ transform:scale(.93); }
-.sf-ig{ }
-.sf-fb{ }
+.sf-ig{ background:linear-gradient(135deg,#f09433,#e6683c 30%,#dc2743 55%,#bc1888); }
+.sf-fb{ background:#1877F2; }
 /* Etiqueta pill */
 .sf-label{
-  background:rgba(29,29,31,.84);
+  background:rgba(0,0,0,.84);
   backdrop-filter:blur(10px);
   -webkit-backdrop-filter:blur(10px);
   color:#fff;
-  font-family:var(--sans,'DM Sans',sans-serif);
+  font-family:var(--sans,-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif);
   font-size:.72rem;
   font-weight:600;
   letter-spacing:.03em;
@@ -2808,34 +3051,31 @@ document.getElementById('vcf-btn').addEventListener('click',function(){
   white-space:nowrap;
   pointer-events:none;
   border:1px solid rgba(255,255,255,.12);
-  box-shadow:0 2px 10px rgba(29,29,31,.2);
+  box-shadow:0 2px 10px rgba(0,0,0,.2);
 }
 /* Botón trigger */
 .sf-trigger{
   width:52px;
   height:52px;
   border-radius:50%;
-  border:1px solid rgba(255,255,255,.10);
+  border:none;
   cursor:pointer;
-  background:rgba(10,10,14,0.52);
-  backdrop-filter:blur(22px) saturate(180%);
-  -webkit-backdrop-filter:blur(22px) saturate(180%);
+  background:var(--ink,#1d1d1f);
   display:flex;
   align-items:center;
   justify-content:center;
-  box-shadow:0 6px 28px rgba(0,0,0,.38),inset 0 1px 0 rgba(255,255,255,.07);
+  box-shadow:0 6px 24px rgba(0,0,0,.38);
   transition:
     background .2s,
     box-shadow .2s,
-    border-color .2s,
     transform .3s cubic-bezier(.34,1.56,.64,1);
   -webkit-tap-highlight-color:transparent;
   outline:none;
   position:relative;   /* para los iconos absolutos */
   overflow:hidden;
 }
-.sf-trigger:hover{ background:rgba(10,10,14,0.78); border-color:rgba(255,255,255,.18); box-shadow:0 10px 36px rgba(0,0,0,.52),inset 0 1px 0 rgba(255,255,255,.13); transform:translateY(-1px); }
-.sf-trigger.sf-open{ background:rgba(10,10,14,0.78); border-color:rgba(255,255,255,.18); }
+.sf-trigger:hover{ background:#000000; transform:translateY(-1px); }
+.sf-trigger.sf-open{ background:var(--gold,#1d1d1f); }
 /* Los dos iconos se superponen */
 .sf-icon{
   position:absolute;
@@ -2849,9 +3089,9 @@ document.getElementById('vcf-btn').addEventListener('click',function(){
 .sf-trigger.sf-open .sf-icon-close{ opacity:1; transform:translate(-50%,-50%) rotate(0deg) scale(1); }
 /* Pulse inicial */
 @keyframes sfPulse{
-  0%  { box-shadow:0 0 0 0 rgba(255,255,255,.18),0 6px 28px rgba(0,0,0,.38); }
-  70% { box-shadow:0 0 0 10px rgba(255,255,255,0),0 6px 28px rgba(0,0,0,.38); }
-  100%{ box-shadow:0 0 0 0 rgba(255,255,255,0),0 6px 28px rgba(0,0,0,.38); }
+  0%  { box-shadow:0 0 0 0 rgba(0,113,227,.5),0 6px 24px rgba(0,0,0,.38); }
+  70% { box-shadow:0 0 0 11px rgba(0,113,227,0),0 6px 24px rgba(0,0,0,.38); }
+  100%{ box-shadow:0 0 0 0 rgba(0,113,227,0),0 6px 24px rgba(0,0,0,.38); }
 }
 .sf-trigger:not(.sf-open){ animation:sfPulse 2.6s ease 2.5s 3; }
 </style>
@@ -3040,10 +3280,7 @@ window.googleTranslateElementInit = function(){
   }
   function setCookie(val){
     var exp = val ? '' : '; expires=Thu, 01 Jan 1970 00:00:00 UTC';
-    var host = location.hostname;
-    var parts = host.split('.');
-    var parentDomain = parts.length > 2 ? parts.slice(-2).join('.') : host;
-    [host, '.'+host, parentDomain, '.'+parentDomain].forEach(function(d){
+    [location.hostname, '.'+location.hostname].forEach(function(d){
       document.cookie = 'googtrans='+val+exp+'; path=/; domain='+d;
     });
     document.cookie = 'googtrans='+val+exp+'; path=/';
@@ -3058,14 +3295,14 @@ window.googleTranslateElementInit = function(){
         enHTML:'&#127474;&#127485; Regresar al espa&ntilde;ol <span style="opacity:.6;font-weight:400">&middot; Back to Spanish</span>',
         esHTML:'&#127482;&#127480; Yes, we speak English <span style="opacity:.6;font-weight:400">&middot; Consultations available in English</span>',
         enBg:'linear-gradient(135deg,#1a5c3a,#22724a)',
-        esBg:'linear-gradient(135deg,#1D1D1F,#2d2d2f)'
+        esBg:'linear-gradient(135deg,#1a3a5c,#000000)'
       },
       {
         id:'en-badge-m',
         enHTML:'&#127474;&#127485; Regresar al espa&ntilde;ol <span style="opacity:.6;font-weight:400"> &middot; Volver</span>',
         esHTML:'&#127482;&#127480; Yes, we speak English <span style="opacity:.6;font-weight:400"> &middot; English consultations</span>',
         enBg:'rgba(26,92,58,.85)',
-        esBg:'rgba(29,29,31,.75)'
+        esBg:'rgba(0,0,0,.75)'
       }
     ];
     pairs.forEach(function(p){
@@ -3079,8 +3316,7 @@ window.googleTranslateElementInit = function(){
 
   function toggle(){
     setCookie(isEN ? '' : '/es/en');
-    var pathname = window.location.pathname + window.location.search;
-    window.location.href = pathname;
+    window.location.reload();
   }
 
   updateBadges();

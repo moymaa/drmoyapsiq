@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" style="color-scheme:light">
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
@@ -7,18 +7,18 @@
 <meta name="robots" content="noindex,nofollow"/>
 <link rel="icon" type="image/png" href="https://psiquiatra-cdmx.eutimya.org/favicon.png"/>
 <link rel="apple-touch-icon" href="https://psiquiatra-cdmx.eutimya.org/favicon.png"/>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&family=Google+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+
+
+
 <style>
 /* ── TOKENS ── */
 :root{
-  --ink:#0d1b2a;--ink-mid:#334155;--ink-light:#64748b;--gold:#b8893a;--gold-pale:#f5ecd7;
-  --white:#ffffff;--canvas:#fafaf8;--rule:#e8e6e1;
-  --serif:'Playfair Display',Georgia,serif;--sans:'DM Sans','Helvetica Neue',sans-serif;
-  --r:10px;--shadow:0 2px 12px rgba(13,27,42,.07);--shadow-lg:0 8px 40px rgba(13,27,42,.12);
+  --ink:#1d1d1f;--ink-mid:#6e6e73;--ink-light:#86868b;--gold:#1d1d1f;--gold-pale:rgba(0,0,0,.05);
+  --white:#ffffff;--canvas:#f5f5f7;--rule:rgba(0,0,0,.08);
+  --serif:-apple-system,BlinkMacSystemFont,'SF Pro Display','Helvetica Neue',sans-serif;--sans:-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif;
+  --r:18px;--shadow:0 2px 8px rgba(0,0,0,.05);--shadow-lg:0 12px 48px rgba(0,0,0,.1);
   --green:#16a34a;--green-bg:#f0fdf4;--green-ring:rgba(22,163,74,.25);
-  --blue:#1a73e8;--cal-green:#188038;--cal-green-bg:#e6f4ea;--cal-green-hover:#c6e8cc;
+  --blue:#1d1d1f;--cal-green:#188038;--cal-green-bg:#e6f4ea;--cal-green-hover:#c6e8cc;
   --cal-red:#c5221f;--cal-red-bg:#fce8e6;--cal-gray-100:#f1f3f4;--cal-gray-200:#e8eaed;
   --cal-gray-400:#bdc1c6;--cal-gray-600:#80868b;--cal-gray-700:#5f6368;
 }
@@ -33,7 +33,7 @@ a{color:inherit;text-decoration:none}
 .nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:.9rem 2rem;gap:1.5rem;}
 .nav-logo img{height:34px;width:auto}
 .nav-back{display:inline-flex;align-items:center;gap:.45rem;background:var(--ink);color:#fff;padding:.5rem 1.1rem;border-radius:6px;font-size:.78rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;white-space:nowrap;transition:background .2s;text-decoration:none;}
-.nav-back:hover{background:#1e3a5f}
+.nav-back:hover{background:#000000}
 
 /* ── FOOTER ── */
 .footer{background:var(--ink);padding:3rem 2rem 1.8rem;margin-top:0;}
@@ -55,7 +55,7 @@ a{color:inherit;text-decoration:none}
 /* ── CONF SCREEN ── */
 .conf-screen{min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:6.5rem 1.25rem 3rem;background:var(--canvas);}
 .conf-screen.hidden{display:none}
-.conf-card{width:100%;max-width:440px;background:#fff;border-radius:16px;border:1px solid var(--rule);box-shadow:0 4px 32px rgba(13,27,42,.10);overflow:hidden;animation:confIn .5s cubic-bezier(.2,.8,.2,1) both}
+.conf-card{width:100%;max-width:440px;background:#fff;border-radius:16px;border:1px solid var(--rule);box-shadow:0 4px 32px rgba(0,0,0,.10);overflow:hidden;animation:confIn .5s cubic-bezier(.2,.8,.2,1) both}
 @keyframes confIn{from{transform:translateY(28px);opacity:0}to{transform:translateY(0);opacity:1}}
 
 /* SVG check */
@@ -90,7 +90,7 @@ a{color:inherit;text-decoration:none}
 /* CTA */
 .conf-cta{padding:1.5rem 1.8rem 1.8rem;display:flex;flex-direction:column;gap:.65rem}
 .btn-conf-primary{display:flex;align-items:center;justify-content:center;gap:.55rem;width:100%;padding:.95rem 1.2rem;border-radius:9px;border:none;background:var(--ink);color:#fff;font-family:var(--sans);font-weight:700;font-size:.92rem;cursor:pointer;transition:background .18s,transform .08s,box-shadow .18s;letter-spacing:.01em}
-.btn-conf-primary:hover{background:#1e3a5f;transform:translateY(-1px);box-shadow:0 8px 28px rgba(13,27,42,.22)}
+.btn-conf-primary:hover{background:#000000;transform:translateY(-1px);box-shadow:0 8px 28px rgba(0,0,0,.22)}
 .btn-conf-primary:active{transform:translateY(0)}
 .btn-conf-secondary{display:flex;align-items:center;justify-content:center;gap:.5rem;width:100%;padding:.75rem 1rem;border-radius:8px;border:1px solid var(--rule);background:#fff;color:var(--ink-mid);font-family:var(--sans);font-weight:600;font-size:.82rem;cursor:pointer;transition:border-color .15s,background .15s;text-decoration:none}
 .btn-conf-secondary:hover{border-color:var(--ink-light);background:var(--canvas)}
@@ -104,7 +104,7 @@ a{color:inherit;text-decoration:none}
 .cal-drawer{position:fixed;top:0;right:0;bottom:0;z-index:501;width:min(560px,100vw);background:#f8f9fa;display:flex;flex-direction:column;transform:translateX(102%);transition:transform .38s cubic-bezier(.22,.9,.3,1);box-shadow:-16px 0 48px rgba(0,0,0,.18);max-height:100vh;max-height:100dvh;overflow:hidden}
 .cal-drawer.open{transform:translateX(0)}
 .cal-dw-head{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;flex-shrink:0;border-bottom:1px solid rgba(255,255,255,.08)}
-.cal-dw-head.browse{background:#1a73e8}.cal-dw-head.book{background:#188038}
+.cal-dw-head.browse{background:#1d1d1f}.cal-dw-head.book{background:#188038}
 .cal-dw-info{display:flex;flex-direction:column;gap:3px}
 .cal-dw-mode{font-size:.65rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
 .cal-dw-head.browse .cal-dw-mode{color:rgba(255,255,255,.7)}.cal-dw-head.book .cal-dw-mode{color:rgba(255,255,255,.7)}
@@ -112,15 +112,15 @@ a{color:inherit;text-decoration:none}
 .cal-dw-close{width:34px;height:34px;border-radius:50%;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.1);color:rgba(255,255,255,.85);font-size:1.25rem;line-height:1;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .15s;flex-shrink:0}
 .cal-dw-close:hover{background:rgba(255,255,255,.2)}
 .cal-dw-banner{padding:10px 16px;font-size:.8rem;font-weight:500;line-height:1.45;flex-shrink:0}
-.cal-dw-banner.browse{background:#e8f0fe;color:#174ea6;border-bottom:1px solid rgba(26,115,232,.15)}
+.cal-dw-banner.browse{background:#e8f0fe;color:#174ea6;border-bottom:1px solid rgba(0,113,227,.15)}
 .cal-dw-banner.book{background:#e6f4ea;color:#137333;border-bottom:1px solid rgba(24,128,56,.15)}
 .cal-dw-body{flex:1;overflow-y:auto;padding:16px 16px 32px;-webkit-overflow-scrolling:touch}
 .cal-type-row{display:flex;gap:0;border:1px solid var(--cal-gray-200);border-radius:24px;background:#fff;padding:4px;width:fit-content;box-shadow:0 1px 3px rgba(0,0,0,.1);margin-bottom:16px}
 .cal-type-btn{padding:8px 20px;border-radius:20px;border:none;background:transparent;font-family:'Google Sans',sans-serif;font-size:13px;font-weight:500;color:var(--cal-gray-700);cursor:pointer;transition:all .15s;display:flex;align-items:center;gap:5px}
-.cal-type-btn.active{background:#1a73e8;color:#fff;box-shadow:0 1px 3px rgba(0,0,0,.12)}
+.cal-type-btn.active{background:#1d1d1f;color:#fff;box-shadow:0 1px 3px rgba(0,0,0,.12)}
 .cal-type-btn:hover:not(.active){background:var(--cal-gray-100)}
 .cal-bc{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--cal-gray-600);margin-bottom:10px;min-height:20px}
-.cal-bc .crumb{color:#1a73e8;cursor:pointer;font-weight:500}.cal-bc .crumb:hover{text-decoration:underline}
+.cal-bc .crumb{color:#1d1d1f;cursor:pointer;font-weight:500}.cal-bc .crumb:hover{text-decoration:underline}
 .cal-bc .sep{color:var(--cal-gray-400)}
 .cal-card{background:#fff;border-radius:10px;box-shadow:0 1px 3px rgba(0,0,0,.1);overflow:hidden}
 .cal-card-head{padding:14px 18px 12px;border-bottom:1px solid var(--cal-gray-200)}
@@ -128,7 +128,7 @@ a{color:inherit;text-decoration:none}
 .cal-card-body{padding:16px 18px 20px}
 .cal-months-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
 .cal-month-tile{border:1px solid var(--cal-gray-200);border-radius:8px;padding:14px 10px 12px;text-align:center;cursor:pointer;transition:all .15s}
-.cal-month-tile:hover:not(.past){border-color:#1a73e8;background:#e8f0fe}
+.cal-month-tile:hover:not(.past){border-color:#1d1d1f;background:#e8f0fe}
 .cal-month-tile.past{opacity:.35;pointer-events:none}
 .cal-mt-name{font-family:'Google Sans',sans-serif;font-size:14px;font-weight:500;color:#202124}
 .cal-mt-year{font-size:11px;color:var(--cal-gray-600);margin-top:1px}
@@ -137,7 +137,7 @@ a{color:inherit;text-decoration:none}
 .cal-mt-count.loading{color:var(--cal-gray-400);font-weight:400}
 .cal-mt-count.loading::after{content:'';display:inline-block;width:8px;height:8px;margin-left:4px;border:1.5px solid var(--cal-gray-300);border-top-color:var(--cal-gray-600);border-radius:50%;animation:calSpin .7s linear infinite;vertical-align:middle}
 .cal-month-tile.no-avail{background:var(--cal-red-bg);border-color:rgba(197,34,31,.3);pointer-events:none;cursor:default}
-.cal-btn-back{display:inline-flex;align-items:center;gap:4px;background:none;border:none;padding:0 0 12px 0;font-family:'Google Sans',sans-serif;font-size:12px;font-weight:500;color:#1a73e8;cursor:pointer}
+.cal-btn-back{display:inline-flex;align-items:center;gap:4px;background:none;border:none;padding:0 0 12px 0;font-family:'Google Sans',sans-serif;font-size:12px;font-weight:500;color:#1d1d1f;cursor:pointer}
 .cal-btn-back:hover{text-decoration:underline}
 .cal-dow-row{display:grid;grid-template-columns:repeat(7,1fr);margin-bottom:5px}
 .cal-dow-lbl{text-align:center;font-size:10px;font-weight:500;color:var(--cal-gray-600);text-transform:uppercase;letter-spacing:.05em;padding:3px 0}
@@ -148,7 +148,7 @@ a{color:inherit;text-decoration:none}
 .cal-day.avail{background:var(--cal-green-bg);color:var(--cal-green);cursor:pointer;border:1px solid rgba(24,128,56,.15)}
 .cal-day.avail:hover{background:var(--cal-green-hover);transform:scale(1.05);box-shadow:0 2px 6px rgba(24,128,56,.18);z-index:1}
 .cal-day.busy{background:var(--cal-red-bg);color:var(--cal-red);border:1px solid rgba(197,34,31,.12);pointer-events:none}
-.cal-day.today-ring{outline:2px solid #1a73e8;outline-offset:-2px}
+.cal-day.today-ring{outline:2px solid #1d1d1f;outline-offset:-2px}
 .cal-day-num{font-size:14px;line-height:1}.cal-day-sub{font-size:9px;margin-top:2px;line-height:1;font-weight:400}
 .cal-slots-date{font-family:'Google Sans',sans-serif;font-size:14px;font-weight:500;color:#202124;text-transform:capitalize;margin-bottom:14px}
 .cal-slots-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(95px,1fr));gap:7px}
@@ -163,7 +163,7 @@ a{color:inherit;text-decoration:none}
 .cal-leg-sq.g{background:var(--cal-green-bg);border:1px solid rgba(24,128,56,.3)}
 .cal-leg-sq.r{background:var(--cal-red-bg);border:1px solid rgba(197,34,31,.2)}
 .cal-leg-sq.e{background:var(--cal-gray-100);border:1px solid var(--cal-gray-200)}
-.cal-spinner{width:26px;height:26px;border:3px solid var(--cal-gray-200);border-top-color:#1a73e8;border-radius:50%;animation:calSpin .65s linear infinite}
+.cal-spinner{width:26px;height:26px;border:3px solid var(--cal-gray-200);border-top-color:#1d1d1f;border-radius:50%;animation:calSpin .65s linear infinite}
 @keyframes calSpin{to{transform:rotate(360deg)}}
 .cal-view{animation:calFadeUp .2s ease}
 @keyframes calFadeUp{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
@@ -171,9 +171,9 @@ a{color:inherit;text-decoration:none}
 /* TZ modal */
 .tz-modal{position:fixed;top:0;left:0;right:0;bottom:0;width:100%;height:100%;z-index:99999;display:none;align-items:center;justify-content:center;padding:20px}
 .tz-modal.is-open{display:flex}
-.tz-backdrop{position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(13,27,42,.6);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);opacity:0;transition:opacity .22s}
+.tz-backdrop{position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.6);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);opacity:0;transition:opacity .22s}
 .tz-modal.is-open .tz-backdrop{opacity:1}
-.tz-panel{position:relative;z-index:2;width:100%;max-width:360px;background:#fff;border-radius:14px;border:1px solid var(--rule);box-shadow:0 24px 60px rgba(13,27,42,.3);transform:scale(.92);opacity:0;overflow:hidden;transition:transform .24s cubic-bezier(.2,.8,.2,1),opacity .2s}
+.tz-panel{position:relative;z-index:2;width:100%;max-width:360px;background:#fff;border-radius:14px;border:1px solid var(--rule);box-shadow:0 24px 60px rgba(0,0,0,.3);transform:scale(.92);opacity:0;overflow:hidden;transition:transform .24s cubic-bezier(.2,.8,.2,1),opacity .2s}
 .tz-modal.is-open .tz-panel{transform:scale(1);opacity:1}
 .tz-close{position:absolute;top:12px;right:12px;width:28px;height:28px;border-radius:50%;border:1px solid var(--rule);background:var(--canvas);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:.9rem;color:var(--ink-light);transition:background .12s;z-index:10}
 .tz-close:hover{background:var(--rule)}
@@ -184,12 +184,12 @@ a{color:inherit;text-decoration:none}
 .tz-img-wrap img{width:100%;display:block;max-height:120px;object-fit:cover;object-position:top}
 .tz-img-cap{padding:6px 10px;font-size:.72rem;color:var(--ink-light);background:var(--canvas);border-top:1px solid var(--rule);line-height:1.4}
 .tz-ok{width:100%;padding:.85rem;border-radius:8px;border:none;background:var(--ink);color:#fff;font-weight:600;font-size:.88rem;cursor:pointer;font-family:var(--sans);transition:background .2s,transform .08s}
-.tz-ok:hover{background:#1e3a5f;transform:translateY(-1px)}
+.tz-ok:hover{background:#000000;transform:translateY(-1px)}
 
 /* Expediente confirmation modal */
-.expediente-confirmation-modal{position:fixed;top:0;left:0;right:0;bottom:0;z-index:99999;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(13,27,42,.7);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px)}
+.expediente-confirmation-modal{position:fixed;top:0;left:0;right:0;bottom:0;z-index:99999;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(0,0,0,.7);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px)}
 .expediente-confirmation-modal.is-open{display:flex}
-.ecm-panel{position:relative;z-index:2;width:100%;max-width:420px;background:#fff;border-radius:16px;border:1px solid var(--rule);box-shadow:0 24px 64px rgba(13,27,42,.3);overflow:hidden;animation:ecmSlideIn .4s cubic-bezier(.2,.8,.2,1)}
+.ecm-panel{position:relative;z-index:2;width:100%;max-width:420px;background:#fff;border-radius:16px;border:1px solid var(--rule);box-shadow:0 24px 64px rgba(0,0,0,.3);overflow:hidden;animation:ecmSlideIn .4s cubic-bezier(.2,.8,.2,1)}
 @keyframes ecmSlideIn{from{transform:scale(.92) translateY(-20px);opacity:0}to{transform:scale(1) translateY(0);opacity:1}}
 .ecm-header{padding:2rem 2rem 1.2rem;display:flex;flex-direction:column;align-items:center;text-align:center}
 .ecm-icon{font-size:3.5rem;margin-bottom:.8rem;animation:expedientePulse .6s ease forwards}
@@ -197,7 +197,7 @@ a{color:inherit;text-decoration:none}
 .ecm-title{font-family:var(--serif);font-size:1.35rem;font-weight:700;color:var(--ink);line-height:1.2;margin-bottom:.4rem}
 .ecm-subtitle{font-size:.9rem;color:var(--ink-mid);line-height:1.6}
 .ecm-body{padding:1.6rem 2rem}
-.ecm-instruction{background:rgba(184,137,58,.08);border:1px solid rgba(184,137,58,.3);border-radius:10px;padding:1.1rem;margin-bottom:1.2rem}
+.ecm-instruction{background:rgba(0,0,0,.05);border:1px solid rgba(0,0,0,.15);border-radius:10px;padding:1.1rem;margin-bottom:1.2rem}
 .ecm-instruction-title{font-weight:700;font-size:.88rem;color:var(--gold);margin-bottom:.5rem;display:flex;align-items:center;gap:.5rem}
 .ecm-instruction-text{font-size:.82rem;color:var(--ink-mid);line-height:1.6}
 .ecm-timer{display:flex;align-items:center;justify-content:center;gap:.6rem;padding:1rem;background:var(--canvas);border-radius:8px;margin-bottom:1.2rem;font-size:.82rem;color:var(--ink-mid)}
@@ -206,7 +206,7 @@ a{color:inherit;text-decoration:none}
 .ecm-actions{display:flex;flex-direction:column;gap:.7rem}
 .ecm-btn{padding:1rem 1.4rem;border-radius:8px;border:none;font-weight:700;font-size:.88rem;cursor:pointer;font-family:var(--sans);transition:all .2s;width:100%;text-align:center}
 .ecm-btn-primary{background:var(--gold);color:#fff}
-.ecm-btn-primary:hover{background:#a07a2e;transform:translateY(-2px);box-shadow:0 6px 20px rgba(184,137,58,.3)}
+.ecm-btn-primary:hover{background:#a07a2e;transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.15)}
 .ecm-btn-secondary{background:transparent;border:1.5px solid var(--rule);color:var(--ink)}
 .ecm-btn-secondary:hover{border-color:var(--ink-light);background:var(--canvas)}
 
@@ -225,7 +225,7 @@ a{color:inherit;text-decoration:none}
 .exp-dw-body iframe{width:100%;height:100%;border:none;display:block}
 .exp-dw-loader{position:absolute;inset:0;z-index:2;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;transition:opacity .35s}
 .exp-dw-loader.hidden{opacity:0;pointer-events:none}
-.exp-spinner{width:32px;height:32px;border:3px solid rgba(184,137,58,.15);border-top-color:var(--gold);border-radius:50%;animation:expSpin .8s linear infinite}
+.exp-spinner{width:32px;height:32px;border:3px solid rgba(0,113,227,.15);border-top-color:var(--gold);border-radius:50%;animation:expSpin .8s linear infinite}
 @keyframes expSpin{to{transform:rotate(360deg)}}
 .exp-dw-loader p{font-size:.82rem;color:var(--ink-light)}
 
@@ -252,6 +252,319 @@ a{color:inherit;text-decoration:none}
   .cal-dw-body{padding:12px 12px 24px}
   .cal-day-sub{display:none}
 }
+
+/* ════════════════════════════════════════════
+   APPLE DESIGN SYSTEM — Glass & Polish Layer
+   ════════════════════════════════════════════ */
+
+/* 1. Body & base */
+body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+h1,h2,h3,h4,h5,h6{letter-spacing:-0.018em;font-weight:700}
+p,li,td{letter-spacing:-.005em}
+
+/* 2. Navigation — Apple frosted glass */
+.nav{
+  background:rgba(255,255,255,.72) !important;
+  backdrop-filter:saturate(180%) blur(20px) !important;
+  -webkit-backdrop-filter:saturate(180%) blur(20px) !important;
+  border-bottom:1px solid rgba(0,0,0,.07) !important;
+  box-shadow:none !important;
+}
+/* Nav CTA — Apple blue pill */
+.nav-btn{
+  background:#1d1d1f !important;
+  border-radius:980px !important;
+  box-shadow:0 2px 12px rgba(0,0,0,.14) !important;
+  letter-spacing:-.01em !important;
+  text-transform:none !important;
+  font-size:.82rem !important;
+}
+.nav-btn:hover{background:#000000 !important;opacity:1 !important}
+
+/* 3. Mobile nav glass */
+.mobile-nav{
+  background:rgba(255,255,255,.9) !important;
+  backdrop-filter:saturate(180%) blur(24px) !important;
+  -webkit-backdrop-filter:saturate(180%) blur(24px) !important;
+  border-top:none !important;
+  box-shadow:0 20px 60px rgba(0,0,0,.14) !important;
+}
+.mobile-nav-group-items a::before{background:#c7c7cc !important}
+.mnav-cta-primary{
+  background:#1d1d1f !important;
+  border-radius:980px !important;
+  box-shadow:0 2px 10px rgba(0,0,0,.12) !important;
+}
+.mnav-cta-secondary{border-radius:980px !important}
+
+/* 4. Floating action buttons — Apple glass */
+.wa-float{
+  background:rgba(37,211,102,.9) !important;
+  backdrop-filter:blur(20px) saturate(180%) !important;
+  -webkit-backdrop-filter:blur(20px) saturate(180%) !important;
+  border:1px solid rgba(255,255,255,.3) !important;
+  border-radius:980px !important;
+  box-shadow:0 8px 32px rgba(37,211,102,.3),0 2px 8px rgba(0,0,0,.1) !important;
+}
+.wa-float:hover{
+  transform:translateY(-2px) !important;
+  box-shadow:0 12px 40px rgba(37,211,102,.38),0 4px 12px rgba(0,0,0,.12) !important;
+}
+.back-to-top{
+  background:rgba(29,29,31,.5) !important;
+  backdrop-filter:blur(20px) saturate(180%) !important;
+  -webkit-backdrop-filter:blur(20px) saturate(180%) !important;
+  border:1px solid rgba(255,255,255,.16) !important;
+  box-shadow:0 4px 20px rgba(0,0,0,.2) !important;
+}
+.back-to-top:hover{
+  background:rgba(29,29,31,.7) !important;
+  box-shadow:0 8px 28px rgba(0,0,0,.28) !important;
+}
+
+/* 5. Primary CTA buttons */
+.btn-gold,.hmo-btn-main{
+  background:#1d1d1f !important;
+  border-radius:980px !important;
+  box-shadow:0 4px 20px rgba(0,0,0,.15) !important;
+  letter-spacing:-.01em !important;
+}
+.btn-gold:hover,.hmo-btn-main:hover{
+  background:#000000 !important;
+  box-shadow:0 6px 28px rgba(0,0,0,.18) !important;
+  filter:none !important;
+  transform:translateY(-1px) !important;
+}
+
+/* btn-main (dark CTA) */
+.btn-main{
+  background:#1d1d1f !important;
+  border-radius:980px !important;
+  box-shadow:0 4px 18px rgba(0,0,0,.15) !important;
+}
+.btn-main:hover{background:#2d2d2f !important}
+
+/* btn-wa (outline) → apple glass */
+.btn-wa{
+  background:rgba(0,0,0,.04) !important;
+  border:1px solid rgba(0,0,0,.1) !important;
+  border-radius:980px !important;
+  color:#1d1d1f !important;
+}
+.btn-wa:hover{background:rgba(0,0,0,.08) !important;border-color:rgba(0,0,0,.18) !important}
+
+/* hmo-btn-wa glass (on dark hero) */
+.hmo-btn-wa{
+  background:rgba(255,255,255,.1) !important;
+  backdrop-filter:blur(12px) !important;
+  -webkit-backdrop-filter:blur(12px) !important;
+  border:1px solid rgba(255,255,255,.22) !important;
+  border-radius:980px !important;
+  color:#fff !important;
+}
+.hmo-btn-wa:hover{background:rgba(255,255,255,.2) !important}
+
+/* page-hero-back (secondary pages back button) */
+.page-hero-back{
+  background:rgba(255,255,255,.1) !important;
+  backdrop-filter:blur(16px) !important;
+  -webkit-backdrop-filter:blur(16px) !important;
+  border:1px solid rgba(255,255,255,.25) !important;
+  border-radius:980px !important;
+  color:#fff !important;
+}
+.page-hero-back:hover{background:rgba(255,255,255,.2) !important}
+
+/* 6. Cards — subtle Apple style */
+.svc,.price-card,.cuando-item,.pub,.review,.pay-card,.cred-thumb{
+  border-radius:18px !important;
+  border:1px solid rgba(0,0,0,.06) !important;
+  box-shadow:0 2px 8px rgba(0,0,0,.04) !important;
+}
+.svc:hover,.price-card:hover,.cuando-item:hover,.pay-card:hover,.cred-thumb:hover{
+  transform:none !important;
+  box-shadow:0 8px 40px rgba(0,0,0,.1) !important;
+  border-color:rgba(0,0,0,.1) !important;
+}
+/* Card hover accent line — blue */
+.svc::after{background:linear-gradient(90deg,#1d1d1f,#424245) !important}
+
+/* pill/chip elements */
+.cred-chip,.cert-chip,.zone,.enlace-pill{
+  border-radius:980px !important;
+  background:rgba(0,0,0,.05) !important;
+  color:#1d1d1f !important;
+  border-color:rgba(0,0,0,.08) !important;
+}
+.cred-chip:hover,.cert-chip:hover{background:#1d1d1f !important;color:#fff !important;border-color:#1d1d1f !important}
+.cond,.act-item,.transfer-acc,.pay-pill,.chip{border-radius:12px !important}
+
+/* 7. Featured price card glass */
+.price-card.featured{
+  background:linear-gradient(135deg,rgba(0,113,227,.05),rgba(0,113,227,.01)) !important;
+  border-color:rgba(0,0,0,.1) !important;
+}
+
+/* 8. Dark sections — rich Apple black */
+.hospitals,.cta-band,.footer,.enlace-block{background:#1d1d1f !important}
+.footer-brand img{filter:brightness(0) invert(1)}
+.nav-logo img{filter:none !important}
+
+/* enlace-block glass inset */
+.enlace-block{
+  background:rgba(255,255,255,.06) !important;
+  backdrop-filter:blur(12px) !important;
+  -webkit-backdrop-filter:blur(12px) !important;
+  border:1px solid rgba(255,255,255,.1) !important;
+}
+
+/* geo-cta-card */
+.geo-cta-card{
+  background:rgba(255,255,255,.07) !important;
+  backdrop-filter:blur(12px) !important;
+  -webkit-backdrop-filter:blur(12px) !important;
+  border:1px solid rgba(255,255,255,.12) !important;
+  border-radius:14px !important;
+}
+.geo-cred-card{border-radius:14px !important}
+
+/* hero-cred glass */
+.hero-cred{
+  background:rgba(255,255,255,.08) !important;
+  backdrop-filter:blur(16px) !important;
+  -webkit-backdrop-filter:blur(16px) !important;
+  border:1px solid rgba(255,255,255,.15) !important;
+  border-radius:16px !important;
+}
+
+/* 9. CTA radial glow — blue tint */
+.cta-band::before{background:radial-gradient(ellipse 60% 80% at center,rgba(0,0,0,.05),transparent 70%) !important}
+
+/* 10. Ticker — neutral Apple gray */
+.ticker-wrap{background:#f5f5f7;border-top:1px solid rgba(0,0,0,.05);border-bottom:1px solid rgba(0,0,0,.05)}
+.ticker-label{color:#86868b !important}
+.ticker-dot{background:#c7c7cc !important}
+.ticker-sep{color:#d1d1d6 !important}
+.ticker-name{color:#1d1d1f}
+.ticker-sub{color:#86868b}
+
+/* 11. Decorative dots — neutral (NOT blue) */
+.lead-dot,.cred-dot{background:#c7c7cc !important}
+.cond-bullet{background:#c7c7cc !important}
+.cond-bullet,.cond:hover .cond-bullet{background:#1d1d1f !important}/* keep on hover blue */
+.price-row::before{color:#30d158 !important}
+.geo-eeat-check{color:#30d158 !important}
+
+/* 12. Eyebrows — kept blue (Apple product category style) */
+.eyebrow,.hosp-eyebrow,.enlace-label,.geo-cta-label,.act-type,.page-eyebrow{
+  color:#6e6e73 !important;
+  letter-spacing:.05em !important;
+}
+
+/* 13. Section header sizing */
+.section-h{font-size:clamp(2rem,3.5vw,2.8rem) !important;letter-spacing:-.025em !important}
+
+/* 14. Footer links hover */
+.footer-col a:hover{color:#1d1d1f !important}
+
+/* 15. btn-price */
+.btn-price-main{border-radius:980px !important;background:#1d1d1f !important}
+.btn-price-ghost{border-radius:980px !important;background:transparent !important;border:1px solid rgba(0,0,0,.12) !important;color:#1d1d1f !important}
+.btn-price-ghost:hover{background:rgba(0,0,0,.05) !important}
+
+/* 16. pay-card-btn */
+.pay-card-btn{border-radius:980px !important;background:#1d1d1f !important}
+
+/* 17. copy-btn (pagos) */
+.copy-btn{border-radius:12px !important;background:#1d1d1f !important}
+
+/* 18. Map wrap */
+.map-wrap{border-radius:18px !important;border:1px solid rgba(0,0,0,.07) !important}
+
+/* 19. WA float & back-to-top pill */
+.wa-float,.back-to-top{border-radius:980px !important}
+
+/* 20. link.html glass buttons */
+.link-btn{
+  background:rgba(255,255,255,.1) !important;
+  backdrop-filter:blur(12px) !important;
+  -webkit-backdrop-filter:blur(12px) !important;
+  border:1px solid rgba(255,255,255,.18) !important;
+  border-radius:16px !important;
+  color:#fff !important;
+}
+.link-btn:hover{background:rgba(255,255,255,.2) !important}
+.link-btn.primary,.link-btn[href*="cita"]{
+  background:rgba(29,29,31,.85) !important;
+  border-color:rgba(255,255,255,.25) !important;
+}
+.ico-btn{
+  background:rgba(255,255,255,.1) !important;
+  backdrop-filter:blur(12px) !important;
+  -webkit-backdrop-filter:blur(12px) !important;
+  border:1px solid rgba(255,255,255,.15) !important;
+  border-radius:16px !important;
+}
+.ico-btn:hover{background:rgba(255,255,255,.2) !important}
+
+/* 21. calendar page glass cards (cita.html) */
+.cal-card{
+  background:rgba(255,255,255,.08) !important;
+  backdrop-filter:blur(16px) !important;
+  -webkit-backdrop-filter:blur(16px) !important;
+  border:1px solid rgba(255,255,255,.15) !important;
+  border-radius:20px !important;
+}
+
+/* 22. transfer-acc (pagos) */
+.transfer-acc{
+  border-color:rgba(0,0,0,.1) !important;
+  border-radius:14px !important;
+  background:rgba(0,0,0,.03) !important;
+}
+.transfer-sum{color:#1d1d1f !important}
+
+/* 23. Confirmacion / factura page specific */
+.step-circle,.step-line,.progress-bar{background:#1d1d1f !important}
+
+/* 24. Section header h2 bold */
+.hosp-title,.cta-inner h2{letter-spacing:-.025em}
+
+/* 25. bio-mini card */
+.bio-mini{border-radius:18px !important;border:1px solid rgba(0,0,0,.06) !important}
+.bio-mini-eyebrow{color:#1d1d1f !important}
+
+/* 26. review stars — keep amber */
+.review-stars{color:#f59e0b}
+.ct-ok{color:#30d158}
+
+/* 27. Hospital pills */
+.hosp-pill{
+  background:rgba(255,255,255,.07) !important;
+  border:1px solid rgba(255,255,255,.1) !important;
+  border-radius:14px !important;
+  backdrop-filter:blur(8px) !important;
+  -webkit-backdrop-filter:blur(8px) !important;
+}
+.hosp-pill:hover{background:rgba(255,255,255,.14) !important}
+
+/* 28. compare-table header */
+.compare-table th{background:#1d1d1f !important}
+
+/* 29. nav dropdown */
+.nav-drop-menu{
+  border-radius:14px !important;
+  border:1px solid rgba(0,0,0,.08) !important;
+  box-shadow:0 8px 40px rgba(0,0,0,.12) !important;
+  backdrop-filter:blur(20px) !important;
+  -webkit-backdrop-filter:blur(20px) !important;
+}
+.nav-drop-menu a:hover{background:#f5f5f7 !important}
+
+/* 30. FAQ icon */
+.faq-item.open .faq-icon{background:#1d1d1f !important;border-color:#1d1d1f !important}
+.faq-q:hover{color:#6e6e73 !important}
+
 </style>
 </head>
 <body>
@@ -322,7 +635,7 @@ a{color:inherit;text-decoration:none}
         Enviar comprobante por WhatsApp
       </a>
       <p class="conf-wa-note">Envía tu comprobante para que podamos confirmar y preparar tu sesión</p>
-      <a class="btn-conf-secondary" href="/cita" style="border-color:rgba(13,27,42,.12);color:var(--ink-light);font-size:.78rem;">← Volver a Agendar cita</a>
+      <a class="btn-conf-secondary" href="/cita" style="border-color:rgba(0,0,0,.12);color:var(--ink-light);font-size:.78rem;">← Volver a Agendar cita</a>
     </div>
   </div>
 </div>
@@ -479,12 +792,12 @@ a{color:inherit;text-decoration:none}
       document.body.innerHTML=[
         '<div style="min-height:100vh;display:flex;flex-direction:column;',
         'align-items:center;justify-content:center;padding:2rem;',
-        'font-family:\'DM Sans\',sans-serif;background:#fafaf8;text-align:center;gap:1rem">',
+        'font-family:system-ui,-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif;background:#f5f5f7;text-align:center;gap:1rem">',
         '<div style="font-size:3rem">'+(expired?'⏱':'🚫')+'</div>',
-        '<h2 style="font-family:\'Playfair Display\',serif;font-size:1.4rem;',
-        'font-weight:700;color:#0d1b2a;margin:.5rem 0">',
+        '<h2 style="font-family:system-ui,-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif;font-size:1.4rem;',
+        'font-weight:700;color:#1d1d1f;margin:.5rem 0">',
         (expired?'Enlace expirado':'Acceso no válido')+'</h2>',
-        '<p style="color:#64748b;font-size:.88rem;max-width:320px;line-height:1.6">',
+        '<p style="color:#86868b;font-size:.88rem;max-width:320px;line-height:1.6">',
         (expired
           ?'Han pasado más de 24 horas. Escríbenos si necesitas confirmar tu pago.'
           :'Esta página solo es accesible desde el proceso de pago de Eutimya.'),
@@ -494,7 +807,7 @@ a{color:inherit;text-decoration:none}
         'border-radius:8px;font-weight:600;font-size:.85rem;text-decoration:none">',
         'WhatsApp Eutimya</a>',
         '<a href="https://psiquiatra-cdmx.eutimya.org/cita"',
-        'style="font-size:.8rem;color:#64748b;margin-top:.25rem">',
+        'style="font-size:.8rem;color:#86868b;margin-top:.25rem">',
         '← Ir a agendar cita</a>',
         '</div>'
       ].join('');
@@ -654,17 +967,17 @@ function calRenderSlots(){
 function calRenderBookCards(){
   CS.view='months';
   var html='<div class="cal-view" style="display:flex;flex-direction:column;gap:12px;margin-top:4px;">';
-  html+='<button onclick="calBookModality(\'online\')" style="display:flex;flex-direction:column;align-items:flex-start;padding:1.2rem 1.1rem 1rem;border-radius:10px;background:#0d1b2a;border:none;cursor:pointer;text-align:left;transition:all .16s;box-shadow:0 4px 18px rgba(13,27,42,.18);" onmouseover="this.style.transform=\'translateY(-2px)\'" onmouseout="this.style.transform=\'none\'">';
+  html+='<button onclick="calBookModality(\'online\')" style="display:flex;flex-direction:column;align-items:flex-start;padding:1.2rem 1.1rem 1rem;border-radius:10px;background:#1d1d1f;border:none;cursor:pointer;text-align:left;transition:all .16s;box-shadow:0 4px 18px rgba(0,0,0,.18);" onmouseover="this.style.transform=\'translateY(-2px)\'" onmouseout="this.style.transform=\'none\'">';
   html+='<span style="display:inline-flex;align-items:center;gap:3px;padding:2px 8px;border-radius:999px;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.1);font-size:.67rem;font-weight:700;color:rgba(255,255,255,.85);letter-spacing:.06em;text-transform:uppercase;margin-bottom:.65rem;">💻 EN LÍNEA</span>';
   html+='<span style="font-family:var(--serif);font-size:1.15rem;font-weight:700;color:#fff;line-height:1.1;margin-bottom:.15rem;">Online</span>';
-  html+='<span style="font-family:var(--serif);font-size:1.55rem;font-weight:700;color:#b8893a;line-height:1;">$1,400</span>';
+  html+='<span style="font-family:var(--serif);font-size:1.55rem;font-weight:700;color:#1d1d1f;line-height:1;">$1,400</span>';
   html+='<span style="font-size:.67rem;font-weight:500;color:rgba(255,255,255,.55);margin-bottom:.55rem;">MXN · sesión 50 min</span>';
   html+='<span style="font-size:.75rem;color:rgba(255,255,255,.7);line-height:1.5;margin-bottom:.5rem;">Google Meet<br>Desde cualquier lugar</span>';
   html+='<span style="font-size:.65rem;font-weight:700;color:rgba(255,255,255,.4);letter-spacing:.05em;text-transform:uppercase;margin-top:auto;">Toca para agendar →</span></button>';
-  html+='<button onclick="calBookModality(\'presencial\')" style="display:flex;flex-direction:column;align-items:flex-start;padding:1.2rem 1.1rem 1rem;border-radius:10px;background:#0d1b2a;border:none;cursor:pointer;text-align:left;transition:all .16s;box-shadow:0 4px 18px rgba(13,27,42,.18);" onmouseover="this.style.transform=\'translateY(-2px)\'" onmouseout="this.style.transform=\'none\'">';
+  html+='<button onclick="calBookModality(\'presencial\')" style="display:flex;flex-direction:column;align-items:flex-start;padding:1.2rem 1.1rem 1rem;border-radius:10px;background:#1d1d1f;border:none;cursor:pointer;text-align:left;transition:all .16s;box-shadow:0 4px 18px rgba(0,0,0,.18);" onmouseover="this.style.transform=\'translateY(-2px)\'" onmouseout="this.style.transform=\'none\'">';
   html+='<span style="display:inline-flex;align-items:center;gap:3px;padding:2px 8px;border-radius:999px;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.1);font-size:.67rem;font-weight:700;color:rgba(255,255,255,.85);letter-spacing:.06em;text-transform:uppercase;margin-bottom:.65rem;">📍 CDMX</span>';
   html+='<span style="font-family:var(--serif);font-size:1.15rem;font-weight:700;color:#fff;line-height:1.1;margin-bottom:.15rem;">Presencial</span>';
-  html+='<span style="font-family:var(--serif);font-size:1.55rem;font-weight:700;color:#b8893a;line-height:1;">$1,600</span>';
+  html+='<span style="font-family:var(--serif);font-size:1.55rem;font-weight:700;color:#1d1d1f;line-height:1;">$1,600</span>';
   html+='<span style="font-size:.67rem;font-weight:500;color:rgba(255,255,255,.55);margin-bottom:.55rem;">MXN · sesión 50 min</span>';
   html+='<span style="font-size:.75rem;color:rgba(255,255,255,.7);line-height:1.5;margin-bottom:.5rem;">Moras 619, Del Valle<br>Benito Juárez, CDMX</span>';
   html+='<span style="font-size:.65rem;font-weight:700;color:rgba(255,255,255,.4);letter-spacing:.05em;text-transform:uppercase;margin-top:auto;">Toca para agendar →</span></button>';

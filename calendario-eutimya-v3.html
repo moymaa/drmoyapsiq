@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" style="color-scheme:light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Agendar Consulta · Eutimya</title>
-<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;600&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+
 <style>
 :root {
-  --blue:        #1a73e8;
+  --blue:        #1d1d1f;
   --blue-bg:     #e8f0fe;
   --green:       #188038;
   --green-bg:    #e6f4ea;
@@ -312,6 +312,319 @@ body {
   .slots-grid  { grid-template-columns: repeat(3,1fr); }
   .topbar      { padding: 12px 16px; }
 }
+
+/* ════════════════════════════════════════════
+   APPLE DESIGN SYSTEM — Glass & Polish Layer
+   ════════════════════════════════════════════ */
+
+/* 1. Body & base */
+body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+h1,h2,h3,h4,h5,h6{letter-spacing:-0.018em;font-weight:700}
+p,li,td{letter-spacing:-.005em}
+
+/* 2. Navigation — Apple frosted glass */
+.nav{
+  background:rgba(255,255,255,.72) !important;
+  backdrop-filter:saturate(180%) blur(20px) !important;
+  -webkit-backdrop-filter:saturate(180%) blur(20px) !important;
+  border-bottom:1px solid rgba(0,0,0,.07) !important;
+  box-shadow:none !important;
+}
+/* Nav CTA — Apple blue pill */
+.nav-btn{
+  background:#1d1d1f !important;
+  border-radius:980px !important;
+  box-shadow:0 2px 12px rgba(0,0,0,.14) !important;
+  letter-spacing:-.01em !important;
+  text-transform:none !important;
+  font-size:.82rem !important;
+}
+.nav-btn:hover{background:#000000 !important;opacity:1 !important}
+
+/* 3. Mobile nav glass */
+.mobile-nav{
+  background:rgba(255,255,255,.9) !important;
+  backdrop-filter:saturate(180%) blur(24px) !important;
+  -webkit-backdrop-filter:saturate(180%) blur(24px) !important;
+  border-top:none !important;
+  box-shadow:0 20px 60px rgba(0,0,0,.14) !important;
+}
+.mobile-nav-group-items a::before{background:#c7c7cc !important}
+.mnav-cta-primary{
+  background:#1d1d1f !important;
+  border-radius:980px !important;
+  box-shadow:0 2px 10px rgba(0,0,0,.12) !important;
+}
+.mnav-cta-secondary{border-radius:980px !important}
+
+/* 4. Floating action buttons — Apple glass */
+.wa-float{
+  background:rgba(37,211,102,.9) !important;
+  backdrop-filter:blur(20px) saturate(180%) !important;
+  -webkit-backdrop-filter:blur(20px) saturate(180%) !important;
+  border:1px solid rgba(255,255,255,.3) !important;
+  border-radius:980px !important;
+  box-shadow:0 8px 32px rgba(37,211,102,.3),0 2px 8px rgba(0,0,0,.1) !important;
+}
+.wa-float:hover{
+  transform:translateY(-2px) !important;
+  box-shadow:0 12px 40px rgba(37,211,102,.38),0 4px 12px rgba(0,0,0,.12) !important;
+}
+.back-to-top{
+  background:rgba(29,29,31,.5) !important;
+  backdrop-filter:blur(20px) saturate(180%) !important;
+  -webkit-backdrop-filter:blur(20px) saturate(180%) !important;
+  border:1px solid rgba(255,255,255,.16) !important;
+  box-shadow:0 4px 20px rgba(0,0,0,.2) !important;
+}
+.back-to-top:hover{
+  background:rgba(29,29,31,.7) !important;
+  box-shadow:0 8px 28px rgba(0,0,0,.28) !important;
+}
+
+/* 5. Primary CTA buttons */
+.btn-gold,.hmo-btn-main{
+  background:#1d1d1f !important;
+  border-radius:980px !important;
+  box-shadow:0 4px 20px rgba(0,0,0,.15) !important;
+  letter-spacing:-.01em !important;
+}
+.btn-gold:hover,.hmo-btn-main:hover{
+  background:#000000 !important;
+  box-shadow:0 6px 28px rgba(0,0,0,.18) !important;
+  filter:none !important;
+  transform:translateY(-1px) !important;
+}
+
+/* btn-main (dark CTA) */
+.btn-main{
+  background:#1d1d1f !important;
+  border-radius:980px !important;
+  box-shadow:0 4px 18px rgba(0,0,0,.15) !important;
+}
+.btn-main:hover{background:#2d2d2f !important}
+
+/* btn-wa (outline) → apple glass */
+.btn-wa{
+  background:rgba(0,0,0,.04) !important;
+  border:1px solid rgba(0,0,0,.1) !important;
+  border-radius:980px !important;
+  color:#1d1d1f !important;
+}
+.btn-wa:hover{background:rgba(0,0,0,.08) !important;border-color:rgba(0,0,0,.18) !important}
+
+/* hmo-btn-wa glass (on dark hero) */
+.hmo-btn-wa{
+  background:rgba(255,255,255,.1) !important;
+  backdrop-filter:blur(12px) !important;
+  -webkit-backdrop-filter:blur(12px) !important;
+  border:1px solid rgba(255,255,255,.22) !important;
+  border-radius:980px !important;
+  color:#fff !important;
+}
+.hmo-btn-wa:hover{background:rgba(255,255,255,.2) !important}
+
+/* page-hero-back (secondary pages back button) */
+.page-hero-back{
+  background:rgba(255,255,255,.1) !important;
+  backdrop-filter:blur(16px) !important;
+  -webkit-backdrop-filter:blur(16px) !important;
+  border:1px solid rgba(255,255,255,.25) !important;
+  border-radius:980px !important;
+  color:#fff !important;
+}
+.page-hero-back:hover{background:rgba(255,255,255,.2) !important}
+
+/* 6. Cards — subtle Apple style */
+.svc,.price-card,.cuando-item,.pub,.review,.pay-card,.cred-thumb{
+  border-radius:18px !important;
+  border:1px solid rgba(0,0,0,.06) !important;
+  box-shadow:0 2px 8px rgba(0,0,0,.04) !important;
+}
+.svc:hover,.price-card:hover,.cuando-item:hover,.pay-card:hover,.cred-thumb:hover{
+  transform:none !important;
+  box-shadow:0 8px 40px rgba(0,0,0,.1) !important;
+  border-color:rgba(0,0,0,.1) !important;
+}
+/* Card hover accent line — blue */
+.svc::after{background:linear-gradient(90deg,#1d1d1f,#424245) !important}
+
+/* pill/chip elements */
+.cred-chip,.cert-chip,.zone,.enlace-pill{
+  border-radius:980px !important;
+  background:rgba(0,0,0,.05) !important;
+  color:#1d1d1f !important;
+  border-color:rgba(0,0,0,.08) !important;
+}
+.cred-chip:hover,.cert-chip:hover{background:#1d1d1f !important;color:#fff !important;border-color:#1d1d1f !important}
+.cond,.act-item,.transfer-acc,.pay-pill,.chip{border-radius:12px !important}
+
+/* 7. Featured price card glass */
+.price-card.featured{
+  background:linear-gradient(135deg,rgba(0,113,227,.05),rgba(0,113,227,.01)) !important;
+  border-color:rgba(0,0,0,.1) !important;
+}
+
+/* 8. Dark sections — rich Apple black */
+.hospitals,.cta-band,.footer,.enlace-block{background:#1d1d1f !important}
+.footer-brand img{filter:brightness(0) invert(1)}
+.nav-logo img{filter:none !important}
+
+/* enlace-block glass inset */
+.enlace-block{
+  background:rgba(255,255,255,.06) !important;
+  backdrop-filter:blur(12px) !important;
+  -webkit-backdrop-filter:blur(12px) !important;
+  border:1px solid rgba(255,255,255,.1) !important;
+}
+
+/* geo-cta-card */
+.geo-cta-card{
+  background:rgba(255,255,255,.07) !important;
+  backdrop-filter:blur(12px) !important;
+  -webkit-backdrop-filter:blur(12px) !important;
+  border:1px solid rgba(255,255,255,.12) !important;
+  border-radius:14px !important;
+}
+.geo-cred-card{border-radius:14px !important}
+
+/* hero-cred glass */
+.hero-cred{
+  background:rgba(255,255,255,.08) !important;
+  backdrop-filter:blur(16px) !important;
+  -webkit-backdrop-filter:blur(16px) !important;
+  border:1px solid rgba(255,255,255,.15) !important;
+  border-radius:16px !important;
+}
+
+/* 9. CTA radial glow — blue tint */
+.cta-band::before{background:radial-gradient(ellipse 60% 80% at center,rgba(0,0,0,.05),transparent 70%) !important}
+
+/* 10. Ticker — neutral Apple gray */
+.ticker-wrap{background:#f5f5f7;border-top:1px solid rgba(0,0,0,.05);border-bottom:1px solid rgba(0,0,0,.05)}
+.ticker-label{color:#86868b !important}
+.ticker-dot{background:#c7c7cc !important}
+.ticker-sep{color:#d1d1d6 !important}
+.ticker-name{color:#1d1d1f}
+.ticker-sub{color:#86868b}
+
+/* 11. Decorative dots — neutral (NOT blue) */
+.lead-dot,.cred-dot{background:#c7c7cc !important}
+.cond-bullet{background:#c7c7cc !important}
+.cond-bullet,.cond:hover .cond-bullet{background:#1d1d1f !important}/* keep on hover blue */
+.price-row::before{color:#30d158 !important}
+.geo-eeat-check{color:#30d158 !important}
+
+/* 12. Eyebrows — kept blue (Apple product category style) */
+.eyebrow,.hosp-eyebrow,.enlace-label,.geo-cta-label,.act-type,.page-eyebrow{
+  color:#6e6e73 !important;
+  letter-spacing:.05em !important;
+}
+
+/* 13. Section header sizing */
+.section-h{font-size:clamp(2rem,3.5vw,2.8rem) !important;letter-spacing:-.025em !important}
+
+/* 14. Footer links hover */
+.footer-col a:hover{color:#1d1d1f !important}
+
+/* 15. btn-price */
+.btn-price-main{border-radius:980px !important;background:#1d1d1f !important}
+.btn-price-ghost{border-radius:980px !important;background:transparent !important;border:1px solid rgba(0,0,0,.12) !important;color:#1d1d1f !important}
+.btn-price-ghost:hover{background:rgba(0,0,0,.05) !important}
+
+/* 16. pay-card-btn */
+.pay-card-btn{border-radius:980px !important;background:#1d1d1f !important}
+
+/* 17. copy-btn (pagos) */
+.copy-btn{border-radius:12px !important;background:#1d1d1f !important}
+
+/* 18. Map wrap */
+.map-wrap{border-radius:18px !important;border:1px solid rgba(0,0,0,.07) !important}
+
+/* 19. WA float & back-to-top pill */
+.wa-float,.back-to-top{border-radius:980px !important}
+
+/* 20. link.html glass buttons */
+.link-btn{
+  background:rgba(255,255,255,.1) !important;
+  backdrop-filter:blur(12px) !important;
+  -webkit-backdrop-filter:blur(12px) !important;
+  border:1px solid rgba(255,255,255,.18) !important;
+  border-radius:16px !important;
+  color:#fff !important;
+}
+.link-btn:hover{background:rgba(255,255,255,.2) !important}
+.link-btn.primary,.link-btn[href*="cita"]{
+  background:rgba(29,29,31,.85) !important;
+  border-color:rgba(255,255,255,.25) !important;
+}
+.ico-btn{
+  background:rgba(255,255,255,.1) !important;
+  backdrop-filter:blur(12px) !important;
+  -webkit-backdrop-filter:blur(12px) !important;
+  border:1px solid rgba(255,255,255,.15) !important;
+  border-radius:16px !important;
+}
+.ico-btn:hover{background:rgba(255,255,255,.2) !important}
+
+/* 21. calendar page glass cards (cita.html) */
+.cal-card{
+  background:rgba(255,255,255,.08) !important;
+  backdrop-filter:blur(16px) !important;
+  -webkit-backdrop-filter:blur(16px) !important;
+  border:1px solid rgba(255,255,255,.15) !important;
+  border-radius:20px !important;
+}
+
+/* 22. transfer-acc (pagos) */
+.transfer-acc{
+  border-color:rgba(0,0,0,.1) !important;
+  border-radius:14px !important;
+  background:rgba(0,0,0,.03) !important;
+}
+.transfer-sum{color:#1d1d1f !important}
+
+/* 23. Confirmacion / factura page specific */
+.step-circle,.step-line,.progress-bar{background:#1d1d1f !important}
+
+/* 24. Section header h2 bold */
+.hosp-title,.cta-inner h2{letter-spacing:-.025em}
+
+/* 25. bio-mini card */
+.bio-mini{border-radius:18px !important;border:1px solid rgba(0,0,0,.06) !important}
+.bio-mini-eyebrow{color:#1d1d1f !important}
+
+/* 26. review stars — keep amber */
+.review-stars{color:#f59e0b}
+.ct-ok{color:#30d158}
+
+/* 27. Hospital pills */
+.hosp-pill{
+  background:rgba(255,255,255,.07) !important;
+  border:1px solid rgba(255,255,255,.1) !important;
+  border-radius:14px !important;
+  backdrop-filter:blur(8px) !important;
+  -webkit-backdrop-filter:blur(8px) !important;
+}
+.hosp-pill:hover{background:rgba(255,255,255,.14) !important}
+
+/* 28. compare-table header */
+.compare-table th{background:#1d1d1f !important}
+
+/* 29. nav dropdown */
+.nav-drop-menu{
+  border-radius:14px !important;
+  border:1px solid rgba(0,0,0,.08) !important;
+  box-shadow:0 8px 40px rgba(0,0,0,.12) !important;
+  backdrop-filter:blur(20px) !important;
+  -webkit-backdrop-filter:blur(20px) !important;
+}
+.nav-drop-menu a:hover{background:#f5f5f7 !important}
+
+/* 30. FAQ icon */
+.faq-item.open .faq-icon{background:#1d1d1f !important;border-color:#1d1d1f !important}
+.faq-q:hover{color:#6e6e73 !important}
+
 </style>
 </head>
 <body>
