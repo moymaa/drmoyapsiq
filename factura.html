@@ -30,12 +30,12 @@
   --amber-bg:#fef3c7;
   --amber-bd:rgba(234,179,8,.3);
   --amber-tx:#92400e;
-  --gold:    #1d1d1f;
+  --gold:#9A6F3A;
 }
 *,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
 html { -webkit-text-size-adjust:100%; }
 body {
-  font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif;
+  font-family:'DM Sans','Helvetica Neue',sans-serif;
   background:var(--white); color:var(--text);
   min-height:100vh; overflow-x:hidden;
 }
@@ -46,7 +46,7 @@ a { color:inherit; text-decoration:none; }
   position:fixed; top:0; left:0; right:0; z-index:200;
   height:56px; display:flex; align-items:center; justify-content:space-between;
   padding:0 20px;
-  background:#ffffff;
+  background:rgba(255,255,255,.82);
   border-bottom:1px solid rgba(0,0,0,.09);
   gap:1.5rem;
 }
@@ -358,7 +358,7 @@ border-bottom:1px solid rgba(255,255,255,.06); flex-shrink:0;
 }
 .dw-info { display:flex; flex-direction:column; gap:2px; }
 .dw-label { font-size:10px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--rose-lt); }
-.dw-title { font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif; font-size:16px; font-weight:600; color:#fff; }
+.dw-title { font-family:'DM Sans','Helvetica Neue',sans-serif; font-size:16px; font-weight:600; color:#fff; }
 .dw-close {
 width:34px; height:34px; border-radius:50%;
 border:1px solid rgba(255,255,255,.15); background:rgba(255,255,255,.07);
@@ -405,7 +405,7 @@ padding:40px 20px 28px;
 }
 .footer-inner { max-width:540px; margin:0 auto; }
 .footer-logo-wrap { margin-bottom:20px; }
-.footer-logo-wrap img { width:48px; height:48px; object-fit:contain; }
+.footer-logo-wrap img { width:48px; height:48px; object-fit:contain; filter:brightness(0) invert(1); }
 .footer-cols { display:flex; gap:40px; flex-wrap:wrap; margin-bottom:20px; }
 .footer-col h4 { font-size:11px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:var(--text); margin-bottom:10px; }
 .footer-links { display:flex; flex-direction:column; gap:6px; }
@@ -515,7 +515,7 @@ p,li,td{letter-spacing:-.005em}
   text-transform:none !important;
   font-size:.82rem !important;
 }
-.nav-btn:hover{background:#000000 !important;opacity:1 !important}
+.nav-btn:hover{background:#2d2d2f !important;opacity:1 !important}
 
 /* 3. Mobile nav glass */
 .mobile-nav{
@@ -566,7 +566,7 @@ p,li,td{letter-spacing:-.005em}
   letter-spacing:-.01em !important;
 }
 .btn-gold:hover,.hmo-btn-main:hover{
-  background:#000000 !important;
+  background:#2d2d2f !important;
   box-shadow:0 6px 28px rgba(0,0,0,.18) !important;
   filter:none !important;
   transform:translateY(-1px) !important;
@@ -801,8 +801,29 @@ p,li,td{letter-spacing:-.005em}
 .faq-item.open .faq-icon{background:#1d1d1f !important;border-color:#1d1d1f !important}
 .faq-q:hover{color:#6e6e73 !important}
 
+
+/* ══ FIX: Restore WA button green — Apple override broke SVG visibility ══ */
+.btn-wa {
+  background: #25D366 !important;
+  color: #fff !important;
+  border-color: #25D366 !important;
+  border-radius: 10px !important;
+}
+.btn-wa:hover { background: #1da851 !important; border-color: #1da851 !important; }
+.btn-wa svg { fill: #fff !important; }
+
+/* ══ WA float — smaller ══ */
+.wa-float {
+  padding: 9px 14px !important;
+  font-size: 12px !important;
+  gap: 6px !important;
+}
+.wa-float svg { width: 16px !important; height: 16px !important; }
 </style>
 
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 </head>
 <body>
 
@@ -965,7 +986,7 @@ p,li,td{letter-spacing:-.005em}
     <p class="pagos-modal-title">¿Con quién es tu cita?</p>
     <a href="https://www.eutimya.org/pagos" class="pagos-option">
       <div class="pagos-option-icon">
-        <img src="https://lh3.googleusercontent.com/pw/AP1GczOqR75P60pnKq1lU4B7E8LkSC1xHGPyu1pQ8rBbqVdh3jbBWc8vwWDl3mI_qWrhhvHGzaxXEZIIBrS8U1XD5n4PND0V7_ZpFfIuZMMS8f7g-fgWA7tZNBcCpEDsPI5oC-zJNM1iLLYHh3XSmYgxL0Jwvg=w994-h1490-s-no-gm" alt="Dr. Moya" style="object-position:center top"/>
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczMhQ6m9BOG6lddqce7vog3-dLP4_oifP2GShaWc1kbQsxyFwuxyweYIykWCzKl49n2yeeyuUfcq0CgMb0GxyAwyIYHLhg2T0wvQRXcQSMnMNY23HN21WoiiRFHgzEcq9zp-rdpo9dmaZmmy7XMgizvYOA=w1024-h1024-s-no-gm" alt="Dr. Moya" style="object-position:center top"/>
       </div>
       <div>
         <p class="pagos-option-name">Dr. Deldhy Moya</p>
@@ -989,7 +1010,7 @@ p,li,td{letter-spacing:-.005em}
     <p class="pagos-modal-title">¿Con quién es tu cita?</p>
     <a href="https://psiquiatra-cdmx.eutimya.org/cita" class="pagos-option">
       <div class="pagos-option-icon">
-        <img src="https://lh3.googleusercontent.com/pw/AP1GczOqR75P60pnKq1lU4B7E8LkSC1xHGPyu1pQ8rBbqVdh3jbBWc8vwWDl3mI_qWrhhvHGzaxXEZIIBrS8U1XD5n4PND0V7_ZpFfIuZMMS8f7g-fgWA7tZNBcCpEDsPI5oC-zJNM1iLLYHh3XSmYgxL0Jwvg=w994-h1490-s-no-gm" alt="Dr. Moya" style="object-position:center top"/>
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczMhQ6m9BOG6lddqce7vog3-dLP4_oifP2GShaWc1kbQsxyFwuxyweYIykWCzKl49n2yeeyuUfcq0CgMb0GxyAwyIYHLhg2T0wvQRXcQSMnMNY23HN21WoiiRFHgzEcq9zp-rdpo9dmaZmmy7XMgizvYOA=w1024-h1024-s-no-gm" alt="Dr. Moya" style="object-position:center top"/>
       </div>
       <div>
         <p class="pagos-option-name">Dr. Deldhy Moya</p>

@@ -24,6 +24,9 @@
 <meta name="twitter:image" content="https://i.imgur.com/v66X6q6.jpeg">
 
 <!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 
 
 
@@ -31,10 +34,10 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --gold:#1d1d1f;--gold-l:#1d1d1f;--ink:#1d1d1f;--white:#fff;
+  --gold:#9A6F3A;--gold-l:#9A6F3A;--ink:#1d1d1f;--white:#fff;
   --muted:rgba(255,255,255,0.52);
-  --serif:-apple-system,BlinkMacSystemFont,'SF Pro Display','Helvetica Neue',sans-serif;
-  --sans:-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif;
+  --serif:'Playfair Display',Georgia,serif;
+  --sans:'DM Sans','Helvetica Neue',sans-serif;
 }
 html,body{height:100%;overflow-x:hidden}
 body{font-family:var(--sans);background:var(--ink);display:flex;flex-direction:column;align-items:center;min-height:100vh}
@@ -63,10 +66,10 @@ body{font-family:var(--sans);background:var(--ink);display:flex;flex-direction:c
 .hero{position:relative;width:100%;max-width:480px;aspect-ratio:3/4;overflow:hidden;flex-shrink:0}
 .hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 8%;display:block;animation:zoomIn 1.2s cubic-bezier(.22,.9,.3,1) forwards;transform-origin:center 20%}
 @keyframes zoomIn{from{transform:scale(1.06)}to{transform:scale(1)}}
-.hero-gradient{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 0%,rgba(0,0,0,0) 35%,rgba(0,0,0,0.5) 58%,rgba(0,0,0,0.93) 80%,rgba(0,0,0,1) 100%)}
+.hero-gradient{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 0%,rgba(0,0,0,0) 28%,rgba(0,0,0,.3) 45%,rgba(0,0,0,.75) 65%,rgba(0,0,0,.97) 82%,rgba(0,0,0,1) 100%)}
 .hero-text{position:absolute;bottom:0;left:0;right:0;padding:0 22px 22px;animation:fadeUp .8s cubic-bezier(.22,.9,.3,1) .5s both}
-.profile-name{font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',sans-serif;font-size:clamp(1.6rem,6.5vw,2rem);font-weight:600;color:#fff;line-height:1.15}
-.profile-name em{display:block;font-style:italic;font-weight:400;font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',sans-serif;color:var(--gold-l);font-size:.56em;letter-spacing:.06em;margin-top:3px}
+.profile-name{font-family:'Playfair Display',Georgia,serif;font-size:clamp(1.6rem,6.5vw,2rem);font-weight:600;color:#fff;line-height:1.15}
+.profile-name em{display:block;font-style:italic;font-weight:400;font-family:'Playfair Display',Georgia,serif;color:var(--gold-l);font-size:.56em;letter-spacing:.06em;margin-top:3px}
 .profile-sub{font-size:.77rem;color:var(--muted);margin-top:6px;line-height:1.5;font-weight:300}
 
 /* CARD */
@@ -169,7 +172,7 @@ p,li,td{letter-spacing:-.005em}
   text-transform:none !important;
   font-size:.82rem !important;
 }
-.nav-btn:hover{background:#000000 !important;opacity:1 !important}
+.nav-btn:hover{background:#2d2d2f !important;opacity:1 !important}
 
 /* 3. Mobile nav glass */
 .mobile-nav{
@@ -220,7 +223,7 @@ p,li,td{letter-spacing:-.005em}
   letter-spacing:-.01em !important;
 }
 .btn-gold:hover,.hmo-btn-main:hover{
-  background:#000000 !important;
+  background:#2d2d2f !important;
   box-shadow:0 6px 28px rgba(0,0,0,.18) !important;
   filter:none !important;
   transform:translateY(-1px) !important;

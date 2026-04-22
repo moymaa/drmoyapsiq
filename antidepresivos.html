@@ -103,10 +103,10 @@
 <style>
 :root{
   --ink:#1d1d1f;--ink-mid:#6e6e73;--ink-light:#86868b;
-  --gold:#1d1d1f;--gold-pale:rgba(0,0,0,.05);
+  --gold:#9A6F3A;--gold-pale:#F4EDE0;
   --white:#fff;--canvas:#f5f5f7;--rule:rgba(0,0,0,.08);
-  --serif:-apple-system,BlinkMacSystemFont,'SF Pro Display','Helvetica Neue',sans-serif;
-  --sans:-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif;
+  --serif:'Playfair Display',Georgia,serif;
+  --sans:'DM Sans','Helvetica Neue',sans-serif;
   --r:18px;--shadow:0 2px 8px rgba(0,0,0,.05);--shadow-lg:0 12px 48px rgba(0,0,0,.1);
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -116,11 +116,11 @@ img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
 
 /* NAV */
-.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,.97);border-bottom:1px solid var(--rule);backdrop-filter:blur(10px);}
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,.82);border-bottom:1px solid rgba(0,0,0,.07);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);}
 .nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:.9rem 2rem;gap:1rem;}
 .nav-logo img{height:32px;width:auto;}
-.nav-btn{display:inline-flex;align-items:center;gap:.4rem;background:var(--ink);color:#fff;padding:.55rem 1.2rem;border-radius:6px;font-size:.78rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;transition:background .2s;}
-.nav-btn:hover{background:#000000}
+.nav-btn{display:inline-flex;align-items:center;gap:.4rem;background:var(--ink);color:#fff;padding:.55rem 1.2rem;border-radius:980px;font-size:.8rem;font-weight:500;transition:background .2s;}
+.nav-btn:hover{background:#2d2d2f}
 .nav-back{font-size:.78rem;color:var(--ink-light);font-weight:500;}
 .nav-back:hover{color:var(--ink)}
 
@@ -132,14 +132,14 @@ a{color:inherit;text-decoration:none}
 .hero-eyebrow::before{content:'';width:22px;height:1px;background:var(--gold)}
 .hero h1{font-family:var(--serif);font-size:clamp(2rem,4vw,3rem);font-weight:700;color:#fff;line-height:1.2;margin-bottom:1rem;}
 .hero h1 em{font-style:italic;color:var(--gold)}
-.hero-lead{font-size:1rem;color:rgba(255,255,255,.72);line-height:1.8;max-width:600px;margin-bottom:2rem;}
+.hero-lead{font-size:1rem;color:rgba(255,255,255,.92);line-height:1.8;max-width:600px;margin-bottom:2rem;}
 .hero-btns{display:flex;gap:.8rem;flex-wrap:wrap;margin-bottom:2.5rem;}
 .btn-primary{display:inline-flex;align-items:center;gap:.5rem;background:var(--gold);color:#fff;padding:.85rem 2rem;border-radius:8px;font-size:.9rem;font-weight:700;transition:filter .2s,transform .15s;box-shadow:0 4px 20px rgba(0,0,0,.15);}
 .btn-primary:hover{filter:brightness(1.1);transform:translateY(-1px)}
 .btn-ghost{display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.25);padding:.85rem 1.8rem;border-radius:8px;font-size:.9rem;font-weight:600;transition:background .2s;}
 .btn-ghost:hover{background:rgba(255,255,255,.18)}
 .hero-badges{display:flex;flex-wrap:wrap;gap:.5rem;}
-.hero-badge{display:inline-flex;align-items:center;gap:.35rem;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:6px;padding:.3rem .75rem;font-size:.72rem;font-weight:600;color:rgba(255,255,255,.75);}
+.hero-badge{display:inline-flex;align-items:center;gap:.35rem;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:6px;padding:.3rem .75rem;font-size:.72rem;font-weight:600;color:rgba(255,255,255,.92);}
 
 /* LAYOUT */
 .section{padding:5rem 2rem;}
@@ -236,7 +236,7 @@ a{color:inherit;text-decoration:none}
 .cta-btns{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap;}
 
 /* WA FLOAT */
-.wa-float{position:fixed;bottom:1.5rem;right:1.5rem;z-index:200;display:flex;align-items:center;gap:.5rem;background:#25D366;color:#fff;border-radius:50px;padding:.75rem 1.2rem;font-size:.82rem;font-weight:700;box-shadow:0 4px 20px rgba(37,211,102,.4);transition:transform .2s;}
+.wa-float{position:fixed;bottom:24px;right:20px;z-index:999;display:inline-flex;align-items:center;gap:8px;background:rgba(10,10,14,0.52);color:#fff;padding:12px 18px;border-radius:999px;font-family:var(--sans);font-weight:800;font-size:14px;box-shadow:0 6px 28px rgba(0,0,0,.38),inset 0 1px 0 rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.10);backdrop-filter:blur(22px) saturate(180%);-webkit-backdrop-filter:blur(22px) saturate(180%);text-decoration:none;transition:transform .15s,box-shadow .2s,background .2s,border-color .2s;}
 .wa-float:hover{transform:translateY(-2px)}
 .wa-float svg{width:18px;height:18px;fill:#fff;}
 
@@ -284,7 +284,7 @@ p,li,td{letter-spacing:-.005em}
   text-transform:none !important;
   font-size:.82rem !important;
 }
-.nav-btn:hover{background:#000000 !important;opacity:1 !important}
+.nav-btn:hover{background:#2d2d2f !important;opacity:1 !important}
 
 /* 3. Mobile nav glass */
 .mobile-nav{
@@ -303,14 +303,7 @@ p,li,td{letter-spacing:-.005em}
 .mnav-cta-secondary{border-radius:980px !important}
 
 /* 4. Floating action buttons — Apple glass */
-.wa-float{
-  background:rgba(37,211,102,.9) !important;
-  backdrop-filter:blur(20px) saturate(180%) !important;
-  -webkit-backdrop-filter:blur(20px) saturate(180%) !important;
-  border:1px solid rgba(255,255,255,.3) !important;
-  border-radius:980px !important;
-  box-shadow:0 8px 32px rgba(37,211,102,.3),0 2px 8px rgba(0,0,0,.1) !important;
-}
+.wa-float{position:fixed;bottom:24px;right:20px;z-index:999;display:inline-flex;align-items:center;gap:8px;background:rgba(10,10,14,0.52);color:#fff;padding:12px 18px;border-radius:999px;font-family:var(--sans);font-weight:800;font-size:14px;box-shadow:0 6px 28px rgba(0,0,0,.38),inset 0 1px 0 rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.10);backdrop-filter:blur(22px) saturate(180%);-webkit-backdrop-filter:blur(22px) saturate(180%);text-decoration:none;transition:transform .15s,box-shadow .2s,background .2s,border-color .2s;}
 .wa-float:hover{
   transform:translateY(-2px) !important;
   box-shadow:0 12px 40px rgba(37,211,102,.38),0 4px 12px rgba(0,0,0,.12) !important;
@@ -335,7 +328,7 @@ p,li,td{letter-spacing:-.005em}
   letter-spacing:-.01em !important;
 }
 .btn-gold:hover,.hmo-btn-main:hover{
-  background:#000000 !important;
+  background:#2d2d2f !important;
   box-shadow:0 6px 28px rgba(0,0,0,.18) !important;
   filter:none !important;
   transform:translateY(-1px) !important;
@@ -570,7 +563,18 @@ p,li,td{letter-spacing:-.005em}
 .faq-item.open .faq-icon{background:#1d1d1f !important;border-color:#1d1d1f !important}
 .faq-q:hover{color:#6e6e73 !important}
 
+
+/* ══ WA float — smaller ══ */
+.wa-float {
+  padding: 9px 14px !important;
+  font-size: 12px !important;
+  gap: 6px !important;
+}
+.wa-float svg { width: 16px !important; height: 16px !important; }
 </style>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 </head>
 <body>
 
@@ -878,7 +882,37 @@ p,li,td{letter-spacing:-.005em}
 
 <!-- FOOTER -->
 <footer class="footer">
-  <p>Dr. Deldhy Nicolás Moya Sánchez · <a href="https://psiquiatra-cdmx.eutimya.org/">Psiquiatra CDMX</a> · Calle Moras 619, Del Valle Sur · CE SEP 14788885 · CONACEM 24803862<br/>COFEPRIS 2609145036X00055 · COFEPRIS 2609142002A00043 · © 2025–2026 Eutimya</p>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="https://psiquiatra-cdmx.eutimya.org/eutimyafondoblanco.png" alt="Eutimya" loading="lazy" style="height:30px;width:auto;margin-bottom:1rem;filter:brightness(0) invert(1);opacity:.9"/>
+      <p>Psiquiatría especializada en CDMX. Atención presencial y en línea. Diagnóstico y tratamiento basado en evidencia.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Servicios</h4>
+      <ul>
+        <li><a href="https://psiquiatra-cdmx.eutimya.org/#servicios">Consulta psiquiátrica</a></li>
+        <li><a href="https://psiquiatra-cdmx.eutimya.org/antidepresivos">Antidepresivos: guía</a></li>
+        <li><a href="https://psiquiatra-cdmx.eutimya.org/trastornos-del-sueno">Trastornos del sueño</a></li>
+        <li><a href="https://psiquiatra-cdmx.eutimya.org/cita">Agendar cita</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Recursos</h4>
+      <ul>
+        <li><a href="https://www.eutimya.org/exp">Expediente</a></li>
+        <li><a href="https://psiquiatra-cdmx.eutimya.org/pagos">Formas de pago</a></li>
+        <li><a href="https://www.eutimya.org/factura">Facturación</a></li>
+        <li><a href="https://psiquiatra-cdmx.eutimya.org/">Inicio</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025–2026 Dr. Deldhy Nicolás Moya Sánchez · Eutimya · Psiquiatra CDMX</span>
+    <div class="footer-ceds">
+      <span>CP LIC 12152669</span><span>CE PSIQ 14788885</span>
+      <span>Consejo CMP 24803862</span><span>COFEPRIS 2609142002A00043</span>
+    </div>
+  </div>
 </footer>
 
 <script>
