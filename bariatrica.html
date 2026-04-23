@@ -80,16 +80,21 @@ a{color:inherit;text-decoration:none}
 .content{max-width:760px;margin:0 auto;padding:3rem 2rem 6rem;}
 .sec-label{font-size:.68rem;font-weight:700;color:var(--ink-light);text-transform:uppercase;letter-spacing:.1em;margin:.9rem 0 .55rem;}
 
-/* STEP CARDS — los dos pasos principales */
+/* STEP CARDS — botones que abren drawer */
 .steps{display:flex;flex-direction:column;gap:1rem;margin-bottom:1.5rem;}
 .step-card{
+  width:100%;
   border:1px solid var(--rule);border-radius:var(--r);
   background:#fff;overflow:hidden;
   box-shadow:var(--shadow);
+  cursor:pointer;
   transition:box-shadow .2s,transform .15s;
+  -webkit-tap-highlight-color:transparent;
+  font-family:var(--sans);text-align:left;
+  padding:0;
 }
 .step-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-1px)}
-.step-card-link{display:block;text-decoration:none;color:inherit;}
+.step-card:active{transform:translateY(0)}
 .step-inner{display:flex;align-items:stretch;gap:0;}
 .step-num{
   width:56px;flex-shrink:0;
@@ -102,10 +107,79 @@ a{color:inherit;text-decoration:none}
 .step-sub{font-size:.8rem;color:var(--ink-light);line-height:1.55;margin-bottom:.65rem;}
 .step-cta{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;color:var(--ink);background:var(--canvas);border:1px solid var(--rule);border-radius:6px;padding:.35rem .85rem;transition:background .12s,border-color .12s;}
 .step-card:hover .step-cta{background:var(--ink);color:#fff;border-color:var(--ink)}
+.step-arrow{flex-shrink:0;width:44px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;color:var(--ink-light);transition:color .15s,transform .15s;}
+.step-card:hover .step-arrow{color:var(--ink);transform:translateX(3px)}
 
 /* CONNECTOR */
 .step-connector{display:flex;justify-content:center;margin:-.25rem 0;position:relative;z-index:1;}
 .step-connector-line{width:2px;height:20px;background:var(--rule);}
+
+/* ══════════════════════
+   DRAWERS BARIÁTRICA
+══════════════════════ */
+.bari-overlay{
+  position:fixed;inset:0;z-index:500;
+  background:rgba(8,14,22,.72);
+  backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);
+  opacity:0;visibility:hidden;
+  transition:opacity .3s,visibility .3s;
+}
+.bari-overlay.open{opacity:1;visibility:visible;}
+.bari-drawer{
+  position:fixed;top:0;right:0;bottom:0;z-index:501;
+  width:min(540px,100vw);
+  background:#f8f9fa;
+  display:flex;flex-direction:column;
+  transform:translateX(102%);
+  transition:transform .38s cubic-bezier(.22,.9,.3,1);
+  box-shadow:-16px 0 48px rgba(0,0,0,.18);
+  max-height:100vh;max-height:100dvh;
+  overflow:hidden;
+}
+.bari-drawer.open{transform:translateX(0);}
+.bari-dw-head{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 18px;flex-shrink:0;
+}
+.bari-dw-info{display:flex;flex-direction:column;gap:3px;}
+.bari-dw-label{font-size:.65rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);}
+.bari-dw-title{font-size:1rem;font-weight:700;color:#fff;line-height:1.2;}
+.bari-dw-close{
+  width:34px;height:34px;border-radius:50%;
+  border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.1);
+  color:rgba(255,255,255,.85);font-size:1.25rem;line-height:1;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;transition:background .15s;flex-shrink:0;
+}
+.bari-dw-close:hover{background:rgba(255,255,255,.2);}
+.bari-dw-banner{
+  padding:9px 16px;font-size:.8rem;font-weight:500;line-height:1.5;flex-shrink:0;
+}
+.bari-dw-body{
+  flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;
+  display:flex;flex-direction:column;
+  position:relative;
+}
+.bari-dw-footer{
+  flex-shrink:0;padding:10px 16px;
+  display:flex;align-items:center;gap:.5rem;
+  font-size:.76rem;color:var(--ink-mid);line-height:1.5;
+  background:#fff;border-top:1px solid var(--rule);
+}
+.bari-dw-footer strong{color:var(--ink);}
+.bari-cal-loader{
+  position:absolute;inset:0;z-index:2;background:#f8f9fa;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;
+  transition:opacity .35s;
+}
+.bari-cal-loader.hidden{opacity:0;pointer-events:none;}
+.bari-cal-loader p{font-size:.82rem;color:var(--ink-light);}
+.bari-spinner{
+  width:28px;height:28px;border:3px solid rgba(0,0,0,.1);
+  border-top-color:var(--gold);border-radius:50%;
+  animation:bariSpin .75s linear infinite;
+}
+@keyframes bariSpin{to{transform:rotate(360deg);}}
 
 /* INFO BOXES */
 .info-box{background:var(--canvas);border:1px solid var(--rule);border-radius:8px;padding:.9rem 1rem;font-size:.85rem;line-height:1.7;color:var(--ink-mid);margin-bottom:1rem;}
@@ -189,6 +263,7 @@ a{color:inherit;text-decoration:none}
   .bio-mini-photo{width:80px}
   .bio-mini-body{padding:.85rem .95rem}
   .step-num{width:44px;font-size:1.3rem}
+  .bari-dw-body{padding-bottom:env(safe-area-inset-bottom,0);}
 }
 
 /* ════════════════════════════════════════════
@@ -297,14 +372,32 @@ p,li,td{letter-spacing:-.005em}
 
 /* page-hero-back (secondary pages back button) */
 .page-hero-back{
-  background:rgba(255,255,255,.1) !important;
-  backdrop-filter:blur(16px) !important;
-  -webkit-backdrop-filter:blur(16px) !important;
-  border:1px solid rgba(255,255,255,.25) !important;
-  border-radius:980px !important;
-  color:#fff !important;
+  display:inline-flex !important;
+  align-items:center !important;
+  gap:.45rem !important;
+  background:transparent !important;
+  backdrop-filter:none !important;
+  -webkit-backdrop-filter:none !important;
+  border:none !important;
+  border-radius:0 !important;
+  color:rgba(255,255,255,.5) !important;
+  font-size:.8rem !important;
+  font-weight:500 !important;
+  letter-spacing:.01em !important;
+  padding:0 !important;
+  text-decoration:none !important;
+  transition:color .2s !important;
 }
-.page-hero-back:hover{background:rgba(255,255,255,.2) !important}
+.page-hero-back::before{
+  content:'←';
+  font-size:.9rem;
+  transition:transform .2s;
+}
+.page-hero-back:hover{
+  background:transparent !important;
+  color:rgba(255,255,255,.9) !important;
+}
+.page-hero-back:hover::before{transform:translateX(-3px);}
 
 /* 6. Cards — subtle Apple style */
 .svc,.price-card,.cuando-item,.pub,.review,.pay-card,.cred-thumb{
@@ -547,7 +640,7 @@ p,li,td{letter-spacing:-.005em}
     <h1>Cirugía Bariátrica</h1>
     <div class="badge-free">✓ Sin costo adicional</div>
     <p class="page-hero-sub">Para continuar con su valoración, complete los 2 pasos de esta página. Pueden realizarse desde el celular y son necesarios para integrar correctamente su expediente preoperatorio.</p>
-    <a href="https://psiquiatra-cdmx.eutimya.org/" class="page-hero-back">← Inicio</a>
+    <a href="https://psiquiatra-cdmx.eutimya.org/" class="page-hero-back">Inicio</a>
   </div>
 </section>
 
@@ -562,46 +655,42 @@ p,li,td{letter-spacing:-.005em}
 <!-- CONTENT -->
 <div class="content">
 
-  <!-- PASOS -->
   <div class="sec-label">Pasos a completar</div>
-  <div class="steps">
 
-    <!-- PASO 1 -->
-    <div class="step-card">
-      <a class="step-card-link" href="https://cal.com/dr.-d.-nicolas-moya-s-h2oy0g/bariatria" target="_blank" rel="noopener">
-        <div class="step-inner">
-          <div class="step-num">1</div>
-          <div class="step-body">
-            <div class="step-title">Agendar fecha de valoración</div>
-            <div class="step-sub">Elige el día y hora disponibles en el calendario. Verifica que la zona horaria diga <strong>Ciudad de México (GMT-06:00)</strong> antes de confirmar.</div>
-            <span class="step-cta">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-              Abrir calendario →
-            </span>
-          </div>
+  <!-- PASO 1 — tap abre drawer calendario -->
+  <div class="steps">
+    <button class="step-card" onclick="openCalDrawer()" type="button">
+      <div class="step-inner">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <div class="step-title">Agendar fecha de valoración</div>
+          <div class="step-sub">Elige el día y hora disponibles. Verifica zona horaria <strong>CDMX (GMT-06:00)</strong>.</div>
+          <span class="step-cta">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            Abrir calendario →
+          </span>
         </div>
-      </a>
-    </div>
+        <div class="step-arrow">›</div>
+      </div>
+    </button>
 
     <div class="step-connector"><div class="step-connector-line"></div></div>
 
-    <!-- PASO 2 -->
-    <div class="step-card">
-      <a class="step-card-link" href="https://eutimya.org/esb" target="_blank" rel="noopener">
-        <div class="step-inner">
-          <div class="step-num">2</div>
-          <div class="step-body">
-            <div class="step-title">Llenar expediente preoperatorio</div>
-            <div class="step-sub">Formulario de escalas e historial clínico. Puede completarlo desde su celular en cualquier momento antes de la cita. Contiene las escalas psiquiátricas necesarias para la valoración.</div>
-            <span class="step-cta">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-              Llenar expediente →
-            </span>
-          </div>
+    <!-- PASO 2 — tap abre drawer expediente -->
+    <button class="step-card" onclick="openExpDrawer()" type="button">
+      <div class="step-inner">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <div class="step-title">Llenar expediente preoperatorio</div>
+          <div class="step-sub">Escalas e historial clínico. Se puede completar desde el celular antes de la cita.</div>
+          <span class="step-cta">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            Llenar expediente →
+          </span>
         </div>
-      </a>
-    </div>
-
+        <div class="step-arrow">›</div>
+      </div>
+    </button>
   </div>
 
   <!-- AVISOS -->
@@ -609,33 +698,27 @@ p,li,td{letter-spacing:-.005em}
     <div class="notice-item">
       <div class="notice-icon">✅</div>
       <div class="notice-title">Sin costo</div>
-      <div class="notice-sub">Esta valoración no tiene costo adicional</div>
+      <div class="notice-sub">Valoración sin costo adicional</div>
     </div>
     <div class="notice-item">
       <div class="notice-icon">📱</div>
       <div class="notice-title">Desde el celular</div>
-      <div class="notice-sub">Ambos pasos se hacen desde cualquier dispositivo</div>
+      <div class="notice-sub">Ambos pasos desde cualquier dispositivo</div>
     </div>
     <div class="notice-item">
       <div class="notice-icon">🌎</div>
       <div class="notice-title">Zona horaria</div>
-      <div class="notice-sub">Verifica CDMX GMT-06:00 al agendar</div>
+      <div class="notice-sub">CDMX GMT-06:00 al agendar</div>
     </div>
   </div>
 
   <!-- INFO -->
   <div class="info-box">
-    Una vez completados los dos pasos, el Dr. Moya se pondrá en contacto para confirmar los detalles de su valoración. Si tiene dudas, puede escribir por WhatsApp.
+    Una vez completados los dos pasos, el Dr. Moya se pondrá en contacto para confirmar los detalles. Si tiene dudas, puede escribir por WhatsApp.
   </div>
 
-  <!-- BOTONES -->
+  <!-- BOTÓN WA -->
   <div class="btn-stack">
-    <a class="btn btn-dark" href="https://calendar.app.google/EG89X9HdzCJG6Fkz7" target="_blank" rel="noopener">
-      📅 Paso 1 — Agendar fecha
-    </a>
-    <a class="btn btn-dark" href="https://eutimya.org/esb" target="_blank" rel="noopener">
-      📋 Paso 2 — Llenar expediente
-    </a>
     <a class="btn btn-wa" href="https://wa.me/526731205121?text=Hola%20Doctor%2C%20ya%20complet%C3%A9%20los%20dos%20pasos%20de%20mi%20valoraci%C3%B3n%20bari%C3%A1trica.">
       📲 Ya completé los dos pasos
     </a>
@@ -664,6 +747,58 @@ p,li,td{letter-spacing:-.005em}
   <div class="legal-note">Al usar este sitio acepta el <a href="https://www.eutimya.org/aviso-de-privacidad-y-consentimiento-informado">Aviso de Privacidad y Consentimiento Informado</a>. ARCO/revocación: <a href="mailto:deldhym@gmail.com">deldhym@gmail.com</a></div>
 
 </div><!-- /content -->
+
+<!-- ══════════════════════════════════
+     DRAWER — CALENDARIO (Paso 1)
+══════════════════════════════════ -->
+<div class="bari-overlay" id="calOverlay" onclick="closeCalDrawer()"></div>
+<div class="bari-drawer" id="calDrawer" role="dialog" aria-modal="true">
+  <div class="bari-dw-head" style="background:#1d1d1f;">
+    <div class="bari-dw-info">
+      <span class="bari-dw-label">Paso 1 · Bariátrica</span>
+      <span class="bari-dw-title">📅 Agendar valoración</span>
+    </div>
+    <button class="bari-dw-close" onclick="closeCalDrawer()">×</button>
+  </div>
+  <div class="bari-dw-banner" style="background:#F4EDE0;border-bottom:1px solid rgba(154,111,58,.18);color:#7a5422;">
+    🌎 Verifica que la zona horaria diga <strong>Ciudad de México (GMT-06:00)</strong> antes de confirmar tu cita.
+  </div>
+  <div class="bari-dw-body" id="calDwBody">
+    <div class="bari-cal-loader" id="calLoader">
+      <div class="bari-spinner"></div>
+      <p>Cargando calendario…</p>
+    </div>
+    <div id="my-cal-inline-bariatria" style="width:100%;min-height:660px;overflow:scroll;"></div>
+  </div>
+  <div class="bari-dw-footer">
+    <span>💡</span>
+    <span>Recibirás un <strong>correo de confirmación</strong> automático. Si no lo ves, revisa spam.</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════
+     DRAWER — EXPEDIENTE (Paso 2)
+══════════════════════════════════ -->
+<div class="bari-overlay" id="expOverlay" onclick="closeExpDrawer()"></div>
+<div class="bari-drawer" id="expDrawer" role="dialog" aria-modal="true">
+  <div class="bari-dw-head" style="background:#1d1d1f;">
+    <div class="bari-dw-info">
+      <span class="bari-dw-label" style="color:var(--gold);">Paso 2 · Bariátrica</span>
+      <span class="bari-dw-title">📋 Expediente preoperatorio</span>
+    </div>
+    <button class="bari-dw-close" onclick="closeExpDrawer()">×</button>
+  </div>
+  <div class="bari-dw-banner" style="background:#e6f4ea;border-bottom:1px solid rgba(24,128,56,.15);color:#137333;">
+    📧 Al enviar el formulario, <strong>Google te mandará una copia a tu correo</strong> automáticamente.
+  </div>
+  <div class="bari-dw-body" id="expDwBody">
+    <div class="bari-cal-loader" id="expLoader">
+      <div class="bari-spinner"></div>
+      <p>Cargando formulario…</p>
+    </div>
+    <iframe id="expIframe" src="about:blank" title="Expediente bariátrico" style="width:100%;height:100%;min-height:700px;border:none;display:block;" onload="expLoaded()"></iframe>
+  </div>
+</div>
 
 <!-- FOOTER -->
 <footer class="footer">
@@ -701,13 +836,109 @@ p,li,td{letter-spacing:-.005em}
   </div>
 </footer>
 
+<!-- Cal inline embed (carga diferida) -->
+<script type="text/javascript">
+(function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+Cal("init", "bariatria", {origin:"https://app.cal.com"});
+</script>
+
 <script>
+var calEmbedInit = false;
+
+function lockBody(){
+  document.body.style.overflow='hidden';
+  document.body.style.position='fixed';
+  document.body.style.width='100%';
+}
+function unlockBody(){
+  document.body.style.overflow='';
+  document.body.style.position='';
+  document.body.style.width='';
+}
+
+/* ── DRAWER CALENDARIO ── */
+function openCalDrawer(){
+  document.getElementById('calOverlay').classList.add('open');
+  document.getElementById('calDrawer').classList.add('open');
+  lockBody();
+
+  // Inicializar Cal.com embed solo la primera vez
+  if(!calEmbedInit){
+    calEmbedInit = true;
+    // Pequeño delay para que el drawer esté visible antes de insertar el embed
+    setTimeout(function(){
+      try{
+        Cal.ns.bariatria("inline",{
+          elementOrSelector:"#my-cal-inline-bariatria",
+          config:{
+            "layout":"month_view",
+            "useSlotsViewOnSmallScreen":"true",
+            "theme":"light"
+          },
+          calLink:"dr.-d.-nicolas-moya-s-h2oy0g/bariatria",
+        });
+        Cal.ns.bariatria("ui",{
+          "theme":"light",
+          "hideEventTypeDetails":true,
+          "layout":"month_view"
+        });
+      }catch(e){ console.warn('Cal embed error',e); }
+      // Ocultar loader tras breve espera para que embed arranque
+      setTimeout(function(){
+        var l=document.getElementById('calLoader');
+        if(l)l.classList.add('hidden');
+      },1800);
+    },120);
+  } else {
+    // Ya fue inicializado, solo ocultar loader
+    var l=document.getElementById('calLoader');
+    if(l)l.classList.add('hidden');
+  }
+}
+function closeCalDrawer(){
+  document.getElementById('calOverlay').classList.remove('open');
+  document.getElementById('calDrawer').classList.remove('open');
+  unlockBody();
+}
+
+/* ── DRAWER EXPEDIENTE ── */
+var expLoaded_done = false;
+function openExpDrawer(){
+  document.getElementById('expOverlay').classList.add('open');
+  document.getElementById('expDrawer').classList.add('open');
+  lockBody();
+  // Cargar iframe solo una vez
+  if(!expLoaded_done){
+    var iframe=document.getElementById('expIframe');
+    iframe.src='https://docs.google.com/forms/d/e/1FAIpQLSeU7vGbVJSEUdM2av0zKSbLUAHuP-F1KSSKyR0CYzvz0xHybw/viewform?embedded=true';
+  }
+}
+function closeExpDrawer(){
+  document.getElementById('expOverlay').classList.remove('open');
+  document.getElementById('expDrawer').classList.remove('open');
+  unlockBody();
+}
+function expLoaded(){
+  var f=document.getElementById('expIframe');
+  if(f&&f.src!=='about:blank'){
+    expLoaded_done=true;
+    var l=document.getElementById('expLoader');
+    if(l)l.classList.add('hidden');
+  }
+}
+
+/* ── NAV ── */
 document.getElementById('hbg').addEventListener('click',()=>{
   document.getElementById('mnav').classList.toggle('open');
 });
 document.querySelectorAll('#mnav a').forEach(a=>
   a.addEventListener('click',()=>document.getElementById('mnav').classList.remove('open'))
 );
+
+/* ── ESC cierra drawers ── */
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape'){closeCalDrawer();closeExpDrawer();}
+});
 </script>
 </body>
 </html>
