@@ -206,7 +206,7 @@ details.transfer-acc[open] .t-chev{transform:rotate(180deg)}
 .cal-card-head h2{font-family:'Google Sans',sans-serif;font-size:16px;font-weight:500;color:#202124;text-transform:capitalize;}
 .cal-card-body{padding:16px 18px 20px;}
 .cal-months-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
-.cal-month-tile{border:1px solid var(--cal-gray-200);border-radius:8px;padding:14px 10px 12px;text-align:center;cursor:pointer;transition:all .15s;}
+.cal-month-tile{border:1px solid var(--cal-gray-200);border-radius:8px;padding:14px 10px 12px;text-align:center;cursor:pointer;transition:all .15px;}
 .cal-month-tile:hover:not(.past){border-color:#1d1d1f;background:#e8f0fe;}
 .cal-month-tile.past{opacity:.35;pointer-events:none;}
 .cal-mt-name{font-family:'Google Sans',sans-serif;font-size:14px;font-weight:500;color:#202124;}
@@ -425,7 +425,7 @@ details.policy-acc[open] .policy-chev{transform:rotate(180deg);}
 .ref-option-txt{display:flex;flex-direction:column;line-height:1.3;}
 .ref-option-txt span{font-size:.72rem;font-weight:400;opacity:.75;margin-top:2px;}
 .ref-divider{height:1px;background:var(--rule);margin:.9rem 0;position:relative;}
-.ref-divider::after{content:'o si no responde';position:absolute;top:-9px;left:50%;transform:translateX(-50%);background:#fff;padding:0 10px;font-size:.7rem;color:var(--ink-light);white-space:nowrap;}
+.ref-divider::after{content:'o necesitas ayuda';position:absolute;top:-9px;left:50%;transform:translateX(-50%);background:#fff;padding:0 10px;font-size:.7rem;color:var(--ink-light);white-space:nowrap;}
 
 @keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
 .page-hero-inner > *{opacity:0;transform:translateY(20px);animation:fadeUp .6s ease forwards;}
@@ -1460,27 +1460,27 @@ p,li,td{letter-spacing:-.005em}
   <div class="ref-panel">
     <div class="ref-head">
       <div class="ref-head-txt">
-        <span class="ref-head-eyebrow">Eutimya · Red de Colegas</span>
-        <span class="ref-head-title">👥 Referencia con Colega de Confianza</span>
+        <span class="ref-head-eyebrow">Eutimya · CDMX</span>
+        <span class="ref-head-title">👥 Red de colegas de confianza</span>
       </div>
       <button class="ref-close" onclick="closeRef()">✕</button>
     </div>
     <div class="ref-body">
-      <p style="font-size:.83rem;color:var(--ink-mid);line-height:1.65;margin-bottom:1rem;">Te referimos con especialistas en quienes confiamos. Primera opción: <strong>Dra. Natalia</strong>, psiquiatra de nuestra red.</p>
-      <a class="ref-option primary" href="https://mental.eutimya.org/natalia" target="_blank" rel="noopener">
+      <p style="font-size:.83rem;color:var(--ink-mid);line-height:1.65;margin-bottom:1rem;">Psiquiatras con formación en el CMN "20 de Noviembre", ISSSTE–UNAM, a quienes referimos con plena confianza. Haz clic para conocer más.</p>
+      <a class="ref-option primary" href="https://mental.eutimya.org/colegas" target="_blank" rel="noopener">
         <span style="font-size:1.2rem;flex-shrink:0">🩺</span>
         <div class="ref-option-txt">
-          Ver perfil de la Dra. Natalia
-          <span>Abre en nueva pestaña · Agenda directamente con ella</span>
+          Ver red de colegas de confianza
+          <span>Referencia avalada por el equipo Eutimya · CDMX</span>
         </div>
       </a>
       <div class="ref-divider"></div>
-      <p style="font-size:.78rem;color:var(--ink-light);line-height:1.55;margin-bottom:.65rem;">Si la Dra. Natalia no tiene disponibilidad o no responde, escríbenos y te referimos con otro especialista de confianza.</p>
-      <a class="ref-option secondary" href="https://wa.me/526731205121?text=Hola%20Doctor.%20Revis%C3%A9%20el%20perfil%20de%20la%20Dra.%20Natalia%20pero%20no%20tiene%20disponibilidad%20o%20no%20responde.%20%C2%BFMe%20puede%20referir%20con%20otro%20colega%3F" target="_blank" rel="noopener">
+      <p style="font-size:.78rem;color:var(--ink-light);line-height:1.55;margin-bottom:.65rem;">Si necesitas orientación para elegir al colega más adecuado para tu caso, escríbenos y te ayudamos.</p>
+      <a class="ref-option secondary" href="https://wa.me/526731205121?text=Hola%20Doctor.%20Vi%20la%20red%20de%20colegas%20de%20Eutimya%20y%20quisiera%20orientaci%C3%B3n%20para%20elegir%20al%20m%C3%A1s%20adecuado%20para%20mi%20caso." target="_blank" rel="noopener">
         <span style="font-size:1.1rem;flex-shrink:0">💬</span>
         <div class="ref-option-txt">
-          WhatsApp — Necesito otra referencia
-          <span>Te enviamos con otro especialista de nuestra confianza</span>
+          WhatsApp — Orientación para elegir colega
+          <span>Te ayudamos a elegir al más adecuado para tu caso</span>
         </div>
       </a>
     </div>
@@ -1592,7 +1592,6 @@ function calRenderMonths(){
   for(var i=0;i<CAL.AHEAD_MONTHS;i++){
     var d=new Date(base);d.setMonth(d.getMonth()+i);var y=d.getFullYear(),m=d.getMonth();
     var past=d<base;
-    // Conteo teórico (sin ocupados) para primer render rápido
     var schedSlots=0;
     if(!past){var dim=new Date(y,m+1,0).getDate();for(var day=1;day<=dim;day++){var dd=new Date(y,m,day);if(dd<TODAY)continue;var sched=CAL.SCHED[CS.type][cdow(dd)]||[];if(dd.getTime()===TODAY.getTime()){schedSlots+=sched.filter(function(t){var p=t.split(':').map(Number);var dt2=new Date(dd);dt2.setHours(p[0],p[1],0,0);return dt2>cutoff;}).length;}else{schedSlots+=sched.length;}}}
     var tileId='cal-tile-'+y+'-'+m;
@@ -1606,7 +1605,6 @@ function calRenderMonths(){
   }
   html+='</div></div></div>';calSetBody(html);
 
-  // Fetch busy en paralelo y actualizar tiles
   monthsMeta.forEach(function(meta){
     (async function(){
       await calFetchBusy(meta.y,meta.m);
@@ -1704,7 +1702,6 @@ function calRenderBookCards(){
 function calBookModality(type){
   _tzUrl=CAL.BOOK_URLS[type];
   if(_tzUrl)window.open(_tzUrl,'_blank');
-  // Esperar a que usuario vuelva a la página
   var onPageReturn=function(){
     window.removeEventListener('focus',onPageReturn);
     setTimeout(function(){openExpedienteModal();},500);
@@ -1760,7 +1757,6 @@ function toggleLejanaMenu(){
 }
 function closeLejana(){var m=document.getElementById('lejanaMenu');if(m)m.style.display='none';}
 
-// Drag iOS-style
 (function(){
   var btn,isDragging,startX,startY,btnStartLeft,btnStartTop,moved;
   function initDrag(){
@@ -1793,7 +1789,6 @@ function closeLejana(){var m=document.getElementById('lejanaMenu');if(m)m.style.
     isDragging=false;
     btn.classList.remove('dragging');
     btn.style.transition='';
-    // Snap al borde más cercano
     var r=btn.getBoundingClientRect();
     var cx=r.left+r.width/2;
     var cy=r.top+r.height/2;
@@ -1808,7 +1803,6 @@ function closeLejana(){var m=document.getElementById('lejanaMenu');if(m)m.style.
   });
   if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',initDrag);}else{initDrag();}
 
-  // Cerrar menú al click afuera
   document.addEventListener('pointerup',function(e){
     if(isDragging)return;
     var menu=document.getElementById('lejanaMenu');
@@ -1820,11 +1814,6 @@ function closeLejana(){var m=document.getElementById('lejanaMenu');if(m)m.style.
   });
 })();
 
-// ════════════════════════════════════════════════════
-// NUEVOS: MODALES Y HANDLERS DE PAGO
-// ════════════════════════════════════════════════════
-
-// MODALES
 function openPaymentWarningModal(){
   document.getElementById('paymentWarningModal').classList.add('is-open');
   document.body.style.overflow='hidden';
@@ -1847,9 +1836,7 @@ function openBookCalendar(){
   openCalDrawer('book');
 }
 
-// DETECCIÓN DE PAGO
 function handlePaymentLink(url){
-  // Token de sesión: permite que confirmacion.html valide acceso legítimo
   var token=Date.now().toString(36)+Math.random().toString(36).substr(2,9);
   try{localStorage.setItem('eut_tok',token);localStorage.setItem('eut_tok_ts',Date.now().toString());}catch(e){}
   window.open(url,'_blank');
@@ -1884,19 +1871,15 @@ function handleCopyClabe(){
   fallback();
 }
 
-// LOCALSTORAGE PARA ESTADO DE PAGO
-// INICIALIZAR EN CARGA DE PÁGINA
 document.addEventListener('DOMContentLoaded',function(){
   // Listo
 });
 
-// ════ PAYMENT CONFIRMATION MODAL HANDLERS ════
 var clabeTimerInterval;
 
 function openPaymentConfirmationModal(seconds, title, subtitle, instrTitle, instrText){
   var modal=document.getElementById('paymentConfirmationModal');
   if(modal){
-    // Actualizar contenido
     var titleEl=modal.querySelector('.ccm-title');
     var subtitleEl=modal.querySelector('.ccm-subtitle');
     var instrTitleEl=modal.querySelector('.ccm-instruction-title');
@@ -1954,7 +1937,6 @@ function stopPaymentTimer(){
   }
 }
 
-// ════ EXPEDIENTE MODAL HANDLERS ════
 var expedienteTimerInterval;
 
 function openExpedienteModal(){
@@ -2099,7 +2081,6 @@ function closeRef(){var m=document.getElementById('refModal');if(m){m.classList.
   }
   syncNavSpacer();
   window.addEventListener('resize',syncNavSpacer);
-  // Also after fonts load (DM Sans can shift height slightly)
   if(document.fonts&&document.fonts.ready)
     document.fonts.ready.then(syncNavSpacer);
 })();
