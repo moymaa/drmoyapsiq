@@ -20,9 +20,9 @@
 
 <style>
 :root{
-  --ink:#1d1d1f;--ink-mid:#6e6e73;--ink-light:#86868b;--gold:#1d1d1f;--gold-pale:rgba(0,0,0,.05);
+  --ink:#1d1d1f;--ink-mid:#6e6e73;--ink-light:#86868b;--gold:#9A6F3A;--gold-pale:#F4EDE0;
   --white:#ffffff;--canvas:#f5f5f7;--rule:rgba(0,0,0,.08);
-  --serif:-apple-system,BlinkMacSystemFont,'SF Pro Display','Helvetica Neue',sans-serif;--sans:-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif;
+  --serif:'Playfair Display',Georgia,serif;--sans:'DM Sans','Helvetica Neue',sans-serif;
   --r:18px;--shadow:0 2px 8px rgba(0,0,0,.05);--shadow-lg:0 12px 48px rgba(0,0,0,.1);
   --blue:#1d1d1f;--cal-green:#188038;--cal-green-bg:#e6f4ea;--cal-green-hover:#c6e8cc;
   --cal-red:#c5221f;--cal-red-bg:#fce8e6;--cal-gray-100:#f1f3f4;--cal-gray-200:#e8eaed;
@@ -30,7 +30,7 @@
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;overflow-x:hidden}
-body{font-family:var(--sans);color:var(--ink);background:var(--white);-webkit-font-smoothing:antialiased;line-height:1.6;overflow-x:hidden}
+body{font-family:var(--sans);color:var(--ink);background:var(--white);-webkit-font-smoothing:antialiased;line-height:1.6;overflow-x:hidden;}
 img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
 
@@ -50,7 +50,7 @@ a{color:inherit;text-decoration:none}
 .mobile-nav li{padding:.65rem 0;border-bottom:1px solid var(--rule)}
 .mobile-nav a{font-size:.95rem;font-weight:500;color:var(--ink)}
 
-.page-hero{background:var(--ink);padding:8rem 2rem 4.5rem;position:relative;overflow:hidden;margin-top:68px;}
+.page-hero{background:var(--ink);padding:8rem 2rem 4.5rem;position:relative;overflow:hidden;}
 .page-hero-bg{position:absolute;inset:0;z-index:0;background-image:url('https://raw.githubusercontent.com/moymaa/drmoyapsiq/main/1AAA1C69-6C0F-4205-9FDC-9CF3CA6A17E8%20(1).png');background-size:cover;background-position:center 10%;filter:brightness(.7) saturate(.6) blur(1px);transform:scale(1.04);}
 .page-hero::before{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(to right,rgba(0,0,0,.96) 0%,rgba(0,0,0,.88) 55%,rgba(0,0,0,.72) 100%);}
 .page-hero-inner{position:relative;max-width:760px;margin:0 auto;z-index:2;}
@@ -61,11 +61,13 @@ a{color:inherit;text-decoration:none}
 .page-hero-back{display:inline-flex;align-items:center;gap:.5rem;border:1px solid rgba(255,255,255,.6);background:rgba(255,255,255,.18);color:#fff;padding:.55rem 1.2rem;border-radius:6px;font-size:.8rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;backdrop-filter:blur(8px);transition:background .15s,border-color .15s;}
 .page-hero-back:hover{background:rgba(255,255,255,.28);border-color:#fff}
 
-.tip-bar{background:var(--canvas);border-bottom:1px solid var(--rule);}
-.tip-bar-inner{max-width:760px;margin:0 auto;padding:.9rem 2rem;display:flex;align-items:flex-start;gap:.75rem;}
-.tip-bar-icon{font-size:1.1rem;line-height:1;flex-shrink:0;margin-top:.1rem}
-.tip-bar-text{font-size:.87rem;line-height:1.6;color:var(--ink-mid);}
-.tip-bar-text strong{color:var(--ink);font-weight:600}
+.tip-bar{background:linear-gradient(135deg,rgba(154,111,58,.06) 0%,rgba(154,111,58,.03) 100%);border-bottom:1px solid rgba(154,111,58,.18);border-top:none;}
+.tip-bar-inner{max-width:760px;margin:0 auto;padding:1rem 2rem;display:flex;align-items:center;gap:1rem;}
+.tip-bar-icon{width:36px;height:36px;border-radius:10px;background:rgba(154,111,58,.12);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
+.tip-bar-text{font-size:.84rem;line-height:1.55;color:var(--ink-mid);flex:1;}
+.tip-bar-text strong{color:var(--ink);font-weight:600;}
+.tip-bar-btn{display:inline-flex;align-items:center;gap:.35rem;background:var(--ink);color:#fff;border:none;border-radius:980px;padding:.45rem 1rem;font-family:var(--sans);font-size:.76rem;font-weight:600;letter-spacing:-.01em;cursor:pointer;white-space:nowrap;flex-shrink:0;transition:background .15s,transform .12s,box-shadow .15s;box-shadow:0 2px 8px rgba(0,0,0,.15);}
+.tip-bar-btn:hover{background:#2d2d2f;transform:translateY(-1px);box-shadow:0 4px 14px rgba(0,0,0,.2);}
 
 .content{max-width:760px;margin:0 auto;padding:3rem 2rem 6rem;}
 
@@ -367,9 +369,8 @@ details.policy-acc[open] .policy-chev{transform:rotate(180deg);}
 .footer-col a:hover{color:var(--gold)}
 .footer-bottom{max-width:1200px;margin:0 auto;border-top:1px solid rgba(255,255,255,.08);padding-top:1.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem;font-size:.72rem;color:rgba(255,255,255,.35);}
 .footer-ceds{display:flex;flex-wrap:wrap;gap:.8rem}
-.wa-float{position:fixed;bottom:24px;right:20px;z-index:499;display:inline-flex;align-items:center;gap:8px;background:#25D366;color:#fff;padding:12px 18px;border-radius:999px;font-family:var(--sans);font-weight:800;font-size:14px;box-shadow:0 6px 28px rgba(37,211,102,.4);text-decoration:none;transition:transform .15s,box-shadow .2s;}
-.wa-float:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(37,211,102,.5)}
-.wa-float svg{width:20px;height:20px;fill:#fff;flex:0 0 auto}
+
+
 
 .tz-modal{position:fixed;top:0;left:0;right:0;bottom:0;width:100%;height:100%;z-index:99999;display:none;align-items:center;justify-content:center;padding:20px;}
 .tz-modal.is-open{display:flex}
@@ -437,8 +438,8 @@ details.policy-acc[open] .policy-chev{transform:rotate(180deg);}
 @media(max-width:768px){
   .nav-links{display:none}.hamburger{display:flex}.nav-btn{padding:.45rem .8rem;font-size:.72rem}
   .footer-inner{grid-template-columns:1fr}.pay-grid{grid-template-columns:1fr 1fr}
-  .page-hero{padding:6.5rem 1.2rem 3rem}.content{padding:2rem 1.2rem 5rem}
-  .step-inner{padding:1rem 1.1rem 1.2rem}.tip-bar-inner{padding:.8rem 1.2rem}
+  .page-hero{padding:6.5rem 1.2rem 3rem;margin-top:0}.content{padding:2rem 1.2rem 5rem}
+  .step-inner{padding:1rem 1.1rem 1.2rem}.tip-bar-inner{padding:.8rem 1.2rem;flex-wrap:wrap;gap:.6rem}
 }
 @media(max-width:480px){
   .footer-bottom{flex-direction:column;align-items:flex-start}.bio-mini-photo{width:80px}
@@ -572,19 +573,8 @@ p,li,td{letter-spacing:-.005em}
 }
 .mnav-cta-secondary{border-radius:980px !important}
 
-/* 4. Floating action buttons — Apple glass */
-.wa-float{
-  background:rgba(37,211,102,.9) !important;
-  backdrop-filter:blur(20px) saturate(180%) !important;
-  -webkit-backdrop-filter:blur(20px) saturate(180%) !important;
-  border:1px solid rgba(255,255,255,.3) !important;
-  border-radius:980px !important;
-  box-shadow:0 8px 32px rgba(37,211,102,.3),0 2px 8px rgba(0,0,0,.1) !important;
-}
-.wa-float:hover{
-  transform:translateY(-2px) !important;
-  box-shadow:0 12px 40px rgba(37,211,102,.38),0 4px 12px rgba(0,0,0,.12) !important;
-}
+
+
 .back-to-top{
   background:rgba(29,29,31,.5) !important;
   backdrop-filter:blur(20px) saturate(180%) !important;
@@ -782,13 +772,14 @@ p,li,td{letter-spacing:-.005em}
 }
 .ico-btn:hover{background:rgba(255,255,255,.2) !important}
 
-/* 21. calendar page glass cards (cita.html) */
+/* 21. calendar page cards (cita.html) — keep white inside drawer */
 .cal-card{
-  background:rgba(255,255,255,.08) !important;
-  backdrop-filter:blur(16px) !important;
-  -webkit-backdrop-filter:blur(16px) !important;
-  border:1px solid rgba(255,255,255,.15) !important;
-  border-radius:20px !important;
+  background:#fff !important;
+  backdrop-filter:none !important;
+  -webkit-backdrop-filter:none !important;
+  border:1px solid rgba(0,0,0,.08) !important;
+  border-radius:12px !important;
+  box-shadow:0 2px 8px rgba(0,0,0,.06) !important;
 }
 
 /* 22. transfer-acc (pagos) */
@@ -840,7 +831,34 @@ p,li,td{letter-spacing:-.005em}
 .faq-item.open .faq-icon{background:#1d1d1f !important;border-color:#1d1d1f !important}
 .faq-q:hover{color:#6e6e73 !important}
 
+
+
+
+.wa-float{
+  position:fixed;bottom:24px;right:20px;z-index:999;
+  display:inline-flex;align-items:center;gap:7px;
+  background:rgba(10,10,14,0.52);
+  color:#fff;padding:10px 16px;border-radius:999px;
+  font-family:var(--sans);font-weight:700;font-size:13px;
+  box-shadow:0 6px 28px rgba(0,0,0,.38),inset 0 1px 0 rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.10);
+  backdrop-filter:blur(22px) saturate(180%);-webkit-backdrop-filter:blur(22px) saturate(180%);
+  text-decoration:none;transition:transform .15s,box-shadow .2s,background .2s,border-color .2s;
+}
+.wa-float:hover{
+  transform:translateY(-2px);
+  background:rgba(10,10,14,0.78);
+  box-shadow:0 10px 36px rgba(0,0,0,.52),inset 0 1px 0 rgba(255,255,255,.13);
+  border-color:rgba(255,255,255,.18);
+}
+.wa-float svg{width:17px;height:17px;fill:#fff;flex:0 0 auto}
+
+
+.flow-eyebrow{font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-light);margin-bottom:.65rem;text-align:center;}
 </style>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 </head>
 <body>
 
@@ -969,12 +987,19 @@ p,li,td{letter-spacing:-.005em}
 
 <div class="tip-bar">
   <div class="tip-bar-inner">
-    <span class="tip-bar-icon">💡</span>
-    <div class="tip-bar-text"><strong>¿Primera vez?</strong> Puedes revisar fechas disponibles antes de pagar. Una vez que elijas, tienes <strong>24 horas</strong> para enviar tu comprobante y confirmar. <button type="button" onclick="openCalDrawer('browse')" style="display:inline-flex;align-items:center;gap:.3rem;background:none;border:1px solid rgba(0,113,227,.45);border-radius:5px;color:var(--gold);font-family:var(--sans);font-size:.78rem;font-weight:600;letter-spacing:.03em;padding:.2rem .55rem;cursor:pointer;vertical-align:middle;transition:background .15s,border-color .15s;" onmouseover="this.style.background='rgba(0,0,0,.05)';this.style.borderColor='var(--gold)'" onmouseout="this.style.background='none';this.style.borderColor='rgba(0,113,227,.45)'">📅 Ver disponibilidad</button></div>
+    <div class="tip-bar-icon">💡</div>
+    <div class="tip-bar-text">
+      <strong>¿Primera vez?</strong> Puedes revisar fechas antes de pagar. Una vez que elijas, tienes <strong>24 h</strong> para enviar tu comprobante.
+    </div>
+    <button type="button" onclick="openCalDrawer('browse')" class="tip-bar-btn">
+      Ver disponibilidad →
+    </button>
   </div>
 </div>
 
+
 <div class="content">
+  <p class="flow-eyebrow">Pasos para agendar</p>
   <div class="flow-wrap">
     <button class="flow-step active" id="fstep1" onclick="goToStep(1)" type="button">
       <div class="flow-num">1</div><div class="flow-label">Pago</div>
@@ -2063,6 +2088,21 @@ function closeLwe(){var m=document.getElementById('lweModal');if(m){m.classList.
 // ── REFERENCIA MODAL ──
 function openRef(){var m=document.getElementById('refModal');if(m){m.classList.add('is-open');document.body.style.overflow='hidden';}}
 function closeRef(){var m=document.getElementById('refModal');if(m){m.classList.remove('is-open');document.body.style.overflow='';}}
+</script>
+
+<script>
+(function(){
+  function syncNavSpacer(){
+    var nav=document.getElementById('nav');
+    var sp=document.getElementById('nav-spacer');
+    if(nav&&sp) sp.style.height=nav.getBoundingClientRect().height+'px';
+  }
+  syncNavSpacer();
+  window.addEventListener('resize',syncNavSpacer);
+  // Also after fonts load (DM Sans can shift height slightly)
+  if(document.fonts&&document.fonts.ready)
+    document.fonts.ready.then(syncNavSpacer);
+})();
 </script>
 </body>
 </html>
