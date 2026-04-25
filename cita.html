@@ -946,13 +946,14 @@ p,li,td{letter-spacing:-.005em}
       <img src="https://psiquiatra-cdmx.eutimya.org/eutimyafondoblanco.png" alt="Eutimya" height="34" loading="eager"/>
     </a>
     <ul class="nav-links">
-      <li><a href="https://psiquiatra-cdmx.eutimya.org/#cuando">¿Cuándo?</a></li>
-      <li><a href="https://psiquiatra-cdmx.eutimya.org/#acerca">Acerca</a></li>
-      <li><a href="https://psiquiatra-cdmx.eutimya.org/#servicios">Servicios</a></li>
-      <li><a href="https://psiquiatra-cdmx.eutimya.org/#publicaciones">Investigación</a></li>
-      <li><a href="https://psiquiatra-cdmx.eutimya.org/#contacto">Contacto</a></li>
+      <li><a href="https://psiquiatra-cdmx.eutimya.org/#cuando" data-i18n="nav_cuando">¿Cuándo?</a></li>
+      <li><a href="https://psiquiatra-cdmx.eutimya.org/#acerca" data-i18n="nav_acerca">Acerca</a></li>
+      <li><a href="https://psiquiatra-cdmx.eutimya.org/#servicios" data-i18n="nav_servicios">Servicios</a></li>
+      <li><a href="https://psiquiatra-cdmx.eutimya.org/#publicaciones" data-i18n="nav_investigacion">Investigación</a></li>
+      <li><a href="https://psiquiatra-cdmx.eutimya.org/#contacto" data-i18n="nav_contacto">Contacto</a></li>
     </ul>
-    <a href="https://psiquiatra-cdmx.eutimya.org/" class="nav-btn">← Saber más</a>
+    <button id="lang-btn" title="Switch to English" onclick="setLang(document.documentElement.lang==='es'?'en':'es')" style="background:none;border:1px solid rgba(0,0,0,.15);border-radius:6px;padding:.32rem .75rem;font-size:.74rem;font-weight:600;cursor:pointer;color:var(--ink-mid);white-space:nowrap;transition:all .2s;line-height:1">🇺🇸 EN</button>
+    <a href="https://psiquiatra-cdmx.eutimya.org/" class="nav-btn" data-i18n="nav_saber_mas">← Saber más</a>
     <button class="hamburger" type="button" id="hbg" aria-label="Menú">
       <span></span><span></span><span></span>
     </button>
@@ -961,12 +962,12 @@ p,li,td{letter-spacing:-.005em}
 
 <div class="mobile-nav" id="mnav">
   <ul>
-    <li><a href="https://psiquiatra-cdmx.eutimya.org/#cuando">¿Cuándo consultar?</a></li>
-    <li><a href="https://psiquiatra-cdmx.eutimya.org/#acerca">Acerca del Dr. Moya</a></li>
-    <li><a href="https://psiquiatra-cdmx.eutimya.org/#servicios">Servicios</a></li>
-    <li><a href="https://psiquiatra-cdmx.eutimya.org/#publicaciones">Investigación</a></li>
-    <li><a href="https://psiquiatra-cdmx.eutimya.org/#contacto">Contacto</a></li>
-    <li style="border:none;padding-top:.9rem"><a href="https://psiquiatra-cdmx.eutimya.org/" style="font-weight:700;color:#1d1d1f">← Saber más del Dr. Moya</a></li>
+    <li><a href="https://psiquiatra-cdmx.eutimya.org/#cuando" data-i18n="mnav_cuando_link">¿Cuándo consultar?</a></li>
+    <li><a href="https://psiquiatra-cdmx.eutimya.org/#acerca" data-i18n="mnav_acerca">Acerca del Dr. Moya</a></li>
+    <li><a href="https://psiquiatra-cdmx.eutimya.org/#servicios" data-i18n="mnav_servicios">Servicios</a></li>
+    <li><a href="https://psiquiatra-cdmx.eutimya.org/#publicaciones" data-i18n="mnav_investigacion">Investigación</a></li>
+    <li><a href="https://psiquiatra-cdmx.eutimya.org/#contacto" data-i18n="mnav_contacto">Contacto</a></li>
+    <li style="border:none;padding-top:.9rem"><a href="https://psiquiatra-cdmx.eutimya.org/" style="font-weight:700;color:#1d1d1f" data-i18n="mnav_saber_mas">← Saber más del Dr. Moya</a></li>
   </ul>
 </div>
 
@@ -978,20 +979,20 @@ p,li,td{letter-spacing:-.005em}
 <section class="page-hero">
   <div class="page-hero-bg"></div>
   <div class="page-hero-inner">
-    <span class="page-eyebrow">Agenda tu consulta</span>
+    <span class="page-eyebrow" data-i18n="hero_eyebrow">Agenda tu consulta</span>
     <h1>Dr. Deldhy Nicolás<br/>Moya Sánchez</h1>
-    <p class="page-hero-sub">Proceso sencillo en 3 pasos: confirma tu pago, elige tu horario y completa tu expediente. Sesión de 50 minutos, presencial o en línea.</p>
-    <a href="https://psiquiatra-cdmx.eutimya.org/" class="page-hero-back">← Saber más sobre el Dr. Moya</a>
+    <p class="page-hero-sub" data-i18n="hero_sub">Proceso sencillo en 3 pasos: confirma tu pago, elige tu horario y completa tu expediente. Sesión de 50 minutos, presencial o en línea.</p>
+    <a href="https://psiquiatra-cdmx.eutimya.org/" class="page-hero-back" data-i18n="hero_back">← Saber más sobre el Dr. Moya</a>
   </div>
 </section>
 
 <div class="tip-bar">
   <div class="tip-bar-inner">
     <div class="tip-bar-icon">💡</div>
-    <div class="tip-bar-text">
+    <div class="tip-bar-text" data-i18n="tip_text">
       <strong>¿Primera vez?</strong> Puedes revisar fechas antes de pagar. Una vez que elijas, tienes <strong>24 h</strong> para enviar tu comprobante.
     </div>
-    <button type="button" onclick="openCalDrawer('browse')" class="tip-bar-btn">
+    <button type="button" onclick="openCalDrawer('browse')" class="tip-bar-btn" data-i18n="tip_btn">
       Ver disponibilidad →
     </button>
   </div>
@@ -999,16 +1000,16 @@ p,li,td{letter-spacing:-.005em}
 
 
 <div class="content">
-  <p class="flow-eyebrow">Pasos para agendar</p>
+  <p class="flow-eyebrow" data-i18n="flow_eyebrow">Pasos para agendar</p>
   <div class="flow-wrap">
     <button class="flow-step active" id="fstep1" onclick="goToStep(1)" type="button">
-      <div class="flow-num">1</div><div class="flow-label">Pago</div>
+      <div class="flow-num">1</div><div class="flow-label" data-i18n="step1_label">Pago</div>
     </button>
     <button class="flow-step" id="fstep2" onclick="goToStep(2)" type="button">
-      <div class="flow-num">2</div><div class="flow-label">Horario</div>
+      <div class="flow-num">2</div><div class="flow-label" data-i18n="step2_label">Horario</div>
     </button>
     <button class="flow-step" id="fstep3" onclick="goToStep(3)" type="button">
-      <div class="flow-num">3</div><div class="flow-label">Expediente</div>
+      <div class="flow-num">3</div><div class="flow-label" data-i18n="step3_label">Expediente</div>
     </button>
   </div>
 
@@ -1017,21 +1018,21 @@ p,li,td{letter-spacing:-.005em}
     <div class="step-header" onclick="toggleCard(1)">
       <div class="step-num-badge">1</div>
       <div class="step-meta">
-        <div class="step-title">💳 Pago de honorarios</div>
-        <div class="step-hint">Elige tu forma de pago y envía comprobante</div>
+        <div class="step-title" data-i18n="step1_title">💳 Pago de honorarios</div>
+        <div class="step-hint" data-i18n="step1_hint">Elige tu forma de pago y envía comprobante</div>
       </div>
       <div class="step-toggle">▾</div>
     </div>
     <div class="step-body" id="body1">
       <div class="step-inner">
         <div class="fee-block">
-          <div class="fee-label">Honorarios · sesión de 50 min</div>
+          <div class="fee-label" data-i18n="fee_label">Honorarios · sesión de 50 min</div>
           <div class="fee-item">
-            <div><div class="fee-name">💻 Online</div><div class="fee-sub">Google Meet · desde cualquier lugar</div></div>
+            <div><div class="fee-name" data-i18n="fee_online_name">💻 Online</div><div class="fee-sub" data-i18n="fee_online_sub">Google Meet · desde cualquier lugar</div></div>
             <div style="text-align:right"><div class="fee-price">$1,400</div><div class="fee-curr">MXN</div></div>
           </div>
           <div class="fee-item">
-            <div><div class="fee-name">📍 Presencial</div><div class="fee-sub">Moras 619, Del Valle, CDMX</div></div>
+            <div><div class="fee-name" data-i18n="fee_pres_name">📍 Presencial</div><div class="fee-sub" data-i18n="fee_pres_sub">Moras 619, Del Valle, CDMX</div></div>
             <div style="text-align:right"><div class="fee-price">$1,600</div><div class="fee-curr">MXN</div></div>
           </div>
         </div>
@@ -1088,8 +1089,8 @@ p,li,td{letter-spacing:-.005em}
     <div class="step-header" onclick="toggleCard(2)">
       <div class="step-num-badge">2</div>
       <div class="step-meta">
-        <div class="step-title">🗓️ Elegir fecha y hora</div>
-        <div class="step-hint">Presencial (CDMX) o en línea</div>
+        <div class="step-title" data-i18n="step2_title">🗓️ Elegir fecha y hora</div>
+        <div class="step-hint" data-i18n="step2_hint">Presencial (CDMX) o en línea</div>
       </div>
       <div class="step-toggle">▾</div>
     </div>
@@ -1149,8 +1150,8 @@ p,li,td{letter-spacing:-.005em}
     <div class="step-header" onclick="toggleCard(3)">
       <div class="step-num-badge">3</div>
       <div class="step-meta">
-        <div class="step-title">📄 Registro de expediente</div>
-        <div class="step-hint">Último paso — evaluación inicial personalizada</div>
+        <div class="step-title" data-i18n="step3_title">📄 Registro de expediente</div>
+        <div class="step-hint" data-i18n="step3_hint">Último paso — evaluación inicial personalizada</div>
       </div>
       <div class="step-toggle">▾</div>
     </div>
@@ -1175,11 +1176,11 @@ p,li,td{letter-spacing:-.005em}
   <div class="bio-mini">
     <img class="bio-mini-photo" src="https://lh3.googleusercontent.com/pw/AP1GczMhQ6m9BOG6lddqce7vog3-dLP4_oifP2GShaWc1kbQsxyFwuxyweYIykWCzKl49n2yeeyuUfcq0CgMb0GxyAwyIYHLhg2T0wvQRXcQSMnMNY23HN21WoiiRFHgzEcq9zp-rdpo9dmaZmmy7XMgizvYOA=w1024-h1024-s-no-gm" alt="Dr. Moya Sánchez" loading="lazy"/>
     <div class="bio-mini-body">
-      <div class="bio-mini-eyebrow">Psiquiatra Certificado · CDMX</div>
+      <div class="bio-mini-eyebrow" data-i18n="bio_eyebrow">Psiquiatra Certificado · CDMX</div>
       <div class="bio-mini-name">Dr. Moya Sánchez<br><em>Deldhy Nicolás</em></div>
-      <div class="bio-mini-role">Especialista en Psiquiatría · UNAM Mención Honorífica · Alta Especialidad en Psiquiatría de Enlace · Certificado CMP · CE 14788885</div>
-      <div class="bio-mini-stars"><span>★★★★★</span> 5.0 Google · +100 reseñas</div>
-      <a class="bio-mini-link" href="https://psiquiatra-cdmx.eutimya.org/">Ver perfil completo →</a>
+      <div class="bio-mini-role" data-i18n="bio_role">Especialista en Psiquiatría · UNAM Mención Honorífica · Alta Especialidad en Psiquiatría de Enlace · Certificado CMP · CE 14788885</div>
+      <div class="bio-mini-stars"><span>★★★★★</span> <span data-i18n="bio_stars">5.0 Google · +100 reseñas</span></div>
+      <a class="bio-mini-link" href="https://psiquiatra-cdmx.eutimya.org/" data-i18n="bio_link">Ver perfil completo →</a>
     </div>
   </div>
   <details class="policy-acc">
@@ -2083,6 +2084,102 @@ function closeRef(){var m=document.getElementById('refModal');if(m){m.classList.
   window.addEventListener('resize',syncNavSpacer);
   if(document.fonts&&document.fonts.ready)
     document.fonts.ready.then(syncNavSpacer);
+})();
+</script>
+<!-- ═══ i18n NATIVO ES / EN ═══ -->
+<script>
+var i18n = {
+  es: {
+    /* NAV */
+    nav_cuando:'¿Cuándo?', nav_acerca:'Acerca', nav_servicios:'Servicios',
+    nav_investigacion:'Investigación', nav_contacto:'Contacto',
+    nav_saber_mas:'← Saber más',
+    mnav_cuando_link:'¿Cuándo consultar?', mnav_acerca:'Acerca del Dr. Moya',
+    mnav_servicios:'Servicios', mnav_investigacion:'Investigación',
+    mnav_contacto:'Contacto', mnav_saber_mas:'← Saber más del Dr. Moya',
+    /* Hero */
+    hero_eyebrow:'Agenda tu consulta',
+    hero_sub:'Proceso sencillo en 3 pasos: confirma tu pago, elige tu horario y completa tu expediente. Sesión de 50 minutos, presencial o en línea.',
+    hero_back:'← Saber más sobre el Dr. Moya',
+    /* Tip bar */
+    tip_text:'<strong>¿Primera vez?</strong> Puedes revisar fechas antes de pagar. Una vez que elijas, tienes <strong>24 h</strong> para enviar tu comprobante.',
+    tip_btn:'Ver disponibilidad →',
+    /* Flow */
+    flow_eyebrow:'Pasos para agendar',
+    step1_label:'Pago', step2_label:'Horario', step3_label:'Expediente',
+    /* Pasos */
+    step1_title:'💳 Pago de honorarios',
+    step1_hint:'Elige tu forma de pago y envía comprobante',
+    step2_title:'🗓️ Elegir fecha y hora',
+    step2_hint:'Presencial (CDMX) o en línea',
+    step3_title:'📄 Registro de expediente',
+    step3_hint:'Último paso — evaluación inicial personalizada',
+    /* Honorarios */
+    fee_label:'Honorarios · sesión de 50 min',
+    fee_online_name:'💻 Online', fee_online_sub:'Google Meet · desde cualquier lugar',
+    fee_pres_name:'📍 Presencial', fee_pres_sub:'Moras 619, Del Valle, CDMX',
+    /* Bio */
+    bio_eyebrow:'Psiquiatra Certificado · CDMX',
+    bio_role:'Especialista en Psiquiatría · UNAM Mención Honorífica · Alta Especialidad en Psiquiatría de Enlace · Certificado CMP · CE 14788885',
+    bio_stars:'5.0 Google · +100 reseñas',
+    bio_link:'Ver perfil completo →'
+  },
+  en: {
+    /* NAV */
+    nav_cuando:'When?', nav_acerca:'About', nav_servicios:'Services',
+    nav_investigacion:'Research', nav_contacto:'Contact',
+    nav_saber_mas:'← Learn more',
+    mnav_cuando_link:'When to consult?', mnav_acerca:'About Dr. Moya',
+    mnav_servicios:'Services', mnav_investigacion:'Research',
+    mnav_contacto:'Contact', mnav_saber_mas:'← Learn more about Dr. Moya',
+    /* Hero */
+    hero_eyebrow:'Book your consultation',
+    hero_sub:'Simple 3-step process: confirm your payment, choose your schedule and complete your file. 50-minute session, in-person or online.',
+    hero_back:'← Learn more about Dr. Moya',
+    /* Tip bar */
+    tip_text:'<strong>First time?</strong> You can check available dates before paying. Once you choose, you have <strong>24 h</strong> to send your payment receipt.',
+    tip_btn:'Check availability →',
+    /* Flow */
+    flow_eyebrow:'Steps to book',
+    step1_label:'Payment', step2_label:'Schedule', step3_label:'File',
+    /* Pasos */
+    step1_title:'💳 Fee payment',
+    step1_hint:'Choose your payment method and send receipt',
+    step2_title:'🗓️ Choose date and time',
+    step2_hint:'In-person (CDMX) or online',
+    step3_title:'📄 Medical file registration',
+    step3_hint:'Last step — personalized initial evaluation',
+    /* Honorarios */
+    fee_label:'Fees · 50-min session',
+    fee_online_name:'💻 Online', fee_online_sub:'Google Meet · from anywhere',
+    fee_pres_name:'📍 In-person', fee_pres_sub:'Moras 619, Del Valle, CDMX',
+    /* Bio */
+    bio_eyebrow:'Board-Certified Psychiatrist · CDMX',
+    bio_role:'Psychiatry Specialist · UNAM Honorable Mention · Advanced Specialty in Consultation-Liaison Psychiatry · CMP Certified · License 14788885',
+    bio_stars:'5.0 Google · +100 reviews',
+    bio_link:'View full profile →'
+  }
+};
+
+function setLang(lang) {
+  document.documentElement.lang = lang;
+  localStorage.setItem('lang', lang);
+  document.querySelectorAll('[data-i18n]').forEach(function(el) {
+    var key = el.getAttribute('data-i18n');
+    if (i18n[lang] && i18n[lang][key] !== undefined) {
+      el.innerHTML = i18n[lang][key];
+    }
+  });
+  var btn = document.getElementById('lang-btn');
+  if (btn) {
+    btn.textContent = lang === 'es' ? '🇺🇸 EN' : '🇲🇽 ES';
+    btn.title = lang === 'es' ? 'Switch to English' : 'Cambiar a español';
+  }
+}
+
+(function() {
+  var saved = localStorage.getItem('lang') || 'es';
+  setLang(saved);
 })();
 </script>
 </body>
