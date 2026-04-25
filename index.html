@@ -349,7 +349,7 @@ a{color:inherit;text-decoration:none}
 .hero-left{display:flex;flex-direction:column;justify-content:center;padding:5rem 4rem 5rem 6rem;background:var(--white);position:relative;}
 .hero-left::after{content:'';position:absolute;right:0;top:15%;bottom:15%;width:1px;background:linear-gradient(180deg,transparent,var(--rule) 30%,var(--rule) 70%,transparent);}
 .hero-tag{display:inline-flex;align-items:center;gap:.5rem;font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-mid);margin-bottom:1.4rem;}
-.hero-tag span{display:block;width:28px;height:1px;background:var(--ink-light)}
+.hero-tag .hero-tag-line{display:block;width:28px;height:1px;background:var(--ink-light)}
 .hero-name{font-family:var(--serif);font-size:clamp(2.2rem,3.5vw,3.2rem);font-weight:700;line-height:1.1;color:var(--ink);margin-bottom:.5rem;letter-spacing:-0.02em;}
 .hero-role{font-size:.95rem;color:var(--ink-mid);font-weight:400;margin-bottom:2rem;line-height:1.5;}
 .hero-stars{display:flex;align-items:center;gap:.7rem;margin-bottom:2rem;}
@@ -1149,28 +1149,29 @@ a{color:inherit;text-decoration:none}
       <img src="http://psiquiatra-cdmx.eutimya.org/eutimyafondoblanco.png" alt="Eutimya" height="34" loading="eager"/>
     </a>
     <ul class="nav-links">
-      <li><a href="#cuando">¿Cuándo?</a></li>
-      <li><a href="#servicios">Servicios</a></li>
-      <li><a href="#innovacion">Innovación</a></li>
-      <li><a href="#hospitalizacion">Hospitalización</a></li>
-      <li class="nav-hide-md"><a href="#publicaciones">Investigación</a></li>
-      <li><a href="#contacto">Contacto</a></li>
+      <li><a href="#cuando" data-i18n="nav_cuando">¿Cuándo?</a></li>
+      <li><a href="#servicios" data-i18n="nav_servicios">Servicios</a></li>
+      <li><a href="#innovacion" data-i18n="nav_innovacion">Innovación</a></li>
+      <li><a href="#hospitalizacion" data-i18n="nav_hospitalizacion">Hospitalización</a></li>
+      <li class="nav-hide-md"><a href="#publicaciones" data-i18n="nav_investigacion">Investigación</a></li>
+      <li><a href="#contacto" data-i18n="nav_contacto">Contacto</a></li>
       <li class="nav-dropdown">
         <button class="nav-drop-btn" type="button" aria-haspopup="true" aria-expanded="false">
-          Más <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor"><path d="M1 3l4 4 4-4"/></svg>
+          <span data-i18n="nav_mas">Más</span> <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor"><path d="M1 3l4 4 4-4"/></svg>
         </button>
         <ul class="nav-drop-menu">
-          <li><a href="#acerca">Acerca del Dr. Moya</a></li>
-          <li><a href="#articulos">Artículos</a></li>
-          <li><a href="#credenciales">Cédulas y Títulos</a></li>
-          <li><a href="https://www.eutimya.org/pagos" target="_blank" rel="noopener">Formas de pago</a></li>
-          <li><a href="https://www.eutimya.org/factura" target="_blank" rel="noopener">Factura CFDI</a></li>
+          <li><a href="#acerca" data-i18n="nav_drop_acerca">Acerca del Dr. Moya</a></li>
+          <li><a href="#articulos" data-i18n="nav_drop_articulos">Artículos</a></li>
+          <li><a href="#credenciales" data-i18n="nav_drop_credenciales">Cédulas y Títulos</a></li>
+          <li><a href="https://www.eutimya.org/pagos" target="_blank" rel="noopener" data-i18n="nav_pagos">Formas de pago</a></li>
+          <li><a href="https://www.eutimya.org/factura" target="_blank" rel="noopener" data-i18n="nav_factura">Factura CFDI</a></li>
         </ul>
       </li>
     </ul>
+    <button id="lang-btn" title="Switch to English" onclick="setLang(document.documentElement.lang==='es'?'en':'es')" style="background:none;border:1px solid var(--rule);border-radius:6px;padding:.32rem .75rem;font-size:.74rem;font-weight:600;cursor:pointer;color:var(--ink-mid);white-space:nowrap;transition:all .2s;line-height:1" onmouseover="this.style.borderColor='var(--ink)';this.style.color='var(--ink)'" onmouseout="this.style.borderColor='var(--rule)';this.style.color='var(--ink-mid)'">🇺🇸 EN</button>
     <a href="https://psiquiatra-cdmx.eutimya.org/cita" class="nav-btn">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-      Agendar Cita
+      <span data-i18n="nav_agendar">Agendar Cita</span>
     </a>
     <button class="hamburger" type="button" id="hbg" aria-label="Menú">
       <span></span><span></span><span></span>
@@ -1183,57 +1184,57 @@ a{color:inherit;text-decoration:none}
   <!-- Consulta -->
   <div class="mobile-nav-group grp-open">
     <button class="mobile-nav-group-btn" type="button">
-      Consulta
+      <span data-i18n="mnav_consulta">Consulta</span>
       <span class="grp-arrow"><svg width="8" height="8" viewBox="0 0 8 8" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 2.5l3 3 3-3"/></svg></span>
     </button>
     <div class="mobile-nav-group-items"><div class="mobile-nav-group-items-inner">
-      <a href="#cuando">¿Cuándo consultar?</a>
-      <a href="#servicios">Servicios</a>
-      <a href="#padecimientos">Padecimientos</a>
-      <a href="#honorarios">Honorarios</a>
+      <a href="#cuando" data-i18n="mnav_cuando_link">¿Cuándo consultar?</a>
+      <a href="#servicios" data-i18n="mnav_servicios">Servicios</a>
+      <a href="#padecimientos" data-i18n="mnav_padecimientos">Padecimientos</a>
+      <a href="#honorarios" data-i18n="mnav_honorarios">Honorarios</a>
     </div></div>
   </div>
 
   <!-- Enfoque clínico -->
   <div class="mobile-nav-group">
     <button class="mobile-nav-group-btn" type="button">
-      Enfoque clínico
+      <span data-i18n="mnav_enfoque">Enfoque clínico</span>
       <span class="grp-arrow"><svg width="8" height="8" viewBox="0 0 8 8" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 2.5l3 3 3-3"/></svg></span>
     </button>
     <div class="mobile-nav-group-items"><div class="mobile-nav-group-items-inner">
-      <a href="#innovacion">Herramientas Innovadoras</a>
-      <a href="#hospitalizacion">Hospitalización Psiquiátrica</a>
-      <a href="#ia-salud-mental">IA y Salud Mental</a>
+      <a href="#innovacion" data-i18n="mnav_innovacion">Herramientas Innovadoras</a>
+      <a href="#hospitalizacion" data-i18n="mnav_hospitalizacion">Hospitalización Psiquiátrica</a>
+      <a href="#ia-salud-mental" data-i18n="mnav_ia">IA y Salud Mental</a>
     </div></div>
   </div>
 
   <!-- Acerca -->
   <div class="mobile-nav-group">
     <button class="mobile-nav-group-btn" type="button">
-      Acerca del Dr. Moya
+      <span data-i18n="mnav_acerca">Acerca del Dr. Moya</span>
       <span class="grp-arrow"><svg width="8" height="8" viewBox="0 0 8 8" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 2.5l3 3 3-3"/></svg></span>
     </button>
     <div class="mobile-nav-group-items"><div class="mobile-nav-group-items-inner">
-      <a href="#acerca">Perfil profesional</a>
-      <a href="#publicaciones">Investigación</a>
-      <a href="#ponencias">Congresos</a>
-      <a href="#articulos">Artículos</a>
-      <a href="#liderazgo">Liderazgo</a>
-      <a href="#credenciales">Cédulas y Títulos</a>
+      <a href="#acerca" data-i18n="mnav_perfil">Perfil profesional</a>
+      <a href="#publicaciones" data-i18n="mnav_investigacion">Investigación</a>
+      <a href="#ponencias" data-i18n="mnav_ponencias">Congresos</a>
+      <a href="#articulos" data-i18n="mnav_articulos">Artículos</a>
+      <a href="#liderazgo" data-i18n="mnav_liderazgo">Liderazgo</a>
+      <a href="#credenciales" data-i18n="mnav_credenciales">Cédulas y Títulos</a>
     </div></div>
   </div>
 
   <!-- Administrativo -->
   <div class="mobile-nav-group">
     <button class="mobile-nav-group-btn" type="button">
-      Administrativo
+      <span data-i18n="mnav_admin">Administrativo</span>
       <span class="grp-arrow"><svg width="8" height="8" viewBox="0 0 8 8" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 2.5l3 3 3-3"/></svg></span>
     </button>
     <div class="mobile-nav-group-items"><div class="mobile-nav-group-items-inner">
-      <a href="https://www.eutimya.org/pagos" target="_blank" rel="noopener">Formas de pago</a>
-      <a href="https://www.eutimya.org/factura" target="_blank" rel="noopener">Solicitar factura</a>
-      <a href="#faq">Preguntas frecuentes</a>
-      <a href="#contacto">Contacto</a>
+      <a href="https://www.eutimya.org/pagos" target="_blank" rel="noopener" data-i18n="mnav_pagos">Formas de pago</a>
+      <a href="https://www.eutimya.org/factura" target="_blank" rel="noopener" data-i18n="mnav_factura">Solicitar factura</a>
+      <a href="#faq" data-i18n="mnav_faq">Preguntas frecuentes</a>
+      <a href="#contacto" data-i18n="mnav_contacto">Contacto</a>
     </div></div>
   </div>
 
@@ -1241,7 +1242,7 @@ a{color:inherit;text-decoration:none}
   <div class="mobile-nav-cta">
     <a href="https://psiquiatra-cdmx.eutimya.org/cita" class="mnav-cta-primary">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-      Agendar Cita
+      <span data-i18n="mnav_cta_agendar">Agendar Cita</span>
     </a>
     <a href="https://wa.me/526731205121" class="mnav-cta-wa" target="_blank" rel="noopener">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
@@ -1263,21 +1264,21 @@ a{color:inherit;text-decoration:none}
 <!-- HERO -->
 <section class="hero" id="inicio">
   <div class="hero-left">
-    <span class="hero-tag"><span></span>Psiquiatra Certificado · CDMX</span>
+    <span class="hero-tag"><span class="hero-tag-line"></span><span data-i18n="hero_tag">Psiquiatra Certificado · CDMX</span></span>
     <h1 class="hero-name">Dr. Deldhy Nicolás<br/>Moya Sánchez</h1>
-    <p class="hero-role">Especialista en Psiquiatría · UNAM · Mención Honorífica · Alta Especialidad en Psiquiatría de Enlace · Certificado CMP · Actualización médica constante</p>
+    <p class="hero-role" data-i18n="hero_role">Especialista en Psiquiatría · UNAM · Mención Honorífica · Alta Especialidad en Psiquiatría de Enlace · Certificado CMP · Actualización médica constante</p>
     <div class="hero-stars">
       <span class="stars-text">★★★★★</span>
-      <span class="stars-label">5.0 Google · +100 reseñas verificadas</span>
+      <span class="stars-label" data-i18n="hero_stars_label">5.0 Google · +100 reseñas verificadas</span>
     </div>
-    <p class="hero-desc">Psiquiatra con formación de alto nivel en UNAM (mención honorífica) y Alta Especialidad en <strong>Psiquiatría de Enlace</strong>. Certificado por el Consejo Mexicano de Psiquiatría. Múltiples publicaciones en revistas indexadas internacionales. Autor de investigaciones en neuromodulación, TDAH, delirium y depresión. Consulta presencial en Del Valle o en línea desde cualquier lugar.</p>
+    <p class="hero-desc" data-i18n="hero_desc">Psiquiatra con formación de alto nivel en UNAM (mención honorífica) y Alta Especialidad en <strong>Psiquiatría de Enlace</strong>. Certificado por el Consejo Mexicano de Psiquiatría. Múltiples publicaciones en revistas indexadas internacionales. Autor de investigaciones en neuromodulación, TDAH, delirium y depresión. Consulta presencial en Del Valle o en línea desde cualquier lugar.</p>
 <p class="hero-desc" style="display:none" aria-hidden="true" id="geo-citation">
 El Dr. Deldhy Nicolás Moya Sánchez es psiquiatra en la Ciudad de México, egresado con mención honorífica del Centro Médico Nacional "20 de Noviembre" (ISSSTE–UNAM) y con Alta Especialidad en Psiquiatría de Enlace por la UNAM. Certificado por el Consejo Mexicano de Psiquiatría (CONACEM) con vigencia hasta 2030 (No. 24803862). Cédula de especialidad SEP No. 14788885. Médico adscrito al CMN "20 de Noviembre" ISSSTE. Profesor de asignatura en la Facultad de Medicina de la UNAM. Investigador con ORCID 0000-0002-7989-4646 y publicaciones en European Psychiatry, Psychosomatic Medicine y Neuropsychiatric Investigation. Ofrece consulta presencial en Calle Moras 619, Colonia Del Valle Sur, Alcaldía Benito Juárez, CDMX (C.P. 03104) y consulta en línea disponible para toda la República Mexicana y el extranjero. Honorarios: $1,400 MXN consulta en línea, $1,600 MXN presencial. Atención en español e inglés. WhatsApp: +52 673 120 5121.
 </p>
     <div class="hero-actions">
       <a href="https://psiquiatra-cdmx.eutimya.org/cita" class="btn-main">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-        Agendar Cita
+        <span data-i18n="hero_btn_agendar">Agendar Cita</span>
       </a>
       <a href="https://wa.me/526731205121" class="btn-wa" target="_blank" rel="noopener">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
@@ -1303,20 +1304,20 @@ El Dr. Deldhy Nicolás Moya Sánchez es psiquiatra en la Ciudad de México, egre
     <img src="https://lh3.googleusercontent.com/pw/AP1GczOqR75P60pnKq1lU4B7E8LkSC1xHGPyu1pQ8rBbqVdh3jbBWc8vwWDl3mI_qWrhhvHGzaxXEZIIBrS8U1XD5n4PND0V7_ZpFfIuZMMS8f7g-fgWA7tZNBcCpEDsPI5oC-zJNM1iLLYHh3XSmYgxL0Jwvg=w994-h1490-s-no-gm"
          alt="Dr. Deldhy Nicolás Moya Sánchez — Psiquiatra CDMX frente a la Biblioteca Central UNAM" loading="eager"/>
     <div class="hero-mobile-overlay">
-      <p class="hmo-eyebrow">Psiquiatra Certificado · CDMX</p>
+      <p class="hmo-eyebrow" data-i18n="hero_tag">Psiquiatra Certificado · CDMX</p>
       <h1 class="hmo-name">
         <span class="hmo-name-main">Dr. Moya Sánchez</span>
         <span class="hmo-name-sub">Deldhy Nicolás</span>
       </h1>
-      <p class="hmo-role">Especialista en Psiquiatría · UNAM · Mención Honorífica · Alta Especialidad en Psiquiatría de Enlace · Certificado CMP</p>
+      <p class="hmo-role" data-i18n="hero_role_short">Especialista en Psiquiatría · UNAM · Mención Honorífica · Alta Especialidad en Psiquiatría de Enlace · Certificado CMP</p>
       <div class="hmo-stars">
         <span class="hmo-stars-ico">★★★★★</span>
-        <span class="hmo-stars-txt">5.0 Google · +100 reseñas verificadas</span>
+        <span class="hmo-stars-txt" data-i18n="hero_stars_label">5.0 Google · +100 reseñas verificadas</span>
       </div>
       <div class="hmo-cta">
         <a href="https://psiquiatra-cdmx.eutimya.org/cita" class="hmo-btn-main">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          Agendar Cita
+          <span data-i18n="hero_btn_agendar">Agendar Cita</span>
         </a>
         <a href="https://wa.me/526731205121" class="hmo-btn-wa" target="_blank" rel="noopener">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
@@ -1335,7 +1336,7 @@ El Dr. Deldhy Nicolás Moya Sánchez es psiquiatra en la Ciudad de México, egre
       </div>
     </div>
     <div class="hero-right-overlay">
-      <span class="hero-right-badge">Consulta presencial · Del Valle, CDMX · En línea</span>
+      <span class="hero-right-badge" data-i18n="hero_badge">Consulta presencial · Del Valle, CDMX · En línea</span>
     </div>
   </div>
 </section>
@@ -1343,17 +1344,17 @@ El Dr. Deldhy Nicolás Moya Sánchez es psiquiatra en la Ciudad de México, egre
 <!-- STATS -->
 <div class="stats-bar">
   <div class="stats-inner">
-    <div><span class="stat-n">★ 5.0</span><span class="stat-l">+100 reseñas Google</span></div>
-    <div><span class="stat-n" style="font-size:1.1rem;letter-spacing:-.01em">Múltiples</span><span class="stat-l">Publicaciones indexadas internacionales</span></div>
-    <div><span class="stat-n">✓</span><span class="stat-l">Certificado CMP · Actualización constante</span></div>
-    <div><span class="stat-n">#4</span><span class="stat-l">CMN "20 Nov." · Mejor hospital México 2026</span></div>
-    <div><span class="stat-n">★ UNAM</span><span class="stat-l">Mención Honorífica · Trayectoria destacada</span></div>
+    <div><span class="stat-n">★ 5.0</span><span class="stat-l" data-i18n="stat_reviews">+100 reseñas Google</span></div>
+    <div><span class="stat-n" style="font-size:1.1rem;letter-spacing:-.01em" data-i18n="stat_pubs_n">Múltiples</span><span class="stat-l" data-i18n="stat_pubs">Publicaciones indexadas internacionales</span></div>
+    <div><span class="stat-n">✓</span><span class="stat-l" data-i18n="stat_cert">Certificado CMP · Actualización constante</span></div>
+    <div><span class="stat-n">#4</span><span class="stat-l" data-i18n="stat_hosp">CMN "20 Nov." · Mejor hospital México 2026</span></div>
+    <div><span class="stat-n">★ UNAM</span><span class="stat-l" data-i18n="stat_unam">Mención Honorífica · Trayectoria destacada</span></div>
   </div>
 </div>
 
 <!-- TICKER -->
 <div class="ticker-wrap" aria-hidden="true">
-  <div class="ticker-label">Formación · Afiliaciones · Certificaciones</div>
+  <div class="ticker-label" data-i18n="ticker_label">Formación · Afiliaciones · Certificaciones</div>
   <div class="ticker-track-container">
     <div class="ticker-track">
       <div class="ticker-item"><div class="ticker-dot"></div><span class="ticker-name">UNAM</span><span class="ticker-sub">Mención Honorífica</span></div>
@@ -1447,16 +1448,16 @@ El Dr. Deldhy Nicolás Moya Sánchez es psiquiatra en la Ciudad de México, egre
 <!-- CUANDO CONSULTAR -->
 <section class="section" id="cuando">
   <div class="wrap">
-    <p class="eyebrow">¿Cuándo consultar?</p>
-    <h2 class="section-h">Señales de que necesitas un <em>psiquiatra en CDMX</em></h2>
-    <p class="section-sub">No es necesario esperar a estar en crisis. Una evaluación temprana da claridad diagnóstica y evita que los síntomas escalen.</p>
+    <p class="eyebrow" data-i18n="cuando_eyebrow">¿Cuándo consultar?</p>
+    <h2 class="section-h" data-i18n="cuando_h2">Señales de que necesitas un <em>psiquiatra en CDMX</em></h2>
+    <p class="section-sub" data-i18n="cuando_sub">No es necesario esperar a estar en crisis. Una evaluación temprana da claridad diagnóstica y evita que los síntomas escalen.</p>
     <div class="cuando-grid">
-      <div class="cuando-item"><div class="cuando-icon">😰</div><div class="cuando-name">Ansiedad persistente</div><div class="cuando-sub">Preocupación constante, ataques de pánico, síntomas físicos sin causa médica</div></div>
-      <div class="cuando-item"><div class="cuando-icon">😔</div><div class="cuando-name">Tristeza prolongada</div><div class="cuando-sub">Ánimo bajo por más de 2 semanas, pérdida de interés, fatiga o pensamientos negativos</div></div>
-      <div class="cuando-item"><div class="cuando-icon">🧩</div><div class="cuando-name">Problemas de atención</div><div class="cuando-sub">Desorganización crónica, impulsividad, procrastinación — posible TDAH en adultos</div></div>
-      <div class="cuando-item"><div class="cuando-icon">🛏️</div><div class="cuando-name">Insomnio crónico</div><div class="cuando-sub">Dificultad para dormir o sueño no reparador que afecta el rendimiento diario</div></div>
-      <div class="cuando-item"><div class="cuando-icon">💊</div><div class="cuando-name">Necesitas medicación</div><div class="cuando-sub">Tu médico o psicólogo recomienda evaluación psiquiátrica o ajuste de medicamentos</div></div>
-      <div class="cuando-item"><div class="cuando-icon">⚖️</div><div class="cuando-name">Cirugía bariátrica</div><div class="cuando-sub">Se requiere evaluación psiquiátrica preoperatoria por el equipo quirúrgico</div></div>
+      <div class="cuando-item"><div class="cuando-icon">😰</div><div class="cuando-name" data-i18n="cuando_ansiedad_name">Ansiedad persistente</div><div class="cuando-sub" data-i18n="cuando_ansiedad_sub">Preocupación constante, ataques de pánico, síntomas físicos sin causa médica</div></div>
+      <div class="cuando-item"><div class="cuando-icon">😔</div><div class="cuando-name" data-i18n="cuando_tristeza_name">Tristeza prolongada</div><div class="cuando-sub" data-i18n="cuando_tristeza_sub">Ánimo bajo por más de 2 semanas, pérdida de interés, fatiga o pensamientos negativos</div></div>
+      <div class="cuando-item"><div class="cuando-icon">🧩</div><div class="cuando-name" data-i18n="cuando_atencion_name">Problemas de atención</div><div class="cuando-sub" data-i18n="cuando_atencion_sub">Desorganización crónica, impulsividad, procrastinación — posible TDAH en adultos</div></div>
+      <div class="cuando-item"><div class="cuando-icon">🛏️</div><div class="cuando-name" data-i18n="cuando_insomnio_name">Insomnio crónico</div><div class="cuando-sub" data-i18n="cuando_insomnio_sub">Dificultad para dormir o sueño no reparador que afecta el rendimiento diario</div></div>
+      <div class="cuando-item"><div class="cuando-icon">💊</div><div class="cuando-name" data-i18n="cuando_medicacion_name">Necesitas medicación</div><div class="cuando-sub" data-i18n="cuando_medicacion_sub">Tu médico o psicólogo recomienda evaluación psiquiátrica o ajuste de medicamentos</div></div>
+      <div class="cuando-item"><div class="cuando-icon">⚖️</div><div class="cuando-name" data-i18n="cuando_bariatrica_name">Cirugía bariátrica</div><div class="cuando-sub" data-i18n="cuando_bariatrica_sub">Se requiere evaluación psiquiátrica preoperatoria por el equipo quirúrgico</div></div>
     </div>
   </div>
 </section>
@@ -1464,9 +1465,9 @@ El Dr. Deldhy Nicolás Moya Sánchez es psiquiatra en la Ciudad de México, egre
 <!-- HONORARIOS -->
 <section class="section section-alt" id="honorarios">
   <div class="wrap">
-    <p class="eyebrow">Honorarios</p>
-    <h2 class="section-h">Consulta psiquiátrica en CDMX</h2>
-    <p class="section-sub">Sesión de 50 minutos. Primera consulta o seguimiento. Pago confirmado por WhatsApp para agendar horario.</p>
+    <p class="eyebrow" data-i18n="hon_eyebrow">Honorarios</p>
+    <h2 class="section-h" data-i18n="hon_h2">Consulta psiquiátrica en CDMX</h2>
+    <p class="section-sub" data-i18n="hon_sub">Sesión de 50 minutos. Primera consulta o seguimiento. Pago confirmado por WhatsApp para agendar horario.</p>
     <div class="pricing-grid">
       <div class="price-card featured">
         <div class="price-tag">💻 Más popular · Disponible en todo México</div>
@@ -1532,8 +1533,8 @@ El Dr. Deldhy Nicolás Moya Sánchez es psiquiatra en la Ciudad de México, egre
   <div class="wrap">
     <div class="about-grid">
       <div class="about-body">
-        <p class="eyebrow">Acerca del Dr. Moya</p>
-        <h2 class="section-h">Lo que puedo hacer<br/>por tu salud mental</h2>
+        <p class="eyebrow" data-i18n="acerca_eyebrow">Acerca del Dr. Moya</p>
+        <h2 class="section-h" data-i18n="acerca_h2">Lo que puedo hacer<br/>por tu salud mental</h2>
         <p>Soy psiquiatra egresado con <strong>mención honorífica</strong> del Centro Médico Nacional "20 de Noviembre" (UNAM), con <strong>Alta Especialidad en Psiquiatría de Enlace</strong> — lo que me permite entender la salud mental en su contexto médico completo: no solo el diagnóstico psiquiátrico, sino cómo interactúa con enfermedades crónicas, cirugías o condiciones médicas.</p>
         <p>Mis consultas están basadas en evidencia. Uso escalas clínicas validadas, aplico psicofarmacología actualizada y combino con orientación en Terapia Cognitivo Conductual cuando es útil. Investigo activamente: tengo múltiples publicaciones en revistas internacionales indexadas y participo como revisor en <em>Cureus Journal</em>.</p>
         <p>Como <strong>Profesor de Medicina Psicológica en la Facultad de Medicina UNAM</strong> y con certificaciones por Stanford, McLean Hospital y la APA, me mantengo al día con los últimos avances. Miembro activo de la <strong>ACLP</strong> y la Asociación Psiquiátrica Mexicana.</p>
@@ -1588,16 +1589,16 @@ El Dr. Deldhy Nicolás Moya Sánchez es psiquiatra en la Ciudad de México, egre
 <!-- SERVICES -->
 <section class="section" id="servicios">
   <div class="wrap">
-    <p class="eyebrow">Servicios</p>
-    <h2 class="section-h">¿En qué puedo ayudarte?</h2>
-    <p class="section-sub">Atención psiquiátrica integral, diagnóstico basado en evidencia y tratamiento personalizado — en consultorio o en línea.</p>
+    <p class="eyebrow" data-i18n="svc_eyebrow">Servicios</p>
+    <h2 class="section-h" data-i18n="svc_h2">¿En qué puedo ayudarte?</h2>
+    <p class="section-sub" data-i18n="svc_sub">Atención psiquiátrica integral, diagnóstico basado en evidencia y tratamiento personalizado — en consultorio o en línea.</p>
     <div class="services-grid">
-      <div class="svc"><div class="svc-icon">🧠</div><h3>Consulta Psiquiátrica Integral</h3><p>Valoración completa: anamnesis, exploración del estado mental, diagnóstico diferencial y plan terapéutico personalizado. Sesiones de 50 minutos desde $1,400 MXN.</p></div>
-      <div class="svc"><div class="svc-icon">🏥</div><h3>Psiquiatría de Enlace</h3><p>Interconsulta y comanejo de pacientes hospitalizados con comorbilidades psiquiátricas. Alta Especialidad concluida por la UNAM en CMN 20 de Noviembre, ISSSTE. Miembro ACLP.</p></div>
-      <div class="svc"><div class="svc-icon">⚡</div><h3>Neuromodulación (TMS / tDCS)</h3><p>Estimulación magnética transcraneal (TMS) y estimulación eléctrica transcraneal (tDCS) para depresión refractaria, TDAH y otros trastornos. Investigador activo en el área.</p></div>
-      <div class="svc"><div class="svc-icon">💊</div><h3>Psicofarmacología</h3><p>Prescripción, ajuste y seguimiento farmacológico riguroso. Recetas de medicamentos controlados con firma autógrafa para psicotrópicos y estupefacientes.</p></div>
-      <div class="svc"><div class="svc-icon">🧩</div><h3>Terapia Cognitivo-Conductual</h3><p>Intervenciones TCC estructuradas para ansiedad, depresión, insomnio y trastornos adaptativos. Diplomado por el Instituto Mexicano de Psicoterapia Cognitivo Conductual.</p></div>
-      <div class="svc"><div class="svc-icon">⚖️</div><h3>Psiquiatría en Cirugía Bariátrica</h3><p>Valoración psiquiátrica pre y posoperatoria. Manejo de comorbilidades afectivas y trastornos de la conducta alimentaria. Ponente en congresos internacionales sobre el tema.</p></div>
+      <div class="svc"><div class="svc-icon">🧠</div><h3 data-i18n="svc1_h3">Consulta Psiquiátrica Integral</h3><p data-i18n="svc1_p">Valoración completa: anamnesis, exploración del estado mental, diagnóstico diferencial y plan terapéutico personalizado. Sesiones de 50 minutos desde $1,400 MXN.</p></div>
+      <div class="svc"><div class="svc-icon">🏥</div><h3 data-i18n="svc2_h3">Psiquiatría de Enlace</h3><p data-i18n="svc2_p">Interconsulta y comanejo de pacientes hospitalizados con comorbilidades psiquiátricas. Alta Especialidad concluida por la UNAM en CMN 20 de Noviembre, ISSSTE. Miembro ACLP.</p></div>
+      <div class="svc"><div class="svc-icon">⚡</div><h3 data-i18n="svc3_h3">Neuromodulación (TMS / tDCS)</h3><p data-i18n="svc3_p">Estimulación magnética transcraneal (TMS) y estimulación eléctrica transcraneal (tDCS) para depresión refractaria, TDAH y otros trastornos. Investigador activo en el área.</p></div>
+      <div class="svc"><div class="svc-icon">💊</div><h3 data-i18n="svc4_h3">Psicofarmacología</h3><p data-i18n="svc4_p">Prescripción, ajuste y seguimiento farmacológico riguroso. Recetas de medicamentos controlados con firma autógrafa para psicotrópicos y estupefacientes.</p></div>
+      <div class="svc"><div class="svc-icon">🧩</div><h3 data-i18n="svc5_h3">Terapia Cognitivo-Conductual</h3><p data-i18n="svc5_p">Intervenciones TCC estructuradas para ansiedad, depresión, insomnio y trastornos adaptativos. Diplomado por el Instituto Mexicano de Psicoterapia Cognitivo Conductual.</p></div>
+      <div class="svc"><div class="svc-icon">⚖️</div><h3 data-i18n="svc6_h3">Psiquiatría en Cirugía Bariátrica</h3><p data-i18n="svc6_p">Valoración psiquiátrica pre y posoperatoria. Manejo de comorbilidades afectivas y trastornos de la conducta alimentaria. Ponente en congresos internacionales sobre el tema.</p></div>
     </div>
   </div>
 </section>
@@ -1605,9 +1606,9 @@ El Dr. Deldhy Nicolás Moya Sánchez es psiquiatra en la Ciudad de México, egre
 <!-- CONDITIONS -->
 <section class="section section-alt" id="padecimientos">
   <div class="wrap">
-    <p class="eyebrow">Padecimientos que trato</p>
-    <h2 class="section-h">Atención especializada para adultos</h2>
-    <p class="section-sub">Diagnóstico y tratamiento integral de los principales trastornos mentales con enfoque clínico, humanista y basado en evidencia.</p>
+    <p class="eyebrow" data-i18n="cond_eyebrow">Padecimientos que trato</p>
+    <h2 class="section-h" data-i18n="cond_h2">Atención especializada para adultos</h2>
+    <p class="section-sub" data-i18n="cond_sub">Diagnóstico y tratamiento integral de los principales trastornos mentales con enfoque clínico, humanista y basado en evidencia.</p>
     <div class="cond-grid">
       <div class="cond"><span class="cond-bullet"></span>Depresión mayor</div>
       <div class="cond"><span class="cond-bullet"></span>Ansiedad generalizada</div>
@@ -3013,78 +3014,226 @@ cirugía bariátrica, neuromodulación (TMS y tDCS).
 - Sitio web: https://psiquiatra-cdmx.eutimya.org/
 - Investigación: https://orcid.org/0000-0002-7989-4646
 </script>
-<!-- ═══ GOOGLE TRANSLATE ═══ -->
-<div id="google_translate_element" style="display:none;position:absolute;height:0;overflow:hidden;pointer-events:none"></div>
-<style>
-  .goog-te-banner-frame,.skiptranslate{display:none!important;height:0!important}
-  body{top:0!important}
-  .goog-te-combo{display:none!important}
-</style>
+<!-- ═══ i18n NATIVO ES / EN ═══ -->
 <script>
-window.googleTranslateElementInit = function(){
-  new google.translate.TranslateElement({
-    pageLanguage:'es',
-    includedLanguages:'en',
-    autoDisplay:false
-  },'google_translate_element');
+var i18n = {
+  es: {
+    /* NAV desktop */
+    nav_cuando:'¿Cuándo?', nav_servicios:'Servicios', nav_innovacion:'Innovación',
+    nav_hospitalizacion:'Hospitalización', nav_investigacion:'Investigación',
+    nav_contacto:'Contacto', nav_mas:'Más', nav_agendar:'Agendar Cita',
+    nav_drop_acerca:'Acerca del Dr. Moya', nav_drop_articulos:'Artículos',
+    nav_drop_credenciales:'Cédulas y Títulos', nav_pagos:'Formas de pago',
+    nav_factura:'Factura CFDI',
+    /* Mobile nav */
+    mnav_consulta:'Consulta', mnav_enfoque:'Enfoque clínico',
+    mnav_acerca:'Acerca del Dr. Moya', mnav_admin:'Administrativo',
+    mnav_cuando_link:'¿Cuándo consultar?', mnav_servicios:'Servicios',
+    mnav_padecimientos:'Padecimientos', mnav_honorarios:'Honorarios',
+    mnav_innovacion:'Herramientas Innovadoras',
+    mnav_hospitalizacion:'Hospitalización Psiquiátrica',
+    mnav_ia:'IA y Salud Mental', mnav_perfil:'Perfil profesional',
+    mnav_investigacion:'Investigación', mnav_ponencias:'Congresos',
+    mnav_articulos:'Artículos', mnav_liderazgo:'Liderazgo',
+    mnav_credenciales:'Cédulas y Títulos', mnav_faq:'Preguntas frecuentes',
+    mnav_contacto:'Contacto', mnav_pagos:'Formas de pago',
+    mnav_factura:'Solicitar factura', mnav_cta_agendar:'Agendar Cita',
+    /* Hero */
+    hero_tag:'Psiquiatra Certificado · CDMX',
+    hero_role:'Especialista en Psiquiatría · UNAM · Mención Honorífica · Alta Especialidad en Psiquiatría de Enlace · Certificado CMP · Actualización médica constante',
+    hero_role_short:'Especialista en Psiquiatría · UNAM · Mención Honorífica · Alta Especialidad en Psiquiatría de Enlace · Certificado CMP',
+    hero_stars_label:'5.0 Google · +100 reseñas verificadas',
+    hero_desc:'Psiquiatra con formación de alto nivel en UNAM (mención honorífica) y Alta Especialidad en <strong>Psiquiatría de Enlace</strong>. Certificado por el Consejo Mexicano de Psiquiatría. Múltiples publicaciones en revistas indexadas internacionales. Autor de investigaciones en neuromodulación, TDAH, delirium y depresión. Consulta presencial en Del Valle o en línea desde cualquier lugar.',
+    hero_btn_agendar:'Agendar Cita',
+    hero_badge:'Consulta presencial · Del Valle, CDMX · En línea',
+    /* Stats */
+    stat_reviews:'+100 reseñas Google',
+    stat_pubs_n:'Múltiples',
+    stat_pubs:'Publicaciones indexadas internacionales',
+    stat_cert:'Certificado CMP · Actualización constante',
+    stat_hosp:'CMN "20 Nov." · Mejor hospital México 2026',
+    stat_unam:'Mención Honorífica · Trayectoria destacada',
+    /* Ticker */
+    ticker_label:'Formación · Afiliaciones · Certificaciones',
+    /* Cuando */
+    cuando_eyebrow:'¿Cuándo consultar?',
+    cuando_h2:'Señales de que necesitas un <em>psiquiatra en CDMX</em>',
+    cuando_sub:'No es necesario esperar a estar en crisis. Una evaluación temprana da claridad diagnóstica y evita que los síntomas escalen.',
+    cuando_ansiedad_name:'Ansiedad persistente',
+    cuando_ansiedad_sub:'Preocupación constante, ataques de pánico, síntomas físicos sin causa médica',
+    cuando_tristeza_name:'Tristeza prolongada',
+    cuando_tristeza_sub:'Ánimo bajo por más de 2 semanas, pérdida de interés, fatiga o pensamientos negativos',
+    cuando_atencion_name:'Problemas de atención',
+    cuando_atencion_sub:'Desorganización crónica, impulsividad, procrastinación — posible TDAH en adultos',
+    cuando_insomnio_name:'Insomnio crónico',
+    cuando_insomnio_sub:'Dificultad para dormir o sueño no reparador que afecta el rendimiento diario',
+    cuando_medicacion_name:'Necesitas medicación',
+    cuando_medicacion_sub:'Tu médico o psicólogo recomienda evaluación psiquiátrica o ajuste de medicamentos',
+    cuando_bariatrica_name:'Cirugía bariátrica',
+    cuando_bariatrica_sub:'Se requiere evaluación psiquiátrica preoperatoria por el equipo quirúrgico',
+    /* Honorarios */
+    hon_eyebrow:'Honorarios', hon_h2:'Consulta psiquiátrica en CDMX',
+    hon_sub:'Sesión de 50 minutos. Primera consulta o seguimiento. Pago confirmado por WhatsApp para agendar horario.',
+    /* Acerca */
+    acerca_eyebrow:'Acerca del Dr. Moya',
+    acerca_h2:'Lo que puedo hacer<br/>por tu salud mental',
+    /* Servicios */
+    svc_eyebrow:'Servicios', svc_h2:'¿En qué puedo ayudarte?',
+    svc_sub:'Atención psiquiátrica integral, diagnóstico basado en evidencia y tratamiento personalizado — en consultorio o en línea.',
+    svc1_h3:'Consulta Psiquiátrica Integral',
+    svc1_p:'Valoración completa: anamnesis, exploración del estado mental, diagnóstico diferencial y plan terapéutico personalizado. Sesiones de 50 minutos desde $1,400 MXN.',
+    svc2_h3:'Psiquiatría de Enlace',
+    svc2_p:'Interconsulta y comanejo de pacientes hospitalizados con comorbilidades psiquiátricas. Alta Especialidad concluida por la UNAM en CMN 20 de Noviembre, ISSSTE. Miembro ACLP.',
+    svc3_h3:'Neuromodulación (TMS / tDCS)',
+    svc3_p:'Estimulación magnética transcraneal (TMS) y estimulación eléctrica transcraneal (tDCS) para depresión refractaria, TDAH y otros trastornos. Investigador activo en el área.',
+    svc4_h3:'Psicofarmacología',
+    svc4_p:'Prescripción, ajuste y seguimiento farmacológico riguroso. Recetas de medicamentos controlados con firma autógrafa para psicotrópicos y estupefacientes.',
+    svc5_h3:'Terapia Cognitivo-Conductual',
+    svc5_p:'Intervenciones TCC estructuradas para ansiedad, depresión, insomnio y trastornos adaptativos. Diplomado por el Instituto Mexicano de Psicoterapia Cognitivo Conductual.',
+    svc6_h3:'Psiquiatría en Cirugía Bariátrica',
+    svc6_p:'Valoración psiquiátrica pre y posoperatoria. Manejo de comorbilidades afectivas y trastornos de la conducta alimentaria. Ponente en congresos internacionales sobre el tema.',
+    /* Padecimientos */
+    cond_eyebrow:'Padecimientos que trato',
+    cond_h2:'Atención especializada para adultos',
+    cond_sub:'Diagnóstico y tratamiento integral de los principales trastornos mentales con enfoque clínico, humanista y basado en evidencia.'
+  },
+  en: {
+    /* NAV desktop */
+    nav_cuando:'When?', nav_servicios:'Services', nav_innovacion:'Innovation',
+    nav_hospitalizacion:'Hospitalization', nav_investigacion:'Research',
+    nav_contacto:'Contact', nav_mas:'More', nav_agendar:'Book Appointment',
+    nav_drop_acerca:'About Dr. Moya', nav_drop_articulos:'Articles',
+    nav_drop_credenciales:'Licenses & Diplomas', nav_pagos:'Payment methods',
+    nav_factura:'CFDI Invoice',
+    /* Mobile nav */
+    mnav_consulta:'Consultation', mnav_enfoque:'Clinical Approach',
+    mnav_acerca:'About Dr. Moya', mnav_admin:'Administrative',
+    mnav_cuando_link:'When to consult?', mnav_servicios:'Services',
+    mnav_padecimientos:'Conditions', mnav_honorarios:'Fees',
+    mnav_innovacion:'Innovative Tools',
+    mnav_hospitalizacion:'Psychiatric Hospitalization',
+    mnav_ia:'AI & Mental Health', mnav_perfil:'Professional profile',
+    mnav_investigacion:'Research', mnav_ponencias:'Conferences',
+    mnav_articulos:'Articles', mnav_liderazgo:'Leadership',
+    mnav_credenciales:'Licenses & Diplomas', mnav_faq:'FAQ',
+    mnav_contacto:'Contact', mnav_pagos:'Payment methods',
+    mnav_factura:'Request invoice', mnav_cta_agendar:'Book Appointment',
+    /* Hero */
+    hero_tag:'Board-Certified Psychiatrist · CDMX',
+    hero_role:'Psychiatry Specialist · UNAM · Honorable Mention · Advanced Specialty in Consultation-Liaison Psychiatry · CMP Certified · Continuous Medical Education',
+    hero_role_short:'Psychiatry Specialist · UNAM · Honorable Mention · Advanced Specialty in Consultation-Liaison Psychiatry · CMP Certified',
+    hero_stars_label:'5.0 Google · +100 verified reviews',
+    hero_desc:'Psychiatrist with top-tier training at UNAM (honorable mention) and Advanced Specialty in <strong>Consultation-Liaison Psychiatry</strong>. Board-certified by the Mexican Council of Psychiatry. Multiple publications in international indexed journals. Research in neuromodulation, ADHD, delirium, and depression. In-person consultations in Del Valle or online from anywhere.',
+    hero_btn_agendar:'Book Appointment',
+    hero_badge:'In-person · Del Valle, CDMX · Online',
+    /* Stats */
+    stat_reviews:'+100 Google reviews',
+    stat_pubs_n:'Multiple',
+    stat_pubs:'International indexed publications',
+    stat_cert:'CMP Certified · Continuous updates',
+    stat_hosp:'CMN "20 Nov." · Best hospital Mexico 2026',
+    stat_unam:'Honorable Mention · Distinguished career',
+    /* Ticker */
+    ticker_label:'Training · Affiliations · Certifications',
+    /* Cuando */
+    cuando_eyebrow:'When to consult?',
+    cuando_h2:'Signs you need a <em>psychiatrist in CDMX</em>',
+    cuando_sub:"You don't need to wait for a crisis. An early evaluation provides diagnostic clarity and prevents symptoms from escalating.",
+    cuando_ansiedad_name:'Persistent anxiety',
+    cuando_ansiedad_sub:'Constant worry, panic attacks, physical symptoms without medical cause',
+    cuando_tristeza_name:'Prolonged sadness',
+    cuando_tristeza_sub:'Low mood for more than 2 weeks, loss of interest, fatigue or negative thoughts',
+    cuando_atencion_name:'Attention problems',
+    cuando_atencion_sub:'Chronic disorganization, impulsivity, procrastination — possible adult ADHD',
+    cuando_insomnio_name:'Chronic insomnia',
+    cuando_insomnio_sub:'Difficulty sleeping or non-restorative sleep that affects daily performance',
+    cuando_medicacion_name:'Need medication',
+    cuando_medicacion_sub:'Your doctor or psychologist recommends psychiatric evaluation or medication adjustment',
+    cuando_bariatrica_name:'Bariatric surgery',
+    cuando_bariatrica_sub:'Preoperative psychiatric evaluation required by the surgical team',
+    /* Honorarios */
+    hon_eyebrow:'Fees', hon_h2:'Psychiatric consultation in CDMX',
+    hon_sub:'50-minute session. First consultation or follow-up. Payment confirmed via WhatsApp to schedule.',
+    /* Acerca */
+    acerca_eyebrow:'About Dr. Moya',
+    acerca_h2:'What I can do<br/>for your mental health',
+    /* Servicios */
+    svc_eyebrow:'Services', svc_h2:'How can I help you?',
+    svc_sub:'Comprehensive psychiatric care, evidence-based diagnosis and personalized treatment — in office or online.',
+    svc1_h3:'Comprehensive Psychiatric Consultation',
+    svc1_p:'Complete evaluation: anamnesis, mental status examination, differential diagnosis and personalized therapeutic plan. 50-minute sessions from $1,400 MXN.',
+    svc2_h3:'Consultation-Liaison Psychiatry',
+    svc2_p:'Consultation and co-management of hospitalized patients with psychiatric comorbidities. Advanced Specialty completed at UNAM in CMN 20 de Noviembre, ISSSTE. ACLP member.',
+    svc3_h3:'Neuromodulation (TMS / tDCS)',
+    svc3_p:'Transcranial magnetic stimulation (TMS) and transcranial direct current stimulation (tDCS) for refractory depression, ADHD and other disorders. Active researcher in the field.',
+    svc4_h3:'Psychopharmacology',
+    svc4_p:'Rigorous prescription, adjustment and pharmacological monitoring. Controlled medication prescriptions with original signature for psychotropics and narcotics.',
+    svc5_h3:'Cognitive-Behavioral Therapy',
+    svc5_p:'Structured CBT interventions for anxiety, depression, insomnia and adjustment disorders. Diploma from the Mexican Institute of Cognitive Behavioral Psychotherapy.',
+    svc6_h3:'Psychiatry in Bariatric Surgery',
+    svc6_p:'Pre- and postoperative psychiatric evaluation. Management of affective comorbidities and eating disorders. Speaker at international conferences on the topic.',
+    /* Padecimientos */
+    cond_eyebrow:'Conditions I treat',
+    cond_h2:'Specialized care for adults',
+    cond_sub:'Comprehensive diagnosis and treatment of major mental disorders with a clinical, humanistic, and evidence-based approach.'
+  }
 };
-</script>
-<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" async></script>
-<script>
-(function(){
-  function getCookie(name){
-    var m = document.cookie.match('(?:^|;)\\s*'+name+'=([^;]*)');
-    return m ? decodeURIComponent(m[1]) : '';
+
+function setLang(lang) {
+  document.documentElement.lang = lang;
+  localStorage.setItem('lang', lang);
+  /* Traducir todos los elementos con data-i18n */
+  document.querySelectorAll('[data-i18n]').forEach(function(el) {
+    var key = el.getAttribute('data-i18n');
+    if (i18n[lang] && i18n[lang][key] !== undefined) {
+      el.innerHTML = i18n[lang][key];
+    }
+  });
+  /* Actualizar botón de idioma en nav */
+  var btn = document.getElementById('lang-btn');
+  if (btn) {
+    btn.textContent = lang === 'es' ? '🇺🇸 EN' : '🇲🇽 ES';
+    btn.title = lang === 'es' ? 'Switch to English' : 'Cambiar a español';
   }
-  function setCookie(val){
-    var exp = val ? '' : '; expires=Thu, 01 Jan 1970 00:00:00 UTC';
-    [location.hostname, '.'+location.hostname].forEach(function(d){
-      document.cookie = 'googtrans='+val+exp+'; path=/; domain='+d;
-    });
-    document.cookie = 'googtrans='+val+exp+'; path=/';
-  }
+  /* Actualizar en-badges (desktop y móvil) */
+  var badges = [
+    { id:'en-badge-d',
+      enHTML:'🇲🇽 Regresar al español <span style="opacity:.6;font-weight:400">· Back to Spanish</span>',
+      esHTML:'🇺🇸 Yes, we speak English <span style="opacity:.6;font-weight:400">· Consultations available in English</span>',
+      enBg:'linear-gradient(135deg,#1a5c3a,#22724a)',
+      esBg:'linear-gradient(135deg,#1D1D1F,#2d2d2f)' },
+    { id:'en-badge-m',
+      enHTML:'🇲🇽 Regresar al español <span style="opacity:.6;font-weight:400"> · Volver</span>',
+      esHTML:'🇺🇸 Yes, we speak English <span style="opacity:.6;font-weight:400"> · English consultations</span>',
+      enBg:'rgba(26,92,58,.85)',
+      esBg:'rgba(29,29,31,.75)' }
+  ];
+  badges.forEach(function(b) {
+    var el = document.getElementById(b.id);
+    if (!el) return;
+    el.innerHTML = lang === 'en' ? b.enHTML : b.esHTML;
+    el.style.background = lang === 'en' ? b.enBg : b.esBg;
+    el.title = lang === 'en' ? 'Cambiar a español' : 'Click to switch to English';
+  });
+}
 
-  var isEN = getCookie('googtrans').indexOf('/en') !== -1;
+(function() {
+  /* Restaurar idioma guardado o usar español por defecto */
+  var saved = localStorage.getItem('lang') || 'es';
+  setLang(saved);
 
-  function updateBadges(){
-    var pairs = [
-      {
-        id:'en-badge-d',
-        enHTML:'&#127474;&#127485; Regresar al espa&ntilde;ol <span style="opacity:.6;font-weight:400">&middot; Back to Spanish</span>',
-        esHTML:'&#127482;&#127480; Yes, we speak English <span style="opacity:.6;font-weight:400">&middot; Consultations available in English</span>',
-        enBg:'linear-gradient(135deg,#1a5c3a,#22724a)',
-        esBg:'linear-gradient(135deg,#1a3a5c,#1e3a5f)'
-      },
-      {
-        id:'en-badge-m',
-        enHTML:'&#127474;&#127485; Regresar al espa&ntilde;ol <span style="opacity:.6;font-weight:400"> &middot; Volver</span>',
-        esHTML:'&#127482;&#127480; Yes, we speak English <span style="opacity:.6;font-weight:400"> &middot; English consultations</span>',
-        enBg:'rgba(26,92,58,.85)',
-        esBg:'rgba(26,58,95,.75)'
-      }
-    ];
-    pairs.forEach(function(p){
-      var el = document.getElementById(p.id);
-      if(!el) return;
-      el.innerHTML = isEN ? p.enHTML : p.esHTML;
-      el.style.background = isEN ? p.enBg : p.esBg;
-      el.title = isEN ? 'Volver al español' : 'Click to switch to English';
-    });
-  }
-
-  function toggle(){
-    setCookie(isEN ? '' : '/es/en');
-    window.location.reload();
-  }
-
-  updateBadges();
-
-  ['en-badge-d','en-badge-m'].forEach(function(id){
+  /* En-badges como alternadores de idioma */
+  ['en-badge-d', 'en-badge-m'].forEach(function(id) {
     var el = document.getElementById(id);
-    if(!el) return;
-    el.addEventListener('click', toggle);
-    el.addEventListener('keydown', function(e){
-      if(e.key==='Enter'||e.key===' '){ e.preventDefault(); toggle(); }
+    if (!el) return;
+    el.addEventListener('click', function() {
+      setLang(document.documentElement.lang === 'es' ? 'en' : 'es');
+    });
+    el.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        setLang(document.documentElement.lang === 'es' ? 'en' : 'es');
+      }
     });
   });
 })();
